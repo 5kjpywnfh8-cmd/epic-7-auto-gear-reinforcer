@@ -1,0 +1,371 @@
+{
+  "scope": {
+    "ranking_metric": "cost_per_baili_score",
+    "main_score_scope": "R2-R58 formal baili score; R61 future is auxiliary only",
+    "item_source": "normal_85",
+    "rank": "Epic",
+    "gear_source": "rift_new_1_32"
+  },
+  "recommendation": {
+    "policy_name": "baili_marginal_mid",
+    "reason": "10k×3 和 100k×3 的第一名均为 baili_marginal_mid，且按 cost_per_baili_score 排序稳定。"
+  },
+  "runs": {
+    "10k": {
+      "files": [
+        "reports/baili-formal-normal-10k-seed17.json",
+        "reports/baili-formal-normal-10k-seed29.json",
+        "reports/baili-formal-normal-10k-seed43.json"
+      ],
+      "by_seed": [
+        {
+          "seed": 17,
+          "best_policy": "baili_marginal_mid",
+          "policy_name": "baili_marginal_mid",
+          "baili_score_per_1000_stamina": 0.9,
+          "cost_per_baili_score": 1126.3,
+          "target_score_per_1000_stamina": 0.9,
+          "cost_per_target_score": 1126.3,
+          "success_rate": 0.0063,
+          "native_success_rate": 0.0038,
+          "rescued_success_rate": 0.0025,
+          "conversion_needed_rate": 0.0031,
+          "stop_plus12": 0.003,
+          "finish_plus15": 0.0076,
+          "future_score": 0
+        },
+        {
+          "seed": 29,
+          "best_policy": "baili_marginal_mid",
+          "policy_name": "baili_marginal_mid",
+          "baili_score_per_1000_stamina": 1.2,
+          "cost_per_baili_score": 807.2,
+          "target_score_per_1000_stamina": 1.2,
+          "cost_per_target_score": 807.2,
+          "success_rate": 0.0074,
+          "native_success_rate": 0.0036,
+          "rescued_success_rate": 0.0038,
+          "conversion_needed_rate": 0.0051,
+          "stop_plus12": 0.0026,
+          "finish_plus15": 0.0088,
+          "future_score": 0
+        },
+        {
+          "seed": 43,
+          "best_policy": "baili_marginal_mid",
+          "policy_name": "baili_marginal_mid",
+          "baili_score_per_1000_stamina": 1.1,
+          "cost_per_baili_score": 892.1,
+          "target_score_per_1000_stamina": 1.1,
+          "cost_per_target_score": 892.1,
+          "success_rate": 0.0066,
+          "native_success_rate": 0.0037,
+          "rescued_success_rate": 0.0029,
+          "conversion_needed_rate": 0.0036,
+          "stop_plus12": 0.0022,
+          "finish_plus15": 0.0086,
+          "future_score": 0
+        }
+      ],
+      "aggregate": {
+        "best_policy_consensus": "baili_marginal_mid",
+        "best_policy_by_seed": {
+          "17": "baili_marginal_mid",
+          "29": "baili_marginal_mid",
+          "43": "baili_marginal_mid"
+        },
+        "baili_score_per_1000_stamina_avg": 1.0667,
+        "baili_score_per_1000_stamina_std": 0.1247,
+        "cost_per_baili_score_avg": 941.8667,
+        "cost_per_baili_score_std": 134.9413,
+        "success_rate_avg": 0.0068,
+        "native_success_rate_avg": 0.0037,
+        "rescued_success_rate_avg": 0.0031,
+        "conversion_needed_rate_avg": 0.0039
+      }
+    },
+    "100k": {
+      "files": [
+        "reports/baili-formal-normal-100k-seed17.json",
+        "reports/baili-formal-normal-100k-seed29.json",
+        "reports/baili-formal-normal-100k-seed43.json"
+      ],
+      "by_seed": [
+        {
+          "seed": 17,
+          "best_policy": "baili_marginal_mid",
+          "policy_name": "baili_marginal_mid",
+          "baili_score_per_1000_stamina": 1.1,
+          "cost_per_baili_score": 923.5,
+          "target_score_per_1000_stamina": 1.1,
+          "cost_per_target_score": 923.5,
+          "success_rate": 0.0069,
+          "native_success_rate": 0.0041,
+          "rescued_success_rate": 0.0028,
+          "conversion_needed_rate": 0.0036,
+          "stop_plus12": 0.0028,
+          "finish_plus15": 0.0082,
+          "future_score": 0
+        },
+        {
+          "seed": 29,
+          "best_policy": "baili_marginal_mid",
+          "policy_name": "baili_marginal_mid",
+          "baili_score_per_1000_stamina": 1.1,
+          "cost_per_baili_score": 930.0,
+          "target_score_per_1000_stamina": 1.1,
+          "cost_per_target_score": 930.0,
+          "success_rate": 0.0069,
+          "native_success_rate": 0.0039,
+          "rescued_success_rate": 0.003,
+          "conversion_needed_rate": 0.004,
+          "stop_plus12": 0.0027,
+          "finish_plus15": 0.0082,
+          "future_score": 0
+        },
+        {
+          "seed": 43,
+          "best_policy": "baili_marginal_mid",
+          "policy_name": "baili_marginal_mid",
+          "baili_score_per_1000_stamina": 1.1,
+          "cost_per_baili_score": 913.2,
+          "target_score_per_1000_stamina": 1.1,
+          "cost_per_target_score": 913.2,
+          "success_rate": 0.0065,
+          "native_success_rate": 0.0038,
+          "rescued_success_rate": 0.0027,
+          "conversion_needed_rate": 0.0034,
+          "stop_plus12": 0.0024,
+          "finish_plus15": 0.008,
+          "future_score": 0
+        }
+      ],
+      "aggregate": {
+        "best_policy_consensus": "baili_marginal_mid",
+        "best_policy_by_seed": {
+          "17": "baili_marginal_mid",
+          "29": "baili_marginal_mid",
+          "43": "baili_marginal_mid"
+        },
+        "baili_score_per_1000_stamina_avg": 1.1,
+        "baili_score_per_1000_stamina_std": 0.0,
+        "cost_per_baili_score_avg": 922.2333,
+        "cost_per_baili_score_std": 6.9168,
+        "success_rate_avg": 0.0068,
+        "native_success_rate_avg": 0.0039,
+        "rescued_success_rate_avg": 0.0028,
+        "conversion_needed_rate_avg": 0.0037
+      }
+    }
+  },
+  "old_comparison": [
+    {
+      "label": "new_baili_formal_seed17",
+      "policy_name": "baili_marginal_mid",
+      "baili_score_per_1000_stamina": 0.9,
+      "cost_per_baili_score": 1126.3,
+      "target_score_per_1000_stamina": 0.9,
+      "cost_per_target_score": 1126.3,
+      "success_rate": 0.0063,
+      "native_success_rate": 0.0038,
+      "rescued_success_rate": 0.0025,
+      "conversion_needed_rate": 0.0031,
+      "stop_plus12": 0.003,
+      "finish_plus15": 0.0076,
+      "ranking_metric": "cost_per_baili_score"
+    },
+    {
+      "label": "old_target_seed17",
+      "policy_name": "score_marginal_value_mid_speed_dynamic",
+      "baili_score_per_1000_stamina": 0.4,
+      "cost_per_baili_score": 2363.3,
+      "target_score_per_1000_stamina": 0.8,
+      "cost_per_target_score": 1223.8,
+      "success_rate": 0.0063,
+      "native_success_rate": 0.0041,
+      "rescued_success_rate": 0.0022,
+      "conversion_needed_rate": 0.0031,
+      "stop_plus12": 0.003,
+      "finish_plus15": 0.0075,
+      "ranking_metric": "cost_per_target_score",
+      "future_score": 8.8
+    },
+    {
+      "label": "old_target_after_md_specials_seed17",
+      "policy_name": "score_marginal_value_mid_speed_dynamic",
+      "baili_score_per_1000_stamina": 0.4,
+      "cost_per_baili_score": 2414.5,
+      "target_score_per_1000_stamina": 0.8,
+      "cost_per_target_score": 1296.4,
+      "success_rate": 0.0067,
+      "native_success_rate": 0.0045,
+      "rescued_success_rate": 0.0022,
+      "conversion_needed_rate": 0.0034,
+      "stop_plus12": 0.0037,
+      "finish_plus15": 0.008,
+      "ranking_metric": "cost_per_target_score",
+      "future_score": 25.1
+    }
+  ],
+  "top5_100k_seed17": [
+    {
+      "policy_name": "baili_marginal_mid",
+      "baili_score_per_1000_stamina": 1.1,
+      "cost_per_baili_score": 923.5,
+      "target_score_per_1000_stamina": 1.1,
+      "cost_per_target_score": 923.5,
+      "success_rate": 0.0069,
+      "native_success_rate": 0.0041,
+      "rescued_success_rate": 0.0028,
+      "conversion_needed_rate": 0.0036,
+      "stop_plus12": 0.0028,
+      "finish_plus15": 0.0082
+    },
+    {
+      "policy_name": "baili_marginal_high",
+      "baili_score_per_1000_stamina": 1.0,
+      "cost_per_baili_score": 977.5,
+      "target_score_per_1000_stamina": 1.0,
+      "cost_per_target_score": 977.5,
+      "success_rate": 0.0046,
+      "native_success_rate": 0.003,
+      "rescued_success_rate": 0.0016,
+      "conversion_needed_rate": 0.0022,
+      "stop_plus12": 0.0024,
+      "finish_plus15": 0.0053
+    },
+    {
+      "policy_name": "target_marginal_mid",
+      "baili_score_per_1000_stamina": 1.0,
+      "cost_per_baili_score": 997.3,
+      "target_score_per_1000_stamina": 1.0,
+      "cost_per_target_score": 997.3,
+      "success_rate": 0.007,
+      "native_success_rate": 0.0041,
+      "rescued_success_rate": 0.0029,
+      "conversion_needed_rate": 0.0037,
+      "stop_plus12": 0.0035,
+      "finish_plus15": 0.0087
+    },
+    {
+      "policy_name": "baili_marginal_low",
+      "baili_score_per_1000_stamina": 1.0,
+      "cost_per_baili_score": 1022.8,
+      "target_score_per_1000_stamina": 1.0,
+      "cost_per_target_score": 1022.8,
+      "success_rate": 0.0082,
+      "native_success_rate": 0.0048,
+      "rescued_success_rate": 0.0034,
+      "conversion_needed_rate": 0.0042,
+      "stop_plus12": 0.0031,
+      "finish_plus15": 0.0101
+    },
+    {
+      "policy_name": "score_target_low_speed_low",
+      "baili_score_per_1000_stamina": 0.3,
+      "cost_per_baili_score": 3174.1,
+      "target_score_per_1000_stamina": 0.3,
+      "cost_per_target_score": 3174.1,
+      "success_rate": 0.0096,
+      "native_success_rate": 0.005,
+      "rescued_success_rate": 0.0046,
+      "conversion_needed_rate": 0.0056,
+      "stop_plus12": 0.004,
+      "finish_plus15": 0.0108
+    }
+  ],
+  "required_policy_comparison_100k_seed17": [
+    {
+      "policy_name": "baili_marginal_low",
+      "baili_score_per_1000_stamina": 1.0,
+      "cost_per_baili_score": 1022.8,
+      "target_score_per_1000_stamina": 1.0,
+      "cost_per_target_score": 1022.8,
+      "success_rate": 0.0082,
+      "native_success_rate": 0.0048,
+      "rescued_success_rate": 0.0034,
+      "conversion_needed_rate": 0.0042,
+      "stop_plus12": 0.0031,
+      "finish_plus15": 0.0101
+    },
+    {
+      "policy_name": "baili_marginal_mid",
+      "baili_score_per_1000_stamina": 1.1,
+      "cost_per_baili_score": 923.5,
+      "target_score_per_1000_stamina": 1.1,
+      "cost_per_target_score": 923.5,
+      "success_rate": 0.0069,
+      "native_success_rate": 0.0041,
+      "rescued_success_rate": 0.0028,
+      "conversion_needed_rate": 0.0036,
+      "stop_plus12": 0.0028,
+      "finish_plus15": 0.0082
+    },
+    {
+      "policy_name": "baili_marginal_high",
+      "baili_score_per_1000_stamina": 1.0,
+      "cost_per_baili_score": 977.5,
+      "target_score_per_1000_stamina": 1.0,
+      "cost_per_target_score": 977.5,
+      "success_rate": 0.0046,
+      "native_success_rate": 0.003,
+      "rescued_success_rate": 0.0016,
+      "conversion_needed_rate": 0.0022,
+      "stop_plus12": 0.0024,
+      "finish_plus15": 0.0053
+    },
+    {
+      "policy_name": "target_marginal_mid",
+      "baili_score_per_1000_stamina": 1.0,
+      "cost_per_baili_score": 997.3,
+      "target_score_per_1000_stamina": 1.0,
+      "cost_per_target_score": 997.3,
+      "success_rate": 0.007,
+      "native_success_rate": 0.0041,
+      "rescued_success_rate": 0.0029,
+      "conversion_needed_rate": 0.0037,
+      "stop_plus12": 0.0035,
+      "finish_plus15": 0.0087
+    },
+    {
+      "policy_name": "score_target_low_speed_low",
+      "baili_score_per_1000_stamina": 0.3,
+      "cost_per_baili_score": 3174.1,
+      "target_score_per_1000_stamina": 0.3,
+      "cost_per_target_score": 3174.1,
+      "success_rate": 0.0096,
+      "native_success_rate": 0.005,
+      "rescued_success_rate": 0.0046,
+      "conversion_needed_rate": 0.0056,
+      "stop_plus12": 0.004,
+      "finish_plus15": 0.0108
+    },
+    {
+      "policy_name": "score_strategy_late_strict_speed_high",
+      "baili_score_per_1000_stamina": 0.1,
+      "cost_per_baili_score": 9151.8,
+      "target_score_per_1000_stamina": 0.1,
+      "cost_per_target_score": 9151.8,
+      "success_rate": 0.001,
+      "native_success_rate": 0.0006,
+      "rescued_success_rate": 0.0004,
+      "conversion_needed_rate": 0.0006,
+      "stop_plus12": 0.0012,
+      "finish_plus15": 0.001
+    }
+  ],
+  "visuals": {
+    "single_png": "reports/visual/baili-formal-normal-100k-seed17-baili_marginal_mid.png",
+    "compare_png": "reports/visual/baili-formal-normal-100k-seed17-top5-compare.png",
+    "single_html": "reports/visual/baili-formal-normal-100k-seed17-baili_marginal_mid.html",
+    "compare_html": "reports/visual/baili-formal-normal-100k-seed17-top5-compare.html",
+    "index_html": "reports/visual/index.html"
+  },
+  "risks": [
+    "样本仍有波动，尤其低成功率策略的尾部高分件。",
+    "掉落模型仍是模拟分布，未按真实副属性掉落分布校正。",
+    "转换石成本未计入，补救效率是偏乐观估计。",
+    "紫装未验证。",
+    "异界未验证。"
+  ]
+}

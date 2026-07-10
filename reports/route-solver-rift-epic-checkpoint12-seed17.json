@@ -1,0 +1,2104 @@
+{
+  "runs": 1000,
+  "policy_name": "score_target_high_speed_mid",
+  "lambda_value": 0.0024290711232024874,
+  "conversion_cost": 0,
+  "confusion_matrix": {
+    "both_continue": 52,
+    "both_stop": 794,
+    "policy_continue_dp_stop": 0,
+    "policy_stop_dp_continue": 154
+  },
+  "agreement_rate": 0.846,
+  "disagreement_rate": 0.154,
+  "bias": "policy_more_conservative",
+  "disagreement_by_category": {
+    "半肉(血防)": 42,
+    "半肉(通用)": 32,
+    "抗坦": 32,
+    "输出": 21,
+    "命坦": 10,
+    "输出(必爆)": 7,
+    "半肉(白字)": 6,
+    "纯肉": 3,
+    "双效": 1
+  },
+  "disagreement_by_set": {
+    "set_speed": 22,
+    "set_immune": 16,
+    "set_counter": 12,
+    "set_def": 10,
+    "set_rage": 10,
+    "set_riposte": 10,
+    "set_penetrate": 9,
+    "set_max_hp": 9,
+    "set_chase": 9,
+    "set_cri_dmg": 7,
+    "set_cri": 6,
+    "set_revenant": 6,
+    "set_scar": 5,
+    "set_acc": 5,
+    "set_opener": 4,
+    "set_shield": 4,
+    "set_torrent": 4,
+    "set_vampire": 3,
+    "set_res": 2,
+    "set_debuff": 1
+  },
+  "disagreement_by_slot": {
+    "weapon": 42,
+    "armor": 31,
+    "helm": 27,
+    "ring": 20,
+    "neck": 18,
+    "boot": 16
+  },
+  "top_disagreements": [
+    {
+      "sample_index": 226,
+      "gear": {
+        "set": "set_def",
+        "slot": "armor",
+        "mainStat": {
+          "type": "Defense",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "CriticalHitChancePercent",
+            "value": 19.0,
+            "rolls": 4,
+            "modified": false
+          },
+          {
+            "type": "Speed",
+            "value": 7.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "DefensePercent",
+            "value": 7,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "EffectivenessPercent",
+            "value": 7,
+            "rolls": 1,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "Speed",
+            "value": 4
+          },
+          {
+            "enhance": 6,
+            "type": "CriticalHitChancePercent",
+            "value": 5
+          },
+          {
+            "enhance": 9,
+            "type": "CriticalHitChancePercent",
+            "value": 4
+          },
+          {
+            "enhance": 12,
+            "type": "CriticalHitChancePercent",
+            "value": 5
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 12.3,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 10.179861,
+      "continue_utility": 10.179861,
+      "utility_gap": 10.179861,
+      "best_target_category": "半肉(血防)",
+      "best_source_row": "R41-R46",
+      "conversion_needed_probability": 1.0,
+      "set": "set_def",
+      "slot": "armor",
+      "mainStat": {
+        "type": "Defense",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "CriticalHitChancePercent",
+          "value": 19.0,
+          "rolls": 4
+        },
+        {
+          "type": "Speed",
+          "value": 7.0,
+          "rolls": 2
+        },
+        {
+          "type": "DefensePercent",
+          "value": 7,
+          "rolls": 1
+        },
+        {
+          "type": "EffectivenessPercent",
+          "value": 7,
+          "rolls": 1
+        }
+      ]
+    },
+    {
+      "sample_index": 211,
+      "gear": {
+        "set": "set_shield",
+        "slot": "ring",
+        "mainStat": {
+          "type": "DefensePercent",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "Defense",
+            "value": 66.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "EffectResistancePercent",
+            "value": 20.0,
+            "rolls": 3,
+            "modified": false
+          },
+          {
+            "type": "Speed",
+            "value": 7.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "CriticalHitChancePercent",
+            "value": 4,
+            "rolls": 1,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "Defense",
+            "value": 33
+          },
+          {
+            "enhance": 6,
+            "type": "EffectResistancePercent",
+            "value": 6
+          },
+          {
+            "enhance": 9,
+            "type": "Speed",
+            "value": 4
+          },
+          {
+            "enhance": 12,
+            "type": "EffectResistancePercent",
+            "value": 6
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 10.8,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 8.659028,
+      "continue_utility": 8.659028,
+      "utility_gap": 8.659028,
+      "best_target_category": "抗坦",
+      "best_source_row": "R17-R22",
+      "conversion_needed_probability": 1.0,
+      "set": "set_shield",
+      "slot": "ring",
+      "mainStat": {
+        "type": "DefensePercent",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "Defense",
+          "value": 66.0,
+          "rolls": 2
+        },
+        {
+          "type": "EffectResistancePercent",
+          "value": 20.0,
+          "rolls": 3
+        },
+        {
+          "type": "Speed",
+          "value": 7.0,
+          "rolls": 2
+        },
+        {
+          "type": "CriticalHitChancePercent",
+          "value": 4,
+          "rolls": 1
+        }
+      ]
+    },
+    {
+      "sample_index": 981,
+      "gear": {
+        "set": "set_def",
+        "slot": "armor",
+        "mainStat": {
+          "type": "Defense",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "HealthPercent",
+            "value": 15.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "EffectResistancePercent",
+            "value": 8,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "CriticalHitChancePercent",
+            "value": 12.0,
+            "rolls": 3,
+            "modified": false
+          },
+          {
+            "type": "DefensePercent",
+            "value": 16.0,
+            "rolls": 2,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "CriticalHitChancePercent",
+            "value": 4
+          },
+          {
+            "enhance": 6,
+            "type": "CriticalHitChancePercent",
+            "value": 4
+          },
+          {
+            "enhance": 9,
+            "type": "DefensePercent",
+            "value": 8
+          },
+          {
+            "enhance": 12,
+            "type": "HealthPercent",
+            "value": 7
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 10.8,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 8.629861,
+      "continue_utility": 8.629861,
+      "utility_gap": 8.629861,
+      "best_target_category": "半肉(血防)",
+      "best_source_row": "R41-R46",
+      "conversion_needed_probability": 1.0,
+      "set": "set_def",
+      "slot": "armor",
+      "mainStat": {
+        "type": "Defense",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "HealthPercent",
+          "value": 15.0,
+          "rolls": 2
+        },
+        {
+          "type": "EffectResistancePercent",
+          "value": 8,
+          "rolls": 1
+        },
+        {
+          "type": "CriticalHitChancePercent",
+          "value": 12.0,
+          "rolls": 3
+        },
+        {
+          "type": "DefensePercent",
+          "value": 16.0,
+          "rolls": 2
+        }
+      ]
+    },
+    {
+      "sample_index": 110,
+      "gear": {
+        "set": "set_vampire",
+        "slot": "weapon",
+        "mainStat": {
+          "type": "Attack",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "EffectivenessPercent",
+            "value": 8,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "Speed",
+            "value": 8.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "CriticalHitDamagePercent",
+            "value": 18.0,
+            "rolls": 3,
+            "modified": false
+          },
+          {
+            "type": "AttackPercent",
+            "value": 14.0,
+            "rolls": 2,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "Speed",
+            "value": 4
+          },
+          {
+            "enhance": 6,
+            "type": "CriticalHitDamagePercent",
+            "value": 6
+          },
+          {
+            "enhance": 9,
+            "type": "CriticalHitDamagePercent",
+            "value": 6
+          },
+          {
+            "enhance": 12,
+            "type": "AttackPercent",
+            "value": 6
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 10.5,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 8.388195,
+      "continue_utility": 8.388195,
+      "utility_gap": 8.388195,
+      "best_target_category": "输出",
+      "best_source_row": "R5-R10",
+      "conversion_needed_probability": 1.0,
+      "set": "set_vampire",
+      "slot": "weapon",
+      "mainStat": {
+        "type": "Attack",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "EffectivenessPercent",
+          "value": 8,
+          "rolls": 1
+        },
+        {
+          "type": "Speed",
+          "value": 8.0,
+          "rolls": 2
+        },
+        {
+          "type": "CriticalHitDamagePercent",
+          "value": 18.0,
+          "rolls": 3
+        },
+        {
+          "type": "AttackPercent",
+          "value": 14.0,
+          "rolls": 2
+        }
+      ]
+    },
+    {
+      "sample_index": 715,
+      "gear": {
+        "set": "set_vampire",
+        "slot": "weapon",
+        "mainStat": {
+          "type": "Attack",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "Speed",
+            "value": 7.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "Health",
+            "value": 178,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "CriticalHitChancePercent",
+            "value": 14.0,
+            "rolls": 3,
+            "modified": false
+          },
+          {
+            "type": "HealthPercent",
+            "value": 16.0,
+            "rolls": 2,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "CriticalHitChancePercent",
+            "value": 5
+          },
+          {
+            "enhance": 6,
+            "type": "CriticalHitChancePercent",
+            "value": 4
+          },
+          {
+            "enhance": 9,
+            "type": "HealthPercent",
+            "value": 8
+          },
+          {
+            "enhance": 12,
+            "type": "Speed",
+            "value": 3
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 10.2,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 8.013195,
+      "continue_utility": 8.013195,
+      "utility_gap": 8.013195,
+      "best_target_category": "半肉(通用)",
+      "best_source_row": "R47-R52",
+      "conversion_needed_probability": 0.875,
+      "set": "set_vampire",
+      "slot": "weapon",
+      "mainStat": {
+        "type": "Attack",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "Speed",
+          "value": 7.0,
+          "rolls": 2
+        },
+        {
+          "type": "Health",
+          "value": 178,
+          "rolls": 1
+        },
+        {
+          "type": "CriticalHitChancePercent",
+          "value": 14.0,
+          "rolls": 3
+        },
+        {
+          "type": "HealthPercent",
+          "value": 16.0,
+          "rolls": 2
+        }
+      ]
+    },
+    {
+      "sample_index": 528,
+      "gear": {
+        "set": "set_immune",
+        "slot": "weapon",
+        "mainStat": {
+          "type": "Attack",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "AttackPercent",
+            "value": 16.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "CriticalHitChancePercent",
+            "value": 13.0,
+            "rolls": 3,
+            "modified": false
+          },
+          {
+            "type": "Health",
+            "value": 203,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "HealthPercent",
+            "value": 14.0,
+            "rolls": 2,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "AttackPercent",
+            "value": 8
+          },
+          {
+            "enhance": 6,
+            "type": "CriticalHitChancePercent",
+            "value": 4
+          },
+          {
+            "enhance": 9,
+            "type": "CriticalHitChancePercent",
+            "value": 4
+          },
+          {
+            "enhance": 12,
+            "type": "HealthPercent",
+            "value": 8
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 10.1,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 7.963195,
+      "continue_utility": 7.963195,
+      "utility_gap": 7.963195,
+      "best_target_category": "半肉(通用)",
+      "best_source_row": "R47-R52",
+      "conversion_needed_probability": 1.0,
+      "set": "set_immune",
+      "slot": "weapon",
+      "mainStat": {
+        "type": "Attack",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "AttackPercent",
+          "value": 16.0,
+          "rolls": 2
+        },
+        {
+          "type": "CriticalHitChancePercent",
+          "value": 13.0,
+          "rolls": 3
+        },
+        {
+          "type": "Health",
+          "value": 203,
+          "rolls": 1
+        },
+        {
+          "type": "HealthPercent",
+          "value": 14.0,
+          "rolls": 2
+        }
+      ]
+    },
+    {
+      "sample_index": 746,
+      "gear": {
+        "set": "set_immune",
+        "slot": "ring",
+        "mainStat": {
+          "type": "DefensePercent",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "Attack",
+            "value": 47,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "Defense",
+            "value": 67.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "EffectResistancePercent",
+            "value": 29.0,
+            "rolls": 4,
+            "modified": false
+          },
+          {
+            "type": "HealthPercent",
+            "value": 6,
+            "rolls": 1,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "EffectResistancePercent",
+            "value": 7
+          },
+          {
+            "enhance": 6,
+            "type": "Defense",
+            "value": 34
+          },
+          {
+            "enhance": 9,
+            "type": "EffectResistancePercent",
+            "value": 8
+          },
+          {
+            "enhance": 12,
+            "type": "EffectResistancePercent",
+            "value": 7
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 9.7,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 7.538195,
+      "continue_utility": 7.538195,
+      "utility_gap": 7.538195,
+      "best_target_category": "抗坦",
+      "best_source_row": "R17-R22",
+      "conversion_needed_probability": 0.8333,
+      "set": "set_immune",
+      "slot": "ring",
+      "mainStat": {
+        "type": "DefensePercent",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "Attack",
+          "value": 47,
+          "rolls": 1
+        },
+        {
+          "type": "Defense",
+          "value": 67.0,
+          "rolls": 2
+        },
+        {
+          "type": "EffectResistancePercent",
+          "value": 29.0,
+          "rolls": 4
+        },
+        {
+          "type": "HealthPercent",
+          "value": 6,
+          "rolls": 1
+        }
+      ]
+    },
+    {
+      "sample_index": 770,
+      "gear": {
+        "set": "set_chase",
+        "slot": "weapon",
+        "mainStat": {
+          "type": "Attack",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "CriticalHitChancePercent",
+            "value": 5,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "EffectResistancePercent",
+            "value": 7,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "CriticalHitDamagePercent",
+            "value": 20.0,
+            "rolls": 3,
+            "modified": false
+          },
+          {
+            "type": "Speed",
+            "value": 10.0,
+            "rolls": 3,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "CriticalHitDamagePercent",
+            "value": 7
+          },
+          {
+            "enhance": 6,
+            "type": "Speed",
+            "value": 3
+          },
+          {
+            "enhance": 9,
+            "type": "Speed",
+            "value": 4
+          },
+          {
+            "enhance": 12,
+            "type": "CriticalHitDamagePercent",
+            "value": 7
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 9.4,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 7.221528,
+      "continue_utility": 7.221528,
+      "utility_gap": 7.221528,
+      "best_target_category": "半肉(血防)",
+      "best_source_row": "R41-R46",
+      "conversion_needed_probability": 1.0,
+      "set": "set_chase",
+      "slot": "weapon",
+      "mainStat": {
+        "type": "Attack",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "CriticalHitChancePercent",
+          "value": 5,
+          "rolls": 1
+        },
+        {
+          "type": "EffectResistancePercent",
+          "value": 7,
+          "rolls": 1
+        },
+        {
+          "type": "CriticalHitDamagePercent",
+          "value": 20.0,
+          "rolls": 3
+        },
+        {
+          "type": "Speed",
+          "value": 10.0,
+          "rolls": 3
+        }
+      ]
+    },
+    {
+      "sample_index": 54,
+      "gear": {
+        "set": "set_immune",
+        "slot": "weapon",
+        "mainStat": {
+          "type": "Attack",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "Health",
+            "value": 192,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "EffectResistancePercent",
+            "value": 37.0,
+            "rolls": 5,
+            "modified": false
+          },
+          {
+            "type": "AttackPercent",
+            "value": 7,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "Speed",
+            "value": 3,
+            "rolls": 1,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "EffectResistancePercent",
+            "value": 7
+          },
+          {
+            "enhance": 6,
+            "type": "EffectResistancePercent",
+            "value": 7
+          },
+          {
+            "enhance": 9,
+            "type": "EffectResistancePercent",
+            "value": 8
+          },
+          {
+            "enhance": 12,
+            "type": "EffectResistancePercent",
+            "value": 8
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 8.8,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 6.637233,
+      "continue_utility": 6.637233,
+      "utility_gap": 6.637233,
+      "best_target_category": "抗坦",
+      "best_source_row": "R17-R22",
+      "conversion_needed_probability": 0.875,
+      "set": "set_immune",
+      "slot": "weapon",
+      "mainStat": {
+        "type": "Attack",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "Health",
+          "value": 192,
+          "rolls": 1
+        },
+        {
+          "type": "EffectResistancePercent",
+          "value": 37.0,
+          "rolls": 5
+        },
+        {
+          "type": "AttackPercent",
+          "value": 7,
+          "rolls": 1
+        },
+        {
+          "type": "Speed",
+          "value": 3,
+          "rolls": 1
+        }
+      ]
+    },
+    {
+      "sample_index": 188,
+      "gear": {
+        "set": "set_scar",
+        "slot": "weapon",
+        "mainStat": {
+          "type": "Attack",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "Speed",
+            "value": 8.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "AttackPercent",
+            "value": 13.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "CriticalHitChancePercent",
+            "value": 10.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "EffectivenessPercent",
+            "value": 13.0,
+            "rolls": 2,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "Speed",
+            "value": 4
+          },
+          {
+            "enhance": 6,
+            "type": "CriticalHitChancePercent",
+            "value": 5
+          },
+          {
+            "enhance": 9,
+            "type": "AttackPercent",
+            "value": 7
+          },
+          {
+            "enhance": 12,
+            "type": "EffectivenessPercent",
+            "value": 7
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 8.7,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 6.563195,
+      "continue_utility": 6.563195,
+      "utility_gap": 6.563195,
+      "best_target_category": "半肉(通用)",
+      "best_source_row": "R47-R52",
+      "conversion_needed_probability": 0.75,
+      "set": "set_scar",
+      "slot": "weapon",
+      "mainStat": {
+        "type": "Attack",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "Speed",
+          "value": 8.0,
+          "rolls": 2
+        },
+        {
+          "type": "AttackPercent",
+          "value": 13.0,
+          "rolls": 2
+        },
+        {
+          "type": "CriticalHitChancePercent",
+          "value": 10.0,
+          "rolls": 2
+        },
+        {
+          "type": "EffectivenessPercent",
+          "value": 13.0,
+          "rolls": 2
+        }
+      ]
+    },
+    {
+      "sample_index": 874,
+      "gear": {
+        "set": "set_max_hp",
+        "slot": "helm",
+        "mainStat": {
+          "type": "Health",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "AttackPercent",
+            "value": 13.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "Speed",
+            "value": 4,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "EffectivenessPercent",
+            "value": 14.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "CriticalHitChancePercent",
+            "value": 15.0,
+            "rolls": 3,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "CriticalHitChancePercent",
+            "value": 5
+          },
+          {
+            "enhance": 6,
+            "type": "AttackPercent",
+            "value": 6
+          },
+          {
+            "enhance": 9,
+            "type": "EffectivenessPercent",
+            "value": 7
+          },
+          {
+            "enhance": 12,
+            "type": "CriticalHitChancePercent",
+            "value": 5
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 8.1,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 5.963195,
+      "continue_utility": 5.963195,
+      "utility_gap": 5.963195,
+      "best_target_category": "半肉(通用)",
+      "best_source_row": "R47-R52",
+      "conversion_needed_probability": 0.75,
+      "set": "set_max_hp",
+      "slot": "helm",
+      "mainStat": {
+        "type": "Health",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "AttackPercent",
+          "value": 13.0,
+          "rolls": 2
+        },
+        {
+          "type": "Speed",
+          "value": 4,
+          "rolls": 1
+        },
+        {
+          "type": "EffectivenessPercent",
+          "value": 14.0,
+          "rolls": 2
+        },
+        {
+          "type": "CriticalHitChancePercent",
+          "value": 15.0,
+          "rolls": 3
+        }
+      ]
+    },
+    {
+      "sample_index": 198,
+      "gear": {
+        "set": "set_shield",
+        "slot": "weapon",
+        "mainStat": {
+          "type": "Attack",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "EffectResistancePercent",
+            "value": 16.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "Health",
+            "value": 397.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "CriticalHitChancePercent",
+            "value": 4,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "Speed",
+            "value": 11.0,
+            "rolls": 3,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "Speed",
+            "value": 4
+          },
+          {
+            "enhance": 6,
+            "type": "EffectResistancePercent",
+            "value": 8
+          },
+          {
+            "enhance": 9,
+            "type": "Health",
+            "value": 203
+          },
+          {
+            "enhance": 12,
+            "type": "Speed",
+            "value": 4
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 8.1,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 5.939477,
+      "continue_utility": 5.939477,
+      "utility_gap": 5.939477,
+      "best_target_category": "抗坦",
+      "best_source_row": "R17-R22",
+      "conversion_needed_probability": 0.875,
+      "set": "set_shield",
+      "slot": "weapon",
+      "mainStat": {
+        "type": "Attack",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "EffectResistancePercent",
+          "value": 16.0,
+          "rolls": 2
+        },
+        {
+          "type": "Health",
+          "value": 397.0,
+          "rolls": 2
+        },
+        {
+          "type": "CriticalHitChancePercent",
+          "value": 4,
+          "rolls": 1
+        },
+        {
+          "type": "Speed",
+          "value": 11.0,
+          "rolls": 3
+        }
+      ]
+    },
+    {
+      "sample_index": 581,
+      "gear": {
+        "set": "set_speed",
+        "slot": "weapon",
+        "mainStat": {
+          "type": "Attack",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "CriticalHitDamagePercent",
+            "value": 12.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "AttackPercent",
+            "value": 14.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "EffectivenessPercent",
+            "value": 8,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "HealthPercent",
+            "value": 23.0,
+            "rolls": 3,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "AttackPercent",
+            "value": 7
+          },
+          {
+            "enhance": 6,
+            "type": "HealthPercent",
+            "value": 7
+          },
+          {
+            "enhance": 9,
+            "type": "CriticalHitDamagePercent",
+            "value": 7
+          },
+          {
+            "enhance": 12,
+            "type": "HealthPercent",
+            "value": 8
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 8.0,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 5.863195,
+      "continue_utility": 5.863195,
+      "utility_gap": 5.863195,
+      "best_target_category": "半肉(通用)",
+      "best_source_row": "R47-R52",
+      "conversion_needed_probability": 1.0,
+      "set": "set_speed",
+      "slot": "weapon",
+      "mainStat": {
+        "type": "Attack",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "CriticalHitDamagePercent",
+          "value": 12.0,
+          "rolls": 2
+        },
+        {
+          "type": "AttackPercent",
+          "value": 14.0,
+          "rolls": 2
+        },
+        {
+          "type": "EffectivenessPercent",
+          "value": 8,
+          "rolls": 1
+        },
+        {
+          "type": "HealthPercent",
+          "value": 23.0,
+          "rolls": 3
+        }
+      ]
+    },
+    {
+      "sample_index": 227,
+      "gear": {
+        "set": "set_counter",
+        "slot": "neck",
+        "mainStat": {
+          "type": "DefensePercent",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "AttackPercent",
+            "value": 24.0,
+            "rolls": 3,
+            "modified": false
+          },
+          {
+            "type": "EffectResistancePercent",
+            "value": 7,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "HealthPercent",
+            "value": 16.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "Health",
+            "value": 394.0,
+            "rolls": 2,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "AttackPercent",
+            "value": 8
+          },
+          {
+            "enhance": 6,
+            "type": "HealthPercent",
+            "value": 8
+          },
+          {
+            "enhance": 9,
+            "type": "AttackPercent",
+            "value": 8
+          },
+          {
+            "enhance": 12,
+            "type": "Health",
+            "value": 197
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 7.9,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 5.796208,
+      "continue_utility": 5.796208,
+      "utility_gap": 5.796208,
+      "best_target_category": "半肉(白字)",
+      "best_source_row": "R53-R58",
+      "conversion_needed_probability": 1.0,
+      "set": "set_counter",
+      "slot": "neck",
+      "mainStat": {
+        "type": "DefensePercent",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "AttackPercent",
+          "value": 24.0,
+          "rolls": 3
+        },
+        {
+          "type": "EffectResistancePercent",
+          "value": 7,
+          "rolls": 1
+        },
+        {
+          "type": "HealthPercent",
+          "value": 16.0,
+          "rolls": 2
+        },
+        {
+          "type": "Health",
+          "value": 394.0,
+          "rolls": 2
+        }
+      ]
+    },
+    {
+      "sample_index": 411,
+      "gear": {
+        "set": "set_cri_dmg",
+        "slot": "weapon",
+        "mainStat": {
+          "type": "Attack",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "Health",
+            "value": 187,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "HealthPercent",
+            "value": 13.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "Speed",
+            "value": 10.0,
+            "rolls": 3,
+            "modified": false
+          },
+          {
+            "type": "CriticalHitChancePercent",
+            "value": 10.0,
+            "rolls": 2,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "Speed",
+            "value": 4
+          },
+          {
+            "enhance": 6,
+            "type": "Speed",
+            "value": 3
+          },
+          {
+            "enhance": 9,
+            "type": "CriticalHitChancePercent",
+            "value": 5
+          },
+          {
+            "enhance": 12,
+            "type": "HealthPercent",
+            "value": 7
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 7.8,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 5.688195,
+      "continue_utility": 5.688195,
+      "utility_gap": 5.688195,
+      "best_target_category": "半肉(血防)",
+      "best_source_row": "R41-R46",
+      "conversion_needed_probability": 1.0,
+      "set": "set_cri_dmg",
+      "slot": "weapon",
+      "mainStat": {
+        "type": "Attack",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "Health",
+          "value": 187,
+          "rolls": 1
+        },
+        {
+          "type": "HealthPercent",
+          "value": 13.0,
+          "rolls": 2
+        },
+        {
+          "type": "Speed",
+          "value": 10.0,
+          "rolls": 3
+        },
+        {
+          "type": "CriticalHitChancePercent",
+          "value": 10.0,
+          "rolls": 2
+        }
+      ]
+    },
+    {
+      "sample_index": 600,
+      "gear": {
+        "set": "set_riposte",
+        "slot": "helm",
+        "mainStat": {
+          "type": "Health",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "Speed",
+            "value": 10.0,
+            "rolls": 3,
+            "modified": false
+          },
+          {
+            "type": "AttackPercent",
+            "value": 12.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "CriticalHitChancePercent",
+            "value": 10.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "EffectResistancePercent",
+            "value": 8,
+            "rolls": 1,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "Speed",
+            "value": 3
+          },
+          {
+            "enhance": 6,
+            "type": "Speed",
+            "value": 4
+          },
+          {
+            "enhance": 9,
+            "type": "CriticalHitChancePercent",
+            "value": 5
+          },
+          {
+            "enhance": 12,
+            "type": "AttackPercent",
+            "value": 6
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 7.7,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 5.546528,
+      "continue_utility": 5.546528,
+      "utility_gap": 5.546528,
+      "best_target_category": "输出",
+      "best_source_row": "R5-R10",
+      "conversion_needed_probability": 1.0,
+      "set": "set_riposte",
+      "slot": "helm",
+      "mainStat": {
+        "type": "Health",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "Speed",
+          "value": 10.0,
+          "rolls": 3
+        },
+        {
+          "type": "AttackPercent",
+          "value": 12.0,
+          "rolls": 2
+        },
+        {
+          "type": "CriticalHitChancePercent",
+          "value": 10.0,
+          "rolls": 2
+        },
+        {
+          "type": "EffectResistancePercent",
+          "value": 8,
+          "rolls": 1
+        }
+      ]
+    },
+    {
+      "sample_index": 65,
+      "gear": {
+        "set": "set_speed",
+        "slot": "boot",
+        "mainStat": {
+          "type": "Speed",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "Attack",
+            "value": 46,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "Defense",
+            "value": 34,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "DefensePercent",
+            "value": 15.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "AttackPercent",
+            "value": 28.0,
+            "rolls": 4,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "AttackPercent",
+            "value": 6
+          },
+          {
+            "enhance": 6,
+            "type": "AttackPercent",
+            "value": 8
+          },
+          {
+            "enhance": 9,
+            "type": "AttackPercent",
+            "value": 6
+          },
+          {
+            "enhance": 12,
+            "type": "DefensePercent",
+            "value": 7
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 7.6,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 5.484028,
+      "continue_utility": 5.484028,
+      "utility_gap": 5.484028,
+      "best_target_category": "半肉(白字)",
+      "best_source_row": "R53-R58",
+      "conversion_needed_probability": 0.0,
+      "set": "set_speed",
+      "slot": "boot",
+      "mainStat": {
+        "type": "Speed",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "Attack",
+          "value": 46,
+          "rolls": 1
+        },
+        {
+          "type": "Defense",
+          "value": 34,
+          "rolls": 1
+        },
+        {
+          "type": "DefensePercent",
+          "value": 15.0,
+          "rolls": 2
+        },
+        {
+          "type": "AttackPercent",
+          "value": 28.0,
+          "rolls": 4
+        }
+      ]
+    },
+    {
+      "sample_index": 116,
+      "gear": {
+        "set": "set_scar",
+        "slot": "helm",
+        "mainStat": {
+          "type": "Health",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "CriticalHitDamagePercent",
+            "value": 13.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "Attack",
+            "value": 42,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "CriticalHitChancePercent",
+            "value": 14.0,
+            "rolls": 3,
+            "modified": false
+          },
+          {
+            "type": "HealthPercent",
+            "value": 12.0,
+            "rolls": 2,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "CriticalHitChancePercent",
+            "value": 5
+          },
+          {
+            "enhance": 6,
+            "type": "CriticalHitChancePercent",
+            "value": 5
+          },
+          {
+            "enhance": 9,
+            "type": "CriticalHitDamagePercent",
+            "value": 7
+          },
+          {
+            "enhance": 12,
+            "type": "HealthPercent",
+            "value": 6
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 7.5,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 5.379861,
+      "continue_utility": 5.379861,
+      "utility_gap": 5.379861,
+      "best_target_category": "半肉(血防)",
+      "best_source_row": "R41-R46",
+      "conversion_needed_probability": 1.0,
+      "set": "set_scar",
+      "slot": "helm",
+      "mainStat": {
+        "type": "Health",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "CriticalHitDamagePercent",
+          "value": 13.0,
+          "rolls": 2
+        },
+        {
+          "type": "Attack",
+          "value": 42,
+          "rolls": 1
+        },
+        {
+          "type": "CriticalHitChancePercent",
+          "value": 14.0,
+          "rolls": 3
+        },
+        {
+          "type": "HealthPercent",
+          "value": 12.0,
+          "rolls": 2
+        }
+      ]
+    },
+    {
+      "sample_index": 239,
+      "gear": {
+        "set": "set_max_hp",
+        "slot": "weapon",
+        "mainStat": {
+          "type": "Attack",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "CriticalHitChancePercent",
+            "value": 5,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "Health",
+            "value": 381.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "Speed",
+            "value": 14.0,
+            "rolls": 4,
+            "modified": false
+          },
+          {
+            "type": "HealthPercent",
+            "value": 7,
+            "rolls": 1,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "Speed",
+            "value": 3
+          },
+          {
+            "enhance": 6,
+            "type": "Health",
+            "value": 195
+          },
+          {
+            "enhance": 9,
+            "type": "Speed",
+            "value": 4
+          },
+          {
+            "enhance": 12,
+            "type": "Speed",
+            "value": 3
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 7.4,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 5.271528,
+      "continue_utility": 5.271528,
+      "utility_gap": 5.271528,
+      "best_target_category": "半肉(血防)",
+      "best_source_row": "R41-R46",
+      "conversion_needed_probability": 0.625,
+      "set": "set_max_hp",
+      "slot": "weapon",
+      "mainStat": {
+        "type": "Attack",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "CriticalHitChancePercent",
+          "value": 5,
+          "rolls": 1
+        },
+        {
+          "type": "Health",
+          "value": 381.0,
+          "rolls": 2
+        },
+        {
+          "type": "Speed",
+          "value": 14.0,
+          "rolls": 4
+        },
+        {
+          "type": "HealthPercent",
+          "value": 7,
+          "rolls": 1
+        }
+      ]
+    },
+    {
+      "sample_index": 355,
+      "gear": {
+        "set": "set_cri",
+        "slot": "armor",
+        "mainStat": {
+          "type": "Defense",
+          "value": 0
+        },
+        "enhance": 12,
+        "level": 85,
+        "rank": "Epic",
+        "substats": [
+          {
+            "type": "DefensePercent",
+            "value": 6,
+            "rolls": 1,
+            "modified": false
+          },
+          {
+            "type": "CriticalHitChancePercent",
+            "value": 18.0,
+            "rolls": 4,
+            "modified": false
+          },
+          {
+            "type": "Speed",
+            "value": 8.0,
+            "rolls": 2,
+            "modified": false
+          },
+          {
+            "type": "CriticalHitDamagePercent",
+            "value": 5,
+            "rolls": 1,
+            "modified": false
+          }
+        ],
+        "rollHistory": [
+          {
+            "enhance": 3,
+            "type": "CriticalHitChancePercent",
+            "value": 5
+          },
+          {
+            "enhance": 6,
+            "type": "CriticalHitChancePercent",
+            "value": 5
+          },
+          {
+            "enhance": 9,
+            "type": "Speed",
+            "value": 4
+          },
+          {
+            "enhance": 12,
+            "type": "CriticalHitChancePercent",
+            "value": 4
+          }
+        ],
+        "code": ""
+      },
+      "checkpoint": 12,
+      "policy_decision": "stop",
+      "dp_decision": "continue",
+      "expected_formal_baili_score": 7.4,
+      "expected_incremental_stamina": 879.7,
+      "expected_utility": 5.221528,
+      "continue_utility": 5.221528,
+      "utility_gap": 5.221528,
+      "best_target_category": "输出",
+      "best_source_row": "R5-R10",
+      "conversion_needed_probability": 0.0,
+      "set": "set_cri",
+      "slot": "armor",
+      "mainStat": {
+        "type": "Defense",
+        "value": 0
+      },
+      "substats": [
+        {
+          "type": "DefensePercent",
+          "value": 6,
+          "rolls": 1
+        },
+        {
+          "type": "CriticalHitChancePercent",
+          "value": 18.0,
+          "rolls": 4
+        },
+        {
+          "type": "Speed",
+          "value": 8.0,
+          "rolls": 2
+        },
+        {
+          "type": "CriticalHitDamagePercent",
+          "value": 5,
+          "rolls": 1
+        }
+      ]
+    }
+  ],
+  "checkpoint": 12,
+  "cache": {
+    "size": 22412,
+    "hits": 0,
+    "misses": 22412
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "scope": {
+    "checkpoints": [
+      0,
+      3
+    ],
+    "configs": [
+      [
+        "normal_85",
+        "Epic"
+      ],
+      [
+        "normal_85",
+        "Heroic"
+      ],
+      [
+        "rift_85",
+        "Epic"
+      ]
+    ],
+    "seed": 20260710,
+    "samples_per_checkpoint": 1
+  },
+  "rule": {
+    "review_when": "speed rolls >=2, expected speed >=14, 20-speed probability >=0.2, speed potential >=16, expected effective score >=48, formal cross-tier probability >=0.2",
+    "stop_when": "none of the review signals is present"
+  },
+  "performance": {
+    "samples": 6,
+    "lightweight_total_seconds": 0.00138,
+    "exact_dp_total_seconds": 65.410263,
+    "speedup": 47381.6
+  },
+  "by_bucket": {
+    "normal_85:Epic:+0": {
+      "samples": 1,
+      "decision_matrix": {
+        "review->continue": 1
+      }
+    },
+    "normal_85:Epic:+3": {
+      "samples": 1,
+      "decision_matrix": {
+        "stop->stop": 1
+      }
+    },
+    "normal_85:Heroic:+0": {
+      "samples": 1,
+      "decision_matrix": {
+        "stop->stop": 1
+      }
+    },
+    "normal_85:Heroic:+3": {
+      "samples": 1,
+      "decision_matrix": {
+        "review->continue": 1
+      }
+    },
+    "rift_85:Epic:+0": {
+      "samples": 1,
+      "decision_matrix": {
+        "stop->stop": 1
+      }
+    },
+    "rift_85:Epic:+3": {
+      "samples": 1,
+      "decision_matrix": {
+        "stop->stop": 1
+      }
+    }
+  },
+  "high_speed_direct_stop_count": 0,
+  "rows": [
+    {
+      "item_source": "normal_85",
+      "rank": "Epic",
+      "checkpoint": 0,
+      "light_action": "review",
+      "exact_action": "continue",
+      "light_terminal_value": 0.0,
+      "expected_final_score": 52.2,
+      "expected_final_speed": 0.0,
+      "speed_threshold_probability": 1.0,
+      "formal_cross_tier_probability": 0.0263
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Epic",
+      "checkpoint": 3,
+      "light_action": "stop",
+      "exact_action": "stop",
+      "light_terminal_value": 0.0,
+      "expected_final_score": 0.0,
+      "expected_final_speed": 7.0,
+      "speed_threshold_probability": 0.0,
+      "formal_cross_tier_probability": 0.0
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Heroic",
+      "checkpoint": 0,
+      "light_action": "stop",
+      "exact_action": "stop",
+      "light_terminal_value": 0.0,
+      "expected_final_score": 0.0,
+      "expected_final_speed": 0.0,
+      "speed_threshold_probability": 0.0,
+      "formal_cross_tier_probability": 0.0
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Heroic",
+      "checkpoint": 3,
+      "light_action": "review",
+      "exact_action": "continue",
+      "light_terminal_value": 0.0,
+      "expected_final_score": 48.7,
+      "expected_final_speed": 0.0,
+      "speed_threshold_probability": 0.0,
+      "formal_cross_tier_probability": 0.0001
+    },
+    {
+      "item_source": "rift_85",
+      "rank": "Epic",
+      "checkpoint": 0,
+      "light_action": "stop",
+      "exact_action": "stop",
+      "light_terminal_value": 0.0,
+      "expected_final_score": 27.0,
+      "expected_final_speed": 0.0,
+      "speed_threshold_probability": 0.0,
+      "formal_cross_tier_probability": 0.0
+    },
+    {
+      "item_source": "rift_85",
+      "rank": "Epic",
+      "checkpoint": 3,
+      "light_action": "stop",
+      "exact_action": "stop",
+      "light_terminal_value": 0.0,
+      "expected_final_score": 0.0,
+      "expected_final_speed": 0.0,
+      "speed_threshold_probability": 0.0,
+      "formal_cross_tier_probability": 0.0
+    }
+  ]
+}

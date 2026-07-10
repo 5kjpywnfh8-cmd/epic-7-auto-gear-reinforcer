@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>top5 策略对比</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f6fbff; color: #142033; font-family: "Microsoft YaHei", "Segoe UI", sans-serif; }
+    .page { width: min(100%, 1020px); margin: 0 auto; padding: 34px 28px 44px; background: #fff; }
+    .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; border-bottom: 1px solid #d9ebf8; padding-bottom: 22px; }
+    .hero.single { grid-template-columns: 1fr; }
+    .eyebrow { color: #51708f; font-size: 22px; font-weight: 700; }
+    .big-number { color: #1478b8; font-size: 76px; line-height: 1.05; font-weight: 800; overflow-wrap: anywhere; }
+    .big-number.secondary { color: #253b56; }
+    .title { color: #1478b8; font-size: 52px; line-height: 1.1; font-weight: 800; overflow-wrap: anywhere; }
+    .meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 20px; padding: 20px 0; color: #42566d; }
+    .meta b { color: #17253a; overflow-wrap: anywhere; }
+    .panel { margin-top: 18px; padding: 18px; border: 1px solid #dbeefb; background: #fbfdff; border-radius: 8px; }
+    h2 { margin: 0 0 14px; font-size: 24px; color: #173a5d; }
+    .radar-panel { text-align: center; }
+    .radar { width: 100%; max-width: 790px; height: auto; }
+    .ring { fill: none; stroke: #d8e9f6; stroke-width: 1.2; }
+    .axis { stroke: #e3f0f9; stroke-width: 1; }
+    .radar-area { fill: rgba(20, 120, 184, 0.22); stroke: #1478b8; stroke-width: 3; }
+    .radar-label { fill: #173a5d; font-size: 20px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+    .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+    .card, .small-card { background: #eef8ff; border: 1px solid #d7edf9; border-radius: 8px; padding: 14px; min-width: 0; }
+    .card-label { color: #57738d; font-size: 15px; }
+    .card-value { color: #17253a; font-size: 28px; font-weight: 800; overflow-wrap: anywhere; }
+    .small-cards { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+    .small-card span { display: block; color: #57738d; font-size: 14px; }
+    .small-card strong { display: block; color: #17253a; font-size: 20px; overflow-wrap: anywhere; }
+    .notes { margin-top: 18px; color: #52677d; font-size: 15px; line-height: 1.5; overflow-wrap: anywhere; }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    th, td { border-bottom: 1px solid #dbeefb; padding: 10px 8px; text-align: right; vertical-align: top; overflow-wrap: anywhere; }
+    th:first-child, td:first-child { text-align: left; }
+    tr.best td { background: #eef8ff; font-weight: 700; }
+    td span { display: inline-block; margin-left: 6px; color: #1478b8; }
+    .warning { margin: 16px 0; padding: 12px; border: 1px solid #f0c36a; background: #fff8e5; border-radius: 8px; color: #6d520e; }
+    @media (max-width: 760px) {
+      .page { padding: 22px 14px 32px; }
+      .hero, .meta, .cards { grid-template-columns: 1fr; }
+      .big-number { font-size: 52px; }
+      .title { font-size: 36px; }
+      .small-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      table { font-size: 13px; }
+      th, td { padding: 8px 5px; }
+    }
+  </style>
+</head>
+<body><main class="page">
+        <section class="hero single">
+          <div>
+            <div class="eyebrow">top5 策略对比</div>
+            <div class="title">百里分效率排序</div>
+          </div>
+        </section>
+        
+        <section class="panel">
+          <table>
+            <thead>
+              <tr>
+                <th>策略</th><th>百里/千体</th><th>体力/百里</th><th>目标/千体</th>
+                <th>成功率</th><th>原生</th><th>补救</th><th>+12停</th><th>+15完成</th>
+              </tr>
+            </thead>
+            <tbody>
+    <tr class="best">
+      <td>category_baili_marginal_mid <span>best_policy</span></td>
+      <td>1.1</td>
+      <td>929.4</td>
+      <td>1.1</td>
+      <td>0.70%</td>
+      <td>0.41%</td>
+      <td>0.29%</td>
+      <td>0.30%</td>
+      <td>0.83%</td>
+    </tr>
+    
+
+    <tr class="">
+      <td>category_set_group_baili_marginal_mid</td>
+      <td>1.1</td>
+      <td>933.4</td>
+      <td>1.1</td>
+      <td>0.64%</td>
+      <td>0.37%</td>
+      <td>0.27%</td>
+      <td>0.27%</td>
+      <td>0.76%</td>
+    </tr>
+    
+
+    <tr class="">
+      <td>baili_marginal_mid</td>
+      <td>1.1</td>
+      <td>934.1</td>
+      <td>1.1</td>
+      <td>0.68%</td>
+      <td>0.40%</td>
+      <td>0.28%</td>
+      <td>0.29%</td>
+      <td>0.81%</td>
+    </tr>
+    
+
+    <tr class="">
+      <td>global_baili_marginal_mid</td>
+      <td>1.1</td>
+      <td>934.1</td>
+      <td>1.1</td>
+      <td>0.68%</td>
+      <td>0.40%</td>
+      <td>0.28%</td>
+      <td>0.29%</td>
+      <td>0.81%</td>
+    </tr>
+    
+
+    <tr class="">
+      <td>set_group_baili_marginal_mid</td>
+      <td>1.1</td>
+      <td>940.8</td>
+      <td>1.1</td>
+      <td>0.65%</td>
+      <td>0.38%</td>
+      <td>0.28%</td>
+      <td>0.28%</td>
+      <td>0.78%</td>
+    </tr>
+    </tbody>
+          </table>
+        </section>
+        <section class="notes">
+          <p>best_policy: category_baili_marginal_mid</p>
+          <p>ranking_metric: cost_per_baili_score</p>
+        </section>
+        </main></body>
+</html>

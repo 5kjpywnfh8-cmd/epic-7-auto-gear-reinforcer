@@ -1,0 +1,655 @@
+{
+  "gear": {
+    "set": "Critical",
+    "slot": "Weapon",
+    "mainStat": {
+      "type": "Attack",
+      "value": 525.0
+    },
+    "enhance": 3,
+    "level": 85,
+    "rank": "Epic",
+    "substats": [
+      {
+        "type": "AttackPercent",
+        "value": 8.0,
+        "rolls": 2
+      },
+      {
+        "type": "CriticalHitChancePercent",
+        "value": 5.0,
+        "rolls": 1
+      },
+      {
+        "type": "CriticalHitDamagePercent",
+        "value": 7.0,
+        "rolls": 1
+      },
+      {
+        "type": "EffectivenessPercent",
+        "value": 8.0,
+        "rolls": 1
+      }
+    ],
+    "rollHistory": [],
+    "code": "",
+    "reforgeEligible": true,
+    "itemSource": "normal_85",
+    "gearSource": "rift_new_1_32"
+  },
+  "suggestion": {
+    "summary": {
+      "recommendation": "cautious_continue",
+      "next_check_at": 6,
+      "target_profile": "半肉(通用)",
+      "reasons": [
+        "轻量预测保留，待 +6 精确复核",
+        "未形成高置信度继续或强负证据；继续至 +6 后使用精确 DP 复核"
+      ]
+    },
+    "debug": {
+      "strategy_version": "baili-formal-dp-v1",
+      "default_strategy": {
+        "item_source": "normal_85",
+        "rank": "Epic",
+        "gear_source": "rift_new_1_32",
+        "policy_name": "normal_epic_dp_assisted",
+        "enable_dp_assist": true,
+        "configured_enable_dp_assist": true
+      },
+      "dp_assist": {
+        "enabled": true,
+        "checkpoint": 3,
+        "baseline_recommendation": "uncertain",
+        "baseline_continue": false,
+        "baseline_policy": "normal_epic_dp_assisted",
+        "dp_decision": "lightweight_review",
+        "dp_expected_utility": null,
+        "dp_continue_utility": null,
+        "dp_utility_gap": null,
+        "dp_expected_formal_baili_score": null,
+        "dp_expected_terminal_value": 0.0,
+        "dp_expected_final_speed": 0.0,
+        "dp_expected_speed_rolls": 0,
+        "dp_speed_potential_set_eligible": true,
+        "dp_speed_potential_threshold_blocked_probability": 0.0,
+        "dp_expected_speed_potential_value": 0.0,
+        "dp_expected_incremental_stamina": null,
+        "dp_best_target_category": "半肉(通用)",
+        "dp_best_source_row": null,
+        "overrode_baseline": false,
+        "reason": "未形成高置信度继续或强负证据；继续至 +6 后使用精确 DP 复核",
+        "decision_mode": "lightweight_prediction",
+        "lightweight_basis": {
+          "expected_final_reforge_score": 58.2,
+          "expected_final_target_score": 0.0,
+          "expected_final_speed": 0.0,
+          "expected_speed_rolls": 0,
+          "remaining_hits": 4,
+          "speed_threshold_probability": 0.0,
+          "speed_potential_value": 0.0,
+          "formal_cross_tier_probability": 0.0223,
+          "valid_substat_count": 3,
+          "classification": "待 +6 精确复核",
+          "full_category_matches": [],
+          "full_category_diagnostics": [
+            {
+              "category": "输出",
+              "priority": 4,
+              "valid_keys": [
+                "atkFlat",
+                "atkPct",
+                "cdmg",
+                "crit",
+                "spd"
+              ],
+              "set_group": "output",
+              "source_row": "R5-R10",
+              "substats": [
+                {
+                  "stat": "攻击%",
+                  "key": "atkPct",
+                  "matched": true
+                },
+                {
+                  "stat": "暴率",
+                  "key": "crit",
+                  "matched": true
+                },
+                {
+                  "stat": "爆伤",
+                  "key": "cdmg",
+                  "matched": true
+                },
+                {
+                  "stat": "命中",
+                  "key": "eff",
+                  "matched": false
+                }
+              ],
+              "set_matched": true,
+              "has_valid_substat": true,
+              "main_matched": true,
+              "special_matched": true,
+              "category_gate_matched": true,
+              "required_any_matched": true,
+              "mutual_exclusion_matched": true,
+              "full_matched": false
+            },
+            {
+              "category": "输出(必爆)",
+              "priority": 5,
+              "valid_keys": [
+                "atkFlat",
+                "atkPct",
+                "cdmg",
+                "spd"
+              ],
+              "set_group": "critless",
+              "source_row": "R11-R16",
+              "substats": [
+                {
+                  "stat": "攻击%",
+                  "key": "atkPct",
+                  "matched": true
+                },
+                {
+                  "stat": "暴率",
+                  "key": "crit",
+                  "matched": false
+                },
+                {
+                  "stat": "爆伤",
+                  "key": "cdmg",
+                  "matched": true
+                },
+                {
+                  "stat": "命中",
+                  "key": "eff",
+                  "matched": false
+                }
+              ],
+              "set_matched": false,
+              "has_valid_substat": true,
+              "main_matched": true,
+              "special_matched": false,
+              "category_gate_matched": false,
+              "required_any_matched": true,
+              "mutual_exclusion_matched": true,
+              "full_matched": false
+            },
+            {
+              "category": "抗坦",
+              "priority": 6,
+              "valid_keys": [
+                "defFlat",
+                "defPct",
+                "hpFlat",
+                "hpPct",
+                "res",
+                "spd"
+              ],
+              "set_group": "tankRes",
+              "source_row": "R17-R22",
+              "substats": [
+                {
+                  "stat": "攻击%",
+                  "key": "atkPct",
+                  "matched": false
+                },
+                {
+                  "stat": "暴率",
+                  "key": "crit",
+                  "matched": false
+                },
+                {
+                  "stat": "爆伤",
+                  "key": "cdmg",
+                  "matched": false
+                },
+                {
+                  "stat": "命中",
+                  "key": "eff",
+                  "matched": false
+                }
+              ],
+              "set_matched": false,
+              "has_valid_substat": false,
+              "main_matched": true,
+              "special_matched": false,
+              "category_gate_matched": false,
+              "required_any_matched": true,
+              "mutual_exclusion_matched": true,
+              "full_matched": false
+            },
+            {
+              "category": "纯肉",
+              "priority": 7,
+              "valid_keys": [
+                "defFlat",
+                "defPct",
+                "hpFlat",
+                "hpPct",
+                "spd"
+              ],
+              "set_group": "pureTank",
+              "source_row": "R23-R28",
+              "substats": [
+                {
+                  "stat": "攻击%",
+                  "key": "atkPct",
+                  "matched": false
+                },
+                {
+                  "stat": "暴率",
+                  "key": "crit",
+                  "matched": false
+                },
+                {
+                  "stat": "爆伤",
+                  "key": "cdmg",
+                  "matched": false
+                },
+                {
+                  "stat": "命中",
+                  "key": "eff",
+                  "matched": false
+                }
+              ],
+              "set_matched": false,
+              "has_valid_substat": false,
+              "main_matched": true,
+              "special_matched": false,
+              "category_gate_matched": false,
+              "required_any_matched": true,
+              "mutual_exclusion_matched": true,
+              "full_matched": false
+            },
+            {
+              "category": "命坦",
+              "priority": 8,
+              "valid_keys": [
+                "defFlat",
+                "defPct",
+                "eff",
+                "hpFlat",
+                "hpPct",
+                "spd"
+              ],
+              "set_group": "hitTank",
+              "source_row": "R29-R34",
+              "substats": [
+                {
+                  "stat": "攻击%",
+                  "key": "atkPct",
+                  "matched": false
+                },
+                {
+                  "stat": "暴率",
+                  "key": "crit",
+                  "matched": false
+                },
+                {
+                  "stat": "爆伤",
+                  "key": "cdmg",
+                  "matched": false
+                },
+                {
+                  "stat": "命中",
+                  "key": "eff",
+                  "matched": true
+                }
+              ],
+              "set_matched": false,
+              "has_valid_substat": true,
+              "main_matched": true,
+              "special_matched": true,
+              "category_gate_matched": true,
+              "required_any_matched": true,
+              "mutual_exclusion_matched": true,
+              "full_matched": false
+            },
+            {
+              "category": "双效",
+              "priority": 9,
+              "valid_keys": [
+                "atkPct",
+                "defFlat",
+                "defPct",
+                "eff",
+                "hpPct",
+                "res",
+                "spd"
+              ],
+              "set_group": "dual",
+              "source_row": "R35-R40",
+              "substats": [
+                {
+                  "stat": "攻击%",
+                  "key": "atkPct",
+                  "matched": true
+                },
+                {
+                  "stat": "暴率",
+                  "key": "crit",
+                  "matched": false
+                },
+                {
+                  "stat": "爆伤",
+                  "key": "cdmg",
+                  "matched": false
+                },
+                {
+                  "stat": "命中",
+                  "key": "eff",
+                  "matched": true
+                }
+              ],
+              "set_matched": false,
+              "has_valid_substat": true,
+              "main_matched": true,
+              "special_matched": false,
+              "category_gate_matched": true,
+              "required_any_matched": true,
+              "mutual_exclusion_matched": false,
+              "full_matched": false
+            },
+            {
+              "category": "半肉(血防)",
+              "priority": 10,
+              "valid_keys": [
+                "cdmg",
+                "crit",
+                "defFlat",
+                "defPct",
+                "hpPct",
+                "spd"
+              ],
+              "set_group": "bruiserHpDef",
+              "source_row": "R41-R46",
+              "substats": [
+                {
+                  "stat": "攻击%",
+                  "key": "atkPct",
+                  "matched": false
+                },
+                {
+                  "stat": "暴率",
+                  "key": "crit",
+                  "matched": true
+                },
+                {
+                  "stat": "爆伤",
+                  "key": "cdmg",
+                  "matched": true
+                },
+                {
+                  "stat": "命中",
+                  "key": "eff",
+                  "matched": false
+                }
+              ],
+              "set_matched": false,
+              "has_valid_substat": true,
+              "main_matched": true,
+              "special_matched": true,
+              "category_gate_matched": true,
+              "required_any_matched": true,
+              "mutual_exclusion_matched": true,
+              "full_matched": false
+            },
+            {
+              "category": "半肉(通用)",
+              "priority": 11,
+              "valid_keys": [
+                "atkPct",
+                "cdmg",
+                "crit",
+                "defFlat",
+                "defPct",
+                "hpPct",
+                "spd"
+              ],
+              "set_group": "bruiser",
+              "source_row": "R47-R52",
+              "substats": [
+                {
+                  "stat": "攻击%",
+                  "key": "atkPct",
+                  "matched": true
+                },
+                {
+                  "stat": "暴率",
+                  "key": "crit",
+                  "matched": true
+                },
+                {
+                  "stat": "爆伤",
+                  "key": "cdmg",
+                  "matched": true
+                },
+                {
+                  "stat": "命中",
+                  "key": "eff",
+                  "matched": false
+                }
+              ],
+              "set_matched": true,
+              "has_valid_substat": true,
+              "main_matched": true,
+              "special_matched": true,
+              "category_gate_matched": true,
+              "required_any_matched": true,
+              "mutual_exclusion_matched": true,
+              "full_matched": false
+            },
+            {
+              "category": "半肉(白字)",
+              "priority": 12,
+              "valid_keys": [
+                "atkFlat",
+                "atkPct",
+                "defFlat",
+                "defPct",
+                "hpFlat",
+                "hpPct",
+                "spd"
+              ],
+              "set_group": "bruiserFlat",
+              "source_row": "R53-R58",
+              "substats": [
+                {
+                  "stat": "攻击%",
+                  "key": "atkPct",
+                  "matched": true
+                },
+                {
+                  "stat": "暴率",
+                  "key": "crit",
+                  "matched": false
+                },
+                {
+                  "stat": "爆伤",
+                  "key": "cdmg",
+                  "matched": false
+                },
+                {
+                  "stat": "命中",
+                  "key": "eff",
+                  "matched": false
+                }
+              ],
+              "set_matched": false,
+              "has_valid_substat": true,
+              "main_matched": true,
+              "special_matched": true,
+              "category_gate_matched": true,
+              "required_any_matched": true,
+              "mutual_exclusion_matched": true,
+              "full_matched": false
+            }
+          ],
+          "selected_full_category": null,
+          "route": "早期保守复核",
+          "speed_protection_eligible": false,
+          "speed_high_value_route": false,
+          "calibration_group": {
+            "item_source": "normal_85",
+            "rank": "Epic",
+            "slot": "weapon",
+            "main_stat_class": "left_fixed",
+            "set_group": "bruiser",
+            "selected_category": "半肉(通用)"
+          },
+          "calibration_thresholds": null,
+          "calibration_metrics": {
+            "full_category_matched": false,
+            "expected_final_reforge_score": 58.2,
+            "expected_final_target_score": 0.0,
+            "current_effective_score": 24.0,
+            "remaining_hits": 4,
+            "formal_cross_tier_probability": 0.0223,
+            "expected_final_speed": 0.0,
+            "speed": 0.0,
+            "speed_rolls": 0,
+            "speed_potential_value": 0.0,
+            "speed_potential_set_eligible": true
+          },
+          "theoretical_lower_bound": 29.7,
+          "theoretical_upper_bound": 87.9,
+          "theoretical_bound_category": "半肉(通用)",
+          "calibration_stop_threshold": null,
+          "decision_reason": "未形成高置信度继续或强负证据；继续至 +6 后使用精确 DP 复核"
+        }
+      },
+      "official_score": 40.8,
+      "official_parts": {
+        "initial": 5.0,
+        "enhance": 3.8,
+        "reforge_main": 0.0,
+        "substats": 32.0
+      },
+      "effective_score": 24.0,
+      "baili_score": 0,
+      "target_score": 0,
+      "target_score_source_row": "-",
+      "target_score_formula": "未命中套装属性与装等计算表",
+      "rating_level": "2 提取",
+      "rating_semantics": "current_static",
+      "fit_status": "有效但未入体系",
+      "valid_substats": [
+        "攻击% 8%",
+        "暴率 5%",
+        "爆伤 7%"
+      ],
+      "invalid_substats": [
+        "命中 8%"
+      ],
+      "roll_hit_analysis": [
+        {
+          "enhance": null,
+          "stat": "攻击%",
+          "value": null,
+          "valid": true,
+          "inferred": true,
+          "hit_count": 1
+        }
+      ],
+      "ocr_raw_result": null
+    }
+  },
+  "summary_view": {
+    "recommendation": "cautious_continue",
+    "recommendation_label": "谨慎继续",
+    "next_check_at": 6,
+    "target_profile": "半肉(通用)",
+    "reasons": [
+      "轻量预测保留，待 +6 精确复核",
+      "未形成高置信度继续或强负证据；继续至 +6 后使用精确 DP 复核"
+    ]
+  },
+  "debug_view": {
+    "official_score": 40.8,
+    "effective_score": 24.0,
+    "strategy_version": "baili-formal-dp-v1",
+    "strategy_name": "normal_epic_dp_assisted",
+    "enable_dp_assist": true,
+    "baseline_recommendation": "uncertain",
+    "decision_mode": "轻量预测（+0/+3）：+0/+3 使用单件轻量预测；+6 后按实际强化分支进行精确 DP。",
+    "dp_decision": "未运行精确 DP",
+    "lightweight_decision": "轻量预测：待 +6 精确复核",
+    "dp_utility": null,
+    "dp_expected_terminal_value": 0.0,
+    "dp_expected_final_speed": 0.0,
+    "dp_expected_speed_rolls": 0,
+    "dp_speed_potential_set_eligible": true,
+    "dp_speed_potential_threshold_blocked_probability": 0.0,
+    "dp_expected_speed_potential_value": 0.0,
+    "dp_continue_utility": null,
+    "dp_best_target_category": "半肉(通用)",
+    "dp_best_source_row": null,
+    "dp_override_applied": false,
+    "lightweight_basis": {
+      "命中的完整分类": [],
+      "选择分类": null,
+      "决策路线": "早期保守复核",
+      "校准分组": {
+        "来源": "normal_85",
+        "品质": "Epic",
+        "部位": "weapon",
+        "主属性类别": "left_fixed",
+        "套装组": "bruiser",
+        "分类": "半肉(通用)"
+      },
+      "校准门槛": null,
+      "理论下界": 29.7,
+      "理论上界": 87.9,
+      "决策依据": "未形成高置信度继续或强负证据；继续至 +6 后使用精确 DP 复核"
+    },
+    "lightweight_route": "早期保守复核",
+    "lightweight_full_categories": [],
+    "lightweight_selected_category": null,
+    "lightweight_calibration_group": {
+      "来源": "normal_85",
+      "品质": "Epic",
+      "部位": "weapon",
+      "主属性类别": "left_fixed",
+      "套装组": "bruiser",
+      "分类": "半肉(通用)"
+    },
+    "lightweight_calibration_thresholds": null,
+    "lightweight_theoretical_lower_bound": 29.7,
+    "lightweight_theoretical_upper_bound": 87.9,
+    "lightweight_decision_reason": "未形成高置信度继续或强负证据；继续至 +6 后使用精确 DP 复核",
+    "baili_score": 0,
+    "target_score": 0,
+    "rating_level": "2 提取",
+    "rating_semantics": "current_static",
+    "fit_status": "有效但未入体系",
+    "valid_substats": [
+      "攻击% 8%",
+      "暴率 5%",
+      "爆伤 7%"
+    ],
+    "invalid_substats": [
+      "命中 8%"
+    ],
+    "roll_hit_analysis": [
+      {
+        "enhance": null,
+        "stat": "攻击%",
+        "value": null,
+        "valid": true,
+        "inferred": true,
+        "hit_count": 1
+      }
+    ]
+  },
+  "manual_review": {
+    "工具建议": "谨慎继续",
+    "人工判断": "谨慎继续",
+    "是否一致": "不完全一致",
+    "分歧原因": "攻击爆率爆伤，命中三条，另外一条如果后续未被roll或者roll一次，还有机会转换成输出体系，不仅是半肉，半肉和双效应该比其他体系更低优先度，普遍上半肉和双效装备是更多高分装备，但是需求量更小而且暴击套装这种属于输出体系的套装，更优先给输出体系",
+    "备注": ""
+  }
+}

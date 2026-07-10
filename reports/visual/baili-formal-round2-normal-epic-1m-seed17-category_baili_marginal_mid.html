@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>百里策略审核图</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f6fbff; color: #142033; font-family: "Microsoft YaHei", "Segoe UI", sans-serif; }
+    .page { width: min(100%, 1020px); margin: 0 auto; padding: 34px 28px 44px; background: #fff; }
+    .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; border-bottom: 1px solid #d9ebf8; padding-bottom: 22px; }
+    .hero.single { grid-template-columns: 1fr; }
+    .eyebrow { color: #51708f; font-size: 22px; font-weight: 700; }
+    .big-number { color: #1478b8; font-size: 76px; line-height: 1.05; font-weight: 800; overflow-wrap: anywhere; }
+    .big-number.secondary { color: #253b56; }
+    .title { color: #1478b8; font-size: 52px; line-height: 1.1; font-weight: 800; overflow-wrap: anywhere; }
+    .meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 20px; padding: 20px 0; color: #42566d; }
+    .meta b { color: #17253a; overflow-wrap: anywhere; }
+    .panel { margin-top: 18px; padding: 18px; border: 1px solid #dbeefb; background: #fbfdff; border-radius: 8px; }
+    h2 { margin: 0 0 14px; font-size: 24px; color: #173a5d; }
+    .radar-panel { text-align: center; }
+    .radar { width: 100%; max-width: 790px; height: auto; }
+    .ring { fill: none; stroke: #d8e9f6; stroke-width: 1.2; }
+    .axis { stroke: #e3f0f9; stroke-width: 1; }
+    .radar-area { fill: rgba(20, 120, 184, 0.22); stroke: #1478b8; stroke-width: 3; }
+    .radar-label { fill: #173a5d; font-size: 20px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+    .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+    .card, .small-card { background: #eef8ff; border: 1px solid #d7edf9; border-radius: 8px; padding: 14px; min-width: 0; }
+    .card-label { color: #57738d; font-size: 15px; }
+    .card-value { color: #17253a; font-size: 28px; font-weight: 800; overflow-wrap: anywhere; }
+    .small-cards { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+    .small-card span { display: block; color: #57738d; font-size: 14px; }
+    .small-card strong { display: block; color: #17253a; font-size: 20px; overflow-wrap: anywhere; }
+    .notes { margin-top: 18px; color: #52677d; font-size: 15px; line-height: 1.5; overflow-wrap: anywhere; }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    th, td { border-bottom: 1px solid #dbeefb; padding: 10px 8px; text-align: right; vertical-align: top; overflow-wrap: anywhere; }
+    th:first-child, td:first-child { text-align: left; }
+    tr.best td { background: #eef8ff; font-weight: 700; }
+    td span { display: inline-block; margin-left: 6px; color: #1478b8; }
+    .warning { margin: 16px 0; padding: 12px; border: 1px solid #f0c36a; background: #fff8e5; border-radius: 8px; color: #6d520e; }
+    @media (max-width: 760px) {
+      .page { padding: 22px 14px 32px; }
+      .hero, .meta, .cards { grid-template-columns: 1fr; }
+      .big-number { font-size: 52px; }
+      .title { font-size: 36px; }
+      .small-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      table { font-size: 13px; }
+      th, td { padding: 8px 5px; }
+    }
+  </style>
+</head>
+<body><main class="page">
+        <section class="hero">
+          <div>
+            <div class="eyebrow">百里分 / 1000体力</div>
+            <div class="big-number">1.1</div>
+          </div>
+          <div>
+            <div class="eyebrow">体力 / 1百里分</div>
+            <div class="big-number secondary">929.4</div>
+          </div>
+        </section>
+        <section class="meta">
+          <div>policy_name: <b>category_baili_marginal_mid</b></div>
+          <div>gear_source: <b>rift_new_1_32</b></div>
+          <div>item_source: <b>normal_85</b></div>
+          <div>rank: <b>Epic</b></div>
+          <div>samples: <b>1000000</b></div>
+          <div>seed: <b>17</b></div>
+          <div>updated_at: <b>2026-07-09 21:02:44</b></div>
+        </section>
+        <section class="panel radar-panel">
+          <h2>正式分类贡献</h2>
+          
+    <svg class="radar" viewBox="0 0 760 520" role="img" aria-label="正式分类贡献雷达图">
+      <polygon points="380.0,232.5 413.6,246.4 427.5,280.0 413.6,313.6 380.0,327.5 346.4,313.6 332.5,280.0 346.4,246.4" class="ring" /><polygon points="380.0,185.0 447.2,212.8 475.0,280.0 447.2,347.2 380.0,375.0 312.8,347.2 285.0,280.0 312.8,212.8" class="ring" /><polygon points="380.0,137.5 480.8,179.2 522.5,280.0 480.8,380.8 380.0,422.5 279.2,380.8 237.5,280.0 279.2,179.2" class="ring" /><polygon points="380.0,90.0 514.4,145.6 570.0,280.0 514.4,414.4 380.0,470.0 245.6,414.4 190.0,280.0 245.6,145.6" class="ring" />
+      <line x1="380.0" y1="280.0" x2="380.0" y2="90.0" class="axis" /><line x1="380.0" y1="280.0" x2="514.4" y2="145.6" class="axis" /><line x1="380.0" y1="280.0" x2="570.0" y2="280.0" class="axis" /><line x1="380.0" y1="280.0" x2="514.4" y2="414.4" class="axis" /><line x1="380.0" y1="280.0" x2="380.0" y2="470.0" class="axis" /><line x1="380.0" y1="280.0" x2="245.6" y2="414.4" class="axis" /><line x1="380.0" y1="280.0" x2="190.0" y2="280.0" class="axis" /><line x1="380.0" y1="280.0" x2="245.6" y2="145.6" class="axis" />
+      <polygon points="380.0,94.2 386.2,273.8 397.0,280.0 514.4,414.4 380.0,351.0 306.2,353.8 373.2,280.0 256.8,156.8" class="radar-area" />
+      <text x="380.0" y="45.0" class="radar-label">输出</text><text x="546.2" y="113.8" class="radar-label">一速</text><text x="615.0" y="280.0" class="radar-label">速度</text><text x="546.2" y="446.2" class="radar-label">抗坦</text><text x="380.0" y="515.0" class="radar-label">纯肉</text><text x="213.8" y="446.2" class="radar-label">命坦</text><text x="145.0" y="280.0" class="radar-label">双效</text><text x="213.8" y="113.8" class="radar-label">半肉</text>
+    </svg>
+    
+        </section>
+        <section class="cards"><div class="card"><div class="card-label">百里分 / 1000体力</div><div class="card-value">1.1</div></div>
+<div class="card"><div class="card-label">体力 / 1百里分</div><div class="card-value">929.4</div></div>
+<div class="card"><div class="card-label">目标分 / 1000体力</div><div class="card-value">1.1</div></div>
+<div class="card"><div class="card-label">体力 / 1目标分</div><div class="card-value">929.4</div></div>
+<div class="card"><div class="card-label">成功率</div><div class="card-value">0.70%</div></div>
+<div class="card"><div class="card-label">原生成功率</div><div class="card-value">0.41%</div></div>
+<div class="card"><div class="card-label">补救成功率</div><div class="card-value">0.29%</div></div>
+<div class="card"><div class="card-label">转换需求率</div><div class="card-value">0.37%</div></div>
+<div class="card"><div class="card-label">平均成功百里分</div><div class="card-value">7.8</div></div>
+<div class="card"><div class="card-label">总百里分</div><div class="card-value">54815.3</div></div></section>
+        <section class="panel">
+          <h2>停止率</h2>
+          <div class="small-cards"><div class="small-card"><span>+0</span><strong>89.23%</strong></div>
+<div class="small-card"><span>+3</span><strong>5.41%</strong></div>
+<div class="small-card"><span>+6</span><strong>1.87%</strong></div>
+<div class="small-card"><span>+9</span><strong>2.35%</strong></div>
+<div class="small-card"><span>+12</span><strong>0.30%</strong></div>
+<div class="small-card"><span>+15</span><strong>0.83%</strong></div></div>
+        </section>
+        <section class="notes">
+          <p>ranking_metric: cost_per_baili_score</p>
+          <p>success_definition.source: 套装属性与装等计算表.md</p>
+          <p>success_definition.main_score_scope: R2-R58 formal baili score; R61 future is auxiliary only</p>
+          <p>conversion_cost_counted: False</p>
+          
+        </section>
+        </main></body>
+</html>

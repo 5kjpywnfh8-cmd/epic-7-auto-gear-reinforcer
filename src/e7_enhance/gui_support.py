@@ -1,0 +1,568 @@
+from __future__ import annotations
+
+import json
+import re
+from copy import deepcopy
+from pathlib import Path
+from typing import Any
+
+from .enhance_policy import advise_gear
+from .models import Gear, validate_gear_source_rank, validate_gear_structure
+from .strategy_defaults import DEFAULT_GEAR_SOURCE
+
+
+DEFAULT_SUBSTATS = [
+    {"type": "Speed", "value": 0, "rolls": 0},
+    {"type": "CriticalHitChancePercent", "value": 0, "rolls": 0},
+    {"type": "CriticalHitDamagePercent", "value": 0, "rolls": 0},
+    {"type": "AttackPercent", "value": 0, "rolls": 0},
+]
+
+DEFAULT_GEAR_FORM: dict[str, Any] = {
+    "set": "Speed",
+    "slot": "Weapon",
+    "main_type": "Attack",
+    "main_value": 525,
+    "enhance": 0,
+    "level": 85,
+    "rank": "Epic",
+    "substats": DEFAULT_SUBSTATS,
+    "rollHistory": [],
+    "code": "",
+    "item_source": "normal_85",
+    "gear_source": DEFAULT_GEAR_SOURCE,
+    "enable_dp_assist": None,
+}
+
+RECOMMENDATION_LABELS = {
+    "stop": "停止",
+    "continue": "继续",
+    "cautious_continue": "谨慎继续",
+    "keep": "保留",
+    "convert": "转换/过渡",
+    "uncertain": "不确定",
+}
+
+DEBUG_FIELD_LABELS = {
+    "official_score": "官方分",
+    "effective_score": "有效分",
+    "strategy_version": "策略版本",
+    "strategy_name": "策略名称",
+    "enable_dp_assist": "启用 DP 辅助",
+    "baseline_recommendation": "基础建议",
+    "decision_mode": "决策模式",
+    "dp_decision": "DP 决策",
+    "lightweight_decision": "轻量预测决策",
+    "dp_utility": "DP 效用",
+    "dp_continue_utility": "继续效用",
+    "dp_expected_terminal_value": "终局期望价值",
+    "dp_expected_final_speed": "终局预期速度",
+    "dp_expected_speed_rolls": "终局预期速度跳数",
+    "dp_speed_potential_set_eligible": "速度潜力套装资格",
+    "dp_speed_potential_threshold_blocked_probability": "速度潜力 20 门槛拦截率",
+    "dp_expected_speed_potential_value": "终局速度潜力价值",
+    "dp_best_target_category": "终局目标类别",
+    "dp_best_source_row": "终局来源规则",
+    "dp_override_applied": "DP 是否覆盖基础建议",
+    "lightweight_basis": "轻量预测依据",
+    "lightweight_route": "轻量预测路线",
+    "lightweight_full_categories": "完整命中分类",
+    "lightweight_full_category_diagnostics": "完整分类诊断",
+    "lightweight_selected_category": "选择分类",
+    "lightweight_calibration_group": "校准分组",
+    "lightweight_calibration_thresholds": "校准门槛",
+    "lightweight_theoretical_lower_bound": "理论下界",
+    "lightweight_theoretical_upper_bound": "理论上界",
+    "lightweight_decision_reason": "轻量预测决策依据",
+    "baili_score": "百里分",
+    "target_score": "目标分",
+    "rating_level": "当前静态评分等级",
+    "rating_semantics": "评分语义",
+    "fit_status": "命中状态",
+    "valid_substats": "有效副属性",
+    "invalid_substats": "无效副属性",
+    "roll_hit_analysis": "强化命中分析",
+    "set": "套装",
+    "slot": "部位",
+    "mainStat": "主属性",
+    "type": "属性",
+    "value": "数值",
+    "enhance": "强化等级",
+    "level": "装备等级",
+    "rank": "品质",
+    "substats": "副属性",
+    "rolls": "强化次数",
+    "rollHistory": "强化记录",
+    "code": "装备编号",
+    "reforgeEligible": "默认可重铸",
+    "itemSource": "装备来源",
+    "gearSource": "装备来源规则",
+    "category": "分类",
+    "set_group": "套装组",
+    "source_row": "来源规则",
+    "full_matched": "完整命中",
+    "set_matched": "套装命中",
+    "main_matched": "主属性命中",
+    "special_matched": "特殊条件命中",
+    "substats_matched": "副属性命中",
+    "substat_diagnostics": "副属性诊断",
+    "valid_keys": "有效副属性",
+    "decision_reason": "决策依据",
+    "calibration_group": "校准分组",
+    "calibration_thresholds": "校准门槛",
+    "full_category_matches": "完整命中分类",
+    "full_category_diagnostics": "完整分类诊断",
+    "priority": "优先级",
+    "has_valid_substat": "存在有效副属性",
+    "category_gate_matched": "分类条件命中",
+    "required_any_matched": "必需属性命中",
+    "mutual_exclusion_matched": "互斥条件命中",
+    "stat": "副属性",
+    "key": "属性编号",
+    "matched": "命中",
+    "valid": "有效",
+    "inferred": "推定强化",
+    "hit_count": "命中次数",
+}
+
+DISPLAY_VALUE_LABELS = {
+    "normal_85": "普通 85",
+    "rift_85": "异界 85（仅红装）",
+    "Epic": "红装",
+    "Heroic": "紫装",
+    "Rare": "蓝装",
+    "lightweight_prediction": "轻量预测",
+    "exact_dp": "精确 DP",
+    "lightweight_continue": "继续",
+    "lightweight_review": "待 +6 精确复核",
+    "lightweight_stop": "停止",
+    "continue": "继续",
+    "stop": "停止",
+    "cautious_continue": "谨慎继续",
+    "keep": "保留",
+    "convert": "转换/过渡",
+    "uncertain": "不确定",
+    "normal_epic_dp_assisted": "普通 85 红装 DP 策略",
+    "normal_heroic_dp_assisted": "普通 85 紫装 DP 策略",
+    "rift_epic_dp_assisted": "异界 85 红装 DP 策略",
+    "baili-formal-dp-v1": "百里正式 DP v1",
+    "current_static": "当前静态评分",
+    "weapon": "武器",
+    "helmet": "头盔",
+    "armor": "衣服",
+    "necklace": "项链",
+    "ring": "戒指",
+    "boot": "鞋子",
+    "left_fixed": "左三固定主属性",
+    "right": "右三主属性",
+    "output": "输出套装组",
+    "critless": "必爆输出套装组",
+    "tankRes": "抗性坦克套装组",
+    "pureTank": "纯肉套装组",
+    "hitTank": "命中坦克套装组",
+    "dual": "双效套装组",
+    "bruiserHpDef": "血防半肉套装组",
+    "bruiser": "通用半肉套装组",
+    "bruiserFlat": "白字半肉套装组",
+    "atkFlat": "攻击",
+    "atkPct": "攻击%",
+    "defFlat": "防御",
+    "defPct": "防御%",
+    "hpFlat": "生命",
+    "hpPct": "生命%",
+    "spd": "速度",
+    "crit": "暴击率",
+    "cdmg": "暴击伤害",
+    "eff": "效果命中",
+    "res": "效果抗性",
+    "Speed": "速度",
+    "Critical": "暴击",
+    "Destruction": "暴伤",
+    "Attack": "攻击",
+    "Defense": "防御",
+    "Health": "生命",
+    "AttackPercent": "攻击%",
+    "DefensePercent": "防御%",
+    "HealthPercent": "生命%",
+    "CriticalHitChancePercent": "暴击率%",
+    "CriticalHitDamagePercent": "暴击伤害%",
+    "EffectivenessPercent": "效果命中%",
+    "EffectResistancePercent": "效果抗性%",
+    "rift_new_1_32": "异界新版本来源规则 1.32",
+}
+
+
+def load_gear_file(path: Path) -> dict[str, Any]:
+    data = json.loads(path.read_text(encoding="utf-8"), strict=False)
+    if not isinstance(data, dict):
+        raise ValueError("gear JSON must be an object")
+    gear_data = data.get("gear") if isinstance(data.get("gear"), dict) else data
+    strategy = ((data.get("suggestion") or {}).get("debug") or {}).get("default_strategy") or {}
+    item_source = data.get("item_source") or data.get("itemSource") or strategy.get("item_source") or gear_data.get("item_source") or gear_data.get("itemSource") or "normal_85"
+    form = form_from_gear_dict(gear_data, item_source=str(item_source))
+    form["item_source"] = str(item_source)
+    form["gear_source"] = data.get("gear_source") or data.get("gearSource") or strategy.get("gear_source") or form["gear_source"]
+    return form
+
+
+def load_gear_collection(path: Path) -> list[dict[str, Any]]:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if isinstance(data, list):
+        items = data
+    elif isinstance(data, dict):
+        items = data.get("items") or data.get("gears") or data.get("equipment")
+        if items is None:
+            items = [data]
+    else:
+        raise ValueError("gear collection JSON must be an object or array")
+    if not isinstance(items, list):
+        raise ValueError("gear collection must contain an items/gears list")
+    forms = []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        item_source = item.get("item_source") or item.get("itemSource") or "normal_85"
+        form = form_from_gear_dict(item, item_source=str(item_source))
+        form["item_source"] = str(item_source)
+        form["gear_source"] = item.get("gear_source") or item.get("gearSource") or form.get("gear_source") or DEFAULT_GEAR_SOURCE
+        forms.append(form)
+    if not forms:
+        raise ValueError("gear collection contains no valid gear objects")
+    return forms
+
+
+def form_from_gear_dict(data: dict[str, Any], item_source: str = "normal_85") -> dict[str, Any]:
+    gear = Gear.from_dict(data)
+    validate_gear_structure(gear)
+    validate_gear_source_rank(gear, item_source)
+    form = deepcopy(DEFAULT_GEAR_FORM)
+    main = data.get("mainStat") or data.get("main") or {}
+    form.update(
+        {
+            "set": data.get("set") or gear.set,
+            "slot": data.get("slot") or gear.slot,
+            "main_type": main.get("type") if isinstance(main, dict) else gear.main_stat.type,
+            "main_value": main.get("value") if isinstance(main, dict) else gear.main_stat.value,
+            "enhance": gear.enhance,
+            "level": gear.level,
+            "rank": gear.rank,
+            "substats": [stat_to_form(item) for item in data.get("substats", [])],
+            "rollHistory": data.get("rollHistory", []),
+            "code": data.get("code", ""),
+            "reforge_eligible": gear.level == 85,
+        }
+    )
+    while len(form["substats"]) < 4:
+        form["substats"].append({"type": "", "value": 0, "rolls": 0})
+    form["substats"] = form["substats"][:4]
+    return form
+
+
+def stat_to_form(data: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "type": str(data.get("type") or data.get("key") or ""),
+        "value": as_number(data.get("value"), 0),
+        "rolls": int(as_number(data.get("rolls"), 0)),
+    }
+
+
+def build_gear_dict(form: dict[str, Any]) -> dict[str, Any]:
+    substats = []
+    for item in form.get("substats", []):
+        stat_type = str(item.get("type") or "").strip()
+        if not stat_type:
+            continue
+        substats.append(
+            {
+                "type": stat_type,
+                "value": as_number(item.get("value"), 0),
+                "rolls": int(as_number(item.get("rolls"), 0)),
+            }
+        )
+    return {
+        "set": str(form.get("set") or ""),
+        "slot": str(form.get("slot") or ""),
+        "mainStat": {
+            "type": str(form.get("main_type") or ""),
+            "value": as_number(form.get("main_value"), 0),
+        },
+        "enhance": int(as_number(form.get("enhance"), 0)),
+        "level": int(as_number(form.get("level"), 85)),
+        "rank": str(form.get("rank") or "Epic"),
+        "substats": substats,
+        "rollHistory": list(form.get("rollHistory") or []),
+        "code": str(form.get("code") or ""),
+        "reforgeEligible": int(as_number(form.get("level"), 85)) == 85,
+        "itemSource": str(form.get("item_source") or "normal_85"),
+        "gearSource": str(form.get("gear_source") or DEFAULT_GEAR_SOURCE),
+    }
+
+
+def suggest_from_form(form: dict[str, Any]) -> dict[str, Any]:
+    gear = Gear.from_dict(build_gear_dict(form))
+    return advise_gear(
+        gear,
+        item_source=str(form.get("item_source") or "normal_85"),
+        gear_source=str(form.get("gear_source") or DEFAULT_GEAR_SOURCE),
+        enable_dp_assist=form.get("enable_dp_assist"),
+    )
+
+
+def summary_view_model(result: dict[str, Any]) -> dict[str, Any]:
+    summary = result.get("summary") or {}
+    recommendation = summary.get("recommendation") or "uncertain"
+    return {
+        "recommendation": recommendation,
+        "recommendation_label": RECOMMENDATION_LABELS.get(recommendation, recommendation),
+        "next_check_at": summary.get("next_check_at"),
+        "target_profile": summary.get("target_profile") or "-",
+        "reasons": list(summary.get("reasons") or []),
+    }
+
+
+def debug_view_model(result: dict[str, Any]) -> dict[str, Any]:
+    debug = result.get("debug") or {}
+    strategy = debug.get("default_strategy") or {}
+    dp = debug.get("dp_assist") or {}
+    decision_mode = dp.get("decision_mode")
+    decision_mode_label = {
+        "lightweight_prediction": "轻量预测（+0/+3）：+0/+3 使用单件轻量预测；+6 后按实际强化分支进行精确 DP。",
+        "exact_dp": "精确 DP（+6/+9/+12）",
+    }.get(decision_mode, decision_mode)
+    lightweight = dp.get("lightweight_basis") or {}
+    exact_dp_ran = decision_mode == "exact_dp"
+    lightweight_decision = {
+        "lightweight_continue": "轻量预测：继续",
+        "lightweight_review": "轻量预测：待 +6 精确复核",
+        "lightweight_stop": "轻量预测：停止",
+    }.get(dp.get("dp_decision")) if decision_mode == "lightweight_prediction" else None
+    lightweight_group = lightweight.get("calibration_group") or {}
+    raw_thresholds = lightweight.get("calibration_thresholds") or {}
+    raw_continue = raw_thresholds.get("continue") or {}
+    raw_stop = raw_thresholds.get("stop") or {}
+    threshold_view = {
+        "样本支持": raw_thresholds.get("support"),
+        "继续门槛": {
+            "预期终局重铸有效分下限": raw_continue.get("expected_final_reforge_score_min"),
+            "预期终局目标分下限": raw_continue.get("expected_final_target_score_min"),
+            "当前有效分下限": raw_continue.get("current_effective_score_min"),
+            "剩余强化次数下限": raw_continue.get("remaining_hits_min"),
+            "正式分类跨档概率下限": raw_continue.get("formal_cross_tier_probability_min"),
+            "终局预期速度下限": raw_continue.get("expected_final_speed_min"),
+            "速度跳数下限": raw_continue.get("speed_rolls_min"),
+            "速度潜力价值下限": raw_continue.get("speed_potential_value_min"),
+            "要求速度潜力套装资格": raw_continue.get("speed_potential_set_eligible"),
+        } if raw_continue else None,
+        "停止门槛": {"理论上界必须低于": raw_stop.get("theoretical_upper_bound_lt")} if raw_stop else None,
+    } if raw_thresholds else None
+    candidate_views = [
+        {
+            "体系": item.get("category"),
+            "优先级层": item.get("priority_layer"),
+            "当前命中副属性": item.get("matched_substats"),
+            "当前未命中副属性": item.get("unmatched_substats"),
+            "当前有效副属性数": item.get("current_valid_substat_count"),
+            "部位可行有效副属性数": item.get("feasible_valid_substat_count"),
+            "部位最大合法有效副属性数": item.get("max_legal_valid_substat_count"),
+            "三条合法属性部位路径": item.get("slot_limited_three_valid_path"),
+            "终局低档 GS 门槛": item.get("formal_terminal_gs_threshold"),
+            "当前重铸后 GS": item.get("current_reforged_gs"),
+            "终局预期 GS": item.get("expected_final_gs"),
+            "理论下界": item.get("theoretical_lower_bound"),
+            "理论上界": item.get("theoretical_upper_bound"),
+            "终局达标概率": item.get("terminal_reach_probability"),
+            "转换候选": item.get("is_conversion_candidate"),
+            "待转换副属性": item.get("conversion_candidate"),
+            "转换目标副属性": item.get("conversion_target_stat"),
+            "是否合格候选": item.get("qualified"),
+            "拒绝原因": item.get("rejection_reasons"),
+        }
+        for item in lightweight.get("candidate_evaluations", [])
+    ]
+    lightweight_basis_view = {
+        "命中的完整分类": [item.get("category") for item in lightweight.get("full_category_matches", [])],
+        "选择分类": lightweight.get("selected_full_category"),
+        "决策路线": lightweight.get("route"),
+        "校准分组": {
+            "来源": lightweight_group.get("item_source"),
+            "品质": lightweight_group.get("rank"),
+            "部位": lightweight_group.get("slot"),
+            "主属性类别": lightweight_group.get("main_stat_class"),
+            "套装组": lightweight_group.get("set_group"),
+            "分类": lightweight_group.get("selected_category"),
+        } if lightweight_group else None,
+        "校准门槛": threshold_view,
+        "理论下界": lightweight.get("theoretical_lower_bound"),
+        "理论上界": lightweight.get("theoretical_upper_bound"),
+        "候选体系评估": candidate_views,
+        "候选排序依据": lightweight.get("candidate_selection_reason"),
+        "决策依据": lightweight.get("decision_reason"),
+    } if lightweight else None
+    return {
+        "official_score": debug.get("official_score"),
+        "effective_score": debug.get("effective_score"),
+        "strategy_version": debug.get("strategy_version"),
+        "strategy_name": strategy.get("policy_name"),
+        "enable_dp_assist": strategy.get("enable_dp_assist"),
+        "baseline_recommendation": dp.get("baseline_recommendation"),
+        "decision_mode": decision_mode_label,
+        "dp_decision": dp.get("dp_decision") if exact_dp_ran else "未运行精确 DP",
+        "lightweight_decision": lightweight_decision,
+        "dp_utility": dp.get("dp_expected_utility"),
+        "dp_expected_terminal_value": dp.get("dp_expected_terminal_value"),
+        "dp_expected_final_speed": dp.get("dp_expected_final_speed"),
+        "dp_expected_speed_rolls": dp.get("dp_expected_speed_rolls"),
+        "dp_speed_potential_set_eligible": dp.get("dp_speed_potential_set_eligible"),
+        "dp_speed_potential_threshold_blocked_probability": dp.get("dp_speed_potential_threshold_blocked_probability"),
+        "dp_expected_speed_potential_value": dp.get("dp_expected_speed_potential_value"),
+        "dp_continue_utility": dp.get("dp_continue_utility"),
+        "dp_best_target_category": dp.get("dp_best_target_category"),
+        "dp_best_source_row": dp.get("dp_best_source_row"),
+        "dp_override_applied": dp.get("overrode_baseline"),
+        "lightweight_basis": lightweight_basis_view,
+        "lightweight_route": lightweight.get("route"),
+        "lightweight_full_categories": [item.get("category") for item in lightweight.get("full_category_matches", [])],
+        "lightweight_selected_category": lightweight.get("selected_full_category"),
+        "lightweight_calibration_group": lightweight_basis_view.get("校准分组") if lightweight_basis_view else None,
+        "lightweight_calibration_thresholds": threshold_view,
+        "lightweight_theoretical_lower_bound": lightweight.get("theoretical_lower_bound"),
+        "lightweight_theoretical_upper_bound": lightweight.get("theoretical_upper_bound"),
+        "lightweight_decision_reason": lightweight.get("decision_reason"),
+        "baili_score": debug.get("baili_score"),
+        "target_score": debug.get("target_score"),
+        "rating_level": debug.get("rating_level"),
+        "rating_semantics": debug.get("rating_semantics"),
+        "fit_status": debug.get("fit_status"),
+        "valid_substats": debug.get("valid_substats"),
+        "invalid_substats": debug.get("invalid_substats"),
+        "roll_hit_analysis": debug.get("roll_hit_analysis"),
+    }
+
+
+def format_debug_details(result: dict[str, Any], gear_data: dict[str, Any]) -> str:
+    """Render all debug data as Chinese, width-wrappable plain text for the GUI."""
+    view = debug_view_model(result)
+    lightweight = ((result.get("debug") or {}).get("dp_assist") or {}).get("lightweight_basis") or {}
+    view["lightweight_full_category_diagnostics"] = lightweight.get("full_category_diagnostics")
+    sections = [
+        ("策略与评分", [
+            "strategy_version", "strategy_name", "enable_dp_assist", "official_score", "effective_score",
+            "baili_score", "target_score", "rating_level", "rating_semantics", "fit_status",
+        ]),
+        ("决策", [
+            "baseline_recommendation", "decision_mode", "dp_decision", "lightweight_decision",
+            "dp_utility", "dp_continue_utility", "dp_override_applied", "dp_best_target_category",
+            "dp_best_source_row",
+        ]),
+        ("终局速度与价值", [
+            "dp_expected_terminal_value", "dp_expected_final_speed", "dp_expected_speed_rolls",
+            "dp_speed_potential_set_eligible", "dp_speed_potential_threshold_blocked_probability",
+            "dp_expected_speed_potential_value",
+        ]),
+        ("轻量预测", [
+            "lightweight_route", "lightweight_full_categories", "lightweight_selected_category",
+            "lightweight_calibration_group", "lightweight_calibration_thresholds",
+            "lightweight_theoretical_lower_bound", "lightweight_theoretical_upper_bound",
+            "lightweight_decision_reason", "lightweight_basis", "lightweight_full_category_diagnostics",
+        ]),
+        ("副属性与强化", ["valid_substats", "invalid_substats", "roll_hit_analysis"]),
+    ]
+    lines: list[str] = []
+    for title, keys in sections:
+        section_lines: list[str] = []
+        for key in keys:
+            value = view.get(key)
+            if value is not None:
+                section_lines.extend(_format_debug_entry(DEBUG_FIELD_LABELS[key], value, 0))
+        if section_lines:
+            lines.append(title)
+            lines.extend(section_lines)
+            lines.append("")
+    lines.append("当前装备输入")
+    lines.extend(_format_debug_mapping(gear_data, 0))
+    return "\n".join(lines).rstrip()
+
+
+def _format_debug_entry(label: str, value: Any, indent: int) -> list[str]:
+    prefix = "  " * indent
+    if isinstance(value, dict):
+        lines = [f"{prefix}{label}："]
+        lines.extend(_format_debug_mapping(value, indent + 1))
+        return lines
+    if isinstance(value, list):
+        lines = [f"{prefix}{label}："]
+        lines.extend(_format_debug_list(value, indent + 1))
+        return lines
+    return [f"{prefix}{label}：{_format_debug_scalar(value)}"]
+
+
+def _format_debug_mapping(value: dict[str, Any], indent: int) -> list[str]:
+    lines: list[str] = []
+    for key, nested_value in value.items():
+        key_text = str(key)
+        label = DEBUG_FIELD_LABELS.get(key_text)
+        if label is None:
+            label = key_text if not key_text.isascii() else "附加信息"
+        lines.extend(_format_debug_entry(label, nested_value, indent))
+    return lines
+
+
+def _format_debug_list(value: list[Any], indent: int) -> list[str]:
+    prefix = "  " * indent
+    lines: list[str] = []
+    for item in value:
+        if isinstance(item, dict):
+            lines.append(f"{prefix}-")
+            lines.extend(_format_debug_mapping(item, indent + 1))
+        elif isinstance(item, list):
+            lines.append(f"{prefix}-")
+            lines.extend(_format_debug_list(item, indent + 1))
+        else:
+            lines.append(f"{prefix}- {_format_debug_scalar(item)}")
+    return lines or [f"{prefix}- 无"]
+
+
+def _format_debug_scalar(value: Any) -> str:
+    if isinstance(value, bool):
+        return "是" if value else "否"
+    if value is None:
+        return "-"
+    if isinstance(value, str):
+        display = DISPLAY_VALUE_LABELS.get(value, value)
+        display = re.sub(r"^R(\d+)-R(\d+)$", r"规则第 \1-\2 行", display)
+        return display.replace("=True", "＝是").replace("=False", "＝否")
+    return str(value)
+
+
+def save_gear_file(path: Path, form: dict[str, Any]) -> None:
+    gear = Gear.from_dict(build_gear_dict(form))
+    validate_gear_structure(gear)
+    validate_gear_source_rank(gear, str(form.get("item_source") or "normal_85"))
+    payload = gear.to_dict()
+    payload["itemSource"] = str(form.get("item_source") or "normal_85")
+    payload["gearSource"] = str(form.get("gear_source") or DEFAULT_GEAR_SOURCE)
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def save_suggestion_file(path: Path, form: dict[str, Any], result: dict[str, Any]) -> None:
+    payload = {
+        "gear": build_gear_dict(form),
+        "suggestion": result,
+        "summary_view": summary_view_model(result),
+        "debug_view": debug_view_model(result),
+        "manual_review": {
+            "工具建议": summary_view_model(result)["recommendation_label"],
+            "人工判断": "",
+            "是否一致": "",
+            "分歧原因": "",
+            "备注": "",
+        },
+    }
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def as_number(value: Any, default: float) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return float(default)

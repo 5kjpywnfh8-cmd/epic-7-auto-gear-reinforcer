@@ -1,0 +1,30 @@
+[
+  {
+    "set": "Speed",
+    "slot": "Weapon",
+    "mainStat": { "type": "Attack", "value": 525 },
+    "enhance": 12,
+    "level": 85,
+    "rank": "Epic",
+    "substats": [
+      { "type": "Speed", "value": 18 },
+      { "type": "HealthPercent", "value": 5 },
+      { "type": "AttackPercent", "value": 9 },
+      { "type": "CriticalHitChancePercent", "value": 5 }
+    ]
+  },
+  {
+    "set": "Attack",
+    "slot": "Ring",
+    "mainStat": { "type": "AttackPercent", "value": 65 },
+    "enhance": 12,
+    "level": 85,
+    "rank": "Epic",
+    "substats": [
+      { "type": "EffectResistancePercent", "value": 15 },
+      { "type": "DefensePercent", "value": 8 },
+      { "type": "HealthFlat", "value": 220 },
+      { "type": "EffectivenessPercent", "value": 12 }
+    ]
+  }
+]

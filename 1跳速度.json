@@ -1,0 +1,139 @@
+{
+  "gear": {
+    "set": "Speed",
+    "slot": "Helmet",
+    "mainStat": {
+      "type": "Health",
+      "value": 2700.0
+    },
+    "enhance": 6,
+    "level": 85,
+    "rank": "Epic",
+    "substats": [
+      {
+        "type": "Speed",
+        "value": 7.0,
+        "rolls": 2
+      },
+      {
+        "type": "HealthPercent",
+        "value": 8.0,
+        "rolls": 1
+      },
+      {
+        "type": "DefensePercent",
+        "value": 5.0,
+        "rolls": 1
+      },
+      {
+        "type": "EffectResistancePercent",
+        "value": 4.0,
+        "rolls": 1
+      }
+    ],
+    "rollHistory": [],
+    "code": "",
+    "reforgeEligible": false
+  },
+  "suggestion": {
+    "summary": {
+      "recommendation": "stop",
+      "next_check_at": 6,
+      "target_profile": "淘汰/提取",
+      "reasons": [
+        "当前有效分偏低"
+      ]
+    },
+    "debug": {
+      "strategy_version": "baili-formal-dp-v1",
+      "default_strategy": {
+        "item_source": "normal_85",
+        "rank": "Epic",
+        "gear_source": "rift_new_1_32",
+        "policy_name": "normal_epic_dp_assisted",
+        "enable_dp_assist": true,
+        "configured_enable_dp_assist": true
+      },
+      "dp_assist": {
+        "enabled": true,
+        "checkpoint": 3,
+        "baseline_recommendation": "stop",
+        "baseline_continue": false,
+        "baseline_policy": "normal_epic_dp_assisted",
+        "dp_decision": null,
+        "dp_expected_utility": null,
+        "dp_continue_utility": null,
+        "dp_utility_gap": null,
+        "dp_expected_formal_baili_score": null,
+        "dp_expected_incremental_stamina": null,
+        "dp_best_target_category": null,
+        "dp_best_source_row": null,
+        "overrode_baseline": false,
+        "reason": "not_dp_checkpoint"
+      },
+      "official_score": 39.8,
+      "official_parts": {
+        "initial": 5.0,
+        "enhance": 3.8,
+        "reforge_main": 0.0,
+        "substats": 31.0
+      },
+      "effective_score": 31.0,
+      "baili_score": 0,
+      "target_score": 0,
+      "target_score_source_row": "-",
+      "target_score_formula": "未命中套装属性与装等计算表",
+      "rating_level": "2 提取",
+      "fit_status": "有效但未入体系",
+      "valid_substats": [
+        "速度 7",
+        "生命% 8%",
+        "防御% 5%",
+        "抵抗 4%"
+      ],
+      "invalid_substats": [],
+      "roll_hit_analysis": [],
+      "ocr_raw_result": null
+    }
+  },
+  "summary_view": {
+    "recommendation": "stop",
+    "recommendation_label": "停止",
+    "next_check_at": 6,
+    "target_profile": "淘汰/提取",
+    "reasons": [
+      "当前有效分偏低"
+    ]
+  },
+  "debug_view": {
+    "official_score": 39.8,
+    "effective_score": 31.0,
+    "strategy_version": "baili-formal-dp-v1",
+    "strategy_name": "normal_epic_dp_assisted",
+    "enable_dp_assist": true,
+    "baseline_recommendation": "stop",
+    "dp_decision": null,
+    "dp_utility": null,
+    "dp_continue_utility": null,
+    "dp_override_applied": false,
+    "baili_score": 0,
+    "target_score": 0,
+    "rating_level": "2 提取",
+    "fit_status": "有效但未入体系",
+    "valid_substats": [
+      "速度 7",
+      "生命% 8%",
+      "防御% 5%",
+      "抵抗 4%"
+    ],
+    "invalid_substats": [],
+    "roll_hit_analysis": []
+  },
+  "manual_review": {
+    "工具建议": "停止",
+    "人工判断": "",
+    "是否一致": "",
+    "分歧原因": "",
+    "备注": ""
+  }
+}

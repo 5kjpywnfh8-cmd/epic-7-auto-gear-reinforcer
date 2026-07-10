@@ -1,0 +1,20 @@
+{
+  "set": "Speed",
+  "slot": "Weapon",
+  "mainStat": { "type": "Attack", "value": 525 },
+  "enhance": 12,
+  "level": 85,
+  "rank": "Epic",
+  "substats": [
+    { "type": "Speed", "value": 18 },
+    { "type": "HealthPercent", "value": 5 },
+    { "type": "AttackPercent", "value": 9 },
+    { "type": "CriticalHitChancePercent", "value": 5 }
+  ],
+  "rollHistory": [
+    { "enhance": 3, "type": "Speed", "value": 4 },
+    { "enhance": 6, "type": "Speed", "value": 4 },
+    { "enhance": 9, "type": "AttackPercent", "value": 5 },
+    { "enhance": 12, "type": "HealthPercent", "value": 5 }
+  ]
+}

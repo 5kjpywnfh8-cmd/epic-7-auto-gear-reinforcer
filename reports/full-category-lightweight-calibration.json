@@ -1,0 +1,54 @@
+{
+  "version": "full-category-dp-calibration-v1",
+  "seed": 20260711,
+  "samples_per_group": 1,
+  "workers": 1,
+  "scope": "1 category/slot-stratified templates per rank shape (targeted run)",
+  "sample_count": 6,
+  "train_count": 6,
+  "holdout_count": 0,
+  "template_count": 2,
+  "sample_distribution": {
+    "normal_85|Epic|boot|speed|bruiserFlat|半肉(白字)|4|4": 2,
+    "normal_85|Heroic|boot|speed|bruiserFlat|半肉(白字)|3|4": 2,
+    "rift_85|Epic|boot|speed|bruiserFlat|半肉(白字)|4|4": 2
+  },
+  "holdout_metrics": {},
+  "speed_metrics": {
+    "multi_roll_samples": 0,
+    "multi_roll_review_dp_continue": 0,
+    "speed_main_boot_samples": 0,
+    "speed_main_boot_continue": 0,
+    "manual_multi_roll_samples": 1,
+    "manual_multi_roll_continue": 1
+  },
+  "rejected_rules": [],
+  "published_rule_count": 0,
+  "manual_cases": [
+    {
+      "name": "07 高价值多跳速度",
+      "expected_action": "continue",
+      "expected_lightweight": "continue",
+      "exact_action": "continue",
+      "passed": true
+    },
+    {
+      "name": "01 普通红 +0 复核边界",
+      "expected_lightweight": "review",
+      "exact_action": null,
+      "passed": true
+    },
+    {
+      "name": "04 异界红 +0 复核边界",
+      "expected_lightweight": "review",
+      "exact_action": null,
+      "passed": true
+    },
+    {
+      "name": "14 单条偏离转换候选",
+      "expected_lightweight": "review",
+      "exact_action": null,
+      "passed": true
+    }
+  ]
+}

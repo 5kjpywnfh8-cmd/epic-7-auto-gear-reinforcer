@@ -1,0 +1,722 @@
+{
+  "scope": {
+    "stage": "dp_assisted_analysis",
+    "round2_rerun": false,
+    "round3_source": "reports/route-solver-round3-summary.json",
+    "score_scope": "R2-R58 formal baili score; R61 future is auxiliary only",
+    "dp_utility_margin": 0.1,
+    "validation_runs": 100000,
+    "validation_seeds": [
+      17,
+      29,
+      43
+    ]
+  },
+  "round3_overall": {
+    "max_disagreement_rate": 0.154,
+    "dp_assisted_recommended": true,
+    "conclusion": "Design dp_assisted for the flagged checkpoint(s).",
+    "needs_100k_or_1m_validation": true
+  },
+  "sections": [
+    {
+      "key": "normal_epic",
+      "label": "normal_85 Epic",
+      "item_source": "normal_85",
+      "rank": "Epic",
+      "round2_policy": "category_baili_marginal_mid",
+      "cost_per_baili_score": 932.82,
+      "lambda_value": 0.001072018181428357,
+      "checkpoints": {
+        "9": {
+          "runs": 1000,
+          "checkpoint": 9,
+          "agreement_rate": 0.968,
+          "disagreement_rate": 0.032,
+          "confusion_matrix": {
+            "both_continue": 5,
+            "both_stop": 963,
+            "policy_continue_dp_stop": 0,
+            "policy_stop_dp_continue": 32
+          },
+          "bias": "policy_more_conservative",
+          "dp_more_aggressive_count": 32,
+          "dp_more_conservative_count": 0,
+          "disagreement_by_category": {
+            "半肉(血防)": 9,
+            "抗坦": 7,
+            "输出": 6,
+            "半肉(通用)": 3,
+            "半肉(白字)": 3,
+            "纯肉": 3,
+            "一速": 1
+          },
+          "disagreement_by_set": {
+            "set_def": 6,
+            "set_penetrate": 4,
+            "set_cri": 3,
+            "set_immune": 3,
+            "set_chase": 2,
+            "set_shield": 2,
+            "set_opener": 2,
+            "set_counter": 2,
+            "set_rage": 2,
+            "set_vampire": 1,
+            "set_cri_dmg": 1,
+            "set_scar": 1,
+            "set_revenant": 1,
+            "set_torrent": 1,
+            "set_riposte": 1
+          },
+          "disagreement_by_slot": {
+            "armor": 9,
+            "weapon": 8,
+            "helm": 7,
+            "neck": 4,
+            "ring": 3,
+            "boot": 1
+          },
+          "top_disagreement_by_mainStat": {
+            "Attack": 7,
+            "Defense": 5,
+            "DefensePercent": 3,
+            "Health": 3,
+            "HealthPercent": 2
+          },
+          "top_utility_gap": {
+            "sample_count_available": 20,
+            "max": 4.685075,
+            "mean_top_samples": 1.949097
+          },
+          "available_disagreement_detail_scope": "top_disagreements only"
+        },
+        "12": {
+          "runs": 1000,
+          "checkpoint": 12,
+          "agreement_rate": 0.964,
+          "disagreement_rate": 0.036,
+          "confusion_matrix": {
+            "both_continue": 8,
+            "both_stop": 956,
+            "policy_continue_dp_stop": 2,
+            "policy_stop_dp_continue": 34
+          },
+          "bias": "policy_more_conservative",
+          "dp_more_aggressive_count": 34,
+          "dp_more_conservative_count": 2,
+          "disagreement_by_category": {
+            "半肉(血防)": 10,
+            "输出": 8,
+            "抗坦": 5,
+            "半肉(通用)": 3,
+            "半肉(白字)": 3,
+            "命坦": 3,
+            "stop": 2,
+            "纯肉": 2
+          },
+          "disagreement_by_set": {
+            "set_speed": 4,
+            "set_def": 4,
+            "set_cri": 3,
+            "set_penetrate": 3,
+            "set_chase": 3,
+            "set_opener": 2,
+            "set_revenant": 2,
+            "set_cri_dmg": 2,
+            "set_torrent": 2,
+            "set_debuff": 2,
+            "set_vampire": 1,
+            "set_scar": 1,
+            "set_max_hp": 1,
+            "set_shield": 1,
+            "set_acc": 1,
+            "set_immune": 1,
+            "set_rage": 1,
+            "set_counter": 1,
+            "set_riposte": 1
+          },
+          "disagreement_by_slot": {
+            "weapon": 16,
+            "armor": 6,
+            "helm": 5,
+            "boot": 4,
+            "ring": 3,
+            "neck": 2
+          },
+          "top_disagreement_by_mainStat": {
+            "Attack": 10,
+            "Health": 4,
+            "Speed": 3,
+            "Defense": 3
+          },
+          "top_utility_gap": {
+            "sample_count_available": 20,
+            "max": 5.6928,
+            "mean_top_samples": 2.22725
+          },
+          "available_disagreement_detail_scope": "top_disagreements only"
+        }
+      },
+      "decision": {
+        "add_dp_assisted": true,
+        "scope": [
+          "+9",
+          "+12"
+        ],
+        "reasons": [
+          "+9 policy_stop_dp_continue dominates",
+          "+9 top expected_utility_gap >= 1.0",
+          "+12 policy_stop_dp_continue dominates",
+          "+12 top expected_utility_gap >= 1.0"
+        ],
+        "bias": "round2_policy_more_conservative"
+      }
+    },
+    {
+      "key": "normal_heroic",
+      "label": "normal_85 Heroic",
+      "item_source": "normal_85",
+      "rank": "Heroic",
+      "round2_policy": "baili_marginal_low",
+      "cost_per_baili_score": 22838.96,
+      "lambda_value": 4.3784830832927596e-05,
+      "checkpoints": {
+        "9": {
+          "runs": 1000,
+          "checkpoint": 9,
+          "agreement_rate": 0.986,
+          "disagreement_rate": 0.014,
+          "confusion_matrix": {
+            "both_continue": 1,
+            "both_stop": 985,
+            "policy_continue_dp_stop": 0,
+            "policy_stop_dp_continue": 14
+          },
+          "bias": "policy_more_conservative",
+          "dp_more_aggressive_count": 14,
+          "dp_more_conservative_count": 0,
+          "disagreement_by_category": {
+            "纯肉": 4,
+            "抗坦": 3,
+            "命坦": 2,
+            "半肉(白字)": 1,
+            "一速": 1,
+            "非速度套速度装": 1,
+            "输出": 1,
+            "半肉(血防)": 1
+          },
+          "disagreement_by_set": {
+            "set_shield": 3,
+            "set_opener": 2,
+            "set_chase": 1,
+            "set_rage": 1,
+            "set_immune": 1,
+            "set_speed": 1,
+            "set_torrent": 1,
+            "set_max_hp": 1,
+            "set_counter": 1,
+            "set_def": 1,
+            "set_scar": 1
+          },
+          "disagreement_by_slot": {
+            "weapon": 4,
+            "ring": 4,
+            "helm": 2,
+            "armor": 2,
+            "boot": 2
+          },
+          "top_disagreement_by_mainStat": {
+            "Attack": 4,
+            "HealthPercent": 2,
+            "Speed": 2,
+            "Defense": 2,
+            "Health": 2,
+            "EffectivenessPercent": 1,
+            "DefensePercent": 1
+          },
+          "top_utility_gap": {
+            "sample_count_available": 14,
+            "max": 0.401397,
+            "mean_top_samples": 0.094239
+          },
+          "available_disagreement_detail_scope": "all_disagreements"
+        },
+        "12": {
+          "runs": 1000,
+          "checkpoint": 12,
+          "agreement_rate": 0.993,
+          "disagreement_rate": 0.007,
+          "confusion_matrix": {
+            "both_continue": 0,
+            "both_stop": 993,
+            "policy_continue_dp_stop": 0,
+            "policy_stop_dp_continue": 7
+          },
+          "bias": "policy_more_conservative",
+          "dp_more_aggressive_count": 7,
+          "dp_more_conservative_count": 0,
+          "disagreement_by_category": {
+            "半肉(血防)": 3,
+            "一速": 2,
+            "命坦": 2
+          },
+          "disagreement_by_set": {
+            "set_rage": 2,
+            "set_speed": 2,
+            "set_def": 1,
+            "set_scar": 1,
+            "set_cri_dmg": 1
+          },
+          "disagreement_by_slot": {
+            "ring": 2,
+            "armor": 1,
+            "weapon": 1,
+            "boot": 1,
+            "neck": 1,
+            "helm": 1
+          },
+          "top_disagreement_by_mainStat": {
+            "Health": 1,
+            "Attack": 1,
+            "EffectivenessPercent": 1,
+            "HealthPercent": 1,
+            "Defense": 1,
+            "CriticalHitChancePercent": 1,
+            "Speed": 1
+          },
+          "top_utility_gap": {
+            "sample_count_available": 7,
+            "max": 2.459662,
+            "mean_top_samples": 0.812103
+          },
+          "available_disagreement_detail_scope": "all_disagreements"
+        }
+      },
+      "decision": {
+        "add_dp_assisted": true,
+        "scope": [
+          "+9",
+          "+12"
+        ],
+        "reasons": [
+          "+9 policy_stop_dp_continue dominates",
+          "+12 top expected_utility_gap >= 1.0"
+        ],
+        "bias": "round2_policy_more_conservative"
+      }
+    },
+    {
+      "key": "rift_epic",
+      "label": "rift_85 Epic",
+      "item_source": "rift_85",
+      "rank": "Epic",
+      "round2_policy": "score_target_high_speed_mid",
+      "cost_per_baili_score": 411.68,
+      "lambda_value": 0.0024290711232024874,
+      "checkpoints": {
+        "9": {
+          "runs": 1000,
+          "checkpoint": 9,
+          "agreement_rate": 0.873,
+          "disagreement_rate": 0.127,
+          "confusion_matrix": {
+            "both_continue": 57,
+            "both_stop": 816,
+            "policy_continue_dp_stop": 0,
+            "policy_stop_dp_continue": 127
+          },
+          "bias": "policy_more_conservative",
+          "dp_more_aggressive_count": 127,
+          "dp_more_conservative_count": 0,
+          "disagreement_by_category": {
+            "半肉(血防)": 38,
+            "半肉(通用)": 27,
+            "抗坦": 20,
+            "输出": 16,
+            "命坦": 11,
+            "输出(必爆)": 7,
+            "半肉(白字)": 5,
+            "纯肉": 3
+          },
+          "disagreement_by_set": {
+            "set_speed": 18,
+            "set_immune": 12,
+            "set_def": 11,
+            "set_rage": 11,
+            "set_penetrate": 9,
+            "set_chase": 9,
+            "set_riposte": 9,
+            "set_cri_dmg": 8,
+            "set_max_hp": 7,
+            "set_scar": 5,
+            "set_counter": 5,
+            "set_opener": 4,
+            "set_shield": 4,
+            "set_cri": 4,
+            "set_vampire": 3,
+            "set_revenant": 3,
+            "set_debuff": 2,
+            "set_acc": 1,
+            "set_torrent": 1,
+            "set_res": 1
+          },
+          "disagreement_by_slot": {
+            "weapon": 41,
+            "helm": 25,
+            "armor": 24,
+            "ring": 16,
+            "neck": 11,
+            "boot": 10
+          },
+          "top_disagreement_by_mainStat": {
+            "Attack": 7,
+            "Health": 5,
+            "Defense": 3,
+            "DefensePercent": 2,
+            "EffectivenessPercent": 1,
+            "Speed": 1,
+            "HealthPercent": 1
+          },
+          "top_utility_gap": {
+            "sample_count_available": 20,
+            "max": 8.322746,
+            "mean_top_samples": 5.513862
+          },
+          "available_disagreement_detail_scope": "top_disagreements only"
+        },
+        "12": {
+          "runs": 1000,
+          "checkpoint": 12,
+          "agreement_rate": 0.846,
+          "disagreement_rate": 0.154,
+          "confusion_matrix": {
+            "both_continue": 52,
+            "both_stop": 794,
+            "policy_continue_dp_stop": 0,
+            "policy_stop_dp_continue": 154
+          },
+          "bias": "policy_more_conservative",
+          "dp_more_aggressive_count": 154,
+          "dp_more_conservative_count": 0,
+          "disagreement_by_category": {
+            "半肉(血防)": 42,
+            "半肉(通用)": 32,
+            "抗坦": 32,
+            "输出": 21,
+            "命坦": 10,
+            "输出(必爆)": 7,
+            "半肉(白字)": 6,
+            "纯肉": 3,
+            "双效": 1
+          },
+          "disagreement_by_set": {
+            "set_speed": 22,
+            "set_immune": 16,
+            "set_counter": 12,
+            "set_def": 10,
+            "set_rage": 10,
+            "set_riposte": 10,
+            "set_penetrate": 9,
+            "set_max_hp": 9,
+            "set_chase": 9,
+            "set_cri_dmg": 7,
+            "set_cri": 6,
+            "set_revenant": 6,
+            "set_scar": 5,
+            "set_acc": 5,
+            "set_opener": 4,
+            "set_shield": 4,
+            "set_torrent": 4,
+            "set_vampire": 3,
+            "set_res": 2,
+            "set_debuff": 1
+          },
+          "disagreement_by_slot": {
+            "weapon": 42,
+            "armor": 31,
+            "helm": 27,
+            "ring": 20,
+            "neck": 18,
+            "boot": 16
+          },
+          "top_disagreement_by_mainStat": {
+            "Attack": 10,
+            "Defense": 3,
+            "DefensePercent": 3,
+            "Health": 3,
+            "Speed": 1
+          },
+          "top_utility_gap": {
+            "sample_count_available": 20,
+            "max": 10.179861,
+            "mean_top_samples": 6.797361
+          },
+          "available_disagreement_detail_scope": "top_disagreements only"
+        }
+      },
+      "decision": {
+        "add_dp_assisted": true,
+        "scope": [
+          "+9",
+          "+12"
+        ],
+        "reasons": [
+          "+9 disagreement_rate 0.127 > 0.10",
+          "+9 policy_stop_dp_continue dominates",
+          "+9 top expected_utility_gap >= 1.0",
+          "+12 disagreement_rate 0.154 > 0.10",
+          "+12 policy_stop_dp_continue dominates",
+          "+12 top expected_utility_gap >= 1.0"
+        ],
+        "bias": "round2_policy_more_conservative"
+      }
+    }
+  ],
+  "decision": {
+    "add_dp_assisted": true,
+    "strategy_names": [
+      "normal_epic_dp_assisted",
+      "normal_heroic_dp_assisted",
+      "rift_epic_dp_assisted"
+    ],
+    "default_enabled": false,
+    "round2_close_to_dp_optimal": {
+      "normal_epic": true,
+      "normal_heroic": true,
+      "rift_epic": false
+    },
+    "stable_validation_improvements": [
+      "normal_heroic",
+      "normal_epic"
+    ],
+    "recommend_default_integration": false,
+    "recommend_1m_x5_rerun": true
+  },
+  "validation": [
+    {
+      "key": "normal_epic",
+      "label": "normal_85 Epic",
+      "seed": 17,
+      "runs": 100000,
+      "file": "reports/dp-assisted-normal-epic-100k-seed17.json",
+      "baseline_policy": "category_baili_marginal_mid",
+      "dp_policy": "normal_epic_dp_assisted",
+      "control_policy": "target_marginal_mid",
+      "baseline_cost_per_baili_score": 925.6,
+      "dp_cost_per_baili_score": 828.4,
+      "cost_delta_dp_minus_baseline": -97.2,
+      "baseline_baili_score_per_1000_stamina": 1.1,
+      "dp_baili_score_per_1000_stamina": 1.2,
+      "dp_call_count": 5590,
+      "dp_covered_checkpoints": {
+        "12": 2156,
+        "9": 3434
+      },
+      "dp_changed_decision_count": 2019,
+      "dp_changed_to_continue_count": 1914,
+      "dp_changed_to_stop_count": 105,
+      "dp_utility_gap_avg_when_changed": 1.841044,
+      "best_policy": "normal_epic_dp_assisted"
+    },
+    {
+      "key": "normal_epic",
+      "label": "normal_85 Epic",
+      "seed": 29,
+      "runs": 100000,
+      "file": "reports/dp-assisted-normal-epic-100k-seed29.json",
+      "baseline_policy": "category_baili_marginal_mid",
+      "dp_policy": "normal_epic_dp_assisted",
+      "control_policy": "target_marginal_mid",
+      "baseline_cost_per_baili_score": 922.4,
+      "dp_cost_per_baili_score": 819.9,
+      "cost_delta_dp_minus_baseline": -102.5,
+      "baseline_baili_score_per_1000_stamina": 1.1,
+      "dp_baili_score_per_1000_stamina": 1.2,
+      "dp_call_count": 5762,
+      "dp_covered_checkpoints": {
+        "12": 2236,
+        "9": 3526
+      },
+      "dp_changed_decision_count": 2152,
+      "dp_changed_to_continue_count": 2041,
+      "dp_changed_to_stop_count": 111,
+      "dp_utility_gap_avg_when_changed": 1.885737,
+      "best_policy": "normal_epic_dp_assisted"
+    },
+    {
+      "key": "normal_epic",
+      "label": "normal_85 Epic",
+      "seed": 43,
+      "runs": 100000,
+      "file": "reports/dp-assisted-normal-epic-100k-seed43.json",
+      "baseline_policy": "category_baili_marginal_mid",
+      "dp_policy": "normal_epic_dp_assisted",
+      "control_policy": "target_marginal_mid",
+      "baseline_cost_per_baili_score": 913.4,
+      "dp_cost_per_baili_score": 821.2,
+      "cost_delta_dp_minus_baseline": -92.2,
+      "baseline_baili_score_per_1000_stamina": 1.1,
+      "dp_baili_score_per_1000_stamina": 1.2,
+      "dp_call_count": 5494,
+      "dp_covered_checkpoints": {
+        "12": 2128,
+        "9": 3366
+      },
+      "dp_changed_decision_count": 2029,
+      "dp_changed_to_continue_count": 1935,
+      "dp_changed_to_stop_count": 94,
+      "dp_utility_gap_avg_when_changed": 1.889983,
+      "best_policy": "normal_epic_dp_assisted"
+    },
+    {
+      "key": "normal_heroic",
+      "label": "normal_85 Heroic",
+      "seed": 17,
+      "runs": 100000,
+      "file": "reports/dp-assisted-normal-heroic-100k-seed17.json",
+      "baseline_policy": "baili_marginal_low",
+      "dp_policy": "normal_heroic_dp_assisted",
+      "control_policy": "target_marginal_mid",
+      "baseline_cost_per_baili_score": 16900.7,
+      "dp_cost_per_baili_score": 4979.0,
+      "cost_delta_dp_minus_baseline": -11921.7,
+      "baseline_baili_score_per_1000_stamina": 0.1,
+      "dp_baili_score_per_1000_stamina": 0.2,
+      "dp_call_count": 772,
+      "dp_covered_checkpoints": {
+        "12": 208,
+        "9": 564
+      },
+      "dp_changed_decision_count": 213,
+      "dp_changed_to_continue_count": 213,
+      "dp_changed_to_stop_count": 0,
+      "dp_utility_gap_avg_when_changed": 0.966185,
+      "best_policy": "normal_heroic_dp_assisted"
+    },
+    {
+      "key": "normal_heroic",
+      "label": "normal_85 Heroic",
+      "seed": 29,
+      "runs": 100000,
+      "file": "reports/dp-assisted-normal-heroic-100k-seed29.json",
+      "baseline_policy": "baili_marginal_low",
+      "dp_policy": "normal_heroic_dp_assisted",
+      "control_policy": "target_marginal_mid",
+      "baseline_cost_per_baili_score": 15098.5,
+      "dp_cost_per_baili_score": 4856.8,
+      "cost_delta_dp_minus_baseline": -10241.7,
+      "baseline_baili_score_per_1000_stamina": 0.1,
+      "dp_baili_score_per_1000_stamina": 0.2,
+      "dp_call_count": 736,
+      "dp_covered_checkpoints": {
+        "12": 193,
+        "9": 543
+      },
+      "dp_changed_decision_count": 201,
+      "dp_changed_to_continue_count": 201,
+      "dp_changed_to_stop_count": 0,
+      "dp_utility_gap_avg_when_changed": 0.917516,
+      "best_policy": "normal_heroic_dp_assisted"
+    },
+    {
+      "key": "normal_heroic",
+      "label": "normal_85 Heroic",
+      "seed": 43,
+      "runs": 100000,
+      "file": "reports/dp-assisted-normal-heroic-100k-seed43.json",
+      "baseline_policy": "baili_marginal_low",
+      "dp_policy": "normal_heroic_dp_assisted",
+      "control_policy": "target_marginal_mid",
+      "baseline_cost_per_baili_score": 13184.4,
+      "dp_cost_per_baili_score": 4785.8,
+      "cost_delta_dp_minus_baseline": -8398.6,
+      "baseline_baili_score_per_1000_stamina": 0.1,
+      "dp_baili_score_per_1000_stamina": 0.2,
+      "dp_call_count": 760,
+      "dp_covered_checkpoints": {
+        "12": 197,
+        "9": 563
+      },
+      "dp_changed_decision_count": 189,
+      "dp_changed_to_continue_count": 189,
+      "dp_changed_to_stop_count": 0,
+      "dp_utility_gap_avg_when_changed": 0.973773,
+      "best_policy": "normal_heroic_dp_assisted"
+    },
+    {
+      "key": "rift_epic",
+      "label": "rift_85 Epic",
+      "seed": 17,
+      "runs": 100000,
+      "file": "reports/dp-assisted-rift-epic-100k-seed17.json",
+      "baseline_policy": "score_target_high_speed_mid",
+      "dp_policy": "rift_epic_dp_assisted",
+      "control_policy": "target_marginal_mid",
+      "baseline_cost_per_baili_score": 419.4,
+      "dp_cost_per_baili_score": 435.2,
+      "cost_delta_dp_minus_baseline": 15.8,
+      "baseline_baili_score_per_1000_stamina": 2.4,
+      "dp_baili_score_per_1000_stamina": 2.3,
+      "dp_call_count": 10940,
+      "dp_covered_checkpoints": {
+        "12": 4871,
+        "9": 6069
+      },
+      "dp_changed_decision_count": 2815,
+      "dp_changed_to_continue_count": 2815,
+      "dp_changed_to_stop_count": 0,
+      "dp_utility_gap_avg_when_changed": 2.692488,
+      "best_policy": "score_target_high_speed_mid"
+    },
+    {
+      "key": "rift_epic",
+      "label": "rift_85 Epic",
+      "seed": 29,
+      "runs": 100000,
+      "file": "reports/dp-assisted-rift-epic-100k-seed29.json",
+      "baseline_policy": "score_target_high_speed_mid",
+      "dp_policy": "rift_epic_dp_assisted",
+      "control_policy": "target_marginal_mid",
+      "baseline_cost_per_baili_score": 414.8,
+      "dp_cost_per_baili_score": 427.9,
+      "cost_delta_dp_minus_baseline": 13.1,
+      "baseline_baili_score_per_1000_stamina": 2.4,
+      "dp_baili_score_per_1000_stamina": 2.3,
+      "dp_call_count": 10934,
+      "dp_covered_checkpoints": {
+        "12": 4908,
+        "9": 6026
+      },
+      "dp_changed_decision_count": 2834,
+      "dp_changed_to_continue_count": 2834,
+      "dp_changed_to_stop_count": 0,
+      "dp_utility_gap_avg_when_changed": 2.770217,
+      "best_policy": "score_target_high_speed_mid"
+    },
+    {
+      "key": "rift_epic",
+      "label": "rift_85 Epic",
+      "seed": 43,
+      "runs": 100000,
+      "file": "reports/dp-assisted-rift-epic-100k-seed43.json",
+      "baseline_policy": "score_target_high_speed_mid",
+      "dp_policy": "rift_epic_dp_assisted",
+      "control_policy": "target_marginal_mid",
+      "baseline_cost_per_baili_score": 412.5,
+      "dp_cost_per_baili_score": 429.9,
+      "cost_delta_dp_minus_baseline": 17.4,
+      "baseline_baili_score_per_1000_stamina": 2.4,
+      "dp_baili_score_per_1000_stamina": 2.3,
+      "dp_call_count": 10948,
+      "dp_covered_checkpoints": {
+        "12": 4897,
+        "9": 6051
+      },
+      "dp_changed_decision_count": 2900,
+      "dp_changed_to_continue_count": 2900,
+      "dp_changed_to_stop_count": 0,
+      "dp_utility_gap_avg_when_changed": 2.748629,
+      "best_policy": "score_target_high_speed_mid"
+    }
+  ]
+}

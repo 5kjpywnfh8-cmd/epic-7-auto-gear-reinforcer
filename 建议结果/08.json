@@ -1,0 +1,176 @@
+{
+  "gear": {
+    "set": "Health",
+    "slot": "Helmet",
+    "mainStat": {
+      "type": "Health",
+      "value": 2700.0
+    },
+    "enhance": 9,
+    "level": 85,
+    "rank": "Heroic",
+    "substats": [
+      {
+        "type": "Speed",
+        "value": 7.0,
+        "rolls": 2
+      },
+      {
+        "type": "HealthPercent",
+        "value": 8.0,
+        "rolls": 1
+      },
+      {
+        "type": "DefensePercent",
+        "value": 5.0,
+        "rolls": 1
+      }
+    ],
+    "rollHistory": [],
+    "code": "",
+    "reforgeEligible": true,
+    "itemSource": "normal_85",
+    "gearSource": "rift_new_1_32"
+  },
+  "suggestion": {
+    "summary": {
+      "recommendation": "continue",
+      "next_check_at": 12,
+      "target_profile": "速度潜力",
+      "reasons": [
+        "终局路线期望效用为正，建议继续",
+        "预计终局价值 12.0",
+        "预计正式百里收益 0.0"
+      ]
+    },
+    "debug": {
+      "strategy_version": "baili-formal-dp-v1",
+      "default_strategy": {
+        "item_source": "normal_85",
+        "rank": "Heroic",
+        "gear_source": "rift_new_1_32",
+        "policy_name": "normal_heroic_dp_assisted",
+        "enable_dp_assist": true,
+        "configured_enable_dp_assist": true
+      },
+      "dp_assist": {
+        "enabled": true,
+        "checkpoint": 9,
+        "baseline_recommendation": "uncertain",
+        "baseline_continue": false,
+        "baseline_policy": "baili_marginal_low",
+        "dp_decision": "continue",
+        "dp_expected_utility": 11.934528,
+        "dp_continue_utility": 11.934528,
+        "dp_utility_gap": 11.934528,
+        "dp_expected_formal_baili_score": 0.0,
+        "dp_expected_terminal_value": 12.0,
+        "dp_expected_final_speed": 9.0,
+        "dp_expected_speed_rolls": 2.3,
+        "dp_speed_potential_set_eligible": true,
+        "dp_speed_potential_threshold_blocked_probability": 0.0,
+        "dp_expected_speed_potential_value": 12.0,
+        "dp_expected_incremental_stamina": 1495.3,
+        "dp_best_target_category": "速度潜力",
+        "dp_best_source_row": "terminal-speed-momentum",
+        "overrode_baseline": true,
+        "reason": "terminal_route",
+        "decision_mode": "exact_dp",
+        "lightweight_basis": null
+      },
+      "official_score": 42.4,
+      "official_parts": {
+        "initial": 4.0,
+        "enhance": 11.4,
+        "reforge_main": 0.0,
+        "substats": 27.0
+      },
+      "effective_score": 27.0,
+      "baili_score": 0,
+      "target_score": 0,
+      "target_score_source_row": "-",
+      "target_score_formula": "未命中套装属性与装等计算表",
+      "rating_level": "2 提取",
+      "rating_semantics": "current_static",
+      "fit_status": "有效但未入体系",
+      "valid_substats": [
+        "速度 7",
+        "生命% 8%",
+        "防御% 5%"
+      ],
+      "invalid_substats": [],
+      "roll_hit_analysis": [
+        {
+          "enhance": null,
+          "stat": "速度",
+          "value": null,
+          "valid": true,
+          "inferred": true,
+          "hit_count": 1
+        }
+      ],
+      "ocr_raw_result": null
+    }
+  },
+  "summary_view": {
+    "recommendation": "continue",
+    "recommendation_label": "继续",
+    "next_check_at": 12,
+    "target_profile": "速度潜力",
+    "reasons": [
+      "终局路线期望效用为正，建议继续",
+      "预计终局价值 12.0",
+      "预计正式百里收益 0.0"
+    ]
+  },
+  "debug_view": {
+    "official_score": 42.4,
+    "effective_score": 27.0,
+    "strategy_version": "baili-formal-dp-v1",
+    "strategy_name": "normal_heroic_dp_assisted",
+    "enable_dp_assist": true,
+    "baseline_recommendation": "uncertain",
+    "decision_mode": "精确 DP（+6/+9/+12）",
+    "dp_decision": "continue",
+    "dp_utility": 11.934528,
+    "dp_expected_terminal_value": 12.0,
+    "dp_expected_final_speed": 9.0,
+    "dp_expected_speed_rolls": 2.3,
+    "dp_speed_potential_set_eligible": true,
+    "dp_speed_potential_threshold_blocked_probability": 0.0,
+    "dp_expected_speed_potential_value": 12.0,
+    "dp_continue_utility": 11.934528,
+    "dp_best_target_category": "速度潜力",
+    "dp_best_source_row": "terminal-speed-momentum",
+    "dp_override_applied": true,
+    "lightweight_basis": null,
+    "baili_score": 0,
+    "target_score": 0,
+    "rating_level": "2 提取",
+    "rating_semantics": "current_static",
+    "fit_status": "有效但未入体系",
+    "valid_substats": [
+      "速度 7",
+      "生命% 8%",
+      "防御% 5%"
+    ],
+    "invalid_substats": [],
+    "roll_hit_analysis": [
+      {
+        "enhance": null,
+        "stat": "速度",
+        "value": null,
+        "valid": true,
+        "inferred": true,
+        "hit_count": 1
+      }
+    ]
+  },
+  "manual_review": {
+    "工具建议": "继续",
+    "人工判断": "继续",
+    "是否一致": "",
+    "分歧原因": "",
+    "备注": "强化路径错误，+9强化到+12的时候没有新增副属性词条"
+  }
+}

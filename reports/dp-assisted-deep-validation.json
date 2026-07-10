@@ -1,0 +1,1489 @@
+{
+  "scope": {
+    "stage": "dp_assisted_deep_validation",
+    "runs_per_seed": 1000000,
+    "seeds": [
+      17,
+      29,
+      43,
+      71,
+      101
+    ],
+    "workers": 4,
+    "dp_utility_margin": 0.1,
+    "excluded": [
+      "rift_85 Epic",
+      "OCR",
+      "ADB",
+      "real click automation"
+    ]
+  },
+  "sections": [
+    {
+      "key": "normal_epic",
+      "label": "normal_85 Epic",
+      "baseline_policy": "category_baili_marginal_mid",
+      "dp_policy": "normal_epic_dp_assisted",
+      "seed_results": [
+        {
+          "key": "normal_epic",
+          "label": "normal_85 Epic",
+          "seed": 17,
+          "runs": 1000000,
+          "file": "reports/dp-assisted-deep-normal-epic-1m-seed17.json",
+          "baseline_policy": "category_baili_marginal_mid",
+          "dp_policy": "normal_epic_dp_assisted",
+          "best_policy": "normal_epic_dp_assisted",
+          "baseline_cost_per_baili_score": 929.4,
+          "dp_cost_per_baili_score": 819.0,
+          "cost_per_baili_score_delta": -110.4,
+          "baseline_baili_score_per_1000_stamina": 1.1,
+          "dp_baili_score_per_1000_stamina": 1.2,
+          "baili_score_per_1000_stamina_delta": 0.1,
+          "baseline_native_success_rate": 0.0041,
+          "dp_native_success_rate": 0.0058,
+          "baseline_rescued_success_rate": 0.0029,
+          "dp_rescued_success_rate": 0.009,
+          "baseline_conversion_needed_rate": 0.0037,
+          "dp_conversion_needed_rate": 0.01,
+          "baseline_stop_rate_by_checkpoint": {
+            "0": 0.8923,
+            "3": 0.0541,
+            "6": 0.0187,
+            "9": 0.0235,
+            "12": 0.003,
+            "15": 0.0083
+          },
+          "dp_stop_rate_by_checkpoint": {
+            "0": 0.8923,
+            "3": 0.0541,
+            "6": 0.0187,
+            "9": 0.0128,
+            "12": 0.0037,
+            "15": 0.0184
+          },
+          "baseline_baili_tier_rate": {
+            "0": 0.9959,
+            "1": 0.0029,
+            "2": 0.0011,
+            "3": 0.0001
+          },
+          "dp_baili_tier_rate": {
+            "0": 0.9942,
+            "1": 0.0044,
+            "2": 0.0013,
+            "3": 0.0001
+          },
+          "dp_call_count": 56954,
+          "dp_changed_decision_count": 20836,
+          "dp_changed_to_continue_count": 19815,
+          "dp_changed_to_stop_count": 1021,
+          "dp_covered_checkpoints": {
+            "12": 22095,
+            "9": 34859
+          },
+          "dp_changed_by_checkpoint": {
+            "12": 8368,
+            "9": 12468
+          },
+          "dp_changed_sample_stats": {
+            "samples": 1000000,
+            "dp_changed_samples": 14478,
+            "dp_changed_sample_rate": 0.0145,
+            "improved_baili_samples": 8013,
+            "lowered_baili_samples": 170,
+            "same_baili_samples": 6295,
+            "success_gain_samples": 8013,
+            "success_loss_samples": 170,
+            "success_same_samples": 6295,
+            "total_baili_delta": 40720.7,
+            "total_stamina_delta": 27291872.5,
+            "changed_by_checkpoint": {
+              "12": 8368,
+              "9": 12468
+            }
+          },
+          "category_contribution_delta": {
+            "一速": 270.0,
+            "半肉(白字)": 2677.0,
+            "半肉(血防)": 6549.1,
+            "半肉(通用)": 2187.9,
+            "双效": 171.3,
+            "命坦": 6354.3,
+            "抗坦": 11703.0,
+            "纯肉": 2776.3,
+            "输出": 7262.6,
+            "输出(必爆)": 493.0,
+            "速度套纯速度": 94.6,
+            "非速度套速度装": 181.6
+          },
+          "set_contribution_delta": {
+            "set_acc": 1052.7,
+            "set_chase": 3723.0,
+            "set_counter": 2508.7,
+            "set_cri": 1012.7,
+            "set_cri_dmg": 1534.3,
+            "set_debuff": 1270.0,
+            "set_def": 2961.4,
+            "set_immune": 3782.0,
+            "set_max_hp": 3234.2,
+            "set_opener": 3889.0,
+            "set_penetrate": 1439.8,
+            "set_rage": 1481.9,
+            "set_res": 1053.2,
+            "set_revenant": 2213.9,
+            "set_riposte": 1066.4,
+            "set_scar": 772.3,
+            "set_shield": 2157.8,
+            "set_speed": 3655.5,
+            "set_torrent": 946.4,
+            "set_vampire": 965.5
+          }
+        },
+        {
+          "key": "normal_epic",
+          "label": "normal_85 Epic",
+          "seed": 29,
+          "runs": 1000000,
+          "file": "reports/dp-assisted-deep-normal-epic-1m-seed29.json",
+          "baseline_policy": "category_baili_marginal_mid",
+          "dp_policy": "normal_epic_dp_assisted",
+          "best_policy": "normal_epic_dp_assisted",
+          "baseline_cost_per_baili_score": 944.5,
+          "dp_cost_per_baili_score": 823.3,
+          "cost_per_baili_score_delta": -121.2,
+          "baseline_baili_score_per_1000_stamina": 1.1,
+          "dp_baili_score_per_1000_stamina": 1.2,
+          "baili_score_per_1000_stamina_delta": 0.1,
+          "baseline_native_success_rate": 0.0041,
+          "dp_native_success_rate": 0.0057,
+          "baseline_rescued_success_rate": 0.0028,
+          "dp_rescued_success_rate": 0.0091,
+          "baseline_conversion_needed_rate": 0.0036,
+          "dp_conversion_needed_rate": 0.01,
+          "baseline_stop_rate_by_checkpoint": {
+            "0": 0.8917,
+            "3": 0.0544,
+            "6": 0.019,
+            "9": 0.0236,
+            "12": 0.0029,
+            "15": 0.0084
+          },
+          "dp_stop_rate_by_checkpoint": {
+            "0": 0.8917,
+            "3": 0.0544,
+            "6": 0.019,
+            "9": 0.0129,
+            "12": 0.0037,
+            "15": 0.0183
+          },
+          "baseline_baili_tier_rate": {
+            "0": 0.9959,
+            "1": 0.0029,
+            "2": 0.0011,
+            "3": 0.0001
+          },
+          "dp_baili_tier_rate": {
+            "0": 0.9943,
+            "1": 0.0043,
+            "2": 0.0013,
+            "3": 0.0001
+          },
+          "dp_call_count": 56952,
+          "dp_changed_decision_count": 21054,
+          "dp_changed_to_continue_count": 19866,
+          "dp_changed_to_stop_count": 1188,
+          "dp_covered_checkpoints": {
+            "12": 22005,
+            "9": 34947
+          },
+          "dp_changed_by_checkpoint": {
+            "12": 8416,
+            "9": 12638
+          },
+          "dp_changed_sample_stats": {
+            "samples": 1000000,
+            "dp_changed_samples": 14619,
+            "dp_changed_sample_rate": 0.0146,
+            "improved_baili_samples": 8125,
+            "lowered_baili_samples": 214,
+            "same_baili_samples": 6280,
+            "success_gain_samples": 8125,
+            "success_loss_samples": 214,
+            "success_same_samples": 6280,
+            "total_baili_delta": 41111.9,
+            "total_stamina_delta": 27312189.6,
+            "changed_by_checkpoint": {
+              "12": 8416,
+              "9": 12638
+            }
+          },
+          "category_contribution_delta": {
+            "一速": 125.0,
+            "半肉(白字)": 2619.0,
+            "半肉(血防)": 7086.2,
+            "半肉(通用)": 2046.6,
+            "双效": 223.9,
+            "命坦": 6365.8,
+            "抗坦": 12049.6,
+            "纯肉": 2636.5,
+            "输出": 7202.2,
+            "输出(必爆)": 399.0,
+            "速度套纯速度": 103.3,
+            "非速度套速度装": 254.8
+          },
+          "set_contribution_delta": {
+            "set_acc": 930.1,
+            "set_chase": 4012.1,
+            "set_counter": 2619.8,
+            "set_cri": 1034.7,
+            "set_cri_dmg": 1522.4,
+            "set_debuff": 1223.9,
+            "set_def": 3142.3,
+            "set_immune": 3837.6,
+            "set_max_hp": 3250.1,
+            "set_opener": 3798.8,
+            "set_penetrate": 1431.9,
+            "set_rage": 1498.1,
+            "set_res": 1165.0,
+            "set_revenant": 2188.1,
+            "set_riposte": 916.5,
+            "set_scar": 775.6,
+            "set_shield": 2287.4,
+            "set_speed": 3541.0,
+            "set_torrent": 990.8,
+            "set_vampire": 945.7
+          }
+        },
+        {
+          "key": "normal_epic",
+          "label": "normal_85 Epic",
+          "seed": 43,
+          "runs": 1000000,
+          "file": "reports/dp-assisted-deep-normal-epic-1m-seed43.json",
+          "baseline_policy": "category_baili_marginal_mid",
+          "dp_policy": "normal_epic_dp_assisted",
+          "best_policy": "normal_epic_dp_assisted",
+          "baseline_cost_per_baili_score": 929.5,
+          "dp_cost_per_baili_score": 814.3,
+          "cost_per_baili_score_delta": -115.2,
+          "baseline_baili_score_per_1000_stamina": 1.1,
+          "dp_baili_score_per_1000_stamina": 1.2,
+          "baili_score_per_1000_stamina_delta": 0.1,
+          "baseline_native_success_rate": 0.0041,
+          "dp_native_success_rate": 0.0057,
+          "baseline_rescued_success_rate": 0.0028,
+          "dp_rescued_success_rate": 0.009,
+          "baseline_conversion_needed_rate": 0.0036,
+          "dp_conversion_needed_rate": 0.01,
+          "baseline_stop_rate_by_checkpoint": {
+            "0": 0.8926,
+            "3": 0.054,
+            "6": 0.0188,
+            "9": 0.0234,
+            "12": 0.0028,
+            "15": 0.0084
+          },
+          "dp_stop_rate_by_checkpoint": {
+            "0": 0.8926,
+            "3": 0.054,
+            "6": 0.0188,
+            "9": 0.0127,
+            "12": 0.0038,
+            "15": 0.0182
+          },
+          "baseline_baili_tier_rate": {
+            "0": 0.9959,
+            "1": 0.0028,
+            "2": 0.0011,
+            "3": 0.0001
+          },
+          "dp_baili_tier_rate": {
+            "0": 0.9943,
+            "1": 0.0043,
+            "2": 0.0013,
+            "3": 0.0001
+          },
+          "dp_call_count": 56577,
+          "dp_changed_decision_count": 20765,
+          "dp_changed_to_continue_count": 19673,
+          "dp_changed_to_stop_count": 1092,
+          "dp_covered_checkpoints": {
+            "12": 21961,
+            "9": 34616
+          },
+          "dp_changed_by_checkpoint": {
+            "12": 8259,
+            "9": 12506
+          },
+          "dp_changed_sample_stats": {
+            "samples": 1000000,
+            "dp_changed_samples": 14486,
+            "dp_changed_sample_rate": 0.0145,
+            "improved_baili_samples": 8037,
+            "lowered_baili_samples": 214,
+            "same_baili_samples": 6235,
+            "success_gain_samples": 8037,
+            "success_loss_samples": 214,
+            "success_same_samples": 6235,
+            "total_baili_delta": 40961.4,
+            "total_stamina_delta": 27064916.9,
+            "changed_by_checkpoint": {
+              "12": 8259,
+              "9": 12506
+            }
+          },
+          "category_contribution_delta": {
+            "一速": 155.0,
+            "半肉(白字)": 2554.1,
+            "半肉(血防)": 6879.8,
+            "半肉(通用)": 2117.8,
+            "双效": 179.0,
+            "命坦": 6496.7,
+            "抗坦": 12231.0,
+            "纯肉": 2525.0,
+            "输出": 7122.4,
+            "输出(必爆)": 360.6,
+            "速度套纯速度": 125.4,
+            "非速度套速度装": 214.6
+          },
+          "set_contribution_delta": {
+            "set_acc": 1220.0,
+            "set_chase": 3909.2,
+            "set_counter": 2738.2,
+            "set_cri": 851.8,
+            "set_cri_dmg": 1518.6,
+            "set_debuff": 1269.2,
+            "set_def": 2869.2,
+            "set_immune": 3568.4,
+            "set_max_hp": 3111.2,
+            "set_opener": 3703.5,
+            "set_penetrate": 1581.6,
+            "set_rage": 1453.1,
+            "set_res": 1372.5,
+            "set_revenant": 2101.6,
+            "set_riposte": 910.9,
+            "set_scar": 888.0,
+            "set_shield": 2056.2,
+            "set_speed": 3921.4,
+            "set_torrent": 1057.0,
+            "set_vampire": 859.8
+          }
+        },
+        {
+          "key": "normal_epic",
+          "label": "normal_85 Epic",
+          "seed": 71,
+          "runs": 1000000,
+          "file": "reports/dp-assisted-deep-normal-epic-1m-seed71.json",
+          "baseline_policy": "category_baili_marginal_mid",
+          "dp_policy": "normal_epic_dp_assisted",
+          "best_policy": "normal_epic_dp_assisted",
+          "baseline_cost_per_baili_score": 917.6,
+          "dp_cost_per_baili_score": 813.1,
+          "cost_per_baili_score_delta": -104.5,
+          "baseline_baili_score_per_1000_stamina": 1.1,
+          "dp_baili_score_per_1000_stamina": 1.2,
+          "baili_score_per_1000_stamina_delta": 0.1,
+          "baseline_native_success_rate": 0.0042,
+          "dp_native_success_rate": 0.0058,
+          "baseline_rescued_success_rate": 0.0029,
+          "dp_rescued_success_rate": 0.0091,
+          "baseline_conversion_needed_rate": 0.0038,
+          "dp_conversion_needed_rate": 0.0101,
+          "baseline_stop_rate_by_checkpoint": {
+            "0": 0.8924,
+            "3": 0.0538,
+            "6": 0.0189,
+            "9": 0.0234,
+            "12": 0.0028,
+            "15": 0.0086
+          },
+          "dp_stop_rate_by_checkpoint": {
+            "0": 0.8924,
+            "3": 0.0538,
+            "6": 0.0189,
+            "9": 0.0128,
+            "12": 0.0036,
+            "15": 0.0184
+          },
+          "baseline_baili_tier_rate": {
+            "0": 0.9958,
+            "1": 0.003,
+            "2": 0.0011,
+            "3": 0.0001
+          },
+          "dp_baili_tier_rate": {
+            "0": 0.9942,
+            "1": 0.0044,
+            "2": 0.0013,
+            "3": 0.0001
+          },
+          "dp_call_count": 56900,
+          "dp_changed_decision_count": 20738,
+          "dp_changed_to_continue_count": 19597,
+          "dp_changed_to_stop_count": 1141,
+          "dp_covered_checkpoints": {
+            "12": 22071,
+            "9": 34829
+          },
+          "dp_changed_by_checkpoint": {
+            "12": 8253,
+            "9": 12485
+          },
+          "dp_changed_sample_stats": {
+            "samples": 1000000,
+            "dp_changed_samples": 14425,
+            "dp_changed_sample_rate": 0.0144,
+            "improved_baili_samples": 7963,
+            "lowered_baili_samples": 198,
+            "same_baili_samples": 6264,
+            "success_gain_samples": 7963,
+            "success_loss_samples": 198,
+            "success_same_samples": 6264,
+            "total_baili_delta": 40307.2,
+            "total_stamina_delta": 26905762.6,
+            "changed_by_checkpoint": {
+              "12": 8253,
+              "9": 12485
+            }
+          },
+          "category_contribution_delta": {
+            "一速": 165.0,
+            "半肉(白字)": 2625.6,
+            "半肉(血防)": 6530.7,
+            "半肉(通用)": 2258.2,
+            "双效": 161.7,
+            "命坦": 6339.9,
+            "抗坦": 11991.7,
+            "纯肉": 2546.5,
+            "输出": 7209.2,
+            "输出(必爆)": 292.2,
+            "速度套纯速度": 9.2,
+            "非速度套速度装": 177.3
+          },
+          "set_contribution_delta": {
+            "set_acc": 969.5,
+            "set_chase": 3825.4,
+            "set_counter": 2437.6,
+            "set_cri": 833.4,
+            "set_cri_dmg": 1341.6,
+            "set_debuff": 1303.4,
+            "set_def": 2938.6,
+            "set_immune": 3485.5,
+            "set_max_hp": 3060.7,
+            "set_opener": 3824.2,
+            "set_penetrate": 1403.6,
+            "set_rage": 1423.0,
+            "set_res": 1310.1,
+            "set_revenant": 2342.0,
+            "set_riposte": 989.5,
+            "set_scar": 929.7,
+            "set_shield": 2097.2,
+            "set_speed": 3664.3,
+            "set_torrent": 996.1,
+            "set_vampire": 1131.8
+          }
+        },
+        {
+          "key": "normal_epic",
+          "label": "normal_85 Epic",
+          "seed": 101,
+          "runs": 1000000,
+          "file": "reports/dp-assisted-deep-normal-epic-1m-seed101.json",
+          "baseline_policy": "category_baili_marginal_mid",
+          "dp_policy": "normal_epic_dp_assisted",
+          "best_policy": "normal_epic_dp_assisted",
+          "baseline_cost_per_baili_score": 943.1,
+          "dp_cost_per_baili_score": 816.5,
+          "cost_per_baili_score_delta": -126.6,
+          "baseline_baili_score_per_1000_stamina": 1.1,
+          "dp_baili_score_per_1000_stamina": 1.2,
+          "baili_score_per_1000_stamina_delta": 0.1,
+          "baseline_native_success_rate": 0.0042,
+          "dp_native_success_rate": 0.0059,
+          "baseline_rescued_success_rate": 0.0029,
+          "dp_rescued_success_rate": 0.0091,
+          "baseline_conversion_needed_rate": 0.0037,
+          "dp_conversion_needed_rate": 0.0101,
+          "baseline_stop_rate_by_checkpoint": {
+            "0": 0.8919,
+            "3": 0.0542,
+            "6": 0.019,
+            "9": 0.0235,
+            "12": 0.0029,
+            "15": 0.0085
+          },
+          "dp_stop_rate_by_checkpoint": {
+            "0": 0.8919,
+            "3": 0.0542,
+            "6": 0.019,
+            "9": 0.0128,
+            "12": 0.0037,
+            "15": 0.0185
+          },
+          "baseline_baili_tier_rate": {
+            "0": 0.9958,
+            "1": 0.0029,
+            "2": 0.0011,
+            "3": 0.0001
+          },
+          "dp_baili_tier_rate": {
+            "0": 0.9941,
+            "1": 0.0044,
+            "2": 0.0014,
+            "3": 0.0001
+          },
+          "dp_call_count": 57021,
+          "dp_changed_decision_count": 20929,
+          "dp_changed_to_continue_count": 19775,
+          "dp_changed_to_stop_count": 1154,
+          "dp_covered_checkpoints": {
+            "12": 22125,
+            "9": 34896
+          },
+          "dp_changed_by_checkpoint": {
+            "12": 8311,
+            "9": 12618
+          },
+          "dp_changed_sample_stats": {
+            "samples": 1000000,
+            "dp_changed_samples": 14606,
+            "dp_changed_sample_rate": 0.0146,
+            "improved_baili_samples": 8136,
+            "lowered_baili_samples": 180,
+            "same_baili_samples": 6290,
+            "success_gain_samples": 8136,
+            "success_loss_samples": 180,
+            "success_same_samples": 6290,
+            "total_baili_delta": 41939.9,
+            "total_stamina_delta": 27362392.6,
+            "changed_by_checkpoint": {
+              "12": 8311,
+              "9": 12618
+            }
+          },
+          "category_contribution_delta": {
+            "一速": 280.0,
+            "半肉(白字)": 2943.9,
+            "半肉(血防)": 7093.4,
+            "半肉(通用)": 2091.0,
+            "双效": 191.6,
+            "命坦": 6574.2,
+            "抗坦": 12289.9,
+            "纯肉": 2598.0,
+            "输出": 7194.8,
+            "输出(必爆)": 347.7,
+            "速度套纯速度": 153.6,
+            "非速度套速度装": 181.8
+          },
+          "set_contribution_delta": {
+            "set_acc": 899.4,
+            "set_chase": 4089.2,
+            "set_counter": 2821.7,
+            "set_cri": 810.7,
+            "set_cri_dmg": 1717.2,
+            "set_debuff": 1278.0,
+            "set_def": 3410.6,
+            "set_immune": 3757.6,
+            "set_max_hp": 3244.7,
+            "set_opener": 3903.4,
+            "set_penetrate": 1378.9,
+            "set_rage": 1336.8,
+            "set_res": 1119.3,
+            "set_revenant": 2328.0,
+            "set_riposte": 1002.4,
+            "set_scar": 1002.5,
+            "set_shield": 2215.7,
+            "set_speed": 3823.8,
+            "set_torrent": 866.5,
+            "set_vampire": 933.5
+          }
+        }
+      ],
+      "statistics": {
+        "baseline_cost_per_baili_score": {
+          "count": 5,
+          "mean": 932.82,
+          "stddev": 11.140781,
+          "ci95_low": 918.989111,
+          "ci95_high": 946.650889,
+          "values": [
+            929.4,
+            944.5,
+            929.5,
+            917.6,
+            943.1
+          ]
+        },
+        "dp_cost_per_baili_score": {
+          "count": 5,
+          "mean": 817.24,
+          "stddev": 4.066694,
+          "ci95_low": 812.191342,
+          "ci95_high": 822.288658,
+          "values": [
+            819.0,
+            823.3,
+            814.3,
+            813.1,
+            816.5
+          ]
+        },
+        "baseline_baili_score_per_1000_stamina": {
+          "count": 5,
+          "mean": 1.1,
+          "stddev": 0.0,
+          "ci95_low": 1.1,
+          "ci95_high": 1.1,
+          "values": [
+            1.1,
+            1.1,
+            1.1,
+            1.1,
+            1.1
+          ]
+        },
+        "dp_baili_score_per_1000_stamina": {
+          "count": 5,
+          "mean": 1.2,
+          "stddev": 0.0,
+          "ci95_low": 1.2,
+          "ci95_high": 1.2,
+          "values": [
+            1.2,
+            1.2,
+            1.2,
+            1.2,
+            1.2
+          ]
+        },
+        "cost_delta_dp_minus_baseline": {
+          "count": 5,
+          "mean": -115.58,
+          "stddev": 8.700115,
+          "ci95_low": -126.380888,
+          "ci95_high": -104.779112,
+          "values": [
+            -110.4,
+            -121.2,
+            -115.2,
+            -104.5,
+            -126.6
+          ]
+        },
+        "score_rate_delta_dp_minus_baseline": {
+          "count": 5,
+          "mean": 0.1,
+          "stddev": 0.0,
+          "ci95_low": 0.1,
+          "ci95_high": 0.1,
+          "values": [
+            0.1,
+            0.1,
+            0.1,
+            0.1,
+            0.1
+          ]
+        }
+      },
+      "seed_rank_stability": {
+        "dp_wins": 5,
+        "baseline_wins": 0,
+        "seed_count": 5,
+        "dp_win_rate": 1.0,
+        "best_policy_by_seed": {
+          "17": "normal_epic_dp_assisted",
+          "29": "normal_epic_dp_assisted",
+          "43": "normal_epic_dp_assisted",
+          "71": "normal_epic_dp_assisted",
+          "101": "normal_epic_dp_assisted"
+        },
+        "stable": true
+      },
+      "aggregate_deltas": {
+        "category_contribution_delta": {
+          "一速": 995.0,
+          "半肉(白字)": 13419.6,
+          "半肉(血防)": 34139.2,
+          "半肉(通用)": 10701.5,
+          "双效": 927.5,
+          "命坦": 32130.9,
+          "抗坦": 60265.2,
+          "纯肉": 13082.3,
+          "输出": 35991.2,
+          "输出(必爆)": 1892.5,
+          "速度套纯速度": 486.1,
+          "非速度套速度装": 1010.1
+        },
+        "set_contribution_delta": {
+          "set_acc": 5071.7,
+          "set_chase": 19558.9,
+          "set_counter": 13126.0,
+          "set_cri": 4543.3,
+          "set_cri_dmg": 7634.1,
+          "set_debuff": 6344.5,
+          "set_def": 15322.1,
+          "set_immune": 18431.1,
+          "set_max_hp": 15900.9,
+          "set_opener": 19118.9,
+          "set_penetrate": 7235.8,
+          "set_rage": 7192.9,
+          "set_res": 6020.1,
+          "set_revenant": 11173.6,
+          "set_riposte": 4885.7,
+          "set_scar": 4368.1,
+          "set_shield": 10814.3,
+          "set_speed": 18606.0,
+          "set_torrent": 4856.8,
+          "set_vampire": 4836.3
+        },
+        "dp_changed_samples": 72614,
+        "dp_changed_improved_baili_samples": 40274,
+        "dp_changed_lowered_baili_samples": 976,
+        "dp_changed_same_baili_samples": 31364,
+        "dp_changed_by_checkpoint": {
+          "12": 41607.0,
+          "9": 62715.0
+        }
+      },
+      "recommendation": {
+        "action": "switch_default",
+        "mean_better": true,
+        "all_seeds_better": true,
+        "ci95_non_overlapping": true
+      }
+    },
+    {
+      "key": "normal_heroic",
+      "label": "normal_85 Heroic",
+      "baseline_policy": "baili_marginal_low",
+      "dp_policy": "normal_heroic_dp_assisted",
+      "seed_results": [
+        {
+          "key": "normal_heroic",
+          "label": "normal_85 Heroic",
+          "seed": 17,
+          "runs": 1000000,
+          "file": "reports/dp-assisted-deep-normal-heroic-1m-seed17.json",
+          "baseline_policy": "baili_marginal_low",
+          "dp_policy": "normal_heroic_dp_assisted",
+          "best_policy": "normal_heroic_dp_assisted",
+          "baseline_cost_per_baili_score": 23905.2,
+          "dp_cost_per_baili_score": 5984.5,
+          "cost_per_baili_score_delta": -17920.7,
+          "baseline_baili_score_per_1000_stamina": 0.0,
+          "dp_baili_score_per_1000_stamina": 0.2,
+          "baili_score_per_1000_stamina_delta": 0.2,
+          "baseline_native_success_rate": 0.0,
+          "dp_native_success_rate": 0.0001,
+          "baseline_rescued_success_rate": 0.0,
+          "dp_rescued_success_rate": 0.0004,
+          "baseline_conversion_needed_rate": 0.0,
+          "dp_conversion_needed_rate": 0.0004,
+          "baseline_stop_rate_by_checkpoint": {
+            "0": 0.9862,
+            "3": 0.003,
+            "6": 0.0052,
+            "9": 0.0045,
+            "12": 0.0011,
+            "15": 0.0001
+          },
+          "dp_stop_rate_by_checkpoint": {
+            "0": 0.9862,
+            "3": 0.003,
+            "6": 0.0052,
+            "9": 0.0036,
+            "12": 0.0008,
+            "15": 0.0013
+          },
+          "baseline_baili_tier_rate": {
+            "0": 1.0,
+            "1": 0.0,
+            "2": 0.0,
+            "3": 0.0
+          },
+          "dp_baili_tier_rate": {
+            "0": 0.9999,
+            "1": 0.0001,
+            "2": 0.0,
+            "3": 0.0
+          },
+          "dp_call_count": 7720,
+          "dp_changed_decision_count": 2041,
+          "dp_changed_to_continue_count": 2041,
+          "dp_changed_to_stop_count": 0,
+          "dp_covered_checkpoints": {
+            "12": 2051,
+            "9": 5669
+          },
+          "dp_changed_by_checkpoint": {
+            "12": 1160,
+            "9": 881
+          },
+          "dp_changed_sample_stats": {
+            "samples": 1000000,
+            "dp_changed_samples": 1501,
+            "dp_changed_sample_rate": 0.0015,
+            "improved_baili_samples": 443,
+            "lowered_baili_samples": 0,
+            "same_baili_samples": 1058,
+            "success_gain_samples": 443,
+            "success_loss_samples": 0,
+            "success_same_samples": 1058,
+            "total_baili_delta": 1454.9,
+            "total_stamina_delta": 2248251.5,
+            "changed_by_checkpoint": {
+              "12": 1160,
+              "9": 881
+            }
+          },
+          "category_contribution_delta": {
+            "一速": 65.0,
+            "半肉(白字)": 91.0,
+            "半肉(血防)": 57.5,
+            "半肉(通用)": 2.0,
+            "命坦": 259.7,
+            "抗坦": 435.8,
+            "纯肉": 213.2,
+            "输出": 326.0,
+            "速度套纯速度": 0.0,
+            "非速度套速度装": 4.7
+          },
+          "set_contribution_delta": {
+            "set_acc": 54.6,
+            "set_chase": 127.6,
+            "set_counter": 75.2,
+            "set_cri": 20.9,
+            "set_cri_dmg": 32.9,
+            "set_debuff": 33.9,
+            "set_def": 113.6,
+            "set_immune": 101.3,
+            "set_max_hp": 128.2,
+            "set_opener": 136.5,
+            "set_penetrate": 39.2,
+            "set_rage": 40.0,
+            "set_res": 38.8,
+            "set_revenant": 134.5,
+            "set_riposte": 50.7,
+            "set_scar": 3.7,
+            "set_shield": 100.2,
+            "set_speed": 149.7,
+            "set_torrent": 48.6,
+            "set_vampire": 24.8
+          }
+        },
+        {
+          "key": "normal_heroic",
+          "label": "normal_85 Heroic",
+          "seed": 29,
+          "runs": 1000000,
+          "file": "reports/dp-assisted-deep-normal-heroic-1m-seed29.json",
+          "baseline_policy": "baili_marginal_low",
+          "dp_policy": "normal_heroic_dp_assisted",
+          "best_policy": "normal_heroic_dp_assisted",
+          "baseline_cost_per_baili_score": 19786.1,
+          "dp_cost_per_baili_score": 5521.0,
+          "cost_per_baili_score_delta": -14265.1,
+          "baseline_baili_score_per_1000_stamina": 0.1,
+          "dp_baili_score_per_1000_stamina": 0.2,
+          "baili_score_per_1000_stamina_delta": 0.1,
+          "baseline_native_success_rate": 0.0,
+          "dp_native_success_rate": 0.0001,
+          "baseline_rescued_success_rate": 0.0,
+          "dp_rescued_success_rate": 0.0004,
+          "baseline_conversion_needed_rate": 0.0,
+          "dp_conversion_needed_rate": 0.0004,
+          "baseline_stop_rate_by_checkpoint": {
+            "0": 0.9863,
+            "3": 0.0031,
+            "6": 0.0051,
+            "9": 0.0044,
+            "12": 0.0011,
+            "15": 0.0001
+          },
+          "dp_stop_rate_by_checkpoint": {
+            "0": 0.9863,
+            "3": 0.0031,
+            "6": 0.0051,
+            "9": 0.0036,
+            "12": 0.0008,
+            "15": 0.0012
+          },
+          "baseline_baili_tier_rate": {
+            "0": 1.0,
+            "1": 0.0,
+            "2": 0.0,
+            "3": 0.0
+          },
+          "dp_baili_tier_rate": {
+            "0": 0.9999,
+            "1": 0.0001,
+            "2": 0.0,
+            "3": 0.0
+          },
+          "dp_call_count": 7594,
+          "dp_changed_decision_count": 1967,
+          "dp_changed_to_continue_count": 1967,
+          "dp_changed_to_stop_count": 0,
+          "dp_covered_checkpoints": {
+            "12": 2016,
+            "9": 5578
+          },
+          "dp_changed_by_checkpoint": {
+            "12": 1115,
+            "9": 852
+          },
+          "dp_changed_sample_stats": {
+            "samples": 1000000,
+            "dp_changed_samples": 1456,
+            "dp_changed_sample_rate": 0.0015,
+            "improved_baili_samples": 432,
+            "lowered_baili_samples": 0,
+            "same_baili_samples": 1024,
+            "success_gain_samples": 432,
+            "success_loss_samples": 0,
+            "success_same_samples": 1024,
+            "total_baili_delta": 1513.5,
+            "total_stamina_delta": 2173552.2,
+            "changed_by_checkpoint": {
+              "12": 1115,
+              "9": 852
+            }
+          },
+          "category_contribution_delta": {
+            "一速": 105.0,
+            "半肉(白字)": 43.0,
+            "半肉(血防)": 56.4,
+            "命坦": 212.7,
+            "抗坦": 428.8,
+            "纯肉": 185.4,
+            "输出": 460.0,
+            "输出(必爆)": 3.2,
+            "速度套纯速度": 15.8,
+            "非速度套速度装": 3.2
+          },
+          "set_contribution_delta": {
+            "set_acc": 26.2,
+            "set_chase": 121.7,
+            "set_counter": 95.6,
+            "set_cri": 39.8,
+            "set_cri_dmg": 77.1,
+            "set_debuff": 38.5,
+            "set_def": 93.2,
+            "set_immune": 118.8,
+            "set_max_hp": 81.2,
+            "set_opener": 189.0,
+            "set_penetrate": 32.9,
+            "set_rage": 44.6,
+            "set_res": 54.9,
+            "set_revenant": 130.9,
+            "set_riposte": 54.5,
+            "set_scar": 5.4,
+            "set_shield": 69.2,
+            "set_speed": 152.0,
+            "set_torrent": 53.8,
+            "set_vampire": 34.2
+          }
+        },
+        {
+          "key": "normal_heroic",
+          "label": "normal_85 Heroic",
+          "seed": 43,
+          "runs": 1000000,
+          "file": "reports/dp-assisted-deep-normal-heroic-1m-seed43.json",
+          "baseline_policy": "baili_marginal_low",
+          "dp_policy": "normal_heroic_dp_assisted",
+          "best_policy": "normal_heroic_dp_assisted",
+          "baseline_cost_per_baili_score": 24937.3,
+          "dp_cost_per_baili_score": 5852.8,
+          "cost_per_baili_score_delta": -19084.5,
+          "baseline_baili_score_per_1000_stamina": 0.0,
+          "dp_baili_score_per_1000_stamina": 0.2,
+          "baili_score_per_1000_stamina_delta": 0.2,
+          "baseline_native_success_rate": 0.0,
+          "dp_native_success_rate": 0.0001,
+          "baseline_rescued_success_rate": 0.0,
+          "dp_rescued_success_rate": 0.0004,
+          "baseline_conversion_needed_rate": 0.0,
+          "dp_conversion_needed_rate": 0.0004,
+          "baseline_stop_rate_by_checkpoint": {
+            "0": 0.9864,
+            "3": 0.003,
+            "6": 0.005,
+            "9": 0.0045,
+            "12": 0.0011,
+            "15": 0.0001
+          },
+          "dp_stop_rate_by_checkpoint": {
+            "0": 0.9864,
+            "3": 0.003,
+            "6": 0.005,
+            "9": 0.0036,
+            "12": 0.0008,
+            "15": 0.0012
+          },
+          "baseline_baili_tier_rate": {
+            "0": 1.0,
+            "1": 0.0,
+            "2": 0.0,
+            "3": 0.0
+          },
+          "dp_baili_tier_rate": {
+            "0": 0.9999,
+            "1": 0.0001,
+            "2": 0.0,
+            "3": 0.0
+          },
+          "dp_call_count": 7596,
+          "dp_changed_decision_count": 1956,
+          "dp_changed_to_continue_count": 1956,
+          "dp_changed_to_stop_count": 0,
+          "dp_covered_checkpoints": {
+            "12": 1989,
+            "9": 5607
+          },
+          "dp_changed_by_checkpoint": {
+            "12": 1110,
+            "9": 846
+          },
+          "dp_changed_sample_stats": {
+            "samples": 1000000,
+            "dp_changed_samples": 1447,
+            "dp_changed_sample_rate": 0.0014,
+            "improved_baili_samples": 432,
+            "lowered_baili_samples": 0,
+            "same_baili_samples": 1015,
+            "success_gain_samples": 432,
+            "success_loss_samples": 0,
+            "success_same_samples": 1015,
+            "total_baili_delta": 1489.6,
+            "total_stamina_delta": 2162737.7,
+            "changed_by_checkpoint": {
+              "12": 1110,
+              "9": 846
+            }
+          },
+          "category_contribution_delta": {
+            "一速": 100.0,
+            "半肉(白字)": 72.2,
+            "半肉(血防)": 39.6,
+            "半肉(通用)": 0.0,
+            "命坦": 253.3,
+            "抗坦": 401.6,
+            "纯肉": 211.5,
+            "输出": 390.9,
+            "输出(必爆)": 9.4,
+            "非速度套速度装": 11.1
+          },
+          "set_contribution_delta": {
+            "set_acc": 28.4,
+            "set_chase": 95.9,
+            "set_counter": 62.5,
+            "set_cri": 27.5,
+            "set_cri_dmg": 39.5,
+            "set_debuff": 37.2,
+            "set_def": 121.6,
+            "set_immune": 168.0,
+            "set_max_hp": 111.4,
+            "set_opener": 223.1,
+            "set_penetrate": 35.8,
+            "set_rage": 36.4,
+            "set_res": 14.1,
+            "set_revenant": 98.9,
+            "set_riposte": 33.7,
+            "set_scar": 8.1,
+            "set_shield": 79.6,
+            "set_speed": 174.9,
+            "set_torrent": 58.2,
+            "set_vampire": 34.8
+          }
+        },
+        {
+          "key": "normal_heroic",
+          "label": "normal_85 Heroic",
+          "seed": 71,
+          "runs": 1000000,
+          "file": "reports/dp-assisted-deep-normal-heroic-1m-seed71.json",
+          "baseline_policy": "baili_marginal_low",
+          "dp_policy": "normal_heroic_dp_assisted",
+          "best_policy": "normal_heroic_dp_assisted",
+          "baseline_cost_per_baili_score": 23043.2,
+          "dp_cost_per_baili_score": 6110.7,
+          "cost_per_baili_score_delta": -16932.5,
+          "baseline_baili_score_per_1000_stamina": 0.0,
+          "dp_baili_score_per_1000_stamina": 0.2,
+          "baili_score_per_1000_stamina_delta": 0.2,
+          "baseline_native_success_rate": 0.0,
+          "dp_native_success_rate": 0.0001,
+          "baseline_rescued_success_rate": 0.0,
+          "dp_rescued_success_rate": 0.0004,
+          "baseline_conversion_needed_rate": 0.0,
+          "dp_conversion_needed_rate": 0.0004,
+          "baseline_stop_rate_by_checkpoint": {
+            "0": 0.9864,
+            "3": 0.003,
+            "6": 0.005,
+            "9": 0.0044,
+            "12": 0.0011,
+            "15": 0.0001
+          },
+          "dp_stop_rate_by_checkpoint": {
+            "0": 0.9864,
+            "3": 0.003,
+            "6": 0.005,
+            "9": 0.0036,
+            "12": 0.0008,
+            "15": 0.0012
+          },
+          "baseline_baili_tier_rate": {
+            "0": 1.0,
+            "1": 0.0,
+            "2": 0.0,
+            "3": 0.0
+          },
+          "dp_baili_tier_rate": {
+            "0": 0.9999,
+            "1": 0.0001,
+            "2": 0.0,
+            "3": 0.0
+          },
+          "dp_call_count": 7617,
+          "dp_changed_decision_count": 1967,
+          "dp_changed_to_continue_count": 1967,
+          "dp_changed_to_stop_count": 0,
+          "dp_covered_checkpoints": {
+            "12": 2016,
+            "9": 5601
+          },
+          "dp_changed_by_checkpoint": {
+            "12": 1111,
+            "9": 856
+          },
+          "dp_changed_sample_stats": {
+            "samples": 1000000,
+            "dp_changed_samples": 1440,
+            "dp_changed_sample_rate": 0.0014,
+            "improved_baili_samples": 409,
+            "lowered_baili_samples": 0,
+            "same_baili_samples": 1031,
+            "success_gain_samples": 409,
+            "success_loss_samples": 0,
+            "success_same_samples": 1031,
+            "total_baili_delta": 1379.9,
+            "total_stamina_delta": 2138386.7,
+            "changed_by_checkpoint": {
+              "12": 1111,
+              "9": 856
+            }
+          },
+          "category_contribution_delta": {
+            "一速": 45.0,
+            "半肉(白字)": 36.3,
+            "半肉(血防)": 58.4,
+            "半肉(通用)": 1.9,
+            "命坦": 174.5,
+            "抗坦": 390.1,
+            "纯肉": 274.2,
+            "输出": 372.2,
+            "输出(必爆)": 16.9,
+            "速度套纯速度": 2.6,
+            "非速度套速度装": 7.8
+          },
+          "set_contribution_delta": {
+            "set_acc": 23.6,
+            "set_chase": 123.6,
+            "set_counter": 52.1,
+            "set_cri": 24.9,
+            "set_cri_dmg": 45.4,
+            "set_debuff": 28.8,
+            "set_def": 95.9,
+            "set_immune": 106.4,
+            "set_max_hp": 78.3,
+            "set_opener": 168.4,
+            "set_penetrate": 67.3,
+            "set_rage": 34.2,
+            "set_res": 38.0,
+            "set_revenant": 117.8,
+            "set_riposte": 34.4,
+            "set_scar": 3.1,
+            "set_shield": 135.6,
+            "set_speed": 100.7,
+            "set_torrent": 81.5,
+            "set_vampire": 19.9
+          }
+        },
+        {
+          "key": "normal_heroic",
+          "label": "normal_85 Heroic",
+          "seed": 101,
+          "runs": 1000000,
+          "file": "reports/dp-assisted-deep-normal-heroic-1m-seed101.json",
+          "baseline_policy": "baili_marginal_low",
+          "dp_policy": "normal_heroic_dp_assisted",
+          "best_policy": "normal_heroic_dp_assisted",
+          "baseline_cost_per_baili_score": 22523.0,
+          "dp_cost_per_baili_score": 5855.3,
+          "cost_per_baili_score_delta": -16667.7,
+          "baseline_baili_score_per_1000_stamina": 0.0,
+          "dp_baili_score_per_1000_stamina": 0.2,
+          "baili_score_per_1000_stamina_delta": 0.2,
+          "baseline_native_success_rate": 0.0,
+          "dp_native_success_rate": 0.0001,
+          "baseline_rescued_success_rate": 0.0,
+          "dp_rescued_success_rate": 0.0004,
+          "baseline_conversion_needed_rate": 0.0,
+          "dp_conversion_needed_rate": 0.0004,
+          "baseline_stop_rate_by_checkpoint": {
+            "0": 0.9862,
+            "3": 0.0031,
+            "6": 0.0051,
+            "9": 0.0045,
+            "12": 0.001,
+            "15": 0.0001
+          },
+          "dp_stop_rate_by_checkpoint": {
+            "0": 0.9862,
+            "3": 0.0031,
+            "6": 0.0051,
+            "9": 0.0037,
+            "12": 0.0007,
+            "15": 0.0012
+          },
+          "baseline_baili_tier_rate": {
+            "0": 1.0,
+            "1": 0.0,
+            "2": 0.0,
+            "3": 0.0
+          },
+          "dp_baili_tier_rate": {
+            "0": 0.9999,
+            "1": 0.0001,
+            "2": 0.0,
+            "3": 0.0
+          },
+          "dp_call_count": 7564,
+          "dp_changed_decision_count": 1968,
+          "dp_changed_to_continue_count": 1968,
+          "dp_changed_to_stop_count": 0,
+          "dp_covered_checkpoints": {
+            "12": 1952,
+            "9": 5612
+          },
+          "dp_changed_by_checkpoint": {
+            "12": 1130,
+            "9": 838
+          },
+          "dp_changed_sample_stats": {
+            "samples": 1000000,
+            "dp_changed_samples": 1443,
+            "dp_changed_sample_rate": 0.0014,
+            "improved_baili_samples": 427,
+            "lowered_baili_samples": 0,
+            "same_baili_samples": 1016,
+            "success_gain_samples": 427,
+            "success_loss_samples": 0,
+            "success_same_samples": 1016,
+            "total_baili_delta": 1452.3,
+            "total_stamina_delta": 2169949.2,
+            "changed_by_checkpoint": {
+              "12": 1130,
+              "9": 838
+            }
+          },
+          "category_contribution_delta": {
+            "一速": 50.0,
+            "半肉(白字)": 64.2,
+            "半肉(血防)": 52.8,
+            "命坦": 281.6,
+            "抗坦": 428.3,
+            "纯肉": 179.0,
+            "输出": 375.6,
+            "输出(必爆)": 10.6,
+            "速度套纯速度": 10.2,
+            "非速度套速度装": 0.0
+          },
+          "set_contribution_delta": {
+            "set_acc": 33.5,
+            "set_chase": 125.3,
+            "set_counter": 72.3,
+            "set_cri": 31.5,
+            "set_cri_dmg": 29.4,
+            "set_debuff": 33.5,
+            "set_def": 95.7,
+            "set_immune": 138.6,
+            "set_max_hp": 114.2,
+            "set_opener": 171.8,
+            "set_penetrate": 50.6,
+            "set_rage": 41.9,
+            "set_res": 34.0,
+            "set_revenant": 113.7,
+            "set_riposte": 28.6,
+            "set_scar": 8.1,
+            "set_shield": 88.5,
+            "set_speed": 154.6,
+            "set_torrent": 69.3,
+            "set_vampire": 17.2
+          }
+        }
+      ],
+      "statistics": {
+        "baseline_cost_per_baili_score": {
+          "count": 5,
+          "mean": 22838.96,
+          "stddev": 1936.581871,
+          "ci95_low": 20434.761502,
+          "ci95_high": 25243.158498,
+          "values": [
+            23905.2,
+            19786.1,
+            24937.3,
+            23043.2,
+            22523.0
+          ]
+        },
+        "dp_cost_per_baili_score": {
+          "count": 5,
+          "mean": 5864.86,
+          "stddev": 219.788291,
+          "ci95_low": 5592.000542,
+          "ci95_high": 6137.719458,
+          "values": [
+            5984.5,
+            5521.0,
+            5852.8,
+            6110.7,
+            5855.3
+          ]
+        },
+        "baseline_baili_score_per_1000_stamina": {
+          "count": 5,
+          "mean": 0.02,
+          "stddev": 0.044721,
+          "ci95_low": -0.03552,
+          "ci95_high": 0.07552,
+          "values": [
+            0.0,
+            0.1,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "dp_baili_score_per_1000_stamina": {
+          "count": 5,
+          "mean": 0.2,
+          "stddev": 0.0,
+          "ci95_low": 0.2,
+          "ci95_high": 0.2,
+          "values": [
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2
+          ]
+        },
+        "cost_delta_dp_minus_baseline": {
+          "count": 5,
+          "mean": -16974.1,
+          "stddev": 1787.745245,
+          "ci95_low": -19193.523045,
+          "ci95_high": -14754.676955,
+          "values": [
+            -17920.7,
+            -14265.1,
+            -19084.5,
+            -16932.5,
+            -16667.7
+          ]
+        },
+        "score_rate_delta_dp_minus_baseline": {
+          "count": 5,
+          "mean": 0.18,
+          "stddev": 0.044721,
+          "ci95_low": 0.12448,
+          "ci95_high": 0.23552,
+          "values": [
+            0.2,
+            0.1,
+            0.2,
+            0.2,
+            0.2
+          ]
+        }
+      },
+      "seed_rank_stability": {
+        "dp_wins": 5,
+        "baseline_wins": 0,
+        "seed_count": 5,
+        "dp_win_rate": 1.0,
+        "best_policy_by_seed": {
+          "17": "normal_heroic_dp_assisted",
+          "29": "normal_heroic_dp_assisted",
+          "43": "normal_heroic_dp_assisted",
+          "71": "normal_heroic_dp_assisted",
+          "101": "normal_heroic_dp_assisted"
+        },
+        "stable": true
+      },
+      "aggregate_deltas": {
+        "category_contribution_delta": {
+          "一速": 365.0,
+          "半肉(白字)": 306.7,
+          "半肉(血防)": 264.7,
+          "半肉(通用)": 3.9,
+          "命坦": 1181.8,
+          "抗坦": 2084.6,
+          "纯肉": 1063.3,
+          "输出": 1924.7,
+          "输出(必爆)": 40.1,
+          "速度套纯速度": 28.6,
+          "非速度套速度装": 26.8
+        },
+        "set_contribution_delta": {
+          "set_acc": 166.3,
+          "set_chase": 594.1,
+          "set_counter": 357.7,
+          "set_cri": 144.6,
+          "set_cri_dmg": 224.3,
+          "set_debuff": 171.9,
+          "set_def": 520.0,
+          "set_immune": 633.1,
+          "set_max_hp": 513.3,
+          "set_opener": 888.8,
+          "set_penetrate": 225.8,
+          "set_rage": 197.1,
+          "set_res": 179.8,
+          "set_revenant": 595.8,
+          "set_riposte": 201.9,
+          "set_scar": 28.4,
+          "set_shield": 473.1,
+          "set_speed": 731.9,
+          "set_torrent": 311.4,
+          "set_vampire": 130.9
+        },
+        "dp_changed_samples": 7287,
+        "dp_changed_improved_baili_samples": 2143,
+        "dp_changed_lowered_baili_samples": 0,
+        "dp_changed_same_baili_samples": 5144,
+        "dp_changed_by_checkpoint": {
+          "12": 5626.0,
+          "9": 4273.0
+        }
+      },
+      "recommendation": {
+        "action": "switch_default",
+        "mean_better": true,
+        "all_seeds_better": true,
+        "ci95_non_overlapping": true
+      }
+    }
+  ],
+  "overall": {
+    "normal_85_epic_default": "switch_default",
+    "normal_85_heroic_default": "switch_default",
+    "rift_85_epic_default": "keep_round2_policy",
+    "needs_larger_sample": false
+  }
+}

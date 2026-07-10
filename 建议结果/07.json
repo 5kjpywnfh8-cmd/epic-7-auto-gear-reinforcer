@@ -1,0 +1,202 @@
+{
+  "gear": {
+    "set": "Critical",
+    "slot": "Weapon",
+    "mainStat": {
+      "type": "Attack",
+      "value": 525.0
+    },
+    "enhance": 3,
+    "level": 85,
+    "rank": "Epic",
+    "substats": [
+      {
+        "type": "Speed",
+        "value": 8.0,
+        "rolls": 2
+      },
+      {
+        "type": "CriticalHitChancePercent",
+        "value": 5.0,
+        "rolls": 1
+      },
+      {
+        "type": "CriticalHitDamagePercent",
+        "value": 7.0,
+        "rolls": 1
+      },
+      {
+        "type": "AttackPercent",
+        "value": 8.0,
+        "rolls": 1
+      }
+    ],
+    "rollHistory": [],
+    "code": "",
+    "reforgeEligible": true,
+    "itemSource": "normal_85",
+    "gearSource": "rift_new_1_32"
+  },
+  "suggestion": {
+    "summary": {
+      "recommendation": "cautious_continue",
+      "next_check_at": 6,
+      "target_profile": "速度潜力",
+      "reasons": [
+        "轻量预测保留，待 +6 精确复核",
+        "预期重铸有效分 77.2，预期速度 13.0，跨档概率 0.9942"
+      ]
+    },
+    "debug": {
+      "strategy_version": "baili-formal-dp-v1",
+      "default_strategy": {
+        "item_source": "normal_85",
+        "rank": "Epic",
+        "gear_source": "rift_new_1_32",
+        "policy_name": "normal_epic_dp_assisted",
+        "enable_dp_assist": true,
+        "configured_enable_dp_assist": true
+      },
+      "dp_assist": {
+        "enabled": true,
+        "checkpoint": 3,
+        "baseline_recommendation": "uncertain",
+        "baseline_continue": false,
+        "baseline_policy": "normal_epic_dp_assisted",
+        "dp_decision": "defer_to_plus6",
+        "dp_expected_utility": null,
+        "dp_continue_utility": null,
+        "dp_utility_gap": null,
+        "dp_expected_formal_baili_score": null,
+        "dp_expected_terminal_value": 26.0,
+        "dp_expected_final_speed": 13.0,
+        "dp_expected_speed_rolls": 3.0,
+        "dp_speed_potential_set_eligible": true,
+        "dp_speed_potential_threshold_blocked_probability": 0.0,
+        "dp_expected_speed_potential_value": 26.0,
+        "dp_expected_incremental_stamina": null,
+        "dp_best_target_category": "速度潜力",
+        "dp_best_source_row": null,
+        "overrode_baseline": false,
+        "reason": "预期重铸有效分 77.2，预期速度 13.0，跨档概率 0.9942",
+        "decision_mode": "lightweight_prediction",
+        "lightweight_basis": {
+          "expected_final_reforge_score": 77.2,
+          "expected_final_target_score": 12.4,
+          "expected_final_speed": 13.0,
+          "expected_speed_rolls": 3.0,
+          "remaining_hits": 4,
+          "speed_threshold_probability": 1.0,
+          "speed_potential_value": 26.0,
+          "formal_cross_tier_probability": 0.9942,
+          "valid_substat_count": 4
+        }
+      },
+      "official_score": 48.8,
+      "official_parts": {
+        "initial": 5.0,
+        "enhance": 3.8,
+        "reforge_main": 0.0,
+        "substats": 40.0
+      },
+      "effective_score": 40.0,
+      "baili_score": 0,
+      "target_score": 0,
+      "target_score_source_row": "-",
+      "target_score_formula": "未命中套装属性与装等计算表",
+      "rating_level": "3 观察",
+      "rating_semantics": "current_static",
+      "fit_status": "有效但未入体系",
+      "valid_substats": [
+        "速度 8",
+        "暴率 5%",
+        "爆伤 7%",
+        "攻击% 8%"
+      ],
+      "invalid_substats": [],
+      "roll_hit_analysis": [
+        {
+          "enhance": null,
+          "stat": "速度",
+          "value": null,
+          "valid": true,
+          "inferred": true,
+          "hit_count": 1
+        }
+      ],
+      "ocr_raw_result": null
+    }
+  },
+  "summary_view": {
+    "recommendation": "cautious_continue",
+    "recommendation_label": "谨慎继续",
+    "next_check_at": 6,
+    "target_profile": "速度潜力",
+    "reasons": [
+      "轻量预测保留，待 +6 精确复核",
+      "预期重铸有效分 77.2，预期速度 13.0，跨档概率 0.9942"
+    ]
+  },
+  "debug_view": {
+    "official_score": 48.8,
+    "effective_score": 40.0,
+    "strategy_version": "baili-formal-dp-v1",
+    "strategy_name": "normal_epic_dp_assisted",
+    "enable_dp_assist": true,
+    "baseline_recommendation": "uncertain",
+    "decision_mode": "轻量预测（+0/+3）：+0/+3 使用单件轻量预测；+6 后按实际强化分支进行精确 DP。",
+    "dp_decision": "defer_to_plus6",
+    "dp_utility": null,
+    "dp_expected_terminal_value": 26.0,
+    "dp_expected_final_speed": 13.0,
+    "dp_expected_speed_rolls": 3.0,
+    "dp_speed_potential_set_eligible": true,
+    "dp_speed_potential_threshold_blocked_probability": 0.0,
+    "dp_expected_speed_potential_value": 26.0,
+    "dp_continue_utility": null,
+    "dp_best_target_category": "速度潜力",
+    "dp_best_source_row": null,
+    "dp_override_applied": false,
+    "lightweight_basis": {
+      "expected_final_reforge_score": 77.2,
+      "expected_final_target_score": 12.4,
+      "expected_final_speed": 13.0,
+      "expected_speed_rolls": 3.0,
+      "remaining_hits": 4,
+      "speed_threshold_probability": 1.0,
+      "speed_potential_value": 26.0,
+      "formal_cross_tier_probability": 0.9942,
+      "valid_substat_count": 4
+    },
+    "baili_score": 0,
+    "target_score": 0,
+    "rating_level": "3 观察",
+    "rating_semantics": "current_static",
+    "fit_status": "有效但未入体系",
+    "valid_substats": [
+      "速度 8",
+      "暴率 5%",
+      "爆伤 7%",
+      "攻击% 8%"
+    ],
+    "invalid_substats": [],
+    "roll_hit_analysis": [
+      {
+        "enhance": null,
+        "stat": "速度",
+        "value": null,
+        "valid": true,
+        "inferred": true,
+        "hit_count": 1
+      }
+    ]
+  },
+  "manual_review": {
+    "工具建议": "谨慎继续",
+    "人工判断": "必须继续",
+    "是否一致": "",
+    "分歧原因": "与样本预期不一致，这种极品胚子应该果断继续但是和预期似乎没有区别，+0/3是否都使用谨慎继续
+    ",
+    "备注": ""
+  }
+}

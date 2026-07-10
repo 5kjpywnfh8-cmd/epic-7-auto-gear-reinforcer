@@ -1,0 +1,121 @@
+﻿{
+  "calibration_runs": 1000,
+  "gear_source": "rift_new_1_32",
+  "item_source": "normal_85",
+  "rank": "Epic",
+  "workers": 1,
+  "candidate_policy_count": 44,
+  "strategy_families": [
+    "+6 收紧",
+    "+9/+12 严格",
+    "均衡",
+    "早期宽松",
+    "网格搜索",
+    "转换友好"
+  ],
+  "best_policy": "score_target_high_speed_low",
+  "ranking_metric": "cost_per_target_score",
+  "success_definition": {
+    "source": "套装属性与装等计算表.md",
+    "conversion_cost_counted": false
+  },
+  "policies": [
+    {
+      "policy_name": "score_target_high_speed_low",
+      "policy_family": "网格搜索",
+      "thresholds": {
+        "expected_final_target_score_min": {
+          "0": 0,
+          "3": 1,
+          "6": 2,
+          "9": 5,
+          "12": 8
+        },
+        "expected_final_reforge_score_min": {
+          "0": 0,
+          "3": 1,
+          "6": 2,
+          "9": 5,
+          "12": 8
+        },
+        "expected_final_reforge_speed_min": {
+          "0": 13,
+          "3": 15,
+          "6": 17,
+          "9": 19,
+          "12": 20
+        },
+        "valid_count_min": {
+          "0": 2,
+          "3": 2,
+          "6": 3,
+          "9": 3,
+          "12": 3
+        },
+        "conversion_friendly": true
+      },
+      "success_rate": 0.001,
+      "final_success_rate": 0.001,
+      "native_success_rate": 0.001,
+      "rescued_success_rate": 0.0,
+      "cost_per_success": 36535.0,
+      "cost_per_final_success": 36535.0,
+      "cost_per_native_success": 36535.0,
+      "cost_per_rescued_success": null,
+      "total_baili_score": 15.6,
+      "total_native_baili_score": 15.6,
+      "native_target_score": 15.6,
+      "rescued_target_score": 0.0,
+      "target_score": 15.6,
+      "target_score_per_1000_stamina": 0.4,
+      "cost_per_target_score": 2342.0,
+      "baili_score_per_1000_stamina": 0.4,
+      "cost_per_baili_score": 2342.0,
+      "cost_per_native_baili_score": 2342.0,
+      "avg_success_baili_score": 15.6,
+      "rescued_converted_effective_score": 0.0,
+      "final_converted_effective_score": 72.8,
+      "converted_effective_score_per_1000_stamina": 2.0,
+      "cost_per_converted_effective_score": 501.9,
+      "final_value": 15.6,
+      "final_value_per_1000_stamina": 0.4,
+      "cost_per_final_value": 2342.0,
+      "final_score": 72.8,
+      "final_score_per_1000_stamina": 2.0,
+      "cost_per_final_score": 501.9,
+      "baili_tier_rate": {
+        "0": 0.999,
+        "1": 0.0,
+        "2": 0.001,
+        "3": 0.0
+      },
+      "target_score_by_category": {
+        "命坦": 15.6
+      },
+      "target_score_share_by_category": {
+        "命坦": 1.0
+      },
+      "success_count_by_category": {
+        "命坦": 1
+      },
+      "total_stamina_avg": 36.5,
+      "gear_acquisition_stamina_avg": 13.6,
+      "upgrade_stamina_avg": 60.9,
+      "sell_recovery_avg": 38.0,
+      "stop_rate_by_checkpoint": {
+        "0": 0.278,
+        "3": 0.719,
+        "6": 0.001,
+        "9": 0.001,
+        "12": 0.0,
+        "15": 0.001
+      },
+      "expected_reforge_score_avg": 16.2,
+      "expected_reforge_speed_avg": 1.6,
+      "speed_target_rate": 0.0,
+      "conversion_needed_rate": 0.0,
+      "valid_hit_rate": 0.6612,
+      "invalid_hit_rate": 0.3388
+    }
+  ]
+}

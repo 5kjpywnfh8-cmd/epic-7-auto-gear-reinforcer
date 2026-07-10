@@ -1,0 +1,1274 @@
+{
+  "calibration_runs": 100000,
+  "seed": 17,
+  "gear_source": "rift_new_1_32",
+  "item_source": "normal_85",
+  "rank": "Heroic",
+  "workers": 4,
+  "enable_dp_assist": true,
+  "dp_utility_margin": 0.1,
+  "route_solver_sample_limit": null,
+  "candidate_policy_count": 3,
+  "strategy_families": [
+    "DP assisted",
+    "旧target边际对照",
+    "百里边际收益"
+  ],
+  "best_policy": "normal_heroic_dp_assisted",
+  "ranking_metric": "cost_per_baili_score",
+  "success_definition": {
+    "source": "套装属性与装等计算表.md",
+    "main_score_scope": "R2-R58 formal baili score; R61 future is auxiliary only",
+    "conversion_cost_counted": false
+  },
+  "policies": [
+    {
+      "policy_name": "normal_heroic_dp_assisted",
+      "policy_family": "DP assisted",
+      "thresholds": {
+        "expected_final_target_score_min": {
+          "0": 0,
+          "3": 0,
+          "6": 0,
+          "9": 0,
+          "12": 0
+        },
+        "expected_final_reforge_score_min": {
+          "0": 0,
+          "3": 0,
+          "6": 0,
+          "9": 0,
+          "12": 0
+        },
+        "expected_final_reforge_speed_min": {
+          "0": 0,
+          "3": 0,
+          "6": 0,
+          "9": 0,
+          "12": 0
+        },
+        "valid_count_min": {
+          "0": 1,
+          "3": 1,
+          "6": 1,
+          "9": 1,
+          "12": 1
+        },
+        "conversion_friendly": true,
+        "decision_mode": "dp_assisted",
+        "min_marginal_value_per_stamina": {},
+        "marginal_score_scope": "formal_baili",
+        "marginal_variant": "global",
+        "base_policy_name": "baili_marginal_low",
+        "dp_lambda_value": 4.3784830832927596e-05,
+        "dp_utility_margin": 0.1,
+        "dp_conversion_cost": 0.0,
+        "dp_checkpoints": [
+          9,
+          12
+        ]
+      },
+      "success_rate": 0.0006,
+      "final_success_rate": 0.0006,
+      "native_success_rate": 0.0001,
+      "rescued_success_rate": 0.0005,
+      "cost_per_success": 18242.6,
+      "cost_per_final_success": 18242.6,
+      "cost_per_native_success": 92733.4,
+      "cost_per_rescued_success": 22710.2,
+      "total_baili_score": 223.5,
+      "total_native_baili_score": 51.7,
+      "native_target_score": 51.7,
+      "rescued_target_score": 171.8,
+      "target_score": 223.5,
+      "target_score_per_1000_stamina": 0.2,
+      "cost_per_target_score": 4979.0,
+      "baili_score_per_1000_stamina": 0.2,
+      "cost_per_baili_score": 4979.0,
+      "cost_per_native_baili_score": 21524.2,
+      "avg_success_baili_score": 3.7,
+      "rescued_converted_effective_score": 3191.2,
+      "final_converted_effective_score": 3996.8,
+      "converted_effective_score_per_1000_stamina": 3.6,
+      "cost_per_converted_effective_score": 278.4,
+      "final_value": 3242.9,
+      "final_value_per_1000_stamina": 2.9,
+      "cost_per_final_value": 343.2,
+      "final_score": 3996.8,
+      "final_score_per_1000_stamina": 3.6,
+      "cost_per_final_score": 278.4,
+      "baili_tier_rate": {
+        "0": 0.9999,
+        "1": 0.0001,
+        "2": 0.0,
+        "3": 0.0
+      },
+      "target_score_by_category": {
+        "一速": 5.0,
+        "半肉(白字)": 10.2,
+        "半肉(血防)": 17.4,
+        "命坦": 42.7,
+        "抗坦": 31.2,
+        "纯肉": 56.8,
+        "输出": 60.2
+      },
+      "target_score_share_by_category": {
+        "一速": 0.0224,
+        "半肉(白字)": 0.0456,
+        "半肉(血防)": 0.0779,
+        "命坦": 0.1911,
+        "抗坦": 0.1396,
+        "纯肉": 0.2541,
+        "输出": 0.2694
+      },
+      "success_count_by_category": {
+        "一速": 1,
+        "半肉(白字)": 3,
+        "半肉(血防)": 6,
+        "命坦": 13,
+        "抗坦": 10,
+        "纯肉": 12,
+        "输出": 16
+      },
+      "baili_score_by_set": {
+        "set_acc": 2.5,
+        "set_chase": 22.6,
+        "set_counter": 17.2,
+        "set_cri": 4.2,
+        "set_cri_dmg": 4.8,
+        "set_def": 3.5,
+        "set_immune": 33.2,
+        "set_max_hp": 29.9,
+        "set_opener": 18.0,
+        "set_penetrate": 16.8,
+        "set_rage": 5.1,
+        "set_revenant": 4.5,
+        "set_riposte": 12.1,
+        "set_scar": 1.8,
+        "set_shield": 6.1,
+        "set_speed": 40.1,
+        "set_torrent": 1.1
+      },
+      "cost_per_baili_score_by_set": {
+        "set_acc": 13762.0,
+        "set_chase": 3237.7,
+        "set_counter": 3630.5,
+        "set_cri": 8994.4,
+        "set_cri_dmg": 9546.4,
+        "set_debuff": null,
+        "set_def": 16212.2,
+        "set_immune": 3220.3,
+        "set_max_hp": 2928.5,
+        "set_opener": 3603.4,
+        "set_penetrate": 3071.0,
+        "set_rage": 9950.3,
+        "set_res": null,
+        "set_revenant": 11771.5,
+        "set_riposte": 3938.8,
+        "set_scar": 17240.0,
+        "set_shield": 9582.0,
+        "set_speed": 2483.3,
+        "set_torrent": 42004.7,
+        "set_vampire": null
+      },
+      "success_count_by_set": {
+        "set_acc": 1,
+        "set_chase": 9,
+        "set_counter": 5,
+        "set_cri": 2,
+        "set_cri_dmg": 1,
+        "set_def": 2,
+        "set_immune": 6,
+        "set_max_hp": 6,
+        "set_opener": 4,
+        "set_penetrate": 3,
+        "set_rage": 2,
+        "set_revenant": 2,
+        "set_riposte": 3,
+        "set_scar": 1,
+        "set_shield": 2,
+        "set_speed": 11,
+        "set_torrent": 1
+      },
+      "stop_rate_by_set": {
+        "set_acc": {
+          "0": 0.996,
+          "12": 0.0,
+          "15": 0.0004,
+          "3": 0.0012,
+          "6": 0.002,
+          "9": 0.0004
+        },
+        "set_chase": {
+          "0": 0.9872,
+          "12": 0.0002,
+          "15": 0.003,
+          "3": 0.0043,
+          "6": 0.0034,
+          "9": 0.0018
+        },
+        "set_counter": {
+          "0": 0.984,
+          "12": 0.001,
+          "15": 0.0016,
+          "3": 0.0034,
+          "6": 0.0068,
+          "9": 0.0032
+        },
+        "set_cri": {
+          "0": 0.9962,
+          "12": 0.0,
+          "15": 0.0006,
+          "3": 0.0008,
+          "6": 0.0018,
+          "9": 0.0006
+        },
+        "set_cri_dmg": {
+          "0": 0.9863,
+          "12": 0.0,
+          "15": 0.0008,
+          "3": 0.0034,
+          "6": 0.0046,
+          "9": 0.0048
+        },
+        "set_debuff": {
+          "0": 0.9974,
+          "12": 0.0002,
+          "15": 0.0008,
+          "3": 0.0008,
+          "6": 0.0006,
+          "9": 0.0002
+        },
+        "set_def": {
+          "0": 0.981,
+          "12": 0.0012,
+          "15": 0.001,
+          "3": 0.0056,
+          "6": 0.0052,
+          "9": 0.006
+        },
+        "set_immune": {
+          "0": 0.9626,
+          "12": 0.004,
+          "15": 0.0036,
+          "3": 0.0074,
+          "6": 0.0135,
+          "9": 0.0088
+        },
+        "set_max_hp": {
+          "0": 0.975,
+          "12": 0.0014,
+          "15": 0.0032,
+          "3": 0.0034,
+          "6": 0.0101,
+          "9": 0.0069
+        },
+        "set_opener": {
+          "0": 0.978,
+          "12": 0.0006,
+          "15": 0.0016,
+          "3": 0.0032,
+          "6": 0.0109,
+          "9": 0.0057
+        },
+        "set_penetrate": {
+          "0": 0.9884,
+          "12": 0.0002,
+          "15": 0.0012,
+          "3": 0.0018,
+          "6": 0.0048,
+          "9": 0.0036
+        },
+        "set_rage": {
+          "0": 0.9837,
+          "12": 0.0004,
+          "15": 0.0006,
+          "3": 0.0041,
+          "6": 0.0052,
+          "9": 0.006
+        },
+        "set_res": {
+          "0": 0.9953,
+          "12": 0.0004,
+          "15": 0.001,
+          "3": 0.0012,
+          "6": 0.0012,
+          "9": 0.0008
+        },
+        "set_revenant": {
+          "0": 0.9875,
+          "12": 0.0004,
+          "15": 0.0016,
+          "3": 0.0038,
+          "6": 0.0044,
+          "9": 0.0024
+        },
+        "set_riposte": {
+          "0": 0.9891,
+          "12": 0.0006,
+          "15": 0.0006,
+          "3": 0.0024,
+          "6": 0.0038,
+          "9": 0.0036
+        },
+        "set_scar": {
+          "0": 0.9984,
+          "12": 0.0,
+          "15": 0.0002,
+          "3": 0.0006,
+          "6": 0.0008,
+          "9": 0.0
+        },
+        "set_shield": {
+          "0": 0.9837,
+          "12": 0.0022,
+          "15": 0.001,
+          "3": 0.0026,
+          "6": 0.0062,
+          "9": 0.0042
+        },
+        "set_speed": {
+          "0": 0.9662,
+          "12": 0.0012,
+          "15": 0.0032,
+          "3": 0.0068,
+          "6": 0.0139,
+          "9": 0.0087
+        },
+        "set_torrent": {
+          "0": 0.9876,
+          "12": 0.0006,
+          "15": 0.0008,
+          "3": 0.0028,
+          "6": 0.0052,
+          "9": 0.003
+        },
+        "set_vampire": {
+          "0": 0.9976,
+          "12": 0.0002,
+          "15": 0.0,
+          "3": 0.0006,
+          "6": 0.0014,
+          "9": 0.0002
+        }
+      },
+      "category_by_set_matrix": {
+        "set_acc": {
+          "命坦": 2.5
+        },
+        "set_chase": {
+          "一速": 5.0,
+          "半肉(白字)": 6.2,
+          "半肉(血防)": 2.6,
+          "命坦": 3.8,
+          "抗坦": 5.0
+        },
+        "set_counter": {
+          "半肉(血防)": 2.3,
+          "抗坦": 2.8,
+          "输出": 12.1
+        },
+        "set_cri": {
+          "输出": 4.2
+        },
+        "set_cri_dmg": {
+          "输出": 4.8
+        },
+        "set_def": {
+          "命坦": 3.5
+        },
+        "set_immune": {
+          "半肉(血防)": 3.0,
+          "命坦": 14.3,
+          "抗坦": 4.3,
+          "纯肉": 4.9,
+          "输出": 6.7
+        },
+        "set_max_hp": {
+          "命坦": 6.5,
+          "抗坦": 1.0,
+          "纯肉": 22.4
+        },
+        "set_opener": {
+          "半肉(白字)": 4.0,
+          "抗坦": 9.0,
+          "纯肉": 5.0
+        },
+        "set_penetrate": {
+          "半肉(血防)": 4.7,
+          "输出": 12.1
+        },
+        "set_rage": {
+          "输出": 5.1
+        },
+        "set_revenant": {
+          "抗坦": 2.5,
+          "纯肉": 2.0
+        },
+        "set_riposte": {
+          "输出": 12.1
+        },
+        "set_scar": {
+          "半肉(血防)": 1.8
+        },
+        "set_shield": {
+          "抗坦": 4.1,
+          "纯肉": 2.0
+        },
+        "set_speed": {
+          "半肉(血防)": 3.0,
+          "命坦": 12.1,
+          "抗坦": 2.5,
+          "纯肉": 20.5,
+          "输出": 2.0
+        },
+        "set_torrent": {
+          "输出": 1.1
+        }
+      },
+      "conversion_needed_count": 50,
+      "conversion_target_stat_distribution": {
+        "atkFlat": 1,
+        "atkPct": 13,
+        "cdmg": 1,
+        "crit": 1,
+        "defFlat": 8,
+        "defPct": 17,
+        "hpFlat": 3,
+        "hpPct": 6
+      },
+      "conversion_cost": [
+        0,
+        200,
+        500,
+        1000
+      ],
+      "native_baili_efficiency": {
+        "baili_score_per_1000_stamina": 0.0,
+        "cost_per_baili_score": 21524.2
+      },
+      "rescued_baili_efficiency_without_conversion_cost": {
+        "baili_score_per_1000_stamina": 0.2,
+        "cost_per_baili_score": 4979.0
+      },
+      "rescued_baili_efficiency_with_configured_conversion_cost": {
+        "0": {
+          "baili_score_per_1000_stamina": 0.2,
+          "cost_per_baili_score": 4979.0
+        },
+        "200": {
+          "baili_score_per_1000_stamina": 0.2,
+          "cost_per_baili_score": 5023.7
+        },
+        "500": {
+          "baili_score_per_1000_stamina": 0.2,
+          "cost_per_baili_score": 5090.8
+        },
+        "1000": {
+          "baili_score_per_1000_stamina": 0.2,
+          "cost_per_baili_score": 5202.7
+        }
+      },
+      "total_stamina_avg": 11.1,
+      "gear_acquisition_stamina_avg": 5.5,
+      "upgrade_stamina_avg": 9.7,
+      "sell_recovery_avg": 4.1,
+      "stop_rate_by_checkpoint": {
+        "0": 0.9861,
+        "3": 0.003,
+        "6": 0.0053,
+        "9": 0.0036,
+        "12": 0.0007,
+        "15": 0.0013
+      },
+      "expected_reforge_score_avg": 10.0,
+      "expected_reforge_speed_avg": 1.0,
+      "speed_target_rate": 0.0,
+      "conversion_needed_rate": 0.0005,
+      "marginal_value_per_stamina_avg": 4e-06,
+      "marginal_expected_gain_avg": 0.001384,
+      "marginal_cross_tier_probability_avg": 0.0024,
+      "valid_hit_rate": 0.8834,
+      "invalid_hit_rate": 0.1166,
+      "dp_call_count": 772,
+      "dp_covered_checkpoints": {
+        "12": 208,
+        "9": 564
+      },
+      "dp_changed_decision_count": 213,
+      "dp_changed_decision_rate": 0.2759,
+      "dp_changed_to_continue_count": 213,
+      "dp_changed_to_stop_count": 0,
+      "dp_policy_continue_dp_stop_count": 12,
+      "dp_policy_stop_dp_continue_count": 267,
+      "dp_utility_gap_avg_when_changed": 0.966185,
+      "dp_continue_utility_avg": 0.516082
+    },
+    {
+      "policy_name": "baili_marginal_low",
+      "policy_family": "百里边际收益",
+      "thresholds": {
+        "expected_final_target_score_min": {
+          "0": 0,
+          "3": 0,
+          "6": 0,
+          "9": 0,
+          "12": 0
+        },
+        "expected_final_reforge_score_min": {
+          "0": 0,
+          "3": 0,
+          "6": 0,
+          "9": 0,
+          "12": 0
+        },
+        "expected_final_reforge_speed_min": {
+          "0": 0,
+          "3": 0,
+          "6": 0,
+          "9": 0,
+          "12": 0
+        },
+        "valid_count_min": {
+          "0": 1,
+          "3": 1,
+          "6": 1,
+          "9": 1,
+          "12": 1
+        },
+        "conversion_friendly": true,
+        "decision_mode": "marginal",
+        "min_marginal_value_per_stamina": {
+          "0": 0.0008,
+          "3": 0.001,
+          "6": 0.0012,
+          "9": 0.0018,
+          "12": 0.0024
+        },
+        "marginal_score_scope": "formal_baili",
+        "marginal_variant": "global",
+        "base_policy_name": null,
+        "dp_lambda_value": null,
+        "dp_utility_margin": 0.1,
+        "dp_conversion_cost": 0.0,
+        "dp_checkpoints": [
+          9,
+          12
+        ]
+      },
+      "success_rate": 0.0001,
+      "final_success_rate": 0.0001,
+      "native_success_rate": 0.0,
+      "rescued_success_rate": 0.0,
+      "cost_per_success": 123616.3,
+      "cost_per_final_success": 123616.3,
+      "cost_per_native_success": 216328.5,
+      "cost_per_rescued_success": 288438.0,
+      "total_baili_score": 51.2,
+      "total_native_baili_score": 28.0,
+      "native_target_score": 28.0,
+      "rescued_target_score": 23.2,
+      "target_score": 51.2,
+      "target_score_per_1000_stamina": 0.1,
+      "cost_per_target_score": 16900.7,
+      "baili_score_per_1000_stamina": 0.1,
+      "cost_per_baili_score": 16900.7,
+      "cost_per_native_baili_score": 30904.1,
+      "avg_success_baili_score": 7.3,
+      "rescued_converted_effective_score": 206.0,
+      "final_converted_effective_score": 474.6,
+      "converted_effective_score_per_1000_stamina": 0.5,
+      "cost_per_converted_effective_score": 1823.2,
+      "final_value": 234.0,
+      "final_value_per_1000_stamina": 0.3,
+      "cost_per_final_value": 3697.9,
+      "final_score": 474.6,
+      "final_score_per_1000_stamina": 0.5,
+      "cost_per_final_score": 1823.2,
+      "baili_tier_rate": {
+        "0": 1.0,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0
+      },
+      "target_score_by_category": {
+        "命坦": 10.0,
+        "抗坦": 8.0,
+        "纯肉": 18.0,
+        "输出": 15.2
+      },
+      "target_score_share_by_category": {
+        "命坦": 0.1953,
+        "抗坦": 0.1563,
+        "纯肉": 0.3516,
+        "输出": 0.2969
+      },
+      "success_count_by_category": {
+        "命坦": 1,
+        "抗坦": 1,
+        "纯肉": 2,
+        "输出": 3
+      },
+      "baili_score_by_set": {
+        "set_immune": 16.7,
+        "set_max_hp": 10.6,
+        "set_opener": 8.0,
+        "set_penetrate": 6.5,
+        "set_speed": 9.4
+      },
+      "cost_per_baili_score_by_set": {
+        "set_acc": null,
+        "set_chase": null,
+        "set_counter": null,
+        "set_cri": null,
+        "set_cri_dmg": null,
+        "set_debuff": null,
+        "set_def": null,
+        "set_immune": 4745.5,
+        "set_max_hp": 5757.9,
+        "set_opener": 6377.1,
+        "set_penetrate": 6499.5,
+        "set_rage": null,
+        "set_res": null,
+        "set_revenant": null,
+        "set_riposte": null,
+        "set_scar": null,
+        "set_shield": null,
+        "set_speed": 7447.5,
+        "set_torrent": null,
+        "set_vampire": null
+      },
+      "success_count_by_set": {
+        "set_immune": 2,
+        "set_max_hp": 1,
+        "set_opener": 1,
+        "set_penetrate": 1,
+        "set_speed": 2
+      },
+      "stop_rate_by_set": {
+        "set_acc": {
+          "0": 0.996,
+          "12": 0.0004,
+          "15": 0.0,
+          "3": 0.0012,
+          "6": 0.002,
+          "9": 0.0004
+        },
+        "set_chase": {
+          "0": 0.9872,
+          "12": 0.0016,
+          "15": 0.0,
+          "3": 0.0043,
+          "6": 0.0034,
+          "9": 0.0034
+        },
+        "set_counter": {
+          "0": 0.984,
+          "12": 0.0014,
+          "15": 0.0,
+          "3": 0.0034,
+          "6": 0.0068,
+          "9": 0.0044
+        },
+        "set_cri": {
+          "0": 0.9962,
+          "12": 0.0004,
+          "15": 0.0,
+          "3": 0.0008,
+          "6": 0.0018,
+          "9": 0.0008
+        },
+        "set_cri_dmg": {
+          "0": 0.9863,
+          "12": 0.0004,
+          "15": 0.0,
+          "3": 0.0034,
+          "6": 0.0046,
+          "9": 0.0052
+        },
+        "set_debuff": {
+          "0": 0.9974,
+          "12": 0.0,
+          "15": 0.0,
+          "3": 0.0008,
+          "6": 0.0006,
+          "9": 0.0012
+        },
+        "set_def": {
+          "0": 0.981,
+          "12": 0.002,
+          "15": 0.0,
+          "3": 0.0056,
+          "6": 0.0052,
+          "9": 0.0062
+        },
+        "set_immune": {
+          "0": 0.9626,
+          "12": 0.0048,
+          "15": 0.0004,
+          "3": 0.0074,
+          "6": 0.0135,
+          "9": 0.0112
+        },
+        "set_max_hp": {
+          "0": 0.975,
+          "12": 0.0026,
+          "15": 0.0002,
+          "3": 0.0034,
+          "6": 0.0101,
+          "9": 0.0087
+        },
+        "set_opener": {
+          "0": 0.978,
+          "12": 0.001,
+          "15": 0.0002,
+          "3": 0.0032,
+          "6": 0.0109,
+          "9": 0.0067
+        },
+        "set_penetrate": {
+          "0": 0.9884,
+          "12": 0.0006,
+          "15": 0.0002,
+          "3": 0.0018,
+          "6": 0.0048,
+          "9": 0.0042
+        },
+        "set_rage": {
+          "0": 0.9837,
+          "12": 0.0008,
+          "15": 0.0,
+          "3": 0.0041,
+          "6": 0.0052,
+          "9": 0.0062
+        },
+        "set_res": {
+          "0": 0.9953,
+          "12": 0.0004,
+          "15": 0.0,
+          "3": 0.0012,
+          "6": 0.0012,
+          "9": 0.0018
+        },
+        "set_revenant": {
+          "0": 0.9875,
+          "12": 0.0012,
+          "15": 0.0,
+          "3": 0.0038,
+          "6": 0.0044,
+          "9": 0.0032
+        },
+        "set_riposte": {
+          "0": 0.9891,
+          "12": 0.0008,
+          "15": 0.0,
+          "3": 0.0024,
+          "6": 0.0038,
+          "9": 0.004
+        },
+        "set_scar": {
+          "0": 0.9984,
+          "12": 0.0,
+          "15": 0.0,
+          "3": 0.0006,
+          "6": 0.0008,
+          "9": 0.0002
+        },
+        "set_shield": {
+          "0": 0.9837,
+          "12": 0.0008,
+          "15": 0.0,
+          "3": 0.0026,
+          "6": 0.0062,
+          "9": 0.0066
+        },
+        "set_speed": {
+          "0": 0.9662,
+          "12": 0.0024,
+          "15": 0.0006,
+          "3": 0.0068,
+          "6": 0.0139,
+          "9": 0.0101
+        },
+        "set_torrent": {
+          "0": 0.9876,
+          "12": 0.001,
+          "15": 0.0,
+          "3": 0.0028,
+          "6": 0.0052,
+          "9": 0.0034
+        },
+        "set_vampire": {
+          "0": 0.9976,
+          "12": 0.0,
+          "15": 0.0,
+          "3": 0.0006,
+          "6": 0.0014,
+          "9": 0.0004
+        }
+      },
+      "category_by_set_matrix": {
+        "set_immune": {
+          "命坦": 10.0,
+          "输出": 6.7
+        },
+        "set_max_hp": {
+          "纯肉": 10.6
+        },
+        "set_opener": {
+          "抗坦": 8.0
+        },
+        "set_penetrate": {
+          "输出": 6.5
+        },
+        "set_speed": {
+          "纯肉": 7.4,
+          "输出": 2.0
+        }
+      },
+      "conversion_needed_count": 3,
+      "conversion_target_stat_distribution": {
+        "atkPct": 2,
+        "defPct": 1
+      },
+      "conversion_cost": [
+        0,
+        200,
+        500,
+        1000
+      ],
+      "native_baili_efficiency": {
+        "baili_score_per_1000_stamina": 0.0,
+        "cost_per_baili_score": 30904.1
+      },
+      "rescued_baili_efficiency_without_conversion_cost": {
+        "baili_score_per_1000_stamina": 0.1,
+        "cost_per_baili_score": 16900.7
+      },
+      "rescued_baili_efficiency_with_configured_conversion_cost": {
+        "0": {
+          "baili_score_per_1000_stamina": 0.1,
+          "cost_per_baili_score": 16900.7
+        },
+        "200": {
+          "baili_score_per_1000_stamina": 0.1,
+          "cost_per_baili_score": 16912.4
+        },
+        "500": {
+          "baili_score_per_1000_stamina": 0.1,
+          "cost_per_baili_score": 16930.0
+        },
+        "1000": {
+          "baili_score_per_1000_stamina": 0.1,
+          "cost_per_baili_score": 16959.3
+        }
+      },
+      "total_stamina_avg": 8.7,
+      "gear_acquisition_stamina_avg": 5.5,
+      "upgrade_stamina_avg": 6.8,
+      "sell_recovery_avg": 3.6,
+      "stop_rate_by_checkpoint": {
+        "0": 0.9861,
+        "3": 0.003,
+        "6": 0.0053,
+        "9": 0.0044,
+        "12": 0.0011,
+        "15": 0.0001
+      },
+      "expected_reforge_score_avg": 10.0,
+      "expected_reforge_speed_avg": 1.0,
+      "speed_target_rate": 0.0,
+      "conversion_needed_rate": 0.0,
+      "marginal_value_per_stamina_avg": 5e-06,
+      "marginal_expected_gain_avg": 0.002237,
+      "marginal_cross_tier_probability_avg": 0.0029,
+      "valid_hit_rate": 0.9089,
+      "invalid_hit_rate": 0.0911,
+      "dp_call_count": 0,
+      "dp_covered_checkpoints": {},
+      "dp_changed_decision_count": 0,
+      "dp_changed_decision_rate": 0.0,
+      "dp_changed_to_continue_count": 0,
+      "dp_changed_to_stop_count": 0,
+      "dp_policy_continue_dp_stop_count": 0,
+      "dp_policy_stop_dp_continue_count": 0,
+      "dp_utility_gap_avg_when_changed": 0.0,
+      "dp_continue_utility_avg": 0.0
+    },
+    {
+      "policy_name": "target_marginal_mid",
+      "policy_family": "旧target边际对照",
+      "thresholds": {
+        "expected_final_target_score_min": {
+          "0": 0,
+          "3": 0,
+          "6": 0,
+          "9": 0,
+          "12": 0
+        },
+        "expected_final_reforge_score_min": {
+          "0": 0,
+          "3": 0,
+          "6": 0,
+          "9": 0,
+          "12": 0
+        },
+        "expected_final_reforge_speed_min": {
+          "0": 0,
+          "3": 0,
+          "6": 0,
+          "9": 0,
+          "12": 0
+        },
+        "valid_count_min": {
+          "0": 1,
+          "3": 1,
+          "6": 1,
+          "9": 1,
+          "12": 1
+        },
+        "conversion_friendly": true,
+        "decision_mode": "marginal",
+        "min_marginal_value_per_stamina": {
+          "0": 0.0012,
+          "3": 0.0015,
+          "6": 0.0018,
+          "9": 0.0026,
+          "12": 0.0034
+        },
+        "marginal_score_scope": "target_with_future",
+        "marginal_variant": "global",
+        "base_policy_name": null,
+        "dp_lambda_value": null,
+        "dp_utility_margin": 0.1,
+        "dp_conversion_cost": 0.0,
+        "dp_checkpoints": [
+          9,
+          12
+        ]
+      },
+      "success_rate": 0.0,
+      "final_success_rate": 0.0,
+      "native_success_rate": 0.0,
+      "rescued_success_rate": 0.0,
+      "cost_per_success": 252843.6,
+      "cost_per_final_success": 252843.6,
+      "cost_per_native_success": 379265.4,
+      "cost_per_rescued_success": 758530.8,
+      "total_baili_score": 25.3,
+      "total_native_baili_score": 18.6,
+      "native_target_score": 18.6,
+      "rescued_target_score": 6.7,
+      "target_score": 25.3,
+      "target_score_per_1000_stamina": 0.0,
+      "cost_per_target_score": 29981.5,
+      "baili_score_per_1000_stamina": 0.0,
+      "cost_per_baili_score": 29981.5,
+      "cost_per_native_baili_score": 40781.2,
+      "avg_success_baili_score": 8.4,
+      "rescued_converted_effective_score": 68.1,
+      "final_converted_effective_score": 204.4,
+      "converted_effective_score_per_1000_stamina": 0.3,
+      "cost_per_converted_effective_score": 3711.0,
+      "final_value": 86.7,
+      "final_value_per_1000_stamina": 0.1,
+      "cost_per_final_value": 8748.9,
+      "final_score": 204.4,
+      "final_score_per_1000_stamina": 0.3,
+      "cost_per_final_score": 3711.0,
+      "baili_tier_rate": {
+        "0": 1.0,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0
+      },
+      "target_score_by_category": {
+        "抗坦": 8.0,
+        "纯肉": 10.6,
+        "输出": 6.7
+      },
+      "target_score_share_by_category": {
+        "抗坦": 0.3162,
+        "纯肉": 0.419,
+        "输出": 0.2648
+      },
+      "success_count_by_category": {
+        "抗坦": 1,
+        "纯肉": 1,
+        "输出": 1
+      },
+      "baili_score_by_set": {
+        "set_immune": 6.7,
+        "set_max_hp": 10.6,
+        "set_opener": 8.0
+      },
+      "cost_per_baili_score_by_set": {
+        "set_acc": null,
+        "set_chase": null,
+        "set_counter": null,
+        "set_cri": null,
+        "set_cri_dmg": null,
+        "set_debuff": null,
+        "set_def": null,
+        "set_immune": 9377.7,
+        "set_max_hp": 4843.5,
+        "set_opener": 5397.6,
+        "set_penetrate": null,
+        "set_rage": null,
+        "set_res": null,
+        "set_revenant": null,
+        "set_riposte": null,
+        "set_scar": null,
+        "set_shield": null,
+        "set_speed": null,
+        "set_torrent": null,
+        "set_vampire": null
+      },
+      "success_count_by_set": {
+        "set_immune": 1,
+        "set_max_hp": 1,
+        "set_opener": 1
+      },
+      "stop_rate_by_set": {
+        "set_acc": {
+          "0": 0.996,
+          "12": 0.0002,
+          "15": 0.0,
+          "3": 0.003,
+          "6": 0.0004,
+          "9": 0.0004
+        },
+        "set_chase": {
+          "0": 0.9872,
+          "12": 0.0014,
+          "15": 0.0,
+          "3": 0.0075,
+          "6": 0.0018,
+          "9": 0.002
+        },
+        "set_counter": {
+          "0": 0.984,
+          "12": 0.0012,
+          "15": 0.0,
+          "3": 0.0102,
+          "6": 0.0026,
+          "9": 0.002
+        },
+        "set_cri": {
+          "0": 0.9962,
+          "12": 0.0002,
+          "15": 0.0,
+          "3": 0.002,
+          "6": 0.0008,
+          "9": 0.0008
+        },
+        "set_cri_dmg": {
+          "0": 0.9863,
+          "12": 0.0004,
+          "15": 0.0,
+          "3": 0.0078,
+          "6": 0.0024,
+          "9": 0.003
+        },
+        "set_debuff": {
+          "0": 0.9974,
+          "12": 0.0,
+          "15": 0.0,
+          "3": 0.0012,
+          "6": 0.0004,
+          "9": 0.001
+        },
+        "set_def": {
+          "0": 0.981,
+          "12": 0.0016,
+          "15": 0.0,
+          "3": 0.0118,
+          "6": 0.002,
+          "9": 0.0036
+        },
+        "set_immune": {
+          "0": 0.9626,
+          "12": 0.0038,
+          "15": 0.0002,
+          "3": 0.0205,
+          "6": 0.006,
+          "9": 0.0068
+        },
+        "set_max_hp": {
+          "0": 0.975,
+          "12": 0.0024,
+          "15": 0.0002,
+          "3": 0.0143,
+          "6": 0.0042,
+          "9": 0.004
+        },
+        "set_opener": {
+          "0": 0.978,
+          "12": 0.001,
+          "15": 0.0002,
+          "3": 0.0129,
+          "6": 0.0055,
+          "9": 0.0024
+        },
+        "set_penetrate": {
+          "0": 0.9884,
+          "12": 0.0008,
+          "15": 0.0,
+          "3": 0.0072,
+          "6": 0.0018,
+          "9": 0.0018
+        },
+        "set_rage": {
+          "0": 0.9837,
+          "12": 0.0008,
+          "15": 0.0,
+          "3": 0.0093,
+          "6": 0.0031,
+          "9": 0.0031
+        },
+        "set_res": {
+          "0": 0.9953,
+          "12": 0.0004,
+          "15": 0.0,
+          "3": 0.0022,
+          "6": 0.001,
+          "9": 0.001
+        },
+        "set_revenant": {
+          "0": 0.9875,
+          "12": 0.001,
+          "15": 0.0,
+          "3": 0.0082,
+          "6": 0.0016,
+          "9": 0.0018
+        },
+        "set_riposte": {
+          "0": 0.9891,
+          "12": 0.0008,
+          "15": 0.0,
+          "3": 0.0059,
+          "6": 0.0024,
+          "9": 0.0018
+        },
+        "set_scar": {
+          "0": 0.9984,
+          "12": 0.0,
+          "15": 0.0,
+          "3": 0.0014,
+          "6": 0.0,
+          "9": 0.0002
+        },
+        "set_shield": {
+          "0": 0.9837,
+          "12": 0.0008,
+          "15": 0.0,
+          "3": 0.0101,
+          "6": 0.0018,
+          "9": 0.0036
+        },
+        "set_speed": {
+          "0": 0.9662,
+          "12": 0.0026,
+          "15": 0.0002,
+          "3": 0.0231,
+          "6": 0.004,
+          "9": 0.004
+        },
+        "set_torrent": {
+          "0": 0.9876,
+          "12": 0.0004,
+          "15": 0.0,
+          "3": 0.0062,
+          "6": 0.0032,
+          "9": 0.0026
+        },
+        "set_vampire": {
+          "0": 0.9976,
+          "12": 0.0,
+          "15": 0.0,
+          "3": 0.0022,
+          "6": 0.0,
+          "9": 0.0002
+        }
+      },
+      "category_by_set_matrix": {
+        "set_immune": {
+          "输出": 6.7
+        },
+        "set_max_hp": {
+          "纯肉": 10.6
+        },
+        "set_opener": {
+          "抗坦": 8.0
+        }
+      },
+      "conversion_needed_count": 1,
+      "conversion_target_stat_distribution": {
+        "atkPct": 1
+      },
+      "conversion_cost": [
+        0,
+        200,
+        500,
+        1000
+      ],
+      "native_baili_efficiency": {
+        "baili_score_per_1000_stamina": 0.0,
+        "cost_per_baili_score": 40781.2
+      },
+      "rescued_baili_efficiency_without_conversion_cost": {
+        "baili_score_per_1000_stamina": 0.0,
+        "cost_per_baili_score": 29981.5
+      },
+      "rescued_baili_efficiency_with_configured_conversion_cost": {
+        "0": {
+          "baili_score_per_1000_stamina": 0.0,
+          "cost_per_baili_score": 29981.5
+        },
+        "200": {
+          "baili_score_per_1000_stamina": 0.0,
+          "cost_per_baili_score": 29989.4
+        },
+        "500": {
+          "baili_score_per_1000_stamina": 0.0,
+          "cost_per_baili_score": 30001.2
+        },
+        "1000": {
+          "baili_score_per_1000_stamina": 0.0,
+          "cost_per_baili_score": 30021.0
+        }
+      },
+      "total_stamina_avg": 7.6,
+      "gear_acquisition_stamina_avg": 5.5,
+      "upgrade_stamina_avg": 4.6,
+      "sell_recovery_avg": 2.4,
+      "stop_rate_by_checkpoint": {
+        "0": 0.9861,
+        "3": 0.0084,
+        "6": 0.0023,
+        "9": 0.0023,
+        "12": 0.001,
+        "15": 0.0
+      },
+      "expected_reforge_score_avg": 9.9,
+      "expected_reforge_speed_avg": 1.0,
+      "speed_target_rate": 0.0,
+      "conversion_needed_rate": 0.0,
+      "marginal_value_per_stamina_avg": 1e-05,
+      "marginal_expected_gain_avg": 0.002426,
+      "marginal_cross_tier_probability_avg": 0.003,
+      "valid_hit_rate": 0.9127,
+      "invalid_hit_rate": 0.0873,
+      "dp_call_count": 0,
+      "dp_covered_checkpoints": {},
+      "dp_changed_decision_count": 0,
+      "dp_changed_decision_rate": 0.0,
+      "dp_changed_to_continue_count": 0,
+      "dp_changed_to_stop_count": 0,
+      "dp_policy_continue_dp_stop_count": 0,
+      "dp_policy_stop_dp_continue_count": 0,
+      "dp_utility_gap_avg_when_changed": 0.0,
+      "dp_continue_utility_avg": 0.0
+    }
+  ]
+}
