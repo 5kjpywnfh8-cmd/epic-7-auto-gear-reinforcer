@@ -11,6 +11,12 @@
 - 本地提供的 `e7_gear_rating.html` 与 `gear2_orange_rating_updated.csv`
   - 用于历史评分规则交叉核对。它们未随本仓库发布；公开版本仅保留由用户确认后整理进 Markdown 的规则结论。
 
+## 公开规则资料
+
+- [百里机器人账号战力计算说明](https://www.e7bot.top/)
+  - 用于交叉核对账号战力与装备评分的规则口径；具体规则由用户提供的说明文档确认。
+  - 该项是资料来源而非代码依赖。公开检索未发现百里机器人的评分实现仓库，本项目未复制其代码、数值或算法实现。
+
 ## 外部项目参考
 
 - [Fribbels Epic 7 Optimizer](https://github.com/fribbels/Fribbels-Epic-7-Optimizer)
