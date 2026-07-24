@@ -2155,3 +2155,11 @@ GUI 验收关注点：
 - 首次推送 `aa00b55` 被外传安全闸门拒绝：总计划既有历史段落仍保留 4 处具体本地端点。未绕过拒绝，远程分支继续停在 `cef92cc`。
 - 已将总计划的 4 处历史端点机械替换为 `<local-adb-endpoint-redacted>`；验证为具体端点命中 `0`、占位符 `4`、UTF-8 可读、`git diff --check` 通过，脱敏后 SHA-256 为 `763affa2bafa27f223e01326a7ec79077db4b2b9548c679e188ed25043fb3503`。
 - 当前状态：`phase_3_endpoint_redaction_verified_safe_docs_push_pending`。下一步只提交并推送脱敏与状态同步，不混入报告、样本或私人操作证据。
+
+#### 未跟踪内容复核与 smoke 分片精确忽略（2026-07-25）
+
+- 脱敏文档提交已改写为 `3b44695` 并成功推送到 `origin/codex/worktree-cleanup-20260725`；当前已跟踪修改和暂存项均为 `0`，本地与远程同步。
+- 精确枚举得到 `2166` 个未跟踪且未忽略文件：`reports` 1876、`manual_acceptance` 276、`samples` 9、根目录 5。IDE 显示的一万多个项目不代表一万多个代码改动。
+- 5 个明确可再生成的 smoke 分片目录共 `1651` 个文件、`5194317` 字节，已按精确路径加入 `.gitignore`；文件原位保留，未删除、移动或上传。清单见 [Markdown](reports/worktree_cleanup_untracked_inventory_20260725.md) 与 [JSON](reports/worktree_cleanup_untracked_inventory_20260725.json)。
+- 本次规则与清单提交后仍保留 `515` 个待决文件：顶层研究/生成报告 189、顶层私人/真实报告 36、`manual_acceptance` 私人证据 276、样本 9、根目录分叉副本 3、含具体本地连接标识的历史文档 2。
+- 当前状态更新为 `phase_3_inventory_recorded_generated_smoke_ignored_private_decision_pending`。下一步审阅 189 个研究/生成报告；未经精确新授权不得上传私人证据或 7 个命中真实/实例/Fribbels 标记的样本，不处理 3 个内容分叉副本和 `.git` 异常引用。

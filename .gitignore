@@ -7,6 +7,11 @@ reports/*_resume_*/
 reports/test_logs_*/
 reports/epic_threshold_matrix_single_debug/
 reports/visual/
+reports/epic_concentration_rescue_v2_hash_smoke_20260720/
+reports/riftslash_joint_batch_smoke_20260712/
+reports/riftslash_saint_pool_22speed_smoke_20260713/
+reports/riftslash_saint_pool_smoke_20260713/
+reports/speed_priority_22_methodology_v3_smoke_20260713/
 
 # Local OCR model cache and editor settings.
 runtime_cache/

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-07-25",
+  "branch": "codex/worktree-cleanup-20260725",
+  "pushed_head_before_inventory": "3b44695",
+  "tracked_changes": 0,
+  "staged_changes": 0,
+  "untracked_before_precise_ignore": {
+    "total": 2166,
+    "reports": 1876,
+    "manual_acceptance": 276,
+    "samples": 9,
+    "root": 5
+  },
+  "new_exact_generated_ignores": [
+    {
+      "path": "reports/epic_concentration_rescue_v2_hash_smoke_20260720/",
+      "files": 1,
+      "bytes": 3297
+    },
+    {
+      "path": "reports/riftslash_joint_batch_smoke_20260712/",
+      "files": 379,
+      "bytes": 362747
+    },
+    {
+      "path": "reports/riftslash_saint_pool_22speed_smoke_20260713/",
+      "files": 758,
+      "bytes": 2922223
+    },
+    {
+      "path": "reports/riftslash_saint_pool_smoke_20260713/",
+      "files": 379,
+      "bytes": 1082715
+    },
+    {
+      "path": "reports/speed_priority_22_methodology_v3_smoke_20260713/",
+      "files": 134,
+      "bytes": 823335
+    }
+  ],
+  "ignored_in_this_step": {
+    "files": 1651,
+    "bytes": 5194317,
+    "files_deleted": 0,
+    "files_moved": 0
+  },
+  "remaining_after_inventory_commit": {
+    "total": 515,
+    "reports_research_or_generated": 189,
+    "reports_private_or_live": 36,
+    "manual_acceptance_private_evidence": 276,
+    "samples": 9,
+    "root_divergent_copies": 3,
+    "root_endpoint_bearing_history_docs": 2
+  },
+  "sample_marker_check": {
+    "without_sensitive_marker": 2,
+    "with_real_instance_or_fribbels_marker": 7
+  },
+  "private_externalization_authorized_for_this_inventory": false,
+  "status": "phase_3_inventory_recorded_generated_smoke_ignored_private_decision_pending"
+}
