@@ -1,0 +1,166 @@
+{
+  "schema_version": "single_item_confirmation.offline_summary/1.0",
+  "scope": "offline_read_only_single_item_confirmation_evidence",
+  "formal_strategy_modified": false,
+  "manifest_count": 1,
+  "verified_count": 1,
+  "fail_closed_count": 0,
+  "status": "verified",
+  "records": [
+    {
+      "source_manifest": "manual_acceptance/single_item_confirmation/operation_013_plus3_20260724_112042/operation_manifest.json",
+      "status": "verified",
+      "target": {
+        "batch": "013",
+        "instance_id": "4182712419",
+        "level": 85,
+        "slot": "Necklace",
+        "set": "SpeedSet",
+        "rank": "Epic",
+        "enhance_before": 0,
+        "review_checkpoint": 3
+      },
+      "baseline": {
+        "set": "SpeedSet",
+        "slot": "Necklace",
+        "rank": "Epic",
+        "level": 85,
+        "enhance": 0,
+        "main": {
+          "type": "HealthPercent",
+          "value": 12
+        },
+        "substats": [
+          {
+            "type": "DefensePercent",
+            "value": 8
+          },
+          {
+            "type": "Speed",
+            "value": 3
+          },
+          {
+            "type": "EffectResistancePercent",
+            "value": 6
+          },
+          {
+            "type": "EffectivenessPercent",
+            "value": 6
+          }
+        ],
+        "gear_score": 30
+      },
+      "actual": {
+        "enhance": 3,
+        "main": {
+          "type": "HealthPercent",
+          "value": 19
+        },
+        "substats": [
+          {
+            "type": "DefensePercent",
+            "value": 8
+          },
+          {
+            "type": "Speed",
+            "value": 7
+          },
+          {
+            "type": "EffectResistancePercent",
+            "value": 6
+          },
+          {
+            "type": "EffectivenessPercent",
+            "value": 6
+          }
+        ],
+        "gear_score": 41
+      },
+      "attribute_changes": [
+        {
+          "field": "main.value",
+          "type": "HealthPercent",
+          "before": 12,
+          "after": 19
+        },
+        {
+          "field": "substats[Speed].value",
+          "type": "Speed",
+          "before": 3,
+          "after": 7
+        },
+        {
+          "field": "gear_score",
+          "before": 30,
+          "after": 41
+        }
+      ],
+      "shadow_advice": {
+        "decision": "continue",
+        "next_check_at": 3,
+        "target": "speed_potential"
+      },
+      "checkpoint": {
+        "requested": 3,
+        "reached": 3,
+        "matches": true
+      },
+      "resources": {
+        "authorized_limits": {
+          "equipment_enhancement_powder": 2,
+          "gold": 17600,
+          "greater_equipment_charm": 0,
+          "lesser_equipment_charm": 1
+        },
+        "allowed_material_sources": [
+          "equipment_enhancement_powder",
+          "lesser_equipment_charm",
+          "greater_equipment_charm"
+        ],
+        "selected_materials": {
+          "equipment_enhancement_powder": 2,
+          "greater_equipment_charm": 0,
+          "lesser_equipment_charm": 1
+        },
+        "actual_material_delta": {
+          "equipment_enhancement_powder": 2,
+          "greater_equipment_charm": 0,
+          "lesser_equipment_charm": 1
+        },
+        "gold": {
+          "before": 346670175,
+          "after": 346652575,
+          "consumed": 17600,
+          "authorized_limit": 17600
+        },
+        "within_limits": true
+      },
+      "stop_reason": "review_checkpoint_plus3_reached; no further operation sent",
+      "checks": {
+        "schema_version": true,
+        "operation_status_completed": true,
+        "device_gate": true,
+        "page_gate": true,
+        "ocr_confidence_gate": true,
+        "pairing_candidate_gate": true,
+        "advice_hash_gate": true,
+        "snapshot_gate": true,
+        "operation_authorization": true,
+        "trusted_snapshot_identity": true,
+        "pairing_file_gate": true,
+        "pair_advice_hash_gate": true,
+        "pair_snapshot_identity": true,
+        "target_matches_baseline": true,
+        "checkpoint_reached": true,
+        "shadow_checkpoint_matches": true,
+        "single_action_gate": true,
+        "stop_reason_gate": true,
+        "attribute_types_unchanged": true,
+        "attribute_change_observed": true,
+        "resource_gate": true
+      },
+      "fail_closed_reasons": [],
+      "formal_strategy_modified": false
+    }
+  ]
+}
