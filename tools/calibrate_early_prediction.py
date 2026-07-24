@@ -42,7 +42,7 @@ def run(samples_per_checkpoint: int, seed: int) -> dict:
                 exact = compute_optimal_route(
                     gear,
                     lambda_value=policy.dp_lambda_value or 0.0,
-                    conversion_cost=policy.dp_conversion_cost,
+                    conversion_gold_cost=policy.dp_conversion_gold_cost,
                     item_source=item_source,
                     gear_source="rift_new_1_32",
                     rank=rank,

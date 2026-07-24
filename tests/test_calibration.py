@@ -2,7 +2,9 @@ import unittest
 from unittest.mock import patch
 
 from src.e7_enhance.calibration import (
+    DP_ASSIST_CONFIGS,
     CalibrationOptions,
+    aggregate_resource_calibration_runs,
     calibrate_selected_policies,
     calibrate_policies,
     candidate_policies,
@@ -19,12 +21,44 @@ from src.e7_enhance.calibration import (
     is_successful_final_with_conversion,
     marginal_decision_for_gear,
     policy_sort_key,
+    resource_calibration_publishable,
 )
 from src.e7_enhance.models import Gear
 from src.e7_enhance.score_engine import evaluate_gear
 
 
 class CalibrationTest(unittest.TestCase):
+    def test_dp_assist_uses_current_resource_baseline_only_for_published_ranks(self):
+        self.assertEqual(DP_ASSIST_CONFIGS[("normal_85", "Epic")]["cost_per_baili_score"], 799.2)
+        self.assertEqual(DP_ASSIST_CONFIGS[("rift_85", "Epic")]["cost_per_baili_score"], 332.6)
+        self.assertNotIn(("normal_85", "Heroic"), DP_ASSIST_CONFIGS)
+
+    def test_resource_calibration_aggregates_raw_numerator_and_denominator_not_seed_ratios(self):
+        result = aggregate_resource_calibration_runs(
+            [
+                {"seed": 1, "total_stamina": 100.0, "total_baili_score": 20.0, "successes": 2},
+                {"seed": 2, "total_stamina": 300.0, "total_baili_score": 30.0, "successes": 3},
+            ]
+        )
+
+        self.assertEqual(result["total_stamina"], 400.0)
+        self.assertEqual(result["total_baili_score"], 50.0)
+        self.assertEqual(result["nonzero_terminal_count"], 5)
+        self.assertEqual(result["cost_per_baili_score"], 8.0)
+        self.assertNotEqual(result["cost_per_baili_score"], (5.0 + 10.0) / 2)
+
+    def test_resource_calibration_rejects_large_latter_half_drift(self):
+        aggregate = aggregate_resource_calibration_runs(
+            [
+                {"seed": 1, "total_stamina": 1000.0, "total_baili_score": 100.0, "successes": 100},
+                {"seed": 2, "total_stamina": 1000.0, "total_baili_score": 200.0, "successes": 100},
+                {"seed": 3, "total_stamina": 1000.0, "total_baili_score": 200.0, "successes": 100},
+            ]
+        )
+
+        self.assertGreater(aggregate["latter_half_relative_deviation"], 0.10)
+        self.assertFalse(resource_calibration_publishable(aggregate, "Epic"))
+
     def test_candidate_policies_are_stage_threshold_search_grid(self):
         policies = candidate_policies()
 
@@ -622,8 +656,8 @@ class CalibrationTest(unittest.TestCase):
         self.assertIn("category_by_set_matrix", result["policies"][0])
         self.assertIn("native_baili_efficiency", result["policies"][0])
         self.assertIn("rescued_baili_efficiency_without_conversion_cost", result["policies"][0])
-        self.assertIn("rescued_baili_efficiency_with_configured_conversion_cost", result["policies"][0])
-        self.assertIn("conversion_cost", result["policies"][0])
+        self.assertIn("rescued_baili_efficiency_with_conversion_gold_cost", result["policies"][0])
+        self.assertIn("conversion_gold_cost", result["policies"][0])
         self.assertIn("conversion_needed_count", result["policies"][0])
         self.assertIn("conversion_target_stat_distribution", result["policies"][0])
         self.assertIn("marginal_value_per_stamina_avg", result["policies"][0])
@@ -648,14 +682,14 @@ class CalibrationTest(unittest.TestCase):
 
         self.assertEqual(len(result["policies"]), 10)
 
-    def test_conversion_cost_sensitivity_keeps_configured_cost_keys(self):
+    def test_conversion_cost_uses_the_fixed_gold_baseline(self):
         result = calibrate_policies(CalibrationOptions(runs=250, seed=11, item_source="normal_85", top_limit=20))
         policy = result["policies"][0]
 
-        self.assertEqual(policy["conversion_cost"], [0, 200, 500, 1000])
+        self.assertEqual(policy["conversion_gold_cost"], [100000])
         self.assertEqual(
-            sorted(policy["rescued_baili_efficiency_with_configured_conversion_cost"]),
-            ["0", "1000", "200", "500"],
+            sorted(policy["rescued_baili_efficiency_with_conversion_gold_cost"]),
+            ["100000"],
         )
 
 

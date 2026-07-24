@@ -8,10 +8,18 @@ from __future__ import annotations
 
 import json
 from functools import lru_cache
+from itertools import product
 from pathlib import Path
 from typing import Any
 
 from .enhance_simulator import STAT_POOL, RollProfile, reforge_bonus_value, roll_range, slot_forbidden_substats
+from .modification_values import (
+    MODIFICATION_MAX_VALUE_SOURCE,
+    expected_terminal_modification_max_gs,
+    expected_terminal_modification_max_value,
+    modification_max_value,
+    terminal_roll_distribution,
+)
 from .models import Gear, Stat, round1
 from .rules import CATEGORY_RULES, FORMULAS, OFFICIAL_SCORE_WEIGHTS, STAT_KEY_LABELS, VALID_STATS
 from .score_engine import category_gate, full_category_diagnostics, main_allowed
@@ -119,13 +127,127 @@ def stop_threshold(rule: dict[str, Any] | None) -> float | None:
 
 
 HIGH_PRIORITY_CATEGORIES = {"输出", "输出(必爆)", "抗坦", "纯肉", "命坦"}
+FUTURE_75_GS_THRESHOLD = 75.0
+
+
+def future_75_metrics(
+    gear: Gear,
+    item_source: str,
+    conversion_candidate: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Project all-substat official GS and its independent 75+ probability.
+
+    This intentionally scores every current substat, unlike a formal-category
+    candidate which filters to its valid stat set.  A conversion, when one is
+    already selected by the formal candidate rules, replaces the source
+    substat's terminal contribution with the Greater-gem maximum.
+    """
+    from .calibration import cross_tier_probability, projected_reforge_score_for_keys
+
+    all_keys = set(OFFICIAL_SCORE_WEIGHTS)
+    native_expected = projected_reforge_score_for_keys(gear, item_source, all_keys)
+    native_upper_bound = _total_substat_gs_upper_bound(gear, item_source)
+    native_probability = 0.0 if native_upper_bound < FUTURE_75_GS_THRESHOLD else cross_tier_probability(
+        gear,
+        item_source,
+        all_keys,
+        FUTURE_75_GS_THRESHOLD,
+        native_expected,
+    )
+    result = {
+        "expected_final_total_substat_gs_native": native_expected,
+        "future_75_gs_threshold": FUTURE_75_GS_THRESHOLD,
+        "terminal_future_75_probability_native": native_probability,
+        "future_75_theoretical_upper_bound_native": native_upper_bound,
+        "expected_final_total_substat_gs_after_max_conversion": None,
+        "terminal_future_75_probability_after_max_conversion": None,
+        "terminal_future_75_probability": native_probability,
+    }
+    if not conversion_candidate or not conversion_candidate.get("is_conversion_candidate"):
+        return result
+
+    source_key = str(conversion_candidate.get("conversion_candidate_key") or "")
+    target_key = str(conversion_candidate.get("conversion_target_key") or "")
+    source_stat = next((stat for stat in gear.substats if stat.key == source_key), None)
+    if source_stat is None or not target_key:
+        return result
+
+    source_terminal_gs = projected_reforge_score_for_keys(gear, item_source, {source_key})
+    target_terminal_gs = expected_terminal_modification_max_gs(gear, source_stat, target_key)
+    converted_expected = round1(native_expected - source_terminal_gs + target_terminal_gs)
+    # Once converted at the terminal state, all rolls into the source stat no
+    # longer contribute to its final GS.  Keep those legal hit branches in the
+    # probability model as zero-value outcomes rather than treating them as
+    # extra rolls into the target stat.
+    converted_upper_bound = round1(native_upper_bound - source_terminal_gs + target_terminal_gs)
+    converted_probability = 0.0 if converted_upper_bound < FUTURE_75_GS_THRESHOLD else cross_tier_probability(
+        gear,
+        item_source,
+        all_keys - {source_key},
+        FUTURE_75_GS_THRESHOLD,
+        converted_expected,
+    )
+    result.update({
+        "expected_final_total_substat_gs_after_max_conversion": converted_expected,
+        "terminal_future_75_probability_after_max_conversion": converted_probability,
+        "terminal_future_75_probability": converted_probability,
+        "future_75_theoretical_upper_bound_after_max_conversion": converted_upper_bound,
+    })
+    return result
+
+
+def _total_substat_gs_upper_bound(gear: Gear, item_source: str) -> float:
+    """Return a safe upper bound for every substat's terminal official GS."""
+    profile = RollProfile(gear.roll_level or gear.level, gear.rank, item_source)
+    stats = list(gear.substats)
+    checkpoints = [checkpoint for checkpoint in (3, 6, 9, 12, 15) if checkpoint > gear.enhance]
+    substat_count = len(stats)
+    roll_events = 0
+    for checkpoint in checkpoints:
+        if _adds_substat_at(gear.rank, checkpoint, substat_count):
+            substat_count += 1
+            # The yet-unknown fourth stat can only increase this upper bound;
+            # use the globally strongest legal roll as a conservative proxy.
+            if len(stats) < 4:
+                best_key = max(OFFICIAL_SCORE_WEIGHTS, key=lambda key: roll_range(profile, key)[1] * OFFICIAL_SCORE_WEIGHTS[key])
+                stats.append(Stat(best_key, roll_range(profile, best_key)[1], rolls=1))
+            continue
+        roll_events += 1
+    if not stats:
+        return 0.0
+
+    best = 0.0
+    for allocations in product(range(roll_events + 1), repeat=len(stats)):
+        if sum(allocations) != roll_events:
+            continue
+        total = 0.0
+        for stat, extra_rolls in zip(stats, allocations):
+            high_roll = roll_range(profile, stat.key)[1]
+            terminal_rolls = stat.rolls + extra_rolls
+            value = stat.normalized_value + high_roll * extra_rolls
+            if gear.level == 85:
+                value += reforge_bonus_value(stat.key, terminal_rolls)
+            total += value * OFFICIAL_SCORE_WEIGHTS.get(stat.key, 0.0)
+        best = max(best, total)
+    return round1(best)
+
+
+def _adds_substat_at(rank: str, checkpoint: int, substat_count: int) -> bool:
+    if substat_count >= 4:
+        return False
+    if rank == "Heroic":
+        return checkpoint == 12
+    if rank == "Rare":
+        return checkpoint in {3, 6}
+    return False
 
 
 def evaluate_early_candidates(gear: Gear, item_source: str) -> list[dict[str, Any]]:
     """Evaluate formal end-state candidates without running route DP.
 
-    Conversion is intentionally represented as a route candidate only.  Its
-    outcome is not added to the terminal GS expectation or reach probability.
+    Conversion candidates use the Fribbels Greater-gem 100%-quality maximum
+    after terminal enhancement.  They remain conservative review routes until
+    a published complete-category calibration rule permits auto-continue.
     """
     from .calibration import (
         cross_tier_probability,
@@ -169,9 +291,27 @@ def evaluate_early_candidates(gear: Gear, item_source: str) -> list[dict[str, An
             and len(matched) >= 3
             and (all_current_substats_matched or conversion["eligible"] or slot_limited_three_valid_path)
         )
-        current_final_gs = _current_reforged_gs(matched)
-        expected_final_gs = projected_reforge_score_for_keys(gear, item_source, valid_keys) if formulas else 0.0
+        current_pre_reforge_gs = _current_pre_reforge_gs(matched)
+        current_final_gs = _current_reforged_gs(gear, matched)
+        expected_final_gs_native = projected_reforge_score_for_keys(gear, item_source, valid_keys) if formulas else 0.0
         threshold = min(formula[0] for formula in formulas) if formulas else None
+        native_reach_probability = (
+            cross_tier_probability(gear, item_source, valid_keys, threshold, expected_final_gs_native)
+            if threshold is not None
+            else 0.0
+        )
+        conversion_max_gs_gain = 0.0
+        conversion_max_value = None
+        conversion_roll_distribution = None
+        expected_final_gs_after_max_conversion = None
+        if conversion["eligible"]:
+            candidate_stat = unmatched[0]
+            target_key = conversion["target_key"]
+            conversion_max_value = expected_terminal_modification_max_value(gear, candidate_stat, target_key)
+            conversion_max_gs_gain = expected_terminal_modification_max_gs(gear, candidate_stat, target_key)
+            conversion_roll_distribution = terminal_roll_distribution(gear, candidate_stat)
+            expected_final_gs_after_max_conversion = round1(expected_final_gs_native + conversion_max_gs_gain)
+        expected_final_gs = expected_final_gs_after_max_conversion if expected_final_gs_after_max_conversion is not None else expected_final_gs_native
         reach_probability = (
             cross_tier_probability(gear, item_source, valid_keys, threshold, expected_final_gs)
             if threshold is not None
@@ -204,11 +344,21 @@ def evaluate_early_candidates(gear: Gear, item_source: str) -> list[dict[str, An
                 "all_current_substats_matched": all_current_substats_matched,
                 "is_conversion_candidate": conversion["eligible"],
                 "conversion_candidate": conversion["stat"],
+                "conversion_candidate_key": conversion["stat_key"],
                 "conversion_target_stat": conversion["target"],
+                "conversion_target_key": conversion["target_key"],
                 "formal_terminal_formula_available": bool(formulas),
                 "formal_terminal_gs_threshold": threshold,
+                "current_pre_reforge_gs": current_pre_reforge_gs,
                 "current_reforged_gs": current_final_gs,
+                "expected_final_gs_native": expected_final_gs_native,
+                "conversion_max_gs_gain": conversion_max_gs_gain,
+                "conversion_max_value": conversion_max_value,
+                "conversion_max_value_source": MODIFICATION_MAX_VALUE_SOURCE if conversion["eligible"] else None,
+                "conversion_terminal_roll_distribution": conversion_roll_distribution,
+                "expected_final_gs_after_max_conversion": expected_final_gs_after_max_conversion,
                 "expected_final_gs": expected_final_gs,
+                "terminal_reach_probability_native": native_reach_probability,
                 "terminal_reach_probability": reach_probability,
                 "theoretical_lower_bound": bound.get("theoretical_lower_bound", current_final_gs),
                 "theoretical_upper_bound": bound.get("theoretical_upper_bound", expected_final_gs),
@@ -255,18 +405,28 @@ def _conversion_candidate(
     available_keys: set[str],
 ) -> dict[str, Any]:
     if len(unmatched) != 1 or not 0 < unmatched[0].rolls <= 2:
-        return {"eligible": False, "stat": None, "target": None}
+        return {"eligible": False, "stat": None, "target": None, "stat_key": None, "target_key": None}
     targets = valid_keys & available_keys
     if not targets:
-        return {"eligible": False, "stat": None, "target": None}
-    target = max(targets, key=lambda key: roll_range(RollProfile(gear.roll_level or gear.level, gear.rank, item_source), key)[1] * OFFICIAL_SCORE_WEIGHTS.get(key, 0.0))
-    return {"eligible": True, "stat": STAT_KEY_LABELS.get(unmatched[0].key, unmatched[0].key), "target": STAT_KEY_LABELS.get(target, target)}
+        return {"eligible": False, "stat": None, "target": None, "stat_key": None, "target_key": None}
+    target = max(targets, key=lambda key: expected_terminal_modification_max_gs(gear, unmatched[0], key))
+    return {
+        "eligible": True,
+        "stat": STAT_KEY_LABELS.get(unmatched[0].key, unmatched[0].key),
+        "stat_key": unmatched[0].key,
+        "target": STAT_KEY_LABELS.get(target, target),
+        "target_key": target,
+    }
 
 
-def _current_reforged_gs(stats: list[Stat]) -> float:
+def _current_pre_reforge_gs(stats: list[Stat]) -> float:
+    return round1(sum(stat.normalized_value * OFFICIAL_SCORE_WEIGHTS.get(stat.key, 0.0) for stat in stats))
+
+
+def _current_reforged_gs(gear: Gear, stats: list[Stat]) -> float:
     return round1(
         sum(
-            (stat.normalized_value + reforge_bonus_value(stat.key, stat.rolls))
+            (stat.normalized_value + (reforge_bonus_value(stat.key, stat.rolls) if gear.level == 85 else 0))
             * OFFICIAL_SCORE_WEIGHTS.get(stat.key, 0.0)
             for stat in stats
         )
@@ -340,14 +500,16 @@ def theoretical_category_bounds(gear: Gear, item_source: str) -> list[dict[str, 
             weight = OFFICIAL_SCORE_WEIGHTS.get(stat.key, 0.0)
             lower += (stat.normalized_value + reforge_bonus_value(stat.key, stat.rolls)) * weight
             upper += (stat.normalized_value + reforge_bonus_value(stat.key, stat.rolls + upgrade_events)) * weight
-        convertible = bool(invalid)
-        convertible_rolls = invalid[0].rolls if invalid else 0
+        convertible = len(invalid) == 1 and 0 < invalid[0].rolls <= 2
         new_keys = valid_keys & available
         remaining_new_keys = set(new_keys)
         if convertible and new_keys:
-            best_convert = max(remaining_new_keys, key=lambda key: roll_range(profile, key)[1] * OFFICIAL_SCORE_WEIGHTS.get(key, 0.0))
-            high = roll_range(profile, best_convert)[1]
-            upper += (high * convertible_rolls + reforge_bonus_value(best_convert, convertible_rolls)) * OFFICIAL_SCORE_WEIGHTS.get(best_convert, 0.0)
+            terminal_rolls = max(terminal_roll_distribution(gear, invalid[0]))
+            best_convert = max(
+                remaining_new_keys,
+                key=lambda key: modification_max_value(key, terminal_rolls) * OFFICIAL_SCORE_WEIGHTS.get(key, 0.0),
+            )
+            upper += modification_max_value(best_convert, terminal_rolls) * OFFICIAL_SCORE_WEIGHTS.get(best_convert, 0.0)
             remaining_new_keys.remove(best_convert)
             conversion_target = best_convert
         if missing_substats and remaining_new_keys:
@@ -356,7 +518,7 @@ def theoretical_category_bounds(gear: Gear, item_source: str) -> list[dict[str, 
             upper += (high + reforge_bonus_value(best_new, 1)) * OFFICIAL_SCORE_WEIGHTS.get(best_new, 0.0)
             missing_substat_target = best_new
         candidates = [stat.key for stat in gear.substats if stat.key in valid_keys]
-        candidates.extend(new_keys)
+        candidates.extend(remaining_new_keys)
         if candidates and upgrade_events:
             best_roll = max(candidates, key=lambda key: roll_range(profile, key)[1] * OFFICIAL_SCORE_WEIGHTS.get(key, 0.0))
             upper += upgrade_events * roll_range(profile, best_roll)[1] * OFFICIAL_SCORE_WEIGHTS.get(best_roll, 0.0)

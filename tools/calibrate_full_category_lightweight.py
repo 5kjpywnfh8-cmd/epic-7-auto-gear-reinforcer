@@ -210,7 +210,7 @@ def synthesize_rule(rows: list[dict[str, Any]]) -> dict[str, Any] | None:
 
 def label(gear: Gear, item_source: str, rank: str) -> dict[str, Any]:
     policy = dp_assisted_policies(item_source, rank)[0]
-    route = compute_optimal_route(gear, policy.dp_lambda_value or 0.0, policy.dp_conversion_cost, item_source, rank=rank)
+    route = compute_optimal_route(gear, policy.dp_lambda_value or 0.0, policy.dp_conversion_gold_cost, item_source, rank=rank)
     return {
         "dp_action": route["action"],
         "dp_expected_utility": route["expected_utility"],

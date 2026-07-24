@@ -22,6 +22,7 @@ from .enhance_simulator import (
     roll_range as roll_range_for_key,
 )
 from .models import Gear, Stat, round1
+from .resource_model import DEFAULT_CONVERSION_GOLD_COST, ResourceAmount, calibration_for_rank, conversion_stamina_cost, material_pool_for_slot
 from .rules import CATEGORY_RULES, FORMULAS, OFFICIAL_SCORE_WEIGHTS, SET_GROUPS, STAT_KEY_LABELS, VALID_STATS
 from .score_engine import (
     Evaluation,
@@ -43,14 +44,14 @@ FINAL_EFFECTIVE_SCORE_MIN = 60
 FINAL_VALID_SUBSTAT_MIN = 3
 FINAL_SPEED_MIN = 22
 TOP_POLICY_LIMIT = 5
-CONVERSION_COST_SCENARIOS = [0, 200, 500, 1000]
+CONVERSION_GOLD_COST_SCENARIOS = [DEFAULT_CONVERSION_GOLD_COST]
 
 
 @dataclass(frozen=True)
 class CalibrationOptions:
     runs: int = 5000
     seed: int = 1
-    gear_source: str = "rift_new_1_32"
+    gear_source: str = "riftslash_20_buff"
     item_source: str = "normal_85"
     rank: str = "Epic"
     workers: int = 1
@@ -75,7 +76,7 @@ class Policy:
     base_policy_name: str | None = None
     dp_lambda_value: float | None = None
     dp_utility_margin: float = 0.1
-    dp_conversion_cost: float = 0.0
+    dp_conversion_gold_cost: float = DEFAULT_CONVERSION_GOLD_COST
     dp_checkpoints: tuple[int, ...] = (0, 3, 6, 9, 12)
 
     def thresholds(self) -> dict[str, Any]:
@@ -92,7 +93,7 @@ class Policy:
             "base_policy_name": self.base_policy_name,
             "dp_lambda_value": self.dp_lambda_value,
             "dp_utility_margin": self.dp_utility_margin,
-            "dp_conversion_cost": self.dp_conversion_cost,
+            "dp_conversion_gold_cost": self.dp_conversion_gold_cost,
             "dp_checkpoints": list(self.dp_checkpoints),
         }
 
@@ -101,22 +102,85 @@ DP_ASSIST_CONFIGS = {
     ("normal_85", "Epic"): {
         "name": "normal_epic_dp_assisted",
         "base_policy_name": "category_baili_marginal_mid",
-        "cost_per_baili_score": 932.82,
-        "family": "DP assisted",
-    },
-    ("normal_85", "Heroic"): {
-        "name": "normal_heroic_dp_assisted",
-        "base_policy_name": "baili_marginal_low",
-        "cost_per_baili_score": 22838.96,
+        "cost_per_baili_score": 799.2,
+        "calibration": "resource-material-mix-20260712 / 30000 runs / seeds 20260711,20260712,20260713 / merged numerator-denominator",
         "family": "DP assisted",
     },
     ("rift_85", "Epic"): {
         "name": "rift_epic_dp_assisted",
         "base_policy_name": "score_target_high_speed_mid",
-        "cost_per_baili_score": 411.68,
+        "cost_per_baili_score": 332.6,
+        "calibration": "resource-material-mix-20260712 / 30000 runs / seeds 20260711,20260712,20260713 / merged numerator-denominator",
         "family": "DP assisted",
     },
 }
+
+
+def aggregate_resource_calibration_runs(run_results: list[dict[str, Any]]) -> dict[str, Any]:
+    """Aggregate resource calibration by raw numerator and denominator.
+
+    A seed's ratio is diagnostic only.  Publication uses the merged stamina and
+    formal Baili score so sparse Heroic seeds cannot be given equal weight.
+    """
+    rows = []
+    for item in run_results:
+        stamina = float(item.get("total_stamina") or 0.0)
+        score = float(item.get("total_baili_score") or 0.0)
+        successes = int(item.get("successes") or item.get("nonzero_terminal_count") or 0)
+        rows.append(
+            {
+                "seed": item.get("seed"),
+                "runs": int(item.get("runs") or item.get("calibration_runs") or 0),
+                "total_stamina": stamina,
+                "total_baili_score": score,
+                "nonzero_terminal_count": successes,
+                "cost_per_baili_score": stamina / score if score else None,
+            }
+        )
+    total_stamina = sum(item["total_stamina"] for item in rows)
+    total_baili_score = sum(item["total_baili_score"] for item in rows)
+    seed_costs = [float(item["cost_per_baili_score"]) for item in rows if item["cost_per_baili_score"] is not None]
+    mean_cost = sum(seed_costs) / len(seed_costs) if seed_costs else None
+    if len(seed_costs) > 1 and mean_cost is not None:
+        variance = sum((value - mean_cost) ** 2 for value in seed_costs) / (len(seed_costs) - 1)
+        ci_half_width = 1.96 * math.sqrt(variance / len(seed_costs))
+    else:
+        ci_half_width = None
+    merged_cost = total_stamina / total_baili_score if total_baili_score else None
+    latter_rows = rows[len(rows) // 2 :] if len(rows) >= 2 else []
+    latter_stamina = sum(item["total_stamina"] for item in latter_rows)
+    latter_baili_score = sum(item["total_baili_score"] for item in latter_rows)
+    latter_cost = latter_stamina / latter_baili_score if latter_baili_score else None
+    latter_relative_deviation = abs(latter_cost / merged_cost - 1) if latter_cost is not None and merged_cost else None
+    return {
+        "seed_results": rows,
+        "total_runs": sum(item["runs"] for item in rows),
+        "total_stamina": total_stamina,
+        "total_baili_score": total_baili_score,
+        "nonzero_terminal_count": sum(item["nonzero_terminal_count"] for item in rows),
+        "cost_per_baili_score": merged_cost,
+        "lambda_value": 1 / merged_cost if merged_cost else None,
+        "seed_cost_mean": mean_cost,
+        "seed_cost_ci95_half_width": ci_half_width,
+        "seed_cost_ci95_relative_half_width": (ci_half_width / mean_cost) if ci_half_width is not None and mean_cost else None,
+        "latter_half_cost_per_baili_score": latter_cost,
+        "latter_half_relative_deviation": latter_relative_deviation,
+    }
+
+
+def resource_calibration_publishable(aggregate: dict[str, Any], rank: str) -> bool:
+    if not aggregate.get("cost_per_baili_score"):
+        return False
+    if rank == "Heroic" and int(aggregate.get("nonzero_terminal_count") or 0) < 200:
+        return False
+    relative_half_width = aggregate.get("seed_cost_ci95_relative_half_width")
+    latter_half_deviation = aggregate.get("latter_half_relative_deviation")
+    return (
+        relative_half_width is not None
+        and relative_half_width <= 0.10
+        and latter_half_deviation is not None
+        and latter_half_deviation <= 0.10
+    )
 
 
 def candidate_policies(
@@ -332,7 +396,7 @@ def dp_assisted_policies(
                 base_policy_name=str(config["base_policy_name"]),
                 dp_lambda_value=1 / cost if cost else 0.0,
                 dp_utility_margin=dp_utility_margin,
-                dp_conversion_cost=0.0,
+                dp_conversion_gold_cost=DEFAULT_CONVERSION_GOLD_COST,
                 dp_checkpoints=(0, 3, 6, 9, 12),
             )
         )
@@ -398,7 +462,7 @@ def calibrate_policy_set(options: CalibrationOptions, policies: list[Policy]) ->
         "success_definition": {
             "source": "套装属性与装等计算表.md",
             "main_score_scope": "R2-R58 formal baili score; R61 future is auxiliary only",
-            "conversion_cost_counted": False,
+            "conversion_gold_cost": DEFAULT_CONVERSION_GOLD_COST,
         },
         "policies": top_results,
     }
@@ -537,7 +601,7 @@ def simulate_policy_from_trace(
     state = trace[stop_checkpoint]
     marginal = policy_marginal_decision(state, active_policy)
     success = (not stopped) and bool(state["success"])
-    costs = cost_for_outcome(stop_checkpoint, success, True, options.gear_source, options.rank)
+    costs = cost_for_outcome(stop_checkpoint, success, True, options.gear_source, options.rank, state["gear"].slot)
     return {
         "set": state["gear"].set,
         "success": success,
@@ -612,7 +676,7 @@ def dp_assisted_decision_state(state: dict[str, Any], policy: Policy, options: C
     route = compute_optimal_route(
         state["gear"],
         lambda_value=policy.dp_lambda_value or 0.0,
-        conversion_cost=policy.dp_conversion_cost,
+        conversion_gold_cost=policy.dp_conversion_gold_cost,
         item_source=options.item_source,
         gear_source=options.gear_source,
         rank=options.rank,
@@ -732,7 +796,7 @@ def simulate_policy_one(base: Gear, policy: Policy, options: CalibrationOptions,
     conversion_plan = conversion_plan_for_gear(final_gear, options.item_source, final_eval)
     success_info = final_success_breakdown(final_eval, final_speed, options.item_source, conversion_plan)
     success = not stopped and success_info["final_success"]
-    costs = cost_for_outcome(stop_checkpoint, success, True, options.gear_source, options.rank)
+    costs = cost_for_outcome(stop_checkpoint, success, True, options.gear_source, options.rank, gear.slot)
     marginal = marginal_decision_for_gear(gear, options.item_source, options.gear_source, options.rank, score_scope=policy.marginal_score_scope)
     return {
         "set": final_gear.set,
@@ -895,7 +959,7 @@ def marginal_decision_for_gear(
         return empty_marginal_decision(checkpoint, None)
     evaluation = evaluation or evaluate_gear(gear)
     score_info = score_info or expected_final_reforge_score(gear, item_source, evaluation)
-    marginal_cost = marginal_stamina_cost(checkpoint, next_checkpoint, gear_source, rank or gear.rank)
+    marginal_cost = marginal_stamina_cost(checkpoint, next_checkpoint, gear_source, rank or gear.rank, gear.slot)
     candidates = marginal_candidates_for_gear(gear, item_source, evaluation, score_info, include_future=score_scope == "target_with_future")
     for candidate in candidates:
         candidate["value_per_stamina"] = round_float(candidate["expected_gain"] / marginal_cost, 6) if marginal_cost else 0.0
@@ -1351,10 +1415,22 @@ def next_speed_threshold(speed: float) -> float | None:
     return None
 
 
-def marginal_stamina_cost(current_checkpoint: int, next_checkpoint: int, gear_source: str | None, rank: str) -> float:
-    current = cost_for_outcome(current_checkpoint, False, False, gear_source or "rift_new_1_32", rank)["total_stamina"]
-    future = cost_for_outcome(next_checkpoint, False, False, gear_source or "rift_new_1_32", rank)["total_stamina"]
-    return max(0.1, float(future) - float(current))
+def marginal_stamina_cost(
+    current_checkpoint: int,
+    next_checkpoint: int,
+    gear_source: str | None,
+    rank: str,
+    slot: str | None = None,
+) -> float:
+    # Source credit is applied at acquisition only, so it cancels from a
+    # next-node decision. This path only prices the material pool it consumes.
+    calibration = calibration_for_rank(rank)
+    _pool, scarcity = material_pool_for_slot(slot)
+    interval = calibration.interval_costs[next_checkpoint]
+    current_recovery = calibration.sell_recovery.get(current_checkpoint, ResourceAmount())
+    next_recovery = calibration.sell_recovery.get(next_checkpoint, ResourceAmount())
+    lost_recovery = current_recovery - next_recovery
+    return max(0.1, calibration.rates.stamina_equivalent(interval + lost_recovery, scarcity))
 
 
 def empty_marginal_decision(checkpoint: int, next_checkpoint: int | None) -> dict[str, Any]:
@@ -1894,6 +1970,8 @@ def finalize_policy_accumulator(accumulator: dict[str, Any]) -> dict[str, Any]:
         "cost_per_native_success": round1(total_stamina / native_successes) if native_successes else None,
         "cost_per_rescued_success": round1(total_stamina / rescued_successes) if rescued_successes else None,
         "total_baili_score": round1(total_baili_score),
+        "total_stamina": total_stamina,
+        "nonzero_terminal_count": successes,
         "total_native_baili_score": round1(total_native_baili_score),
         "native_target_score": round1(total_native_target_score),
         "rescued_target_score": round1(total_rescued_target_score),
@@ -1925,12 +2003,12 @@ def finalize_policy_accumulator(accumulator: dict[str, Any]) -> dict[str, Any]:
         "category_by_set_matrix": round_nested_numeric_dict(accumulator["category_by_set_matrix"]),
         "conversion_needed_count": conversion_needed,
         "conversion_target_stat_distribution": dict(sorted(accumulator["conversion_target_stat_counts"].items())),
-        "conversion_cost": CONVERSION_COST_SCENARIOS,
+        "conversion_gold_cost": CONVERSION_GOLD_COST_SCENARIOS,
         "native_baili_efficiency": efficiency_summary(total_native_baili_score, total_stamina),
         "rescued_baili_efficiency_without_conversion_cost": efficiency_summary(total_baili_score, total_stamina),
-        "rescued_baili_efficiency_with_configured_conversion_cost": {
-            str(cost): efficiency_summary(total_baili_score, total_stamina + conversion_needed * cost)
-            for cost in CONVERSION_COST_SCENARIOS
+        "rescued_baili_efficiency_with_conversion_gold_cost": {
+            str(cost): efficiency_summary(total_baili_score, total_stamina + conversion_needed * conversion_stamina_cost(cost))
+            for cost in CONVERSION_GOLD_COST_SCENARIOS
         },
         "total_stamina_avg": round1(total_stamina / runs) if runs else 0.0,
         "gear_acquisition_stamina_avg": round1(accumulator["total_gear_acquisition_stamina"] / runs) if runs else 0.0,
