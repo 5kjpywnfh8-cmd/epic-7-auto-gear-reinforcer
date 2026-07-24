@@ -153,5 +153,7 @@
 - 工作区外 `127759` 个 exact-match 候选的目标冲突为 `0`，3 个内容分叉副本已排除；当前状态 `exact_duplicate_isolation_preflight_passed_move_pending`。
 - `127759/127759` 个 exact-match 候选已按 manifest 可恢复移动并逐项验证；结果 manifest 位于工作区外隔离目录。工作区现只剩 3 个内容分叉副本。
 - 深层副本曾使历史审计读到 Heroic `160` 个 shard 而非权威 `80`；隔离后回归 `test_historical_bridge_keeps_v3_v4_baseline_and_resource_conservation` 为 `1/1` 通过，未修改审计器或测试。
-- 当前状态：`phase_2_tracked_review_in_progress_deep_duplicate_isolation_completed`。
-- 下一步：审阅并分组处理 31 个既有已跟踪修改，同时逐步替换过宽的 `reports/*.md` 忽略规则。
+- 当前状态：`phase_2_generated_resume_noise_ignored_tracked_review_pending`。
+- 已将过宽的 `reports/*.md` 替换为精确规则：仅忽略 `reports/*_resume_*/`、`reports/test_logs_*/`、`reports/epic_threshold_matrix_single_debug/`、`reports/visual/`、`runtime_cache/` 和本地 `.vscode/`；未删除任何文件，顶层权威报告继续可见。
+- 重新分类结果：`reports/` 共 `127855` 个文件、`1100733173` 字节，其中 `60` 个生成/调试目录是主要扫描噪声；顶层报告仍有 `316` 个文件、`176552041` 字节待逐份审阅。源码/测试/工具未跟踪文件共 `98` 个，`manual_acceptance` 未跟踪入口共 `276` 个，其中 `190` 个为截图、PCAP、日志或 PID 等私人/操作证据。
+- 当前未删除、移动、回退或暂存任何未分类文件；31 个已跟踪修改仍未暂存。下一步先审阅并按功能分组处理 31 个已跟踪修改，再单独审核 `src/tests/tools` 新文件、顶层报告和私人 `manual_acceptance` 证据。

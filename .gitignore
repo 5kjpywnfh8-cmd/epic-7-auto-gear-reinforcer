@@ -1,4 +1,13 @@
 __pycache__/
 *.pyc
-reports/*.md
-!reports/early-lightweight-conversion-20260711.md
+
+# Reproducible research resume shards and local run diagnostics.
+# Final reports remain visible and are reviewed individually.
+reports/*_resume_*/
+reports/test_logs_*/
+reports/epic_threshold_matrix_single_debug/
+reports/visual/
+
+# Local OCR model cache and editor settings.
+runtime_cache/
+.vscode/

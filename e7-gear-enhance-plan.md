@@ -2127,3 +2127,9 @@ GUI 验收关注点：
 - `127759` 个 exact-match 仅允许可恢复隔离到 `C:\Users\orangine\Documents\第七史诗强化装备脚本_副本隔离_20260725\`，不删除源的语义之外不覆盖目标；3 个内容分叉、`.git` 条目、已跟踪修改和其他未跟踪内容均排除。当前状态：`exact_duplicate_isolation_preflight_passed_move_pending`。
 - `127759/127759` 个 exact-match 已按 manifest 可恢复移动并逐项验证；结果 manifest 位于工作区外隔离目录。工作区现只剩 3 个内容分叉副本，均保留原位。深层副本导致的 Heroic `160`/`80` 审计污染已消除，历史审计回归 `1/1` 通过，未修改审计器或测试。
 - 当前状态更新为 `phase_2_tracked_review_in_progress_deep_duplicate_isolation_completed`。下一步审阅 31 个既有已跟踪修改，并逐步替换过宽的 `reports/*.md` 忽略规则。
+
+#### 生成分片忽略规则精确化（2026-07-25）
+
+- 只读分类确认 `reports/` 当前有 `127855` 个文件、`1100733173` 字节；其中 `60` 个 `*_resume_*`、测试日志、调试和可视化目录贡献了约 `12.78` 万个扫描入口，是 IDE 卡顿的主要来源。
+- 已将过宽的 `reports/*.md` 替换为精确规则：`reports/*_resume_*/`、`reports/test_logs_*/`、`reports/epic_threshold_matrix_single_debug/`、`reports/visual/`、`runtime_cache/` 和 `.vscode/`。规则只隐藏可再生的续跑/诊断/本地缓存内容；顶层权威报告和未分类报告保持可见，文件均未删除。
+- 当前状态：`phase_2_generated_resume_noise_ignored_tracked_review_pending`。31 个已跟踪修改仍未暂存，98 个源码/测试/工具未跟踪文件、316 个顶层报告文件和 276 个 `manual_acceptance` 入口继续按来源审阅；其中私人操作证据未经本轮新外传授权不得推送。
