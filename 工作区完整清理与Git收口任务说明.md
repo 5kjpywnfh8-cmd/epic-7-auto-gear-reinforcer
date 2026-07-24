@@ -198,3 +198,10 @@
 - 只读边界扫描记录：5 个报告含本地 IPv4 端点模式，4 个含绝对路径，1 个含 PCAP/原始载荷字段，37 个含账号/实例字段；具体值不输出、不上传。
 - 51 个报告、276 个人工证据、7 个真实样本和 5 个根目录待决文件均保持可见、未忽略、未删除。3 个内容分叉副本和 2 个含具体本地连接标识的历史任务文档继续原位保留。
 - 当前状态更新为 `phase_4_private_externalization_authorization_pending`。要达到 `git status --porcelain` 为空，必须由用户明确授权精确外传到 `origin`，或授权可恢复移至工作区外私有归档；D 类文件还需单独授权脱敏副本策略。在授权前不执行上传、移动、删除、整体忽略或静默改写。
+
+### 私人归档只读预检（2026-07-25）
+
+- 拟议归档目录为工作区同级的 `%USERPROFILE%\Documents\第七史诗强化装备脚本_私人证据归档_20260725\`；目标当前不存在、位于工作区外，父目录存在。
+- 339 个源文件、`223321159` 字节全部存在；不安全相对路径 `0`、重解析点 `0`，集合 SHA-256 为 `1b33e73a3cfdb243bb1cf91bb58d0300ae727c9152a7698463f192fd94f9b76a`。
+- C 盘可用空间 `226711515136` 字节，超过两倍源集合空间要求。预检报告见 [Markdown](reports/worktree_cleanup_private_archive_preflight_20260725.md) 与 [JSON](reports/worktree_cleanup_private_archive_preflight_20260725.json)。
+- 本轮未创建目录、移动、复制、删除、忽略或上传文件。当前状态更新为 `private_archive_preflight_passed_awaiting_explicit_user_choice`；只有用户明确选择私有归档方案后才允许执行。

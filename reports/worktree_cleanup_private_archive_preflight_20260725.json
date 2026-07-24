@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-07-25",
+  "workspace": "%USERPROFILE%\\Documents\\第七史诗强化装备脚本\\",
+  "proposed_archive": "%USERPROFILE%\\Documents\\第七史诗强化装备脚本_私人证据归档_20260725\\",
+  "source": {
+    "files": 339,
+    "bytes": 223321159,
+    "max_file_bytes": 26483765,
+    "manifest_sha256": "1b33e73a3cfdb243bb1cf91bb58d0300ae727c9152a7698463f192fd94f9b76a",
+    "missing": 0,
+    "unsafe_relative_paths": 0,
+    "reparse_points": 0
+  },
+  "target": {
+    "exists": false,
+    "outside_workspace": true,
+    "parent_exists": true,
+    "conflicts": 0
+  },
+  "disk": {
+    "available_bytes": 226711515136,
+    "required_bytes": 223321159,
+    "minimum_free_space_multiplier": 2,
+    "sufficient": true
+  },
+  "actions": {
+    "directories_created": 0,
+    "files_copied": 0,
+    "files_moved": 0,
+    "files_deleted": 0,
+    "files_ignored": 0,
+    "files_uploaded": 0
+  },
+  "status": "private_archive_preflight_passed_awaiting_explicit_user_choice"
+}
