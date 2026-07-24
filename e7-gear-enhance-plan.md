@@ -2098,3 +2098,10 @@ GUI 验收关注点：
 - 移动后 `415/415` 目标哈希一致、`415/415` 源路径消失、`415/415` 原件未变化；结果见 [JSON](reports/workspace_isolation_result_20260725.json)、[Markdown](reports/workspace_isolation_result_20260725.md) 和 [manifest](reports/workspace_isolation_manifest_20260725.json)。
 - 未删除、覆盖文件，未修改 Git 配置、引用、索引、正式策略或用户进程。3 个分叉副本、`.git` 内部条目、31 个既有改动及未盘点深层文件继续排除。
 - 当前整理状态为 `partial_direct_inventory_complete_isolation_completed; deeper_unscanned`；整理闸门完成，下一步可恢复功能开发，不自动继续处理剩余文件。
+
+#### 功能开发恢复边界（2026-07-25）
+
+- 工作区整理闸门已完成，允许恢复代码开发；未盘点深层未跟踪文件、3 个内容分叉副本和 `.git` 内异常引用继续保持不处理。
+- 当前分支仍有 `31` 个用户既有未提交改动，涉及策略、资源模型、GUI、校准、测试和旧文档；本轮不暂存、不回退、不覆盖，也不混入 batch `013` 草稿 PR。
+- 单件人工确认离线汇总器已完成并验证 batch `004/013`；人工验证 `+3` 的实际操作不再扩展为自动化功能，正式策略、DP、评分、资源模型、GUI、Holdout、OCR 门槛和自动化规则保持不变。
+- 状态更新为 `development_unblocked_awaiting_scoped_code_task`。下一项代码开发必须先建立独立任务说明，明确目标文件、禁止修改项和验证命令，再使用独立精确提交；当前不自动选择或启动新的功能。
