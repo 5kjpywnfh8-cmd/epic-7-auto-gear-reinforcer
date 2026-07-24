@@ -82,6 +82,20 @@
     "samples_private_or_real": 7,
     "root": 5
   },
+  "reports_safe_closure": {
+    "authoritative_files_committed": 76,
+    "authoritative_markdown_commit": "64639eb",
+    "authoritative_json_commit": "bdde672",
+    "reproducible_files_exactly_ignored": 98,
+    "files_deleted": 0
+  },
+  "remaining_after_report_closure": {
+    "total": 339,
+    "reports_private_or_pending": 51,
+    "manual_acceptance": 276,
+    "samples_private_or_real": 7,
+    "root": 5
+  },
   "private_externalization_authorized_for_this_inventory": false,
-  "status": "phase_3_safe_synthetic_samples_verified_commit_pending"
+  "status": "phase_3_reproducible_reports_ignored_private_decision_pending"
 }

@@ -20,6 +20,8 @@
 - 76 个文件中 22 个 JSON 全部通过解析。
 - 具体 IPv4 端点、绝对本地路径、PCAP、外部服务 URL、API key、secret、password、token 模式命中为 `0`。
 - A 类 Markdown 摘要作为第一组提交；22 个 JSON manifest 在下一组单独提交。
+- A 类 Markdown 摘要已提交为 `64639eb`，22 个 JSON manifest 已提交为 `bdde672`；两组均已推送到当前远程分支。
+- B 类 98 个文件已按本清单逐个加入 `.gitignore`，未使用覆盖 `reports/` 的宽泛规则，文件未删除。
 
 ### C 类精确路径
 

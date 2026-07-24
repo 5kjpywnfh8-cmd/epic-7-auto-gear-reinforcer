@@ -121,5 +121,10 @@
       "manifest_sha256": "e1e764f95463ca62d720a26fe689698dc76ba66133327bb32bafb4507c8fd39c"
     }
   },
-  "status": "phase_3_reports_classified_safe_commit_pending"
+  "safe_commits": {
+    "A_markdown": "64639eb",
+    "A_json_manifests": "bdde672"
+  },
+  "B_exact_ignore_rules_applied": 98,
+  "status": "phase_3_reproducible_reports_ignored_private_decision_pending"
 }

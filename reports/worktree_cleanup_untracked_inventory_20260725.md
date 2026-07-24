@@ -34,6 +34,8 @@
 
 顶层报告的细分类见 [报告分类清单](worktree_cleanup_reports_classification_20260725.md) 与 [JSON](worktree_cleanup_reports_classification_20260725.json)。
 
+A 类 76 个权威报告已分两组提交推送；B 类 98 个可再生成顶层输出已按精确文件路径加入 `.gitignore` 且原文件保留。当前待决未跟踪数为 `339`。
+
 ## 安全合成样本收口
 
 - `samples/epic_b_balanced_prospective_20260713.json`：空的盲采集控制 manifest，状态 `collecting_blind`，SHA-256 `6F4221EFB3B1D41AD3F41A7B80DB869ECCA4EED73E52D2D109E76D068FB8D3C7`。
