@@ -140,6 +140,7 @@ SET_ALIASES = {
     "set_shield": "set_shield",
     "ProtectionSet": "set_shield",
     "Protection": "set_shield",
+    "ShieldSet": "set_shield",
     "守护": "set_shield",
     "set_torrent": "set_torrent",
     "TorrentSet": "set_torrent",
@@ -198,6 +199,13 @@ SET_CODE_TO_NAME = {
     "set_rage": "全力",
     "set_debuff": "弱化",
     "set_revenant": "逆袭",
+}
+
+# OCR and import adapters use these established external names while all
+# policy code continues to compare the canonical ``set_*`` code.
+SET_DISPLAY_NAMES = {
+    code: next(alias for alias, target in SET_ALIASES.items() if target == code and alias.endswith("Set"))
+    for code in SET_CODE_TO_NAME
 }
 
 SLOT_ALIASES = {

@@ -4,8 +4,8 @@ from src.e7_enhance.dp_deep_validation import DEEP_RUNS, recommendation_for, sam
 
 
 class DpDeepValidationTest(unittest.TestCase):
-    def test_deep_validation_scope_excludes_rift(self):
-        self.assertEqual(set(DEEP_RUNS), {"normal_epic", "normal_heroic"})
+    def test_deep_validation_scope_uses_only_published_dp_resource_calibrations(self):
+        self.assertEqual(set(DEEP_RUNS), {"normal_epic"})
 
     def test_recommendation_switches_when_dp_ci_is_better(self):
         seed_results = [

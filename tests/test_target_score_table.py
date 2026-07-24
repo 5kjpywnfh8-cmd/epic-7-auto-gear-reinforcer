@@ -1,11 +1,19 @@
 import unittest
 
 from src.e7_enhance.models import Gear
-from src.e7_enhance.rules import CATEGORY_RULES, TARGET_SCORE_TABLE_PATH
+from src.e7_enhance.rules import CATEGORY_RULES, SET_ALIASES, SET_GROUPS, TARGET_SCORE_TABLE_PATH
 from src.e7_enhance.score_engine import evaluate_gear
 
 
 class TargetScoreTableTest(unittest.TestCase):
+    def test_new_rage_and_debuff_sets_are_loaded_into_their_documented_groups(self):
+        self.assertEqual(SET_ALIASES["全力"], "set_rage")
+        self.assertEqual(SET_ALIASES["弱化"], "set_debuff")
+        self.assertIn("set_rage", SET_GROUPS["output"])
+        self.assertIn("set_rage", SET_GROUPS["critless"])
+        self.assertIn("set_rage", SET_GROUPS["bruiserHpDef"])
+        self.assertIn("set_debuff", SET_GROUPS["hitTank"])
+
     def test_rules_are_loaded_from_md_score_table(self):
         sources = {rule["sourceRow"] for rule in CATEGORY_RULES}
         categories = {rule["category"] for rule in CATEGORY_RULES}

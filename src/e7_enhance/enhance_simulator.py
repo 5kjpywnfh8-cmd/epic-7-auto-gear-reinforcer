@@ -6,14 +6,12 @@ from typing import Any
 
 from .enhance_policy import advise_gear
 from .models import ALLOWED_RANKS_BY_ITEM_SOURCE, Gear, RollHit, SLOT_FORBIDDEN_SUBSTAT_KEYS, Stat, round1, validate_source_rank
-from .resource_model import RED_EPIC_CALIBRATION, ResourceAmount, cumulative_cost
+from .resource_model import ResourceAmount, calibration_for_rank, cumulative_cost, material_pool_for_slot
 from .rules import OFFICIAL_SCORE_WEIGHTS, SET_GROUPS
 from .score_engine import evaluate_gear, official_score_for_stats, speed_value
 
 
 CHECKPOINTS = (0, 3, 6, 9, 12, 15)
-HEROIC_DROP_RATE_MULTIPLIER = 2.5
-HEROIC_SELL_RECOVERY_RATE = 0.95
 STAT_POOL = ("atkPct", "defPct", "hpPct", "eff", "res", "spd", "crit", "cdmg", "atkFlat", "defFlat", "hpFlat")
 PERCENT_KEYS = {"atkPct", "defPct", "hpPct", "eff", "res"}
 PLAIN_REFORGE_BONUS = {0: 0, 1: 1, 2: 3, 3: 4, 4: 5, 5: 7, 6: 8}
@@ -92,7 +90,7 @@ class SimulationOptions:
         self,
         runs: int = 5000,
         seed: int = 1,
-        gear_source: str = "rift_new_1_32",
+        gear_source: str = "riftslash_20_buff",
         item_source: str = "normal_85",
         rank: str = "Epic",
         level: int = 85,
@@ -177,7 +175,7 @@ def simulate_one(base: Gear, options: SimulationOptions, rng: random.Random, cou
     final_eval = evaluate_gear(final_gear)
     final_speed = speed_value(final_gear)
     success = not stopped and is_successful_final(final_eval, final_speed)
-    costs = cost_for_outcome(stop_checkpoint, success, count_acquisition, options.gear_source, options.rank)
+    costs = cost_for_outcome(stop_checkpoint, success, count_acquisition, options.gear_source, options.rank, gear.slot)
     total_hits = valid_hits + invalid_hits
 
     return {
@@ -304,37 +302,34 @@ def is_successful_final(evaluation: Any, speed: float) -> bool:
     return evaluation.retention.rule_matched and evaluation.target_score > 0
 
 
-def cost_for_outcome(checkpoint: int, success: bool, count_acquisition: bool, gear_source: str, rank: str) -> dict[str, float | bool]:
-    calibration = RED_EPIC_CALIBRATION
-    acquisition = acquisition_stamina_for_rank(calibration.gear_stamina(gear_source), rank) if count_acquisition else 0
+def cost_for_outcome(
+    checkpoint: int,
+    success: bool,
+    count_acquisition: bool,
+    gear_source: str,
+    rank: str,
+    slot: str | None = None,
+) -> dict[str, float | bool | str]:
+    calibration = calibration_for_rank(rank)
+    confirmed_acquisition = calibration.gear_stamina(gear_source)
+    missing_acquisition = bool(count_acquisition and confirmed_acquisition is None)
+    acquisition = confirmed_acquisition if count_acquisition and confirmed_acquisition is not None else 0.0
     consumed = cumulative_cost(calibration, checkpoint)
     recovery_known = checkpoint in calibration.sell_recovery
-    recovery = ResourceAmount() if success or not recovery_known else recovery_for_rank(calibration.sell_recovery[checkpoint], rank)
+    recovery = ResourceAmount() if success or not recovery_known else calibration.sell_recovery[checkpoint]
     missing_recovery = not success and checkpoint > 0 and not recovery_known
     net = consumed - recovery
+    material_pool, material_scarcity = material_pool_for_slot(slot)
     return {
         "gear_acquisition_stamina": acquisition,
-        "upgrade_stamina": calibration.rates.stamina_equivalent(consumed),
-        "sell_recovery_stamina": calibration.rates.stamina_equivalent(recovery),
-        "total_stamina": acquisition + calibration.rates.stamina_equivalent(net),
+        "upgrade_stamina": calibration.rates.stamina_equivalent(consumed, material_scarcity),
+        "sell_recovery_stamina": calibration.rates.stamina_equivalent(recovery, material_scarcity),
+        "total_stamina": acquisition + calibration.rates.stamina_equivalent(net, material_scarcity),
         "missing_recovery_data": missing_recovery,
-        "missing_acquisition_data": False,
+        "missing_acquisition_data": missing_acquisition,
+        "material_pool": material_pool,
+        "material_scarcity_coefficient": material_scarcity,
     }
-
-
-def acquisition_stamina_for_rank(epic_stamina: float, rank: str) -> float:
-    if rank == "Heroic":
-        return epic_stamina / HEROIC_DROP_RATE_MULTIPLIER
-    return epic_stamina
-
-
-def recovery_for_rank(epic_recovery: ResourceAmount, rank: str) -> ResourceAmount:
-    if rank == "Heroic":
-        return ResourceAmount(
-            gold=epic_recovery.gold * HEROIC_SELL_RECOVERY_RATE,
-            enhance_exp=epic_recovery.enhance_exp * HEROIC_SELL_RECOVERY_RATE,
-        )
-    return epic_recovery
 
 
 def summarize_outcomes(outcomes: list[dict[str, Any]], options: SimulationOptions) -> dict[str, Any]:

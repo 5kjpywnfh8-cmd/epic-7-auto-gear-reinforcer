@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from .calibration import (
+    DP_ASSIST_CONFIGS,
     candidate_policies,
     checkpoint_for,
     conversion_plan_for_gear,
@@ -27,13 +28,20 @@ from .enhance_simulator import (
     enhance_to_checkpoint,
     generate_gear,
     reforge_gear,
-    recovery_for_rank,
     roll_range,
     is_new_substat_event,
     slot_forbidden_substats,
 )
 from .models import Gear, RollHit, Stat, round1, validate_gear_source_rank, validate_gear_structure
-from .resource_model import RED_EPIC_CALIBRATION
+from .resource_model import (
+    DEFAULT_CONVERSION_GOLD_COST,
+    ResourceAmount,
+    calibration_for_rank,
+    conversion_stamina_cost,
+    gear_source_metadata,
+    material_pool_for_slot,
+    resource_snapshot,
+)
 from .rules import speed_potential_set_eligible
 from .score_engine import evaluate_gear, speed_value
 
@@ -44,21 +52,21 @@ DEFAULT_SEED = 17
 DEFAULT_RUNS = 1000
 REPORT_CONFIGS = (
     {
-        "key": "normal_epic",
-        "summary_run_key": "normal_epic_1m",
-        "label": "normal_85 Epic",
-        "item_source": "normal_85",
-        "rank": "Epic",
-        "policy": "category_baili_marginal_mid",
-        "runs": DEFAULT_RUNS,
-    },
-    {
         "key": "normal_heroic",
         "summary_run_key": "normal_heroic_1m",
         "label": "normal_85 Heroic",
         "item_source": "normal_85",
         "rank": "Heroic",
         "policy": "baili_marginal_low",
+        "runs": DEFAULT_RUNS,
+    },
+    {
+        "key": "normal_epic",
+        "summary_run_key": "normal_epic_1m",
+        "label": "normal_85 Epic",
+        "item_source": "normal_85",
+        "rank": "Epic",
+        "policy": "category_baili_marginal_mid",
         "runs": DEFAULT_RUNS,
     },
     {
@@ -92,6 +100,8 @@ class RouteResult:
     best_target_category: str
     best_source_row: str
     conversion_needed_probability: float
+    conversion_cost_gold: float
+    conversion_cost_stamina: float
     terminal_count: int
 
     def to_dict(self) -> dict[str, Any]:
@@ -113,6 +123,8 @@ class RouteResult:
             "best_target_category": self.best_target_category,
             "best_source_row": self.best_source_row,
             "conversion_needed_probability": round_rate(self.conversion_needed_probability),
+            "conversion_cost_gold": round1(self.conversion_cost_gold),
+            "conversion_cost_stamina": round1(self.conversion_cost_stamina),
             "terminal_count": self.terminal_count,
         }
 
@@ -125,9 +137,9 @@ _CACHE_MISSES = 0
 def compute_optimal_route(
     gear: Gear,
     lambda_value: float,
-    conversion_cost: float = 0,
+    conversion_gold_cost: float = DEFAULT_CONVERSION_GOLD_COST,
     item_source: str = "normal_85",
-    gear_source: str = "rift_new_1_32",
+    gear_source: str = "riftslash_20_buff",
     rank: str | None = None,
 ) -> dict[str, Any]:
     validate_gear_structure(gear)
@@ -139,10 +151,21 @@ def compute_optimal_route(
         gear_source,
         rank or gear.rank,
         float(lambda_value),
-        float(conversion_cost),
+        float(conversion_gold_cost),
         allow_speed_momentum,
     )
-    return result.to_dict()
+    payload = result.to_dict()
+    material_pool, material_scarcity = material_pool_for_slot(gear.slot)
+    payload["resource_context"] = {
+        "gear_source": gear_source_metadata(gear_source, calibration_for_rank(rank or gear.rank)),
+        "material_snapshot": resource_snapshot(
+            checkpoint_for(gear.enhance), calibration_for_rank(rank or gear.rank), gear_source, gear.slot
+        ),
+        "material_pool": material_pool,
+        "material_scarcity_coefficient": material_scarcity,
+        "pet_stone_accounting": "acquisition_only",
+    }
+    return payload
 
 
 def route_cache_info() -> dict[str, int]:
@@ -162,7 +185,7 @@ def _solve_state(
     gear_source: str,
     rank: str,
     lambda_value: float,
-    conversion_cost: float,
+    conversion_gold_cost: float,
     allow_speed_momentum: bool,
 ) -> RouteResult:
     global _CACHE_HITS, _CACHE_MISSES
@@ -174,7 +197,7 @@ def _solve_state(
         rank,
         allow_speed_momentum,
         round(lambda_value, 10),
-        round(conversion_cost, 4),
+        round(conversion_gold_cost, 4),
     )
     cached = _ROUTE_CACHE.get(cache_key)
     if cached is not None:
@@ -183,13 +206,13 @@ def _solve_state(
     _CACHE_MISSES += 1
 
     if checkpoint >= 15:
-        result = terminal_route_result(gear, item_source, lambda_value, conversion_cost, allow_speed_momentum)
+        result = terminal_route_result(gear, item_source, rank, lambda_value, conversion_gold_cost, allow_speed_momentum)
         _ROUTE_CACHE[cache_key] = result
         return result
 
     next_checkpoint = next(point for point in CHECKPOINTS if point > checkpoint)
     stop_utility = 0.0
-    marginal_cost = marginal_net_stamina_cost(checkpoint, next_checkpoint, rank)
+    marginal_cost = marginal_net_stamina_cost(checkpoint, next_checkpoint, rank, gear.slot)
     outcomes = enumerate_next_checkpoint(gear, next_checkpoint, item_source)
     expected_score = 0.0
     expected_terminal_value = 0.0
@@ -205,7 +228,7 @@ def _solve_state(
     source_score: dict[str, float] = defaultdict(float)
 
     for child, probability in outcomes:
-        child_result = _solve_state(child, item_source, gear_source, rank, lambda_value, conversion_cost, allow_speed_momentum)
+        child_result = _solve_state(child, item_source, gear_source, rank, lambda_value, conversion_gold_cost, allow_speed_momentum)
         expected_score += probability * child_result.expected_formal_baili_score
         expected_terminal_value += probability * child_result.expected_terminal_value
         expected_terminal_speed += probability * child_result.expected_terminal_speed
@@ -240,6 +263,8 @@ def _solve_state(
             best_target_category=best_key(category_score),
             best_source_row=best_key(source_score),
             conversion_needed_probability=conversion_probability,
+            conversion_cost_gold=conversion_gold_cost,
+            conversion_cost_stamina=conversion_stamina_cost(conversion_gold_cost, calibration_for_rank(rank)),
             terminal_count=max(1, terminal_count),
         )
     else:
@@ -261,6 +286,8 @@ def _solve_state(
             best_target_category="stop",
             best_source_row="-",
             conversion_needed_probability=0.0,
+            conversion_cost_gold=conversion_gold_cost,
+            conversion_cost_stamina=conversion_stamina_cost(conversion_gold_cost, calibration_for_rank(rank)),
             terminal_count=max(1, terminal_count),
         )
     _ROUTE_CACHE[cache_key] = result
@@ -270,8 +297,9 @@ def _solve_state(
 def terminal_route_result(
     gear: Gear,
     item_source: str,
+    rank: str,
     lambda_value: float,
-    conversion_cost: float,
+    conversion_gold_cost: float,
     allow_speed_momentum: bool,
 ) -> RouteResult:
     final_gear = gear if gear.level >= 90 else reforge_gear(gear)
@@ -286,7 +314,8 @@ def terminal_route_result(
         conversion = conversion_plan_for_gear(final_gear, item_source, evaluation)
         converted_evaluation = evaluate_gear(gear_after_conversion(final_gear, conversion))
         source_row = converted_evaluation.target_score_source_row
-    stamina = float(conversion_cost) if conversion_needed else 0.0
+    conversion_stamina = conversion_stamina_cost(conversion_gold_cost, calibration_for_rank(rank))
+    stamina = conversion_stamina if conversion_needed else 0.0
     utility = terminal_value - lambda_value * stamina
     return RouteResult(
         action="terminal",
@@ -306,6 +335,8 @@ def terminal_route_result(
         best_target_category=breakdown["target_category"] if formal_score > 0 else terminal_category,
         best_source_row=source_row if formal_score > 0 else "terminal-speed-momentum" if terminal_category == "速度潜力" else "-",
         conversion_needed_probability=1.0 if conversion_needed and terminal_value > 0 else 0.0,
+        conversion_cost_gold=conversion_gold_cost,
+        conversion_cost_stamina=conversion_stamina,
         terminal_count=1,
     )
 
@@ -402,33 +433,32 @@ def combine_duplicate_outcomes(outcomes: list[tuple[Gear, float]]) -> list[tuple
     return list(combined.values())
 
 
-def marginal_net_stamina_cost(current_checkpoint: int, next_checkpoint: int, rank: str) -> float:
-    calibration = RED_EPIC_CALIBRATION
+def marginal_net_stamina_cost(current_checkpoint: int, next_checkpoint: int, rank: str, slot: str | None = None) -> float:
+    calibration = calibration_for_rank(rank)
     interval = calibration.interval_costs[next_checkpoint]
-    current_recovery = recovery_for_rank(calibration.sell_recovery.get(current_checkpoint), rank)
-    next_recovery = recovery_for_rank(calibration.sell_recovery.get(next_checkpoint), rank)
+    current_recovery = calibration.sell_recovery.get(current_checkpoint, ResourceAmount())
+    next_recovery = calibration.sell_recovery.get(next_checkpoint, ResourceAmount())
     lost_recovery = current_recovery - next_recovery
-    return max(0.0, calibration.rates.stamina_equivalent(interval + lost_recovery))
+    _pool, scarcity = material_pool_for_slot(slot)
+    return max(0.0, calibration.rates.stamina_equivalent(interval + lost_recovery, scarcity))
 
 
 def load_round2_recommendations(path: str | Path = DEFAULT_ROUND2_SUMMARY) -> tuple[dict[str, dict[str, Any]], list[str]]:
-    summary_path = Path(path)
-    data = json.loads(summary_path.read_text(encoding="utf-8"))
-    risks = validate_round2_seed_files(data, summary_path.parent.parent if summary_path.parent.name == "reports" else Path("."))
     recommendations: dict[str, dict[str, Any]] = {}
     for config in REPORT_CONFIGS:
-        run = data["runs"][config["summary_run_key"]]
-        policy_name = config["policy"] or first_policy_by_mean_cost(run)
-        aggregate = run["policy_aggregate"][policy_name]
-        cost = mean_metric(aggregate["cost_per_baili_score"])
+        dp_config = DP_ASSIST_CONFIGS.get((config["item_source"], config["rank"]))
+        if dp_config is None:
+            continue
+        policy_name = config["policy"] or str(dp_config["base_policy_name"])
+        cost = float(dp_config["cost_per_baili_score"])
         recommendations[config["key"]] = {
             **config,
             "policy": policy_name,
             "cost_per_baili_score": cost,
             "lambda_value": 1 / cost if cost else 0.0,
-            "summary_run_key": config["summary_run_key"],
+            "calibration": dp_config.get("calibration"),
         }
-    return recommendations, risks
+    return recommendations, []
 
 
 def validate_round2_seed_files(data: dict[str, Any], base: Path) -> list[str]:
@@ -489,7 +519,7 @@ def compare_policy_with_dp(
     lambda_value: float,
     item_source: str,
     rank: str,
-    conversion_cost: float,
+    conversion_gold_cost: float,
 ) -> dict[str, Any]:
     policies = {policy.name: policy for policy in candidate_policies()}
     if policy_name not in policies:
@@ -503,7 +533,7 @@ def compare_policy_with_dp(
 
     for index, gear in enumerate(gears):
         policy_continue = should_continue(gear, policy, item_source)
-        route = compute_optimal_route(gear, lambda_value, conversion_cost, item_source, rank=rank)
+        route = compute_optimal_route(gear, lambda_value, conversion_gold_cost, item_source, rank=rank)
         dp_continue = route["action"] == "continue"
         key = confusion_key(policy_continue, dp_continue)
         matrix[key] += 1
@@ -519,7 +549,8 @@ def compare_policy_with_dp(
         "runs": total,
         "policy_name": policy_name,
         "lambda_value": lambda_value,
-        "conversion_cost": conversion_cost,
+        "conversion_gold_cost": conversion_gold_cost,
+        "conversion_stamina_cost": round1(conversion_stamina_cost(conversion_gold_cost, calibration_for_rank(rank))),
         "confusion_matrix": {
             "both_continue": matrix["both_continue"],
             "both_stop": matrix["both_stop"],
@@ -585,7 +616,7 @@ def run_round3_report(
     reports_dir: str | Path = "reports",
     runs: int = DEFAULT_RUNS,
     seed: int = DEFAULT_SEED,
-    conversion_cost: float = 0,
+    conversion_gold_cost: float = DEFAULT_CONVERSION_GOLD_COST,
 ) -> dict[str, Any]:
     recommendations, risks = load_round2_recommendations(summary_path)
     reports_path = Path(reports_dir)
@@ -609,7 +640,7 @@ def run_round3_report(
                 recommendation["lambda_value"],
                 recommendation["item_source"],
                 recommendation["rank"],
-                conversion_cost,
+                conversion_gold_cost,
             )
             comparison["checkpoint"] = checkpoint
             comparison["cache"] = route_cache_info()
@@ -634,10 +665,10 @@ def run_round3_report(
         "scope": {
             "stage": "round3_route_solver",
             "score_scope": FORMAL_SCORE_SCOPE,
-            "ranking_lambda": "lambda_value = 1 / round2 cost_per_baili_score",
+            "ranking_lambda": "lambda_value = 1 / current resource calibration cost_per_baili_score",
             "round2_rerun": False,
             "calibration_rerun": False,
-            "conversion_cost": conversion_cost,
+            "conversion_gold_cost": conversion_gold_cost,
         },
         "seed": seed,
         "runs_per_checkpoint": runs,
@@ -692,7 +723,7 @@ def render_round3_markdown(report: dict[str, Any]) -> str:
         f"- 评分范围：{report['scope']['score_scope']}",
         f"- 样本：每类每 checkpoint {report['runs_per_checkpoint']} 件，seed={report['seed']}",
         f"- round2 大样本重跑：{report['scope']['round2_rerun']}",
-        f"- conversion_cost：{report['scope']['conversion_cost']}",
+        f"- conversion_gold_cost：{report['scope']['conversion_gold_cost']}",
         "",
         "## 总结",
         "",
@@ -779,10 +810,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--reports-dir", default="reports")
     parser.add_argument("--runs", type=int, default=DEFAULT_RUNS)
     parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
-    parser.add_argument("--conversion-cost", type=float, default=0)
+    parser.add_argument("--conversion-gold-cost", type=float, default=DEFAULT_CONVERSION_GOLD_COST)
     parser.add_argument("--debug", action="store_true")
     args = parser.parse_args(argv)
-    report = run_round3_report(args.summary, args.reports_dir, args.runs, args.seed, args.conversion_cost)
+    report = run_round3_report(args.summary, args.reports_dir, args.runs, args.seed, args.conversion_gold_cost)
     if args.debug:
         print(json.dumps(report, ensure_ascii=False, indent=2))
     else:

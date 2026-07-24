@@ -231,6 +231,29 @@ class RouteSolverTest(unittest.TestCase):
         self.assertEqual(rescued["conversion_needed_probability"], 1.0)
         self.assertEqual(failed["expected_formal_baili_score"], 0.0)
 
+    def test_default_conversion_cost_is_gold_backed_in_route_debug(self):
+        gear = Gear.from_dict(
+            {
+                "set": "SpeedSet",
+                "slot": "Weapon",
+                "mainStat": {"type": "Attack", "value": 525},
+                "enhance": 15,
+                "rank": "Epic",
+                "level": 90,
+                "substats": [
+                    {"type": "Speed", "value": 10, "rolls": 2},
+                    {"type": "CriticalHitChancePercent", "value": 14, "rolls": 3},
+                    {"type": "CriticalHitDamagePercent", "value": 24, "rolls": 4},
+                    {"type": "EffectResistancePercent", "value": 8, "rolls": 1},
+                ],
+            }
+        )
+
+        route = compute_optimal_route(gear, LAMBDA, item_source="normal_85")
+
+        self.assertEqual(route["conversion_cost_gold"], 100000)
+        self.assertGreater(route["conversion_cost_stamina"], 0)
+
     def test_same_gear_state_hits_cache(self):
         gear = Gear.from_dict(
             {
@@ -293,7 +316,7 @@ class RouteSolverTest(unittest.TestCase):
             data = json.loads(summary_json.read_text(encoding="utf-8"))
             self.assertEqual(data["scope"]["score_scope"], "R2-R58 formal baili score; R61 future is auxiliary only")
             self.assertFalse(data["scope"]["round2_rerun"])
-            self.assertEqual(len(data["sections"]), 3)
+        self.assertEqual(len(data["sections"]), 2)
 
 
 if __name__ == "__main__":

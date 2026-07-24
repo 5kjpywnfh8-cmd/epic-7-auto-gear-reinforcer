@@ -36,14 +36,6 @@ DEEP_RUNS = {
         "dp_policy": "normal_epic_dp_assisted",
         "file_stem": "normal-epic",
     },
-    "normal_heroic": {
-        "label": "normal_85 Heroic",
-        "item_source": "normal_85",
-        "rank": "Heroic",
-        "baseline_policy": "baili_marginal_low",
-        "dp_policy": "normal_heroic_dp_assisted",
-        "file_stem": "normal-heroic",
-    },
 }
 
 

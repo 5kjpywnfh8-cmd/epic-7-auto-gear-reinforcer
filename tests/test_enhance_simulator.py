@@ -78,7 +78,7 @@ class EnhanceSimulatorTest(unittest.TestCase):
         self.assertAlmostEqual(result["upgrade_stamina_avg"], 0.0, places=1)
         self.assertGreater(result["total_stamina_avg"], 13.0)
 
-    def test_heroic_gear_uses_lower_drop_cost_and_95_percent_sale_recovery(self):
+    def test_heroic_gear_marks_drop_cost_unconfirmed_and_uses_own_sale_recovery(self):
         result = simulate_drops(
             SimulationOptions(
                 runs=100,
@@ -91,10 +91,10 @@ class EnhanceSimulatorTest(unittest.TestCase):
         )
 
         self.assertEqual(result["stop_rate_by_checkpoint"]["3"], 1.0)
-        self.assertAlmostEqual(result["gear_acquisition_stamina_avg"], 5.5, places=1)
-        self.assertAlmostEqual(result["sell_recovery_avg"], 49.4, places=1)
+        self.assertEqual(result["gear_acquisition_stamina_avg"], 0.0)
+        self.assertGreater(result["sell_recovery_avg"], 0.0)
         self.assertFalse(result["missing_recovery_data"])
-        self.assertFalse(result["missing_acquisition_data"])
+        self.assertTrue(result["missing_acquisition_data"])
 
     def test_rift_source_has_higher_success_rate_from_same_speed_embryo(self):
         gear = Gear.from_dict(

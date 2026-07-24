@@ -6,6 +6,10 @@ from .score_engine import Evaluation, evaluate_gear, full_category_diagnostics, 
 from .strategy_defaults import DEFAULT_GEAR_SOURCE, STRATEGY_VERSION, StrategyDefault, default_strategy_for
 
 CHECKPOINTS = [0, 3, 6, 9, 12, 15]
+EARLY_SPEED_GAMBLE_MINIMUMS = {
+    "Epic": 2,
+    "Heroic": 4,
+}
 
 
 def advise_gear(
@@ -87,19 +91,51 @@ def apply_default_strategy(
         "overrode_baseline": False,
         "reason": "disabled" if not enabled else "not_dp_checkpoint",
         "decision_mode": "disabled" if not enabled else "exact_dp",
+        "resource_calibration_status": strategy.resource_calibration_status,
+        "resource_calibration_message": "Heroic 资源校准未发布，已回退基础策略" if strategy.resource_calibration_status == "unpublished" else None,
+        "resource_material": resource_debug_material(gear, gear_source),
         "lightweight_basis": None,
+        "heroic_speed22_rescue": None,
+        "epic_early_stop": None,
     }
-    if not enabled or checkpoint >= 15 or strategy.policy_name not in policies_by_name(item_source, gear.rank):
+    # +0/+3 lightweight prediction does not consume the DP resource lambda.
+    # Keep that conservative early path available while Heroic exact-DP
+    # calibration is unpublished; +6 and later stay on the base strategy.
+    allow_unpublished_lightweight = (
+        strategy.resource_calibration_status == "unpublished" and checkpoint in (0, 3)
+    )
+    rescue_debug = _apply_heroic_speed22_rescue(
+        gear=gear,
+        item_source=item_source,
+        gear_source=gear_source,
+        checkpoint=checkpoint,
+        summary=summary,
+    )
+    if rescue_debug is not None:
+        debug.update(rescue_debug)
+        return debug
+    if (not enabled and not allow_unpublished_lightweight) or checkpoint >= 15 or strategy.policy_name not in policies_by_name(item_source, gear.rank):
         return debug
 
     if checkpoint in (0, 3):
         prediction = lightweight_prediction(gear, item_source, gear_source)
-        should_continue = prediction["action"] == "continue"
-        should_review = prediction["action"] == "review"
+        from .epic_early_stop import released_early_stop_decision
+
+        baseline_binary_action = "stop" if prediction["action"] == "stop" else "continue"
+        epic_early_stop = released_early_stop_decision(
+            gear,
+            item_source=item_source,
+            baseline_action=baseline_binary_action,
+            candidates=prediction["basis"]["candidate_evaluations"],
+        )
+        final_action = epic_early_stop["final_action"]
+        should_continue = final_action == "continue" and prediction["action"] == "continue"
+        should_review = final_action == "continue" and prediction["action"] == "review"
+        next_check_at = next_checkpoint(checkpoint)
         debug.update(
             {
                 "decision_mode": "lightweight_prediction",
-                "dp_decision": f"lightweight_{prediction['action']}",
+                "dp_decision": "lightweight_stop" if final_action == "stop" else f"lightweight_{prediction['action']}",
                 "dp_expected_terminal_value": prediction["terminal_value"],
                 "dp_expected_final_speed": prediction["expected_final_speed"],
                 "dp_expected_speed_rolls": prediction["expected_speed_rolls"],
@@ -107,26 +143,30 @@ def apply_default_strategy(
                 "dp_speed_potential_threshold_blocked_probability": prediction["speed_threshold_blocked_probability"],
                 "dp_expected_speed_potential_value": prediction["speed_potential_value"],
                 "dp_best_target_category": prediction["target_category"],
-                "reason": prediction["reason"],
+                "reason": epic_early_stop["reason"] if epic_early_stop["added_stop"] else prediction["reason"],
                 "lightweight_basis": prediction["basis"],
+                "epic_early_stop": epic_early_stop,
+                "overrode_baseline": epic_early_stop["added_stop"],
             }
         )
         if should_continue:
             debug["summary"] = build_summary(
                 "continue",
-                6,
+                next_check_at,
                 prediction["target_category"],
                 ["轻量预测高确定性继续", prediction["reason"]],
             )
         elif should_review:
             debug["summary"] = build_summary(
                 "cautious_continue",
-                6,
+                next_check_at,
                 prediction["target_category"],
-                ["轻量预测保留，待 +6 精确复核", prediction["reason"]],
+                [f"轻量预测保留，待 +{next_check_at} 复核", prediction["reason"]],
             )
         else:
-            debug["summary"] = build_summary("stop", 6, prediction["target_category"], [prediction["reason"]])
+            target = epic_early_stop["category"] or prediction["target_category"]
+            reason = epic_early_stop["reason"] if epic_early_stop["added_stop"] else prediction["reason"]
+            debug["summary"] = build_summary("stop", next_check_at, target, [reason])
         return debug
 
     policy = policies_by_name(item_source, gear.rank)[strategy.policy_name]
@@ -167,6 +207,53 @@ def apply_default_strategy(
     return debug
 
 
+def _apply_heroic_speed22_rescue(
+    *,
+    gear: Gear,
+    item_source: str,
+    gear_source: str,
+    checkpoint: int,
+    summary: dict,
+) -> dict | None:
+    """Run released M1 only on its audited Heroic midgame scope."""
+    if not (
+        item_source == "normal_85"
+        and gear.rank == "Heroic"
+        and checkpoint in (6, 9, 12)
+        and gear.slot != "boot"
+        and any(stat.key == "spd" for stat in gear.substats)
+    ):
+        return None
+
+    from .calibration import CalibrationOptions, checkpoint_state, continuation_decision_state
+    from .heroic_speed22_rescue import rescue_decision
+
+    policies = policies_by_name(item_source, gear.rank)
+    base_policy = policies["baili_marginal_low"]
+    options = CalibrationOptions(
+        item_source=item_source,
+        gear_source=gear_source,
+        rank=gear.rank,
+        enable_dp_assist=False,
+    )
+    state = checkpoint_state(gear, None, options)
+    baseline_continue = bool(continuation_decision_state(state, base_policy, options)["continue"])
+    rescue = rescue_decision(gear, item_source=item_source, baseline_continue=baseline_continue)
+    final_continue = rescue["action"] == "continue"
+    debug = {
+        "summary": summary,
+        "decision_mode": "heroic_speed22_rescue",
+        "baseline_policy": "baili_marginal_low",
+        "baseline_continue": baseline_continue,
+        "dp_decision": rescue["action"],
+        "overrode_baseline": bool(rescue["rescued"]),
+        "reason": rescue["reason"],
+        "heroic_speed22_rescue": rescue,
+    }
+    debug["summary"] = summary_from_strategy_decision(summary, final_continue, checkpoint, debug)
+    return debug
+
+
 def lightweight_prediction(gear: Gear, item_source: str, gear_source: str) -> dict:
     """Conservative +0/+3 routing without invoking early-node exact DP."""
     from .calibration import (
@@ -179,6 +266,7 @@ def lightweight_prediction(gear: Gear, item_source: str, gear_source: str) -> di
         calibration_group,
         calibration_rule,
         evaluate_early_candidates,
+        future_75_metrics,
         passes_continue_threshold,
         stop_threshold,
     )
@@ -190,8 +278,16 @@ def lightweight_prediction(gear: Gear, item_source: str, gear_source: str) -> di
     selected_candidate = next((item for item in candidates if item["qualified"]), None)
     qualified_candidates = [item for item in candidates if item["qualified"]]
     candidate_selection_reason = _candidate_selection_reason(selected_candidate, qualified_candidates)
+    future_75 = future_75_metrics(gear, item_source, selected_candidate)
+    terminal_goal_type = "formal_category" if selected_candidate else "future_75_fallback"
+    terminal_goal_probability = (
+        float(selected_candidate.get("terminal_reach_probability") or 0.0)
+        if selected_candidate
+        else float(future_75["terminal_future_75_probability"])
+    )
     expected_speed = expected_final_reforge_speed(gear, item_source)
     speed_stat = next((stat for stat in gear.substats if stat.key == "spd"), None)
+    early_speed_gamble = early_speed_gamble_status(gear, speed_stat)
     remaining_hits = future_hit_count(gear)
     expected_speed_rolls = round((speed_stat.rolls + remaining_hits / len(gear.substats)) if speed_stat else 0, 1)
     speed_set_eligible = speed_potential_set_eligible(gear.set)
@@ -253,8 +349,9 @@ def lightweight_prediction(gear: Gear, item_source: str, gear_source: str) -> di
         "expected_final_target_score": selected_target_score,
         "current_effective_score": evaluation.effective_score,
         "remaining_hits": remaining_hits,
-        "formal_cross_tier_probability": float(selected_candidate.get("terminal_reach_probability") or 0.0) if selected_candidate else 0.0,
-        "terminal_reach_probability": float(selected_candidate.get("terminal_reach_probability") or 0.0) if selected_candidate else 0.0,
+            "formal_cross_tier_probability": float(selected_candidate.get("terminal_reach_probability") or 0.0) if selected_candidate else 0.0,
+            "terminal_reach_probability": float(selected_candidate.get("terminal_reach_probability") or 0.0) if selected_candidate else 0.0,
+            "terminal_future_75_probability": float(future_75["terminal_future_75_probability"]),
         "current_valid_substat_count": selected_candidate.get("current_valid_substat_count", 0) if selected_candidate else 0,
         "feasible_valid_substat_count": selected_candidate.get("feasible_valid_substat_count", 0) if selected_candidate else 0,
         "expected_final_speed": expected_speed,
@@ -276,6 +373,17 @@ def lightweight_prediction(gear: Gear, item_source: str, gear_source: str) -> di
         action, route = "continue", "多跳速度高价值路线"
         target_category = "速度潜力"
         reason = f"速度 {speed_stat.rolls} 跳，速度潜力套装资格={speed_set_eligible}，终局速度潜力 {speed_potential_value}"
+    elif early_speed_gamble["continue_route"]:
+        action, route = "continue", "早期赌速度"
+        target_category = "速度潜力"
+        reason = (
+            f"{gear.rank} 非鞋装备当前速度 {early_speed_gamble['current_speed']:.0f}，"
+            f"达到初始速度阈值 {early_speed_gamble['rank_threshold']:.0f}；"
+            "允许强化至 +3 后按速度命中结果复核"
+            if gear.enhance == 0
+            else f"+3 速度命中，当前速度 {early_speed_gamble['current_speed']:.0f}、"
+            f"速度 {early_speed_gamble['speed_rolls']} 跳；继续赌速度至 +6"
+        )
     elif continue_by_rule and selected_candidate and selected_candidate["current_valid_substat_count"] == 4:
         action, route = "continue", "完整分类校准继续"
         target_category = selected_candidate["category"]
@@ -287,7 +395,7 @@ def lightweight_prediction(gear: Gear, item_source: str, gear_source: str) -> di
             reason = (
                 f"{selected_candidate['category']} 命中 {selected_candidate['current_valid_substat_count']} 条副属性，"
                 f"{selected_candidate['conversion_candidate']} 为唯一未命中且可转换候选；"
-                "转换不计入数值概率，待 +6 精确复核"
+                "转换满值已计入候选终局概率，待 +6 精确复核"
             )
         else:
             reason = (
@@ -300,8 +408,18 @@ def lightweight_prediction(gear: Gear, item_source: str, gear_source: str) -> di
         reason = f"理论上界 {upper_bound} 低于分组停止门槛 {configured_stop_threshold}，且未命中完整分类或速度保护路线"
     else:
         action, route = "review", "早期保守复核"
-        target_category = theoretical_bound["category"] if theoretical_bound else (evaluation.target_profile or "未命中")
+        future_probability = float(future_75["terminal_future_75_probability"])
+        target_category = "未来可期" if future_probability > 0 else (theoretical_bound["category"] if theoretical_bound else (evaluation.target_profile or "未命中"))
         reason = "未形成高置信度继续或强负证据；继续至 +6 后使用精确 DP 复核"
+        if future_probability > 0:
+            reason += f"；后备终局目标为全部副属性 GS 75+，概率 {future_probability:.4f}，未用于自动继续"
+    if early_speed_gamble["route_ended"]:
+        early_speed_gamble.update({
+            "fallback_action": action,
+            "fallback_recommendation": "cautious_continue" if action == "review" else action,
+            "fallback_route": route,
+            "fallback_reason": reason,
+        })
     return {
         "action": action,
         "terminal_value": terminal_value,
@@ -321,6 +439,9 @@ def lightweight_prediction(gear: Gear, item_source: str, gear_source: str) -> di
             "speed_threshold_probability": round(speed_threshold_probability, 4),
             "speed_potential_value": speed_potential_value,
             "formal_cross_tier_probability": round(float(metrics["formal_cross_tier_probability"]), 4),
+            **future_75,
+            "terminal_goal_type": terminal_goal_type,
+            "terminal_goal_probability": round(terminal_goal_probability, 4),
             "valid_substat_count": evaluation.valid_profile_count,
             "classification": "高置信度继续" if action == "continue" else "待 +6 精确复核" if action == "review" else "停止",
             "candidate_evaluations": candidates,
@@ -332,6 +453,7 @@ def lightweight_prediction(gear: Gear, item_source: str, gear_source: str) -> di
             "route": route,
             "speed_protection_eligible": speed_protection_eligible,
             "speed_high_value_route": speed_high_value_route,
+            "early_speed_gamble": early_speed_gamble,
             "calibration_group": selected_group,
             "calibration_thresholds": rule,
             "calibration_metrics": metrics,
@@ -341,6 +463,61 @@ def lightweight_prediction(gear: Gear, item_source: str, gear_source: str) -> di
             "calibration_stop_threshold": configured_stop_threshold,
             "decision_reason": reason,
         },
+    }
+
+
+def early_speed_gamble_status(gear: Gear, speed_stat) -> dict:
+    """Describe the narrow, human-validated +0/+3 non-boot speed route."""
+    threshold = EARLY_SPEED_GAMBLE_MINIMUMS.get(gear.rank)
+    current_speed = float(speed_stat.normalized_value) if speed_stat else 0.0
+    speed_rolls = int(speed_stat.rolls) if speed_stat else 0
+    slot_eligible = gear.slot != "boot"
+    plus3_hit_speed = gear.enhance == 3 and speed_stat is not None and speed_rolls >= 2
+    initial_threshold_met = threshold is not None and current_speed >= threshold
+    route_ended = bool(
+        gear.enhance == 3
+        and slot_eligible
+        and speed_stat is not None
+        and initial_threshold_met
+        and not plus3_hit_speed
+    )
+    continue_route = bool(
+        slot_eligible
+        and threshold is not None
+        and speed_stat is not None
+        and (
+            (gear.enhance == 0 and initial_threshold_met)
+            or (gear.enhance == 3 and plus3_hit_speed)
+        )
+    )
+    if gear.slot == "boot":
+        route_end_reason = "鞋子不适用非鞋早期赌速度路线"
+    elif speed_stat is None:
+        route_end_reason = "没有速度副属性，不具备早期赌速度资格"
+    elif threshold is None:
+        route_end_reason = f"{gear.rank} 未发布早期赌速度阈值"
+    elif route_ended:
+        route_end_reason = "+3 未命中速度，退出早期赌速度路线"
+    elif gear.enhance == 0 and current_speed < threshold:
+        route_end_reason = f"初始速度 {current_speed:.0f} 低于 {gear.rank} 阈值 {threshold:.0f}"
+    elif gear.enhance == 0:
+        route_end_reason = "初始速度达到阈值，允许赌至 +3"
+    elif gear.enhance == 3 and plus3_hit_speed:
+        route_end_reason = "+3 命中速度，保留早期赌速度路线"
+    else:
+        route_end_reason = "当前强化节点不适用早期赌速度路线"
+    return {
+        "rank": gear.rank,
+        "eligible": continue_route,
+        "slot_eligible": slot_eligible,
+        "rank_threshold": threshold,
+        "current_speed": current_speed,
+        "speed_rolls": speed_rolls,
+        "plus3_hit_speed": plus3_hit_speed,
+        "continue_route": continue_route,
+        "route_ended": route_ended,
+        "route_end_reason": route_end_reason,
+        "next_check_at": 3 if gear.enhance == 0 and continue_route else 6 if gear.enhance == 3 and continue_route else None,
     }
 
 
@@ -385,6 +562,10 @@ def summary_from_strategy_decision(summary: dict, should_continue: bool, checkpo
 
 
 def strategy_debug(strategy: StrategyDefault, enable_dp_assist: bool | None) -> dict:
+    from .calibration import DP_ASSIST_CONFIGS
+
+    config = DP_ASSIST_CONFIGS.get((strategy.item_source, strategy.rank))
+    cost = float(config["cost_per_baili_score"]) if config else None
     return {
         "item_source": strategy.item_source,
         "rank": strategy.rank,
@@ -392,7 +573,16 @@ def strategy_debug(strategy: StrategyDefault, enable_dp_assist: bool | None) -> 
         "policy_name": strategy.policy_name,
         "enable_dp_assist": strategy.enable_dp_assist if enable_dp_assist is None else bool(enable_dp_assist),
         "configured_enable_dp_assist": strategy.enable_dp_assist,
+        "resource_calibration_status": strategy.resource_calibration_status,
+        "resource_calibration_cost_per_baili_score": cost,
+        "resource_calibration_lambda": (1 / cost) if cost else None,
     }
+
+
+def resource_debug_material(gear: Gear, gear_source: str) -> dict:
+    from .resource_model import calibration_for_rank, resource_snapshot
+
+    return resource_snapshot(nearest_checkpoint(gear.enhance), calibration_for_rank(gear.rank), gear_source, gear.slot)
 
 
 def analyze_roll_hits(gear: Gear, evaluation: Evaluation) -> list[dict]:
