@@ -1,0 +1,44 @@
+{
+  "batch_id": "epic_b_balanced_prospective_20260713",
+  "status": "collecting_blind",
+  "created_at": "2026-07-13T02:16:50+08:00",
+  "scope": "normal_85 Epic +0/+3 non-speed",
+  "progress": {
+    "accepted": 0,
+    "target": 48
+  },
+  "frozen": {
+    "candidates": {
+      "A_current_review": {
+        "key": "A_current_review",
+        "label": "A 当前全部谨慎继续",
+        "decide_source_sha256": "338b8118c399efc33ddde1abfe90f669d78c238a164ea07f987bd25e6933e84e"
+      },
+      "B_global_current_gs": {
+        "key": "B_global_current_gs",
+        "label": "B 全局当前有效 GS 分层（对照）",
+        "decide_source_sha256": "6d2878d43614fd85c6b94cf89aa3205c9c6dbd15ec0a1e88c1ec3d6f6215ca93"
+      },
+      "C_category_probability": {
+        "key": "C_category_probability",
+        "label": "C 分类终局达标概率",
+        "decide_source_sha256": "a4346599259b340df523779b061c3098b790662ea4d99ec740aa6230d91a3af9"
+      }
+    },
+    "prediction_function_sha256": "02e591684c1bbc2d88a1595bbbf00cd5ecea2b2b5c4fef9345f097d2cf1edd36",
+    "speed_hard_route_exclusion": "normal_85 Epic non-boot speed >=2 follows the released hard route and is not a prospective non-speed case",
+    "resource_scope": "explicit riftslash/Saint joint resource pool; 85 stamina + one aggregate Saint bottleneck",
+    "oracle": {
+      "status": "locked_research_only",
+      "lambda": 0.002285139143794772,
+      "cost_per_terminal_value": 437.61011346528744,
+      "manual_labels_visible": false
+    },
+    "code_version": {
+      "git_head": "53310c9c6b64818f477917c49b888d896065f699",
+      "tracked_source_sha256": "cafb16d11bf4048654afee55816a65ade72e9e7e90e19a5390c6e2055ac5bae8"
+    }
+  },
+  "items": [],
+  "exclusions": []
+}

@@ -58,6 +58,30 @@
     "without_sensitive_marker": 2,
     "with_real_instance_or_fribbels_marker": 7
   },
+  "safe_sample_review": {
+    "json_parse_passed": 2,
+    "sensitive_marker_hits": 0,
+    "files": [
+      {
+        "path": "samples/epic_b_balanced_prospective_20260713.json",
+        "classification": "blind_collection_control_manifest",
+        "sha256": "6F4221EFB3B1D41AD3F41A7B80DB869ECCA4EED73E52D2D109E76D068FB8D3C7"
+      },
+      {
+        "path": "samples/epic_conditional_set_coverage_20260712.json",
+        "classification": "synthetic_fixed_seed_coverage_samples",
+        "sample_count": 1092,
+        "sha256": "D4F49802CB7342E55D96D25528B1FBF78663508E5A70E8746B6F76D4DB049952"
+      }
+    ]
+  },
+  "remaining_after_safe_sample_commit": {
+    "total": 513,
+    "reports": 225,
+    "manual_acceptance": 276,
+    "samples_private_or_real": 7,
+    "root": 5
+  },
   "private_externalization_authorized_for_this_inventory": false,
-  "status": "phase_3_inventory_recorded_generated_smoke_ignored_private_decision_pending"
+  "status": "phase_3_safe_synthetic_samples_verified_commit_pending"
 }

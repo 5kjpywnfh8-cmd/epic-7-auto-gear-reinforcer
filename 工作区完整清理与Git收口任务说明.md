@@ -171,3 +171,10 @@
 - 只读分类确认 5 个 smoke 分片目录共 `1651` 个文件、`5194317` 字节，均为可再生成中间结果；已按精确目录加入 `.gitignore`，文件原位保留，未删除或移动。
 - 清单见 [Markdown](reports/worktree_cleanup_untracked_inventory_20260725.md) 与 [JSON](reports/worktree_cleanup_untracked_inventory_20260725.json)。规则与清单提交后仍有 `515` 个待决文件：顶层研究/生成报告 189、顶层私人/真实报告 36、`manual_acceptance` 私人证据 276、样本 9、根目录分叉副本 3、含具体本地连接标识的历史文档 2。
 - 当前状态：`phase_3_inventory_recorded_generated_smoke_ignored_private_decision_pending`。下一步先审阅 189 个顶层研究/生成报告；私人证据和 7 个命中真实/实例/Fribbels 标记的样本不得在未取得精确新授权时推送，3 个分叉副本继续保留原位。
+
+### 安全合成样本收口（2026-07-25）
+
+- 9 个未跟踪样本中，`epic_b_balanced_prospective_20260713.json` 是空的盲采集控制 manifest，`epic_conditional_set_coverage_20260712.json` 是固定 seed `20260712` 生成的 1092 条合成覆盖样本。
+- 两个文件均通过 JSON 解析，账号、玩家、实例、Fribbels、MuMu、OCR、PCAP、具体端点和外部解码服务标记命中均为 `0`；SHA-256 已写入未跟踪分类清单。允许作为安全样本独立提交。
+- 其余 7 个样本均命中真实、实例或 Fribbels 标记，继续 fail closed，不纳入本提交。提交安全样本后待决未跟踪数由 `515` 更新为 `513`。
+- 当前状态：`phase_3_safe_synthetic_samples_verified_commit_pending`。下一步独立提交并推送 2 个安全样本及本节同步，再继续审阅顶层研究报告。
