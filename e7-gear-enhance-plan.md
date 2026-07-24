@@ -2091,3 +2091,10 @@ GUI 验收关注点：
 - 目标目录 `C:\Users\orangine\Documents\第七史诗强化装备脚本_副本隔离_20260725\` 尚不存在且位于工作区外；manifest 中 `415` 个候选和 `415` 个对应原件均存在，源/原件共 `830` 个 SHA-256 全部匹配，目标冲突 `0`。
 - 预检阶段未创建目录、未移动、未删除、未覆盖文件；Git 既有 `31` 个改动和暂存区 `0` 保持不变。Manifest 见 [workspace_isolation_manifest_20260725.json](reports/workspace_isolation_manifest_20260725.json)，状态为 `planned`。
 - 当前状态更新为 `preflight_passed_move_pending`。下一步仅允许按 manifest 逐项移动并验证目标哈希、源路径消失和原件不变；任何异常立即 `fail_closed`。
+
+#### 415 个精确副本隔离完成并验证（2026-07-25）
+
+- 按已授权 manifest 将 `415` 个 exact-match 副本移至 `C:\Users\orangine\Documents\第七史诗强化装备脚本_副本隔离_20260725\`，实际移动 `415/415`，无冲突和错误。
+- 移动后 `415/415` 目标哈希一致、`415/415` 源路径消失、`415/415` 原件未变化；结果见 [JSON](reports/workspace_isolation_result_20260725.json)、[Markdown](reports/workspace_isolation_result_20260725.md) 和 [manifest](reports/workspace_isolation_manifest_20260725.json)。
+- 未删除、覆盖文件，未修改 Git 配置、引用、索引、正式策略或用户进程。3 个分叉副本、`.git` 内部条目、31 个既有改动及未盘点深层文件继续排除。
+- 当前整理状态为 `partial_direct_inventory_complete_isolation_completed; deeper_unscanned`；整理闸门完成，下一步可恢复功能开发，不自动继续处理剩余文件。

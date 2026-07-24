@@ -1,0 +1,27 @@
+{
+  "schema": "workspace_isolation_result.v1",
+  "status": "completed_verified",
+  "completedAt": "2026-07-24T17:01:36.564Z",
+  "targetRoot": "C:\\Users\\orangine\\Documents\\第七史诗强化装备脚本_副本隔离_20260725",
+  "plannedCount": 415,
+  "movedCount": 415,
+  "destinationVerified": 415,
+  "sourceAbsent": 415,
+  "originalUnchanged": 415,
+  "preflightHashCount": 830,
+  "verificationHashCount": 830,
+  "errors": [],
+  "excluded": {
+    "divergentCandidates": 3,
+    "gitInternalEntries": 7,
+    "existingTrackedChanges": 31,
+    "deeperUnscannedFiles": true
+  },
+  "destructiveActions": {
+    "filesDeleted": 0,
+    "filesOverwritten": 0,
+    "gitConfigChanged": false,
+    "gitRefsChanged": false
+  },
+  "recoveryManifest": "reports/workspace_isolation_manifest_20260725.json"
+}

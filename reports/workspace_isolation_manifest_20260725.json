@@ -1,12 +1,22 @@
 {
   "schema": "workspace_isolation_manifest.v1",
-  "state": "planned",
-  "generatedAt": "2026-07-24T16:58:36.847Z",
+  "state": "completed_verified",
+  "completedAt": "2026-07-24T17:01:36.564Z",
   "workspaceRoot": "C:\\Users\\orangine\\Documents\\第七史诗强化装备脚本",
   "targetRoot": "C:\\Users\\orangine\\Documents\\第七史诗强化装备脚本_副本隔离_20260725",
   "candidateSource": "reports/workspace_duplicate_inventory_20260725.json",
   "candidateCount": 415,
   "recovery": "restore each destinationRelative to sourceRelative only under a separate authorized recovery task",
+  "moveResult": {
+    "plannedCount": 415,
+    "movedCount": 415,
+    "destinationVerified": 415,
+    "sourceAbsent": 415,
+    "originalUnchanged": 415,
+    "preflightHashCount": 830,
+    "verificationHashCount": 830,
+    "errors": []
+  },
   "entries": [
     {
       "scope": "第七史诗强化装备脚本",
