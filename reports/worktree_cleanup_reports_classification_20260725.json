@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-07-25",
+  "reviewer_model": "gpt-5.6-terra",
+  "reasoning_effort": "high",
+  "scope": "reports top-level untracked files",
+  "coverage": {
+    "files": 225,
+    "bytes": 108157699,
+    "missing": 0,
+    "extra": 0,
+    "overlap": 0
+  },
+  "categories": {
+    "A": {
+      "description": "authoritative research summaries and manifests",
+      "files": 76,
+      "bytes": 45922614,
+      "manifest_sha256": "c349de7165acecfcf20ee6e6bb19c31ef40471ab7087410c4dccddee5077025f",
+      "json_files": 22,
+      "json_parse_passed": 22,
+      "sensitive_pattern_matches": 0,
+      "handling": "commit in markdown-summary and json-manifest groups"
+    },
+    "B": {
+      "description": "reproducible raw outputs and logs",
+      "files": 98,
+      "bytes": 40156240,
+      "manifest_sha256": "288b4132eeeba733afec1a68ed085f6b684795f0f93a1f251b26e7a698849107",
+      "handling": "exact path .gitignore rules; no deletion"
+    },
+    "C": {
+      "description": "private or real operation/research data",
+      "files": 49,
+      "bytes": 22063344,
+      "manifest_sha256": "c932a3aa7c6c1caaf03556a7e8af1908a1edd7a0319ced4f255e06472f41d97f",
+      "handling": "keep local; new explicit export authorization required",
+      "paths": [
+        "reports/epic_exact_plus3_candidate_20260717.json",
+        "reports/epic_exact_plus3_development_20260717.json",
+        "reports/epic_exact_plus3_development_20260717.md",
+        "reports/epic_exact_plus3_joint_pool_20260717.json",
+        "reports/epic_exact_plus3_joint_pool_20260717.md",
+        "reports/epic_exact_plus3_validation_20260717.json",
+        "reports/epic_exact_plus3_validation_20260717.md",
+        "reports/epic_high_confidence_stop_20260714.json",
+        "reports/epic_high_confidence_stop_20260714.md",
+        "reports/epic_output_8_13_tank_10_17_holdout_validation_20260719.json",
+        "reports/epic_output_8_13_tank_10_17_holdout_validation_20260719.md",
+        "reports/epic_output_8_13_tank_10_17_release_20260720.md",
+        "reports/epic_plus3_prospective_collection_20260714.md",
+        "reports/manual-acceptance-early-speed-gamble-20260711.md",
+        "reports/manual-acceptance-first-batch-20260711.md",
+        "reports/manual-acceptance-future75-20260711.md",
+        "reports/ocr_raw_backpack_epic_20260722.json",
+        "reports/ocr_stage1_backpack_batch_003_pairing_20260722.md",
+        "reports/ocr_stage1_backpack_batch_004_ocr_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_005_detail_20260722.md",
+        "reports/ocr_stage1_backpack_batch_005_reader_20260722.md",
+        "reports/ocr_stage1_backpack_batch_005_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_006_pairing_20260722.md",
+        "reports/ocr_stage1_backpack_batch_007_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_008_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_009_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_010_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_011_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_012_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_013_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_014_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_015_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_016_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_017_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_018_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_019_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_020_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_021_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_022_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_023_shadow_20260722.md",
+        "reports/ocr_stage1_backpack_batch_024_shadow_20260723.md",
+        "reports/ocr_stage1_backpack_batch_025_shadow_20260723.md",
+        "reports/ocr_stage1_backpack_batch_026_shadow_20260723.md",
+        "reports/ocr_stage1_backpack_batch_027_shadow_20260723.md",
+        "reports/ocr_stage1_backpack_priority_20260722.md",
+        "reports/ocr_stage1_batch_001_pairing_20260721.md",
+        "reports/ocr_stage1_manual_review_packet_20260723.md",
+        "reports/single_item_confirmation_summary_20260723.json",
+        "reports/single_item_confirmation_summary_20260723.md"
+      ]
+    },
+    "D": {
+      "description": "contains local absolute paths or real inventory source paths",
+      "files": 2,
+      "bytes": 15501,
+      "manifest_sha256": "896e5108f2fb3b776b4f801176f2a74d100a1153c5c525be08a195593e9b9659",
+      "handling": "redaction review required; no silent rewrite or upload",
+      "paths": [
+        "reports/calibration-strategy-summary.md",
+        "reports/reforged_inventory_set_weights_20260718.json"
+      ]
+    }
+  },
+  "private_other_groups": {
+    "manual_acceptance": {
+      "files": 276,
+      "bytes": 197821247,
+      "groups": {
+        "<root>": {"files": 28, "bytes": 43566402, "manifest_sha256": "fb4f7a7137ac5391f15531ad0abb483e66e050c4d04bec72263dddb867c0762e"},
+        "mumu": {"files": 28, "bytes": 34644451, "manifest_sha256": "cbc3ddff0524757aabe7249b806a01ca3021896efa6353c590145e743485605a"},
+        "ocr_stage1": {"files": 203, "bytes": 111123595, "manifest_sha256": "e9e83c838bde2ec50f219fe4286d84645297316ecfd9176546eb2662332807ae"},
+        "single_item_confirmation": {"files": 17, "bytes": 8486799, "manifest_sha256": "edc228bd43578f5023b943038efc75954892249a4c4adcaa9ad6f619a8a13f85"}
+      }
+    },
+    "private_samples": {
+      "files": 7,
+      "bytes": 3041714,
+      "manifest_sha256": "5665f35b588fb08fa517893925120168331312ca712324e277bff37a4ead2a04"
+    },
+    "root_pending": {
+      "files": 5,
+      "bytes": 379353,
+      "manifest_sha256": "e1e764f95463ca62d720a26fe689698dc76ba66133327bb32bafb4507c8fd39c"
+    }
+  },
+  "status": "phase_3_reports_classified_safe_commit_pending"
+}

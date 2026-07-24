@@ -178,3 +178,12 @@
 - 两个文件均通过 JSON 解析，账号、玩家、实例、Fribbels、MuMu、OCR、PCAP、具体端点和外部解码服务标记命中均为 `0`；SHA-256 已写入未跟踪分类清单。允许作为安全样本独立提交。
 - 其余 7 个样本均命中真实、实例或 Fribbels 标记，继续 fail closed，不纳入本提交。提交安全样本后待决未跟踪数由 `515` 更新为 `513`。
 - 当前状态：`phase_3_safe_synthetic_samples_verified_commit_pending`。下一步独立提交并推送 2 个安全样本及本节同步，再继续审阅顶层研究报告。
+
+### 顶层报告分类完成（2026-07-25）
+
+- 只读分类覆盖当前 `reports/` 顶层未跟踪文件 `225` 个、`108157699` 字节，A/B/C/D 四类互斥完整覆盖；分类报告见 [Markdown](reports/worktree_cleanup_reports_classification_20260725.md) 与 [JSON](reports/worktree_cleanup_reports_classification_20260725.json)。
+- A 类权威研究摘要/manifest 为 `76` 个、`45922614` 字节，22 个 JSON 全部解析通过，主 agent 敏感模式扫描为 `0`；先提交 54 个 Markdown 摘要，再提交 22 个 JSON manifest。
+- B 类可再生成原始输出/日志为 `98` 个、`40156240` 字节；下一步只按分类清单加入精确 `.gitignore`，不删除原文件。
+- C 类私人/真实操作或研究数据为 `49` 个、`22063344` 字节；D 类含具体本地路径或真实库存源路径为 `2` 个、`15501` 字节。两类均不提交、不静默改写，等待精确授权或脱敏决定。
+- `manual_acceptance` 未跟踪文件已更正为 `276` 个、`197821247` 字节；剩余 7 个真实样本为 `3041714` 字节；根目录 5 个待决文件为 `379353` 字节。
+- 当前状态：`phase_3_reports_classified_safe_commit_pending`。下一步提交 A 类 Markdown 摘要并推送，再处理 A 类 JSON；随后处理 B 类精确忽略，最后停在私人外传/脱敏闸门。

@@ -30,7 +30,9 @@
 | 根目录历史任务文档 | 2 | 含具体本地连接标识，不推送、不静默改写 |
 | 合计 | 513 | 等待分组审阅或精确用户决定 |
 
-`manual_acceptance/` 的内部只读统计为：根目录 31 个文件，`mumu/` 28 个，`ocr_stage1/` 203 个，`single_item_confirmation/` 29 个；总大小约 163.6 MB。分类统计不构成外传授权。
+`manual_acceptance/` 的当前未跟踪内部只读统计为：根目录 28 个文件，`mumu/` 28 个，`ocr_stage1/` 203 个，`single_item_confirmation/` 17 个；总大小 197821247 字节。分类统计不构成外传授权。
+
+顶层报告的细分类见 [报告分类清单](worktree_cleanup_reports_classification_20260725.md) 与 [JSON](worktree_cleanup_reports_classification_20260725.json)。
 
 ## 安全合成样本收口
 
