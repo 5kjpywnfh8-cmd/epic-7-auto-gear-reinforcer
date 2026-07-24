@@ -2069,3 +2069,12 @@ GUI 验收关注点：
 - 独立任务说明：[工作区副本盘点与非破坏性整理任务说明](工作区副本盘点与非破坏性整理任务说明.md)。当前状态为 `task_defined_awaiting_readonly_inventory_start; destructive_cleanup_not_authorized`。
 - 第一阶段只允许分批、限速的只读目录清点、大小核对、SHA-256 比对和 Git 状态分类；不删除、不移动、不改引用、不改 Git 配置、不结束用户进程，也不暂存现有 `31` 个改动。
 - 只读盘点完成后必须先向用户提交“保留 / 候选隔离 / 内容分叉 / 无法判断”清单。实际隔离或删除需要新的独立任务和逐项目标、目标目录、恢复方式授权；完成该闸门后才恢复新功能开发。
+
+#### 工作区直接副本分批只读盘点结果（2026-07-25）
+
+- 前述“`task_defined_awaiting_readonly_inventory_start`”状态已被本节覆盖；当前状态为 `partial_direct_inventory_complete_full_workspace_untracked_scan_deferred; destructive_cleanup_not_authorized`。
+- 已完成根目录、`e7_enhance`、`manual_acceptance`、`reports` 的一级直接文件盘点，共 `418` 个候选：`415` 个 SHA-256 完全一致，`3` 个大小分叉，`0` 个哈希分叉，`0` 个缺少原件。大小分叉均为根目录任务计划/任务说明副本，不能覆盖当前原件。
+- 一级直接统计：根目录 `165` 文件/`82` 副本；`e7_enhance` `6`/`3`；`manual_acceptance` `62`/`31`；`reports` `608`/`302`；未发现目录联接或重解析点。
+- 已发现候选中 Git 跟踪 `0` 个、`.gitignore` 命中 `126` 个、未跟踪且未忽略 `292` 个；全工作区未跟踪扫描因卡顿风险未执行，因此本结果不是完整仓库盘点。
+- Git 前后 HEAD 与远程均为 `5f755af`，既有已跟踪改动保持 `31` 个，暂存区保持 `0`；`.git` 内 `7` 个副本命名条目保持不动。报告见 [JSON](reports/workspace_duplicate_inventory_20260725.json) 与 [Markdown](reports/workspace_duplicate_inventory_20260725.md)。
+- 本轮仍未删除、移动、重命名、覆盖文件，未修改 Git 配置、引用、索引或正式策略。`415` 个精确副本仅进入“可恢复隔离候选”，下一步须先由用户审核清单，再建立独立隔离任务并逐项授权。
