@@ -2048,3 +2048,10 @@ GUI 验收关注点：
 - 根目录合并汇总包含 batch `004` 与 `013`，结果为 `manifest_count=2`、`verified_count=2`、`fail_closed_count=0`；004 旧证据保持通过。
 - `tests/test_single_item_confirmation.py` 的旧单 manifest 断言已最小更新为 004/013 两个操作包，并同时验证合并 Markdown 包含两个 batch；最终定向测试 `5/5` 通过、退出码 `0`。生产汇总器未修改。
 - 报告见 [013 单包 JSON](reports/single_item_confirmation_summary_batch_013_20260724.json)、[013 单包 Markdown](reports/single_item_confirmation_summary_batch_013_20260724.md)、[合并 JSON](reports/single_item_confirmation_summary_20260724.json) 和 [合并 Markdown](reports/single_item_confirmation_summary_20260724.md)。该 `verified` 仅表示证据包内部一致，不进入正式策略或自动化发布。
+
+#### batch 013 Git 保存与远程推送阻断（2026-07-24）
+
+- 分支 `codex/batch-013-plus3-verification-20260724` 已创建本地提交 `ad8e983`，保存任务文档、测试、013 操作截图/manifest/报告和 20260724 离线汇总；其他工作区既有代码改动未暂存、未回退。
+- Git 提交后的自动 geometric repack 因既有无效引用 `main - 副本` 报错，但提交对象和 HEAD 校验正常；为避免破坏文件，未删除或修复该引用。
+- 推送到 GitHub `origin` 被安全策略拦截：提交包含游戏截图和工作区文档，远程仓库的私有/可信状态未建立。不得绕过，需先向用户说明外传范围并取得新的显式授权。
+- 当前发布状态：`git_push_blocked_pending_explicit_external_export_approval`；本地证据、提交和分支完整保留。
