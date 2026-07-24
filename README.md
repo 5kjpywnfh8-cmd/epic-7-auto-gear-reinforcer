@@ -2,6 +2,10 @@
 
 当前阶段先做 JSON 输入下的评分、体系判断、强化止损、资源模型和模拟校准。OCR 和 ADB 自动化按计划放到后续阶段。
 
+## 协作与文档
+
+项目级 agent 规则见 [AGENTS.md](AGENTS.md)。每次讨论形成结论或下一步时，必须同步更新 [e7-gear-enhance-plan.md](e7-gear-enhance-plan.md)；每个可执行任务必须先建立独立的 `*任务说明.md`，聊天指令不能替代本地文档。当前临时禁用自动发布子 agent 续作指令；只有用户明确索要时，才按固定标题“给子 agent 的续作指令：”和紧随其后的 `text` 代码块格式提供。
+
 ## 参考来源
 
 规则资料、外部项目参考和许可证边界见 [REFERENCES.md](REFERENCES.md)。
@@ -50,7 +54,8 @@ python main.py calibrate --runs 10000 --item-source rift_85 --debug
 - 每件装备最多考虑转换 1 个无效副属性。
 - 只允许转换 `rolls <= 2` 的无效副属性，也就是初始词条或最多吃过 1 跳。
 - 转换目标必须属于当前目标体系，且不能与已有副属性或主属性冲突。
-- 转换后数值按期望均值估算。
+- 转换后数值按对应目标属性和最终强化次数的合法满值计算；未转换原生值必须同时保留用于解释。
+- 85/90 级满值使用 Fribbels `Constants.modValues.reforged.greater` 的上端值，即 Greater 转换石、100% 品质；这张转换石表独立于普通/异界强化跳值表。
 - 转换石成本暂不计入 `cost_per_success`，但 debug 会标记 `conversion_needed`。
 
 策略门槛同时看：
@@ -58,6 +63,8 @@ python main.py calibrate --runs 10000 --item-source rift_85 --debug
 - `expected_final_reforge_score`：预计强化到 `+15` 后重铸有效分。
 - 预计 `+15` 后重铸速度。
 - 当前有效副属性数量，允许可转换词条补足 1 条。
+
+早期 `+0/+3` debug 还会独立展示“终局 75+ 未来可期概率”：它以终局重铸后的全部副属性官方 GS `>=75` 为目标，不按某个体系过滤，也不包含主属性。它与正式“体系 x 部位”的低档达标概率并存；已有合格正式候选时正式体系始终优先。75+ 仅作为后备复核信息，当前没有发布任何仅凭该概率自动继续的规则。
 
 参考 [zhaoyifan0528/e7](https://github.com/zhaoyifan0528/e7) 的阶段门槛搜索思路。本工具不照搬其跳值概率、数值或代码，当前实现按用户确认的 85 装跳值范围等概率模拟，并保留 `+12` 止损节点。完整来源说明见 [REFERENCES.md](REFERENCES.md)。
 

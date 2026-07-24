@@ -156,4 +156,5 @@
 - 当前状态：`phase_2_generated_resume_noise_ignored_tracked_review_pending`。
 - 已将过宽的 `reports/*.md` 替换为精确规则：仅忽略 `reports/*_resume_*/`、`reports/test_logs_*/`、`reports/epic_threshold_matrix_single_debug/`、`reports/visual/`、`runtime_cache/` 和本地 `.vscode/`；未删除任何文件，顶层权威报告继续可见。
 - 重新分类结果：`reports/` 共 `127855` 个文件、`1100733173` 字节，其中 `60` 个生成/调试目录是主要扫描噪声；顶层报告仍有 `316` 个文件、`176552041` 字节待逐份审阅。源码/测试/工具未跟踪文件共 `98` 个，`manual_acceptance` 未跟踪入口共 `276` 个，其中 `190` 个为截图、PCAP、日志或 PID 等私人/操作证据。
-- 当前未删除、移动、回退或暂存任何未分类文件；31 个已跟踪修改仍未暂存。下一步先审阅并按功能分组处理 31 个已跟踪修改，再单独审核 `src/tests/tools` 新文件、顶层报告和私人 `manual_acceptance` 证据。
+- 校准组已通过 `32` 项定向测试并提交 `fc4e2e9`；策略/DP/资源组已通过 `92` 项定向测试并提交 `ede8e5e`；GUI 组已通过 `33` 项定向测试并提交 `77baf88`，三次均已推送到 `origin/codex/worktree-cleanup-20260725`。
+- 当前未删除、移动、回退或混入私人证据；已跟踪代码改动已全部分组提交，剩余 6 个说明文档待提交。下一步提交文档后，再单独审核 `src/tests/tools` 新文件、顶层报告和私人 `manual_acceptance` 证据。
