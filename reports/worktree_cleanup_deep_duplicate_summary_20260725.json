@@ -1,0 +1,10 @@
+﻿{
+    "schema_version":  1,
+    "generated_at":  "2026-07-25T01:47:32.3220936+08:00",
+    "scope":  "workspace excluding .git",
+    "candidate_count":  127762,
+    "exact_match":  127759,
+    "divergent":  3,
+    "bytes":  1096187413,
+    "manifest":  "reports/worktree_cleanup_deep_duplicate_manifest_20260725.csv"
+}

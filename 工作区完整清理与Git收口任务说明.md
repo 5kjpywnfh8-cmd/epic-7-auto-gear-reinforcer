@@ -149,4 +149,9 @@
 - `reports` 是主要卡顿来源：`255347` 个文件、`1972226214` 字节，主体是研究 resume 分片；`manual_acceptance` 含私人游戏截图和操作证据，未经本轮外传授权不得推送。
 - 现有 `reports/*.md` 忽略规则过宽，已列为必须替换项；当前尚未修改 `.gitignore`。
 - 尚未删除、忽略、移动、暂存、提交或上传任何待分类内容。
-- 下一步：审阅全部 31 个既有已跟踪修改并按任务来源/功能分组。
+- 深层副本盘点完成：[报告](reports/worktree_cleanup_deep_duplicate_inventory_20260725.md)、[SHA-256 manifest](reports/worktree_cleanup_deep_duplicate_manifest_20260725.csv)、[JSON 汇总](reports/worktree_cleanup_deep_duplicate_summary_20260725.json)。
+- 工作区外 `127759` 个 exact-match 候选的目标冲突为 `0`，3 个内容分叉副本已排除；当前状态 `exact_duplicate_isolation_preflight_passed_move_pending`。
+- `127759/127759` 个 exact-match 候选已按 manifest 可恢复移动并逐项验证；结果 manifest 位于工作区外隔离目录。工作区现只剩 3 个内容分叉副本。
+- 深层副本曾使历史审计读到 Heroic `160` 个 shard 而非权威 `80`；隔离后回归 `test_historical_bridge_keeps_v3_v4_baseline_and_resource_conservation` 为 `1/1` 通过，未修改审计器或测试。
+- 当前状态：`phase_2_tracked_review_in_progress_deep_duplicate_isolation_completed`。
+- 下一步：审阅并分组处理 31 个既有已跟踪修改，同时逐步替换过宽的 `reports/*.md` 忽略规则。

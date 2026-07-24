@@ -2123,3 +2123,7 @@ GUI 验收关注点：
 - 阶段一安全基线已完成：[Markdown](reports/worktree_cleanup_baseline_20260725.md) / [JSON](reports/worktree_cleanup_baseline_20260725.json)。完整未跟踪枚举为 `255840` 个文件；工作区排除 `.git` 后为 `256449` 个文件、`2379545803` 字节。
 - `reports` 是主要卡顿来源：`255347` 个文件、`1972226214` 字节，主体为研究 resume 分片；`manual_acceptance` 含私人游戏截图和操作证据，未经本轮外传授权不得推送。现有 `reports/*.md` 忽略规则过宽，必须在逐份分类后移除或替换。
 - 当前状态：`phase_1_complete_phase_2_tracked_review_in_progress_no_cleanup_performed`。尚未删除、忽略、移动、暂存、提交或上传任何待分类内容；下一步审阅全部 31 个既有已跟踪修改并按任务来源/功能分组。
+- 深层副本盘点已完成：[报告](reports/worktree_cleanup_deep_duplicate_inventory_20260725.md)、[SHA-256 manifest](reports/worktree_cleanup_deep_duplicate_manifest_20260725.csv)、[JSON 汇总](reports/worktree_cleanup_deep_duplicate_summary_20260725.json)。排除 `.git` 后共 `127762` 个候选，`127759` 个 exact-match、3 个内容分叉、原件缺失 `0`；目标冲突 `0`。
+- `127759` 个 exact-match 仅允许可恢复隔离到 `C:\Users\orangine\Documents\第七史诗强化装备脚本_副本隔离_20260725\`，不删除源的语义之外不覆盖目标；3 个内容分叉、`.git` 条目、已跟踪修改和其他未跟踪内容均排除。当前状态：`exact_duplicate_isolation_preflight_passed_move_pending`。
+- `127759/127759` 个 exact-match 已按 manifest 可恢复移动并逐项验证；结果 manifest 位于工作区外隔离目录。工作区现只剩 3 个内容分叉副本，均保留原位。深层副本导致的 Heroic `160`/`80` 审计污染已消除，历史审计回归 `1/1` 通过，未修改审计器或测试。
+- 当前状态更新为 `phase_2_tracked_review_in_progress_deep_duplicate_isolation_completed`。下一步审阅 31 个既有已跟踪修改，并逐步替换过宽的 `reports/*.md` 忽略规则。
