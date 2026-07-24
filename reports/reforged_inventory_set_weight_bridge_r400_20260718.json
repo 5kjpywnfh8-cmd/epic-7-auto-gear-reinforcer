@@ -1,0 +1,2951 @@
+{
+  "study": "reforged_inventory_set_weight_absolute_bridge_20260718",
+  "schema_version": 2,
+  "complete": true,
+  "execution": {
+    "expected_shards": 760,
+    "scheduled_shards": 760,
+    "missing_shards": 0,
+    "resume": "C:\\Users\\orangine\\Documents\\第七史诗强化装备脚本\\reports\\reforged_inventory_set_weight_bridge_resume_20260718",
+    "stage": "r400"
+  },
+  "hashes": {
+    "bridge_research_hash": "c9b1b85a5cfd5ececff5b3a4aa0dda64ecb251a6740e87a48460bae47d2ad56f",
+    "r50_research_hash": "982458de94a0dc49e7994f68677f1d854f11dd63a808984d843637ef8fc295d6",
+    "formal_policy_hash": "0451ea852c536ea5c2ed108cd0e2f9d352071401af52c8b110a01c5a853e1f71",
+    "resource_model_hash": "e91e14a4e8620a662593384bd56bb813734f9f2aaddfb71ce34900e1fa427ef6",
+    "mapping_hash": "80fdbf438bfae79b02639620681f15052e9226289b92b09426588799d52a6d5c"
+  },
+  "samples_per_set": 400,
+  "blocks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "rules": [
+    "current_formal",
+    "global_12_17",
+    "output_8_13_tank_10_17",
+    "output_8_13_tank_12_17"
+  ],
+  "weights": {
+    "source_path": "D:\\VScode\\E7-tools\\gear_data\\0橙U子0\\json\\gear_fribbels_20260610_182000.json",
+    "source_sha256": "2BB32F384FBE3D926F5274D50AB24DC8766C2AF87AA1ABC0B6946A47EEAE1DB7",
+    "filter": {
+      "level": 90,
+      "enhance": 15,
+      "set_field": "items[*].raw.f"
+    },
+    "counts": {
+      "all": {
+        "set_speed": 235,
+        "set_cri": 25,
+        "set_penetrate": 34,
+        "set_def": 6,
+        "set_acc": 26,
+        "set_counter": 42,
+        "set_res": 17,
+        "set_torrent": 50,
+        "set_vampire": 6,
+        "set_immune": 63,
+        "set_rage": 8,
+        "set_cri_dmg": 98,
+        "set_max_hp": 63,
+        "set_shield": 22,
+        "set_att": 1,
+        "set_riposte": 12,
+        "set_revenant": 8,
+        "set_opener": 22,
+        "set_chase": 27
+      },
+      "Epic": {
+        "set_speed": 184,
+        "set_penetrate": 31,
+        "set_def": 4,
+        "set_acc": 24,
+        "set_cri": 14,
+        "set_counter": 37,
+        "set_res": 11,
+        "set_torrent": 35,
+        "set_vampire": 5,
+        "set_immune": 47,
+        "set_cri_dmg": 88,
+        "set_rage": 5,
+        "set_max_hp": 50,
+        "set_shield": 12,
+        "set_riposte": 12,
+        "set_revenant": 8,
+        "set_opener": 22,
+        "set_chase": 27
+      },
+      "Heroic": {
+        "set_cri": 11,
+        "set_speed": 51,
+        "set_acc": 2,
+        "set_def": 2,
+        "set_immune": 16,
+        "set_counter": 5,
+        "set_rage": 3,
+        "set_cri_dmg": 10,
+        "set_torrent": 15,
+        "set_penetrate": 3,
+        "set_vampire": 1,
+        "set_max_hp": 13,
+        "set_shield": 10,
+        "set_res": 6,
+        "set_att": 1
+      }
+    },
+    "rank_totals": {
+      "Epic": 616,
+      "Heroic": 149
+    },
+    "observed_sets": [
+      "set_acc",
+      "set_att",
+      "set_chase",
+      "set_counter",
+      "set_cri",
+      "set_cri_dmg",
+      "set_def",
+      "set_immune",
+      "set_max_hp",
+      "set_opener",
+      "set_penetrate",
+      "set_rage",
+      "set_res",
+      "set_revenant",
+      "set_riposte",
+      "set_shield",
+      "set_speed",
+      "set_torrent",
+      "set_vampire"
+    ],
+    "scenarios": {
+      "uniform_observed_sets": {
+        "set_acc": 0.05263157894736842,
+        "set_att": 0.05263157894736842,
+        "set_chase": 0.05263157894736842,
+        "set_counter": 0.05263157894736842,
+        "set_cri": 0.05263157894736842,
+        "set_cri_dmg": 0.05263157894736842,
+        "set_def": 0.05263157894736842,
+        "set_immune": 0.05263157894736842,
+        "set_max_hp": 0.05263157894736842,
+        "set_opener": 0.05263157894736842,
+        "set_penetrate": 0.05263157894736842,
+        "set_rage": 0.05263157894736842,
+        "set_res": 0.05263157894736842,
+        "set_revenant": 0.05263157894736842,
+        "set_riposte": 0.05263157894736842,
+        "set_shield": 0.05263157894736842,
+        "set_speed": 0.05263157894736842,
+        "set_torrent": 0.05263157894736842,
+        "set_vampire": 0.05263157894736842
+      },
+      "reforged_inventory_all": {
+        "set_acc": 0.03398692810457516,
+        "set_att": 0.00130718954248366,
+        "set_chase": 0.03529411764705882,
+        "set_counter": 0.054901960784313725,
+        "set_cri": 0.032679738562091505,
+        "set_cri_dmg": 0.12810457516339868,
+        "set_def": 0.00784313725490196,
+        "set_immune": 0.08235294117647059,
+        "set_max_hp": 0.08235294117647059,
+        "set_opener": 0.02875816993464052,
+        "set_penetrate": 0.044444444444444446,
+        "set_rage": 0.01045751633986928,
+        "set_res": 0.022222222222222223,
+        "set_revenant": 0.01045751633986928,
+        "set_riposte": 0.01568627450980392,
+        "set_shield": 0.02875816993464052,
+        "set_speed": 0.30718954248366015,
+        "set_torrent": 0.06535947712418301,
+        "set_vampire": 0.00784313725490196
+      },
+      "reforged_inventory_epic": {
+        "set_acc": 0.03896103896103896,
+        "set_chase": 0.04383116883116883,
+        "set_counter": 0.060064935064935064,
+        "set_cri": 0.022727272727272728,
+        "set_cri_dmg": 0.14285714285714285,
+        "set_def": 0.006493506493506494,
+        "set_immune": 0.0762987012987013,
+        "set_max_hp": 0.08116883116883117,
+        "set_opener": 0.03571428571428571,
+        "set_penetrate": 0.05032467532467533,
+        "set_rage": 0.008116883116883116,
+        "set_res": 0.017857142857142856,
+        "set_revenant": 0.012987012987012988,
+        "set_riposte": 0.01948051948051948,
+        "set_shield": 0.01948051948051948,
+        "set_speed": 0.2987012987012987,
+        "set_torrent": 0.056818181818181816,
+        "set_vampire": 0.008116883116883116
+      },
+      "reforged_inventory_heroic": {
+        "set_acc": 0.013422818791946308,
+        "set_att": 0.006711409395973154,
+        "set_counter": 0.03355704697986577,
+        "set_cri": 0.0738255033557047,
+        "set_cri_dmg": 0.06711409395973154,
+        "set_def": 0.013422818791946308,
+        "set_immune": 0.10738255033557047,
+        "set_max_hp": 0.087248322147651,
+        "set_penetrate": 0.020134228187919462,
+        "set_rage": 0.020134228187919462,
+        "set_res": 0.040268456375838924,
+        "set_shield": 0.06711409395973154,
+        "set_speed": 0.3422818791946309,
+        "set_torrent": 0.10067114093959731,
+        "set_vampire": 0.006711409395973154
+      },
+      "top4_equal": {
+        "set_speed": 0.25,
+        "set_cri_dmg": 0.25,
+        "set_immune": 0.25,
+        "set_max_hp": 0.25
+      }
+    },
+    "semantics": "post-selection inventory demand weights only; not natural set drop rates"
+  },
+  "r50_reference": {
+    "resume": "C:\\Users\\orangine\\Documents\\第七史诗强化装备脚本\\reports\\reforged_inventory_set_weight_resume_20260718",
+    "report": "C:\\Users\\orangine\\Documents\\第七史诗强化装备脚本\\reports\\reforged_inventory_set_weight_efficiency_20260718.md",
+    "read_only": true,
+    "exists": true,
+    "note": "R50 shards and report are retained as historical reference and are never written by this runner."
+  },
+  "scenarios": {
+    "uniform_observed_sets": {
+      "rules": {
+        "current_formal": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 612.6016031351656,
+              "interval95": [
+                586.5523536954397,
+                642.1109973000254
+              ],
+              "relative_half_width": 0.04534647258532156,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 163.23822772944294,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 2982.1293240478503,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 612.6016031351656,
+              "interval95": [
+                586.5523536954397,
+                642.1109973000254
+              ],
+              "relative_half_width": 0.04534647258532156,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 163.23822772944294,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 2982.1293240478503,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 2239.966707745897,
+              "interval95": [
+                2106.678236523841,
+                2391.366131184577
+              ],
+              "relative_half_width": 0.06354734953789129,
+              "cluster_count": 20,
+              "ess": 19.597324241136203,
+              "max_cluster_share": 0.06119226796517633,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 44.6435206622473,
+              "rift_stamina_per_100k": 85110.56322210935,
+              "saint_stamina_per_100k": 14889.436777890645,
+              "cycles_per_100k": 1001.3007437895219,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 2239.966707745897,
+              "interval95": [
+                2106.678236523841,
+                2391.366131184577
+              ],
+              "relative_half_width": 0.06354734953789129,
+              "cluster_count": 20,
+              "ess": 19.597324241136203,
+              "max_cluster_share": 0.06119226796517633,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 44.6435206622473,
+              "rift_stamina_per_100k": 85110.56322210935,
+              "saint_stamina_per_100k": 14889.436777890645,
+              "cycles_per_100k": 1001.3007437895219,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 11559.984458625342,
+              "interval95": [
+                10918.80884149349,
+                12262.205713744006
+              ],
+              "relative_half_width": 0.05810547916646016,
+              "cluster_count": 20,
+              "ess": 19.643272837994843,
+              "max_cluster_share": 0.061024379340974474,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 8.650530660998097,
+              "rift_stamina_per_100k": 14377.260525086322,
+              "saint_stamina_per_100k": 85622.73947491366,
+              "cycles_per_100k": 169.14424147160378,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 752.1069969847306,
+            "interval95": [
+              708.2171557491448,
+              801.9537991839309
+            ],
+            "relative_half_width": 0.062316029375198805,
+            "cluster_count": 20,
+            "ess": 19.597324241136203,
+            "max_cluster_share": 0.06119226796517633,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 132.9598054544229,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.0,
+            "cycles_per_100k": 2982.1293240478503,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": 0.0,
+            "joint_source_epic_value_only": 1627.3651046107316,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 9320.017750879444
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "global_12_17": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 522.6093574294026,
+              "interval95": [
+                500.56692495577926,
+                547.6265114910918
+              ],
+              "relative_half_width": 0.04502367386491896,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 191.34751144119846,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3495.645798716653,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 522.6093574294026,
+              "interval95": [
+                500.56692495577926,
+                547.6265114910918
+              ],
+              "relative_half_width": 0.04502367386491896,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 191.34751144119846,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3495.645798716653,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 2130.6375229695827,
+              "interval95": [
+                2003.7798296064116,
+                2274.269390324384
+              ],
+              "relative_half_width": 0.06347620320254585,
+              "cluster_count": 20,
+              "ess": 19.597324241136203,
+              "max_cluster_share": 0.06119226796517633,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 46.93430906099161,
+              "rift_stamina_per_100k": 89477.83282691627,
+              "saint_stamina_per_100k": 10522.167173083722,
+              "cycles_per_100k": 1052.680386199015,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 2130.6375229695827,
+              "interval95": [
+                2003.7798296064116,
+                2274.269390324384
+              ],
+              "relative_half_width": 0.06347620320254585,
+              "cluster_count": 20,
+              "ess": 19.597324241136203,
+              "max_cluster_share": 0.06119226796517633,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 46.93430906099161,
+              "rift_stamina_per_100k": 89477.83282691627,
+              "saint_stamina_per_100k": 10522.167173083722,
+              "cycles_per_100k": 1052.680386199015,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 11463.681925766201,
+              "interval95": [
+                10828.441551599957,
+                12160.096359473784
+              ],
+              "relative_half_width": 0.05808146180681922,
+              "cluster_count": 20,
+              "ess": 19.643272837994843,
+              "max_cluster_share": 0.061024379340974474,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 8.723200857068116,
+              "rift_stamina_per_100k": 14498.039050965475,
+              "saint_stamina_per_100k": 85501.9609490345,
+              "cycles_per_100k": 170.56516530547617,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 641.6211652087736,
+            "interval95": [
+              604.3659766997284,
+              683.596802336069
+            ],
+            "relative_half_width": 0.06174268394852598,
+            "cluster_count": 20,
+            "ess": 19.597324241136203,
+            "max_cluster_share": 0.06119226796517633,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 155.85520774936026,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.0,
+            "cycles_per_100k": 3495.645798716653,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": 0.0,
+            "joint_source_epic_value_only": 1608.02816554018,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 9333.044402796619
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 7.267017652482521e-05,
+            "interval95": [
+              6.826111425613278e-05,
+              7.707923879351765e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_10_17": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 562.2378987886915,
+              "interval95": [
+                538.2702039647129,
+                589.2821975815443
+              ],
+              "relative_half_width": 0.04536513255930788,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 177.8606533203189,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3249.260159452,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 562.2378987886915,
+              "interval95": [
+                538.2702039647129,
+                589.2821975815443
+              ],
+              "relative_half_width": 0.04536513255930788,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 177.8606533203189,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3249.260159452,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 2178.5638766464735,
+              "interval95": [
+                2048.772565750317,
+                2325.8247473295874
+              ],
+              "relative_half_width": 0.0635859670100068,
+              "cluster_count": 20,
+              "ess": 19.597324241136203,
+              "max_cluster_share": 0.06119226796517633,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 45.90179846088924,
+              "rift_stamina_per_100k": 87509.4047682882,
+              "saint_stamina_per_100k": 12490.595231711823,
+              "cycles_per_100k": 1029.5224090386846,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 2178.5638766464735,
+              "interval95": [
+                2048.772565750317,
+                2325.8247473295874
+              ],
+              "relative_half_width": 0.0635859670100068,
+              "cluster_count": 20,
+              "ess": 19.597324241136203,
+              "max_cluster_share": 0.06119226796517633,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 45.90179846088924,
+              "rift_stamina_per_100k": 87509.4047682882,
+              "saint_stamina_per_100k": 12490.595231711823,
+              "cycles_per_100k": 1029.5224090386846,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 11506.084869525032,
+              "interval95": [
+                10867.971314607104,
+                12205.16260074058
+              ],
+              "relative_half_width": 0.05810800551607064,
+              "cluster_count": 20,
+              "ess": 19.643272837994843,
+              "max_cluster_share": 0.061024379340974474,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 8.69105357156365,
+              "rift_stamina_per_100k": 14444.609970486534,
+              "saint_stamina_per_100k": 85555.39002951347,
+              "cycles_per_100k": 169.93658788807687,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 690.2741610287073,
+            "interval95": [
+              649.870726131731,
+              735.765629038128
+            ],
+            "relative_half_width": 0.062217961902549655,
+            "cluster_count": 20,
+            "ess": 19.597324241136203,
+            "max_cluster_share": 0.06119226796517633,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 144.86997434609344,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.0,
+            "cycles_per_100k": 3249.260159452,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": 0.0,
+            "joint_source_epic_value_only": 1616.3259778577822,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 9327.520992878559
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 4.056254655558393e-05,
+            "interval95": [
+              3.7976893646194625e-05,
+              4.314819946497323e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_12_17": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 558.252354606099,
+              "interval95": [
+                534.418308707926,
+                585.2054831649905
+              ],
+              "relative_half_width": 0.04548764912321751,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 179.1304580713496,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3272.4576790314222,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 558.252354606099,
+              "interval95": [
+                534.418308707926,
+                585.2054831649905
+              ],
+              "relative_half_width": 0.04548764912321751,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 179.1304580713496,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3272.4576790314222,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 2173.7194521062224,
+              "interval95": [
+                2044.2568197820444,
+                2320.7372078441113
+              ],
+              "relative_half_width": 0.0635961526208388,
+              "cluster_count": 20,
+              "ess": 19.597324241136203,
+              "max_cluster_share": 0.06119226796517633,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 46.004096758256985,
+              "rift_stamina_per_100k": 87704.43118144906,
+              "saint_stamina_per_100k": 12295.568818550946,
+              "cycles_per_100k": 1031.8168374288125,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 2173.7194521062224,
+              "interval95": [
+                2044.2568197820444,
+                2320.7372078441113
+              ],
+              "relative_half_width": 0.0635961526208388,
+              "cluster_count": 20,
+              "ess": 19.597324241136203,
+              "max_cluster_share": 0.06119226796517633,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 46.004096758256985,
+              "rift_stamina_per_100k": 87704.43118144906,
+              "saint_stamina_per_100k": 12295.568818550946,
+              "cycles_per_100k": 1031.8168374288125,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 11501.81954072483,
+              "interval95": [
+                10863.802542552214,
+                12200.659843727717
+              ],
+              "relative_half_width": 0.05811503547078154,
+              "cluster_count": 20,
+              "ess": 19.643272837994843,
+              "max_cluster_share": 0.061024379340974474,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 8.694276557367909,
+              "rift_stamina_per_100k": 14449.966602165257,
+              "saint_stamina_per_100k": 85550.03339783475,
+              "cycles_per_100k": 169.99960708429714,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 685.3810042834772,
+            "interval95": [
+              645.2211141920636,
+              730.6344194826373
+            ],
+            "relative_half_width": 0.06231082037345633,
+            "cluster_count": 20,
+            "ess": 19.597324241136203,
+            "max_cluster_share": 0.06119226796517633,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 145.90424796576283,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.0,
+            "cycles_per_100k": 3272.4576790314222,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": 0.0,
+            "joint_source_epic_value_only": 1615.4670975001236,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 9328.100088618607
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 4.3787489442446505e-05,
+            "interval95": [
+              4.100637515031755e-05,
+              4.656860373457546e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        }
+      }
+    },
+    "reforged_inventory_all": {
+      "rules": {
+        "current_formal": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 612.6016031351656,
+              "interval95": [
+                586.5523536954397,
+                642.1109973000254
+              ],
+              "relative_half_width": 0.04534647258532156,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 163.23822772944294,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 2982.1293240478503,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 488.2614947805261,
+              "interval95": [
+                461.6764868494293,
+                519.0601240044454
+              ],
+              "relative_half_width": 0.05876322192968549,
+              "cluster_count": 20,
+              "ess": 19.573654707494264,
+              "max_cluster_share": 0.06633775787370289,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 204.8082862748578,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 2817.672576524189,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 1695.7068179391238,
+              "interval95": [
+                1565.187187217575,
+                1843.7535016267723
+              ],
+              "relative_half_width": 0.08213870212179505,
+              "cluster_count": 20,
+              "ess": 19.31089676943745,
+              "max_cluster_share": 0.07180153424338359,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 58.97245853002758,
+              "rift_stamina_per_100k": 83501.95129029128,
+              "saint_stamina_per_100k": 16498.048709708717,
+              "cycles_per_100k": 982.3758975328387,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 1695.7068179391238,
+              "interval95": [
+                1565.187187217575,
+                1843.7535016267723
+              ],
+              "relative_half_width": 0.08213870212179505,
+              "cluster_count": 20,
+              "ess": 19.31089676943745,
+              "max_cluster_share": 0.07180153424338359,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 58.97245853002758,
+              "rift_stamina_per_100k": 83501.95129029128,
+              "saint_stamina_per_100k": 16498.048709708717,
+              "cycles_per_100k": 982.3758975328387,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 8564.053312629396,
+              "interval95": [
+                7861.0865648726995,
+                9312.082913260216
+              ],
+              "relative_half_width": 0.08471434584881286,
+              "cluster_count": 20,
+              "ess": 19.300290323236553,
+              "max_cluster_share": 0.0698600913065112,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 11.676713858440158,
+              "rift_stamina_per_100k": 14327.513488996878,
+              "saint_stamina_per_100k": 85672.48651100312,
+              "cycles_per_100k": 168.55898222349268,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 591.2047840847487,
+            "interval95": [
+              548.2954614296852,
+              639.8633775706274
+            ],
+            "relative_half_width": 0.07744179225705997,
+            "cluster_count": 20,
+            "ess": 19.31089676943745,
+            "max_cluster_share": 0.07180153424338359,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 169.14612785958965,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.0,
+            "cycles_per_100k": 2817.672576524189,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": -124.34010835463954,
+            "joint_source_epic_value_only": 1207.4453231585976,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 6868.346494690272
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "global_12_17": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 522.6093574294026,
+              "interval95": [
+                500.56692495577926,
+                547.6265114910918
+              ],
+              "relative_half_width": 0.04502367386491896,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 191.34751144119846,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3495.645798716653,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 427.243730851677,
+              "interval95": [
+                404.36013817018977,
+                453.64138347895533
+              ],
+              "relative_half_width": 0.057673456331971504,
+              "cluster_count": 20,
+              "ess": 19.573654707494264,
+              "max_cluster_share": 0.06633775787370289,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 234.05843732489134,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3220.0847541362973,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 1622.7524281298188,
+              "interval95": [
+                1498.30447082226,
+                1763.9383450446537
+              ],
+              "relative_half_width": 0.08184670366770917,
+              "cluster_count": 20,
+              "ess": 19.31089676943745,
+              "max_cluster_share": 0.07180153424338359,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 61.62369457382201,
+              "rift_stamina_per_100k": 87255.96440940286,
+              "saint_stamina_per_100k": 12744.035590597141,
+              "cycles_per_100k": 1026.5407577576807,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 1622.7524281298188,
+              "interval95": [
+                1498.30447082226,
+                1763.9383450446537
+              ],
+              "relative_half_width": 0.08184670366770917,
+              "cluster_count": 20,
+              "ess": 19.31089676943745,
+              "max_cluster_share": 0.07180153424338359,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 61.62369457382201,
+              "rift_stamina_per_100k": 87255.96440940286,
+              "saint_stamina_per_100k": 12744.035590597141,
+              "cycles_per_100k": 1026.5407577576807,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 8500.046539804265,
+              "interval95": [
+                7803.5281164205435,
+                9242.049351714455
+              ],
+              "relative_half_width": 0.08461843288490024,
+              "cluster_count": 20,
+              "ess": 19.300290323236553,
+              "max_cluster_share": 0.0698600913065112,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 11.764641467751629,
+              "rift_stamina_per_100k": 14435.402063105828,
+              "saint_stamina_per_100k": 85564.59793689418,
+              "cycles_per_100k": 169.82825956595093,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 517.3222552871323,
+            "interval95": [
+              480.5238598402069,
+              559.0499787278609
+            ],
+            "relative_half_width": 0.07589671436430778,
+            "cluster_count": 20,
+            "ess": 19.31089676943745,
+            "max_cluster_share": 0.07180153424338359,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 193.30310841642878,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.0,
+            "cycles_per_100k": 3220.0847541362973,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": -95.3656265777256,
+            "joint_source_epic_value_only": 1195.5086972781419,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 6877.294111674446
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 8.767664299899708e-05,
+            "interval95": [
+              8.0694863875217e-05,
+              9.465842212277716e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_10_17": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 562.2378987886915,
+              "interval95": [
+                538.2702039647129,
+                589.2821975815443
+              ],
+              "relative_half_width": 0.04536513255930788,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 177.8606533203189,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3249.260159452,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 453.8470974934628,
+              "interval95": [
+                429.22541671594524,
+                482.21398528312335
+              ],
+              "relative_half_width": 0.05837711517802684,
+              "cluster_count": 20,
+              "ess": 19.573654707494264,
+              "max_cluster_share": 0.06633775787370289,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 220.3385249179442,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3031.3315467124107,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 1654.407099198791,
+              "interval95": [
+                1526.998734181686,
+                1798.4313127226185
+              ],
+              "relative_half_width": 0.08203318840700818,
+              "cluster_count": 20,
+              "ess": 19.31089676943745,
+              "max_cluster_share": 0.07180153424338359,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 60.444614900666686,
+              "rift_stamina_per_100k": 85586.44857286951,
+              "saint_stamina_per_100k": 14413.551427130502,
+              "cycles_per_100k": 1006.8993949749354,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 1654.407099198791,
+              "interval95": [
+                1526.998734181686,
+                1798.4313127226185
+              ],
+              "relative_half_width": 0.08203318840700818,
+              "cluster_count": 20,
+              "ess": 19.31089676943745,
+              "max_cluster_share": 0.07180153424338359,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 60.444614900666686,
+              "rift_stamina_per_100k": 85586.44857286951,
+              "saint_stamina_per_100k": 14413.551427130502,
+              "cycles_per_100k": 1006.8993949749354,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 8527.949199933835,
+              "interval95": [
+                7828.248650357839,
+                9272.370990163772
+              ],
+              "relative_half_width": 0.08466996612838273,
+              "cluster_count": 20,
+              "ess": 19.300290323236553,
+              "max_cluster_share": 0.0698600913065112,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 11.726148650225998,
+              "rift_stamina_per_100k": 14388.170764213517,
+              "saint_stamina_per_100k": 85611.82923578648,
+              "cycles_per_100k": 169.27259722604137,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 549.5345796246354,
+            "interval95": [
+              509.80150290069207,
+              594.577475088809
+            ],
+            "relative_half_width": 0.07713433815759506,
+            "cluster_count": 20,
+            "ess": 19.31089676943745,
+            "max_cluster_share": 0.07180153424338359,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 181.972170101299,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.0,
+            "cycles_per_100k": 3031.3315467124107,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": -108.3908012952287,
+            "joint_source_epic_value_only": 1200.5600017053282,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 6873.542100735044
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 4.935803042380189e-05,
+            "interval95": [
+              4.523286652128498e-05,
+              5.34831943263188e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_12_17": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 558.252354606099,
+              "interval95": [
+                534.418308707926,
+                585.2054831649905
+              ],
+              "relative_half_width": 0.04548764912321751,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 179.1304580713496,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3272.4576790314222,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 451.1145356962011,
+              "interval95": [
+                426.8025703442765,
+                479.25467680919996
+              ],
+              "relative_half_width": 0.05813612986774479,
+              "cluster_count": 20,
+              "ess": 19.573654707494264,
+              "max_cluster_share": 0.06633775787370289,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 221.67319402747881,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3049.693404120967,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 1651.1450337351243,
+              "interval95": [
+                1524.0720122018997,
+                1794.6890952849706
+              ],
+              "relative_half_width": 0.08194830785727424,
+              "cluster_count": 20,
+              "ess": 19.31089676943745,
+              "max_cluster_share": 0.07180153424338359,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 60.56403160041357,
+              "rift_stamina_per_100k": 85755.53644361571,
+              "saint_stamina_per_100k": 14244.463556384291,
+              "cycles_per_100k": 1008.8886640425378,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 1651.1450337351243,
+              "interval95": [
+                1524.0720122018997,
+                1794.6890952849706
+              ],
+              "relative_half_width": 0.08194830785727424,
+              "cluster_count": 20,
+              "ess": 19.31089676943745,
+              "max_cluster_share": 0.07180153424338359,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 60.56403160041357,
+              "rift_stamina_per_100k": 85755.53644361571,
+              "saint_stamina_per_100k": 14244.463556384291,
+              "cycles_per_100k": 1008.8886640425378,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 8525.082707569356,
+              "interval95": [
+                7825.748625244567,
+                9269.252073040945
+              ],
+              "relative_half_width": 0.08466213744264924,
+              "cluster_count": 20,
+              "ess": 19.300290323236553,
+              "max_cluster_share": 0.0698600913065112,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 11.730091475970172,
+              "rift_stamina_per_100k": 14393.008674067201,
+              "saint_stamina_per_100k": 85606.99132593279,
+              "cycles_per_100k": 169.32951381255532,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 546.2258943717168,
+            "interval95": [
+              506.7296576404524,
+              590.8806171387649
+            ],
+            "relative_half_width": 0.07702944913944913,
+            "cluster_count": 20,
+            "ess": 19.31089676943745,
+            "max_cluster_share": 0.07180153424338359,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 183.07444050235407,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.0,
+            "cycles_per_100k": 3049.693404120967,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": -107.13781890989787,
+            "joint_source_epic_value_only": 1200.0304980389233,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 6873.937673834232
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 5.326690377330983e-05,
+            "interval95": [
+              4.891732960349022e-05,
+              5.7616477943129435e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        }
+      }
+    },
+    "reforged_inventory_epic": {
+      "rules": {
+        "current_formal": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 612.6016031351656,
+              "interval95": [
+                586.5523536954397,
+                642.1109973000254
+              ],
+              "relative_half_width": 0.04534647258532156,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 163.23822772944294,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 2982.1293240478503,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 485.1646794059196,
+              "interval95": [
+                459.3486725457331,
+                515.038087320337
+              ],
+              "relative_half_width": 0.057392280537399344,
+              "cluster_count": 20,
+              "ess": 19.59009231592243,
+              "max_cluster_share": 0.0658006144080006,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 206.11558146081288,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 99999.99999999999,
+              "cycles_per_100k": 2814.2013844097455,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 1685.1658473028956,
+              "interval95": [
+                1558.7549334531934,
+                1830.287288673575
+              ],
+              "relative_half_width": 0.08056546946253643,
+              "cluster_count": 20,
+              "ess": 19.343669815546757,
+              "max_cluster_share": 0.07058337231257311,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 59.341340296001015,
+              "rift_stamina_per_100k": 83466.16704914642,
+              "saint_stamina_per_100k": 16533.832950853575,
+              "cycles_per_100k": 981.9549064605461,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 1685.1658473028956,
+              "interval95": [
+                1558.7549334531934,
+                1830.287288673575
+              ],
+              "relative_half_width": 0.08056546946253643,
+              "cluster_count": 20,
+              "ess": 19.343669815546757,
+              "max_cluster_share": 0.07058337231257311,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 59.341340296001015,
+              "rift_stamina_per_100k": 83466.16704914642,
+              "saint_stamina_per_100k": 16533.832950853575,
+              "cycles_per_100k": 981.9549064605461,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 8525.810953639428,
+              "interval95": [
+                7841.80280538684,
+                9255.141403324978
+              ],
+              "relative_half_width": 0.08288587476448935,
+              "cluster_count": 20,
+              "ess": 19.321170210534454,
+              "max_cluster_share": 0.06982460979037713,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 11.729089531044883,
+              "rift_stamina_per_100k": 14327.870070759862,
+              "saint_stamina_per_100k": 85672.12992924012,
+              "cycles_per_100k": 168.5631773030572,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 588.0022947632416,
+            "interval95": [
+              546.2796848418232,
+              635.7465759417372
+            ],
+            "relative_half_width": 0.07607699144774409,
+            "cluster_count": 20,
+            "ess": 19.343669815546757,
+            "max_cluster_share": 0.07058337231257311,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 170.06736349603005,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 99999.99999999999,
+            "cycles_per_100k": 2814.2013844097455,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": -127.43692372924602,
+            "joint_source_epic_value_only": 1200.0011678969759,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 6840.645106336532
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "global_12_17": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 522.6093574294026,
+              "interval95": [
+                500.56692495577926,
+                547.6265114910918
+              ],
+              "relative_half_width": 0.04502367386491896,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 191.34751144119846,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3495.645798716653,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 424.7682041318393,
+              "interval95": [
+                402.4983251729653,
+                450.40059061936876
+              ],
+              "relative_half_width": 0.056386359643265105,
+              "cluster_count": 20,
+              "ess": 19.59009231592243,
+              "max_cluster_share": 0.0658006144080006,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 235.42251756904585,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 99999.99999999999,
+              "cycles_per_100k": 3214.343962588764,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 1612.8893977451723,
+              "interval95": [
+                1492.3190750316887,
+                1750.7787637717986
+              ],
+              "relative_half_width": 0.08012319043743416,
+              "cluster_count": 20,
+              "ess": 19.343669815546757,
+              "max_cluster_share": 0.07058337231257311,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 62.00053155523281,
+              "rift_stamina_per_100k": 87206.43480770307,
+              "saint_stamina_per_100k": 12793.565192296915,
+              "cycles_per_100k": 1025.9580565612127,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 1612.8893977451723,
+              "interval95": [
+                1492.3190750316887,
+                1750.7787637717986
+              ],
+              "relative_half_width": 0.08012319043743416,
+              "cluster_count": 20,
+              "ess": 19.343669815546757,
+              "max_cluster_share": 0.07058337231257311,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 62.00053155523281,
+              "rift_stamina_per_100k": 87206.43480770307,
+              "saint_stamina_per_100k": 12793.565192296915,
+              "cycles_per_100k": 1025.9580565612127,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 8462.25636725124,
+              "interval95": [
+                7783.81462843675,
+                9185.593626036209
+              ],
+              "relative_half_width": 0.08282536812665676,
+              "cluster_count": 20,
+              "ess": 19.321170210534454,
+              "max_cluster_share": 0.06982460979037713,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 11.817179208490773,
+              "rift_stamina_per_100k": 14435.477523979413,
+              "saint_stamina_per_100k": 85564.52247602056,
+              "cycles_per_100k": 169.82914734093427,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 514.8039199346033,
+            "interval95": [
+              479.09601965620715,
+              555.5557196156974
+            ],
+            "relative_half_width": 0.07426099238832826,
+            "cluster_count": 20,
+            "ess": 19.343669815546757,
+            "max_cluster_share": 0.07058337231257311,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 194.2487151471248,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 99999.99999999999,
+            "cycles_per_100k": 3214.343962588764,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": -97.84115329756332,
+            "joint_source_epic_value_only": 1188.1211936133332,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 6849.366969506068
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 8.785314225102049e-05,
+            "interval95": [
+              8.094154741542977e-05,
+              9.476473708661122e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_10_17": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 562.2378987886915,
+              "interval95": [
+                538.2702039647129,
+                589.2821975815443
+              ],
+              "relative_half_width": 0.04536513255930788,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 177.8606533203189,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3249.260159452,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 451.0638766202571,
+              "interval95": [
+                427.14581441394415,
+                478.6423648093968
+              ],
+              "relative_half_width": 0.05708343436999134,
+              "cluster_count": 20,
+              "ess": 19.59009231592243,
+              "max_cluster_share": 0.0658006144080006,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 221.6980901890937,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3026.9573406790787,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 1644.20431338092,
+              "interval95": [
+                1520.8426251319215,
+                1785.6219834338526
+              ],
+              "relative_half_width": 0.08051899515987601,
+              "cluster_count": 20,
+              "ess": 19.343669815546757,
+              "max_cluster_share": 0.07058337231257311,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 60.81969204567618,
+              "rift_stamina_per_100k": 85545.53285855165,
+              "saint_stamina_per_100k": 14454.467141448355,
+              "cycles_per_100k": 1006.4180336300194,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 1644.20431338092,
+              "interval95": [
+                1520.8426251319215,
+                1785.6219834338526
+              ],
+              "relative_half_width": 0.08051899515987601,
+              "cluster_count": 20,
+              "ess": 19.343669815546757,
+              "max_cluster_share": 0.07058337231257311,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 60.81969204567618,
+              "rift_stamina_per_100k": 85545.53285855165,
+              "saint_stamina_per_100k": 14454.467141448355,
+              "cycles_per_100k": 1006.4180336300194,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 8489.923150807916,
+              "interval95": [
+                7808.770257679431,
+                9215.862104097647
+              ],
+              "relative_half_width": 0.0828683500088169,
+              "cluster_count": 20,
+              "ess": 19.321170210534454,
+              "max_cluster_share": 0.06982460979037713,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 11.778669632655488,
+              "rift_stamina_per_100k": 14388.435492491155,
+              "saint_stamina_per_100k": 85611.56450750885,
+              "cycles_per_100k": 169.27571167636654,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 546.6733375197113,
+            "interval95": [
+              508.2007316173503,
+              590.6535883292119
+            ],
+            "relative_half_width": 0.07541327796043151,
+            "cluster_count": 20,
+            "ess": 19.343669815546757,
+            "max_cluster_share": 0.07058337231257311,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 182.92459707968533,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.0,
+            "cycles_per_100k": 3026.9573406790787,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": -111.17402216843442,
+            "joint_source_epic_value_only": 1193.1404367606629,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 6845.718837426995
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 4.951109676065322e-05,
+            "interval95": [
+              4.542742769754941e-05,
+              5.359476582375703e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_12_17": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 558.252354606099,
+              "interval95": [
+                534.418308707926,
+                585.2054831649905
+              ],
+              "relative_half_width": 0.04548764912321751,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 179.1304580713496,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3272.4576790314222,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 448.33126067250527,
+              "interval95": [
+                424.6255560064449,
+                475.65627703333905
+              ],
+              "relative_half_width": 0.05691184789383981,
+              "cluster_count": 20,
+              "ess": 19.59009231592243,
+              "max_cluster_share": 0.0658006144080006,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 223.04935830260447,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3045.4068948990916,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 1640.938462833752,
+              "interval95": [
+                1517.9417168740897,
+                1781.9672668589355
+              ],
+              "relative_half_width": 0.08044955858030704,
+              "cluster_count": 20,
+              "ess": 19.343669815546757,
+              "max_cluster_share": 0.07058337231257311,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 60.940737428574295,
+              "rift_stamina_per_100k": 85715.78843584577,
+              "saint_stamina_per_100k": 14284.211564154237,
+              "cycles_per_100k": 1008.4210404217149,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 1640.938462833752,
+              "interval95": [
+                1517.9417168740897,
+                1781.9672668589355
+              ],
+              "relative_half_width": 0.08044955858030704,
+              "cluster_count": 20,
+              "ess": 19.343669815546757,
+              "max_cluster_share": 0.07058337231257311,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 60.940737428574295,
+              "rift_stamina_per_100k": 85715.78843584577,
+              "saint_stamina_per_100k": 14284.211564154237,
+              "cycles_per_100k": 1008.4210404217149,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 8487.047553737237,
+              "interval95": [
+                7806.103117582901,
+                9212.773607859957
+              ],
+              "relative_half_width": 0.08287160413385657,
+              "cluster_count": 20,
+              "ess": 19.321170210534454,
+              "max_cluster_share": 0.06982460979037713,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 11.782660503176444,
+              "rift_stamina_per_100k": 14393.310608683436,
+              "saint_stamina_per_100k": 85606.68939131655,
+              "cycles_per_100k": 169.333065984511,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 543.3615044119257,
+            "interval95": [
+              505.16583572817234,
+              586.8730184625764
+            ],
+            "relative_half_width": 0.0751867606289434,
+            "cluster_count": 20,
+            "ess": 19.343669815546757,
+            "max_cluster_share": 0.07058337231257311,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 184.0395375602269,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.0,
+            "cycles_per_100k": 3045.4068948990916,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": -109.92109393359368,
+            "joint_source_epic_value_only": 1192.6072021612467,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 6846.109090903485
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 5.346307282931414e-05,
+            "interval95": [
+              4.917102399149649e-05,
+              5.775512166713179e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        }
+      }
+    },
+    "reforged_inventory_heroic": {
+      "rules": {
+        "current_formal": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 612.6016031351656,
+              "interval95": [
+                586.5523536954397,
+                642.1109973000254
+              ],
+              "relative_half_width": 0.04534647258532156,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 163.23822772944294,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 2982.1293240478503,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 501.581920658617,
+              "interval95": [
+                470.64422029678656,
+                537.8761423951528
+              ],
+              "relative_half_width": 0.0670198818271653,
+              "cluster_count": 20,
+              "ess": 19.437070437988304,
+              "max_cluster_share": 0.06864818935097405,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 199.36922740096384,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 2832.1146233364857,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 1740.8232332121877,
+              "interval95": [
+                1582.6440908241418,
+                1918.1991006581761
+              ],
+              "relative_half_width": 0.0963782546763419,
+              "cluster_count": 20,
+              "ess": 19.072982406552008,
+              "max_cluster_share": 0.07701550198194262,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 57.444086276053895,
+              "rift_stamina_per_100k": 83650.26432833532,
+              "saint_stamina_per_100k": 16349.73567166468,
+              "cycles_per_100k": 984.1207568039449,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 1740.8232332121877,
+              "interval95": [
+                1582.6440908241418,
+                1918.1991006581761
+              ],
+              "relative_half_width": 0.0963782546763419,
+              "cluster_count": 20,
+              "ess": 19.072982406552008,
+              "max_cluster_share": 0.07701550198194262,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 57.444086276053895,
+              "rift_stamina_per_100k": 83650.26432833532,
+              "saint_stamina_per_100k": 16349.73567166468,
+              "cycles_per_100k": 984.1207568039449,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 8725.84470107847,
+              "interval95": [
+                7950.506286435993,
+                9617.565264112078
+              ],
+              "relative_half_width": 0.09552421769952223,
+              "cluster_count": 20,
+              "ess": 19.11349111499675,
+              "max_cluster_share": 0.07305495783050632,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 11.460208544353362,
+              "rift_stamina_per_100k": 14326.039490557288,
+              "saint_stamina_per_100k": 85673.96050944271,
+              "cycles_per_100k": 168.54164106537985,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 604.9120553293101,
+            "interval95": [
+              552.6678718650395,
+              663.0684524993295
+            ],
+            "relative_half_width": 0.09125341416298,
+            "cluster_count": 20,
+            "ess": 19.072982406552008,
+            "max_cluster_share": 0.07701550198194262,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 165.31328664885123,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.0,
+            "cycles_per_100k": 2832.1146233364857,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": -111.01968247654867,
+            "joint_source_epic_value_only": 1239.2413125535707,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 6985.0214678662815
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "global_12_17": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 522.6093574294026,
+              "interval95": [
+                500.56692495577926,
+                547.6265114910918
+              ],
+              "relative_half_width": 0.04502367386491896,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 191.34751144119846,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3495.645798716653,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 437.8917889991607,
+              "interval95": [
+                411.3158209309863,
+                468.9480953696844
+              ],
+              "relative_half_width": 0.06580652559211211,
+              "cluster_count": 20,
+              "ess": 19.437070437988304,
+              "max_cluster_share": 0.06864818935097405,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 228.36692194790544,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3244.0377462779797,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 1664.9666096120316,
+              "interval95": [
+                1514.3898578085957,
+                1833.8094632758189
+              ],
+              "relative_half_width": 0.09592372712557098,
+              "cluster_count": 20,
+              "ess": 19.072982406552008,
+              "max_cluster_share": 0.07701550198194262,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 60.06126454590094,
+              "rift_stamina_per_100k": 87461.40779426147,
+              "saint_stamina_per_100k": 12538.592205738529,
+              "cycles_per_100k": 1028.9577387560173,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 1664.9666096120316,
+              "interval95": [
+                1514.3898578085957,
+                1833.8094632758189
+              ],
+              "relative_half_width": 0.09592372712557098,
+              "cluster_count": 20,
+              "ess": 19.072982406552008,
+              "max_cluster_share": 0.07701550198194262,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 60.06126454590094,
+              "rift_stamina_per_100k": 87461.40779426147,
+              "saint_stamina_per_100k": 12538.592205738529,
+              "cycles_per_100k": 1028.9577387560173,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 8659.924866673406,
+              "interval95": [
+                7889.972252730559,
+                9545.155594096304
+              ],
+              "relative_half_width": 0.09556568716522604,
+              "cluster_count": 20,
+              "ess": 19.11349111499675,
+              "max_cluster_share": 0.07305495783050632,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 11.547444295369926,
+              "rift_stamina_per_100k": 14435.090107674328,
+              "saint_stamina_per_100k": 85564.90989232567,
+              "cycles_per_100k": 169.8245895020509,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 528.1012157445676,
+            "interval95": [
+              483.57835281936286,
+              577.9297390811397
+            ],
+            "relative_half_width": 0.0893307792605166,
+            "cluster_count": 20,
+            "ess": 19.072982406552008,
+            "max_cluster_share": 0.07701550198194262,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 189.35764019973033,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.0,
+            "cycles_per_100k": 3244.0377462779797,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": -84.7175684302419,
+            "joint_source_epic_value_only": 1227.0748206128708,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 6994.958257061374
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 8.691803938539648e-05,
+            "interval95": [
+              7.9115979539874e-05,
+              9.472009923091897e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_10_17": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 562.2378987886915,
+              "interval95": [
+                538.2702039647129,
+                589.2821975815443
+              ],
+              "relative_half_width": 0.04536513255930788,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 177.8606533203189,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3249.260159452,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 465.8186498332926,
+              "interval95": [
+                437.3478382982167,
+                499.16931013163435
+              ],
+              "relative_half_width": 0.06635787538298688,
+              "cluster_count": 20,
+              "ess": 19.437070437988304,
+              "max_cluster_share": 0.06864818935097405,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 214.67581865987557,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3049.5504909622077,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 1698.0758002769542,
+              "interval95": [
+                1544.3010552808487,
+                1870.558067344047
+              ],
+              "relative_half_width": 0.09606668088962406,
+              "cluster_count": 20,
+              "ess": 19.072982406552008,
+              "max_cluster_share": 0.07701550198194262,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 58.890186164651844,
+              "rift_stamina_per_100k": 85756.07966579367,
+              "saint_stamina_per_100k": 14243.920334206332,
+              "cycles_per_100k": 1008.8950548916903,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 1698.0758002769542,
+              "interval95": [
+                1544.3010552808487,
+                1870.558067344047
+              ],
+              "relative_half_width": 0.09606668088962406,
+              "cluster_count": 20,
+              "ess": 19.072982406552008,
+              "max_cluster_share": 0.07701550198194262,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 58.890186164651844,
+              "rift_stamina_per_100k": 85756.07966579367,
+              "saint_stamina_per_100k": 14243.920334206332,
+              "cycles_per_100k": 1008.8950548916903,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 8688.82544911382,
+              "interval95": [
+                7916.248547537848,
+                9577.077630865264
+              ],
+              "relative_half_width": 0.09557270387430819,
+              "cluster_count": 20,
+              "ess": 19.11349111499675,
+              "max_cluster_share": 0.07305495783050632,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 11.509035437027807,
+              "rift_stamina_per_100k": 14387.076424566656,
+              "saint_stamina_per_100k": 85612.92357543335,
+              "cycles_per_100k": 169.25972264196065,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 561.7812470421234,
+            "interval95": [
+              513.9275677536026,
+              615.2772761386999
+            ],
+            "relative_half_width": 0.09020389067695056,
+            "cluster_count": 20,
+            "ess": 19.072982406552008,
+            "max_cluster_share": 0.07701550198194262,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 178.00522984082772,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.0,
+            "cycles_per_100k": 3049.5504909622077,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": -96.41924895539887,
+            "joint_source_epic_value_only": 1232.2571504436614,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 6990.749648836865
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 4.8706680799138165e-05,
+            "interval95": [
+              4.41439621127381e-05,
+              5.326939948553823e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_12_17": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 558.252354606099,
+              "interval95": [
+                534.418308707926,
+                585.2054831649905
+              ],
+              "relative_half_width": 0.04548764912321751,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 179.1304580713496,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3272.4576790314222,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 463.0863209551758,
+              "interval95": [
+                434.75642151172485,
+                495.99785159194664
+              ],
+              "relative_half_width": 0.06612312576400807,
+              "cluster_count": 20,
+              "ess": 19.437070437988304,
+              "max_cluster_share": 0.06864818935097405,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 215.94246142649388,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3067.543626355507,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 1694.8299700119535,
+              "interval95": [
+                1541.3598866373318,
+                1866.8608245791706
+              ],
+              "relative_half_width": 0.0960276085805655,
+              "cluster_count": 20,
+              "ess": 19.072982406552008,
+              "max_cluster_share": 0.07701550198194262,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 59.002968893271756,
+              "rift_stamina_per_100k": 85920.31424018291,
+              "saint_stamina_per_100k": 14079.685759817095,
+              "cycles_per_100k": 1010.8272263550931,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 1694.8299700119535,
+              "interval95": [
+                1541.3598866373318,
+                1866.8608245791706
+              ],
+              "relative_half_width": 0.0960276085805655,
+              "cluster_count": 20,
+              "ess": 19.072982406552008,
+              "max_cluster_share": 0.07701550198194262,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 59.002968893271756,
+              "rift_stamina_per_100k": 85920.31424018291,
+              "saint_stamina_per_100k": 14079.685759817095,
+              "cycles_per_100k": 1010.8272263550931,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 8685.997476755065,
+              "interval95": [
+                7913.696685441266,
+                9573.860662870566
+              ],
+              "relative_half_width": 0.0955655341756735,
+              "cluster_count": 20,
+              "ess": 19.11349111499675,
+              "max_cluster_share": 0.07305495783050632,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 11.512782529308105,
+              "rift_stamina_per_100k": 14391.76054456103,
+              "saint_stamina_per_100k": 85608.23945543898,
+              "cycles_per_100k": 169.3148299360121,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 558.4860352144582,
+            "interval95": [
+              510.95821497988385,
+              611.7134616731586
+            ],
+            "relative_half_width": 0.09020390872851887,
+            "cluster_count": 20,
+            "ess": 19.072982406552008,
+            "max_cluster_share": 0.07701550198194262,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 179.05550666383283,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.0,
+            "cycles_per_100k": 3067.543626355507,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": -95.16603365092317,
+            "joint_source_epic_value_only": 1231.7436490567777,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 6991.1675067431115
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 5.2438786268980874e-05,
+            "interval95": [
+              4.756490668801916e-05,
+              5.731266584994259e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        }
+      }
+    },
+    "top4_equal": {
+      "rules": {
+        "current_formal": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 612.6016031351656,
+              "interval95": [
+                586.5523536954397,
+                642.1109973000254
+              ],
+              "relative_half_width": 0.04534647258532156,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 163.23822772944294,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 2982.1293240478503,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 404.61308595765075,
+              "interval95": [
+                382.11221700243175,
+                430.1995478689032
+              ],
+              "relative_half_width": 0.05942384531713412,
+              "cluster_count": 20,
+              "ess": 19.56828188938471,
+              "max_cluster_share": 0.06726000407636387,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 247.14969305383912,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 99999.99999999999,
+              "cycles_per_100k": 2686.592220165381,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 1360.6061633084732,
+              "interval95": [
+                1258.7248744183576,
+                1476.0342756493978
+              ],
+              "relative_half_width": 0.07985756903475544,
+              "cluster_count": 20,
+              "ess": 19.338758654259962,
+              "max_cluster_share": 0.06622843056696796,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 73.49665369502537,
+              "rift_stamina_per_100k": 82132.661483348,
+              "saint_stamina_per_100k": 17867.33851665201,
+              "cycles_per_100k": 966.2666056864471,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 1360.6061633084732,
+              "interval95": [
+                1258.7248744183576,
+                1476.0342756493978
+              ],
+              "relative_half_width": 0.07985756903475544,
+              "cluster_count": 20,
+              "ess": 19.338758654259962,
+              "max_cluster_share": 0.06622843056696796,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 73.49665369502537,
+              "rift_stamina_per_100k": 82132.661483348,
+              "saint_stamina_per_100k": 17867.33851665201,
+              "cycles_per_100k": 966.2666056864471,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 6880.603641688546,
+              "interval95": [
+                6300.339262540891,
+                7581.380747646804
+              ],
+              "relative_half_width": 0.09309077748239085,
+              "cluster_count": 20,
+              "ess": 19.166042041318896,
+              "max_cluster_share": 0.0672181178929416,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 14.533608562207391,
+              "rift_stamina_per_100k": 14271.62826253668,
+              "saint_stamina_per_100k": 85728.37173746333,
+              "cycles_per_100k": 167.90150897101978,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 489.3590807075318,
+            "interval95": [
+              454.74634920269386,
+              528.878180338175
+            ],
+            "relative_half_width": 0.07574379842742347,
+            "cluster_count": 20,
+            "ess": 19.338758654259962,
+            "max_cluster_share": 0.06622843056696796,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 204.34892074632933,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 99999.99999999999,
+            "cycles_per_100k": 2686.592220165381,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": -207.9885171775149,
+            "joint_source_epic_value_only": 955.9930773508224,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 5519.9974783800735
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "global_12_17": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 522.6093574294026,
+              "interval95": [
+                500.56692495577926,
+                547.6265114910918
+              ],
+              "relative_half_width": 0.04502367386491896,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 191.34751144119846,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3495.645798716653,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 361.1426048515537,
+              "interval95": [
+                341.5449165667505,
+                383.42090218189537
+              ],
+              "relative_half_width": 0.057977077548573716,
+              "cluster_count": 20,
+              "ess": 19.56828188938471,
+              "max_cluster_share": 0.06726000407636387,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 276.8989276164318,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3009.9754343793115,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 1308.774532031975,
+              "interval95": [
+                1211.3651024129697,
+                1419.391403382851
+              ],
+              "relative_half_width": 0.07947369691206634,
+              "cluster_count": 20,
+              "ess": 19.338758654259962,
+              "max_cluster_share": 0.06622843056696796,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 76.40735478305966,
+              "rift_stamina_per_100k": 85385.3759284808,
+              "saint_stamina_per_100k": 14614.624071519193,
+              "cycles_per_100k": 1004.5338344527154,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 1308.774532031975,
+              "interval95": [
+                1211.3651024129697,
+                1419.391403382851
+              ],
+              "relative_half_width": 0.07947369691206634,
+              "cluster_count": 20,
+              "ess": 19.338758654259962,
+              "max_cluster_share": 0.06622843056696796,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 76.40735478305966,
+              "rift_stamina_per_100k": 85385.3759284808,
+              "saint_stamina_per_100k": 14614.624071519193,
+              "cycles_per_100k": 1004.5338344527154,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 6834.420011613735,
+              "interval95": [
+                6257.981503763188,
+                7529.679565204743
+              ],
+              "relative_half_width": 0.09303628247024309,
+              "cluster_count": 20,
+              "ess": 19.166042041318896,
+              "max_cluster_share": 0.0672181178929416,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 14.631819500421384,
+              "rift_stamina_per_100k": 14368.068867463237,
+              "saint_stamina_per_100k": 85631.93113253676,
+              "cycles_per_100k": 169.0361043230969,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 436.78373055135734,
+            "interval95": [
+              406.9448342572959,
+              470.92522686617656
+            ],
+            "relative_half_width": 0.07324035687881214,
+            "cluster_count": 20,
+            "ess": 19.338758654259962,
+            "max_cluster_share": 0.06622843056696796,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 228.9462564774764,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.0,
+            "cycles_per_100k": 3009.9754343793115,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": -161.46675257784892,
+            "joint_source_epic_value_only": 947.6319271804214,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 5525.645479581761
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 9.777557252697993e-05,
+            "interval95": [
+              8.936371576722039e-05,
+              0.00010618742928673948
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_10_17": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 562.2378987886915,
+              "interval95": [
+                538.2702039647129,
+                589.2821975815443
+              ],
+              "relative_half_width": 0.04536513255930788,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 177.8606533203189,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3249.260159452,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 379.81837332448185,
+              "interval95": [
+                358.92401674834844,
+                403.7275122805052
+              ],
+              "relative_half_width": 0.05898015825300899,
+              "cluster_count": 20,
+              "ess": 19.56828188938471,
+              "max_cluster_share": 0.06726000407636387,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 263.2837351303414,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.00000000001,
+              "cycles_per_100k": 2861.9741572698294,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 1330.9257949700789,
+              "interval95": [
+                1231.5750721472461,
+                1443.7448647361903
+              ],
+              "relative_half_width": 0.07970759654324455,
+              "cluster_count": 20,
+              "ess": 19.338758654259962,
+              "max_cluster_share": 0.06622843056696796,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 75.13566900418228,
+              "rift_stamina_per_100k": 83964.26445824806,
+              "saint_stamina_per_100k": 16035.735541751945,
+              "cycles_per_100k": 987.814875979389,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 1330.9257949700789,
+              "interval95": [
+                1231.5750721472461,
+                1443.7448647361903
+              ],
+              "relative_half_width": 0.07970759654324455,
+              "cluster_count": 20,
+              "ess": 19.338758654259962,
+              "max_cluster_share": 0.06622843056696796,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 75.13566900418228,
+              "rift_stamina_per_100k": 83964.26445824806,
+              "saint_stamina_per_100k": 16035.735541751945,
+              "cycles_per_100k": 987.814875979389,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 6854.258500259277,
+              "interval95": [
+                6276.079326957925,
+                7551.971927560625
+              ],
+              "relative_half_width": 0.09307298525102578,
+              "cluster_count": 20,
+              "ess": 19.166042041318896,
+              "max_cluster_share": 0.0672181178929416,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 14.589470180650071,
+              "rift_stamina_per_100k": 14326.48292916302,
+              "saint_stamina_per_100k": 85673.51707083697,
+              "cycles_per_100k": 168.54685799015317,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 459.3711287562078,
+            "interval95": [
+              427.7111775296895,
+              495.73275404565396
+            ],
+            "relative_half_width": 0.07403771401583238,
+            "cluster_count": 20,
+            "ess": 19.338758654259962,
+            "max_cluster_share": 0.06622843056696796,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 217.6889093373364,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.00000000001,
+            "cycles_per_100k": 2861.9741572698294,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": -182.41952546420964,
+            "joint_source_epic_value_only": 951.107421645597,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 5523.332705289198
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 5.5551513973624726e-05,
+            "interval95": [
+              5.084583910728808e-05,
+              6.025718883996137e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_12_17": {
+          "layers": {
+            "published_epic_replay": {
+              "mean": 558.252354606099,
+              "interval95": [
+                534.418308707926,
+                585.2054831649905
+              ],
+              "relative_half_width": 0.04548764912321751,
+              "cluster_count": 20,
+              "ess": 19.76693652335452,
+              "max_cluster_share": 0.05767820871843564,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 179.1304580713496,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 3272.4576790314222,
+              "absolute_cost_unstable": false
+            },
+            "epic_inventory_weighted": {
+              "mean": 377.7787506766684,
+              "interval95": [
+                356.9696348958064,
+                401.45259843693594
+              ],
+              "relative_half_width": 0.05887435894879307,
+              "cluster_count": 20,
+              "ess": 19.56828188938471,
+              "max_cluster_share": 0.06726000407636387,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 264.70520065218693,
+              "rift_stamina_per_100k": 0.0,
+              "saint_stamina_per_100k": 100000.0,
+              "cycles_per_100k": 2877.425919175889,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_epic_value_only": {
+              "mean": 1328.4991209006234,
+              "interval95": [
+                1229.3577490316013,
+                1440.789585031603
+              ],
+              "relative_half_width": 0.07957545197947394,
+              "cluster_count": 20,
+              "ess": 19.338758654259962,
+              "max_cluster_share": 0.06622843056696796,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 75.27291394231969,
+              "rift_stamina_per_100k": 84117.63595854954,
+              "saint_stamina_per_100k": 15882.364041450459,
+              "cycles_per_100k": 989.619246571171,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_all_stop_heroic": {
+              "mean": 1328.4991209006234,
+              "interval95": [
+                1229.3577490316013,
+                1440.789585031603
+              ],
+              "relative_half_width": 0.07957545197947394,
+              "cluster_count": 20,
+              "ess": 19.338758654259962,
+              "max_cluster_share": 0.06622843056696796,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 75.27291394231969,
+              "rift_stamina_per_100k": 84117.63595854954,
+              "saint_stamina_per_100k": 15882.364041450459,
+              "cycles_per_100k": 989.619246571171,
+              "absolute_cost_unstable": false
+            },
+            "joint_source_released_heroic": {
+              "mean": 6852.091606584771,
+              "interval95": [
+                6274.150177470446,
+                7549.4844276022195
+              ],
+              "relative_half_width": 0.0930616754237636,
+              "cluster_count": 20,
+              "ess": 19.166042041318896,
+              "max_cluster_share": 0.0672181178929416,
+              "method": "clustered_positive_bootstrap",
+              "status": "ok",
+              "formal_baili_per_100k": 14.594083929628335,
+              "rift_stamina_per_100k": 14331.01351150481,
+              "saint_stamina_per_100k": 85668.9864884952,
+              "cycles_per_100k": 168.60015895888012,
+              "absolute_cost_unstable": false
+            }
+          },
+          "terminal_value_diagnostic": {
+            "mean": 456.90430823417273,
+            "interval95": [
+              425.38468467173396,
+              493.07387453868375
+            ],
+            "relative_half_width": 0.07407370498272661,
+            "cluster_count": 20,
+            "ess": 19.338758654259962,
+            "max_cluster_share": 0.06622843056696796,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok",
+            "formal_baili_per_100k": 218.86420897731603,
+            "rift_stamina_per_100k": 0.0,
+            "saint_stamina_per_100k": 100000.0,
+            "cycles_per_100k": 2877.425919175889,
+            "absolute_cost_unstable": false
+          },
+          "layer_delta_stamina_per_baili": {
+            "published_epic_replay": null,
+            "epic_inventory_weighted": -180.47360392943057,
+            "joint_source_epic_value_only": 950.7203702239551,
+            "joint_source_all_stop_heroic": 0.0,
+            "joint_source_released_heroic": 5523.592485684148
+          },
+          "paired_full_joint_delta_vs_current": {
+            "mean": 6.0097668149846056e-05,
+            "interval95": [
+              5.516590040373651e-05,
+              6.502943589595559e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 20,
+            "method": "paired_common_path_t95"
+          }
+        }
+      }
+    }
+  },
+  "bridge_status": "historical_constant_not_reproduced",
+  "main_comparison": {
+    "published_epic_replay": {
+      "mean": 612.6016031351656,
+      "interval95": [
+        586.5523536954397,
+        642.1109973000254
+      ],
+      "relative_half_width": 0.04534647258532156,
+      "cluster_count": 20,
+      "ess": 19.76693652335452,
+      "max_cluster_share": 0.05767820871843564,
+      "method": "clustered_positive_bootstrap",
+      "status": "ok",
+      "formal_baili_per_100k": 163.23822772944294,
+      "rift_stamina_per_100k": 0.0,
+      "saint_stamina_per_100k": 100000.0,
+      "cycles_per_100k": 2982.1293240478503,
+      "absolute_cost_unstable": false
+    },
+    "epic_inventory_weighted": {
+      "mean": 488.2614947805261,
+      "interval95": [
+        461.6764868494293,
+        519.0601240044454
+      ],
+      "relative_half_width": 0.05876322192968549,
+      "cluster_count": 20,
+      "ess": 19.573654707494264,
+      "max_cluster_share": 0.06633775787370289,
+      "method": "clustered_positive_bootstrap",
+      "status": "ok",
+      "formal_baili_per_100k": 204.8082862748578,
+      "rift_stamina_per_100k": 0.0,
+      "saint_stamina_per_100k": 100000.0,
+      "cycles_per_100k": 2817.672576524189,
+      "absolute_cost_unstable": false
+    },
+    "modern_terminal_value_on_published_resource": {
+      "mean": 591.2047840847487,
+      "interval95": [
+        548.2954614296852,
+        639.8633775706274
+      ],
+      "relative_half_width": 0.07744179225705997,
+      "cluster_count": 20,
+      "ess": 19.31089676943745,
+      "max_cluster_share": 0.07180153424338359,
+      "method": "clustered_positive_bootstrap",
+      "status": "ok",
+      "formal_baili_per_100k": 169.14612785958965,
+      "rift_stamina_per_100k": 0.0,
+      "saint_stamina_per_100k": 100000.0,
+      "cycles_per_100k": 2817.672576524189,
+      "absolute_cost_unstable": false
+    },
+    "joint_source_epic_value_only": {
+      "mean": 1695.7068179391238,
+      "interval95": [
+        1565.187187217575,
+        1843.7535016267723
+      ],
+      "relative_half_width": 0.08213870212179505,
+      "cluster_count": 20,
+      "ess": 19.31089676943745,
+      "max_cluster_share": 0.07180153424338359,
+      "method": "clustered_positive_bootstrap",
+      "status": "ok",
+      "formal_baili_per_100k": 58.97245853002758,
+      "rift_stamina_per_100k": 83501.95129029128,
+      "saint_stamina_per_100k": 16498.048709708717,
+      "cycles_per_100k": 982.3758975328387,
+      "absolute_cost_unstable": false
+    },
+    "joint_source_all_stop_heroic": {
+      "mean": 1695.7068179391238,
+      "interval95": [
+        1565.187187217575,
+        1843.7535016267723
+      ],
+      "relative_half_width": 0.08213870212179505,
+      "cluster_count": 20,
+      "ess": 19.31089676943745,
+      "max_cluster_share": 0.07180153424338359,
+      "method": "clustered_positive_bootstrap",
+      "status": "ok",
+      "formal_baili_per_100k": 58.97245853002758,
+      "rift_stamina_per_100k": 83501.95129029128,
+      "saint_stamina_per_100k": 16498.048709708717,
+      "cycles_per_100k": 982.3758975328387,
+      "absolute_cost_unstable": false
+    },
+    "joint_source_released_heroic": {
+      "mean": 8564.053312629396,
+      "interval95": [
+        7861.0865648726995,
+        9312.082913260216
+      ],
+      "relative_half_width": 0.08471434584881286,
+      "cluster_count": 20,
+      "ess": 19.300290323236553,
+      "max_cluster_share": 0.0698600913065112,
+      "method": "clustered_positive_bootstrap",
+      "status": "ok",
+      "formal_baili_per_100k": 11.676713858440158,
+      "rift_stamina_per_100k": 14327.513488996878,
+      "saint_stamina_per_100k": 85672.48651100312,
+      "cycles_per_100k": 168.55898222349268,
+      "absolute_cost_unstable": false
+    }
+  },
+  "freeze": "not_frozen_no_holdout"
+}

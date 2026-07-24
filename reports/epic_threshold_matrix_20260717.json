@@ -1,0 +1,2577 @@
+{
+  "study": "epic_non_speed_plus0_plus3_threshold_matrix_20260717",
+  "schema_version": 1,
+  "data_isolation": {
+    "development_real_plus0_count": 157,
+    "old_frozen_validation_read": false,
+    "future_holdout_required": 48
+  },
+  "probability_model": {
+    "plus3": "STOVE official discrete distribution, probability weighted",
+    "target_selection": "one quarter per existing Epic +0 substat",
+    "downstream": "frozen formal Epic DP from +6"
+  },
+  "preparation": {
+    "base_count": 157,
+    "plus0": {
+      "groups": 157,
+      "reused": 157,
+      "computed": 0
+    },
+    "plus3": {
+      "reused_t0_10_matched_groups": 85,
+      "new_or_mismatched_states": {
+        "groups": 2327,
+        "reused": 2327,
+        "computed": 0
+      }
+    }
+  },
+  "node_matrix": {
+    "t0_10_t3_14": {
+      "candidate": {
+        "t0": 10,
+        "t3": 14
+      },
+      "priority_route": true,
+      "metrics": {
+        "plus0": {
+          "formal": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 157.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 105.0,
+            "total_regret": 0.3640209999999998,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 30,
+            "stopped_weight": 30.0,
+            "continue_weight": 127.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 75.0,
+            "total_regret": 0.25414400000000004,
+            "saved_next_node_stamina": 87.81259150805275
+          }
+        },
+        "plus3": {
+          "formal": {
+            "raw_state_count": 3818,
+            "distinct_real_plus0_count": 127,
+            "state_weight": 126.99999999999463,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 126.99999999999463,
+            "clear_positive_state_count": 1001,
+            "clear_positive_weight": 39.482903226071556,
+            "clear_negative_state_count": 2817,
+            "clear_negative_weight": 87.51709677392454,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 87.51709677392454,
+            "total_regret": 1.30805257558365,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 3818,
+            "distinct_real_plus0_count": 127,
+            "state_weight": 126.99999999999463,
+            "stopped_state_count": 364,
+            "stopped_weight": 13.683340834083424,
+            "continue_weight": 113.3166591659112,
+            "clear_positive_state_count": 1001,
+            "clear_positive_weight": 39.482903226071556,
+            "clear_negative_state_count": 2817,
+            "clear_negative_weight": 87.51709677392454,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 73.83375593984404,
+            "total_regret": 1.1080042584144445,
+            "saved_next_node_stamina": 164.92538100593313,
+            "unconditional_stopped_weight_per_plus0": 0.08715503715976704,
+            "unconditional_probability_mass_per_plus0": 0.808917197452195
+          }
+        }
+      },
+      "node_gate": {
+        "passed": true,
+        "reasons": []
+      }
+    },
+    "t0_10_t3_16": {
+      "candidate": {
+        "t0": 10,
+        "t3": 16
+      },
+      "priority_route": true,
+      "metrics": {
+        "plus0": {
+          "formal": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 157.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 105.0,
+            "total_regret": 0.3640209999999998,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 30,
+            "stopped_weight": 30.0,
+            "continue_weight": 127.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 75.0,
+            "total_regret": 0.25414400000000004,
+            "saved_next_node_stamina": 87.81259150805275
+          }
+        },
+        "plus3": {
+          "formal": {
+            "raw_state_count": 3818,
+            "distinct_real_plus0_count": 127,
+            "state_weight": 126.99999999999463,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 126.99999999999463,
+            "clear_positive_state_count": 1001,
+            "clear_positive_weight": 39.482903226071556,
+            "clear_negative_state_count": 2817,
+            "clear_negative_weight": 87.51709677392454,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 87.51709677392454,
+            "total_regret": 1.30805257558365,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 3818,
+            "distinct_real_plus0_count": 127,
+            "state_weight": 126.99999999999463,
+            "stopped_state_count": 792,
+            "stopped_weight": 20.18749999999991,
+            "continue_weight": 106.81249999999471,
+            "clear_positive_state_count": 1001,
+            "clear_positive_weight": 39.482903226071556,
+            "clear_negative_state_count": 2817,
+            "clear_negative_weight": 87.51709677392454,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 12,
+            "clear_positive_false_stop_weight": 0.6,
+            "clear_positive_recall": 0.9848035491066978,
+            "clear_negative_false_continue_weight": 67.92959677392834,
+            "total_regret": 1.0462293630836652,
+            "saved_next_node_stamina": 238.75813883386337,
+            "unconditional_stopped_weight_per_plus0": 0.12858280254777013,
+            "unconditional_probability_mass_per_plus0": 0.808917197452195
+          }
+        }
+      },
+      "node_gate": {
+        "passed": false,
+        "reasons": [
+          "plus3 clear-positive false stops=12"
+        ]
+      }
+    },
+    "t0_10_t3_17": {
+      "candidate": {
+        "t0": 10,
+        "t3": 17
+      },
+      "priority_route": true,
+      "metrics": {
+        "plus0": {
+          "formal": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 157.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 105.0,
+            "total_regret": 0.3640209999999998,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 30,
+            "stopped_weight": 30.0,
+            "continue_weight": 127.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 75.0,
+            "total_regret": 0.25414400000000004,
+            "saved_next_node_stamina": 87.81259150805275
+          }
+        },
+        "plus3": {
+          "formal": {
+            "raw_state_count": 3818,
+            "distinct_real_plus0_count": 127,
+            "state_weight": 126.99999999999463,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 126.99999999999463,
+            "clear_positive_state_count": 1001,
+            "clear_positive_weight": 39.482903226071556,
+            "clear_negative_state_count": 2817,
+            "clear_negative_weight": 87.51709677392454,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 87.51709677392454,
+            "total_regret": 1.30805257558365,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 3818,
+            "distinct_real_plus0_count": 127,
+            "state_weight": 126.99999999999463,
+            "stopped_state_count": 855,
+            "stopped_weight": 23.47499999999991,
+            "continue_weight": 103.52499999999472,
+            "clear_positive_state_count": 1001,
+            "clear_positive_weight": 39.482903226071556,
+            "clear_negative_state_count": 2817,
+            "clear_negative_weight": 87.51709677392454,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 16,
+            "clear_positive_false_stop_weight": 0.8000000000000002,
+            "clear_positive_recall": 0.979738065475597,
+            "clear_negative_false_continue_weight": 64.84209677392886,
+            "total_regret": 1.0067814172503349,
+            "saved_next_node_stamina": 276.9835242442494,
+            "unconditional_stopped_weight_per_plus0": 0.14952229299362998,
+            "unconditional_probability_mass_per_plus0": 0.808917197452195
+          }
+        }
+      },
+      "node_gate": {
+        "passed": false,
+        "reasons": [
+          "plus3 clear-positive false stops=16"
+        ]
+      }
+    },
+    "t0_10_t3_18": {
+      "candidate": {
+        "t0": 10,
+        "t3": 18
+      },
+      "priority_route": true,
+      "metrics": {
+        "plus0": {
+          "formal": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 157.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 105.0,
+            "total_regret": 0.3640209999999998,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 30,
+            "stopped_weight": 30.0,
+            "continue_weight": 127.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 75.0,
+            "total_regret": 0.25414400000000004,
+            "saved_next_node_stamina": 87.81259150805275
+          }
+        },
+        "plus3": {
+          "formal": {
+            "raw_state_count": 3818,
+            "distinct_real_plus0_count": 127,
+            "state_weight": 126.99999999999463,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 126.99999999999463,
+            "clear_positive_state_count": 1001,
+            "clear_positive_weight": 39.482903226071556,
+            "clear_negative_state_count": 2817,
+            "clear_negative_weight": 87.51709677392454,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 87.51709677392454,
+            "total_regret": 1.30805257558365,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 3818,
+            "distinct_real_plus0_count": 127,
+            "state_weight": 126.99999999999463,
+            "stopped_state_count": 950,
+            "stopped_weight": 28.385798799309224,
+            "continue_weight": 98.6142012006854,
+            "clear_positive_state_count": 1001,
+            "clear_positive_weight": 39.482903226071556,
+            "clear_negative_state_count": 2817,
+            "clear_negative_weight": 87.51709677392454,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 20,
+            "clear_positive_false_stop_weight": 1.0000000000000002,
+            "clear_positive_recall": 0.9746725818444963,
+            "clear_negative_false_continue_weight": 60.13129797461962,
+            "total_regret": 0.9445614670615831,
+            "saved_next_node_stamina": 334.87087636564826,
+            "unconditional_stopped_weight_per_plus0": 0.18080126623763837,
+            "unconditional_probability_mass_per_plus0": 0.808917197452195
+          }
+        }
+      },
+      "node_gate": {
+        "passed": false,
+        "reasons": [
+          "plus3 clear-positive false stops=20"
+        ]
+      }
+    },
+    "t0_10_t3_20": {
+      "candidate": {
+        "t0": 10,
+        "t3": 20
+      },
+      "priority_route": true,
+      "metrics": {
+        "plus0": {
+          "formal": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 157.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 105.0,
+            "total_regret": 0.3640209999999998,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 30,
+            "stopped_weight": 30.0,
+            "continue_weight": 127.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 75.0,
+            "total_regret": 0.25414400000000004,
+            "saved_next_node_stamina": 87.81259150805275
+          }
+        },
+        "plus3": {
+          "formal": {
+            "raw_state_count": 3818,
+            "distinct_real_plus0_count": 127,
+            "state_weight": 126.99999999999463,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 126.99999999999463,
+            "clear_positive_state_count": 1001,
+            "clear_positive_weight": 39.482903226071556,
+            "clear_negative_state_count": 2817,
+            "clear_negative_weight": 87.51709677392454,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 87.51709677392454,
+            "total_regret": 1.30805257558365,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 3818,
+            "distinct_real_plus0_count": 127,
+            "state_weight": 126.99999999999463,
+            "stopped_state_count": 1137,
+            "stopped_weight": 38.329166666667255,
+            "continue_weight": 88.67083333332738,
+            "clear_positive_state_count": 1001,
+            "clear_positive_weight": 39.482903226071556,
+            "clear_negative_state_count": 2817,
+            "clear_negative_weight": 87.51709677392454,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 61,
+            "clear_positive_false_stop_weight": 3.291666666666664,
+            "clear_positive_recall": 0.9166305819048004,
+            "clear_negative_false_continue_weight": 52.47959677392918,
+            "total_regret": 0.9165596589170028,
+            "saved_next_node_stamina": 451.00246174604155,
+            "unconditional_stopped_weight_per_plus0": 0.24413481953291247,
+            "unconditional_probability_mass_per_plus0": 0.808917197452195
+          }
+        }
+      },
+      "node_gate": {
+        "passed": false,
+        "reasons": [
+          "plus3 clear-positive false stops=61"
+        ]
+      }
+    },
+    "t0_12_t3_14": {
+      "candidate": {
+        "t0": 12,
+        "t3": 14
+      },
+      "priority_route": false,
+      "metrics": {
+        "plus0": {
+          "formal": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 157.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 105.0,
+            "total_regret": 0.3640209999999998,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 49,
+            "stopped_weight": 49.0,
+            "continue_weight": 108.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 2,
+            "clear_positive_false_stop_weight": 2.0,
+            "clear_positive_recall": 0.9615384615384616,
+            "clear_negative_false_continue_weight": 58.0,
+            "total_regret": 0.20919600000000008,
+            "saved_next_node_stamina": 163.92510980966324
+          }
+        },
+        "plus3": {
+          "formal": {
+            "raw_state_count": 3308,
+            "distinct_real_plus0_count": 108,
+            "state_weight": 107.99999999999552,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 107.99999999999552,
+            "clear_positive_state_count": 986,
+            "clear_positive_weight": 38.73290322607149,
+            "clear_negative_state_count": 2322,
+            "clear_negative_weight": 69.26709677392817,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 69.26709677392817,
+            "total_regret": 1.0478604422503284,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 3308,
+            "distinct_real_plus0_count": 108,
+            "state_weight": 107.99999999999552,
+            "stopped_state_count": 218,
+            "stopped_weight": 6.869401940194032,
+            "continue_weight": 101.13059805980149,
+            "clear_positive_state_count": 986,
+            "clear_positive_weight": 38.73290322607149,
+            "clear_negative_state_count": 2322,
+            "clear_negative_weight": 69.26709677392817,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 62.39769483373539,
+            "total_regret": 0.9500654586869767,
+            "saved_next_node_stamina": 83.16090544546638,
+            "unconditional_stopped_weight_per_plus0": 0.0437541524853123,
+            "unconditional_probability_mass_per_plus0": 0.6878980891719461
+          }
+        }
+      },
+      "node_gate": {
+        "passed": false,
+        "reasons": [
+          "plus0 clear-positive false stops=2"
+        ]
+      }
+    },
+    "t0_12_t3_16": {
+      "candidate": {
+        "t0": 12,
+        "t3": 16
+      },
+      "priority_route": true,
+      "metrics": {
+        "plus0": {
+          "formal": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 157.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 105.0,
+            "total_regret": 0.3640209999999998,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 49,
+            "stopped_weight": 49.0,
+            "continue_weight": 108.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 2,
+            "clear_positive_false_stop_weight": 2.0,
+            "clear_positive_recall": 0.9615384615384616,
+            "clear_negative_false_continue_weight": 58.0,
+            "total_regret": 0.20919600000000008,
+            "saved_next_node_stamina": 163.92510980966324
+          }
+        },
+        "plus3": {
+          "formal": {
+            "raw_state_count": 3308,
+            "distinct_real_plus0_count": 108,
+            "state_weight": 107.99999999999552,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 107.99999999999552,
+            "clear_positive_state_count": 986,
+            "clear_positive_weight": 38.73290322607149,
+            "clear_negative_state_count": 2322,
+            "clear_negative_weight": 69.26709677392817,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 69.26709677392817,
+            "total_regret": 1.0478604422503284,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 3308,
+            "distinct_real_plus0_count": 108,
+            "state_weight": 107.99999999999552,
+            "stopped_state_count": 448,
+            "stopped_weight": 9.899999999999917,
+            "continue_weight": 98.0999999999956,
+            "clear_positive_state_count": 986,
+            "clear_positive_weight": 38.73290322607149,
+            "clear_negative_state_count": 2322,
+            "clear_negative_weight": 69.26709677392817,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 12,
+            "clear_positive_false_stop_weight": 0.6,
+            "clear_positive_recall": 0.984509294423452,
+            "clear_negative_false_continue_weight": 59.967096773928965,
+            "total_regret": 0.938679292250336,
+            "saved_next_node_stamina": 116.72322797347317,
+            "unconditional_stopped_weight_per_plus0": 0.0630573248407638,
+            "unconditional_probability_mass_per_plus0": 0.6878980891719461
+          }
+        }
+      },
+      "node_gate": {
+        "passed": false,
+        "reasons": [
+          "plus0 clear-positive false stops=2",
+          "plus3 clear-positive false stops=12"
+        ]
+      }
+    },
+    "t0_12_t3_17": {
+      "candidate": {
+        "t0": 12,
+        "t3": 17
+      },
+      "priority_route": true,
+      "metrics": {
+        "plus0": {
+          "formal": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 157.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 105.0,
+            "total_regret": 0.3640209999999998,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 49,
+            "stopped_weight": 49.0,
+            "continue_weight": 108.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 2,
+            "clear_positive_false_stop_weight": 2.0,
+            "clear_positive_recall": 0.9615384615384616,
+            "clear_negative_false_continue_weight": 58.0,
+            "total_regret": 0.20919600000000008,
+            "saved_next_node_stamina": 163.92510980966324
+          }
+        },
+        "plus3": {
+          "formal": {
+            "raw_state_count": 3308,
+            "distinct_real_plus0_count": 108,
+            "state_weight": 107.99999999999552,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 107.99999999999552,
+            "clear_positive_state_count": 986,
+            "clear_positive_weight": 38.73290322607149,
+            "clear_negative_state_count": 2322,
+            "clear_negative_weight": 69.26709677392817,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 69.26709677392817,
+            "total_regret": 1.0478604422503284,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 3308,
+            "distinct_real_plus0_count": 108,
+            "state_weight": 107.99999999999552,
+            "stopped_state_count": 466,
+            "stopped_weight": 10.799999999999875,
+            "continue_weight": 97.19999999999565,
+            "clear_positive_state_count": 986,
+            "clear_positive_weight": 38.73290322607149,
+            "clear_negative_state_count": 2322,
+            "clear_negative_weight": 69.26709677392817,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 16,
+            "clear_positive_false_stop_weight": 0.8000000000000002,
+            "clear_positive_recall": 0.979345725897936,
+            "clear_negative_false_continue_weight": 59.26709677392901,
+            "total_regret": 0.9338020922503368,
+            "saved_next_node_stamina": 127.31983463956573,
+            "unconditional_stopped_weight_per_plus0": 0.06878980891719666,
+            "unconditional_probability_mass_per_plus0": 0.6878980891719461
+          }
+        }
+      },
+      "node_gate": {
+        "passed": false,
+        "reasons": [
+          "plus0 clear-positive false stops=2",
+          "plus3 clear-positive false stops=16"
+        ]
+      }
+    },
+    "t0_12_t3_18": {
+      "candidate": {
+        "t0": 12,
+        "t3": 18
+      },
+      "priority_route": true,
+      "metrics": {
+        "plus0": {
+          "formal": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 157.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 105.0,
+            "total_regret": 0.3640209999999998,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 49,
+            "stopped_weight": 49.0,
+            "continue_weight": 108.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 2,
+            "clear_positive_false_stop_weight": 2.0,
+            "clear_positive_recall": 0.9615384615384616,
+            "clear_negative_false_continue_weight": 58.0,
+            "total_regret": 0.20919600000000008,
+            "saved_next_node_stamina": 163.92510980966324
+          }
+        },
+        "plus3": {
+          "formal": {
+            "raw_state_count": 3308,
+            "distinct_real_plus0_count": 108,
+            "state_weight": 107.99999999999552,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 107.99999999999552,
+            "clear_positive_state_count": 986,
+            "clear_positive_weight": 38.73290322607149,
+            "clear_negative_state_count": 2322,
+            "clear_negative_weight": 69.26709677392817,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 69.26709677392817,
+            "total_regret": 1.0478604422503284,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 3308,
+            "distinct_real_plus0_count": 108,
+            "state_weight": 107.99999999999552,
+            "stopped_state_count": 519,
+            "stopped_weight": 13.57329879930919,
+            "continue_weight": 94.42670120068634,
+            "clear_positive_state_count": 986,
+            "clear_positive_weight": 38.73290322607149,
+            "clear_negative_state_count": 2322,
+            "clear_negative_weight": 69.26709677392817,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 20,
+            "clear_positive_false_stop_weight": 1.0000000000000002,
+            "clear_positive_recall": 0.97418215737242,
+            "clear_negative_false_continue_weight": 56.693797974619756,
+            "total_regret": 0.9019009545615825,
+            "saved_next_node_stamina": 160.5219098683633,
+            "unconditional_stopped_weight_per_plus0": 0.08645413247967637,
+            "unconditional_probability_mass_per_plus0": 0.6878980891719461
+          }
+        }
+      },
+      "node_gate": {
+        "passed": false,
+        "reasons": [
+          "plus0 clear-positive false stops=2",
+          "plus3 clear-positive false stops=20"
+        ]
+      }
+    },
+    "t0_12_t3_20": {
+      "candidate": {
+        "t0": 12,
+        "t3": 20
+      },
+      "priority_route": true,
+      "metrics": {
+        "plus0": {
+          "formal": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 157.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 105.0,
+            "total_regret": 0.3640209999999998,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 49,
+            "stopped_weight": 49.0,
+            "continue_weight": 108.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 2,
+            "clear_positive_false_stop_weight": 2.0,
+            "clear_positive_recall": 0.9615384615384616,
+            "clear_negative_false_continue_weight": 58.0,
+            "total_regret": 0.20919600000000008,
+            "saved_next_node_stamina": 163.92510980966324
+          }
+        },
+        "plus3": {
+          "formal": {
+            "raw_state_count": 3308,
+            "distinct_real_plus0_count": 108,
+            "state_weight": 107.99999999999552,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 107.99999999999552,
+            "clear_positive_state_count": 986,
+            "clear_positive_weight": 38.73290322607149,
+            "clear_negative_state_count": 2322,
+            "clear_negative_weight": 69.26709677392817,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 69.26709677392817,
+            "total_regret": 1.0478604422503284,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 3308,
+            "distinct_real_plus0_count": 108,
+            "state_weight": 107.99999999999552,
+            "stopped_state_count": 627,
+            "stopped_weight": 19.32916666666658,
+            "continue_weight": 88.67083333332894,
+            "clear_positive_state_count": 986,
+            "clear_positive_weight": 38.73290322607149,
+            "clear_negative_state_count": 2322,
+            "clear_negative_weight": 69.26709677392817,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 46,
+            "clear_positive_false_stop_weight": 2.5416666666666665,
+            "clear_positive_recall": 0.9343796499882342,
+            "clear_negative_false_continue_weight": 52.47959677392918,
+            "total_regret": 0.8974891089170028,
+            "saved_next_node_stamina": 228.36668532713102,
+            "unconditional_stopped_weight_per_plus0": 0.12311571125265337,
+            "unconditional_probability_mass_per_plus0": 0.6878980891719461
+          }
+        }
+      },
+      "node_gate": {
+        "passed": false,
+        "reasons": [
+          "plus0 clear-positive false stops=2",
+          "plus3 clear-positive false stops=46"
+        ]
+      }
+    },
+    "t0_14_t3_14": {
+      "candidate": {
+        "t0": 14,
+        "t3": 14
+      },
+      "priority_route": false,
+      "metrics": {
+        "plus0": {
+          "formal": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 157.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 105.0,
+            "total_regret": 0.3640209999999998,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 68,
+            "stopped_weight": 68.0,
+            "continue_weight": 89.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 8,
+            "clear_positive_false_stop_weight": 8.0,
+            "clear_positive_recall": 0.8461538461538461,
+            "clear_negative_false_continue_weight": 45.0,
+            "total_regret": 0.3167849999999998,
+            "saved_next_node_stamina": 330.555136652025
+          }
+        },
+        "plus3": {
+          "formal": {
+            "raw_state_count": 2776,
+            "distinct_real_plus0_count": 89,
+            "state_weight": 88.99999999999689,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 88.99999999999689,
+            "clear_positive_state_count": 942,
+            "clear_positive_weight": 36.26623655940468,
+            "clear_negative_state_count": 1834,
+            "clear_negative_weight": 52.73376344059609,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 52.73376344059609,
+            "total_regret": 0.8130605964170025,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 2776,
+            "distinct_real_plus0_count": 89,
+            "state_weight": 88.99999999999689,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 88.99999999999689,
+            "clear_positive_state_count": 942,
+            "clear_positive_weight": 36.26623655940468,
+            "clear_negative_state_count": 1834,
+            "clear_negative_weight": 52.73376344059609,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 52.73376344059609,
+            "total_regret": 0.8130605964170025,
+            "saved_next_node_stamina": 0,
+            "unconditional_stopped_weight_per_plus0": 0.0,
+            "unconditional_probability_mass_per_plus0": 0.5668789808917
+          }
+        }
+      },
+      "node_gate": {
+        "passed": false,
+        "reasons": [
+          "plus0 clear-positive false stops=8",
+          "plus3 saves no next-node stamina"
+        ]
+      }
+    },
+    "t0_14_t3_16": {
+      "candidate": {
+        "t0": 14,
+        "t3": 16
+      },
+      "priority_route": false,
+      "metrics": {
+        "plus0": {
+          "formal": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 157.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 105.0,
+            "total_regret": 0.3640209999999998,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 68,
+            "stopped_weight": 68.0,
+            "continue_weight": 89.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 8,
+            "clear_positive_false_stop_weight": 8.0,
+            "clear_positive_recall": 0.8461538461538461,
+            "clear_negative_false_continue_weight": 45.0,
+            "total_regret": 0.3167849999999998,
+            "saved_next_node_stamina": 330.555136652025
+          }
+        },
+        "plus3": {
+          "formal": {
+            "raw_state_count": 2776,
+            "distinct_real_plus0_count": 89,
+            "state_weight": 88.99999999999689,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 88.99999999999689,
+            "clear_positive_state_count": 942,
+            "clear_positive_weight": 36.26623655940468,
+            "clear_negative_state_count": 1834,
+            "clear_negative_weight": 52.73376344059609,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 52.73376344059609,
+            "total_regret": 0.8130605964170025,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 2776,
+            "distinct_real_plus0_count": 89,
+            "state_weight": 88.99999999999689,
+            "stopped_state_count": 124,
+            "stopped_weight": 2.100000000000002,
+            "continue_weight": 86.89999999999688,
+            "clear_positive_state_count": 942,
+            "clear_positive_weight": 36.26623655940468,
+            "clear_negative_state_count": 1834,
+            "clear_negative_weight": 52.73376344059609,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 12,
+            "clear_positive_false_stop_weight": 0.6,
+            "clear_positive_recall": 0.9834556861444063,
+            "clear_negative_false_continue_weight": 51.2337634405959,
+            "total_regret": 0.8139094964170045,
+            "saved_next_node_stamina": 22.477650503832557,
+            "unconditional_stopped_weight_per_plus0": 0.013375796178343962,
+            "unconditional_probability_mass_per_plus0": 0.5668789808917
+          }
+        }
+      },
+      "node_gate": {
+        "passed": false,
+        "reasons": [
+          "plus0 clear-positive false stops=8",
+          "plus3 clear-positive false stops=12",
+          "plus3 regret exceeds matched formal route"
+        ]
+      }
+    },
+    "t0_14_t3_17": {
+      "candidate": {
+        "t0": 14,
+        "t3": 17
+      },
+      "priority_route": false,
+      "metrics": {
+        "plus0": {
+          "formal": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 157.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 105.0,
+            "total_regret": 0.3640209999999998,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 68,
+            "stopped_weight": 68.0,
+            "continue_weight": 89.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 8,
+            "clear_positive_false_stop_weight": 8.0,
+            "clear_positive_recall": 0.8461538461538461,
+            "clear_negative_false_continue_weight": 45.0,
+            "total_regret": 0.3167849999999998,
+            "saved_next_node_stamina": 330.555136652025
+          }
+        },
+        "plus3": {
+          "formal": {
+            "raw_state_count": 2776,
+            "distinct_real_plus0_count": 89,
+            "state_weight": 88.99999999999689,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 88.99999999999689,
+            "clear_positive_state_count": 942,
+            "clear_positive_weight": 36.26623655940468,
+            "clear_negative_state_count": 1834,
+            "clear_negative_weight": 52.73376344059609,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 52.73376344059609,
+            "total_regret": 0.8130605964170025,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 2776,
+            "distinct_real_plus0_count": 89,
+            "state_weight": 88.99999999999689,
+            "stopped_state_count": 129,
+            "stopped_weight": 2.350000000000007,
+            "continue_weight": 86.64999999999688,
+            "clear_positive_state_count": 942,
+            "clear_positive_weight": 36.26623655940468,
+            "clear_negative_state_count": 1834,
+            "clear_negative_weight": 52.73376344059609,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 14,
+            "clear_positive_false_stop_weight": 0.7000000000000001,
+            "clear_positive_recall": 0.9806983005018073,
+            "clear_negative_false_continue_weight": 51.08376344059591,
+            "total_regret": 0.8167424464170043,
+            "saved_next_node_stamina": 25.153561278098344,
+            "unconditional_stopped_weight_per_plus0": 0.014968152866242083,
+            "unconditional_probability_mass_per_plus0": 0.5668789808917
+          }
+        }
+      },
+      "node_gate": {
+        "passed": false,
+        "reasons": [
+          "plus0 clear-positive false stops=8",
+          "plus3 clear-positive false stops=14",
+          "plus3 regret exceeds matched formal route"
+        ]
+      }
+    },
+    "t0_14_t3_18": {
+      "candidate": {
+        "t0": 14,
+        "t3": 18
+      },
+      "priority_route": true,
+      "metrics": {
+        "plus0": {
+          "formal": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 157.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 105.0,
+            "total_regret": 0.3640209999999998,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 68,
+            "stopped_weight": 68.0,
+            "continue_weight": 89.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 8,
+            "clear_positive_false_stop_weight": 8.0,
+            "clear_positive_recall": 0.8461538461538461,
+            "clear_negative_false_continue_weight": 45.0,
+            "total_regret": 0.3167849999999998,
+            "saved_next_node_stamina": 330.555136652025
+          }
+        },
+        "plus3": {
+          "formal": {
+            "raw_state_count": 2776,
+            "distinct_real_plus0_count": 89,
+            "state_weight": 88.99999999999689,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 88.99999999999689,
+            "clear_positive_state_count": 942,
+            "clear_positive_weight": 36.26623655940468,
+            "clear_negative_state_count": 1834,
+            "clear_negative_weight": 52.73376344059609,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 52.73376344059609,
+            "total_regret": 0.8130605964170025,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 2776,
+            "distinct_real_plus0_count": 89,
+            "state_weight": 88.99999999999689,
+            "stopped_state_count": 133,
+            "stopped_weight": 2.5500000000000065,
+            "continue_weight": 86.44999999999688,
+            "clear_positive_state_count": 942,
+            "clear_positive_weight": 36.26623655940468,
+            "clear_negative_state_count": 1834,
+            "clear_negative_weight": 52.73376344059609,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 16,
+            "clear_positive_false_stop_weight": 0.8000000000000002,
+            "clear_positive_recall": 0.9779409148592083,
+            "clear_negative_false_continue_weight": 50.983763440595915,
+            "total_regret": 0.8204135464170043,
+            "saved_next_node_stamina": 27.29428989751097,
+            "unconditional_stopped_weight_per_plus0": 0.01624203821656055,
+            "unconditional_probability_mass_per_plus0": 0.5668789808917
+          }
+        }
+      },
+      "node_gate": {
+        "passed": false,
+        "reasons": [
+          "plus0 clear-positive false stops=8",
+          "plus3 clear-positive false stops=16",
+          "plus3 regret exceeds matched formal route"
+        ]
+      }
+    },
+    "t0_14_t3_20": {
+      "candidate": {
+        "t0": 14,
+        "t3": 20
+      },
+      "priority_route": true,
+      "metrics": {
+        "plus0": {
+          "formal": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 157.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 105.0,
+            "total_regret": 0.3640209999999998,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 157,
+            "distinct_real_plus0_count": 157,
+            "state_weight": 157.0,
+            "stopped_state_count": 68,
+            "stopped_weight": 68.0,
+            "continue_weight": 89.0,
+            "clear_positive_state_count": 52,
+            "clear_positive_weight": 52.0,
+            "clear_negative_state_count": 105,
+            "clear_negative_weight": 105.0,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 8,
+            "clear_positive_false_stop_weight": 8.0,
+            "clear_positive_recall": 0.8461538461538461,
+            "clear_negative_false_continue_weight": 45.0,
+            "total_regret": 0.3167849999999998,
+            "saved_next_node_stamina": 330.555136652025
+          }
+        },
+        "plus3": {
+          "formal": {
+            "raw_state_count": 2776,
+            "distinct_real_plus0_count": 89,
+            "state_weight": 88.99999999999689,
+            "stopped_state_count": 0,
+            "stopped_weight": 0,
+            "continue_weight": 88.99999999999689,
+            "clear_positive_state_count": 942,
+            "clear_positive_weight": 36.26623655940468,
+            "clear_negative_state_count": 1834,
+            "clear_negative_weight": 52.73376344059609,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 0,
+            "clear_positive_false_stop_weight": 0,
+            "clear_positive_recall": 1.0,
+            "clear_negative_false_continue_weight": 52.73376344059609,
+            "total_regret": 0.8130605964170025,
+            "saved_next_node_stamina": 0
+          },
+          "candidate": {
+            "raw_state_count": 2776,
+            "distinct_real_plus0_count": 89,
+            "state_weight": 88.99999999999689,
+            "stopped_state_count": 151,
+            "stopped_weight": 3.600000000000014,
+            "continue_weight": 85.39999999999688,
+            "clear_positive_state_count": 942,
+            "clear_positive_weight": 36.26623655940468,
+            "clear_negative_state_count": 1834,
+            "clear_negative_weight": 52.73376344059609,
+            "boundary_state_count": 0,
+            "boundary_weight": 0,
+            "clear_positive_false_stop_count": 24,
+            "clear_positive_false_stop_weight": 1.291666666666667,
+            "clear_positive_recall": 0.9643837687830967,
+            "clear_negative_false_continue_weight": 50.4254301072626,
+            "total_regret": 0.8463502547503369,
+            "saved_next_node_stamina": 38.5331151494274,
+            "unconditional_stopped_weight_per_plus0": 0.022929936305732573,
+            "unconditional_probability_mass_per_plus0": 0.5668789808917
+          }
+        }
+      },
+      "node_gate": {
+        "passed": false,
+        "reasons": [
+          "plus0 clear-positive false stops=8",
+          "plus3 clear-positive false stops=24",
+          "plus3 regret exceeds matched formal route"
+        ]
+      }
+    }
+  },
+  "freeze": {
+    "study": "epic_non_speed_plus0_plus3_threshold_matrix_20260717",
+    "schema_version": 1,
+    "scope": "development-only; old frozen validation was not read",
+    "matrix": [
+      {
+        "t0": 10,
+        "t3": 14
+      },
+      {
+        "t0": 10,
+        "t3": 16
+      },
+      {
+        "t0": 10,
+        "t3": 17
+      },
+      {
+        "t0": 10,
+        "t3": 18
+      },
+      {
+        "t0": 10,
+        "t3": 20
+      },
+      {
+        "t0": 12,
+        "t3": 14
+      },
+      {
+        "t0": 12,
+        "t3": 16
+      },
+      {
+        "t0": 12,
+        "t3": 17
+      },
+      {
+        "t0": 12,
+        "t3": 18
+      },
+      {
+        "t0": 12,
+        "t3": 20
+      },
+      {
+        "t0": 14,
+        "t3": 14
+      },
+      {
+        "t0": 14,
+        "t3": 16
+      },
+      {
+        "t0": 14,
+        "t3": 17
+      },
+      {
+        "t0": 14,
+        "t3": 18
+      },
+      {
+        "t0": 14,
+        "t3": 20
+      }
+    ],
+    "fixed_terms": {
+      "current_valid_max": 2,
+      "plus0_terminal_probability_max": 0.002,
+      "plus3_terminal_probability_max": 0.01,
+      "conversion_value_max": 0.0
+    },
+    "node_gated_candidates": [
+      "t0_10_t3_14"
+    ],
+    "freeze_sha256": "fa17234cc443bce7f84f369d2461ce3868c61e0a380b8c28af3ad1ea37195118"
+  },
+  "joint_pool": {
+    "status": "completed",
+    "result": {
+      "scope": "conditional on the 157 real normal_85 Epic non-boot non-speed development +0 cohort; Heroic M1 is a common component",
+      "seeds": [
+        20260712,
+        20260713,
+        20260714,
+        20260715,
+        20260716
+      ],
+      "runs_per_official_plus3_branch": 50,
+      "matrix": [
+        {
+          "t0": 10,
+          "t3": 14
+        }
+      ],
+      "cohort": {
+        "epic_development_count": 157,
+        "heroic_source_count": 80
+      },
+      "execution": {
+        "scheduled_shards": 1185,
+        "resume_dir": "reports\\epic_threshold_matrix_resume_20260717"
+      },
+      "per_seed": {
+        "20260712": {
+          "yield_minus_20pct": {
+            "current_formal": {
+              "formal_rate_per_100": 0.08205189331120862,
+              "per_100k": {
+                "value_sum": 82.0518933112086,
+                "legacy_stamina_sum": 73776.46035311621,
+                "powder_units": 158630.68076867596,
+                "lower_stone_units": 10575.37871791173,
+                "material_gold": 406094542.7678107,
+                "conversion_gold": 1338053.6030820082,
+                "sell_gold": 14421896.088934714,
+                "sell_exp_adjusted": 21469776.636334844,
+                "material_exp_adjusted": 32147034.642965764,
+                "lower_stone_adjusted_exp": 17452218.292564955,
+                "formal_terminal_count": 18.986719432687657,
+                "value_sum_curve_baseline": 86.76031514892806,
+                "value_sum_tier2_low": 83.93526204629639,
+                "value_sum_tier2_mid": 99.94389629454255,
+                "value_sum_tier2_high": 106.5356868673498,
+                "native_heirloom": 0.6794791747422666,
+                "converted_heirloom": 1.1610802679436958,
+                "speed22": 2.5896320107457043,
+                "output60": 0.023276977466843637
+              },
+              "rift_stamina_per_100k": 28026.880989025103,
+              "saint_stamina_per_100k": 71973.11901097489,
+              "source_cycles_per_100k": 329.72801163558944
+            },
+            "t0_10_t3_14": {
+              "formal_rate_per_100": 0.08293774009810963,
+              "per_100k": {
+                "value_sum": 82.93774009810963,
+                "legacy_stamina_sum": 73411.6674200002,
+                "powder_units": 158610.94957981215,
+                "lower_stone_units": 10574.06330532081,
+                "material_gold": 406044030.9243194,
+                "conversion_gold": 1352499.4670000516,
+                "sell_gold": 15319040.279321061,
+                "sell_exp_adjusted": 21483701.569483604,
+                "material_exp_adjusted": 32119362.78842531,
+                "lower_stone_adjusted_exp": 17436808.965694968,
+                "formal_terminal_count": 19.19170342177667,
+                "value_sum_curve_baseline": 87.69699489272989,
+                "value_sum_tier2_low": 84.84144201595774,
+                "value_sum_tier2_mid": 101.02290831766665,
+                "value_sum_tier2_high": 107.68586503013502,
+                "native_heirloom": 0.6868149523754363,
+                "converted_heirloom": 1.1736154963605592,
+                "speed22": 2.617590137041149,
+                "output60": 0.023528279842275287
+              },
+              "rift_stamina_per_100k": 28329.464164977166,
+              "saint_stamina_per_100k": 71670.53583502283,
+              "source_cycles_per_100k": 333.2878137056137
+            }
+          },
+          "baseline": {
+            "current_formal": {
+              "formal_rate_per_100": 0.08186433512945954,
+              "per_100k": {
+                "value_sum": 81.86433512945953,
+                "legacy_stamina_sum": 77551.94539912317,
+                "powder_units": 167209.52431326552,
+                "lower_stone_units": 11147.301620884367,
+                "material_gold": 428056382.24196005,
+                "conversion_gold": 1338386.2744084883,
+                "sell_gold": 15449528.384717332,
+                "sell_exp_adjusted": 22649850.831010245,
+                "material_exp_adjusted": 33875651.73762372,
+                "lower_stone_adjusted_exp": 18390467.29882544,
+                "formal_terminal_count": 18.944972441967337,
+                "value_sum_curve_baseline": 86.90825559459742,
+                "value_sum_tier2_low": 83.88190331551468,
+                "value_sum_tier2_mid": 101.0312328969835,
+                "value_sum_tier2_high": 108.09272154817653,
+                "native_heirloom": 0.5823163740617617,
+                "converted_heirloom": 0.9950504397431893,
+                "speed22": 2.7741562558258352,
+                "output60": 0.019948462913158604
+              },
+              "rift_stamina_per_100k": 24019.149254986598,
+              "saint_stamina_per_100k": 75980.8507450134,
+              "source_cycles_per_100k": 282.5782265292541
+            },
+            "t0_10_t3_14": {
+              "formal_rate_per_100": 0.082620766355656,
+              "per_100k": {
+                "value_sum": 82.62076635565602,
+                "legacy_stamina_sum": 77274.82615236427,
+                "powder_units": 167272.21661710163,
+                "lower_stone_units": 11151.48110780677,
+                "material_gold": 428216874.53978044,
+                "conversion_gold": 1350753.0415614168,
+                "sell_gold": 16226724.186144581,
+                "sell_exp_adjusted": 22672711.682861436,
+                "material_exp_adjusted": 33868008.086650915,
+                "lower_stone_adjusted_exp": 18385985.021517824,
+                "formal_terminal_count": 19.120025091107816,
+                "value_sum_curve_baseline": 87.71129293976192,
+                "value_sum_tier2_low": 84.65697698929837,
+                "value_sum_tier2_mid": 101.96476737525846,
+                "value_sum_tier2_high": 109.09150459300673,
+                "native_heirloom": 0.587697011285154,
+                "converted_heirloom": 1.0042447637802927,
+                "speed22": 2.7997896212582485,
+                "output60": 0.0201327878727185
+              },
+              "rift_stamina_per_100k": 24241.087593512326,
+              "saint_stamina_per_100k": 75758.91240648768,
+              "source_cycles_per_100k": 285.1892658060274
+            }
+          },
+          "yield_plus_20pct": {
+            "current_formal": {
+              "formal_rate_per_100": 0.08172379962296086,
+              "per_100k": {
+                "value_sum": 81.72379962296087,
+                "legacy_stamina_sum": 80382.84827383656,
+                "powder_units": 173642.03132835744,
+                "lower_stone_units": 11576.135421890493,
+                "material_gold": 444523600.2005954,
+                "conversion_gold": 1338637.2347238376,
+                "sell_gold": 16220052.649633639,
+                "sell_exp_adjusted": 23534682.459098462,
+                "material_exp_adjusted": 35171787.20443932,
+                "lower_stone_adjusted_exp": 19093976.378217645,
+                "formal_terminal_count": 18.91369265674663,
+                "value_sum_curve_baseline": 87.01927877726503,
+                "value_sum_tier2_low": 83.84199128468254,
+                "value_sum_tier2_mid": 101.84662040931667,
+                "value_sum_tier2_high": 109.26029122534248,
+                "native_heirloom": 0.5094655109002509,
+                "converted_heirloom": 0.8705643585449233,
+                "speed22": 2.9125135348672875,
+                "output60": 0.01745280452761086
+              },
+              "rift_stamina_per_100k": 21014.22644399701,
+              "saint_stamina_per_100k": 78985.77355600298,
+              "source_cycles_per_100k": 247.22619345878834
+            },
+            "t0_10_t3_14": {
+              "formal_rate_per_100": 0.08238379417147951,
+              "per_100k": {
+                "value_sum": 82.38379417147952,
+                "legacy_stamina_sum": 80163.63009610257,
+                "powder_units": 173748.96006366416,
+                "lower_stone_units": 11583.26400424427,
+                "material_gold": 444797337.7629805,
+                "conversion_gold": 1349447.9567098182,
+                "sell_gold": 16905473.466976125,
+                "sell_exp_adjusted": 23561832.392610528,
+                "material_exp_adjusted": 35175614.404478684,
+                "lower_stone_adjusted_exp": 19095762.247916102,
+                "formal_terminal_count": 19.06643805164262,
+                "value_sum_curve_baseline": 87.72203917110365,
+                "value_sum_tier2_low": 84.51909217132918,
+                "value_sum_tier2_mid": 102.66912517005117,
+                "value_sum_tier2_high": 110.14266816952492,
+                "native_heirloom": 0.5135799116183248,
+                "converted_heirloom": 0.8775949632576888,
+                "speed22": 2.936034749793265,
+                "output60": 0.017593751912555362
+              },
+              "rift_stamina_per_100k": 21183.935573508385,
+              "saint_stamina_per_100k": 78816.06442649162,
+              "source_cycles_per_100k": 249.2227714530398
+            }
+          }
+        },
+        "20260713": {
+          "yield_minus_20pct": {
+            "current_formal": {
+              "formal_rate_per_100": 0.08737260108606286,
+              "per_100k": {
+                "value_sum": 87.37260108606286,
+                "legacy_stamina_sum": 74165.3963691772,
+                "powder_units": 159411.89925186287,
+                "lower_stone_units": 10627.459950124188,
+                "material_gold": 408094462.0847688,
+                "conversion_gold": 1393937.4980352684,
+                "sell_gold": 14215024.765148979,
+                "sell_exp_adjusted": 21638962.98119746,
+                "material_exp_adjusted": 32371716.948211223,
+                "lower_stone_adjusted_exp": 17573893.957608968,
+                "formal_terminal_count": 17.549268745811478,
+                "value_sum_curve_baseline": 87.37260108606286,
+                "value_sum_tier2_low": 87.37260108606286,
+                "value_sum_tier2_mid": 92.01348413051241,
+                "value_sum_tier2_high": 94.33392565273721,
+                "native_heirloom": 0.7243256057547023,
+                "converted_heirloom": 1.199022504415105,
+                "speed22": 1.1602207611123883,
+                "output60": 0.004657619087650312
+              },
+              "rift_stamina_per_100k": 27624.85632208596,
+              "saint_stamina_per_100k": 72375.14367791403,
+              "source_cycles_per_100k": 324.99830967159954
+            },
+            "t0_10_t3_14": {
+              "formal_rate_per_100": 0.08830226760916075,
+              "per_100k": {
+                "value_sum": 88.30226760916075,
+                "legacy_stamina_sum": 73810.07272732265,
+                "powder_units": 159400.85840799368,
+                "lower_stone_units": 10626.72389386624,
+                "material_gold": 408066197.5244636,
+                "conversion_gold": 1408769.344759595,
+                "sell_gold": 15096970.881445266,
+                "sell_exp_adjusted": 21654498.685201727,
+                "material_exp_adjusted": 32346855.54436814,
+                "lower_stone_adjusted_exp": 17560012.785323508,
+                "formal_terminal_count": 17.73599739363734,
+                "value_sum_curve_baseline": 88.30226760916075,
+                "value_sum_tier2_low": 88.30226760916075,
+                "value_sum_tier2_mid": 92.99253082028049,
+                "value_sum_tier2_high": 95.33766242584038,
+                "native_heirloom": 0.7320326129757585,
+                "converted_heirloom": 1.2117804064225974,
+                "speed22": 1.1725658027799346,
+                "output60": 0.0047071773300433155
+              },
+              "rift_stamina_per_100k": 27918.79176419024,
+              "saint_stamina_per_100k": 72081.20823580975,
+              "source_cycles_per_100k": 328.45637369635574
+            }
+          },
+          "baseline": {
+            "current_formal": {
+              "formal_rate_per_100": 0.08749050726045726,
+              "per_100k": {
+                "value_sum": 87.49050726045725,
+                "legacy_stamina_sum": 77908.57917307441,
+                "powder_units": 167916.23878799373,
+                "lower_stone_units": 11194.415919199579,
+                "material_gold": 429865571.2972638,
+                "conversion_gold": 1397078.2715806304,
+                "sell_gold": 15213040.905658225,
+                "sell_exp_adjusted": 22813569.503923025,
+                "material_exp_adjusted": 34090104.78829558,
+                "lower_stone_adjusted_exp": 18506571.815209452,
+                "formal_terminal_count": 17.40912391283221,
+                "value_sum_curve_baseline": 87.49050726045725,
+                "value_sum_tier2_low": 87.49050726045725,
+                "value_sum_tier2_mid": 92.45721992962417,
+                "value_sum_tier2_high": 94.94057626420764,
+                "native_heirloom": 0.6201435594471988,
+                "converted_heirloom": 1.0265632994853582,
+                "speed22": 1.2416781672917263,
+                "output60": 0.0039876989804262875
+              },
+              "rift_stamina_per_100k": 23651.4857305728,
+              "saint_stamina_per_100k": 76348.51426942719,
+              "source_cycles_per_100k": 278.25277330085646
+            },
+            "t0_10_t3_14": {
+              "formal_rate_per_100": 0.08828647369510491,
+              "per_100k": {
+                "value_sum": 88.2864736951049,
+                "legacy_stamina_sum": 77639.01661589142,
+                "powder_units": 167984.46072699575,
+                "lower_stone_units": 11198.964048466376,
+                "material_gold": 430040219.4611089,
+                "conversion_gold": 1409788.5351917816,
+                "sell_gold": 15976087.002093622,
+                "sell_exp_adjusted": 22837575.993715107,
+                "material_exp_adjusted": 34084544.11151641,
+                "lower_stone_adjusted_exp": 18503222.59083797,
+                "formal_terminal_count": 17.567507704687298,
+                "value_sum_curve_baseline": 88.2864736951049,
+                "value_sum_tier2_low": 88.2864736951049,
+                "value_sum_tier2_mid": 93.29837225585007,
+                "value_sum_tier2_high": 95.80432153622264,
+                "native_heirloom": 0.6257854681918059,
+                "converted_heirloom": 1.0359027118972552,
+                "speed22": 1.2529746401862858,
+                "output60": 0.004023978053885638
+              },
+              "rift_stamina_per_100k": 23866.66094626837,
+              "saint_stamina_per_100k": 76133.33905373163,
+              "source_cycles_per_100k": 280.7842464266867
+            }
+          },
+          "yield_plus_20pct": {
+            "current_formal": {
+              "formal_rate_per_100": 0.08757884620267833,
+              "per_100k": {
+                "value_sum": 87.57884620267832,
+                "legacy_stamina_sum": 80710.45540128365,
+                "powder_units": 174281.96412574587,
+                "lower_stone_units": 11618.797608383053,
+                "material_gold": 446161828.16190934,
+                "conversion_gold": 1399430.5259757442,
+                "sell_gold": 15960078.269429695,
+                "sell_exp_adjusted": 23692793.496765025,
+                "material_exp_adjusted": 35376364.1505214,
+                "lower_stone_adjusted_exp": 19204706.197050758,
+                "formal_terminal_count": 17.304241430210006,
+                "value_sum_curve_baseline": 87.57884620267832,
+                "value_sum_tier2_low": 87.57884620267832,
+                "value_sum_tier2_mid": 92.78944962070956,
+                "value_sum_tier2_high": 95.39475132972518,
+                "native_heirloom": 0.5421631244118329,
+                "converted_heirloom": 0.8974772975980407,
+                "speed22": 1.3026508545078108,
+                "output60": 0.0034862626653238272
+              },
+              "rift_stamina_per_100k": 20677.411230553986,
+              "saint_stamina_per_100k": 79322.58876944601,
+              "source_cycles_per_100k": 243.26366153592923
+            },
+            "t0_10_t3_14": {
+              "formal_rate_per_100": 0.08827472618328136,
+              "per_100k": {
+                "value_sum": 88.27472618328136,
+                "legacy_stamina_sum": 80497.40626371268,
+                "powder_units": 174392.3030612825,
+                "lower_stone_units": 11626.153537418826,
+                "material_gold": 446444295.836883,
+                "conversion_gold": 1410550.0568841284,
+                "sell_gold": 16632365.353438256,
+                "sell_exp_adjusted": 23720768.30223109,
+                "material_exp_adjusted": 35381765.75255437,
+                "lower_stone_adjusted_exp": 19207348.863408655,
+                "formal_terminal_count": 17.441736678354033,
+                "value_sum_curve_baseline": 88.27472618328136,
+                "value_sum_tier2_low": 88.27472618328136,
+                "value_sum_tier2_mid": 93.5267317750416,
+                "value_sum_tier2_high": 96.15273457092174,
+                "native_heirloom": 0.5464710193072083,
+                "converted_heirloom": 0.9046084315593041,
+                "speed22": 1.3130013979400637,
+                "output60": 0.003513963651362262
+              },
+              "rift_stamina_per_100k": 20841.70885663528,
+              "saint_stamina_per_100k": 79158.29114336472,
+              "source_cycles_per_100k": 245.19657478394447
+            }
+          }
+        },
+        "20260714": {
+          "yield_minus_20pct": {
+            "current_formal": {
+              "formal_rate_per_100": 0.05798101481860475,
+              "per_100k": {
+                "value_sum": 57.981014818604756,
+                "legacy_stamina_sum": 73711.21000825735,
+                "powder_units": 158762.52644987192,
+                "lower_stone_units": 10584.168429991458,
+                "material_gold": 406432067.71167207,
+                "conversion_gold": 932169.376009878,
+                "sell_gold": 14427650.371127991,
+                "sell_exp_adjusted": 21518644.484455343,
+                "material_exp_adjusted": 32194521.100807037,
+                "lower_stone_adjusted_exp": 17477999.81255674,
+                "formal_terminal_count": 12.008301731987936,
+                "value_sum_curve_baseline": 57.981014818604756,
+                "value_sum_tier2_low": 57.981014818604756,
+                "value_sum_tier2_mid": 58.92307491466274,
+                "value_sum_tier2_high": 59.39410496269173,
+                "native_heirloom": 0.7028257220620016,
+                "converted_heirloom": 1.156377316357661,
+                "speed22": 0.2355150240144955,
+                "output60": 0.03624253257804183
+              },
+              "rift_stamina_per_100k": 28038.063608925684,
+              "saint_stamina_per_100k": 71961.93639107431,
+              "source_cycles_per_100k": 329.85957186971393
+            },
+            "t0_10_t3_14": {
+              "formal_rate_per_100": 0.05860724756041463,
+              "per_100k": {
+                "value_sum": 58.607247560414635,
+                "legacy_stamina_sum": 73345.57393401368,
+                "powder_units": 158744.23018038264,
+                "lower_stone_units": 10582.948678692172,
+                "material_gold": 406385229.26177955,
+                "conversion_gold": 942237.4126938886,
+                "sell_gold": 15325220.356167015,
+                "sell_exp_adjusted": 21533105.39248297,
+                "material_exp_adjusted": 32167354.78952126,
+                "lower_stone_adjusted_exp": 17462864.80135636,
+                "formal_terminal_count": 12.137999215580274,
+                "value_sum_curve_baseline": 58.607247560414635,
+                "value_sum_tier2_low": 58.607247560414635,
+                "value_sum_tier2_mid": 59.55948251937817,
+                "value_sum_tier2_high": 60.035599998859944,
+                "native_heirloom": 0.7104166978377511,
+                "converted_heirloom": 1.1688669448965021,
+                "speed22": 0.23805873974088346,
+                "output60": 0.03663397554635632
+              },
+              "rift_stamina_per_100k": 28340.89296615217,
+              "saint_stamina_per_100k": 71659.10703384783,
+              "source_cycles_per_100k": 333.42227019002553
+            }
+          },
+          "baseline": {
+            "current_formal": {
+              "formal_rate_per_100": 0.056077885703512506,
+              "per_100k": {
+                "value_sum": 56.07788570351251,
+                "legacy_stamina_sum": 77484.4914721077,
+                "powder_units": 167357.1192888901,
+                "lower_stone_units": 11157.141285926004,
+                "material_gold": 428434225.3795586,
+                "conversion_gold": 904833.8125871305,
+                "sell_gold": 15455630.028383741,
+                "sell_exp_adjusted": 22703249.78806475,
+                "material_exp_adjusted": 33927882.69786639,
+                "lower_stone_adjusted_exp": 18418823.790419023,
+                "formal_terminal_count": 11.50213995857185,
+                "value_sum_curve_baseline": 56.07788570351251,
+                "value_sum_tier2_low": 56.07788570351251,
+                "value_sum_tier2_mid": 57.08706820618203,
+                "value_sum_tier2_high": 57.59165945751679,
+                "native_heirloom": 0.6023220166942647,
+                "converted_heirloom": 0.9910159736393419,
+                "speed22": 0.25229562566738073,
+                "output60": 0.031059869648009237
+              },
+              "rift_stamina_per_100k": 24028.635388561343,
+              "saint_stamina_per_100k": 75971.36461143865,
+              "source_cycles_per_100k": 282.6898281007217
+            },
+            "t0_10_t3_14": {
+              "formal_rate_per_100": 0.056596259957704925,
+              "per_100k": {
+                "value_sum": 56.59625995770493,
+                "legacy_stamina_sum": 77206.64477289491,
+                "powder_units": 167421.21507449163,
+                "lower_stone_units": 11161.414338299437,
+                "material_gold": 428598310.59069854,
+                "conversion_gold": 913197.9394953345,
+                "sell_gold": 16233193.388500465,
+                "sell_exp_adjusted": 22726615.280805275,
+                "material_exp_adjusted": 33920721.679289214,
+                "lower_stone_adjusted_exp": 18414603.40441432,
+                "formal_terminal_count": 11.60846374642229,
+                "value_sum_curve_baseline": 56.59625995770493,
+                "value_sum_tier2_low": 56.59625995770493,
+                "value_sum_tier2_mid": 57.614771168484666,
+                "value_sum_tier2_high": 58.124026773874526,
+                "native_heirloom": 0.6078897770024606,
+                "converted_heirloom": 1.0001767535044055,
+                "speed22": 0.25462780269493135,
+                "output60": 0.03134698169872431
+              },
+              "rift_stamina_per_100k": 24250.751928665264,
+              "saint_stamina_per_100k": 75749.24807133475,
+              "source_cycles_per_100k": 285.30296386665015
+            }
+          },
+          "yield_plus_20pct": {
+            "current_formal": {
+              "formal_rate_per_100": 0.05465101333287522,
+              "per_100k": {
+                "value_sum": 54.651013332875216,
+                "legacy_stamina_sum": 80313.71814540225,
+                "powder_units": 173801.38109633568,
+                "lower_stone_units": 11586.758739755709,
+                "material_gold": 444931535.60661936,
+                "conversion_gold": 884339.0636377317,
+                "sell_gold": 16226408.505336026,
+                "sell_exp_adjusted": 23591471.422179982,
+                "material_exp_adjusted": 35227564.69493099,
+                "lower_stone_adjusted_exp": 19124257.668390468,
+                "formal_terminal_count": 11.122641087648784,
+                "value_sum_curve_baseline": 54.651013332875216,
+                "value_sum_tier2_low": 54.651013332875216,
+                "value_sum_tier2_mid": 55.71052417227032,
+                "value_sum_tier2_high": 56.24027959196787,
+                "native_heirloom": 0.526966714647576,
+                "converted_heirloom": 0.867031948554979,
+                "speed22": 0.2648777098487762,
+                "output60": 0.027174031518262524
+              },
+              "rift_stamina_per_100k": 21022.46090499787,
+              "saint_stamina_per_100k": 78977.53909500212,
+              "source_cycles_per_100k": 247.32306947056318
+            },
+            "t0_10_t3_14": {
+              "formal_rate_per_100": 0.05509254815831586,
+              "per_100k": {
+                "value_sum": 55.09254815831585,
+                "legacy_stamina_sum": 80093.85992752056,
+                "powder_units": 173909.650470799,
+                "lower_stone_units": 11593.97669805326,
+                "material_gold": 445208705.2052454,
+                "conversion_gold": 891483.7892389812,
+                "sell_gold": 16912152.49495503,
+                "sell_exp_adjusted": 23619092.37794942,
+                "material_exp_adjusted": 35231846.26684693,
+                "lower_stone_adjusted_exp": 19126290.098700266,
+                "formal_terminal_count": 11.21250279544844,
+                "value_sum_curve_baseline": 55.09254815831585,
+                "value_sum_tier2_low": 55.09254815831585,
+                "value_sum_tier2_mid": 56.16061896586151,
+                "value_sum_tier2_high": 56.694654369634335,
+                "native_heirloom": 0.5312241683007727,
+                "converted_heirloom": 0.8740368470318823,
+                "speed22": 0.26701770188641405,
+                "output60": 0.02739357513751536
+              },
+              "rift_stamina_per_100k": 21192.3049397184,
+              "saint_stamina_per_100k": 78807.69506028159,
+              "source_cycles_per_100k": 249.32123458492234
+            }
+          }
+        },
+        "20260715": {
+          "yield_minus_20pct": {
+            "current_formal": {
+              "formal_rate_per_100": 0.06350330279747816,
+              "per_100k": {
+                "value_sum": 63.50330279747817,
+                "legacy_stamina_sum": 73752.43137859274,
+                "powder_units": 158795.38889602415,
+                "lower_stone_units": 10586.35925973494,
+                "material_gold": 406516195.5738217,
+                "conversion_gold": 1132223.4319855664,
+                "sell_gold": 14421840.901672421,
+                "sell_exp_adjusted": 21577236.851089805,
+                "material_exp_adjusted": 32255045.798328593,
+                "lower_stone_adjusted_exp": 17510850.677313745,
+                "formal_terminal_count": 14.464876245883614,
+                "value_sum_curve_baseline": 63.50330279747817,
+                "value_sum_tier2_low": 63.50330279747817,
+                "value_sum_tier2_mid": 65.38666432561038,
+                "value_sum_tier2_high": 66.32834508967649,
+                "native_heirloom": 0.6575790882254745,
+                "converted_heirloom": 1.1557202749253106,
+                "speed22": 0.47084038203305334,
+                "output60": 0.02397694518827836
+              },
+              "rift_stamina_per_100k": 28026.773740517496,
+              "saint_stamina_per_100k": 71973.2262594825,
+              "source_cycles_per_100k": 329.72674988844113
+            },
+            "t0_10_t3_14": {
+              "formal_rate_per_100": 0.06418892004172869,
+              "per_100k": {
+                "value_sum": 64.1889200417287,
+                "legacy_stamina_sum": 73387.41128363788,
+                "powder_units": 158777.502734337,
+                "lower_stone_units": 10585.166848955794,
+                "material_gold": 406470406.9999026,
+                "conversion_gold": 1144447.550655259,
+                "sell_gold": 15318987.465239227,
+                "sell_exp_adjusted": 21592330.961412165,
+                "material_exp_adjusted": 32228553.700651888,
+                "lower_stone_adjusted_exp": 17496081.767417274,
+                "formal_terminal_count": 14.621047155950379,
+                "value_sum_curve_baseline": 64.1889200417287,
+                "value_sum_tier2_low": 64.1889200417287,
+                "value_sum_tier2_mid": 66.09261539635436,
+                "value_sum_tier2_high": 67.0444630736672,
+                "native_heirloom": 0.6646786805692577,
+                "converted_heirloom": 1.168198078679011,
+                "speed22": 0.4759238386564179,
+                "output60": 0.024235813725210366
+              },
+              "rift_stamina_per_100k": 28329.36649602327,
+              "saint_stamina_per_100k": 71670.63350397673,
+              "source_cycles_per_100k": 333.2866646590973
+            }
+          },
+          "baseline": {
+            "current_formal": {
+              "formal_rate_per_100": 0.06196942131873111,
+              "per_100k": {
+                "value_sum": 61.9694213187311,
+                "legacy_stamina_sum": 77524.82680667643,
+                "powder_units": 167383.42818628726,
+                "lower_stone_units": 11158.895212419146,
+                "material_gold": 428501576.1568954,
+                "conversion_gold": 1116614.05761264,
+                "sell_gold": 15449758.554966578,
+                "sell_exp_adjusted": 22764874.16932202,
+                "material_exp_adjusted": 33991094.69337944,
+                "lower_stone_adjusted_exp": 18453134.322241627,
+                "formal_terminal_count": 14.111647504490927,
+                "value_sum_curve_baseline": 61.9694213187311,
+                "value_sum_tier2_low": 61.9694213187311,
+                "value_sum_tier2_mid": 63.98701956293177,
+                "value_sum_tier2_high": 64.99581868503209,
+                "native_heirloom": 0.5635584645896636,
+                "converted_heirloom": 0.9904754504734569,
+                "speed22": 0.5043995610501659,
+                "output60": 0.02054872281951804
+              },
+              "rift_stamina_per_100k": 24019.5070972089,
+              "saint_stamina_per_100k": 75980.49290279108,
+              "source_cycles_per_100k": 282.58243643775177
+            },
+            "t0_10_t3_14": {
+              "formal_rate_per_100": 0.06254204958344638,
+              "per_100k": {
+                "value_sum": 62.54204958344638,
+                "legacy_stamina_sum": 77247.47577518622,
+                "powder_units": 167447.77811556414,
+                "lower_stone_units": 11163.185207704271,
+                "material_gold": 428666311.9758442,
+                "conversion_gold": 1126932.126695111,
+                "sell_gold": 16226972.992772134,
+                "sell_exp_adjusted": 22788804.977597624,
+                "material_exp_adjusted": 33984527.74563818,
+                "lower_stone_adjusted_exp": 18449236.517545458,
+                "formal_terminal_count": 14.242046143865146,
+                "value_sum_curve_baseline": 62.54204958344638,
+                "value_sum_tier2_low": 62.54204958344638,
+                "value_sum_tier2_mid": 64.57829143859068,
+                "value_sum_tier2_high": 65.59641236616284,
+                "native_heirloom": 0.5687660250085963,
+                "converted_heirloom": 0.9996279361087593,
+                "speed22": 0.5090604637860769,
+                "output60": 0.020738603235372417
+              },
+              "rift_stamina_per_100k": 24241.459285492987,
+              "saint_stamina_per_100k": 75758.540714507,
+              "source_cycles_per_100k": 285.1936386528587
+            }
+          },
+          "yield_plus_20pct": {
+            "current_formal": {
+              "formal_rate_per_100": 0.06081935760363355,
+              "per_100k": {
+                "value_sum": 60.819357603633556,
+                "legacy_stamina_sum": 80353.49200601596,
+                "powder_units": 173823.01147480268,
+                "lower_stone_units": 11588.200764986841,
+                "material_gold": 444986909.3754949,
+                "conversion_gold": 1104911.033391699,
+                "sell_gold": 16220519.252694871,
+                "sell_exp_adjusted": 23655401.795320522,
+                "material_exp_adjusted": 35292839.17377757,
+                "lower_stone_adjusted_exp": 19159688.46559116,
+                "formal_terminal_count": 13.846805793659383,
+                "value_sum_curve_baseline": 60.819357603633556,
+                "value_sum_tier2_low": 60.819357603633556,
+                "value_sum_tier2_mid": 62.9376101994801,
+                "value_sum_tier2_high": 63.99673649740336,
+                "native_heirloom": 0.4930611532629856,
+                "converted_heirloom": 0.8665737426989134,
+                "speed22": 0.5295631489616347,
+                "output60": 0.017978218069797092
+              },
+              "rift_stamina_per_100k": 21014.830961294207,
+              "saint_stamina_per_100k": 78985.16903870579,
+              "source_cycles_per_100k": 247.23330542699068
+            },
+            "t0_10_t3_14": {
+              "formal_rate_per_100": 0.061310557443581014,
+              "per_100k": {
+                "value_sum": 61.31055744358102,
+                "legacy_stamina_sum": 80134.0481183794,
+                "powder_units": 173931.44342324726,
+                "lower_stone_units": 11595.42956154981,
+                "material_gold": 445264495.16351295,
+                "conversion_gold": 1113834.7074346775,
+                "sell_gold": 16905967.456303522,
+                "sell_exp_adjusted": 23683532.704611164,
+                "material_exp_adjusted": 35297651.92974227,
+                "lower_stone_adjusted_exp": 19162009.328146428,
+                "formal_terminal_count": 13.958637767189185,
+                "value_sum_curve_baseline": 61.31055744358102,
+                "value_sum_tier2_low": 61.31055744358102,
+                "value_sum_tier2_mid": 63.44591783827721,
+                "value_sum_tier2_high": 64.51359803562531,
+                "native_heirloom": 0.49704329922949647,
+                "converted_heirloom": 0.8735725157949802,
+                "speed22": 0.5338400986740481,
+                "output60": 0.018123416871401947
+              },
+              "rift_stamina_per_100k": 21184.554582381814,
+              "saint_stamina_per_100k": 78815.44541761819,
+              "source_cycles_per_100k": 249.23005391037427
+            }
+          }
+        },
+        "20260716": {
+          "yield_minus_20pct": {
+            "current_formal": {
+              "formal_rate_per_100": 0.06394363666146695,
+              "per_100k": {
+                "value_sum": 63.943636661466954,
+                "legacy_stamina_sum": 73594.82030760807,
+                "powder_units": 158397.85353148665,
+                "lower_stone_units": 10559.85690209911,
+                "material_gold": 405498505.04060584,
+                "conversion_gold": 1075010.750590493,
+                "sell_gold": 14502549.258084342,
+                "sell_exp_adjusted": 21477919.748413738,
+                "material_exp_adjusted": 32133971.188549913,
+                "lower_stone_adjusted_exp": 17445237.732109644,
+                "formal_terminal_count": 13.238873206365833,
+                "value_sum_curve_baseline": 63.943636661466954,
+                "value_sum_tier2_low": 63.943636661466954,
+                "value_sum_tier2_mid": 65.83753796843193,
+                "value_sum_tier2_high": 66.78448862191443,
+                "native_heirloom": 0.6880934118308354,
+                "converted_heirloom": 1.1757341079181716,
+                "speed22": 0.4734753267412453,
+                "output60": 0.034494750153349775
+              },
+              "rift_stamina_per_100k": 28183.618824272624,
+              "saint_stamina_per_100k": 71816.3811757274,
+              "source_cycles_per_100k": 331.5719861679132
+            },
+            "t0_10_t3_14": {
+              "formal_rate_per_100": 0.06463789275583537,
+              "per_100k": {
+                "value_sum": 64.63789275583538,
+                "legacy_stamina_sum": 73226.00056777355,
+                "powder_units": 158375.49920742665,
+                "lower_stone_units": 10558.366613828444,
+                "material_gold": 405441277.97101223,
+                "conversion_gold": 1086682.4790700646,
+                "sell_gold": 15405642.370404461,
+                "sell_exp_adjusted": 21492014.019257054,
+                "material_exp_adjusted": 32106004.36540123,
+                "lower_stone_adjusted_exp": 17429667.29458284,
+                "formal_terminal_count": 13.382611800008084,
+                "value_sum_curve_baseline": 64.63789275583538,
+                "value_sum_tier2_low": 64.63789275583538,
+                "value_sum_tier2_mid": 66.55235674257808,
+                "value_sum_tier2_high": 67.50958873594944,
+                "native_heirloom": 0.6955642575568526,
+                "converted_heirloom": 1.188499421441087,
+                "speed22": 0.4786159966856759,
+                "output60": 0.03486927046167172
+              },
+              "rift_stamina_per_100k": 28489.617202714853,
+              "saint_stamina_per_100k": 71510.38279728516,
+              "source_cycles_per_100k": 335.17196709076296
+            }
+          },
+          "baseline": {
+            "current_formal": {
+              "formal_rate_per_100": 0.0625510030867249,
+              "per_100k": {
+                "value_sum": 62.5510030867249,
+                "legacy_stamina_sum": 77381.2081260404,
+                "powder_units": 167014.81335150325,
+                "lower_stone_units": 11134.320890100216,
+                "material_gold": 427557922.1798485,
+                "conversion_gold": 1058593.526659692,
+                "sell_gold": 15541177.649435263,
+                "sell_exp_adjusted": 22665789.27780585,
+                "material_exp_adjusted": 33872299.385433815,
+                "lower_stone_adjusted_exp": 18388764.561200634,
+                "formal_terminal_count": 12.821014917712752,
+                "value_sum_curve_baseline": 62.5510030867249,
+                "value_sum_tier2_low": 62.5510030867249,
+                "value_sum_tier2_mid": 64.58053983493714,
+                "value_sum_tier2_high": 65.59530820904328,
+                "native_heirloom": 0.5898980523969805,
+                "converted_heirloom": 1.0079492819910039,
+                "speed22": 0.5073841870530612,
+                "output60": 0.02957212724830453
+              },
+              "rift_stamina_per_100k": 24161.634987466776,
+              "saint_stamina_per_100k": 75838.36501253322,
+              "source_cycles_per_100k": 284.254529264315
+            },
+            "t0_10_t3_14": {
+              "formal_rate_per_100": 0.06313244301884706,
+              "per_100k": {
+                "value_sum": 63.13244301884706,
+                "legacy_stamina_sum": 77100.84810917023,
+                "powder_units": 167076.08301514082,
+                "lower_stone_units": 11138.405534342717,
+                "material_gold": 427714772.51876056,
+                "conversion_gold": 1068433.6334191724,
+                "sell_gold": 16323879.8451661,
+                "sell_exp_adjusted": 22688936.776612975,
+                "material_exp_adjusted": 33864581.22296006,
+                "lower_stone_adjusted_exp": 18384240.930446792,
+                "formal_terminal_count": 12.940192063971406,
+                "value_sum_curve_baseline": 63.13244301884706,
+                "value_sum_tier2_low": 63.13244301884706,
+                "value_sum_tier2_mid": 65.18084523125472,
+                "value_sum_tier2_high": 66.20504633745855,
+                "native_heirloom": 0.5953814222330989,
+                "converted_heirloom": 1.0173186275359645,
+                "speed22": 0.5121005531019152,
+                "output60": 0.02984701357804288
+              },
+              "rift_stamina_per_100k": 24386.2283387132,
+              "saint_stamina_per_100k": 75613.77166128681,
+              "source_cycles_per_100k": 286.8968039848612
+            }
+          },
+          "yield_plus_20pct": {
+            "current_formal": {
+              "formal_rate_per_100": 0.06150627628717452,
+              "per_100k": {
+                "value_sum": 61.50627628717452,
+                "legacy_stamina_sum": 80221.96391860372,
+                "powder_units": 173479.71886301457,
+                "lower_stone_units": 11565.314590867638,
+                "material_gold": 444108080.2893175,
+                "conversion_gold": 1046278.0069869793,
+                "sell_gold": 16320407.177157804,
+                "sell_exp_adjusted": 23556992.315865636,
+                "material_exp_adjusted": 35176486.654981226,
+                "lower_stone_adjusted_exp": 19096649.11850965,
+                "formal_terminal_count": 12.50753895415804,
+                "value_sum_curve_baseline": 61.50627628717452,
+                "value_sum_tier2_low": 61.50627628717452,
+                "value_sum_tier2_mid": 63.637573339366206,
+                "value_sum_tier2_high": 64.70322186546204,
+                "native_heirloom": 0.5162294553485212,
+                "converted_heirloom": 0.8820729391236964,
+                "speed22": 0.5328242630479205,
+                "output60": 0.025879053305664975
+              },
+              "rift_stamina_per_100k": 21144.242838618316,
+              "saint_stamina_per_100k": 78855.75716138168,
+              "source_cycles_per_100k": 248.75579810139195
+            },
+            "t0_10_t3_14": {
+              "formal_rate_per_100": 0.06200609727524096,
+              "per_100k": {
+                "value_sum": 62.00609727524096,
+                "legacy_stamina_sum": 80000.07520408317,
+                "powder_units": 173586.00465388552,
+                "lower_stone_units": 11572.400310259032,
+                "material_gold": 444380171.913947,
+                "conversion_gold": 1054780.4190790842,
+                "sell_gold": 17010919.601289522,
+                "sell_exp_adjusted": 23584494.125849977,
+                "material_exp_adjusted": 35180377.76040402,
+                "lower_stone_adjusted_exp": 19098468.848203942,
+                "formal_terminal_count": 12.609179483478302,
+                "value_sum_curve_baseline": 62.00609727524096,
+                "value_sum_tier2_low": 62.00609727524096,
+                "value_sum_tier2_mid": 64.15471397451249,
+                "value_sum_tier2_high": 65.22902232414826,
+                "native_heirloom": 0.5204245120486957,
+                "converted_heirloom": 0.8892409648048643,
+                "speed22": 0.5371541748178827,
+                "output60": 0.026089355323187027
+              },
+              "rift_stamina_per_100k": 21316.06817068965,
+              "saint_stamina_per_100k": 78683.93182931036,
+              "source_cycles_per_100k": 250.7772725963488
+            }
+          }
+        }
+      },
+      "summary": {
+        "yield_minus_20pct": {
+          "t0_10_t3_14": {
+            "candidate_rate": {
+              "mean": 0.07173481361304981,
+              "interval95": [
+                0.05555254454663516,
+                0.08791708267946446
+              ],
+              "seed_stddev": 0.013034817601835455
+            },
+            "candidate_minus_current": {
+              "mean": 0.000764323878085546,
+              "interval95": [
+                0.0005974410205633433,
+                0.0009312067356077487
+              ],
+              "seed_stddev": 0.00013442414038150477
+            }
+          }
+        },
+        "baseline": {
+          "t0_10_t3_14": {
+            "candidate_rate": {
+              "mean": 0.07063559852215186,
+              "interval95": [
+                0.05336513504759359,
+                0.08790606199671012
+              ],
+              "seed_stddev": 0.01391135818877504
+            },
+            "candidate_minus_current": {
+              "mean": 0.0006449680223747922,
+              "interval95": [
+                0.0004922635359210664,
+                0.0007976725088285181
+              ],
+              "seed_stddev": 0.0001230034626007662
+            }
+          }
+        },
+        "yield_plus_20pct": {
+          "t0_10_t3_14": {
+            "candidate_rate": {
+              "mean": 0.06981354464637973,
+              "interval95": [
+                0.05172911201992088,
+                0.08789797727283859
+              ],
+              "seed_stddev": 0.014567010334033525
+            },
+            "candidate_minus_current": {
+              "mean": 0.0005576860365152425,
+              "interval95": [
+                0.00041774633762101565,
+                0.0006976257354094693
+              ],
+              "seed_stddev": 0.00011272142632505166
+            }
+          }
+        }
+      }
+    }
+  }
+}

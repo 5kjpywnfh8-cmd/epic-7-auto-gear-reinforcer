@@ -1,0 +1,2668 @@
+{
+  "study": "epic_concentration_rescue_v3_system_compatible_health_20260720",
+  "schema_version": 3,
+  "scope": "offline_only_no_holdout_no_production_change",
+  "baseline": "baili-formal-dp-v1-epic-balanced",
+  "candidate": "health_p975_balanced",
+  "data": {
+    "records": "C:\\Users\\orangine\\Documents\\第七史诗强化装备脚本\\manual_acceptance\\real_sample_records.json",
+    "source": "C:\\Users\\orangine\\Documents\\第七史诗强化装备脚本\\samples\\real_acceptance_fribbels_20260610_plus0_plus3.json",
+    "external": "D:\\VScode\\E7-tools\\gear_data\\0橙U子0\\json\\gear_fribbels_20260610_182000.json",
+    "epic_development_count": 157,
+    "heroic_source_count": 80,
+    "holdout_read": false
+  },
+  "threshold": {
+    "attribute": "health",
+    "quantile": 0.975,
+    "value": 37.7363,
+    "inventory": {
+      "source": "D:\\VScode\\E7-tools\\gear_data\\0橙U子0\\json\\gear_fribbels_20260610_182000.json",
+      "sha256": "2BB32F384FBE3D926F5274D50AB24DC8766C2AF87AA1ABC0B6946A47EEAE1DB7",
+      "filter": {
+        "level": 90,
+        "enhance": 15,
+        "ranks": [
+          "Epic",
+          "Heroic"
+        ]
+      },
+      "counts": {
+        "Epic": 616,
+        "Heroic": 149
+      },
+      "value_counts": {
+        "attack": 765,
+        "health": 765
+      },
+      "quantiles": {
+        "attack": {
+          "0.9": 23.0,
+          "0.95": 26.9921,
+          "0.975": 32.0
+        },
+        "health": {
+          "0.9": 30.0,
+          "0.95": 33.9201,
+          "0.975": 37.7363
+        }
+      },
+      "definition": "副属性集中GS；攻击=atkPct+atkFlat官方GS，生命=hpPct+hpFlat官方GS；不含主属性/套装/英雄面板"
+    }
+  },
+  "compatibility": {
+    "allowed_categories": [
+      "半肉(白字)",
+      "半肉(血防)",
+      "半肉(通用)",
+      "命坦",
+      "抗坦",
+      "纯肉"
+    ],
+    "rejected_categories": [
+      "输出",
+      "输出(必爆)",
+      "双效",
+      "一速",
+      "unknown"
+    ],
+    "uses_selected_candidate_snapshot": true,
+    "uses_selected_candidate_valid_group": true,
+    "v2_reused": false
+  },
+  "hashes": {
+    "estimator": "82912e6937aa1d1d7206aec69e48cff64c271b12ad53755b95d16d900fd793c4",
+    "input_records": "c0453639d19a930320892ef16d0473d19023d62e84ef0d2ca6f7b89695fc2f44",
+    "input_source": "eeaeea45c0c170d79fde91b9f6a48f533096ac5e5d84115bc576739d6b7651ea",
+    "external_inventory": "2BB32F384FBE3D926F5274D50AB24DC8766C2AF87AA1ABC0B6946A47EEAE1DB7",
+    "strategy": "5a747cb9d7c3f0929199d17c36bc463e21b298841a4012cb318d837302ef047a",
+    "official_rolls": "1d082ea915b7ac7e45315c7a5ebd3bc602dc3fe4eaa00d9ecdffb47445c1c308",
+    "resource_model": "e91e14a4e8620a662593384bd56bb813734f9f2aaddfb71ce34900e1fa427ef6",
+    "compatibility_contract": "fb0de79a6faaf8e7a63cf1831e8a136ea5f459e6a1562dc14d2d2624596e2ab8"
+  },
+  "runs": {
+    "seeds": [
+      20260712,
+      20260713,
+      20260714,
+      20260715,
+      20260716
+    ],
+    "paths_per_gear": 10,
+    "official_probability_method": "exact_state_mass_dp_for_health_concentration",
+    "terminal_value_method": "common_official_roll_main_paths",
+    "old_v2_reused": false
+  },
+  "resume": {
+    "path": "reports\\epic_concentration_rescue_v3_system_compatible_resume_20260720",
+    "schema_version": 3,
+    "scheduled_shards": 1185,
+    "completed_shards": 1185,
+    "expected_shards": 1185,
+    "reused_shards": 0
+  },
+  "precision": {
+    "official_discrete_rolls": true,
+    "exact_probability": true,
+    "probability_threshold": 0.1,
+    "heroic_plus12_adds_fourth_substat_only": true,
+    "reforge_once": true,
+    "unique_probability_states_are_recorded_per_gear": true
+  },
+  "per_seed": {
+    "20260712": {
+      "current_formal": {
+        "flow": {
+          "value_sum": 0.14171535820517844,
+          "legacy_stamina_sum": 93.0198877066787,
+          "powder_units": 184.0813213932081,
+          "lower_stone_units": 12.27208809288055,
+          "material_gold": 471248.1827666129,
+          "conversion_gold": 2238.157113535639,
+          "sell_gold": 79873.29729520064,
+          "sell_exp_adjusted": 24472.49728643011,
+          "material_exp_adjusted": 37916.53498294793,
+          "lower_stone_adjusted_exp": 20619.833073211477,
+          "formal_terminal_count": 0.03227288961603903,
+          "value_sum_curve_baseline": 0.14171535820517844,
+          "value_sum_tier2_low": 0.14171535820517844,
+          "value_sum_tier2_mid": 0.1595650012123183,
+          "value_sum_tier2_high": 0.16848982271588825,
+          "native_heirloom": 0.0014147712359767366,
+          "converted_heirloom": 0.0028555767158514366,
+          "speed22": 0.004462410751784965,
+          "output60": 0.0
+        },
+        "resource_pool": {
+          "source_lower_stones_used": 0.42500000000000004,
+          "source_lower_stone_surplus": 0.0,
+          "remaining_lower_stone_units": 11.847088092880549,
+          "source_stone_exp_credit": 714.0943733282716,
+          "powder_base_exp": 18408.13213932081,
+          "source_gold_used": 127500.0,
+          "source_gold_surplus": 0.0,
+          "net_gold_deficit": 266113.0425849479,
+          "net_exp_deficit": 12729.943323189551,
+          "saint_gold_stamina": 36.15102891792125,
+          "saint_exp_stamina": 87.70953973431781,
+          "saint_supplement_stamina": 87.70953973431781,
+          "bottleneck": "enhance_exp",
+          "total_stamina": 172.70953973431781
+        },
+        "formal_baili_per_100": 0.08205415776290165,
+        "per_100k": {
+          "value_sum": 82.05415776290164,
+          "legacy_stamina_sum": 53859.1486317275,
+          "powder_units": 106584.33904484008,
+          "lower_stone_units": 7105.622602989344,
+          "material_gold": 272855907.9547907,
+          "conversion_gold": 1295908.2150173269,
+          "sell_gold": 46247183.2291784,
+          "sell_exp_adjusted": 14169742.634990858,
+          "material_exp_adjusted": 21953932.041782763,
+          "lower_stone_adjusted_exp": 11939023.811267944,
+          "formal_terminal_count": 18.686222929946425,
+          "value_sum_curve_baseline": 82.05415776290164,
+          "value_sum_tier2_low": 82.05415776290164,
+          "value_sum_tier2_mid": 92.38922265543641,
+          "value_sum_tier2_high": 97.5567551017038,
+          "native_heirloom": 0.8191621830230713,
+          "converted_heirloom": 1.653398370607797,
+          "speed22": 2.583766223133691,
+          "output60": 0.0
+        },
+        "rift_stamina_per_100k": 49215.57901825054,
+        "saint_stamina_per_100k": 50784.420981749456,
+        "cycles_per_100k": 579.0068119794181,
+        "stamina_per_baili": 1218.707287069517,
+        "stats": {
+          "target_high_per_batch": 0.0,
+          "incremental_target_high_per_batch": 0.0,
+          "rescue_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "first_rescue_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "probability_queries": 0.0,
+          "probability_nonzero": 0.0,
+          "probability_between_zero_ten": 0.0,
+          "probability_unique_states": 0.0,
+          "by_rank": {
+            "Epic": 0.0,
+            "Heroic": 0.0
+          },
+          "coverage": {
+            "set_count": 0,
+            "slot_count": 0
+          },
+          "incremental_target_high_per_100k": 0.0,
+          "v2_error_rescue_per_batch": 0.0,
+          "v3_filtered_per_batch": 0.0,
+          "v2_error_rescue_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "v3_filtered_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "by_category": {}
+        }
+      },
+      "health_p975_balanced": {
+        "flow": {
+          "value_sum": 0.14615886959453392,
+          "legacy_stamina_sum": 94.63544234082866,
+          "powder_units": 187.05431089319316,
+          "lower_stone_units": 12.470287392879552,
+          "material_gold": 478859.03588657465,
+          "conversion_gold": 2350.505609531735,
+          "sell_gold": 79873.29729520064,
+          "sell_exp_adjusted": 24809.911030415977,
+          "material_exp_adjusted": 38485.86834834553,
+          "lower_stone_adjusted_exp": 20928.671343240712,
+          "formal_terminal_count": 0.03349191597727388,
+          "value_sum_curve_baseline": 0.14615886959453392,
+          "value_sum_tier2_low": 0.14615886959453392,
+          "value_sum_tier2_mid": 0.16400851260167376,
+          "value_sum_tier2_high": 0.1729333341052437,
+          "native_heirloom": 0.0014784655034926603,
+          "converted_heirloom": 0.0029192709833673605,
+          "speed22": 0.004462410751784965,
+          "output60": 0.0
+        },
+        "resource_pool": {
+          "source_lower_stones_used": 0.42500000000000004,
+          "source_lower_stone_surplus": 0.0,
+          "remaining_lower_stone_units": 12.045287392879551,
+          "source_stone_exp_credit": 713.2702752268651,
+          "powder_base_exp": 18705.431089319318,
+          "source_gold_used": 127500.0,
+          "source_gold_surplus": 0.0,
+          "net_gold_deficit": 273836.2442009057,
+          "net_exp_deficit": 12962.68704270269,
+          "saint_gold_stamina": 37.200213438324084,
+          "saint_exp_stamina": 89.31314817123548,
+          "saint_supplement_stamina": 89.31314817123548,
+          "bottleneck": "enhance_exp",
+          "total_stamina": 174.31314817123547
+        },
+        "formal_baili_per_100": 0.0838484481107275,
+        "per_100k": {
+          "value_sum": 83.8484481107275,
+          "legacy_stamina_sum": 54290.47856324878,
+          "powder_units": 107309.35265390393,
+          "lower_stone_units": 7153.9568435936,
+          "material_gold": 274711942.7939942,
+          "conversion_gold": 1348438.505179615,
+          "sell_gold": 45821728.38547876,
+          "sell_exp_adjusted": 14232954.479167636,
+          "material_exp_adjusted": 22078580.274701465,
+          "lower_stone_adjusted_exp": 12006364.15715558,
+          "formal_terminal_count": 19.21364872853613,
+          "value_sum_curve_baseline": 83.8484481107275,
+          "value_sum_tier2_low": 83.8484481107275,
+          "value_sum_tier2_mid": 94.0884347063487,
+          "value_sum_tier2_high": 99.20842800415932,
+          "native_heirloom": 0.8481663712712587,
+          "converted_heirloom": 1.6747279330298324,
+          "speed22": 2.559996648905304,
+          "output60": 0.0
+        },
+        "rift_stamina_per_100k": 48762.816168348225,
+        "saint_stamina_per_100k": 51237.18383165179,
+        "cycles_per_100k": 573.6801902158614,
+        "stamina_per_baili": 1192.6279168332762,
+        "stats": {
+          "target_high_per_batch": 0.0044150139536246625,
+          "incremental_target_high_per_batch": 0.0031977823578536193,
+          "rescue_nodes_per_batch": {
+            "6": 0.01048913410449324,
+            "9": 0.009373630038163046,
+            "12": 0.007940475576220038
+          },
+          "first_rescue_nodes_per_batch": {
+            "6": 0.01048913410449324,
+            "9": 0.002858256367037978,
+            "12": 0.001624165601273503
+          },
+          "probability_queries": 4.350445409641273,
+          "probability_nonzero": 0.45396246459321277,
+          "probability_between_zero_ten": 0.38222231686971386,
+          "probability_unique_states": 199.06692111380704,
+          "by_rank": {
+            "Epic": 0.014971556072804718,
+            "Heroic": 0.0
+          },
+          "coverage": {
+            "set_count": 2,
+            "slot_count": 0
+          },
+          "incremental_target_high_per_100k": 1.8345043913223902,
+          "v2_error_rescue_per_batch": 0.04393690800462246,
+          "v3_filtered_per_batch": 3.289683031399065,
+          "v2_error_rescue_nodes_per_batch": {
+            "6": 0.042926678000730356,
+            "9": 0.000590890299221005,
+            "12": 0.00041933970467110404
+          },
+          "v3_filtered_nodes_per_batch": {
+            "6": 3.1426258620039924,
+            "9": 0.11129881159477996,
+            "12": 0.03575835780029177
+          },
+          "by_category": {
+            "半肉(白字)": {
+              "natural_quality": 0.14617150781109386,
+              "baseline_stop_quality": 0.14617150781109386,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.0,
+              "v3_rescue": 0.0003821656050955414
+            },
+            "半肉(血防)": {
+              "natural_quality": 0.3450298693831473,
+              "baseline_stop_quality": 0.3450298693831473,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.0,
+              "v3_rescue": 0.001992192849858235
+            },
+            "半肉(通用)": {
+              "natural_quality": 0.21360802938709886,
+              "baseline_stop_quality": 0.21360802938709886,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.0,
+              "v3_rescue": 0.0032908418230358067
+            },
+            "双效": {
+              "natural_quality": 0.05936899271568709,
+              "baseline_stop_quality": 0.05936899271568709,
+              "v2_error_rescue": 0.0002229299363057325,
+              "v3_filtered": 0.05936899271568709,
+              "v3_rescue": 0.0
+            },
+            "命坦": {
+              "natural_quality": 0.49231048314875686,
+              "baseline_stop_quality": 0.49231048314875686,
+              "v2_error_rescue": 0.012704062484992912,
+              "v3_filtered": 0.4148256288761218,
+              "v3_rescue": 0.0030077832624026703
+            },
+            "抗坦": {
+              "natural_quality": 0.9377428847453978,
+              "baseline_stop_quality": 0.9377428847453978,
+              "v2_error_rescue": 0.01979231816637553,
+              "v3_filtered": 0.6984171745566671,
+              "v3_rescue": 0.009746969919921916
+            },
+            "纯肉": {
+              "natural_quality": 0.3431991206330818,
+              "baseline_stop_quality": 0.3431991206330818,
+              "v2_error_rescue": 0.009992356262259578,
+              "v3_filtered": 0.30405671343358076,
+              "v3_rescue": 0.009383286258562147
+            },
+            "输出": {
+              "natural_quality": 0.9505182335262136,
+              "baseline_stop_quality": 0.9505182335262136,
+              "v2_error_rescue": 0.0012252411546887173,
+              "v3_filtered": 0.9505182335262136,
+              "v3_rescue": 0.0
+            },
+            "输出(必爆)": {
+              "natural_quality": 0.8624962882907948,
+              "baseline_stop_quality": 0.8624962882907948,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.8624962882907948,
+              "v3_rescue": 0.0
+            }
+          }
+        }
+      }
+    },
+    "20260713": {
+      "current_formal": {
+        "flow": {
+          "value_sum": 0.1707504541843951,
+          "legacy_stamina_sum": 98.01255668994116,
+          "powder_units": 193.16932563849076,
+          "lower_stone_units": 12.87795504256606,
+          "material_gold": 494513.4736345365,
+          "conversion_gold": 3523.3986952015694,
+          "sell_gold": 79873.29729520064,
+          "sell_exp_adjusted": 25584.030591320894,
+          "material_exp_adjusted": 39727.518430265955,
+          "lower_stone_adjusted_exp": 21601.902711888735,
+          "formal_terminal_count": 0.04180682392892508,
+          "value_sum_curve_baseline": 0.1707504541843951,
+          "value_sum_tier2_low": 0.1707504541843951,
+          "value_sum_tier2_mid": 0.1707504541843951,
+          "value_sum_tier2_high": 0.1707504541843951,
+          "native_heirloom": 0.00272050372005317,
+          "converted_heirloom": 0.0042020460007784225,
+          "speed22": 0.0,
+          "output60": 0.0001167728237791932
+        },
+        "resource_pool": {
+          "source_lower_stones_used": 0.42500000000000004,
+          "source_lower_stone_surplus": 0.0,
+          "remaining_lower_stone_units": 12.452955042566058,
+          "source_stone_exp_credit": 712.9088913734356,
+          "powder_base_exp": 19316.932563849077,
+          "source_gold_used": 127500.0,
+          "source_gold_surplus": 0.0,
+          "net_gold_deficit": 290663.5750345374,
+          "net_exp_deficit": 13430.578947571625,
+          "saint_gold_stamina": 39.486179273252525,
+          "saint_exp_stamina": 92.53693185821463,
+          "saint_supplement_stamina": 92.53693185821463,
+          "bottleneck": "enhance_exp",
+          "total_stamina": 177.53693185821464
+        },
+        "formal_baili_per_100": 0.09617742764686314,
+        "per_100k": {
+          "value_sum": 96.17742764686314,
+          "legacy_stamina_sum": 55206.85508309696,
+          "powder_units": 108805.15035190566,
+          "lower_stone_units": 7253.6766901270485,
+          "material_gold": 278541184.90087855,
+          "conversion_gold": 1984600.419937099,
+          "sell_gold": 44989679.87065892,
+          "sell_exp_adjusted": 14410540.006263558,
+          "material_exp_adjusted": 22377044.60387618,
+          "lower_stone_adjusted_exp": 12167554.370681895,
+          "formal_terminal_count": 23.54824063441236,
+          "value_sum_curve_baseline": 96.17742764686314,
+          "value_sum_tier2_low": 96.17742764686314,
+          "value_sum_tier2_mid": 96.17742764686314,
+          "value_sum_tier2_high": 96.17742764686314,
+          "native_heirloom": 1.5323593190321836,
+          "converted_heirloom": 2.366857395133019,
+          "speed22": 0.0,
+          "output60": 0.06577382100556455
+        },
+        "rift_stamina_per_100k": 47877.362253777756,
+        "saint_stamina_per_100k": 52122.63774622223,
+        "cycles_per_100k": 563.2630853385618,
+        "stamina_per_baili": 1039.745005108395,
+        "stats": {
+          "target_high_per_batch": 0.0,
+          "incremental_target_high_per_batch": 0.0,
+          "rescue_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "first_rescue_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "probability_queries": 0.0,
+          "probability_nonzero": 0.0,
+          "probability_between_zero_ten": 0.0,
+          "probability_unique_states": 0.0,
+          "by_rank": {
+            "Epic": 0.0,
+            "Heroic": 0.0
+          },
+          "coverage": {
+            "set_count": 0,
+            "slot_count": 0
+          },
+          "incremental_target_high_per_100k": 0.0,
+          "v2_error_rescue_per_batch": 0.0,
+          "v3_filtered_per_batch": 0.0,
+          "v2_error_rescue_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "v3_filtered_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "by_category": {}
+        }
+      },
+      "health_p975_balanced": {
+        "flow": {
+          "value_sum": 0.1735001567024176,
+          "legacy_stamina_sum": 99.96104323894255,
+          "powder_units": 197.11584752325024,
+          "lower_stone_units": 13.141056501550022,
+          "material_gold": 504616.56965952064,
+          "conversion_gold": 3616.105736606347,
+          "sell_gold": 79873.29729520064,
+          "sell_exp_adjusted": 26052.58183327638,
+          "material_exp_adjusted": 40476.594136345535,
+          "lower_stone_adjusted_exp": 22008.253918207505,
+          "formal_terminal_count": 0.04276574147673083,
+          "value_sum_curve_baseline": 0.1735001567024176,
+          "value_sum_tier2_low": 0.1735001567024176,
+          "value_sum_tier2_mid": 0.1735001567024176,
+          "value_sum_tier2_high": 0.1735001567024176,
+          "native_heirloom": 0.0027523508538111314,
+          "converted_heirloom": 0.0042657402682943464,
+          "speed22": 0.0,
+          "output60": 0.0001167728237791932
+        },
+        "resource_pool": {
+          "source_lower_stones_used": 0.42500000000000004,
+          "source_lower_stone_surplus": 0.0,
+          "remaining_lower_stone_units": 12.716056501550021,
+          "source_stone_exp_credit": 711.777467369912,
+          "powder_base_exp": 19711.584752325023,
+          "source_gold_used": 127500.0,
+          "source_gold_surplus": 0.0,
+          "net_gold_deficit": 300859.37810092635,
+          "net_exp_deficit": 13712.234835699242,
+          "saint_gold_stamina": 40.87126272468387,
+          "saint_exp_stamina": 94.4775460215261,
+          "saint_supplement_stamina": 94.4775460215261,
+          "bottleneck": "enhance_exp",
+          "total_stamina": 179.4775460215261
+        },
+        "formal_baili_per_100": 0.09666956148464856,
+        "per_100k": {
+          "value_sum": 96.66956148464857,
+          "legacy_stamina_sum": 55695.57053502028,
+          "powder_units": 109827.58116138307,
+          "lower_stone_units": 7321.838744092208,
+          "material_gold": 281158607.77314067,
+          "conversion_gold": 2014795.6202680862,
+          "sell_gold": 44503225.648973845,
+          "sell_exp_adjusted": 14515788.972371897,
+          "material_exp_adjusted": 22552455.74367886,
+          "lower_stone_adjusted_exp": 12262399.61826082,
+          "formal_terminal_count": 23.82790628951524,
+          "value_sum_curve_baseline": 96.66956148464857,
+          "value_sum_tier2_low": 96.66956148464857,
+          "value_sum_tier2_mid": 96.66956148464857,
+          "value_sum_tier2_high": 96.66956148464857,
+          "native_heirloom": 1.5335349266927356,
+          "converted_heirloom": 2.3767542864569386,
+          "speed22": 0.0,
+          "output60": 0.06506263672960391
+        },
+        "rift_stamina_per_100k": 47359.68475399441,
+        "saint_stamina_per_100k": 52640.315246005586,
+        "cycles_per_100k": 557.1727618116989,
+        "stamina_per_baili": 1034.4517805212172,
+        "stats": {
+          "target_high_per_batch": 0.0036371928873689145,
+          "incremental_target_high_per_batch": 0.002874909877575617,
+          "rescue_nodes_per_batch": {
+            "6": 0.01084311854752353,
+            "9": 0.013307255427335317,
+            "12": 0.01184931198383735
+          },
+          "first_rescue_nodes_per_batch": {
+            "6": 0.01084311854752353,
+            "9": 0.007214600779704957,
+            "12": 0.0014472531271145055
+          },
+          "probability_queries": 4.349200396351447,
+          "probability_nonzero": 0.46269809877584306,
+          "probability_between_zero_ten": 0.3790304609872408,
+          "probability_unique_states": 199.69715127990435,
+          "by_rank": {
+            "Epic": 0.015042561702558022,
+            "Heroic": 0.004462410751784966
+          },
+          "coverage": {
+            "set_count": 2,
+            "slot_count": 1
+          },
+          "incremental_target_high_per_100k": 1.6018214764485397,
+          "v2_error_rescue_per_batch": 0.047667951829905866,
+          "v3_filtered_per_batch": 3.2887952156342335,
+          "v2_error_rescue_nodes_per_batch": {
+            "6": 0.046681650174262596,
+            "9": 0.00048827494214389596,
+            "12": 0.0004980267134993754
+          },
+          "v3_filtered_nodes_per_batch": {
+            "6": 3.0661902092888482,
+            "9": 0.16571118135072072,
+            "12": 0.05689382499466458
+          },
+          "by_category": {
+            "半肉(白字)": {
+              "natural_quality": 0.1371289250819486,
+              "baseline_stop_quality": 0.1371289250819486,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.0,
+              "v3_rescue": 8.640968997723903e-05
+            },
+            "半肉(血防)": {
+              "natural_quality": 0.34947654093168384,
+              "baseline_stop_quality": 0.34947654093168384,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.0,
+              "v3_rescue": 0.010676456858188195
+            },
+            "半肉(通用)": {
+              "natural_quality": 0.20483521193743753,
+              "baseline_stop_quality": 0.20483521193743753,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.0,
+              "v3_rescue": 0.0042595350299361135
+            },
+            "双效": {
+              "natural_quality": 0.05933714558192913,
+              "baseline_stop_quality": 0.05933714558192913,
+              "v2_error_rescue": 0.00012738853503184715,
+              "v3_filtered": 0.05933714558192913,
+              "v3_rescue": 0.0
+            },
+            "命坦": {
+              "natural_quality": 0.44378646329971855,
+              "baseline_stop_quality": 0.44378646329971855,
+              "v2_error_rescue": 0.01234848871105501,
+              "v3_filtered": 0.3663956684038135,
+              "v3_rescue": 0.0030477055946905992
+            },
+            "抗坦": {
+              "natural_quality": 0.9938942136055587,
+              "baseline_stop_quality": 0.9938942136055587,
+              "v2_error_rescue": 0.0195693882300698,
+              "v3_filtered": 0.7369064574185055,
+              "v3_rescue": 0.009164084402070768
+            },
+            "纯肉": {
+              "natural_quality": 0.34033476751536246,
+              "baseline_stop_quality": 0.34033476751536246,
+              "v2_error_rescue": 0.014585864518699466,
+              "v3_filtered": 0.3057488158321772,
+              "v3_rescue": 0.008765494383833273
+            },
+            "输出": {
+              "natural_quality": 0.9657528590628133,
+              "baseline_stop_quality": 0.9657528590628133,
+              "v2_error_rescue": 0.001036821835049747,
+              "v3_filtered": 0.9657528590628133,
+              "v3_rescue": 0.0
+            },
+            "输出(必爆)": {
+              "natural_quality": 0.8546542693349957,
+              "baseline_stop_quality": 0.8546542693349957,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.8546542693349957,
+              "v3_rescue": 0.0
+            }
+          }
+        }
+      }
+    },
+    "20260714": {
+      "current_formal": {
+        "flow": {
+          "value_sum": 0.3507367268643334,
+          "legacy_stamina_sum": 98.16876566188277,
+          "powder_units": 193.77668989965287,
+          "lower_stone_units": 12.918445993310192,
+          "material_gold": 496068.32614311134,
+          "conversion_gold": 4994.037121992794,
+          "sell_gold": 79873.29729520064,
+          "sell_exp_adjusted": 25646.59888568614,
+          "material_exp_adjusted": 39784.41612987418,
+          "lower_stone_adjusted_exp": 21632.920391325206,
+          "formal_terminal_count": 0.06513899171327808,
+          "value_sum_curve_baseline": 0.3507367268643334,
+          "value_sum_tier2_low": 0.3507367268643334,
+          "value_sum_tier2_mid": 0.3685863698714733,
+          "value_sum_tier2_high": 0.3775111913750432,
+          "native_heirloom": 0.002241399074265986,
+          "converted_heirloom": 0.0033533948279814855,
+          "speed22": 0.004462410751784965,
+          "output60": 0.0
+        },
+        "resource_pool": {
+          "source_lower_stones_used": 0.42500000000000004,
+          "source_lower_stone_surplus": 0.0,
+          "remaining_lower_stone_units": 12.493445993310191,
+          "source_stone_exp_credit": 711.6948254514757,
+          "powder_base_exp": 19377.668989965285,
+          "source_gold_used": 127500.0,
+          "source_gold_surplus": 0.0,
+          "net_gold_deficit": 293689.0659699035,
+          "net_exp_deficit": 13426.122418736566,
+          "saint_gold_stamina": 39.89718735174763,
+          "saint_exp_stamina": 92.50622629393897,
+          "saint_supplement_stamina": 92.50622629393897,
+          "bottleneck": "enhance_exp",
+          "total_stamina": 177.50622629393897
+        },
+        "formal_baili_per_100": 0.19759122493175862,
+        "per_100k": {
+          "value_sum": 197.59122493175863,
+          "legacy_stamina_sum": 55304.40689968902,
+          "powder_units": 109166.13684230494,
+          "lower_stone_units": 7277.742456153663,
+          "material_gold": 279465310.31630063,
+          "conversion_gold": 2813443.3514027772,
+          "sell_gold": 44997462.3216515,
+          "sell_exp_adjusted": 14448281.291957058,
+          "material_exp_adjusted": 22412969.370434217,
+          "lower_stone_adjusted_exp": 12187133.287089588,
+          "formal_terminal_count": 36.6967362628802,
+          "value_sum_curve_baseline": 197.59122493175863,
+          "value_sum_tier2_low": 197.59122493175863,
+          "value_sum_tier2_mid": 207.64700910328511,
+          "value_sum_tier2_high": 212.67490118904834,
+          "native_heirloom": 1.2627157486602034,
+          "converted_heirloom": 1.8891702550357181,
+          "speed22": 2.5139460428816163,
+          "output60": 0.0
+        },
+        "rift_stamina_per_100k": 47885.64422480902,
+        "saint_stamina_per_100k": 52114.35577519099,
+        "cycles_per_100k": 563.3605202918708,
+        "stamina_per_baili": 506.09534929770615,
+        "stats": {
+          "target_high_per_batch": 0.0,
+          "incremental_target_high_per_batch": 0.0,
+          "rescue_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "first_rescue_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "probability_queries": 0.0,
+          "probability_nonzero": 0.0,
+          "probability_between_zero_ten": 0.0,
+          "probability_unique_states": 0.0,
+          "by_rank": {
+            "Epic": 0.0,
+            "Heroic": 0.0
+          },
+          "coverage": {
+            "set_count": 0,
+            "slot_count": 0
+          },
+          "incremental_target_high_per_100k": 0.0,
+          "v2_error_rescue_per_batch": 0.0,
+          "v3_filtered_per_batch": 0.0,
+          "v2_error_rescue_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "v3_filtered_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "by_category": {}
+        }
+      },
+      "health_p975_balanced": {
+        "flow": {
+          "value_sum": 0.35397369435089093,
+          "legacy_stamina_sum": 99.64864427099882,
+          "powder_units": 196.5339076314724,
+          "lower_stone_units": 13.10226050876483,
+          "material_gold": 503126.8035365694,
+          "conversion_gold": 5071.174772063533,
+          "sell_gold": 79873.29729520064,
+          "sell_exp_adjusted": 25962.912898440052,
+          "material_exp_adjusted": 40313.52754940462,
+          "lower_stone_adjusted_exp": 21919.940513293906,
+          "formal_terminal_count": 0.06597406248150141,
+          "value_sum_curve_baseline": 0.35397369435089093,
+          "value_sum_tier2_low": 0.35397369435089093,
+          "value_sum_tier2_mid": 0.37182333735803086,
+          "value_sum_tier2_high": 0.38074815886160074,
+          "native_heirloom": 0.002241399074265986,
+          "converted_heirloom": 0.0033852419617394474,
+          "speed22": 0.004462410751784965,
+          "output60": 0.0
+        },
+        "resource_pool": {
+          "source_lower_stones_used": 0.42500000000000004,
+          "source_lower_stone_surplus": 0.0,
+          "remaining_lower_stone_units": 12.67726050876483,
+          "source_stone_exp_credit": 711.0204160509506,
+          "powder_base_exp": 19653.39076314724,
+          "source_gold_used": 127500.0,
+          "source_gold_surplus": 0.0,
+          "net_gold_deficit": 300824.68101343233,
+          "net_exp_deficit": 13639.594234913618,
+          "saint_gold_stamina": 40.8665491811417,
+          "saint_exp_stamina": 93.97705096831363,
+          "saint_supplement_stamina": 93.97705096831363,
+          "bottleneck": "enhance_exp",
+          "total_stamina": 178.97705096831362
+        },
+        "formal_baili_per_100": 0.19777602348222792,
+        "per_100k": {
+          "value_sum": 197.7760234822279,
+          "legacy_stamina_sum": 55676.771816203836,
+          "powder_units": 109809.55746458638,
+          "lower_stone_units": 7320.637164305761,
+          "material_gold": 281112467.1093412,
+          "conversion_gold": 2833421.796049898,
+          "sell_gold": 44627675.37126396,
+          "sell_exp_adjusted": 14506280.41862002,
+          "material_exp_adjusted": 22524411.55516737,
+          "lower_stone_adjusted_exp": 12247347.017229961,
+          "formal_terminal_count": 36.86174407532369,
+          "value_sum_curve_baseline": 197.7760234822279,
+          "value_sum_tier2_low": 197.7760234822279,
+          "value_sum_tier2_mid": 207.74916970995295,
+          "value_sum_tier2_high": 212.73574282381546,
+          "native_heirloom": 1.2523388122328638,
+          "converted_heirloom": 1.8914391221804052,
+          "speed22": 2.4932865569312557,
+          "output60": 0.0
+        },
+        "rift_stamina_per_100k": 47492.122336426546,
+        "saint_stamina_per_100k": 52507.87766357346,
+        "cycles_per_100k": 558.7308510167829,
+        "stamina_per_baili": 505.62246241636046,
+        "stats": {
+          "target_high_per_batch": 0.004315191073247452,
+          "incremental_target_high_per_batch": 0.003157219384358818,
+          "rescue_nodes_per_batch": {
+            "6": 0.011059532704862828,
+            "9": 0.008792266965550051,
+            "12": 0.006981638754923402
+          },
+          "first_rescue_nodes_per_batch": {
+            "6": 0.011059532704862828,
+            "9": 0.0026892020412232313,
+            "12": 0.0011378234816763338
+          },
+          "probability_queries": 4.334601582436854,
+          "probability_nonzero": 0.4366125740844858,
+          "probability_between_zero_ten": 0.38760319525388004,
+          "probability_unique_states": 198.6333426516183,
+          "by_rank": {
+            "Epic": 0.014886558227762392,
+            "Heroic": 0.0
+          },
+          "coverage": {
+            "set_count": 2,
+            "slot_count": 0
+          },
+          "incremental_target_high_per_100k": 1.7640358734694859,
+          "v2_error_rescue_per_batch": 0.022175940405269014,
+          "v3_filtered_per_batch": 3.3239309083568513,
+          "v2_error_rescue_nodes_per_batch": {
+            "6": 0.020961305406737317,
+            "9": 0.0006086468519463412,
+            "12": 0.0006059881465853592
+          },
+          "v3_filtered_nodes_per_batch": {
+            "6": 3.098784654602432,
+            "9": 0.14996371099301078,
+            "12": 0.07518254276140807
+          },
+          "by_category": {
+            "半肉(白字)": {
+              "natural_quality": 0.11904723242629452,
+              "baseline_stop_quality": 0.11904723242629452,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.0,
+              "v3_rescue": 0.00028662420382165603
+            },
+            "半肉(血防)": {
+              "natural_quality": 0.3409074573870016,
+              "baseline_stop_quality": 0.3409074573870016,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.0,
+              "v3_rescue": 0.0023451604714611594
+            },
+            "半肉(通用)": {
+              "natural_quality": 0.20461790995246198,
+              "baseline_stop_quality": 0.20461790995246198,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.0,
+              "v3_rescue": 0.003510454548639576
+            },
+            "双效": {
+              "natural_quality": 0.05508174119957091,
+              "baseline_stop_quality": 0.05508174119957091,
+              "v2_error_rescue": 0.00019108280254777072,
+              "v3_filtered": 0.05508174119957091,
+              "v3_rescue": 0.0
+            },
+            "命坦": {
+              "natural_quality": 0.461039817153703,
+              "baseline_stop_quality": 0.461039817153703,
+              "v2_error_rescue": 0.00379341755831634,
+              "v3_filtered": 0.3751176071330824,
+              "v3_rescue": 0.00290364068253959
+            },
+            "抗坦": {
+              "natural_quality": 0.9492303416956811,
+              "baseline_stop_quality": 0.9492303416956811,
+              "v2_error_rescue": 0.010761339550279062,
+              "v3_filtered": 0.7281042059543666,
+              "v3_rescue": 0.009562626153026261
+            },
+            "纯肉": {
+              "natural_quality": 0.35724022030454644,
+              "baseline_stop_quality": 0.35724022030454644,
+              "v2_error_rescue": 0.006325980527989101,
+              "v3_filtered": 0.3181904917522373,
+              "v3_rescue": 0.008224932365848037
+            },
+            "输出": {
+              "natural_quality": 0.9887182714027882,
+              "baseline_stop_quality": 0.9887182714027882,
+              "v2_error_rescue": 0.0011041199661367411,
+              "v3_filtered": 0.9887182714027882,
+              "v3_rescue": 0.0
+            },
+            "输出(必爆)": {
+              "natural_quality": 0.858718590914806,
+              "baseline_stop_quality": 0.858718590914806,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.858718590914806,
+              "v3_rescue": 0.0
+            }
+          }
+        }
+      }
+    },
+    "20260715": {
+      "current_formal": {
+        "flow": {
+          "value_sum": 0.17579180172883083,
+          "legacy_stamina_sum": 97.75629681052456,
+          "powder_units": 192.46883213665802,
+          "lower_stone_units": 12.831255475777207,
+          "material_gold": 492720.2102698445,
+          "conversion_gold": 3580.754792325116,
+          "sell_gold": 79873.29729520064,
+          "sell_exp_adjusted": 25350.370733922304,
+          "material_exp_adjusted": 39455.689390682775,
+          "lower_stone_adjusted_exp": 21454.464897482645,
+          "formal_terminal_count": 0.041136434454852974,
+          "value_sum_curve_baseline": 0.17579180172883083,
+          "value_sum_tier2_low": 0.17579180172883083,
+          "value_sum_tier2_mid": 0.17579180172883083,
+          "value_sum_tier2_high": 0.17579180172883083,
+          "native_heirloom": 0.0013720806794055203,
+          "converted_heirloom": 0.003174660394028536,
+          "speed22": 0.0,
+          "output60": 0.00013800424628450107
+        },
+        "resource_pool": {
+          "source_lower_stones_used": 0.42500000000000004,
+          "source_lower_stone_surplus": 0.0,
+          "remaining_lower_stone_units": 12.406255475777206,
+          "source_stone_exp_credit": 710.6200635349618,
+          "powder_base_exp": 19246.883213665802,
+          "source_gold_used": 127500.0,
+          "source_gold_surplus": 0.0,
+          "net_gold_deficit": 288927.667766969,
+          "net_exp_deficit": 13394.69859322551,
+          "saint_gold_stamina": 39.250359062340976,
+          "saint_exp_stamina": 92.28971556782714,
+          "saint_supplement_stamina": 92.28971556782714,
+          "bottleneck": "enhance_exp",
+          "total_stamina": 177.28971556782716
+        },
+        "formal_baili_per_100": 0.09915510393019765,
+        "per_100k": {
+          "value_sum": 99.15510393019767,
+          "legacy_stamina_sum": 55139.29361183117,
+          "powder_units": 108561.75809195412,
+          "lower_stone_units": 7237.450539463611,
+          "material_gold": 277918100.71540254,
+          "conversion_gold": 2019719.4072180672,
+          "sell_gold": 45052414.371234566,
+          "sell_exp_adjusted": 14298838.854092363,
+          "material_exp_adjusted": 22254922.833122768,
+          "lower_stone_adjusted_exp": 12101358.969846528,
+          "formal_terminal_count": 23.202944583164545,
+          "value_sum_curve_baseline": 99.15510393019767,
+          "value_sum_tier2_low": 99.15510393019767,
+          "value_sum_tier2_mid": 99.15510393019767,
+          "value_sum_tier2_high": 99.15510393019767,
+          "native_heirloom": 0.773920063558674,
+          "converted_heirloom": 1.7906624667204574,
+          "speed22": 0.0,
+          "output60": 0.07784108956489565
+        },
+        "rift_stamina_per_100k": 47944.12339585534,
+        "saint_stamina_per_100k": 52055.87660414466,
+        "cycles_per_100k": 564.0485105394746,
+        "stamina_per_baili": 1008.5209539026567,
+        "stats": {
+          "target_high_per_batch": 0.0,
+          "incremental_target_high_per_batch": 0.0,
+          "rescue_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "first_rescue_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "probability_queries": 0.0,
+          "probability_nonzero": 0.0,
+          "probability_between_zero_ten": 0.0,
+          "probability_unique_states": 0.0,
+          "by_rank": {
+            "Epic": 0.0,
+            "Heroic": 0.0
+          },
+          "coverage": {
+            "set_count": 0,
+            "slot_count": 0
+          },
+          "incremental_target_high_per_100k": 0.0,
+          "v2_error_rescue_per_batch": 0.0,
+          "v3_filtered_per_batch": 0.0,
+          "v2_error_rescue_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "v3_filtered_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "by_category": {}
+        }
+      },
+      "health_p975_balanced": {
+        "flow": {
+          "value_sum": 0.1797879468847477,
+          "legacy_stamina_sum": 99.51837632866422,
+          "powder_units": 196.07286781551502,
+          "lower_stone_units": 13.071524521034341,
+          "material_gold": 501946.54160771845,
+          "conversion_gold": 3678.425546661696,
+          "sell_gold": 79873.29729520064,
+          "sell_exp_adjusted": 25783.01913855831,
+          "material_exp_adjusted": 40141.773268123405,
+          "lower_stone_adjusted_exp": 21826.651798988332,
+          "formal_terminal_count": 0.04217683626573469,
+          "value_sum_curve_baseline": 0.1797879468847477,
+          "value_sum_tier2_low": 0.1797879468847477,
+          "value_sum_tier2_mid": 0.1797879468847477,
+          "value_sum_tier2_high": 0.1797879468847477,
+          "native_heirloom": 0.001403927813163482,
+          "converted_heirloom": 0.0032065075277864976,
+          "speed22": 0.0,
+          "output60": 0.00013800424628450107
+        },
+        "resource_pool": {
+          "source_lower_stones_used": 0.42500000000000004,
+          "source_lower_stone_surplus": 0.0,
+          "remaining_lower_stone_units": 12.64652452103434,
+          "source_stone_exp_credit": 709.6591525833753,
+          "powder_base_exp": 19607.286781551502,
+          "source_gold_used": 127500.0,
+          "source_gold_surplus": 0.0,
+          "net_gold_deficit": 298251.6698591795,
+          "net_exp_deficit": 13649.09497698172,
+          "saint_gold_stamina": 40.51700975331063,
+          "saint_exp_stamina": 94.04251125299609,
+          "saint_supplement_stamina": 94.04251125299609,
+          "bottleneck": "enhance_exp",
+          "total_stamina": 179.0425112529961
+        },
+        "formal_baili_per_100": 0.10041634560783069,
+        "per_100k": {
+          "value_sum": 100.41634560783069,
+          "legacy_stamina_sum": 55583.657552724864,
+          "powder_units": 109511.90666581648,
+          "lower_stone_units": 7300.793777721102,
+          "material_gold": 280350481.06449014,
+          "conversion_gold": 2054498.4098574754,
+          "sell_gold": 44611358.90924566,
+          "sell_exp_adjusted": 14400501.287722448,
+          "material_exp_adjusted": 22420247.00569635,
+          "lower_stone_adjusted_exp": 12190765.001137733,
+          "formal_terminal_count": 23.556883764960546,
+          "value_sum_curve_baseline": 100.41634560783069,
+          "value_sum_tier2_low": 100.41634560783069,
+          "value_sum_tier2_mid": 100.41634560783069,
+          "value_sum_tier2_high": 100.41634560783069,
+          "native_heirloom": 0.784130988410714,
+          "converted_heirloom": 1.7909196566482142,
+          "speed22": 0.0,
+          "output60": 0.07707903855833105
+        },
+        "rift_stamina_per_100k": 47474.75859511975,
+        "saint_stamina_per_100k": 52525.24140488026,
+        "cycles_per_100k": 558.5265717072912,
+        "stamina_per_baili": 995.8538064165699,
+        "stats": {
+          "target_high_per_batch": 0.00861683844165282,
+          "incremental_target_high_per_batch": 0.007599319984109471,
+          "rescue_nodes_per_batch": {
+            "6": 0.010353067950107101,
+            "9": 0.00870560861818665,
+            "12": 0.012253469316240134
+          },
+          "first_rescue_nodes_per_batch": {
+            "6": 0.010353067950107101,
+            "9": 0.002974041034676717,
+            "12": 0.0061106289175505875
+          },
+          "probability_queries": 4.35466573773729,
+          "probability_nonzero": 0.40124345231186703,
+          "probability_between_zero_ten": 0.3438678264516647,
+          "probability_unique_states": 200.0160419403077,
+          "by_rank": {
+            "Epic": 0.014975327150549432,
+            "Heroic": 0.004462410751784966
+          },
+          "coverage": {
+            "set_count": 3,
+            "slot_count": 1
+          },
+          "incremental_target_high_per_100k": 4.24442213803137,
+          "v2_error_rescue_per_batch": 0.026063479975668324,
+          "v3_filtered_per_batch": 3.295347114629894,
+          "v2_error_rescue_nodes_per_batch": {
+            "6": 0.02517246173371674,
+            "9": 0.0004212156884478257,
+            "12": 0.00046980255350375803
+          },
+          "v3_filtered_nodes_per_batch": {
+            "6": 3.089574892305948,
+            "9": 0.1351704242851415,
+            "12": 0.07060179803880494
+          },
+          "by_category": {
+            "半肉(白字)": {
+              "natural_quality": 0.11849223576062451,
+              "baseline_stop_quality": 0.11849223576062451,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.0,
+              "v3_rescue": 0.0002547770700636943
+            },
+            "半肉(血防)": {
+              "natural_quality": 0.3578995783955854,
+              "baseline_stop_quality": 0.3578995783955854,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.0,
+              "v3_rescue": 0.001753368011960432
+            },
+            "半肉(通用)": {
+              "natural_quality": 0.20048493899178985,
+              "baseline_stop_quality": 0.20048493899178985,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.0,
+              "v3_rescue": 0.003973817763941999
+            },
+            "双效": {
+              "natural_quality": 0.07282788102199741,
+              "baseline_stop_quality": 0.07282788102199741,
+              "v2_error_rescue": 9.554140127388535e-05,
+              "v3_filtered": 0.07282788102199741,
+              "v3_rescue": 0.0
+            },
+            "命坦": {
+              "natural_quality": 0.4830465104610034,
+              "baseline_stop_quality": 0.4830465104610034,
+              "v2_error_rescue": 0.008337121471264555,
+              "v3_filtered": 0.4057166592475655,
+              "v3_rescue": 0.0030768809365012916
+            },
+            "抗坦": {
+              "natural_quality": 0.9963568620326622,
+              "baseline_stop_quality": 0.9963568620326622,
+              "v2_error_rescue": 0.010878995424146703,
+              "v3_filtered": 0.7306768853231911,
+              "v3_rescue": 0.012940621630197635
+            },
+            "纯肉": {
+              "natural_quality": 0.3485824796394018,
+              "baseline_stop_quality": 0.3485824796394018,
+              "v2_error_rescue": 0.005491955246480059,
+              "v3_filtered": 0.3091504376029143,
+              "v3_rescue": 0.009312680471868827
+            },
+            "输出": {
+              "natural_quality": 0.9350871952463059,
+              "baseline_stop_quality": 0.9350871952463059,
+              "v2_error_rescue": 0.0012598664325031228,
+              "v3_filtered": 0.9350871952463059,
+              "v3_rescue": 0.0
+            },
+            "输出(必爆)": {
+              "natural_quality": 0.8418880561879208,
+              "baseline_stop_quality": 0.8418880561879208,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.8418880561879208,
+              "v3_rescue": 0.0
+            }
+          }
+        }
+      }
+    },
+    "20260716": {
+      "current_formal": {
+        "flow": {
+          "value_sum": 0.18634866475814116,
+          "legacy_stamina_sum": 94.84709814960902,
+          "powder_units": 188.0324766506134,
+          "lower_stone_units": 12.535498443374234,
+          "material_gold": 481363.1402255704,
+          "conversion_gold": 3121.32038104159,
+          "sell_gold": 79873.29729520064,
+          "sell_exp_adjusted": 24729.110763581208,
+          "material_exp_adjusted": 38421.105085131974,
+          "lower_stone_adjusted_exp": 20893.395481276075,
+          "formal_terminal_count": 0.04071048468635493,
+          "value_sum_curve_baseline": 0.18634866475814116,
+          "value_sum_tier2_low": 0.18634866475814116,
+          "value_sum_tier2_mid": 0.18634866475814116,
+          "value_sum_tier2_high": 0.18634866475814116,
+          "native_heirloom": 0.00201963906581741,
+          "converted_heirloom": 0.0033421447240265427,
+          "speed22": 0.0,
+          "output60": 0.0
+        },
+        "resource_pool": {
+          "source_lower_stones_used": 0.42500000000000004,
+          "source_lower_stone_surplus": 0.0,
+          "remaining_lower_stone_units": 12.110498443374233,
+          "source_stone_exp_credit": 708.3637814366915,
+          "powder_base_exp": 18803.24766506134,
+          "source_gold_used": 127500.0,
+          "source_gold_surplus": 0.0,
+          "net_gold_deficit": 277111.1633114114,
+          "net_exp_deficit": 12983.630540114074,
+          "saint_gold_stamina": 37.6451059333244,
+          "saint_exp_stamina": 89.45744924719025,
+          "saint_supplement_stamina": 89.45744924719025,
+          "bottleneck": "enhance_exp",
+          "total_stamina": 174.45744924719025
+        },
+        "formal_baili_per_100": 0.10681611221662546,
+        "per_100k": {
+          "value_sum": 106.81611221662547,
+          "legacy_stamina_sum": 54366.89494136726,
+          "powder_units": 107781.28274946207,
+          "lower_stone_units": 7185.418849964142,
+          "material_gold": 275920083.8386229,
+          "conversion_gold": 1789158.5567200198,
+          "sell_gold": 45783827.31139642,
+          "sell_exp_adjusted": 14174866.633835921,
+          "material_exp_adjusted": 22023195.484586492,
+          "lower_stone_adjusted_exp": 11976212.865334312,
+          "formal_terminal_count": 23.335480864833634,
+          "value_sum_curve_baseline": 106.81611221662547,
+          "value_sum_tier2_low": 106.81611221662547,
+          "value_sum_tier2_mid": 106.81611221662547,
+          "value_sum_tier2_high": 106.81611221662547,
+          "native_heirloom": 1.1576685745048159,
+          "converted_heirloom": 1.9157363233547164,
+          "speed22": 0.0,
+          "output60": 0.0
+        },
+        "rift_stamina_per_100k": 48722.48239716194,
+        "saint_stamina_per_100k": 51277.51760283806,
+        "cycles_per_100k": 573.2056752607288,
+        "stamina_per_baili": 936.1883514089875,
+        "stats": {
+          "target_high_per_batch": 0.0,
+          "incremental_target_high_per_batch": 0.0,
+          "rescue_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "first_rescue_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "probability_queries": 0.0,
+          "probability_nonzero": 0.0,
+          "probability_between_zero_ten": 0.0,
+          "probability_unique_states": 0.0,
+          "by_rank": {
+            "Epic": 0.0,
+            "Heroic": 0.0
+          },
+          "coverage": {
+            "set_count": 0,
+            "slot_count": 0
+          },
+          "incremental_target_high_per_100k": 0.0,
+          "v2_error_rescue_per_batch": 0.0,
+          "v3_filtered_per_batch": 0.0,
+          "v2_error_rescue_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "v3_filtered_nodes_per_batch": {
+            "6": 0.0,
+            "9": 0.0,
+            "12": 0.0
+          },
+          "by_category": {}
+        }
+      },
+      "health_p975_balanced": {
+        "flow": {
+          "value_sum": 0.189370702710344,
+          "legacy_stamina_sum": 96.40628550296157,
+          "powder_units": 190.9143711696554,
+          "lower_stone_units": 12.727624744643698,
+          "material_gold": 488740.7901943179,
+          "conversion_gold": 3216.8574825224387,
+          "sell_gold": 79873.29729520064,
+          "sell_exp_adjusted": 25057.660289013584,
+          "material_exp_adjusted": 38973.81487658256,
+          "lower_stone_adjusted_exp": 21193.21598892434,
+          "formal_terminal_count": 0.04172954996867935,
+          "value_sum_curve_baseline": 0.189370702710344,
+          "value_sum_tier2_low": 0.189370702710344,
+          "value_sum_tier2_mid": 0.189370702710344,
+          "value_sum_tier2_high": 0.189370702710344,
+          "native_heirloom": 0.0020833333333333333,
+          "converted_heirloom": 0.0034456479087399184,
+          "speed22": 0.0,
+          "output60": 0.0
+        },
+        "resource_pool": {
+          "source_lower_stones_used": 0.42500000000000004,
+          "source_lower_stone_surplus": 0.0,
+          "remaining_lower_stone_units": 12.302624744643698,
+          "source_stone_exp_credit": 707.6824604750707,
+          "powder_base_exp": 19091.43711696554,
+          "source_gold_used": 127500.0,
+          "source_gold_surplus": 0.0,
+          "net_gold_deficit": 284584.35038163967,
+          "net_exp_deficit": 13208.472127093906,
+          "saint_gold_stamina": 38.66032637972029,
+          "saint_exp_stamina": 91.00661184803312,
+          "saint_supplement_stamina": 91.00661184803312,
+          "bottleneck": "enhance_exp",
+          "total_stamina": 176.00661184803312
+        },
+        "formal_baili_per_100": 0.10759294819779251,
+        "per_100k": {
+          "value_sum": 107.5929481977925,
+          "legacy_stamina_sum": 54774.2408598833,
+          "powder_units": 108469.99960120468,
+          "lower_stone_units": 7231.333306746981,
+          "material_gold": 277683198.979084,
+          "conversion_gold": 1827691.271791496,
+          "sell_gold": 45380850.44450744,
+          "sell_exp_adjusted": 14236772.145042347,
+          "material_exp_adjusted": 22143381.13060955,
+          "lower_stone_adjusted_exp": 12041147.640080076,
+          "formal_terminal_count": 23.709080886523342,
+          "value_sum_curve_baseline": 107.5929481977925,
+          "value_sum_tier2_low": 107.5929481977925,
+          "value_sum_tier2_mid": 107.5929481977925,
+          "value_sum_tier2_high": 107.5929481977925,
+          "native_heirloom": 1.1836676539925193,
+          "converted_heirloom": 1.9576809487787565,
+          "speed22": 0.0,
+          "output60": 0.0
+        },
+        "rift_stamina_per_100k": 48293.64028289479,
+        "saint_stamina_per_100k": 51706.3597171052,
+        "cycles_per_100k": 568.1604739164093,
+        "stamina_per_baili": 929.4289419058015,
+        "stats": {
+          "target_high_per_batch": 0.0037691497792727924,
+          "incremental_target_high_per_batch": 0.0031378448354389575,
+          "rescue_nodes_per_batch": {
+            "6": 0.010269569154367653,
+            "9": 0.009012581194425167,
+            "12": 0.007972093162783115
+          },
+          "first_rescue_nodes_per_batch": {
+            "6": 0.010269569154367653,
+            "9": 0.0027104860167545416,
+            "12": 0.0018441212891626355
+          },
+          "probability_queries": 4.3558981902831535,
+          "probability_nonzero": 0.45844094405467867,
+          "probability_between_zero_ten": 0.3959853546702528,
+          "probability_unique_states": 200.08599127380512,
+          "by_rank": {
+            "Epic": 0.014824176460284832,
+            "Heroic": 0.0
+          },
+          "coverage": {
+            "set_count": 2,
+            "slot_count": 0
+          },
+          "incremental_target_high_per_100k": 1.7827994087791554,
+          "v2_error_rescue_per_batch": 0.03520134587284958,
+          "v3_filtered_per_batch": 3.3124900547093445,
+          "v2_error_rescue_nodes_per_batch": {
+            "6": 0.03431853784682405,
+            "9": 0.0005590431654630432,
+            "12": 0.00032376486056248936
+          },
+          "v3_filtered_nodes_per_batch": {
+            "6": 3.1303363776269206,
+            "9": 0.12915603827213618,
+            "12": 0.052997638810287614
+          },
+          "by_category": {
+            "半肉(白字)": {
+              "natural_quality": 0.13769024234052962,
+              "baseline_stop_quality": 0.13769024234052962,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.0,
+              "v3_rescue": 0.00031847133757961787
+            },
+            "半肉(血防)": {
+              "natural_quality": 0.376996705907058,
+              "baseline_stop_quality": 0.376996705907058,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.0,
+              "v3_rescue": 0.0015357029333506601
+            },
+            "半肉(通用)": {
+              "natural_quality": 0.1739063404052521,
+              "baseline_stop_quality": 0.1739063404052521,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.0,
+              "v3_rescue": 0.0039843283691426475
+            },
+            "双效": {
+              "natural_quality": 0.05489862018046263,
+              "baseline_stop_quality": 0.05489862018046263,
+              "v2_error_rescue": 0.00015923566878980894,
+              "v3_filtered": 0.05489862018046263,
+              "v3_rescue": 0.0
+            },
+            "命坦": {
+              "natural_quality": 0.4838219368208386,
+              "baseline_stop_quality": 0.4838219368208386,
+              "v2_error_rescue": 0.008213355909995052,
+              "v3_filtered": 0.4106815204121085,
+              "v3_rescue": 0.0029034639132703055
+            },
+            "抗坦": {
+              "natural_quality": 0.9380828560821735,
+              "baseline_stop_quality": 0.9380828560821735,
+              "v2_error_rescue": 0.010835649529047638,
+              "v3_filtered": 0.6945126958444598,
+              "v3_rescue": 0.01022710130690962
+            },
+            "纯肉": {
+              "natural_quality": 0.3387042922819638,
+              "baseline_stop_quality": 0.3387042922819638,
+              "v2_error_rescue": 0.014878431195749338,
+              "v3_filtered": 0.30060002200743846,
+              "v3_rescue": 0.008285175651323081
+            },
+            "输出": {
+              "natural_quality": 0.9928079047131266,
+              "baseline_stop_quality": 0.9928079047131266,
+              "v2_error_rescue": 0.0011146735692677547,
+              "v3_filtered": 0.9928079047131266,
+              "v3_rescue": 0.0
+            },
+            "输出(必爆)": {
+              "natural_quality": 0.8589892915517485,
+              "baseline_stop_quality": 0.8589892915517485,
+              "v2_error_rescue": 0.0,
+              "v3_filtered": 0.8589892915517485,
+              "v3_rescue": 0.0
+            }
+          }
+        }
+      }
+    }
+  },
+  "summary": {
+    "current_formal": {
+      "formal_baili_per_100": {
+        "mean": 0.1163588052976693,
+        "interval95": [
+          0.05889549406346359,
+          0.17382211653187501
+        ],
+        "seed_stddev": 0.046286696733397456
+      },
+      "paired_formal_delta_per_100": {
+        "mean": 0.0,
+        "interval95": [
+          0.0,
+          0.0
+        ],
+        "seed_stddev": 0.0
+      },
+      "paired_formal_delta_per_100k": {
+        "mean": 0.0,
+        "interval95": [
+          0.0,
+          0.0
+        ],
+        "seed_stddev": 0.0
+      },
+      "stamina_per_baili": {
+        "mean": 941.8513893574525,
+        "interval95": [
+          613.0432560773004,
+          1270.6595226376046
+        ],
+        "seed_stddev": 264.85494869208617
+      },
+      "per_100k": {
+        "value_sum": {
+          "mean": 116.3588052976693,
+          "interval95": [
+            58.89549406346358,
+            173.82211653187503
+          ],
+          "seed_stddev": 46.28669673339746
+        },
+        "legacy_stamina_sum": {
+          "mean": 54775.31983354238,
+          "interval95": [
+            53988.96833751662,
+            55561.67132956814
+          ],
+          "seed_stddev": 633.4061236751654
+        },
+        "powder_units": {
+          "mean": 108179.73341609337,
+          "interval95": [
+            106905.47275341788,
+            109453.99407876885
+          ],
+          "seed_stddev": 1026.4169534568898
+        },
+        "lower_stone_units": {
+          "mean": 7211.9822277395615,
+          "interval95": [
+            7127.031516894531,
+            7296.932938584592
+          ],
+          "seed_stddev": 68.42779689712427
+        },
+        "material_gold": {
+          "mean": 276940117.5451991,
+          "interval95": [
+            273678010.2487499,
+            280202224.8416483
+          ],
+          "seed_stddev": 2627627.400849594
+        },
+        "conversion_gold": {
+          "mean": 1980565.990059058,
+          "interval95": [
+            1300410.0049295963,
+            2660721.97518852
+          ],
+          "seed_stddev": 547865.6405089382
+        },
+        "sell_gold": {
+          "mean": 45414113.42082396,
+          "interval95": [
+            44702227.21957573,
+            46125999.62207219
+          ],
+          "seed_stddev": 573424.3293354219
+        },
+        "sell_exp_adjusted": {
+          "mean": 14300453.884227952,
+          "interval95": [
+            14139982.722853526,
+            14460925.045602378
+          ],
+          "seed_stddev": 129259.51918643837
+        },
+        "material_exp_adjusted": {
+          "mean": 22204412.866760485,
+          "interval95": [
+            21947404.756969996,
+            22461420.976550974
+          ],
+          "seed_stddev": 207020.03035312088
+        },
+        "lower_stone_adjusted_exp": {
+          "mean": 12074256.660844054,
+          "interval95": [
+            11935344.77760436,
+            12213168.544083748
+          ],
+          "seed_stddev": 111893.52082365687
+        },
+        "formal_terminal_count": {
+          "mean": 25.093925055047432,
+          "interval95": [
+            16.656963934885965,
+            33.5308861752089
+          ],
+          "seed_stddev": 6.795972113906272
+        },
+        "value_sum_curve_baseline": {
+          "mean": 116.3588052976693,
+          "interval95": [
+            58.89549406346358,
+            173.82211653187503
+          ],
+          "seed_stddev": 46.28669673339746
+        },
+        "value_sum_tier2_low": {
+          "mean": 116.3588052976693,
+          "interval95": [
+            58.89549406346358,
+            173.82211653187503
+          ],
+          "seed_stddev": 46.28669673339746
+        },
+        "value_sum_tier2_mid": {
+          "mean": 120.43697511048155,
+          "interval95": [
+            59.55695322403706,
+            181.31699699692604
+          ],
+          "seed_stddev": 49.038857136082456
+        },
+        "value_sum_tier2_high": {
+          "mean": 122.47606001688769,
+          "interval95": [
+            59.66995193608702,
+            185.28216809768836
+          ],
+          "seed_stddev": 50.59031955002492
+        },
+        "native_heirloom": {
+          "mean": 1.1091651777557896,
+          "interval95": [
+            0.7158369018487163,
+            1.502493453662863
+          ],
+          "seed_stddev": 0.3168259230551185
+        },
+        "converted_heirloom": {
+          "mean": 1.9231649621703417,
+          "interval95": [
+            1.5898109783410512,
+            2.256518945999632
+          ],
+          "seed_stddev": 0.26851663127257186
+        },
+        "speed22": {
+          "mean": 1.0195424532030615,
+          "interval95": [
+            0.0,
+            2.7529803646926387
+          ],
+          "seed_stddev": 1.3962842236548842
+        },
+        "output60": {
+          "mean": 0.02872298211409204,
+          "interval95": [
+            0.0,
+            0.07783693502987134
+          ],
+          "seed_stddev": 0.039561288675578725
+        }
+      },
+      "rift_stamina_per_100k": {
+        "mean": 48329.03825797092,
+        "interval95": [
+          47571.45932790044,
+          49086.6171880414
+        ],
+        "seed_stddev": 610.2298220313928
+      },
+      "saint_stamina_per_100k": {
+        "mean": 51670.96174202908,
+        "interval95": [
+          50913.3828119586,
+          52428.54067209956
+        ],
+        "seed_stddev": 610.2298220313941
+      },
+      "cycles_per_100k": {
+        "mean": 568.5769206820108,
+        "interval95": [
+          559.664227387064,
+          577.4896139769577
+        ],
+        "seed_stddev": 7.179174376839931
+      },
+      "stats": {
+        "target_high_per_batch": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "seed_stddev": 0.0
+        },
+        "incremental_target_high_per_batch": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "seed_stddev": 0.0
+        },
+        "probability_queries": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "seed_stddev": 0.0
+        },
+        "probability_nonzero": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "seed_stddev": 0.0
+        },
+        "probability_between_zero_ten": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "seed_stddev": 0.0
+        },
+        "probability_unique_states": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "seed_stddev": 0.0
+        },
+        "incremental_target_high_per_100k": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "seed_stddev": 0.0
+        },
+        "v2_error_rescue_per_batch": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "seed_stddev": 0.0
+        },
+        "v3_filtered_per_batch": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "seed_stddev": 0.0
+        },
+        "v2_error_rescue_nodes_per_batch": {
+          "6": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "seed_stddev": 0.0
+          },
+          "9": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "seed_stddev": 0.0
+          },
+          "12": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "seed_stddev": 0.0
+          }
+        },
+        "v3_filtered_nodes_per_batch": {
+          "6": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "seed_stddev": 0.0
+          },
+          "9": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "seed_stddev": 0.0
+          },
+          "12": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "seed_stddev": 0.0
+          }
+        },
+        "by_category": {}
+      },
+      "rescue_nodes_per_batch": {
+        "6": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "seed_stddev": 0.0
+        },
+        "9": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "seed_stddev": 0.0
+        },
+        "12": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "seed_stddev": 0.0
+        }
+      },
+      "first_rescue_nodes_per_batch": {
+        "6": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "seed_stddev": 0.0
+        },
+        "9": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "seed_stddev": 0.0
+        },
+        "12": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ],
+          "seed_stddev": 0.0
+        }
+      }
+    },
+    "health_p975_balanced": {
+      "formal_baili_per_100": {
+        "mean": 0.11726066537664544,
+        "interval95": [
+          0.06036861750329955,
+          0.17415271324999132
+        ],
+        "seed_stddev": 0.045826544100855106
+      },
+      "paired_formal_delta_per_100": {
+        "mean": 0.0009018600789761327,
+        "interval95": [
+          0.00011099946351225437,
+          0.0016927206944400111
+        ],
+        "seed_stddev": 0.0006370382193460207
+      },
+      "paired_formal_delta_per_100k": {
+        "mean": 0.9018600789761251,
+        "interval95": [
+          0.11099946351224288,
+          1.6927206944400073
+        ],
+        "seed_stddev": 0.6370382193460238
+      },
+      "stamina_per_baili": {
+        "mean": 931.596981618645,
+        "interval95": [
+          612.4751707346863,
+          1250.7187925026037
+        ],
+        "seed_stddev": 257.05261608046254
+      },
+      "per_100k": {
+        "value_sum": {
+          "mean": 117.26066537664543,
+          "interval95": [
+            60.36861750329955,
+            174.15271324999134
+          ],
+          "seed_stddev": 45.8265441008551
+        },
+        "legacy_stamina_sum": {
+          "mean": 55204.14386541621,
+          "interval95": [
+            54412.008272191524,
+            55996.2794586409
+          ],
+          "seed_stddev": 638.0652139220184
+        },
+        "powder_units": {
+          "mean": 108985.67950937891,
+          "interval95": [
+            107634.1800119544,
+            110337.17900680342
+          ],
+          "seed_stddev": 1088.6328342211823
+        },
+        "lower_stone_units": {
+          "mean": 7265.711967291931,
+          "interval95": [
+            7175.612000796965,
+            7355.811933786897
+          ],
+          "seed_stddev": 72.57552228141145
+        },
+        "material_gold": {
+          "mean": 279003339.54401004,
+          "interval95": [
+            275543500.83060336,
+            282463178.2574167
+          ],
+          "seed_stddev": 2786900.055606179
+        },
+        "conversion_gold": {
+          "mean": 2015769.120629314,
+          "interval95": [
+            1349887.7170878279,
+            2681650.5241708
+          ],
+          "seed_stddev": 536367.4651555233
+        },
+        "sell_gold": {
+          "mean": 44988967.75189393,
+          "interval95": [
+            44266106.645126626,
+            45711828.858661234
+          ],
+          "seed_stddev": 582264.6156420812
+        },
+        "sell_exp_adjusted": {
+          "mean": 14378459.46058487,
+          "interval95": [
+            14206291.02159444,
+            14550627.899575299
+          ],
+          "seed_stddev": 138681.67621132
+        },
+        "material_exp_adjusted": {
+          "mean": 22343815.14197072,
+          "interval95": [
+            22071462.007862918,
+            22616168.276078522
+          ],
+          "seed_stddev": 219380.44731634133
+        },
+        "lower_stone_adjusted_exp": {
+          "mean": 12149604.686772835,
+          "interval95": [
+            12002383.469528764,
+            12296825.904016905
+          ],
+          "seed_stddev": 118586.6892968318
+        },
+        "formal_terminal_count": {
+          "mean": 25.43385274897179,
+          "interval95": [
+            17.143772423602936,
+            33.72393307434065
+          ],
+          "seed_stddev": 6.677659634891332
+        },
+        "value_sum_curve_baseline": {
+          "mean": 117.26066537664543,
+          "interval95": [
+            60.36861750329955,
+            174.15271324999134
+          ],
+          "seed_stddev": 45.8265441008551
+        },
+        "value_sum_tier2_low": {
+          "mean": 117.26066537664543,
+          "interval95": [
+            60.36861750329955,
+            174.15271324999134
+          ],
+          "seed_stddev": 45.8265441008551
+        },
+        "value_sum_tier2_mid": {
+          "mean": 121.30329194131468,
+          "interval95": [
+            60.978451919837205,
+            181.62813196279217
+          ],
+          "seed_stddev": 48.591658148351414
+        },
+        "value_sum_tier2_high": {
+          "mean": 123.3246052236493,
+          "interval95": [
+            61.069420332544915,
+            185.57979011475368
+          ],
+          "seed_stddev": 50.14655092518994
+        },
+        "native_heirloom": {
+          "mean": 1.1203677505200182,
+          "interval95": [
+            0.73808568583476,
+            1.5026498152052765
+          ],
+          "seed_stddev": 0.3079282000054789
+        },
+        "converted_heirloom": {
+          "mean": 1.9383043894188294,
+          "interval95": [
+            1.606340213343508,
+            2.270268565494151
+          ],
+          "seed_stddev": 0.26739714113801444
+        },
+        "speed22": {
+          "mean": 1.010656641167312,
+          "interval95": [
+            0.0,
+            2.728967730867918
+          ],
+          "seed_stddev": 1.3840995688264752
+        },
+        "output60": {
+          "mean": 0.028428335057586993,
+          "interval95": [
+            0.0,
+            0.07704192776595734
+          ],
+          "seed_stddev": 0.03915824853256636
+        }
+      },
+      "rift_stamina_per_100k": {
+        "mean": 47876.604427356746,
+        "interval95": [
+          47107.34616263111,
+          48645.86269208238
+        ],
+        "seed_stddev": 619.6375260014578
+      },
+      "saint_stamina_per_100k": {
+        "mean": 52123.39557264326,
+        "interval95": [
+          51354.137307917634,
+          52892.65383736889
+        ],
+        "seed_stddev": 619.6375260014546
+      },
+      "cycles_per_100k": {
+        "mean": 563.2541697336087,
+        "interval95": [
+          554.2040725015424,
+          572.304266965675
+        ],
+        "seed_stddev": 7.289853247075944
+      },
+      "stats": {
+        "target_high_per_batch": {
+          "mean": 0.0049506772270333285,
+          "interval95": [
+            0.0023723751076183547,
+            0.007528979346448302
+          ],
+          "seed_stddev": 0.0020768223362909446
+        },
+        "incremental_target_high_per_batch": {
+          "mean": 0.003993415287867296,
+          "interval95": [
+            0.0014859435056329318,
+            0.006500887070101661
+          ],
+          "seed_stddev": 0.002019768500266062
+        },
+        "probability_queries": {
+          "mean": 4.348962263290003,
+          "interval95": [
+            4.338407578915502,
+            4.359516947664504
+          ],
+          "seed_stddev": 0.008501798178112325
+        },
+        "probability_nonzero": {
+          "mean": 0.4425915067640175,
+          "interval95": [
+            0.4113680610962793,
+            0.47381495243175564
+          ],
+          "seed_stddev": 0.025150485232288848
+        },
+        "probability_between_zero_ten": {
+          "mean": 0.37774183084655044,
+          "interval95": [
+            0.35291830422031834,
+            0.40256535747278255
+          ],
+          "seed_stddev": 0.019995350496228744
+        },
+        "probability_unique_states": {
+          "mean": 199.4998896518885,
+          "interval95": [
+            198.71786381954712,
+            200.2819154842299
+          ],
+          "seed_stddev": 0.6299218016124701
+        },
+        "incremental_target_high_per_100k": {
+          "mean": 2.245516657610188,
+          "interval95": [
+            0.8540747035494465,
+            3.6369586116709294
+          ],
+          "seed_stddev": 1.1208064827179243
+        },
+        "v2_error_rescue_per_batch": {
+          "mean": 0.03500912521766305,
+          "interval95": [
+            0.021343091964703232,
+            0.04867515847062287
+          ],
+          "seed_stddev": 0.01100798967449234
+        },
+        "v3_filtered_per_batch": {
+          "mean": 3.3020492649458775,
+          "interval95": [
+            3.2828032669219644,
+            3.3212952629697905
+          ],
+          "seed_stddev": 0.015502651252267923
+        },
+        "v2_error_rescue_nodes_per_batch": {
+          "6": {
+            "mean": 0.03401212663245421,
+            "interval95": [
+              0.0202920636099062,
+              0.04773218965500222
+            ],
+            "seed_stddev": 0.011051510653457703
+          },
+          "9": {
+            "mean": 0.0005336141894444222,
+            "interval95": [
+              0.00043695883562496374,
+              0.0006302695432638807
+            ],
+            "seed_stddev": 7.785588671815674e-05
+          },
+          "12": {
+            "mean": 0.00046338439576441723,
+            "interval95": [
+              0.0003346506138717512,
+              0.0005921181776570833
+            ],
+            "seed_stddev": 0.00010369506027112131
+          }
+        },
+        "v3_filtered_nodes_per_batch": {
+          "6": {
+            "mean": 3.105502399165628,
+            "interval95": [
+              3.0670413233005718,
+              3.1439634750306844
+            ],
+            "seed_stddev": 0.030980396297565566
+          },
+          "9": {
+            "mean": 0.13826003329915781,
+            "interval95": [
+              0.11259233292917363,
+              0.16392773366914198
+            ],
+            "seed_stddev": 0.020675332439978798
+          },
+          "12": {
+            "mean": 0.05828683248109139,
+            "interval95": [
+              0.03890872578998793,
+              0.07766493917219486
+            ],
+            "seed_stddev": 0.015609064782619194
+          }
+        },
+        "by_category": {
+          "半肉(白字)": {
+            "natural_quality": {
+              "mean": 0.13170602868409823,
+              "interval95": [
+                0.11638363835001336,
+                0.1470284190181831
+              ],
+              "seed_stddev": 0.012342185289913354
+            },
+            "baseline_stop_quality": {
+              "mean": 0.13170602868409823,
+              "interval95": [
+                0.11638363835001336,
+                0.1470284190181831
+              ],
+              "seed_stddev": 0.012342185289913354
+            },
+            "v2_error_rescue": {
+              "mean": 0.0,
+              "interval95": [
+                0.0,
+                0.0
+              ],
+              "seed_stddev": 0.0
+            },
+            "v3_filtered": {
+              "mean": 0.0,
+              "interval95": [
+                0.0,
+                0.0
+              ],
+              "seed_stddev": 0.0
+            },
+            "v3_rescue": {
+              "mean": 0.00026568958130754973,
+              "interval95": [
+                0.00012821282509799226,
+                0.0004031663375171072
+              ],
+              "seed_stddev": 0.00011073752601251327
+            }
+          },
+          "半肉(血防)": {
+            "natural_quality": {
+              "mean": 0.35406203040089523,
+              "interval95": [
+                0.3363262844466237,
+                0.37179777635516675
+              ],
+              "seed_stddev": 0.014286143222412815
+            },
+            "baseline_stop_quality": {
+              "mean": 0.35406203040089523,
+              "interval95": [
+                0.3363262844466237,
+                0.37179777635516675
+              ],
+              "seed_stddev": 0.014286143222412815
+            },
+            "v2_error_rescue": {
+              "mean": 0.0,
+              "interval95": [
+                0.0,
+                0.0
+              ],
+              "seed_stddev": 0.0
+            },
+            "v3_filtered": {
+              "mean": 0.0,
+              "interval95": [
+                0.0,
+                0.0
+              ],
+              "seed_stddev": 0.0
+            },
+            "v3_rescue": {
+              "mean": 0.0036605762249637365,
+              "interval95": [
+                0.0,
+                0.008543848722527038
+              ],
+              "seed_stddev": 0.00393347595720703
+            }
+          },
+          "半肉(通用)": {
+            "natural_quality": {
+              "mean": 0.19949048613480808,
+              "interval95": [
+                0.18076843903476025,
+                0.2182125332348559
+              ],
+              "seed_stddev": 0.015080608787341404
+            },
+            "baseline_stop_quality": {
+              "mean": 0.19949048613480808,
+              "interval95": [
+                0.18076843903476025,
+                0.2182125332348559
+              ],
+              "seed_stddev": 0.015080608787341404
+            },
+            "v2_error_rescue": {
+              "mean": 0.0,
+              "interval95": [
+                0.0,
+                0.0
+              ],
+              "seed_stddev": 0.0
+            },
+            "v3_filtered": {
+              "mean": 0.0,
+              "interval95": [
+                0.0,
+                0.0
+              ],
+              "seed_stddev": 0.0
+            },
+            "v3_rescue": {
+              "mean": 0.0038037955069392284,
+              "interval95": [
+                0.0033156737381421506,
+                0.004291917275736306
+              ],
+              "seed_stddev": 0.00039318208080969087
+            }
+          },
+          "双效": {
+            "natural_quality": {
+              "mean": 0.060302876139929434,
+              "interval95": [
+                0.051198045693813574,
+                0.0694077065860453
+              ],
+              "seed_stddev": 0.007333940850549279
+            },
+            "baseline_stop_quality": {
+              "mean": 0.060302876139929434,
+              "interval95": [
+                0.051198045693813574,
+                0.0694077065860453
+              ],
+              "seed_stddev": 0.007333940850549279
+            },
+            "v2_error_rescue": {
+              "mean": 0.00015923566878980894,
+              "interval95": [
+                9.672202469510014e-05,
+                0.00022174931288451773
+              ],
+              "seed_stddev": 5.035473981159841e-05
+            },
+            "v3_filtered": {
+              "mean": 0.060302876139929434,
+              "interval95": [
+                0.051198045693813574,
+                0.0694077065860453
+              ],
+              "seed_stddev": 0.007333940850549279
+            },
+            "v3_rescue": {
+              "mean": 0.0,
+              "interval95": [
+                0.0,
+                0.0
+              ],
+              "seed_stddev": 0.0
+            }
+          },
+          "命坦": {
+            "natural_quality": {
+              "mean": 0.4728010421768041,
+              "interval95": [
+                0.44807110240255976,
+                0.4975309819510484
+              ],
+              "seed_stddev": 0.019919966287711116
+            },
+            "baseline_stop_quality": {
+              "mean": 0.4728010421768041,
+              "interval95": [
+                0.44807110240255976,
+                0.4975309819510484
+              ],
+              "seed_stddev": 0.019919966287711116
+            },
+            "v2_error_rescue": {
+              "mean": 0.009079289227124773,
+              "interval95": [
+                0.004557401687737886,
+                0.01360117676651166
+              ],
+              "seed_stddev": 0.00364238037632505
+            },
+            "v3_filtered": {
+              "mean": 0.3945474168145383,
+              "interval95": [
+                0.36702224920013415,
+                0.42207258442894247
+              ],
+              "seed_stddev": 0.02217152229030382
+            },
+            "v3_rescue": {
+              "mean": 0.0029878948778808913,
+              "interval95": [
+                0.0028875764723018454,
+                0.003088213283459937
+              ],
+              "seed_stddev": 8.080647488081433e-05
+            }
+          },
+          "抗坦": {
+            "natural_quality": {
+              "mean": 0.9630614316322946,
+              "interval95": [
+                0.9262571610709627,
+                0.9998657021936266
+              ],
+              "seed_stddev": 0.029645839638844585
+            },
+            "baseline_stop_quality": {
+              "mean": 0.9630614316322946,
+              "interval95": [
+                0.9262571610709627,
+                0.9998657021936266
+              ],
+              "seed_stddev": 0.029645839638844585
+            },
+            "v2_error_rescue": {
+              "mean": 0.014367538179983748,
+              "interval95": [
+                0.008344951370287266,
+                0.02039012498968023
+              ],
+              "seed_stddev": 0.004851193626395865
+            },
+            "v3_filtered": {
+              "mean": 0.7177234838194381,
+              "interval95": [
+                0.6932457527139824,
+                0.7422012149248938
+              ],
+              "seed_stddev": 0.019716812207046137
+            },
+            "v3_rescue": {
+              "mean": 0.01032828068242524,
+              "interval95": [
+                0.0084543198320946,
+                0.01220224153275588
+              ],
+              "seed_stddev": 0.001509475449752385
+            }
+          },
+          "纯肉": {
+            "natural_quality": {
+              "mean": 0.34561217607487127,
+              "interval95": [
+                0.3362923611707752,
+                0.3549319909789673
+              ],
+              "seed_stddev": 0.00750711082970981
+            },
+            "baseline_stop_quality": {
+              "mean": 0.34561217607487127,
+              "interval95": [
+                0.3362923611707752,
+                0.3549319909789673
+              ],
+              "seed_stddev": 0.00750711082970981
+            },
+            "v2_error_rescue": {
+              "mean": 0.010254917550235509,
+              "interval95": [
+                0.004761337884754247,
+                0.01574849721571677
+              ],
+              "seed_stddev": 0.0044250783760182485
+            },
+            "v3_filtered": {
+              "mean": 0.3075492961256696,
+              "interval95": [
+                0.2992321533768496,
+                0.3158664388744896
+              ],
+              "seed_stddev": 0.0066994584167618864
+            },
+            "v3_rescue": {
+              "mean": 0.008794313826287073,
+              "interval95": [
+                0.008114380808737344,
+                0.009474246843836803
+              ],
+              "seed_stddev": 0.0005476860401252708
+            }
+          },
+          "输出": {
+            "natural_quality": {
+              "mean": 0.9665768927902495,
+              "interval95": [
+                0.9359875187631862,
+                0.9971662668173128
+              ],
+              "seed_stddev": 0.02463974053086455
+            },
+            "baseline_stop_quality": {
+              "mean": 0.9665768927902495,
+              "interval95": [
+                0.9359875187631862,
+                0.9971662668173128
+              ],
+              "seed_stddev": 0.02463974053086455
+            },
+            "v2_error_rescue": {
+              "mean": 0.0011481445915292167,
+              "interval95": [
+                0.001033894597692183,
+                0.0012623945853662505
+              ],
+              "seed_stddev": 9.202836910970446e-05
+            },
+            "v3_filtered": {
+              "mean": 0.9665768927902495,
+              "interval95": [
+                0.9359875187631862,
+                0.9971662668173128
+              ],
+              "seed_stddev": 0.02463974053086455
+            },
+            "v3_rescue": {
+              "mean": 0.0,
+              "interval95": [
+                0.0,
+                0.0
+              ],
+              "seed_stddev": 0.0
+            }
+          },
+          "输出(必爆)": {
+            "natural_quality": {
+              "mean": 0.8553492992560532,
+              "interval95": [
+                0.8453910545105726,
+                0.8653075440015338
+              ],
+              "seed_stddev": 0.008021366061770372
+            },
+            "baseline_stop_quality": {
+              "mean": 0.8553492992560532,
+              "interval95": [
+                0.8453910545105726,
+                0.8653075440015338
+              ],
+              "seed_stddev": 0.008021366061770372
+            },
+            "v2_error_rescue": {
+              "mean": 0.0,
+              "interval95": [
+                0.0,
+                0.0
+              ],
+              "seed_stddev": 0.0
+            },
+            "v3_filtered": {
+              "mean": 0.8553492992560532,
+              "interval95": [
+                0.8453910545105726,
+                0.8653075440015338
+              ],
+              "seed_stddev": 0.008021366061770372
+            },
+            "v3_rescue": {
+              "mean": 0.0,
+              "interval95": [
+                0.0,
+                0.0
+              ],
+              "seed_stddev": 0.0
+            }
+          }
+        }
+      },
+      "rescue_nodes_per_batch": {
+        "6": {
+          "mean": 0.01060288449227087,
+          "interval95": [
+            0.010185243359582688,
+            0.011020525624959051
+          ],
+          "seed_stddev": 0.0003364099289952392
+        },
+        "9": {
+          "mean": 0.009838268448732047,
+          "interval95": [
+            0.007409581256912906,
+            0.012266955640551188
+          ],
+          "seed_stddev": 0.0019563075133251693
+        },
+        "12": {
+          "mean": 0.009399397758800807,
+          "interval95": [
+            0.006348384628477558,
+            0.012450410889124058
+          ],
+          "seed_stddev": 0.0024575910517461138
+        }
+      },
+      "first_rescue_nodes_per_batch": {
+        "6": {
+          "mean": 0.01060288449227087,
+          "interval95": [
+            0.010185243359582688,
+            0.011020525624959051
+          ],
+          "seed_stddev": 0.0003364099289952392
+        },
+        "9": {
+          "mean": 0.003689317247879485,
+          "interval95": [
+            0.0012385441380391442,
+            0.006140090357719825
+          ],
+          "seed_stddev": 0.001974097720112234
+        },
+        "12": {
+          "mean": 0.002432798483355513,
+          "interval95": [
+            0.0,
+            0.005005292728877257
+          ],
+          "seed_stddev": 0.0020721440939170223
+        }
+      }
+    }
+  },
+  "release_gate": {
+    "status": "health_p975_balanced_positive_requires_independent_validation",
+    "candidate": "health_p975_balanced",
+    "paired_delta_per_100_interval95": [
+      0.00011099946351225437,
+      0.0016927206944400111
+    ],
+    "formal_strategy_change": false,
+    "holdout_read": false,
+    "strategy_audit_started": false
+  }
+}

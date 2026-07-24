@@ -1,0 +1,755 @@
+{
+  "study": "reforged_inventory_set_weight_r400_closure_audit_20260718",
+  "schema_version": 1,
+  "execution": {
+    "trajectory_generation": "not_run_read_only_audit",
+    "r50_clusters": 5,
+    "r400_clusters": 20,
+    "r200_clusters": 0
+  },
+  "r50_scope": "final full-joint four-rule comparison only; R50 does not supply the R400 five-layer historical bridge fields",
+  "scenarios": {
+    "uniform_observed_sets": {
+      "rules": {
+        "current_formal": {
+          "absolute_cost": {
+            "mean": 10392.961464339858,
+            "interval95": [
+              9172.21800559204,
+              11683.292636060249
+            ],
+            "relative_half_width": 0.12080650154838747,
+            "cluster_count": 25,
+            "ess": 22.711223462129258,
+            "max_cluster_share": 0.08284156550325926,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 9.621896544417892,
+          "rift_stamina_per_100k": 358860.7134123316,
+          "saint_stamina_per_100k": 2141139.2865876686,
+          "cycles_per_100k": 168.8756298410972,
+          "native_heirloom_per_100k": 0.4635813168354855,
+          "converted_heirloom_per_100k": 0.5391309407117657,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "global_12_17": {
+          "absolute_cost": {
+            "mean": 10330.575478292,
+            "interval95": [
+              9117.624302573988,
+              11598.621459100015
+            ],
+            "relative_half_width": 0.1200802976436034,
+            "cluster_count": 25,
+            "ess": 22.774958936347506,
+            "max_cluster_share": 0.08303793281388783,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 9.680002843029753,
+          "rift_stamina_per_100k": 361883.6397564013,
+          "saint_stamina_per_100k": 2138116.360243599,
+          "cycles_per_100k": 170.29818341477707,
+          "native_heirloom_per_100k": 0.4603159257751575,
+          "converted_heirloom_per_100k": 0.5436724050255484,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 5.7956814497917116e-05,
+            "interval95": [
+              1.7471419167267766e-05,
+              9.844220982856646e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_10_17": {
+          "absolute_cost": {
+            "mean": 10344.29940404826,
+            "interval95": [
+              9129.45207908844,
+              11628.66949583999
+            ],
+            "relative_half_width": 0.12080167632104094,
+            "cluster_count": 25,
+            "ess": 22.711223462129258,
+            "max_cluster_share": 0.08284156550325926,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 9.667160248751578,
+          "rift_stamina_per_100k": 360548.88010108017,
+          "saint_stamina_per_100k": 2139451.11989892,
+          "cycles_per_100k": 169.67006122403774,
+          "native_heirloom_per_100k": 0.4657621143074804,
+          "converted_heirloom_per_100k": 0.5416671416971814,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 4.5155949506727255e-05,
+            "interval95": [
+              3.963195252734111e-05,
+              5.06799464861134e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_12_17": {
+          "absolute_cost": {
+            "mean": 10340.473016682276,
+            "interval95": [
+              9126.233171397083,
+              11624.446923895523
+            ],
+            "relative_half_width": 0.12079784689095331,
+            "cluster_count": 25,
+            "ess": 22.711223462129258,
+            "max_cluster_share": 0.08284156550325926,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 9.670737483543556,
+          "rift_stamina_per_100k": 360682.29756442184,
+          "saint_stamina_per_100k": 2139317.702435578,
+          "cycles_per_100k": 169.7328459126691,
+          "native_heirloom_per_100k": 0.4659344648630947,
+          "converted_heirloom_per_100k": 0.5418675801398151,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 4.870921898607012e-05,
+            "interval95": [
+              4.28174477793186e-05,
+              5.460099019282164e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        }
+      }
+    },
+    "reforged_inventory_all": {
+      "rules": {
+        "current_formal": {
+          "absolute_cost": {
+            "mean": 7849.347157469636,
+            "interval95": [
+              6707.58839248757,
+              9118.877597601979
+            ],
+            "relative_half_width": 0.1535980736193943,
+            "cluster_count": 25,
+            "ess": 21.286077198591123,
+            "max_cluster_share": 0.10325834739535339,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 12.739913013636745,
+          "rift_stamina_per_100k": 357333.69593976554,
+          "saint_stamina_per_100k": 2142666.304060234,
+          "cycles_per_100k": 168.15703338341908,
+          "native_heirloom_per_100k": 0.4962260311253387,
+          "converted_heirloom_per_100k": 0.6755608707045238,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "global_12_17": {
+          "absolute_cost": {
+            "mean": 7798.202665053858,
+            "interval95": [
+              6674.525547806052,
+              9050.221066102587
+            ],
+            "relative_half_width": 0.1523232737296478,
+            "cluster_count": 25,
+            "ess": 21.335437976503872,
+            "max_cluster_share": 0.10238610065699572,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 12.82346770084993,
+          "rift_stamina_per_100k": 360027.1205956401,
+          "saint_stamina_per_100k": 2139972.87940436,
+          "cycles_per_100k": 169.42452733912475,
+          "native_heirloom_per_100k": 0.4960684938001867,
+          "converted_heirloom_per_100k": 0.6806529522136977,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 8.265747603942032e-05,
+            "interval95": [
+              6.56737963155446e-05,
+              9.964115576329604e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_10_17": {
+          "absolute_cost": {
+            "mean": 7816.267101784674,
+            "interval95": [
+              6679.5775906133595,
+              9079.971993057594
+            ],
+            "relative_half_width": 0.15355120105198022,
+            "cluster_count": 25,
+            "ess": 21.286077198591123,
+            "max_cluster_share": 0.10325834739535339,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 12.793830955081766,
+          "rift_stamina_per_100k": 358846.0058961514,
+          "saint_stamina_per_100k": 2141153.9941038485,
+          "cycles_per_100k": 168.86870865701243,
+          "native_heirloom_per_100k": 0.49832616211218866,
+          "converted_heirloom_per_100k": 0.6784199837479336,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 5.3362826375282326e-05,
+            "interval95": [
+              4.544955739205767e-05,
+              6.127609535850698e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_12_17": {
+          "absolute_cost": {
+            "mean": 7813.704900101977,
+            "interval95": [
+              6677.577568759682,
+              9076.937961697842
+            ],
+            "relative_half_width": 0.1535353858133832,
+            "cluster_count": 25,
+            "ess": 21.286077198591123,
+            "max_cluster_share": 0.10325834739535339,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 12.798026196087198,
+          "rift_stamina_per_100k": 358963.6755358283,
+          "saint_stamina_per_100k": 2141036.3244641717,
+          "cycles_per_100k": 168.92408260509566,
+          "native_heirloom_per_100k": 0.49848956886320117,
+          "converted_heirloom_per_100k": 0.6786424452877738,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 5.738117648400175e-05,
+            "interval95": [
+              4.916072749569567e-05,
+              6.560162547230783e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        }
+      }
+    },
+    "reforged_inventory_epic": {
+      "rules": {
+        "current_formal": {
+          "absolute_cost": {
+            "mean": 7793.799083744156,
+            "interval95": [
+              6681.2661215519065,
+              9043.346891424526
+            ],
+            "relative_half_width": 0.15153590338242792,
+            "cluster_count": 25,
+            "ess": 21.35858094102184,
+            "max_cluster_share": 0.10222136466846263,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 12.830713099671003,
+          "rift_stamina_per_100k": 357325.5175239594,
+          "saint_stamina_per_100k": 2142674.4824760407,
+          "cycles_per_100k": 168.15318471715736,
+          "native_heirloom_per_100k": 0.5037906656254276,
+          "converted_heirloom_per_100k": 0.6846859113545248,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "global_12_17": {
+          "absolute_cost": {
+            "mean": 7744.912268911084,
+            "interval95": [
+              6656.312374354503,
+              8974.868116512745
+            ],
+            "relative_half_width": 0.14968250521475732,
+            "cluster_count": 25,
+            "ess": 21.41883687274212,
+            "max_cluster_share": 0.10114433864988755,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 12.911702099120065,
+          "rift_stamina_per_100k": 360012.37273287046,
+          "saint_stamina_per_100k": 2139987.6272671297,
+          "cycles_per_100k": 169.41758716840963,
+          "native_heirloom_per_100k": 0.5027383408825087,
+          "converted_heirloom_per_100k": 0.6898343035548316,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 8.020079312298197e-05,
+            "interval95": [
+              5.8115793480396414e-05,
+              0.00010228579276556753
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_10_17": {
+          "absolute_cost": {
+            "mean": 7761.013762465482,
+            "interval95": [
+              6653.781888603619,
+              9004.767393970744
+            ],
+            "relative_half_width": 0.1514612380110169,
+            "cluster_count": 25,
+            "ess": 21.35858094102184,
+            "max_cluster_share": 0.10222136466846263,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 12.884914659426205,
+          "rift_stamina_per_100k": 358834.98938570876,
+          "saint_stamina_per_100k": 2141165.0106142913,
+          "cycles_per_100k": 168.86352441680413,
+          "native_heirloom_per_100k": 0.5059188590979875,
+          "converted_heirloom_per_100k": 0.6875782715880941,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 5.3640190024053616e-05,
+            "interval95": [
+              4.5805590678932056e-05,
+              6.147478936917517e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_12_17": {
+          "absolute_cost": {
+            "mean": 7758.460223371633,
+            "interval95": [
+              6651.66550915066,
+              9001.790907416489
+            ],
+            "relative_half_width": 0.15145565812055703,
+            "cluster_count": 25,
+            "ess": 21.35858094102184,
+            "max_cluster_share": 0.10222136466846263,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 12.889155466539533,
+          "rift_stamina_per_100k": 358953.0926107375,
+          "saint_stamina_per_100k": 2141046.9073892627,
+          "cycles_per_100k": 168.91910240505294,
+          "native_heirloom_per_100k": 0.5060853719817078,
+          "converted_heirloom_per_100k": 0.6878045739658898,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 5.769271073178168e-05,
+            "interval95": [
+              4.957307640747684e-05,
+              6.581234505608651e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        }
+      }
+    },
+    "reforged_inventory_heroic": {
+      "rules": {
+        "current_formal": {
+          "absolute_cost": {
+            "mean": 8087.682932648623,
+            "interval95": [
+              6834.786930738131,
+              9512.267221197477
+            ],
+            "relative_half_width": 0.16552826766061798,
+            "cluster_count": 25,
+            "ess": 20.87813567404219,
+            "max_cluster_share": 0.10770764973873781,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 12.364480758304301,
+          "rift_stamina_per_100k": 357367.51529358584,
+          "saint_stamina_per_100k": 2142632.4847064144,
+          "cycles_per_100k": 168.17294837345216,
+          "native_heirloom_per_100k": 0.46494843568058636,
+          "converted_heirloom_per_100k": 0.6378314439305595,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "global_12_17": {
+          "absolute_cost": {
+            "mean": 8026.577626805831,
+            "interval95": [
+              6784.462496207381,
+              9439.059687180537
+            ],
+            "relative_half_width": 0.16536295507239432,
+            "cluster_count": 25,
+            "ess": 20.87813567404219,
+            "max_cluster_share": 0.10770764973873781,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 12.458609964231407,
+          "rift_stamina_per_100k": 360088.1083452702,
+          "saint_stamina_per_100k": 2139911.89165473,
+          "cycles_per_100k": 169.45322745659774,
+          "native_heirloom_per_100k": 0.46848802847895515,
+          "converted_heirloom_per_100k": 0.6426871728937187,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 9.282527648381431e-05,
+            "interval95": [
+              7.838153985570037e-05,
+              0.00010726901311192826
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_10_17": {
+          "absolute_cost": {
+            "mean": 8053.338283426921,
+            "interval95": [
+              6806.515116913204,
+              9471.468395941816
+            ],
+            "relative_half_width": 0.16545643466342752,
+            "cluster_count": 25,
+            "ess": 20.87813567404219,
+            "max_cluster_share": 0.10770764973873781,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 12.417210910634589,
+          "rift_stamina_per_100k": 358891.5617851193,
+          "saint_stamina_per_100k": 2141108.4382148804,
+          "cycles_per_100k": 168.89014672240907,
+          "native_heirloom_per_100k": 0.4669312768785639,
+          "converted_heirloom_per_100k": 0.6405515702227143,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 5.2186677142785316e-05,
+            "interval95": [
+              4.381449658864436e-05,
+              6.055885769692627e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_12_17": {
+          "absolute_cost": {
+            "mean": 8050.738914734788,
+            "interval95": [
+              6804.3841718011545,
+              9468.436532526339
+            ],
+            "relative_half_width": 0.16545390360686818,
+            "cluster_count": 25,
+            "ess": 20.87813567404219,
+            "max_cluster_share": 0.10770764973873781,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 12.421220096577217,
+          "rift_stamina_per_100k": 359007.4382903017,
+          "saint_stamina_per_100k": 2140992.5617096983,
+          "cycles_per_100k": 168.9446768424949,
+          "native_heirloom_per_100k": 0.46708203652377794,
+          "converted_heirloom_per_100k": 0.6407583872260935,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 5.606242021440371e-05,
+            "interval95": [
+              4.727209897895924e-05,
+              6.485274144984818e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        }
+      }
+    },
+    "top4_equal": {
+      "rules": {
+        "current_formal": {
+          "absolute_cost": {
+            "mean": 6678.19063234912,
+            "interval95": [
+              5784.362053265822,
+              7749.2533801302125
+            ],
+            "relative_half_width": 0.14711255151556074,
+            "cluster_count": 25,
+            "ess": 21.71437154116072,
+            "max_cluster_share": 0.08183502107981028,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 14.974115820473965,
+          "rift_stamina_per_100k": 355736.3460543055,
+          "saint_stamina_per_100k": 2144263.6539456947,
+          "cycles_per_100k": 167.40533931967317,
+          "native_heirloom_per_100k": 0.6301552497215253,
+          "converted_heirloom_per_100k": 0.8077307622174231,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "global_12_17": {
+          "absolute_cost": {
+            "mean": 6632.934161561225,
+            "interval95": [
+              5745.638622801498,
+              7696.58227517728
+            ],
+            "relative_half_width": 0.1470649040723012,
+            "cluster_count": 25,
+            "ess": 21.71437154116072,
+            "max_cluster_share": 0.08183502107981028,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 15.076284124681035,
+          "rift_stamina_per_100k": 358163.53305198404,
+          "saint_stamina_per_100k": 2141836.466948016,
+          "cycles_per_100k": 168.54754496563956,
+          "native_heirloom_per_100k": 0.634454795285558,
+          "converted_heirloom_per_100k": 0.813241904459211,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 9.986695344821793e-05,
+            "interval95": [
+              8.6713904617811e-05,
+              0.00011302000227862485
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_10_17": {
+          "absolute_cost": {
+            "mean": 6652.587518052425,
+            "interval95": [
+              5762.261907237354,
+              7719.0924059128065
+            ],
+            "relative_half_width": 0.14707288655469833,
+            "cluster_count": 25,
+            "ess": 21.71437154116072,
+            "max_cluster_share": 0.08183502107981028,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 15.031745126034124,
+          "rift_stamina_per_100k": 357105.43113628327,
+          "saint_stamina_per_100k": 2142894.568863717,
+          "cycles_per_100k": 168.0496146523686,
+          "native_heirloom_per_100k": 0.6325804619926155,
+          "converted_heirloom_per_100k": 0.8108393906976784,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 5.656306367610133e-05,
+            "interval95": [
+              4.907122991064775e-05,
+              6.405489744155492e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        },
+        "output_8_13_tank_12_17": {
+          "absolute_cost": {
+            "mean": 6650.4959232757765,
+            "interval95": [
+              5760.372265738671,
+              7716.477516443129
+            ],
+            "relative_half_width": 0.14706461542652574,
+            "cluster_count": 25,
+            "ess": 21.71437154116072,
+            "max_cluster_share": 0.08183502107981028,
+            "method": "clustered_positive_bootstrap",
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 15.036472641087474,
+          "rift_stamina_per_100k": 357217.7415358526,
+          "saint_stamina_per_100k": 2142782.2584641473,
+          "cycles_per_100k": 168.1024666051071,
+          "native_heirloom_per_100k": 0.6327794098613727,
+          "converted_heirloom_per_100k": 0.8110944013696418,
+          "speed22_per_100k": 0.0,
+          "source_cluster_counts": {
+            "r50": 5,
+            "r400": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 6.111869748523486e-05,
+            "interval95": [
+              5.319712634149873e-05,
+              6.904026862897099e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_t95"
+          }
+        }
+      }
+    }
+  },
+  "r800_required": true,
+  "freeze": "not_frozen_no_holdout"
+}

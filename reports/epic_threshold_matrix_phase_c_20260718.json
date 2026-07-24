@@ -1,0 +1,4986 @@
+{
+  "study": "epic_threshold_matrix_phase_c_fixed_combinations_20260718",
+  "scope": "offline_only_no_holdout_no_production_change",
+  "phase_b_base_resume": "C:\\Users\\orangine\\Documents\\第七史诗强化装备脚本\\reports\\epic_threshold_matrix_phase_b_formal_r10_resume_20260718",
+  "runs": 10,
+  "rules": [
+    {
+      "key": "current_formal",
+      "default": null,
+      "overrides": {},
+      "release_class": "reference"
+    },
+    {
+      "key": "global_10_14",
+      "default": [
+        10,
+        14
+      ],
+      "overrides": {},
+      "release_class": "conservative_history"
+    },
+    {
+      "key": "global_12_17",
+      "default": [
+        12,
+        17
+      ],
+      "overrides": {},
+      "release_class": "balanced_reference"
+    },
+    {
+      "key": "global_14_18",
+      "default": [
+        14,
+        18
+      ],
+      "overrides": {},
+      "release_class": "aggressive_reference"
+    },
+    {
+      "key": "balanced_output_m2",
+      "default": [
+        12,
+        17
+      ],
+      "overrides": {
+        "pure_output": [
+          10,
+          15
+        ]
+      },
+      "release_class": "user_review"
+    },
+    {
+      "key": "balanced_output_m4",
+      "default": [
+        12,
+        17
+      ],
+      "overrides": {
+        "pure_output": [
+          8,
+          13
+        ]
+      },
+      "release_class": "user_review"
+    },
+    {
+      "key": "balanced_high_priority_m2",
+      "default": [
+        12,
+        17
+      ],
+      "overrides": {
+        "pure_output": [
+          10,
+          15
+        ],
+        "pure_tank": [
+          10,
+          15
+        ]
+      },
+      "release_class": "user_review"
+    }
+  ],
+  "node_metrics": {
+    "current_formal": {
+      "plus0": {
+        "state_weight": 157.0,
+        "stop_rate": 0.0,
+        "clear_positive_false_stop_count": 0,
+        "clear_positive_false_stop_probability_mass": 0,
+        "false_stop_conditional_rate": 0.0,
+        "by_system_group_false_stop_probability_mass": {
+          "pure_output": 0,
+          "pure_tank": 0,
+          "bruiser": 0,
+          "dual": 0,
+          "unknown": 0
+        },
+        "utility_loss": 0,
+        "total_regret": 0.364021,
+        "saved_next_node_stamina": 0
+      },
+      "plus3": {
+        "state_weight": 157.0,
+        "stop_rate": 0.0,
+        "clear_positive_false_stop_count": 0,
+        "clear_positive_false_stop_probability_mass": 0,
+        "false_stop_conditional_rate": 0.0,
+        "by_system_group_false_stop_probability_mass": {
+          "pure_output": 0,
+          "pure_tank": 0,
+          "bruiser": 0,
+          "dual": 0,
+          "unknown": 0
+        },
+        "utility_loss": 0,
+        "total_regret": 1.7861845755836705,
+        "saved_next_node_stamina": 0
+      },
+      "release_class": "reference"
+    },
+    "global_10_14": {
+      "plus0": {
+        "state_weight": 157.0,
+        "stop_rate": 0.03821656050955414,
+        "clear_positive_false_stop_count": 0,
+        "clear_positive_false_stop_probability_mass": 0,
+        "false_stop_conditional_rate": 0.0,
+        "by_system_group_false_stop_probability_mass": {
+          "pure_output": 0,
+          "pure_tank": 0,
+          "bruiser": 0,
+          "dual": 0,
+          "unknown": 0
+        },
+        "utility_loss": 0,
+        "total_regret": 0.34478400000000003,
+        "saved_next_node_stamina": 16.972181551976576
+      },
+      "plus3": {
+        "state_weight": 151.0,
+        "stop_rate": 0.1431291390728477,
+        "clear_positive_false_stop_count": 16,
+        "clear_positive_false_stop_probability_mass": 0.8,
+        "false_stop_conditional_rate": 0.005298013245033113,
+        "by_system_group_false_stop_probability_mass": {
+          "pure_output": 0.7000000000000001,
+          "pure_tank": 0.1,
+          "bruiser": 0,
+          "dual": 0,
+          "unknown": 0
+        },
+        "utility_loss": 0.00488085,
+        "total_regret": 1.4009403505836706,
+        "saved_next_node_stamina": 256.5797045904746
+      },
+      "release_class": "conservative_history"
+    },
+    "global_12_17": {
+      "plus0": {
+        "state_weight": 157.0,
+        "stop_rate": 0.16560509554140126,
+        "clear_positive_false_stop_count": 2,
+        "clear_positive_false_stop_probability_mass": 2.0,
+        "false_stop_conditional_rate": 0.012738853503184714,
+        "by_system_group_false_stop_probability_mass": {
+          "pure_output": 0,
+          "pure_tank": 2.0,
+          "bruiser": 0,
+          "dual": 0,
+          "unknown": 0
+        },
+        "utility_loss": 0.003719,
+        "total_regret": 0.289066,
+        "saved_next_node_stamina": 73.54612005856517
+      },
+      "plus3": {
+        "state_weight": 131.0,
+        "stop_rate": 0.1700381679389313,
+        "clear_positive_false_stop_count": 34,
+        "clear_positive_false_stop_probability_mass": 1.7000000000000002,
+        "false_stop_conditional_rate": 0.012977099236641223,
+        "by_system_group_false_stop_probability_mass": {
+          "pure_output": 1.7000000000000002,
+          "pure_tank": 0,
+          "bruiser": 0,
+          "dual": 0,
+          "unknown": 0
+        },
+        "utility_loss": 0.041053150000000004,
+        "total_regret": 1.1463291714170039,
+        "saved_next_node_stamina": 264.29970717423134
+      },
+      "release_class": "balanced_reference"
+    },
+    "global_14_18": {
+      "plus0": {
+        "state_weight": 157.0,
+        "stop_rate": 0.35668789808917195,
+        "clear_positive_false_stop_count": 7,
+        "clear_positive_false_stop_probability_mass": 7.0,
+        "false_stop_conditional_rate": 0.044585987261146494,
+        "by_system_group_false_stop_probability_mass": {
+          "pure_output": 3.0,
+          "pure_tank": 4.0,
+          "bruiser": 0,
+          "dual": 0,
+          "unknown": 0
+        },
+        "utility_loss": 0.15306,
+        "total_regret": 0.353906,
+        "saved_next_node_stamina": 156.9311859443631
+      },
+      "plus3": {
+        "state_weight": 101.0,
+        "stop_rate": 0.08502475247524753,
+        "clear_positive_false_stop_count": 20,
+        "clear_positive_false_stop_probability_mass": 1.0,
+        "false_stop_conditional_rate": 0.009900990099009901,
+        "by_system_group_false_stop_probability_mass": {
+          "pure_output": 1.0,
+          "pure_tank": 0,
+          "bruiser": 0,
+          "dual": 0,
+          "unknown": 0
+        },
+        "utility_loss": 0.03759595,
+        "total_regret": 0.9215516839170039,
+        "saved_next_node_stamina": 102.15289380759626
+      },
+      "release_class": "aggressive_reference"
+    },
+    "balanced_output_m2": {
+      "plus0": {
+        "state_weight": 157.0,
+        "stop_rate": 0.11464968152866242,
+        "clear_positive_false_stop_count": 2,
+        "clear_positive_false_stop_probability_mass": 2.0,
+        "false_stop_conditional_rate": 0.012738853503184714,
+        "by_system_group_false_stop_probability_mass": {
+          "pure_output": 0,
+          "pure_tank": 2.0,
+          "bruiser": 0,
+          "dual": 0,
+          "unknown": 0
+        },
+        "utility_loss": 0.003719,
+        "total_regret": 0.318305,
+        "saved_next_node_stamina": 50.178623718887266
+      },
+      "plus3": {
+        "state_weight": 139.0,
+        "stop_rate": 0.17068257045247293,
+        "clear_positive_false_stop_count": 34,
+        "clear_positive_false_stop_probability_mass": 1.7000000000000002,
+        "false_stop_conditional_rate": 0.012230215827338131,
+        "by_system_group_false_stop_probability_mass": {
+          "pure_output": 1.7000000000000002,
+          "pure_tank": 0,
+          "bruiser": 0,
+          "dual": 0,
+          "unknown": 0
+        },
+        "utility_loss": 0.041053150000000004,
+        "total_regret": 1.2442557071851879,
+        "saved_next_node_stamina": 286.01990245930233
+      },
+      "release_class": "user_review"
+    },
+    "balanced_output_m4": {
+      "plus0": {
+        "state_weight": 157.0,
+        "stop_rate": 0.08917197452229299,
+        "clear_positive_false_stop_count": 2,
+        "clear_positive_false_stop_probability_mass": 2.0,
+        "false_stop_conditional_rate": 0.012738853503184714,
+        "by_system_group_false_stop_probability_mass": {
+          "pure_output": 0,
+          "pure_tank": 2.0,
+          "bruiser": 0,
+          "dual": 0,
+          "unknown": 0
+        },
+        "utility_loss": 0.003719,
+        "total_regret": 0.330463,
+        "saved_next_node_stamina": 38.86383601756955
+      },
+      "plus3": {
+        "state_weight": 143.0,
+        "stop_rate": 0.12014730989053746,
+        "clear_positive_false_stop_count": 4,
+        "clear_positive_false_stop_probability_mass": 0.2,
+        "false_stop_conditional_rate": 0.0013986013986013986,
+        "by_system_group_false_stop_probability_mass": {
+          "pure_output": 0.2,
+          "pure_tank": 0,
+          "bruiser": 0,
+          "dual": 0,
+          "unknown": 0
+        },
+        "utility_loss": 0.0016012,
+        "total_regret": 1.3352485064814865,
+        "saved_next_node_stamina": 212.0968078931303
+      },
+      "release_class": "user_review"
+    },
+    "balanced_high_priority_m2": {
+      "plus0": {
+        "state_weight": 157.0,
+        "stop_rate": 0.044585987261146494,
+        "clear_positive_false_stop_count": 0,
+        "clear_positive_false_stop_probability_mass": 0,
+        "false_stop_conditional_rate": 0.0,
+        "by_system_group_false_stop_probability_mass": {
+          "pure_output": 0,
+          "pure_tank": 0,
+          "bruiser": 0,
+          "dual": 0,
+          "unknown": 0
+        },
+        "utility_loss": 0,
+        "total_regret": 0.340783,
+        "saved_next_node_stamina": 20.169838945827234
+      },
+      "plus3": {
+        "state_weight": 150.0,
+        "stop_rate": 0.1867523540101966,
+        "clear_positive_false_stop_count": 36,
+        "clear_positive_false_stop_probability_mass": 1.8,
+        "false_stop_conditional_rate": 0.012,
+        "by_system_group_false_stop_probability_mass": {
+          "pure_output": 1.7000000000000002,
+          "pure_tank": 0.1,
+          "bruiser": 0,
+          "dual": 0,
+          "unknown": 0
+        },
+        "utility_loss": 0.0424768,
+        "total_regret": 1.3395419282578185,
+        "saved_next_node_stamina": 333.1717878299143
+      },
+      "release_class": "user_review"
+    }
+  },
+  "per_seed": {
+    "20260712": {
+      "yield_minus_20pct": {
+        "current_formal": {
+          "rate": 0.07663716103981405,
+          "per_100k": {
+            "value_sum": 76.63716103981406,
+            "legacy_stamina_sum": 72879.06665287768,
+            "powder_units": 159091.0100705921,
+            "lower_stone_units": 10606.067338039475,
+            "material_gold": 407272985.7807155,
+            "conversion_gold": 1730871.9116994638,
+            "sell_gold": 22858614.82128745,
+            "sell_exp_adjusted": 21581128.214695916,
+            "material_exp_adjusted": 32255068.148219198,
+            "lower_stone_adjusted_exp": 17511235.341980074,
+            "formal_terminal_count": 19.23887087023051,
+            "value_sum_curve_baseline": 76.63716103981406,
+            "value_sum_tier2_low": 76.63716103981406,
+            "value_sum_tier2_mid": 76.63716103981406,
+            "value_sum_tier2_high": 76.63716103981406,
+            "native_heirloom": 0.5454227486693537,
+            "converted_heirloom": 1.019573602910656,
+            "speed22": 0.0,
+            "output60": 0.017517128457514474
+          },
+          "rift_stamina": 28051.92951186368,
+          "saint_stamina": 71948.07048813632,
+          "cycles": 330.0227001395727
+        },
+        "global_10_14": {
+          "rate": 0.07720074099822997,
+          "per_100k": {
+            "value_sum": 77.20074099822997,
+            "legacy_stamina_sum": 72715.30976918971,
+            "powder_units": 158889.49774519386,
+            "lower_stone_units": 10592.633183012924,
+            "material_gold": 406757114.2276961,
+            "conversion_gold": 1743600.5241217336,
+            "sell_gold": 22702416.95674084,
+            "sell_exp_adjusted": 21563950.290910173,
+            "material_exp_adjusted": 32209616.201718,
+            "lower_stone_adjusted_exp": 17486314.85353878,
+            "formal_terminal_count": 19.380351085545126,
+            "value_sum_curve_baseline": 77.20074099822997,
+            "value_sum_tier2_low": 77.20074099822997,
+            "value_sum_tier2_mid": 77.20074099822997,
+            "value_sum_tier2_high": 77.20074099822997,
+            "native_heirloom": 0.5494337183587773,
+            "converted_heirloom": 1.0270714178209948,
+            "speed22": 0.0,
+            "output60": 0.017645947197583976
+          },
+          "rift_stamina": 28258.219842210976,
+          "saint_stamina": 71741.78015778902,
+          "cycles": 332.4496452024821
+        },
+        "global_12_17": {
+          "rate": 0.07771118849863203,
+          "per_100k": {
+            "value_sum": 77.71118849863203,
+            "legacy_stamina_sum": 72654.90018571453,
+            "powder_units": 158609.4826432507,
+            "lower_stone_units": 10573.965509550046,
+            "material_gold": 406040275.5667216,
+            "conversion_gold": 1755129.1249839722,
+            "sell_gold": 21764386.037660252,
+            "sell_exp_adjusted": 21521448.52831695,
+            "material_exp_adjusted": 32141452.830417704,
+            "lower_stone_adjusted_exp": 17449102.447484516,
+            "formal_terminal_count": 19.5084930132082,
+            "value_sum_curve_baseline": 77.71118849863203,
+            "value_sum_tier2_low": 77.71118849863203,
+            "value_sum_tier2_mid": 77.71118849863203,
+            "value_sum_tier2_high": 77.71118849863203,
+            "native_heirloom": 0.5530665470667203,
+            "converted_heirloom": 1.0338623634930464,
+            "speed22": 0.0,
+            "output60": 0.01776262133209053
+          },
+          "rift_stamina": 28445.061801209777,
+          "saint_stamina": 71554.9381987902,
+          "cycles": 334.6477858965856
+        },
+        "global_14_18": {
+          "rate": 0.07818423449311115,
+          "per_100k": {
+            "value_sum": 78.18423449311116,
+            "legacy_stamina_sum": 72666.75398197415,
+            "powder_units": 158243.8503891006,
+            "lower_stone_units": 10549.59002594004,
+            "material_gold": 405104256.9960974,
+            "conversion_gold": 1765813.0022789636,
+            "sell_gold": 20254727.996173464,
+            "sell_exp_adjusted": 21461438.447134726,
+            "material_exp_adjusted": 32057666.79272424,
+            "lower_stone_adjusted_exp": 17403435.296771098,
+            "formal_terminal_count": 19.627245726382633,
+            "value_sum_curve_baseline": 78.18423449311116,
+            "value_sum_tier2_low": 78.18423449311116,
+            "value_sum_tier2_mid": 78.18423449311116,
+            "value_sum_tier2_high": 78.18423449311116,
+            "native_heirloom": 0.5564331911732497,
+            "converted_heirloom": 1.0401557230380716,
+            "speed22": 0.0,
+            "output60": 0.01787074652017388
+          },
+          "rift_stamina": 28618.21347740645,
+          "saint_stamina": 71381.78652259355,
+          "cycles": 336.6848644400759
+        },
+        "balanced_output_m2": {
+          "rate": 0.07754058569476618,
+          "per_100k": {
+            "value_sum": 77.54058569476618,
+            "legacy_stamina_sum": 72665.46880175006,
+            "powder_units": 158713.92954395682,
+            "lower_stone_units": 10580.928636263789,
+            "material_gold": 406307659.6325293,
+            "conversion_gold": 1751276.0125087441,
+            "sell_gold": 22150905.457867872,
+            "sell_exp_adjusted": 21538601.767245516,
+            "material_exp_adjusted": 32167188.364513528,
+            "lower_stone_adjusted_exp": 17463141.642028652,
+            "formal_terminal_count": 19.465665156994042,
+            "value_sum_curve_baseline": 77.54058569476618,
+            "value_sum_tier2_low": 77.54058569476618,
+            "value_sum_tier2_mid": 77.54058569476618,
+            "value_sum_tier2_high": 77.54058569476618,
+            "native_heirloom": 0.5518523756523217,
+            "converted_heirloom": 1.0315926797907262,
+            "speed22": 0.0,
+            "output60": 0.017723626265076273
+          },
+          "rift_stamina": 28382.615100893145,
+          "saint_stamina": 71617.38489910687,
+          "cycles": 333.913118834037
+        },
+        "balanced_output_m4": {
+          "rate": 0.07731944411512776,
+          "per_100k": {
+            "value_sum": 77.31944411512775,
+            "legacy_stamina_sum": 72719.42445672148,
+            "powder_units": 158818.39505376562,
+            "lower_stone_units": 10587.893003584375,
+            "material_gold": 406575091.3376398,
+            "conversion_gold": 1746281.4675189299,
+            "sell_gold": 22304262.836211212,
+            "sell_exp_adjusted": 21548422.589749645,
+            "material_exp_adjusted": 32188088.752789684,
+            "lower_stone_adjusted_exp": 17474582.663073607,
+            "formal_terminal_count": 19.41015012698801,
+            "value_sum_curve_baseline": 77.31944411512775,
+            "value_sum_tier2_low": 77.31944411512775,
+            "value_sum_tier2_mid": 77.31944411512775,
+            "value_sum_tier2_high": 77.31944411512775,
+            "native_heirloom": 0.5502785223600681,
+            "converted_heirloom": 1.0286506329554035,
+            "speed22": 0.0,
+            "output60": 0.01767307943628898
+          },
+          "rift_stamina": 28301.669409273167,
+          "saint_stamina": 71698.33059072682,
+          "cycles": 332.9608165796843
+        },
+        "balanced_high_priority_m2": {
+          "rate": 0.07735409930971418,
+          "per_100k": {
+            "value_sum": 77.35409930971419,
+            "legacy_stamina_sum": 72667.72769168875,
+            "powder_units": 158848.45250302748,
+            "lower_stone_units": 10589.896833535166,
+            "material_gold": 406652038.4077501,
+            "conversion_gold": 1747064.1648695397,
+            "sell_gold": 22693358.12057113,
+            "sell_exp_adjusted": 21560143.58304619,
+            "material_exp_adjusted": 32198101.512633648,
+            "lower_stone_adjusted_exp": 17479996.426374003,
+            "formal_terminal_count": 19.418849911851968,
+            "value_sum_curve_baseline": 77.35409930971419,
+            "value_sum_tier2_low": 77.35409930971419,
+            "value_sum_tier2_mid": 77.35409930971419,
+            "value_sum_tier2_high": 77.35409930971419,
+            "native_heirloom": 0.5505251616044052,
+            "converted_heirloom": 1.0291116824139774,
+            "speed22": 0.0,
+            "output60": 0.017681000652146322
+          },
+          "rift_stamina": 28314.354444347122,
+          "saint_stamina": 71685.64555565287,
+          "cycles": 333.1100522864367
+        }
+      },
+      "baseline": {
+        "current_formal": {
+          "rate": 0.07664443341574016,
+          "per_100k": {
+            "value_sum": 76.64443341574017,
+            "legacy_stamina_sum": 76752.72197350654,
+            "powder_units": 167404.53171142587,
+            "lower_stone_units": 11160.302114095059,
+            "material_gold": 428555601.1812499,
+            "conversion_gold": 1764185.776450095,
+            "sell_gold": 22723268.42036479,
+            "sell_exp_adjusted": 22708236.19483104,
+            "material_exp_adjusted": 33925259.99691837,
+            "lower_stone_adjusted_exp": 18417753.67450864,
+            "formal_terminal_count": 19.298971934386984,
+            "value_sum_curve_baseline": 76.64443341574017,
+            "value_sum_tier2_low": 76.64443341574017,
+            "value_sum_tier2_mid": 76.64443341574017,
+            "value_sum_tier2_high": 76.64443341574017,
+            "native_heirloom": 0.4682677224124573,
+            "converted_heirloom": 0.8753456104124946,
+            "speed22": 0.0,
+            "output60": 0.015039170746028768
+          },
+          "rift_stamina": 24083.72803269047,
+          "saint_stamina": 75916.27196730954,
+          "cycles": 283.337976855182
+        },
+        "global_10_14": {
+          "rate": 0.07712786030131238,
+          "per_100k": {
+            "value_sum": 77.12786030131238,
+            "legacy_stamina_sum": 76636.73462945956,
+            "powder_units": 167284.19808838243,
+            "lower_stone_units": 11152.279872558829,
+            "material_gold": 428247547.10625887,
+            "conversion_gold": 1775313.196896326,
+            "sell_gold": 22588459.91949769,
+            "sell_exp_adjusted": 22700620.35283885,
+            "material_exp_adjusted": 33896824.20679023,
+            "lower_stone_adjusted_exp": 18402104.636931684,
+            "formal_terminal_count": 19.420698216142892,
+            "value_sum_curve_baseline": 77.12786030131238,
+            "value_sum_tier2_low": 77.12786030131238,
+            "value_sum_tier2_mid": 77.12786030131238,
+            "value_sum_tier2_high": 77.12786030131238,
+            "native_heirloom": 0.4712212729388464,
+            "converted_heirloom": 0.8808667628743526,
+            "speed22": 0.0,
+            "output60": 0.015134028769649418
+          },
+          "rift_stamina": 24235.633671716576,
+          "saint_stamina": 75764.36632828343,
+          "cycles": 285.125102020195
+        },
+        "global_12_17": {
+          "rate": 0.07756489083394737,
+          "per_100k": {
+            "value_sum": 77.56489083394736,
+            "legacy_stamina_sum": 76607.25901637725,
+            "powder_units": 167091.98005177718,
+            "lower_stone_units": 11139.465336785146,
+            "material_gold": 427755468.9325495,
+            "conversion_gold": 1785372.675650209,
+            "sell_gold": 21784089.28408799,
+            "sell_exp_adjusted": 22670663.27767652,
+            "material_exp_adjusted": 33848008.32444288,
+            "lower_stone_adjusted_exp": 18375424.43847869,
+            "formal_terminal_count": 19.530741954584315,
+            "value_sum_curve_baseline": 77.56489083394736,
+            "value_sum_tier2_low": 77.56489083394736,
+            "value_sum_tier2_mid": 77.56489083394736,
+            "value_sum_tier2_high": 77.56489083394736,
+            "native_heirloom": 0.4738913597673525,
+            "converted_heirloom": 0.8858580289234236,
+            "speed22": 0.0,
+            "output60": 0.015219782900883891
+          },
+          "rift_stamina": 24372.960337475462,
+          "saint_stamina": 75627.03966252453,
+          "cycles": 286.7407098526525
+        },
+        "global_14_18": {
+          "rate": 0.07796916285660552,
+          "per_100k": {
+            "value_sum": 77.96916285660552,
+            "legacy_stamina_sum": 76638.06379223669,
+            "powder_units": 166823.29839344046,
+            "lower_stone_units": 11121.553226229364,
+            "material_gold": 427067643.88720745,
+            "conversion_gold": 1794678.1257710492,
+            "sell_gold": 20491793.88747028,
+            "sell_exp_adjusted": 22625295.382747326,
+            "material_exp_adjusted": 33785199.0833695,
+            "lower_stone_adjusted_exp": 18341170.580684707,
+            "formal_terminal_count": 19.632537141415657,
+            "value_sum_curve_baseline": 77.96916285660552,
+            "value_sum_tier2_low": 77.96916285660552,
+            "value_sum_tier2_mid": 77.96916285660552,
+            "value_sum_tier2_high": 77.96916285660552,
+            "native_heirloom": 0.4763613048220489,
+            "converted_heirloom": 0.8904751645022968,
+            "speed22": 0.0,
+            "output60": 0.015299109157281656
+          },
+          "rift_stamina": 24499.993404470846,
+          "saint_stamina": 75500.00659552916,
+          "cycles": 288.2352165231864
+        },
+        "balanced_output_m2": {
+          "rate": 0.0774189121166455,
+          "per_100k": {
+            "value_sum": 77.41891211664552,
+            "legacy_stamina_sum": 76608.85264503236,
+            "powder_units": 167165.48082127562,
+            "lower_stone_units": 11144.365388085042,
+            "material_gold": 427943630.9024654,
+            "conversion_gold": 1782012.5676129893,
+            "sell_gold": 22115334.84973177,
+            "sell_exp_adjusted": 22683194.852280814,
+            "material_exp_adjusted": 33866843.09843063,
+            "lower_stone_adjusted_exp": 18385707.89803016,
+            "formal_terminal_count": 19.493984697172742,
+            "value_sum_curve_baseline": 77.41891211664552,
+            "value_sum_tier2_low": 77.41891211664552,
+            "value_sum_tier2_mid": 77.41891211664552,
+            "value_sum_tier2_high": 77.41891211664552,
+            "native_heirloom": 0.472999486497172,
+            "converted_heirloom": 0.8841908259223823,
+            "speed22": 0.0,
+            "output60": 0.01519113895693456
+          },
+          "rift_stamina": 24327.089925635002,
+          "saint_stamina": 75672.910074365,
+          "cycles": 286.2010579486471
+        },
+        "balanced_output_m4": {
+          "rate": 0.07722959102959351,
+          "per_100k": {
+            "value_sum": 77.22959102959352,
+            "legacy_stamina_sum": 76645.47607347954,
+            "powder_units": 167234.39222320632,
+            "lower_stone_units": 11148.95948154709,
+            "material_gold": 428120044.091408,
+            "conversion_gold": 1777654.8138391764,
+            "sell_gold": 22246920.448745638,
+            "sell_exp_adjusted": 22688817.338707976,
+            "material_exp_adjusted": 33880608.785454996,
+            "lower_stone_adjusted_exp": 18393262.493744437,
+            "formal_terminal_count": 19.446313885572046,
+            "value_sum_curve_baseline": 77.22959102959352,
+            "value_sum_tier2_low": 77.22959102959352,
+            "value_sum_tier2_mid": 77.22959102959352,
+            "value_sum_tier2_high": 77.22959102959352,
+            "native_heirloom": 0.4718428081803318,
+            "converted_heirloom": 0.882028615633599,
+            "speed22": 0.0,
+            "output60": 0.015153990373180869
+          },
+          "rift_stamina": 24267.600183611845,
+          "saint_stamina": 75732.39981638816,
+          "cycles": 285.50117863072757
+        },
+        "balanced_high_priority_m2": {
+          "rate": 0.07725924614423976,
+          "per_100k": {
+            "value_sum": 77.25924614423975,
+            "legacy_stamina_sum": 76602.63591469932,
+            "powder_units": 167263.34605400055,
+            "lower_stone_units": 11150.88973693337,
+            "material_gold": 428194165.8982412,
+            "conversion_gold": 1778337.4091579274,
+            "sell_gold": 22580504.435416486,
+            "sell_exp_adjusted": 22699298.210302573,
+            "material_exp_adjusted": 33889833.71486394,
+            "lower_stone_adjusted_exp": 18398251.631756995,
+            "formal_terminal_count": 19.453781006141188,
+            "value_sum_curve_baseline": 77.25924614423975,
+            "value_sum_tier2_low": 77.25924614423975,
+            "value_sum_tier2_mid": 77.25924614423975,
+            "value_sum_tier2_high": 77.25924614423975,
+            "native_heirloom": 0.47202398941391144,
+            "converted_heirloom": 0.882367302649407,
+            "speed22": 0.0,
+            "output60": 0.015159809299784955
+          },
+          "rift_stamina": 24276.918612675625,
+          "saint_stamina": 75723.08138732438,
+          "cycles": 285.61080720794854
+        }
+      },
+      "yield_plus_20pct": {
+        "current_formal": {
+          "rate": 0.07665003609335581,
+          "per_100k": {
+            "value_sum": 76.65003609335581,
+            "legacy_stamina_sum": 79666.40403045823,
+            "powder_units": 173657.79247383005,
+            "lower_stone_units": 11577.186164922005,
+            "material_gold": 444563948.7330047,
+            "conversion_gold": 1789245.6778609126,
+            "sell_gold": 22621507.722735368,
+            "sell_exp_adjusted": 23556023.761778485,
+            "material_exp_adjusted": 35181544.617718644,
+            "lower_stone_adjusted_exp": 19099618.487335537,
+            "formal_terminal_count": 19.344210066036297,
+            "value_sum_curve_baseline": 76.65003609335581,
+            "value_sum_tier2_low": 76.65003609335581,
+            "value_sum_tier2_mid": 76.65003609335581,
+            "value_sum_tier2_high": 76.65003609335581,
+            "native_heirloom": 0.41023679464105467,
+            "converted_heirloom": 0.7668668162065617,
+            "speed22": 0.0,
+            "output60": 0.0131754142034929
+          },
+          "rift_stamina": 21099.108305473528,
+          "saint_stamina": 78900.89169452646,
+          "cycles": 248.22480359380623
+        },
+        "global_10_14": {
+          "rate": 0.07707327084620116,
+          "per_100k": {
+            "value_sum": 77.07327084620117,
+            "legacy_stamina_sum": 79580.97550755483,
+            "powder_units": 173587.01957024322,
+            "lower_stone_units": 11572.467971349548,
+            "material_gold": 444382770.0998225,
+            "conversion_gold": 1799125.2681500388,
+            "sell_gold": 22502941.032310147,
+            "sell_exp_adjusted": 23554043.212865934,
+            "material_exp_adjusted": 35163596.60465819,
+            "lower_stone_adjusted_exp": 19089688.63723632,
+            "formal_terminal_count": 19.45102204400218,
+            "value_sum_curve_baseline": 77.07327084620117,
+            "value_sum_tier2_low": 77.07327084620117,
+            "value_sum_tier2_mid": 77.07327084620117,
+            "value_sum_tier2_high": 77.07327084620117,
+            "native_heirloom": 0.4125019790719727,
+            "converted_heirloom": 0.771101187173161,
+            "speed22": 0.0,
+            "output60": 0.013248164243261425
+          },
+          "rift_stamina": 21215.610219158843,
+          "saint_stamina": 78784.38978084116,
+          "cycles": 249.59541434304523
+        },
+        "global_12_17": {
+          "rate": 0.07745534493933173,
+          "per_100k": {
+            "value_sum": 77.45534493933174,
+            "legacy_stamina_sum": 79569.82889226713,
+            "powder_units": 173450.2100208283,
+            "lower_stone_units": 11563.347334721886,
+            "material_gold": 444032537.65332025,
+            "conversion_gold": 1808044.043073039,
+            "sell_gold": 21798888.715359926,
+            "sell_exp_adjusted": 23532080.81851485,
+            "material_exp_adjusted": 35127192.33819938,
+            "lower_stone_adjusted_exp": 19069768.274975084,
+            "formal_terminal_count": 19.54744628455056,
+            "value_sum_curve_baseline": 77.45534493933174,
+            "value_sum_tier2_low": 77.45534493933174,
+            "value_sum_tier2_mid": 77.45534493933174,
+            "value_sum_tier2_high": 77.45534493933174,
+            "native_heirloom": 0.41454686853673917,
+            "converted_heirloom": 0.7749237547580893,
+            "speed22": 0.0,
+            "output60": 0.013313839156020604
+          },
+          "rift_stamina": 21320.782024451393,
+          "saint_stamina": 78679.21797554861,
+          "cycles": 250.83272969942817
+        },
+        "global_14_18": {
+          "rate": 0.07780829800033663,
+          "per_100k": {
+            "value_sum": 77.80829800033663,
+            "legacy_stamina_sum": 79610.29496332948,
+            "powder_units": 173244.38113689,
+            "lower_stone_units": 11549.625409126,
+            "material_gold": 443505615.71043825,
+            "conversion_gold": 1816283.0442670065,
+            "sell_gold": 20669239.590135362,
+            "sell_exp_adjusted": 23496356.274454836,
+            "material_exp_adjusted": 35078129.56207891,
+            "lower_stone_adjusted_exp": 19042996.26593625,
+            "formal_terminal_count": 19.63652123485083,
+            "value_sum_curve_baseline": 77.80829800033663,
+            "value_sum_tier2_low": 77.80829800033663,
+            "value_sum_tier2_mid": 77.80829800033663,
+            "value_sum_tier2_high": 77.80829800033663,
+            "native_heirloom": 0.4164359000334634,
+            "converted_heirloom": 0.7784549727973545,
+            "speed22": 0.0,
+            "output60": 0.013374508439561013
+          },
+          "rift_stamina": 21417.937815113004,
+          "saint_stamina": 78582.06218488699,
+          "cycles": 251.97573900132946
+        },
+        "balanced_output_m2": {
+          "rate": 0.07732778003322507,
+          "per_100k": {
+            "value_sum": 77.32778003322508,
+            "legacy_stamina_sum": 79566.32713587426,
+            "powder_units": 173504.01293514387,
+            "lower_stone_units": 11566.934195676258,
+            "material_gold": 444170273.1139682,
+            "conversion_gold": 1805066.2890036206,
+            "sell_gold": 22088692.095261153,
+            "sell_exp_adjusted": 23541621.94491699,
+            "material_exp_adjusted": 35141558.112790294,
+            "lower_stone_adjusted_exp": 19077618.46216624,
+            "formal_terminal_count": 19.515252661865556,
+            "value_sum_curve_baseline": 77.32778003322508,
+            "value_sum_tier2_low": 77.32778003322508,
+            "value_sum_tier2_mid": 77.32778003322508,
+            "value_sum_tier2_high": 77.32778003322508,
+            "native_heirloom": 0.4138641315041546,
+            "converted_heirloom": 0.7736474958234352,
+            "speed22": 0.0,
+            "output60": 0.013291911958573002
+          },
+          "rift_stamina": 21285.667810458803,
+          "saint_stamina": 78714.3321895412,
+          "cycles": 250.41962129951534
+        },
+        "balanced_output_m4": {
+          "rate": 0.07716227345613698,
+          "per_100k": {
+            "value_sum": 77.16227345613697,
+            "legacy_stamina_sum": 79592.05247789784,
+            "powder_units": 173550.7625724446,
+            "lower_stone_units": 11570.050838162972,
+            "material_gold": 444289952.18545794,
+            "conversion_gold": 1801202.860585247,
+            "sell_gold": 22203919.06444837,
+            "sell_exp_adjusted": 23544705.926669713,
+            "material_exp_adjusted": 35150878.52087809,
+            "lower_stone_adjusted_exp": 19082749.868339982,
+            "formal_terminal_count": 19.473483679648727,
+            "value_sum_curve_baseline": 77.16227345613697,
+            "value_sum_tier2_low": 77.16227345613697,
+            "value_sum_tier2_mid": 77.16227345613697,
+            "value_sum_tier2_high": 77.16227345613697,
+            "native_heirloom": 0.41297832777675725,
+            "converted_heirloom": 0.7719916387840698,
+            "speed22": 0.0,
+            "output60": 0.013263462947748243
+          },
+          "rift_stamina": 21240.109564524035,
+          "saint_stamina": 78759.89043547596,
+          "cycles": 249.8836419355769
+        },
+        "balanced_high_priority_m2": {
+          "rate": 0.0771881907294827,
+          "per_100k": {
+            "value_sum": 77.1881907294827,
+            "legacy_stamina_sum": 79555.53405131948,
+            "powder_units": 173578.19347995846,
+            "lower_stone_units": 11571.879565330562,
+            "material_gold": 444360175.3086934,
+            "conversion_gold": 1801807.8488106835,
+            "sell_gold": 22495854.346646715,
+            "sell_exp_adjusted": 23554162.07461501,
+            "material_exp_adjusted": 35159372.56298398,
+            "lower_stone_adjusted_exp": 19087344.540654574,
+            "formal_terminal_count": 19.48002443560255,
+            "value_sum_curve_baseline": 77.1881907294827,
+            "value_sum_tier2_low": 77.1881907294827,
+            "value_sum_tier2_mid": 77.1881907294827,
+            "value_sum_tier2_high": 77.1881907294827,
+            "native_heirloom": 0.4131170389853238,
+            "converted_heirloom": 0.77225093542512,
+            "speed22": 0.0,
+            "output60": 0.013267917881219364
+          },
+          "rift_stamina": 21247.24369498469,
+          "saint_stamina": 78752.75630501531,
+          "cycles": 249.96757288217282
+        }
+      }
+    },
+    "20260713": {
+      "yield_minus_20pct": {
+        "current_formal": {
+          "rate": 0.08022693643412263,
+          "per_100k": {
+            "value_sum": 80.22693643412263,
+            "legacy_stamina_sum": 73638.2098557565,
+            "powder_units": 161341.25252699666,
+            "lower_stone_units": 10756.083501799783,
+            "material_gold": 413033606.46911144,
+            "conversion_gold": 1307954.1054386091,
+            "sell_gold": 22176817.46194723,
+            "sell_exp_adjusted": 21968445.57598397,
+            "material_exp_adjusted": 32757221.45042335,
+            "lower_stone_adjusted_exp": 17783189.473356318,
+            "formal_terminal_count": 16.990573808674224,
+            "value_sum_curve_baseline": 80.22693643412263,
+            "value_sum_tier2_low": 80.22693643412263,
+            "value_sum_tier2_mid": 80.22693643412263,
+            "value_sum_tier2_high": 80.22693643412263,
+            "native_heirloom": 0.4636799200353883,
+            "converted_heirloom": 1.0419522243414527,
+            "speed22": 0.0,
+            "output60": 0.012745987561919338
+          },
+          "rift_stamina": 27215.232642210165,
+          "saint_stamina": 72784.76735778984,
+          "cycles": 320.1792075554137
+        },
+        "global_10_14": {
+          "rate": 0.080799215335522,
+          "per_100k": {
+            "value_sum": 80.79921533552202,
+            "legacy_stamina_sum": 73484.80785346535,
+            "powder_units": 161161.88997752572,
+            "lower_stone_units": 10744.12599850172,
+            "material_gold": 412574438.34246594,
+            "conversion_gold": 1317284.0708069846,
+            "sell_gold": 22020454.68365564,
+            "sell_exp_adjusted": 21954552.59464786,
+            "material_exp_adjusted": 32716725.945553448,
+            "lower_stone_adjusted_exp": 17760962.442580067,
+            "formal_terminal_count": 17.111771841972647,
+            "value_sum_curve_baseline": 80.79921533552202,
+            "value_sum_tier2_low": 80.79921533552202,
+            "value_sum_tier2_mid": 80.79921533552202,
+            "value_sum_tier2_high": 80.79921533552202,
+            "native_heirloom": 0.46698746544386466,
+            "converted_heirloom": 1.049384731436453,
+            "speed22": 0.0,
+            "output60": 0.01283690789470775
+          },
+          "rift_stamina": 27409.365736779986,
+          "saint_stamina": 72590.63426322001,
+          "cycles": 322.4631263150587
+        },
+        "global_12_17": {
+          "rate": 0.08131733948348456,
+          "per_100k": {
+            "value_sum": 81.31733948348456,
+            "legacy_stamina_sum": 73431.19002211024,
+            "powder_units": 160904.97974321814,
+            "lower_stone_units": 10726.99864954788,
+            "material_gold": 411916748.1426385,
+            "conversion_gold": 1325731.1415362896,
+            "sell_gold": 21106418.373782326,
+            "sell_exp_adjusted": 21915849.671926685,
+            "material_exp_adjusted": 32653888.854333565,
+            "lower_stone_adjusted_exp": 17726643.67006391,
+            "formal_terminal_count": 17.221500905168806,
+            "value_sum_curve_baseline": 81.31733948348456,
+            "value_sum_tier2_low": 81.31733948348456,
+            "value_sum_tier2_mid": 81.31733948348456,
+            "value_sum_tier2_high": 81.31733948348456,
+            "native_heirloom": 0.4699820178245722,
+            "converted_heirloom": 1.0561139003720996,
+            "speed22": 0.0,
+            "output60": 0.012919224436245933
+          },
+          "rift_stamina": 27585.128016272316,
+          "saint_stamina": 72414.87198372769,
+          "cycles": 324.5309178384978
+        },
+        "global_14_18": {
+          "rate": 0.08179731674160794,
+          "per_100k": {
+            "value_sum": 81.79731674160793,
+            "legacy_stamina_sum": 73447.29434912562,
+            "powder_units": 160564.0785362874,
+            "lower_stone_units": 10704.271902419165,
+            "material_gold": 411044041.0528958,
+            "conversion_gold": 1333556.296692191,
+            "sell_gold": 19638793.178204898,
+            "sell_exp_adjusted": 21860000.994065426,
+            "material_exp_adjusted": 32575688.165552206,
+            "lower_stone_adjusted_exp": 17684010.37258052,
+            "formal_terminal_count": 17.323151166204596,
+            "value_sum_curve_baseline": 81.79731674160793,
+            "value_sum_tier2_low": 81.79731674160793,
+            "value_sum_tier2_mid": 81.79731674160793,
+            "value_sum_tier2_high": 81.79731674160793,
+            "native_heirloom": 0.47275609628945536,
+            "converted_heirloom": 1.062347634252062,
+            "speed22": 0.0,
+            "output60": 0.012995480422501477
+          },
+          "rift_stamina": 27747.949798125148,
+          "saint_stamina": 72252.05020187485,
+          "cycles": 326.44646821323704
+        },
+        "balanced_output_m2": {
+          "rate": 0.08114419230427576,
+          "per_100k": {
+            "value_sum": 81.14419230427575,
+            "legacy_stamina_sum": 73439.7752037832,
+            "powder_units": 161001.3625433418,
+            "lower_stone_units": 10733.424169556125,
+            "material_gold": 412163488.11095506,
+            "conversion_gold": 1322908.2920800196,
+            "sell_gold": 21482675.091940288,
+            "sell_exp_adjusted": 21931642.198946133,
+            "material_exp_adjusted": 32677751.737677094,
+            "lower_stone_adjusted_exp": 17739665.576088592,
+            "formal_terminal_count": 17.184831551222743,
+            "value_sum_curve_baseline": 81.14419230427575,
+            "value_sum_tier2_low": 81.14419230427575,
+            "value_sum_tier2_mid": 81.14419230427575,
+            "value_sum_tier2_high": 81.14419230427575,
+            "native_heirloom": 0.4689812957008274,
+            "converted_heirloom": 1.053865140834046,
+            "speed22": 0.0,
+            "output60": 0.012891715822672125
+          },
+          "rift_stamina": 27526.391624569518,
+          "saint_stamina": 72473.60837543047,
+          "cycles": 323.8399014655237
+        },
+        "balanced_output_m4": {
+          "rate": 0.08091972960453747,
+          "per_100k": {
+            "value_sum": 80.91972960453747,
+            "legacy_stamina_sum": 73489.9605826337,
+            "powder_units": 161096.34646982866,
+            "lower_stone_units": 10739.756431321915,
+            "material_gold": 412406646.96276134,
+            "conversion_gold": 1319248.8365069954,
+            "sell_gold": 21633265.789532635,
+            "sell_exp_adjusted": 21940078.80116049,
+            "material_exp_adjusted": 32696608.737778608,
+            "lower_stone_adjusted_exp": 17749996.236075718,
+            "formal_terminal_count": 17.13729452392607,
+            "value_sum_curve_baseline": 80.91972960453747,
+            "value_sum_tier2_low": 80.91972960453747,
+            "value_sum_tier2_mid": 80.91972960453747,
+            "value_sum_tier2_high": 80.91972960453747,
+            "native_heirloom": 0.4676839901910871,
+            "converted_heirloom": 1.050949917846988,
+            "speed22": 0.0,
+            "output60": 0.012856054498606382
+          },
+          "rift_stamina": 27450.247565424346,
+          "saint_stamina": 72549.75243457565,
+          "cycles": 322.9440890049923
+        },
+        "balanced_high_priority_m2": {
+          "rate": 0.08095490065882069,
+          "per_100k": {
+            "value_sum": 80.95490065882069,
+            "legacy_stamina_sum": 73440.14903693738,
+            "powder_units": 161126.47713682806,
+            "lower_stone_units": 10741.765142455208,
+            "material_gold": 412483781.4702799,
+            "conversion_gold": 1319822.236500651,
+            "sell_gold": 22010357.128942795,
+            "sell_exp_adjusted": 21951615.59798658,
+            "material_exp_adjusted": 32706538.68785891,
+            "lower_stone_adjusted_exp": 17755365.42134967,
+            "formal_terminal_count": 17.14474309943311,
+            "value_sum_curve_baseline": 80.95490065882069,
+            "value_sum_tier2_low": 80.95490065882069,
+            "value_sum_tier2_mid": 80.95490065882069,
+            "value_sum_tier2_high": 80.95490065882069,
+            "native_heirloom": 0.4678872649559287,
+            "converted_heirloom": 1.0514067040571025,
+            "speed22": 0.0,
+            "output60": 0.012861642270498953
+          },
+          "rift_stamina": 27462.17857596936,
+          "saint_stamina": 72537.82142403064,
+          "cycles": 323.08445383493364
+        }
+      },
+      "baseline": {
+        "current_formal": {
+          "rate": 0.08058197321600702,
+          "per_100k": {
+            "value_sum": 80.58197321600701,
+            "legacy_stamina_sum": 77441.0753825938,
+            "powder_units": 169554.9427802509,
+            "lower_stone_units": 11303.66285201673,
+            "material_gold": 434060653.5174422,
+            "conversion_gold": 1316417.2118860001,
+            "sell_gold": 21999047.33711454,
+            "sell_exp_adjusted": 23088538.7129339,
+            "material_exp_adjusted": 34410905.52918598,
+            "lower_stone_adjusted_exp": 18680706.303802364,
+            "formal_terminal_count": 17.004506404472746,
+            "value_sum_curve_baseline": 80.58197321600701,
+            "value_sum_tier2_low": 80.58197321600701,
+            "value_sum_tier2_mid": 80.58197321600701,
+            "value_sum_tier2_high": 80.58197321600701,
+            "native_heirloom": 0.3972491966490625,
+            "converted_heirloom": 0.8926732993629649,
+            "speed22": 0.0,
+            "output60": 0.010919889131892888
+          },
+          "rift_stamina": 23316.14727441769,
+          "saint_stamina": 76683.8527255823,
+          "cycles": 274.3076149931493
+        },
+        "global_10_14": {
+          "rate": 0.08107395438382534,
+          "per_100k": {
+            "value_sum": 81.07395438382534,
+            "legacy_stamina_sum": 77333.02557361725,
+            "powder_units": 169451.63095028442,
+            "lower_stone_units": 11296.77539668563,
+            "material_gold": 433796175.232728,
+            "conversion_gold": 1324454.399998827,
+            "sell_gold": 21864144.586810328,
+            "sell_exp_adjusted": 23083493.59708727,
+            "material_exp_adjusted": 34386353.519211024,
+            "lower_stone_adjusted_exp": 18667168.24402488,
+            "formal_terminal_count": 17.10832487137255,
+            "value_sum_curve_baseline": 81.07395438382534,
+            "value_sum_tier2_low": 81.07395438382534,
+            "value_sum_tier2_mid": 81.07395438382534,
+            "value_sum_tier2_high": 81.07395438382534,
+            "native_heirloom": 0.39967454211880427,
+            "converted_heirloom": 0.8981233824866875,
+            "speed22": 0.0,
+            "output60": 0.010986558879395272
+          },
+          "rift_stamina": 23458.500519284786,
+          "saint_stamina": 76541.49948071521,
+          "cycles": 275.98235905040923
+        },
+        "global_12_17": {
+          "rate": 0.08151855816055995,
+          "per_100k": {
+            "value_sum": 81.51855816055995,
+            "legacy_stamina_sum": 77308.34211456578,
+            "powder_units": 169277.5474201143,
+            "lower_stone_units": 11285.169828007623,
+            "material_gold": 433350521.39549255,
+            "conversion_gold": 1331717.613355418,
+            "sell_gold": 21081742.685721483,
+            "sell_exp_adjusted": 23056608.960687295,
+            "material_exp_adjusted": 34341806.422223456,
+            "lower_stone_adjusted_exp": 18642807.460813444,
+            "formal_terminal_count": 17.202145703342875,
+            "value_sum_curve_baseline": 81.51855816055995,
+            "value_sum_tier2_low": 81.51855816055995,
+            "value_sum_tier2_mid": 81.51855816055995,
+            "value_sum_tier2_high": 81.51855816055995,
+            "native_heirloom": 0.4018663287689217,
+            "converted_heirloom": 0.9030486269855164,
+            "speed22": 0.0,
+            "output60": 0.01104680838379185
+          },
+          "rift_stamina": 23587.145261072357,
+          "saint_stamina": 76412.85473892765,
+          "cycles": 277.4958266008513
+        },
+        "global_14_18": {
+          "rate": 0.08192969238446914,
+          "per_100k": {
+            "value_sum": 81.92969238446915,
+            "legacy_stamina_sum": 77341.70627552517,
+            "powder_units": 169028.64212246504,
+            "lower_stone_units": 11268.576141497671,
+            "material_gold": 432713323.83351046,
+            "conversion_gold": 1338434.055596149,
+            "sell_gold": 19827786.222572736,
+            "sell_exp_adjusted": 23014664.064570237,
+            "material_exp_adjusted": 34283532.45547988,
+            "lower_stone_adjusted_exp": 18611017.28654255,
+            "formal_terminal_count": 17.288903749398926,
+            "value_sum_curve_baseline": 81.92969238446915,
+            "value_sum_tier2_low": 81.92969238446915,
+            "value_sum_tier2_mid": 81.92969238446915,
+            "value_sum_tier2_high": 81.92969238446915,
+            "native_heirloom": 0.4038931188020357,
+            "converted_heirloom": 0.9076031015099149,
+            "speed22": 0.0,
+            "output60": 0.011102522335240778
+          },
+          "rift_stamina": 23706.105690206106,
+          "saint_stamina": 76293.8943097939,
+          "cycles": 278.8953610612483
+        },
+        "balanced_output_m2": {
+          "rate": 0.08137006667028644,
+          "per_100k": {
+            "value_sum": 81.37006667028643,
+            "legacy_stamina_sum": 77308.59860987944,
+            "powder_units": 169344.6824404152,
+            "lower_stone_units": 11289.645496027682,
+            "material_gold": 433522387.0474628,
+            "conversion_gold": 1329291.8009086233,
+            "sell_gold": 21403604.766703337,
+            "sell_exp_adjusted": 23068031.61294038,
+            "material_exp_adjusted": 34359131.679298334,
+            "lower_stone_adjusted_exp": 18652270.810192373,
+            "formal_terminal_count": 17.170810847709628,
+            "value_sum_curve_baseline": 81.37006667028643,
+            "value_sum_tier2_low": 81.37006667028643,
+            "value_sum_tier2_mid": 81.37006667028643,
+            "value_sum_tier2_high": 81.37006667028643,
+            "native_heirloom": 0.40113430245005444,
+            "converted_heirloom": 0.9014036636859152,
+            "speed22": 0.0,
+            "output60": 0.011026685885594027
+          },
+          "rift_stamina": 23544.179702920363,
+          "saint_stamina": 76455.82029707963,
+          "cycles": 276.9903494461219
+        },
+        "balanced_output_m4": {
+          "rate": 0.08117746783279982,
+          "per_100k": {
+            "value_sum": 81.17746783279983,
+            "legacy_stamina_sum": 77342.38595600969,
+            "powder_units": 169406.21461825742,
+            "lower_stone_units": 11293.747641217165,
+            "material_gold": 433679909.4227389,
+            "conversion_gold": 1326145.4343636276,
+            "sell_gold": 21532649.092823546,
+            "sell_exp_adjusted": 23072561.516832303,
+            "material_exp_adjusted": 34371288.42162183,
+            "lower_stone_adjusted_exp": 18658950.96086023,
+            "formal_terminal_count": 17.130168405798262,
+            "value_sum_curve_baseline": 81.17746783279983,
+            "value_sum_tier2_low": 81.17746783279983,
+            "value_sum_tier2_mid": 81.17746783279983,
+            "value_sum_tier2_high": 81.17746783279983,
+            "native_heirloom": 0.40018483781902575,
+            "converted_heirloom": 0.8992700867474135,
+            "speed22": 0.0,
+            "output60": 0.011000586277104079
+          },
+          "rift_stamina": 23488.45181887263,
+          "saint_stamina": 76511.54818112738,
+          "cycles": 276.33472728085445
+        },
+        "balanced_high_priority_m2": {
+          "rate": 0.0812076332902618,
+          "per_100k": {
+            "value_sum": 81.20763329026181,
+            "legacy_stamina_sum": 77301.17655647128,
+            "powder_units": 169435.03643482493,
+            "lower_stone_units": 11295.669095655,
+            "material_gold": 433753693.2731518,
+            "conversion_gold": 1326638.2285435481,
+            "sell_gold": 21855252.22414354,
+            "sell_exp_adjusted": 23082847.121774293,
+            "material_exp_adjusted": 34380397.55100123,
+            "lower_stone_adjusted_exp": 18663877.583083704,
+            "formal_terminal_count": 17.13653395747359,
+            "value_sum_curve_baseline": 81.20763329026181,
+            "value_sum_tier2_low": 81.20763329026181,
+            "value_sum_tier2_mid": 81.20763329026181,
+            "value_sum_tier2_high": 81.20763329026181,
+            "native_heirloom": 0.400333546063129,
+            "converted_heirloom": 0.8996042545192451,
+            "speed22": 0.0,
+            "output60": 0.01100467408282478
+          },
+          "rift_stamina": 23497.180101647467,
+          "saint_stamina": 76502.81989835254,
+          "cycles": 276.43741296055845
+        }
+      },
+      "yield_plus_20pct": {
+        "current_formal": {
+          "rate": 0.0808481495732555,
+          "per_100k": {
+            "value_sum": 80.84814957325551,
+            "legacy_stamina_sum": 80290.95151877734,
+            "powder_units": 175710.30453761987,
+            "lower_stone_units": 11714.020302508,
+            "material_gold": 449818379.61630696,
+            "conversion_gold": 1322761.214198169,
+            "sell_gold": 21865864.759458598,
+            "sell_exp_adjusted": 23927939.497585773,
+            "material_exp_adjusted": 35650181.27831233,
+            "lower_stone_adjusted_exp": 19353308.083197404,
+            "formal_terminal_count": 17.01497282177959,
+            "value_sum_curve_baseline": 80.84814957325551,
+            "value_sum_tier2_low": 80.84814957325551,
+            "value_sum_tier2_mid": 80.84814957325551,
+            "value_sum_tier2_high": 80.84814957325551,
+            "native_heirloom": 0.34746850814349994,
+            "converted_heirloom": 0.7808092809390892,
+            "speed22": 0.0,
+            "output60": 0.009551479569392844
+          },
+          "rift_stamina": 20394.319176567595,
+          "saint_stamina": 79605.6808234324,
+          "cycles": 239.93316678314818
+        },
+        "global_10_14": {
+          "rate": 0.08127958587480023,
+          "per_100k": {
+            "value_sum": 81.27958587480023,
+            "legacy_stamina_sum": 80211.73695959631,
+            "powder_units": 175652.8880999785,
+            "lower_stone_units": 11710.192539998574,
+            "material_gold": 449671393.535945,
+            "conversion_gold": 1329819.9682833615,
+            "sell_gold": 21747250.851344608,
+            "sell_exp_adjusted": 23928013.777620703,
+            "material_exp_adjusted": 35635342.244660765,
+            "lower_stone_adjusted_exp": 19345068.427051455,
+            "formal_terminal_count": 17.105771151535563,
+            "value_sum_curve_baseline": 81.27958587480023,
+            "value_sum_tier2_low": 81.27958587480023,
+            "value_sum_tier2_mid": 81.27958587480023,
+            "value_sum_tier2_high": 81.27958587480023,
+            "native_heirloom": 0.34932273150974863,
+            "converted_heirloom": 0.7849759745512285,
+            "speed22": 0.0,
+            "output60": 0.009602449876585402
+          },
+          "rift_stamina": 20503.15097648515,
+          "saint_stamina": 79496.84902351485,
+          "cycles": 241.2135408998253
+        },
+        "global_12_17": {
+          "rate": 0.08166893476139743,
+          "per_100k": {
+            "value_sum": 81.66893476139744,
+            "legacy_stamina_sum": 80204.00618582632,
+            "powder_units": 175530.63061193118,
+            "lower_stone_units": 11702.042040795419,
+            "material_gold": 449358414.3665438,
+            "conversion_gold": 1336190.1277576408,
+            "sell_gold": 21063340.218557008,
+            "sell_exp_adjusted": 23908589.25314262,
+            "material_exp_adjusted": 35602434.177916735,
+            "lower_stone_adjusted_exp": 19327047.930422015,
+            "formal_terminal_count": 17.187711935073704,
+            "value_sum_curve_baseline": 81.66893476139744,
+            "value_sum_tier2_low": 81.66893476139744,
+            "value_sum_tier2_mid": 81.66893476139744,
+            "value_sum_tier2_high": 81.66893476139744,
+            "native_heirloom": 0.35099607193234766,
+            "converted_heirloom": 0.7887361994392815,
+            "speed22": 0.0,
+            "output60": 0.009648447935357662
+          },
+          "rift_stamina": 20601.36603157568,
+          "saint_stamina": 79398.63396842433,
+          "cycles": 242.36901213618444
+        },
+        "global_14_18": {
+          "rate": 0.08202849324320645,
+          "per_100k": {
+            "value_sum": 82.02849324320646,
+            "legacy_stamina_sum": 80245.90972022897,
+            "powder_units": 175340.97347998692,
+            "lower_stone_units": 11689.398231999134,
+            "material_gold": 448872892.1087666,
+            "conversion_gold": 1342072.8847098206,
+            "sell_gold": 19968742.09196554,
+            "sell_exp_adjusted": 23875738.05280289,
+            "material_exp_adjusted": 35557133.93034179,
+            "lower_stone_adjusted_exp": 19302319.99114888,
+            "formal_terminal_count": 17.263383151151167,
+            "value_sum_curve_baseline": 82.02849324320646,
+            "value_sum_tier2_low": 82.02849324320646,
+            "value_sum_tier2_mid": 82.02849324320646,
+            "value_sum_tier2_high": 82.02849324320646,
+            "native_heirloom": 0.3525413793997909,
+            "converted_heirloom": 0.7922087167587097,
+            "speed22": 0.0,
+            "output60": 0.009690926526532948
+          },
+          "rift_stamina": 20692.066319453148,
+          "saint_stamina": 79307.93368054685,
+          "cycles": 243.43607434650764
+        },
+        "balanced_output_m2": {
+          "rate": 0.08153895459055394,
+          "per_100k": {
+            "value_sum": 81.53895459055393,
+            "legacy_stamina_sum": 80199.60625032394,
+            "powder_units": 175579.29499801094,
+            "lower_stone_units": 11705.286333200736,
+            "material_gold": 449482995.194908,
+            "conversion_gold": 1334063.514724267,
+            "sell_gold": 21344549.245389942,
+            "sell_exp_adjusted": 23917207.69966614,
+            "material_exp_adjusted": 35615556.602112755,
+            "lower_stone_adjusted_exp": 19334222.544805624,
+            "formal_terminal_count": 17.160356836831554,
+            "value_sum_curve_baseline": 81.53895459055393,
+            "value_sum_tier2_low": 81.53895459055393,
+            "value_sum_tier2_mid": 81.53895459055393,
+            "value_sum_tier2_high": 81.53895459055393,
+            "native_heirloom": 0.35043744422980133,
+            "converted_heirloom": 0.7874808865561994,
+            "speed22": 0.0,
+            "output60": 0.009633091950677852
+          },
+          "rift_stamina": 20568.577933087345,
+          "saint_stamina": 79431.42206691265,
+          "cycles": 241.9832698010276
+        },
+        "balanced_output_m4": {
+          "rate": 0.08137029875210482,
+          "per_100k": {
+            "value_sum": 81.37029875210482,
+            "legacy_stamina_sum": 80223.15372390501,
+            "powder_units": 175620.17360890043,
+            "lower_stone_units": 11708.011573926704,
+            "material_gold": 449587644.43878514,
+            "conversion_gold": 1331304.1268740054,
+            "sell_gold": 21457440.69830777,
+            "sell_exp_adjusted": 23919410.21174197,
+            "material_exp_adjusted": 35623581.86376511,
+            "lower_stone_adjusted_exp": 19338649.92636625,
+            "formal_terminal_count": 17.124862214844615,
+            "value_sum_curve_baseline": 81.37029875210482,
+            "value_sum_tier2_low": 81.37029875210482,
+            "value_sum_tier2_mid": 81.37029875210482,
+            "value_sum_tier2_high": 81.37029875210482,
+            "native_heirloom": 0.34971259656309617,
+            "converted_heirloom": 0.7858520546702413,
+            "speed22": 0.0,
+            "output60": 0.009613166784750016
+          },
+          "rift_stamina": 20526.033718798233,
+          "saint_stamina": 79473.96628120178,
+          "cycles": 241.4827496329204
+        },
+        "balanced_high_priority_m2": {
+          "rate": 0.0813967069850812,
+          "per_100k": {
+            "value_sum": 81.3967069850812,
+            "legacy_stamina_sum": 80188.06501274386,
+            "powder_units": 175647.34659195808,
+            "lower_stone_units": 11709.823106130547,
+            "material_gold": 449657207.2754128,
+            "conversion_gold": 1331736.1934890244,
+            "sell_gold": 21739314.983086,
+            "sell_exp_adjusted": 23928669.001680475,
+            "material_exp_adjusted": 35631942.23830158,
+            "lower_stone_adjusted_exp": 19343172.35655152,
+            "formal_terminal_count": 17.130419984178065,
+            "value_sum_curve_baseline": 81.3967069850812,
+            "value_sum_tier2_low": 81.3967069850812,
+            "value_sum_tier2_mid": 81.3967069850812,
+            "value_sum_tier2_high": 81.3967069850812,
+            "native_heirloom": 0.34982609364822975,
+            "converted_heirloom": 0.7861070981500241,
+            "speed22": 0.0,
+            "output60": 0.009616286679256805
+          },
+          "rift_stamina": 20532.69531754913,
+          "saint_stamina": 79467.30468245088,
+          "cycles": 241.56112138293093
+        }
+      }
+    },
+    "20260714": {
+      "yield_minus_20pct": {
+        "current_formal": {
+          "rate": 0.0640130091921154,
+          "per_100k": {
+            "value_sum": 64.0130091921154,
+            "legacy_stamina_sum": 72891.09845464322,
+            "powder_units": 159732.544267252,
+            "lower_stone_units": 10648.836284483468,
+            "material_gold": 408915313.324165,
+            "conversion_gold": 940631.8614155839,
+            "sell_gold": 22757137.720819388,
+            "sell_exp_adjusted": 21717531.67791432,
+            "material_exp_adjusted": 32408684.497772094,
+            "lower_stone_adjusted_exp": 17594560.1007526,
+            "formal_terminal_count": 13.943034483180003,
+            "value_sum_curve_baseline": 64.0130091921154,
+            "value_sum_tier2_low": 64.0130091921154,
+            "value_sum_tier2_mid": 64.0130091921154,
+            "value_sum_tier2_high": 64.0130091921154,
+            "native_heirloom": 0.8781467945977363,
+            "converted_heirloom": 1.3792336681386501,
+            "speed22": 0.0,
+            "output60": 0.07934910627498493
+          },
+          "rift_stamina": 27927.397535991397,
+          "saint_stamina": 72072.60246400863,
+          "cycles": 328.557618070487
+        },
+        "global_10_14": {
+          "rate": 0.06448165541011769,
+          "per_100k": {
+            "value_sum": 64.48165541011768,
+            "legacy_stamina_sum": 72728.17070132523,
+            "powder_units": 159536.64893359074,
+            "lower_stone_units": 10635.776595572715,
+            "material_gold": 408413821.2699922,
+            "conversion_gold": 947518.329806124,
+            "sell_gold": 22600898.1547472,
+            "sell_exp_adjusted": 21701431.79047403,
+            "material_exp_adjusted": 32364564.322898075,
+            "lower_stone_adjusted_exp": 17570363.186502513,
+            "formal_terminal_count": 14.045112958485028,
+            "value_sum_curve_baseline": 64.48165541011768,
+            "value_sum_tier2_low": 64.48165541011768,
+            "value_sum_tier2_mid": 64.48165541011768,
+            "value_sum_tier2_high": 64.48165541011768,
+            "native_heirloom": 0.8845758030029488,
+            "converted_heirloom": 1.3893311881657855,
+            "speed22": 0.0,
+            "output60": 0.07993002973143466
+          },
+          "rift_stamina": 28131.857057564717,
+          "saint_stamina": 71868.14294243527,
+          "cycles": 330.96302420664375
+        },
+        "global_12_17": {
+          "rate": 0.06490609551622203,
+          "per_100k": {
+            "value_sum": 64.90609551622202,
+            "legacy_stamina_sum": 72668.12847370183,
+            "powder_units": 159262.17754166023,
+            "lower_stone_units": 10617.478502777349,
+            "material_gold": 407711174.5066501,
+            "conversion_gold": 953755.216528105,
+            "sell_gold": 21666424.456079386,
+            "sell_exp_adjusted": 21660029.48019533,
+            "material_exp_adjusted": 32297732.458843786,
+            "lower_stone_adjusted_exp": 17533874.104675863,
+            "formal_terminal_count": 14.137562651291946,
+            "value_sum_curve_baseline": 64.90609551622202,
+            "value_sum_tier2_low": 64.90609551622202,
+            "value_sum_tier2_mid": 64.90609551622202,
+            "value_sum_tier2_high": 64.90609551622202,
+            "native_heirloom": 0.890398380684864,
+            "converted_heirloom": 1.3984762368337922,
+            "speed22": 0.0,
+            "output60": 0.08045615627214395
+          },
+          "rift_stamina": 28317.030473453036,
+          "saint_stamina": 71682.96952654696,
+          "cycles": 333.1415349818004
+        },
+        "global_14_18": {
+          "rate": 0.06529941421735423,
+          "per_100k": {
+            "value_sum": 65.29941421735424,
+            "legacy_stamina_sum": 72680.0192003831,
+            "powder_units": 158902.17892995905,
+            "lower_stone_units": 10593.478595330602,
+            "material_gold": 406789578.06069505,
+            "conversion_gold": 959534.7933148361,
+            "sell_gold": 20163011.850428984,
+            "sell_exp_adjusted": 21601134.001197316,
+            "material_exp_adjusted": 32215277.461484812,
+            "lower_stone_adjusted_exp": 17488929.94978629,
+            "formal_terminal_count": 14.223233615397183,
+            "value_sum_curve_baseline": 65.29941421735424,
+            "value_sum_tier2_low": 65.29941421735424,
+            "value_sum_tier2_mid": 65.29941421735424,
+            "value_sum_tier2_high": 65.29941421735424,
+            "native_heirloom": 0.8957940269919765,
+            "converted_heirloom": 1.4069507391538132,
+            "speed22": 0.0,
+            "output60": 0.08094370540957652
+          },
+          "rift_stamina": 28488.626339097984,
+          "saint_stamina": 71511.37366090203,
+          "cycles": 335.160309871741
+        },
+        "balanced_output_m2": {
+          "rate": 0.06476424077403053,
+          "per_100k": {
+            "value_sum": 64.76424077403053,
+            "legacy_stamina_sum": 72678.61681303865,
+            "powder_units": 159364.7203453424,
+            "lower_stone_units": 10624.314689689492,
+            "material_gold": 407973684.0840764,
+            "conversion_gold": 951670.7482007724,
+            "sell_gold": 22051420.862995144,
+            "sell_exp_adjusted": 21676801.651030157,
+            "material_exp_adjusted": 32323009.128702633,
+            "lower_stone_adjusted_exp": 17547664.03783234,
+            "formal_terminal_count": 14.106664470016907,
+            "value_sum_curve_baseline": 64.76424077403053,
+            "value_sum_tier2_low": 64.76424077403053,
+            "value_sum_tier2_mid": 64.76424077403053,
+            "value_sum_tier2_high": 64.76424077403053,
+            "native_heirloom": 0.88845238113374,
+            "converted_heirloom": 1.395419813789713,
+            "speed22": 0.0,
+            "output60": 0.08028031628030756
+          },
+          "rift_stamina": 28255.14252555704,
+          "saint_stamina": 71744.85747444296,
+          "cycles": 332.41344147714165
+        },
+        "balanced_output_m4": {
+          "rate": 0.06458036121101857,
+          "per_100k": {
+            "value_sum": 64.58036121101857,
+            "legacy_stamina_sum": 72732.29054505081,
+            "powder_units": 159466.86382304758,
+            "lower_stone_units": 10631.12425486984,
+            "material_gold": 408235171.3870017,
+            "conversion_gold": 948968.7509377922,
+            "sell_gold": 22204372.98710077,
+            "sell_exp_adjusted": 21686185.236788146,
+            "material_exp_adjusted": 32343372.199051123,
+            "lower_stone_adjusted_exp": 17558813.133517504,
+            "formal_terminal_count": 14.066612625553022,
+            "value_sum_curve_baseline": 64.58036121101857,
+            "value_sum_tier2_low": 64.58036121101857,
+            "value_sum_tier2_mid": 64.58036121101857,
+            "value_sum_tier2_high": 64.58036121101857,
+            "native_heirloom": 0.88592987436693,
+            "converted_heirloom": 1.3914579178034208,
+            "speed22": 0.0,
+            "output60": 0.08005238325276555
+          },
+          "rift_stamina": 28174.92011889643,
+          "saint_stamina": 71825.07988110356,
+          "cycles": 331.46964845760505
+        },
+        "balanced_high_priority_m2": {
+          "rate": 0.06460917608696991,
+          "per_100k": {
+            "value_sum": 64.60917608696991,
+            "legacy_stamina_sum": 72680.83017068375,
+            "powder_units": 159497.07380026786,
+            "lower_stone_units": 10633.138253351188,
+            "material_gold": 408312508.9286856,
+            "conversion_gold": 949392.167845459,
+            "sell_gold": 22591680.05226158,
+            "sell_exp_adjusted": 21697914.89180389,
+            "material_exp_adjusted": 32353408.948773503,
+            "lower_stone_adjusted_exp": 17564239.987701118,
+            "formal_terminal_count": 14.072888956162826,
+            "value_sum_curve_baseline": 64.60917608696991,
+            "value_sum_tier2_low": 64.60917608696991,
+            "value_sum_tier2_mid": 64.60917608696991,
+            "value_sum_tier2_high": 64.60917608696991,
+            "native_heirloom": 0.8863251641880578,
+            "converted_heirloom": 1.3920787673394277,
+            "speed22": 0.0,
+            "output60": 0.08008810153383092
+          },
+          "rift_stamina": 28187.491383797103,
+          "saint_stamina": 71812.5086162029,
+          "cycles": 331.61754569173064
+        }
+      },
+      "baseline": {
+        "current_formal": {
+          "rate": 0.061972488036526746,
+          "per_100k": {
+            "value_sum": 61.97248803652675,
+            "legacy_stamina_sum": 76733.00679504799,
+            "powder_units": 168060.68124827824,
+            "lower_stone_units": 11204.04541655188,
+            "material_gold": 430235343.9955922,
+            "conversion_gold": 908506.2260157221,
+            "sell_gold": 22628238.60258789,
+            "sell_exp_adjusted": 22853813.715628307,
+            "material_exp_adjusted": 34084778.09426407,
+            "lower_stone_adjusted_exp": 18504285.49963789,
+            "formal_terminal_count": 13.484657965664944,
+            "value_sum_curve_baseline": 61.97248803652675,
+            "value_sum_tier2_low": 61.97248803652675,
+            "value_sum_tier2_mid": 61.97248803652675,
+            "value_sum_tier2_high": 61.97248803652675,
+            "native_heirloom": 0.754119756171197,
+            "converted_heirloom": 1.1844344976471495,
+            "speed22": 0.0,
+            "output60": 0.06814205670921467
+          },
+          "rift_stamina": 23983.008706403594,
+          "saint_stamina": 76016.99129359641,
+          "cycles": 282.1530436047482
+        },
+        "global_10_14": {
+          "rate": 0.062361733706216706,
+          "per_100k": {
+            "value_sum": 62.361733706216704,
+            "legacy_stamina_sum": 76617.39053984277,
+            "powder_units": 167944.99012427434,
+            "lower_stone_units": 11196.332674951622,
+            "material_gold": 429939174.7181422,
+            "conversion_gold": 914212.5019063166,
+            "sell_gold": 22493402.548068393,
+            "sell_exp_adjusted": 22847146.304039262,
+            "material_exp_adjusted": 34057466.90594545,
+            "lower_stone_adjusted_exp": 18489247.45421518,
+            "formal_terminal_count": 13.569354334758462,
+            "value_sum_curve_baseline": 62.361733706216704,
+            "value_sum_tier2_low": 62.361733706216704,
+            "value_sum_tier2_mid": 62.361733706216704,
+            "value_sum_tier2_high": 62.361733706216704,
+            "native_heirloom": 0.7588563394328577,
+            "converted_heirloom": 1.1918738633051624,
+            "speed22": 0.0,
+            "output60": 0.06857005308854666
+          },
+          "rift_stamina": 24133.6446189008,
+          "saint_stamina": 75866.3553810992,
+          "cycles": 283.9252308105976
+        },
+        "global_12_17": {
+          "rate": 0.06271360605432943,
+          "per_100k": {
+            "value_sum": 62.71360605432943,
+            "legacy_stamina_sum": 76587.93871785718,
+            "powder_units": 167757.33191173803,
+            "lower_stone_units": 11183.822127449199,
+            "material_gold": 429458769.6940493,
+            "conversion_gold": 919370.8912037539,
+            "sell_gold": 21691901.962506842,
+            "sell_exp_adjusted": 22818145.196641073,
+            "material_exp_adjusted": 34009767.650479674,
+            "lower_stone_adjusted_exp": 18463173.830395184,
+            "formal_terminal_count": 13.64591860403677,
+            "value_sum_curve_baseline": 62.71360605432943,
+            "value_sum_tier2_low": 62.71360605432943,
+            "value_sum_tier2_mid": 62.71360605432943,
+            "value_sum_tier2_high": 62.71360605432943,
+            "native_heirloom": 0.7631381408865247,
+            "converted_heirloom": 1.1985989402074675,
+            "speed22": 0.0,
+            "output60": 0.06895695550700967
+          },
+          "rift_stamina": 24269.817263500063,
+          "saint_stamina": 75730.18273649993,
+          "cycles": 285.52726192353015
+        },
+        "global_14_18": {
+          "rate": 0.06303908854329732,
+          "per_100k": {
+            "value_sum": 63.03908854329732,
+            "legacy_stamina_sum": 76618.52011696559,
+            "powder_units": 167493.26361253732,
+            "lower_stone_units": 11166.217574169155,
+            "material_gold": 428782754.8480956,
+            "conversion_gold": 924142.4096154745,
+            "sell_gold": 20404627.43916078,
+            "sell_exp_adjusted": 22773738.059592098,
+            "material_exp_adjusted": 33948068.61452078,
+            "lower_stone_adjusted_exp": 18429522.999047883,
+            "formal_terminal_count": 13.71674067648541,
+            "value_sum_curve_baseline": 63.03908854329732,
+            "value_sum_tier2_low": 63.03908854329732,
+            "value_sum_tier2_mid": 63.03908854329732,
+            "value_sum_tier2_high": 63.03908854329732,
+            "native_heirloom": 0.7670988141303322,
+            "converted_heirloom": 1.2048196471780575,
+            "speed22": 0.0,
+            "output60": 0.06931484086749469
+          },
+          "rift_stamina": 24395.777179166154,
+          "saint_stamina": 75604.22282083385,
+          "cycles": 287.0091432843077
+        },
+        "balanced_output_m2": {
+          "rate": 0.0625960738941861,
+          "per_100k": {
+            "value_sum": 62.5960738941861,
+            "legacy_stamina_sum": 76589.55887460636,
+            "powder_units": 167829.26884201413,
+            "lower_stone_units": 11188.61792280094,
+            "material_gold": 429642928.2355561,
+            "conversion_gold": 917647.8895520475,
+            "sell_gold": 22021920.286638584,
+            "sell_exp_adjusted": 22830346.568312574,
+            "material_exp_adjusted": 34028218.409325935,
+            "lower_stone_adjusted_exp": 18473248.693616692,
+            "formal_terminal_count": 13.620344659376611,
+            "value_sum_curve_baseline": 62.5960738941861,
+            "value_sum_tier2_low": 62.5960738941861,
+            "value_sum_tier2_mid": 62.5960738941861,
+            "value_sum_tier2_high": 62.5960738941861,
+            "native_heirloom": 0.7617079365045847,
+            "converted_heirloom": 1.1963526346375717,
+            "speed22": 0.0,
+            "output60": 0.06882772262681737
+          },
+          "rift_stamina": 24224.332970238534,
+          "saint_stamina": 75775.66702976146,
+          "cycles": 284.9921525910416
+        },
+        "balanced_output_m4": {
+          "rate": 0.06244364384250383,
+          "per_100k": {
+            "value_sum": 62.443643842503825,
+            "legacy_stamina_sum": 76626.0726295386,
+            "powder_units": 167896.26835891564,
+            "lower_stone_units": 11193.08455726104,
+            "material_gold": 429814446.9988239,
+            "conversion_gold": 915413.2906941862,
+            "sell_gold": 22153178.224225298,
+            "sell_exp_adjusted": 22835586.3369085,
+            "material_exp_adjusted": 34041532.087986544,
+            "lower_stone_adjusted_exp": 18480557.721957393,
+            "formal_terminal_count": 13.587177246291429,
+            "value_sum_curve_baseline": 62.443643842503825,
+            "value_sum_tier2_low": 62.443643842503825,
+            "value_sum_tier2_mid": 62.443643842503825,
+            "value_sum_tier2_high": 62.443643842503825,
+            "native_heirloom": 0.7598530728860698,
+            "converted_heirloom": 1.1934393513821986,
+            "speed22": 0.0,
+            "output60": 0.0686601176531426
+          },
+          "rift_stamina": 24165.343386756605,
+          "saint_stamina": 75834.6566132434,
+          "cycles": 284.2981574912542
+        },
+        "balanced_high_priority_m2": {
+          "rate": 0.06246751973653323,
+          "per_100k": {
+            "value_sum": 62.46751973653323,
+            "legacy_stamina_sum": 76583.40496926176,
+            "powder_units": 167925.35175614763,
+            "lower_stone_units": 11195.023450409839,
+            "material_gold": 429888900.49573785,
+            "conversion_gold": 915763.3072751667,
+            "sell_gold": 22485320.004939195,
+            "sell_exp_adjusted": 22846078.948782604,
+            "material_exp_adjusted": 34050779.36636342,
+            "lower_stone_adjusted_exp": 18485559.04686398,
+            "formal_terminal_count": 13.5923724268435,
+            "value_sum_curve_baseline": 62.46751973653323,
+            "value_sum_tier2_low": 62.46751973653323,
+            "value_sum_tier2_mid": 62.46751973653323,
+            "value_sum_tier2_high": 62.46751973653323,
+            "native_heirloom": 0.7601436096057382,
+            "converted_heirloom": 1.1938956737511492,
+            "speed22": 0.0,
+            "output60": 0.06868637047236095
+          },
+          "rift_stamina": 24174.583225151393,
+          "saint_stamina": 75825.4167748486,
+          "cycles": 284.4068614723693
+        }
+      },
+      "yield_plus_20pct": {
+        "current_formal": {
+          "rate": 0.0604371209548155,
+          "per_100k": {
+            "value_sum": 60.4371209548155,
+            "legacy_stamina_sum": 79624.10301710764,
+            "powder_units": 174327.73745239188,
+            "lower_stone_units": 11621.84916349279,
+            "material_gold": 446279007.8781231,
+            "conversion_gold": 884333.5520312624,
+            "sell_gold": 22531278.528851707,
+            "sell_exp_adjusted": 23708883.99605223,
+            "material_exp_adjusted": 35346065.71781359,
+            "lower_stone_adjusted_exp": 19188868.627775405,
+            "formal_terminal_count": 13.13975706799569,
+            "value_sum_curve_baseline": 60.4371209548155,
+            "value_sum_tier2_low": 60.4371209548155,
+            "value_sum_tier2_mid": 60.4371209548155,
+            "value_sum_tier2_high": 60.4371209548155,
+            "native_heirloom": 0.660792406747613,
+            "converted_heirloom": 1.0378528289842106,
+            "speed22": 0.0,
+            "output60": 0.05970902271839206
+          },
+          "rift_stamina": 21014.951424446823,
+          "saint_stamina": 78985.04857555318,
+          "cycles": 247.23472264055087
+        },
+        "global_10_14": {
+          "rate": 0.060769499397522186,
+          "per_100k": {
+            "value_sum": 60.76949939752218,
+            "legacy_stamina_sum": 79538.78988579052,
+            "powder_units": 174260.94460450718,
+            "lower_stone_units": 11617.396306967144,
+            "material_gold": 446108018.1875383,
+            "conversion_gold": 889197.0101876688,
+            "sell_gold": 22412692.66778877,
+            "sell_exp_adjusted": 23707753.658061683,
+            "material_exp_adjusted": 35329096.87368365,
+            "lower_stone_adjusted_exp": 19179470.73793074,
+            "formal_terminal_count": 13.212020139479021,
+            "value_sum_curve_baseline": 60.76949939752218,
+            "value_sum_tier2_low": 60.76949939752218,
+            "value_sum_tier2_mid": 60.76949939752218,
+            "value_sum_tier2_high": 60.76949939752218,
+            "native_heirloom": 0.6644264837459428,
+            "converted_heirloom": 1.0435605778247683,
+            "speed22": 0.0,
+            "output60": 0.06003739693068313
+          },
+          "rift_stamina": 21130.524713141967,
+          "saint_stamina": 78869.47528685803,
+          "cycles": 248.5944083899055
+        },
+        "global_12_17": {
+          "rate": 0.06106954185260521,
+          "per_100k": {
+            "value_sum": 61.069541852605205,
+            "legacy_stamina_sum": 79527.48632733584,
+            "powder_units": 174128.02786131672,
+            "lower_stone_units": 11608.535190754445,
+            "material_gold": 445767751.32497066,
+            "conversion_gold": 893587.3187574984,
+            "sell_gold": 21711034.071514003,
+            "sell_exp_adjusted": 23686640.605244953,
+            "material_exp_adjusted": 35293659.30038232,
+            "lower_stone_adjusted_exp": 19160075.48829009,
+            "formal_terminal_count": 13.277252978297128,
+            "value_sum_curve_baseline": 61.069541852605205,
+            "value_sum_tier2_low": 61.069541852605205,
+            "value_sum_tier2_mid": 61.069541852605205,
+            "value_sum_tier2_high": 61.069541852605205,
+            "native_heirloom": 0.6677070135410169,
+            "converted_heirloom": 1.0487130388603643,
+            "speed22": 0.0,
+            "output60": 0.060333824713542414
+          },
+          "rift_stamina": 21234.854262915782,
+          "saint_stamina": 78765.14573708421,
+          "cycles": 249.82181485783275
+        },
+        "global_14_18": {
+          "rate": 0.061346705262305595,
+          "per_100k": {
+            "value_sum": 61.34670526230559,
+            "legacy_stamina_sum": 79567.60260597608,
+            "powder_units": 173926.12205632072,
+            "lower_stone_units": 11595.074803754713,
+            "material_gold": 445250872.464181,
+            "conversion_gold": 897642.854473316,
+            "sell_gold": 20585561.244498566,
+            "sell_exp_adjusted": 23651763.99261985,
+            "material_exp_adjusted": 35245553.399421915,
+            "lower_stone_adjusted_exp": 19133823.20934892,
+            "formal_terminal_count": 13.337511637446747,
+            "value_sum_curve_baseline": 61.34670526230559,
+            "value_sum_tier2_low": 61.34670526230559,
+            "value_sum_tier2_mid": 61.34670526230559,
+            "value_sum_tier2_high": 61.34670526230559,
+            "native_heirloom": 0.6707373941029107,
+            "converted_heirloom": 1.0534726108635297,
+            "speed22": 0.0,
+            "output60": 0.06060764907951246
+          },
+          "rift_stamina": 21331.228403501373,
+          "saint_stamina": 78668.77159649863,
+          "cycles": 250.95562827648675
+        },
+        "balanced_output_m2": {
+          "rate": 0.060969366434312194,
+          "per_100k": {
+            "value_sum": 60.96936643431219,
+            "legacy_stamina_sum": 79524.06581634213,
+            "powder_units": 174180.4974169385,
+            "lower_stone_units": 11612.033161129231,
+            "material_gold": 445902073.3873625,
+            "conversion_gold": 892121.5228677256,
+            "sell_gold": 21999814.86516126,
+            "sell_exp_adjusted": 23695889.128808662,
+            "material_exp_adjusted": 35307693.19217227,
+            "lower_stone_adjusted_exp": 19167745.40214456,
+            "formal_terminal_count": 13.255473637392734,
+            "value_sum_curve_baseline": 60.96936643431219,
+            "value_sum_tier2_low": 60.96936643431219,
+            "value_sum_tier2_mid": 60.96936643431219,
+            "value_sum_tier2_high": 60.96936643431219,
+            "native_heirloom": 0.6666117403925776,
+            "converted_heirloom": 1.0469927825075211,
+            "speed22": 0.0,
+            "output60": 0.06023485612880202
+          },
+          "rift_stamina": 21200.02167135463,
+          "saint_stamina": 78799.97832864537,
+          "cycles": 249.41201966299562
+        },
+        "balanced_output_m4": {
+          "rate": 0.06083939468813995,
+          "per_100k": {
+            "value_sum": 60.83939468813995,
+            "legacy_stamina_sum": 79549.77608370618,
+            "powder_units": 174225.61316064303,
+            "lower_stone_units": 11615.0408773762,
+            "material_gold": 446017569.69124603,
+            "conversion_gold": 890219.7384322601,
+            "sell_gold": 22114768.130424317,
+            "sell_exp_adjusted": 23698631.313289586,
+            "material_exp_adjusted": 35316621.190225944,
+            "lower_stone_adjusted_exp": 19172663.62694567,
+            "formal_terminal_count": 13.227216216400041,
+            "value_sum_curve_baseline": 60.83939468813995,
+            "value_sum_tier2_low": 60.83939468813995,
+            "value_sum_tier2_mid": 60.83939468813995,
+            "value_sum_tier2_high": 60.83939468813995,
+            "native_heirloom": 0.6651906875428472,
+            "converted_heirloom": 1.0447608505041133,
+            "speed22": 0.0,
+            "output60": 0.060106450178578984
+          },
+          "rift_stamina": 21154.82842109371,
+          "saint_stamina": 78845.17157890629,
+          "cycles": 248.88033436580835
+        },
+        "balanced_high_priority_m2": {
+          "rate": 0.060859746985392704,
+          "per_100k": {
+            "value_sum": 60.859746985392704,
+            "legacy_stamina_sum": 79513.38970416684,
+            "powder_units": 174253.15859055726,
+            "lower_stone_units": 11616.87723937048,
+            "material_gold": 446088085.9918265,
+            "conversion_gold": 890517.5391718913,
+            "sell_gold": 22405500.911195118,
+            "sell_exp_adjusted": 23708100.82957362,
+            "material_exp_adjusted": 35325136.34739798,
+            "lower_stone_adjusted_exp": 19177269.8071552,
+            "formal_terminal_count": 13.231641050631916,
+            "value_sum_curve_baseline": 60.859746985392704,
+            "value_sum_tier2_low": 60.859746985392704,
+            "value_sum_tier2_mid": 60.859746985392704,
+            "value_sum_tier2_high": 60.859746985392704,
+            "native_heirloom": 0.6654132104438726,
+            "converted_heirloom": 1.0451103491060716,
+            "speed22": 0.0,
+            "output60": 0.0601265572875848
+          },
+          "rift_stamina": 21161.90523963479,
+          "saint_stamina": 78838.0947603652,
+          "cycles": 248.96359105452694
+        }
+      }
+    },
+    "20260715": {
+      "yield_minus_20pct": {
+        "current_formal": {
+          "rate": 0.04923146742314285,
+          "per_100k": {
+            "value_sum": 49.231467423142846,
+            "legacy_stamina_sum": 73233.77413461632,
+            "powder_units": 160348.92364077596,
+            "lower_stone_units": 10689.928242718403,
+            "material_gold": 410493244.52038634,
+            "conversion_gold": 892360.204869314,
+            "sell_gold": 22468545.55111775,
+            "sell_exp_adjusted": 21816515.80967989,
+            "material_exp_adjusted": 32556298.405685507,
+            "lower_stone_adjusted_exp": 17674389.492377613,
+            "formal_terminal_count": 10.824622176695769,
+            "value_sum_curve_baseline": 49.231467423142846,
+            "value_sum_tier2_low": 49.231467423142846,
+            "value_sum_tier2_mid": 49.231467423142846,
+            "value_sum_tier2_high": 49.231467423142846,
+            "native_heirloom": 0.6405173605261496,
+            "converted_heirloom": 1.13066184920541,
+            "speed22": 0.0,
+            "output60": 0.06456828231110377
+          },
+          "rift_stamina": 27573.23927813375,
+          "saint_stamina": 72426.76072186625,
+          "cycles": 324.3910503309853
+        },
+        "global_10_14": {
+          "rate": 0.04958729898565704,
+          "per_100k": {
+            "value_sum": 49.587298985657036,
+            "legacy_stamina_sum": 73075.4136165949,
+            "powder_units": 160160.0060964101,
+            "lower_stone_units": 10677.333739760677,
+            "material_gold": 410009615.60680974,
+            "conversion_gold": 898809.940021325,
+            "sell_gold": 22312218.692035694,
+            "sell_exp_adjusted": 21801339.79753238,
+            "material_exp_adjusted": 32513812.86932854,
+            "lower_stone_adjusted_exp": 17651080.89883367,
+            "formal_terminal_count": 10.90285958103015,
+            "value_sum_curve_baseline": 49.587298985657036,
+            "value_sum_tier2_low": 49.587298985657036,
+            "value_sum_tier2_mid": 49.587298985657036,
+            "value_sum_tier2_high": 49.587298985657036,
+            "native_heirloom": 0.6451468445765548,
+            "converted_heirloom": 1.1388339633741784,
+            "speed22": 0.0,
+            "output60": 0.06503496417102364
+          },
+          "rift_stamina": 27772.531099593936,
+          "saint_stamina": 72227.46890040605,
+          "cycles": 326.73565999522276
+        },
+        "global_12_17": {
+          "rate": 0.04990951240332554,
+          "per_100k": {
+            "value_sum": 49.90951240332554,
+            "legacy_stamina_sum": 73018.41301568886,
+            "powder_units": 159893.1431202381,
+            "lower_stone_units": 10659.542874682542,
+            "material_gold": 409326446.3878094,
+            "conversion_gold": 904650.3190807384,
+            "sell_gold": 21387886.68771049,
+            "sell_exp_adjusted": 21761122.93202643,
+            "material_exp_adjusted": 32448815.938699383,
+            "lower_stone_adjusted_exp": 17615588.641432215,
+            "formal_terminal_count": 10.973705295957672,
+            "value_sum_curve_baseline": 49.90951240332554,
+            "value_sum_tier2_low": 49.90951240332554,
+            "value_sum_tier2_mid": 49.90951240332554,
+            "value_sum_tier2_high": 49.90951240332554,
+            "native_heirloom": 0.6493389456577044,
+            "converted_heirloom": 1.1462339950557168,
+            "speed22": 0.0,
+            "output60": 0.06545755500581696
+          },
+          "rift_stamina": 27952.994289684073,
+          "saint_stamina": 72047.00571031592,
+          "cycles": 328.8587563492244
+        },
+        "global_14_18": {
+          "rate": 0.05020805196486678,
+          "per_100k": {
+            "value_sum": 50.20805196486678,
+            "legacy_stamina_sum": 73032.25782529233,
+            "powder_units": 159541.6019654003,
+            "lower_stone_units": 10636.10679769336,
+            "material_gold": 408426501.0314247,
+            "conversion_gold": 910061.5903314771,
+            "sell_gold": 19902254.55027196,
+            "sell_exp_adjusted": 21703597.571690653,
+            "material_exp_adjusted": 32368336.606886502,
+            "lower_stone_adjusted_exp": 17571717.54810361,
+            "formal_terminal_count": 11.039345792323644,
+            "value_sum_curve_baseline": 50.20805196486678,
+            "value_sum_tier2_low": 50.20805196486678,
+            "value_sum_tier2_mid": 50.20805196486678,
+            "value_sum_tier2_high": 50.20805196486678,
+            "native_heirloom": 0.6532230421914824,
+            "converted_heirloom": 1.1530903272022275,
+            "speed22": 0.0,
+            "output60": 0.06584909699510909
+          },
+          "rift_stamina": 28120.198380791382,
+          "saint_stamina": 71879.80161920862,
+          "cycles": 330.82586330342804
+        },
+        "balanced_output_m2": {
+          "rate": 0.04980182912080446,
+          "per_100k": {
+            "value_sum": 49.80182912080446,
+            "legacy_stamina_sum": 73028.0060701908,
+            "powder_units": 159992.99823957935,
+            "lower_stone_units": 10666.199882638628,
+            "material_gold": 409582075.4933231,
+            "conversion_gold": 902698.4724045952,
+            "sell_gold": 21768543.817077138,
+            "sell_exp_adjusted": 21777460.34889476,
+            "material_exp_adjusted": 32473440.17287521,
+            "lower_stone_adjusted_exp": 17629024.170884382,
+            "formal_terminal_count": 10.95002875513839,
+            "value_sum_curve_baseline": 49.80182912080446,
+            "value_sum_tier2_low": 49.80182912080446,
+            "value_sum_tier2_mid": 49.80182912080446,
+            "value_sum_tier2_high": 49.80182912080446,
+            "native_heirloom": 0.6479379512225727,
+            "converted_heirloom": 1.1437609146111034,
+            "speed22": 0.0,
+            "output60": 0.06531632572808191
+          },
+          "rift_stamina": 27892.683738920095,
+          "saint_stamina": 72107.3162610799,
+          "cycles": 328.1492204578835
+        },
+        "balanced_output_m4": {
+          "rate": 0.049662238045860556,
+          "per_100k": {
+            "value_sum": 49.662238045860555,
+            "legacy_stamina_sum": 73080.0112731356,
+            "powder_units": 160092.06833401992,
+            "lower_stone_units": 10672.804555601331,
+            "material_gold": 409835694.93509084,
+            "conversion_gold": 900168.2711582208,
+            "sell_gold": 21920331.447482307,
+            "sell_exp_adjusted": 21786440.97975222,
+            "material_exp_adjusted": 32493119.945964128,
+            "lower_stone_adjusted_exp": 17639801.96800975,
+            "formal_terminal_count": 10.919336583553916,
+            "value_sum_curve_baseline": 49.662238045860555,
+            "value_sum_tier2_low": 49.662238045860555,
+            "value_sum_tier2_mid": 49.662238045860555,
+            "value_sum_tier2_high": 49.662238045860555,
+            "native_heirloom": 0.6461218260579986,
+            "converted_heirloom": 1.1405550320487963,
+            "speed22": 0.0,
+            "output60": 0.0651332485945563
+          },
+          "rift_stamina": 27814.502479819315,
+          "saint_stamina": 72185.49752018068,
+          "cycles": 327.2294409390508
+        },
+        "balanced_high_priority_m2": {
+          "rate": 0.049684111647957704,
+          "per_100k": {
+            "value_sum": 49.68411164795771,
+            "legacy_stamina_sum": 73029.36053827048,
+            "powder_units": 160122.16247024148,
+            "lower_stone_units": 10674.810831349434,
+            "material_gold": 409912735.92381805,
+            "conversion_gold": 900564.7479051128,
+            "sell_gold": 22302556.087147415,
+            "sell_exp_adjusted": 21798064.05418713,
+            "material_exp_adjusted": 32503093.27250624,
+            "lower_stone_adjusted_exp": 17645194.536362693,
+            "formal_terminal_count": 10.92414597662583,
+            "value_sum_curve_baseline": 49.68411164795771,
+            "value_sum_tier2_low": 49.68411164795771,
+            "value_sum_tier2_mid": 49.68411164795771,
+            "value_sum_tier2_high": 49.68411164795771,
+            "native_heirloom": 0.646406408716485,
+            "converted_heirloom": 1.141057386512119,
+            "speed22": 0.0,
+            "output60": 0.06516193636254887
+          },
+          "rift_stamina": 27826.753304262867,
+          "saint_stamina": 72173.24669573715,
+          "cycles": 327.3735682854455
+        }
+      },
+      "baseline": {
+        "current_formal": {
+          "rate": 0.04656401133508102,
+          "per_100k": {
+            "value_sum": 46.56401133508101,
+            "legacy_stamina_sum": 77059.16184710253,
+            "powder_units": 168598.01839420074,
+            "lower_stone_units": 11239.86789294672,
+            "material_gold": 431610927.08915377,
+            "conversion_gold": 864567.2719843265,
+            "sell_gold": 22310116.418494094,
+            "sell_exp_adjusted": 22940204.878860023,
+            "material_exp_adjusted": 34217452.55496154,
+            "lower_stone_adjusted_exp": 18575979.60651176,
+            "formal_terminal_count": 10.275920726022225,
+            "value_sum_curve_baseline": 46.56401133508101,
+            "value_sum_tier2_low": 46.56401133508101,
+            "value_sum_tier2_mid": 46.56401133508101,
+            "value_sum_tier2_high": 46.56401133508101,
+            "native_heirloom": 0.549285162497407,
+            "converted_heirloom": 0.9696158384532297,
+            "speed22": 0.0,
+            "output60": 0.055371488154980525
+          },
+          "rift_stamina": 23645.84030170288,
+          "saint_stamina": 76354.15969829711,
+          "cycles": 278.18635649062213
+        },
+        "global_10_14": {
+          "rate": 0.046852344408246406,
+          "per_100k": {
+            "value_sum": 46.8523444082464,
+            "legacy_stamina_sum": 76947.20770899425,
+            "powder_units": 168487.30650779887,
+            "lower_stone_units": 11232.487100519931,
+            "material_gold": 431327504.65996504,
+            "conversion_gold": 869920.8343459448,
+            "sell_gold": 22175219.905471805,
+            "sell_exp_adjusted": 22934168.82965785,
+            "material_exp_adjusted": 34191352.37326776,
+            "lower_stone_adjusted_exp": 18561599.924962357,
+            "formal_terminal_count": 10.339551150411923,
+            "value_sum_curve_baseline": 46.8523444082464,
+            "value_sum_tier2_low": 46.8523444082464,
+            "value_sum_tier2_mid": 46.8523444082464,
+            "value_sum_tier2_high": 46.8523444082464,
+            "native_heirloom": 0.5526864390284886,
+            "converted_heirloom": 0.9756198811994445,
+            "speed22": 0.0,
+            "output60": 0.0557143587730331
+          },
+          "rift_stamina": 23792.259770436056,
+          "saint_stamina": 76207.74022956395,
+          "cycles": 279.9089384757183
+        },
+        "global_12_17": {
+          "rate": 0.04711295178828445,
+          "per_100k": {
+            "value_sum": 47.11295178828444,
+            "legacy_stamina_sum": 76920.01941815394,
+            "powder_units": 168305.3561537315,
+            "lower_stone_units": 11220.357076915438,
+            "material_gold": 430861711.75355256,
+            "conversion_gold": 874759.6058597883,
+            "sell_gold": 21383353.10559495,
+            "sell_exp_adjusted": 22906067.28406362,
+            "material_exp_adjusted": 34145080.782808684,
+            "lower_stone_adjusted_exp": 18536302.050474178,
+            "formal_terminal_count": 10.397062964817605,
+            "value_sum_curve_baseline": 47.11295178828444,
+            "value_sum_tier2_low": 47.11295178828444,
+            "value_sum_tier2_mid": 47.11295178828444,
+            "value_sum_tier2_high": 47.11295178828444,
+            "native_heirloom": 0.5557606537060452,
+            "converted_heirloom": 0.9810465838407677,
+            "speed22": 0.0,
+            "output60": 0.05602425944617389
+          },
+          "rift_stamina": 23924.599753894097,
+          "saint_stamina": 76075.4002461059,
+          "cycles": 281.4658794575776
+        },
+        "global_14_18": {
+          "rate": 0.047353977156174544,
+          "per_100k": {
+            "value_sum": 47.353977156174544,
+            "legacy_stamina_sum": 76951.87189184788,
+            "powder_units": 168047.88740895785,
+            "lower_stone_units": 11203.192493930526,
+            "material_gold": 430202591.766932,
+            "conversion_gold": 879234.7925720372,
+            "sell_gold": 20112906.638875537,
+            "sell_exp_adjusted": 22862747.62762911,
+            "material_exp_adjusted": 34084960.26750955,
+            "lower_stone_adjusted_exp": 18503508.70065649,
+            "formal_terminal_count": 10.450253347312273,
+            "value_sum_curve_baseline": 47.353977156174544,
+            "value_sum_tier2_low": 47.353977156174544,
+            "value_sum_tier2_mid": 47.353977156174544,
+            "value_sum_tier2_high": 47.353977156174544,
+            "native_heirloom": 0.5586038722040135,
+            "converted_heirloom": 0.9860655245951092,
+            "speed22": 0.0,
+            "output60": 0.05631087421411425
+          },
+          "rift_stamina": 24046.995724395347,
+          "saint_stamina": 75953.00427560466,
+          "cycles": 282.90583205171
+        },
+        "balanced_output_m2": {
+          "rate": 0.04702590826284678,
+          "per_100k": {
+            "value_sum": 47.02590826284677,
+            "legacy_stamina_sum": 76920.99929545935,
+            "powder_units": 168375.25103310298,
+            "lower_stone_units": 11225.0167355402,
+            "material_gold": 431040642.64474356,
+            "conversion_gold": 873143.4439103806,
+            "sell_gold": 21709254.85628218,
+            "sell_exp_adjusted": 22917931.86666064,
+            "material_exp_adjusted": 34163017.92031705,
+            "lower_stone_adjusted_exp": 18546097.861741308,
+            "formal_terminal_count": 10.377853873043394,
+            "value_sum_curve_baseline": 47.02590826284677,
+            "value_sum_tier2_low": 47.02590826284677,
+            "value_sum_tier2_mid": 47.02590826284677,
+            "value_sum_tier2_high": 47.02590826284677,
+            "native_heirloom": 0.5547338582121966,
+            "converted_heirloom": 0.9792340514046803,
+            "speed22": 0.0,
+            "output60": 0.05592075183590689
+          },
+          "rift_stamina": 23880.397864005678,
+          "saint_stamina": 76119.60213599433,
+          "cycles": 280.9458572235962
+        },
+        "balanced_output_m4": {
+          "rate": 0.04691301449324969,
+          "per_100k": {
+            "value_sum": 46.91301449324968,
+            "legacy_stamina_sum": 76956.19827101441,
+            "powder_units": 168439.98663814872,
+            "lower_stone_units": 11229.332442543253,
+            "material_gold": 431206365.79366064,
+            "conversion_gold": 871047.3131088007,
+            "sell_gold": 21839403.728776556,
+            "sell_exp_adjusted": 22922886.582829386,
+            "material_exp_adjusted": 34175818.56169245,
+            "lower_stone_adjusted_exp": 18553128.015019484,
+            "formal_terminal_count": 10.352940052399951,
+            "value_sum_curve_baseline": 46.91301449324968,
+            "value_sum_tier2_low": 46.91301449324968,
+            "value_sum_tier2_mid": 46.91301449324968,
+            "value_sum_tier2_high": 46.91301449324968,
+            "native_heirloom": 0.5534021243086924,
+            "converted_heirloom": 0.976883231878495,
+            "speed22": 0.0,
+            "output60": 0.055786504466602035
+          },
+          "rift_stamina": 23823.068867417733,
+          "saint_stamina": 76176.93113258228,
+          "cycles": 280.2713984402086
+        },
+        "balanced_high_priority_m2": {
+          "rate": 0.04693069696332995,
+          "per_100k": {
+            "value_sum": 46.93069696332995,
+            "legacy_stamina_sum": 76914.25800064318,
+            "powder_units": 168468.8593602699,
+            "lower_stone_units": 11231.257290684664,
+            "material_gold": 431280279.96229094,
+            "conversion_gold": 871375.6285713416,
+            "sell_gold": 22166720.586892918,
+            "sell_exp_adjusted": 22933262.94845173,
+            "material_exp_adjusted": 34184984.71404398,
+            "lower_stone_adjusted_exp": 18558085.440324962,
+            "formal_terminal_count": 10.356842286240534,
+            "value_sum_curve_baseline": 46.93069696332995,
+            "value_sum_tier2_low": 46.93069696332995,
+            "value_sum_tier2_mid": 46.93069696332995,
+            "value_sum_tier2_high": 46.93069696332995,
+            "native_heirloom": 0.553610712833884,
+            "converted_heirloom": 0.9772514390531178,
+            "speed22": 0.0,
+            "output60": 0.05580753153567377
+          },
+          "rift_stamina": 23832.048266994127,
+          "saint_stamina": 76167.95173300587,
+          "cycles": 280.377038435225
+        }
+      },
+      "yield_plus_20pct": {
+        "current_formal": {
+          "rate": 0.044561762508808986,
+          "per_100k": {
+            "value_sum": 44.56176250880899,
+            "legacy_stamina_sum": 79930.79629776988,
+            "powder_units": 174790.43613438343,
+            "lower_stone_units": 11652.695742292233,
+            "material_gold": 447463516.50402147,
+            "conversion_gold": 843705.8843694188,
+            "sell_gold": 22191225.751435056,
+            "sell_exp_adjusted": 23783734.018451072,
+            "material_exp_adjusted": 35464445.595300965,
+            "lower_stone_adjusted_exp": 19252784.109771427,
+            "formal_terminal_count": 9.864054894782614,
+            "value_sum_curve_baseline": 44.56176250880899,
+            "value_sum_tier2_low": 44.56176250880899,
+            "value_sum_tier2_mid": 44.56176250880899,
+            "value_sum_tier2_high": 44.56176250880899,
+            "native_heirloom": 0.48080277039714386,
+            "converted_heirloom": 0.8487285169503611,
+            "speed22": 0.0,
+            "output60": 0.048468021209389485
+          },
+          "rift_stamina": 20697.783777257686,
+          "saint_stamina": 79302.21622274231,
+          "cycles": 243.50333855597276
+        },
+        "global_10_14": {
+          "rate": 0.044803117555632946,
+          "per_100k": {
+            "value_sum": 44.803117555632944,
+            "legacy_stamina_sum": 79848.44429646713,
+            "powder_units": 174727.17484337089,
+            "lower_stone_units": 11648.478322891398,
+            "material_gold": 447301567.5990294,
+            "conversion_gold": 848275.557150817,
+            "sell_gold": 22072599.085852195,
+            "sell_exp_adjusted": 23783027.862031102,
+            "material_exp_adjusted": 35448377.833540335,
+            "lower_stone_adjusted_exp": 19243876.32071753,
+            "formal_terminal_count": 9.917480506719166,
+            "value_sum_curve_baseline": 44.803117555632944,
+            "value_sum_tier2_low": 44.803117555632944,
+            "value_sum_tier2_mid": 44.803117555632944,
+            "value_sum_tier2_high": 44.803117555632944,
+            "native_heirloom": 0.4834068903562535,
+            "converted_heirloom": 0.853325393272497,
+            "speed22": 0.0,
+            "output60": 0.04873053330204167
+          },
+          "rift_stamina": 20809.886941303874,
+          "saint_stamina": 79190.11305869612,
+          "cycles": 244.82219930945732
+        },
+        "global_12_17": {
+          "rate": 0.04502095925325203,
+          "per_100k": {
+            "value_sum": 45.02095925325204,
+            "legacy_stamina_sum": 79838.82651353341,
+            "powder_units": 174598.5688279342,
+            "lower_stone_units": 11639.904588528952,
+            "material_gold": 446972336.1995115,
+            "conversion_gold": 852400.0421755266,
+            "sell_gold": 21379987.862723973,
+            "sell_exp_adjusted": 23762605.06634417,
+            "material_exp_adjusted": 35414064.047344476,
+            "lower_stone_adjusted_exp": 19225091.84486476,
+            "formal_terminal_count": 9.965701275887858,
+            "value_sum_curve_baseline": 45.02095925325204,
+            "value_sum_tier2_low": 45.02095925325204,
+            "value_sum_tier2_mid": 45.02095925325204,
+            "value_sum_tier2_high": 45.02095925325204,
+            "native_heirloom": 0.48575731111671083,
+            "converted_heirloom": 0.8574744316080801,
+            "speed22": 0.0,
+            "output60": 0.048967470878700674
+          },
+          "rift_stamina": 20911.068764040334,
+          "saint_stamina": 79088.93123595967,
+          "cycles": 246.01257369459216
+        },
+        "global_14_18": {
+          "rate": 0.04522216102316627,
+          "per_100k": {
+            "value_sum": 45.22216102316628,
+            "legacy_stamina_sum": 79879.72704936496,
+            "powder_units": 174401.87419283923,
+            "lower_stone_units": 11626.791612855952,
+            "material_gold": 446468797.9336683,
+            "conversion_gold": 856209.4767145808,
+            "sell_gold": 20270275.164744616,
+            "sell_exp_adjusted": 23728604.27643133,
+            "material_exp_adjusted": 35367236.25550368,
+            "lower_stone_adjusted_exp": 19199533.957551748,
+            "formal_terminal_count": 10.010238681762885,
+            "value_sum_curve_baseline": 45.22216102316628,
+            "value_sum_tier2_low": 45.22216102316628,
+            "value_sum_tier2_mid": 45.22216102316628,
+            "value_sum_tier2_high": 45.22216102316628,
+            "native_heirloom": 0.4879281940202866,
+            "converted_heirloom": 0.8613065439432541,
+            "speed22": 0.0,
+            "output60": 0.04918630988107726
+          },
+          "rift_stamina": 21004.521771615233,
+          "saint_stamina": 78995.47822838476,
+          "cycles": 247.11202084253213
+        },
+        "balanced_output_m2": {
+          "rate": 0.04494823171713235,
+          "per_100k": {
+            "value_sum": 44.94823171713236,
+            "legacy_stamina_sum": 79834.95222067063,
+            "powder_units": 174649.47313765966,
+            "lower_stone_units": 11643.298209177316,
+            "material_gold": 447102651.2324087,
+            "conversion_gold": 851023.0623002864,
+            "sell_gold": 21664906.460533634,
+            "sell_exp_adjusted": 23771589.216733515,
+            "material_exp_adjusted": 35427688.50301637,
+            "lower_stone_adjusted_exp": 19232539.268431414,
+            "formal_terminal_count": 9.94960253184682,
+            "value_sum_curve_baseline": 44.94823171713236,
+            "value_sum_tier2_low": 44.94823171713236,
+            "value_sum_tier2_mid": 44.94823171713236,
+            "value_sum_tier2_high": 44.94823171713236,
+            "native_heirloom": 0.4849726114351489,
+            "converted_heirloom": 0.8560892544876709,
+            "speed22": 0.0,
+            "output60": 0.04888836808822064
+          },
+          "rift_stamina": 20877.288708393742,
+          "saint_stamina": 79122.71129160626,
+          "cycles": 245.6151612752205
+        },
+        "balanced_output_m4": {
+          "rate": 0.04485386787793415,
+          "per_100k": {
+            "value_sum": 44.85386787793415,
+            "legacy_stamina_sum": 79859.61776758466,
+            "powder_units": 174692.91571802637,
+            "lower_stone_units": 11646.194381201762,
+            "material_gold": 447213864.2381474,
+            "conversion_gold": 849236.4335423355,
+            "sell_gold": 21778816.13132573,
+            "sell_exp_adjusted": 23774130.37994926,
+            "material_exp_adjusted": 35436228.30075748,
+            "lower_stone_adjusted_exp": 19237246.395574775,
+            "formal_terminal_count": 9.928714442203832,
+            "value_sum_curve_baseline": 44.85386787793415,
+            "value_sum_tier2_low": 44.85386787793415,
+            "value_sum_tier2_mid": 44.85386787793415,
+            "value_sum_tier2_high": 44.85386787793415,
+            "native_heirloom": 0.4839544650971795,
+            "converted_heirloom": 0.854291989819771,
+            "speed22": 0.0,
+            "output60": 0.04878573236866727
+          },
+          "rift_stamina": 20833.45915071567,
+          "saint_stamina": 79166.54084928433,
+          "cycles": 245.09951942018435
+        },
+        "balanced_high_priority_m2": {
+          "rate": 0.0448686438850472,
+          "per_100k": {
+            "value_sum": 44.868643885047206,
+            "legacy_stamina_sum": 79823.88512806088,
+            "powder_units": 174720.19372163195,
+            "lower_stone_units": 11648.012914775467,
+            "material_gold": 447283695.9273777,
+            "conversion_gold": 849516.1936650709,
+            "sell_gold": 22065019.820807233,
+            "sell_exp_adjusted": 23783480.48782773,
+            "material_exp_adjusted": 35444652.89729405,
+            "lower_stone_adjusted_exp": 19241803.548249196,
+            "formal_terminal_count": 9.931985213759605,
+            "value_sum_curve_baseline": 44.868643885047206,
+            "value_sum_tier2_low": 44.868643885047206,
+            "value_sum_tier2_mid": 44.868643885047206,
+            "value_sum_tier2_high": 44.868643885047206,
+            "native_heirloom": 0.48411389203084176,
+            "converted_heirloom": 0.8545734153715774,
+            "speed22": 0.0,
+            "output60": 0.04880180363214129
+          },
+          "rift_stamina": 20840.322223069616,
+          "saint_stamina": 79159.67777693039,
+          "cycles": 245.18026144787783
+        }
+      }
+    },
+    "20260716": {
+      "yield_minus_20pct": {
+        "current_formal": {
+          "rate": 0.07570533137884432,
+          "per_100k": {
+            "value_sum": 75.70533137884433,
+            "legacy_stamina_sum": 73161.43564599245,
+            "powder_units": 160415.25694168065,
+            "lower_stone_units": 10694.350462778715,
+            "material_gold": 410663057.7707023,
+            "conversion_gold": 1189200.836225833,
+            "sell_gold": 22558635.11198775,
+            "sell_exp_adjusted": 21784113.092721377,
+            "material_exp_adjusted": 32508333.205922134,
+            "lower_stone_adjusted_exp": 17648445.197768964,
+            "formal_terminal_count": 14.735359922125982,
+            "value_sum_curve_baseline": 75.70533137884433,
+            "value_sum_tier2_low": 75.70533137884433,
+            "value_sum_tier2_mid": 80.35611618294557,
+            "value_sum_tier2_high": 82.6815085849962,
+            "native_heirloom": 0.5748009461522539,
+            "converted_heirloom": 0.9369812084067126,
+            "speed22": 1.162696201025309,
+            "output60": 0.030252681376434404
+          },
+          "rift_stamina": 27683.796546412603,
+          "saint_stamina": 72316.2034535874,
+          "cycles": 325.6917240754424
+        },
+        "global_10_14": {
+          "rate": 0.07625469879719973,
+          "per_100k": {
+            "value_sum": 76.25469879719974,
+            "legacy_stamina_sum": 73001.891594772,
+            "powder_units": 160226.0160689973,
+            "lower_stone_units": 10681.734404599823,
+            "material_gold": 410178601.1366329,
+            "conversion_gold": 1197830.4555855873,
+            "sell_gold": 22402324.836773794,
+            "sell_exp_adjusted": 21768634.97674841,
+            "material_exp_adjusted": 32465319.549996816,
+            "lower_stone_adjusted_exp": 17624849.602823015,
+            "formal_terminal_count": 14.842289335042048,
+            "value_sum_curve_baseline": 76.25469879719974,
+            "value_sum_tier2_low": 76.25469879719974,
+            "value_sum_tier2_mid": 80.93923273884019,
+            "value_sum_tier2_high": 83.28149970966041,
+            "native_heirloom": 0.5789720779088233,
+            "converted_heirloom": 0.9437805571201346,
+            "speed22": 1.17113348541011,
+            "output60": 0.030472214626780167
+          },
+          "rift_stamina": 27884.688287614717,
+          "saint_stamina": 72115.31171238529,
+          "cycles": 328.055156324879
+        },
+        "global_12_17": {
+          "rate": 0.0767521877917982,
+          "per_100k": {
+            "value_sum": 76.75218779179819,
+            "legacy_stamina_sum": 72944.15999002398,
+            "powder_units": 159958.45598253453,
+            "lower_stone_units": 10663.897065502304,
+            "material_gold": 409493647.31528825,
+            "conversion_gold": 1205645.1539379274,
+            "sell_gold": 21474817.73805232,
+            "sell_exp_adjusted": 21728035.41555973,
+            "material_exp_adjusted": 32399733.317625035,
+            "lower_stone_adjusted_exp": 17589037.20326802,
+            "formal_terminal_count": 14.939121080695742,
+            "value_sum_curve_baseline": 76.75218779179819,
+            "value_sum_tier2_low": 76.75218779179819,
+            "value_sum_tier2_mid": 81.46728383803743,
+            "value_sum_tier2_high": 83.82483186115705,
+            "native_heirloom": 0.5827493171017216,
+            "converted_heirloom": 0.9499378228085344,
+            "speed22": 1.1787740115598069,
+            "output60": 0.030671016689564286
+          },
+          "rift_stamina": 28066.609215238997,
+          "saint_stamina": 71933.39078476098,
+          "cycles": 330.1954025322235
+        },
+        "global_14_18": {
+          "rate": 0.07721314627538832,
+          "per_100k": {
+            "value_sum": 77.21314627538833,
+            "legacy_stamina_sum": 72957.5956971597,
+            "powder_units": 159605.82648937296,
+            "lower_stone_units": 10640.388432624868,
+            "material_gold": 408590915.8127947,
+            "conversion_gold": 1212886.0206532136,
+            "sell_gold": 19983627.6895677,
+            "sell_exp_adjusted": 21670070.24879716,
+            "material_exp_adjusted": 32318621.37318482,
+            "lower_stone_adjusted_exp": 17544822.507124845,
+            "formal_terminal_count": 15.02884249187176,
+            "value_sum_curve_baseline": 77.21314627538833,
+            "value_sum_tier2_low": 77.21314627538833,
+            "value_sum_tier2_mid": 81.95656025738923,
+            "value_sum_tier2_high": 84.3282672483897,
+            "native_heirloom": 0.5862491944244772,
+            "converted_heirloom": 0.9556429617876936,
+            "speed22": 1.185853495500226,
+            "output60": 0.030855220759183004
+          },
+          "rift_stamina": 28235.171727860376,
+          "saint_stamina": 71764.82827213962,
+          "cycles": 332.1784909160044
+        },
+        "balanced_output_m2": {
+          "rate": 0.07658592507343893,
+          "per_100k": {
+            "value_sum": 76.58592507343894,
+            "legacy_stamina_sum": 72953.95960797218,
+            "powder_units": 160058.58951644608,
+            "lower_stone_units": 10670.572634429742,
+            "material_gold": 409749989.16210186,
+            "conversion_gold": 1203033.4519599443,
+            "sell_gold": 21856832.413410652,
+            "sell_exp_adjusted": 21744512.79728626,
+            "material_exp_adjusted": 32424566.77162397,
+            "lower_stone_adjusted_exp": 17602586.383040033,
+            "formal_terminal_count": 14.906759542188041,
+            "value_sum_curve_baseline": 76.58592507343894,
+            "value_sum_tier2_low": 76.58592507343894,
+            "value_sum_tier2_mid": 81.29080714782242,
+            "value_sum_tier2_high": 83.64324818501416,
+            "native_heirloom": 0.581486949365102,
+            "converted_heirloom": 0.9478800411447615,
+            "speed22": 1.1762205185958692,
+            "output60": 0.030604576282373785
+          },
+          "rift_stamina": 28005.810547767644,
+          "saint_stamina": 71994.18945223236,
+          "cycles": 329.480124091384
+        },
+        "balanced_output_m4": {
+          "rate": 0.07637039977059729,
+          "per_100k": {
+            "value_sum": 76.37039977059729,
+            "legacy_stamina_sum": 73006.39109908383,
+            "powder_units": 160157.89230972182,
+            "lower_stone_units": 10677.192820648124,
+            "material_gold": 410004204.31288767,
+            "conversion_gold": 1199647.9193204457,
+            "sell_gold": 22008987.745132886,
+            "sell_exp_adjusted": 21753624.72894523,
+            "material_exp_adjusted": 32444467.04543005,
+            "lower_stone_adjusted_exp": 17613483.999697134,
+            "formal_terminal_count": 14.864809485938972,
+            "value_sum_curve_baseline": 76.37039977059729,
+            "value_sum_tier2_low": 76.37039977059729,
+            "value_sum_tier2_mid": 81.0620415383194,
+            "value_sum_tier2_high": 83.40786242218047,
+            "native_heirloom": 0.5798505501084473,
+            "converted_heirloom": 0.9452125518805216,
+            "speed22": 1.172910441930531,
+            "output60": 0.03051845000570775
+          },
+          "rift_stamina": 27926.997622365936,
+          "saint_stamina": 72073.00237763405,
+          "cycles": 328.5529132043051
+        },
+        "balanced_high_priority_m2": {
+          "rate": 0.07640417295104178,
+          "per_100k": {
+            "value_sum": 76.40417295104179,
+            "legacy_stamina_sum": 72955.5027977479,
+            "powder_units": 160188.13718564055,
+            "lower_stone_units": 10679.209145709372,
+            "material_gold": 410081631.19523966,
+            "conversion_gold": 1200178.4380262636,
+            "sell_gold": 22392798.154646832,
+            "sell_exp_adjusted": 21765280.302302875,
+            "material_exp_adjusted": 32454459.182898533,
+            "lower_stone_adjusted_exp": 17618886.734002028,
+            "formal_terminal_count": 14.87138313089238,
+            "value_sum_curve_baseline": 76.40417295104179,
+            "value_sum_tier2_low": 76.40417295104179,
+            "value_sum_tier2_mid": 81.09788949727074,
+            "value_sum_tier2_high": 83.44474777038522,
+            "native_heirloom": 0.5801069766469816,
+            "converted_heirloom": 0.9456305519717736,
+            "speed22": 1.173429136557239,
+            "output60": 0.030531946139314817
+          },
+          "rift_stamina": 27939.347741427853,
+          "saint_stamina": 72060.65225857215,
+          "cycles": 328.69820872268065
+        }
+      },
+      "baseline": {
+        "current_formal": {
+          "rate": 0.07614593386702653,
+          "per_100k": {
+            "value_sum": 76.14593386702654,
+            "legacy_stamina_sum": 77005.31013752431,
+            "powder_units": 168717.99020238803,
+            "lower_stone_units": 11247.866013492538,
+            "material_gold": 431918054.9181131,
+            "conversion_gold": 1194408.61043484,
+            "sell_gold": 22401474.50563556,
+            "sell_exp_adjusted": 22911719.427822996,
+            "material_exp_adjusted": 34175334.07930118,
+            "lower_stone_adjusted_exp": 18553211.285522208,
+            "formal_terminal_count": 14.631944673640378,
+            "value_sum_curve_baseline": 76.14593386702654,
+            "value_sum_tier2_low": 76.14593386702654,
+            "value_sum_tier2_mid": 81.13179444409674,
+            "value_sum_tier2_high": 83.62472473263182,
+            "native_heirloom": 0.49297097118850725,
+            "converted_heirloom": 0.803590424451543,
+            "speed22": 1.2464651442675494,
+            "output60": 0.025945840588868795
+          },
+          "rift_stamina": 23742.66806800828,
+          "saint_stamina": 76257.33193199172,
+          "cycles": 279.32550668245034
+        },
+        "global_10_14": {
+          "rate": 0.07661937224935379,
+          "per_100k": {
+            "value_sum": 76.6193722493538,
+            "legacy_stamina_sum": 76892.54553029098,
+            "powder_units": 168607.53664161498,
+            "lower_stone_units": 11240.502442774334,
+            "material_gold": 431635293.8025341,
+            "conversion_gold": 1201834.8622600462,
+            "sell_gold": 22266586.05209545,
+            "sell_exp_adjusted": 22905477.12150019,
+            "material_exp_adjusted": 34148858.10549671,
+            "lower_stone_adjusted_exp": 18538627.32983236,
+            "formal_terminal_count": 14.722918989205112,
+            "value_sum_curve_baseline": 76.6193722493538,
+            "value_sum_tier2_low": 76.6193722493538,
+            "value_sum_tier2_mid": 81.63623248256111,
+            "value_sum_tier2_high": 84.14466259916476,
+            "native_heirloom": 0.49603602492520915,
+            "converted_heirloom": 0.8085867588752617,
+            "speed22": 1.2542150583018286,
+            "output60": 0.02610715920658995
+          },
+          "rift_stamina": 23890.288430533226,
+          "saint_stamina": 76109.71156946677,
+          "cycles": 281.06221682980265
+        },
+        "global_12_17": {
+          "rate": 0.07704730416254862,
+          "per_100k": {
+            "value_sum": 77.04730416254863,
+            "legacy_stamina_sum": 76864.9245881669,
+            "powder_units": 168425.47175505053,
+            "lower_stone_units": 11228.364783670037,
+            "material_gold": 431169207.69292915,
+            "conversion_gold": 1208547.309476103,
+            "sell_gold": 21471944.593709648,
+            "sell_exp_adjusted": 22877094.51783398,
+            "material_exp_adjusted": 34102150.93625957,
+            "lower_stone_adjusted_exp": 18513092.791158564,
+            "formal_terminal_count": 14.805148935834781,
+            "value_sum_curve_baseline": 77.04730416254863,
+            "value_sum_tier2_low": 77.04730416254863,
+            "value_sum_tier2_mid": 82.0921843929812,
+            "value_sum_tier2_high": 84.61462450819747,
+            "native_heirloom": 0.49880646846876864,
+            "converted_heirloom": 0.8131028501528487,
+            "speed22": 1.2612200576081416,
+            "output60": 0.026252972024672028
+          },
+          "rift_stamina": 24023.719657319878,
+          "saint_stamina": 75976.28034268013,
+          "cycles": 282.63199596846914
+        },
+        "global_14_18": {
+          "rate": 0.07744309740540824,
+          "per_100k": {
+            "value_sum": 77.44309740540824,
+            "legacy_stamina_sum": 76896.61193287694,
+            "powder_units": 168167.51566129416,
+            "lower_stone_units": 11211.167710752945,
+            "material_gold": 430508840.09291285,
+            "conversion_gold": 1214755.6364768457,
+            "sell_gold": 20196658.85444711,
+            "sell_exp_adjusted": 22833441.250010043,
+            "material_exp_adjusted": 34041552.997182645,
+            "lower_stone_adjusted_exp": 18480040.107339196,
+            "formal_terminal_count": 14.881203224456884,
+            "value_sum_curve_baseline": 77.44309740540824,
+            "value_sum_tier2_low": 77.44309740540824,
+            "value_sum_tier2_mid": 82.51389326686702,
+            "value_sum_tier2_high": 85.04929119759639,
+            "native_heirloom": 0.5013688453340005,
+            "converted_heirloom": 0.8172797725946959,
+            "speed22": 1.2676989653646955,
+            "output60": 0.026387833964947392
+          },
+          "rift_stamina": 24147.129892266716,
+          "saint_stamina": 75852.87010773328,
+          "cycles": 284.08388108549076
+        },
+        "balanced_output_m2": {
+          "rate": 0.07690437185662823,
+          "per_100k": {
+            "value_sum": 76.90437185662825,
+            "legacy_stamina_sum": 76866.01581158732,
+            "powder_units": 168495.4439767105,
+            "lower_stone_units": 11233.029598447367,
+            "material_gold": 431348336.58037865,
+            "conversion_gold": 1206305.304312718,
+            "sell_gold": 21799031.14172404,
+            "sell_exp_adjusted": 22889063.427831087,
+            "material_exp_adjusted": 34120244.1488391,
+            "lower_stone_adjusted_exp": 18522973.393681858,
+            "formal_terminal_count": 14.777683548175931,
+            "value_sum_curve_baseline": 76.90437185662825,
+            "value_sum_tier2_low": 76.90437185662825,
+            "value_sum_tier2_mid": 81.9398932084827,
+            "value_sum_tier2_high": 84.45765388440992,
+            "native_heirloom": 0.49788112059941514,
+            "converted_heirloom": 0.8115944435111626,
+            "speed22": 1.2588803379636144,
+            "output60": 0.02620426950523237
+          },
+          "rift_stamina": 23979.15267753092,
+          "saint_stamina": 76020.84732246908,
+          "cycles": 282.1076785591873
+        },
+        "balanced_output_m4": {
+          "rate": 0.0767189937571207,
+          "per_100k": {
+            "value_sum": 76.71899375712071,
+            "legacy_stamina_sum": 76901.49825146128,
+            "powder_units": 168560.16942904136,
+            "lower_stone_units": 11237.344628602757,
+            "material_gold": 431514033.7383456,
+            "conversion_gold": 1203397.5036332426,
+            "sell_gold": 21929502.149729095,
+            "sell_exp_adjusted": 22894109.87429568,
+            "material_exp_adjusted": 34133203.242904246,
+            "lower_stone_adjusted_exp": 18530089.668903913,
+            "formal_terminal_count": 14.742061920625398,
+            "value_sum_curve_baseline": 76.71899375712071,
+            "value_sum_tier2_low": 76.71899375712071,
+            "value_sum_tier2_mid": 81.74237697747887,
+            "value_sum_tier2_high": 84.25406858765793,
+            "native_heirloom": 0.49668097743864054,
+            "converted_heirloom": 0.8096380939321107,
+            "speed22": 1.2558458050895385,
+            "output60": 0.026141104075717916
+          },
+          "rift_stamina": 23921.350895345528,
+          "saint_stamina": 76078.64910465448,
+          "cycles": 281.4276575923003
+        },
+        "balanced_high_priority_m2": {
+          "rate": 0.07674802996978378,
+          "per_100k": {
+            "value_sum": 76.74802996978377,
+            "legacy_stamina_sum": 76859.36410865543,
+            "powder_units": 168589.20662186592,
+            "lower_stone_units": 11239.280441457728,
+            "material_gold": 431588368.95197654,
+            "conversion_gold": 1203852.9593701141,
+            "sell_gold": 22258203.941004492,
+            "sell_exp_adjusted": 22904518.14872575,
+            "material_exp_adjusted": 34142391.06019279,
+            "lower_stone_adjusted_exp": 18535058.81509597,
+            "formal_terminal_count": 14.747641420877637,
+            "value_sum_curve_baseline": 76.74802996978377,
+            "value_sum_tier2_low": 76.74802996978377,
+            "value_sum_tier2_mid": 81.77331441454976,
+            "value_sum_tier2_high": 84.28595663693272,
+            "native_heirloom": 0.4968689587165528,
+            "converted_heirloom": 0.8099445216200175,
+            "speed22": 1.2563211111914934,
+            "output60": 0.026150997827186984
+          },
+          "rift_stamina": 23930.404525975562,
+          "saint_stamina": 76069.59547402443,
+          "cycles": 281.53417089383015
+        }
+      },
+      "yield_plus_20pct": {
+        "current_formal": {
+          "rate": 0.07647685139271759,
+          "per_100k": {
+            "value_sum": 76.47685139271759,
+            "legacy_stamina_sum": 79891.26750391653,
+            "powder_units": 174951.6354641207,
+            "lower_stone_units": 11663.442364274717,
+            "material_gold": 447876186.78814876,
+            "conversion_gold": 1198320.4517915742,
+            "sell_gold": 22283523.26883488,
+            "sell_exp_adjusted": 23758319.895034157,
+            "material_exp_adjusted": 35426909.44193637,
+            "lower_stone_adjusted_exp": 19232504.845253248,
+            "formal_terminal_count": 14.554329893686742,
+            "value_sum_curve_baseline": 76.47685139271759,
+            "value_sum_tier2_low": 76.47685139271759,
+            "value_sum_tier2_mid": 81.71428183022945,
+            "value_sum_tier2_high": 84.33299704898535,
+            "native_heirloom": 0.4315371989452422,
+            "converted_heirloom": 0.70344742618614,
+            "speed22": 1.3093576093779589,
+            "output60": 0.02271248415501274
+          },
+          "rift_stamina": 20783.8697861928,
+          "saint_stamina": 79216.1302138072,
+          "cycles": 244.51611513168
+        },
+        "global_10_14": {
+          "rate": 0.07689278607171306,
+          "per_100k": {
+            "value_sum": 76.89278607171306,
+            "legacy_stamina_sum": 79808.34495504813,
+            "powder_units": 174888.96187271512,
+            "lower_stone_units": 11659.264124847678,
+            "material_gold": 447715742.3941506,
+            "conversion_gold": 1204837.7576609042,
+            "sell_gold": 22164899.416570175,
+            "sell_exp_adjusted": 23757469.23526079,
+            "material_exp_adjusted": 35410565.37581675,
+            "lower_stone_adjusted_exp": 19223446.81778912,
+            "formal_terminal_count": 14.633486532879934,
+            "value_sum_curve_baseline": 76.89278607171306,
+            "value_sum_tier2_low": 76.89278607171306,
+            "value_sum_tier2_mid": 82.15870132401679,
+            "value_sum_tier2_high": 84.79165895016862,
+            "native_heirloom": 0.4338842004633379,
+            "converted_heirloom": 0.7072732659542867,
+            "speed22": 1.3164788130759284,
+            "output60": 0.02283601055070199
+          },
+          "rift_stamina": 20896.90702622524,
+          "saint_stamina": 79103.09297377476,
+          "cycles": 245.84596501441456
+        },
+        "global_12_17": {
+          "rate": 0.07726821413491362,
+          "per_100k": {
+            "value_sum": 77.26821413491363,
+            "legacy_stamina_sum": 79798.47957338765,
+            "powder_units": 174760.5804374462,
+            "lower_stone_units": 11650.705362496416,
+            "material_gold": 447387085.9198621,
+            "conversion_gold": 1210720.3628952585,
+            "sell_gold": 21469825.38325166,
+            "sell_exp_adjusted": 23736832.438692924,
+            "material_exp_adjusted": 35375917.724808834,
+            "lower_stone_adjusted_exp": 19204480.916169718,
+            "formal_terminal_count": 14.70493434726641,
+            "value_sum_curve_baseline": 77.26821413491363,
+            "value_sum_tier2_low": 77.26821413491363,
+            "value_sum_tier2_mid": 82.55984015236386,
+            "value_sum_tier2_high": 85.20565316108896,
+            "native_heirloom": 0.4360026346280378,
+            "converted_heirloom": 0.7107265188009597,
+            "speed22": 1.322906504362556,
+            "output60": 0.022947507085686197
+          },
+          "rift_stamina": 20998.93591258164,
+          "saint_stamina": 79001.06408741836,
+          "cycles": 247.04630485390166
+        },
+        "global_14_18": {
+          "rate": 0.07761497754063325,
+          "per_100k": {
+            "value_sum": 77.61497754063325,
+            "legacy_stamina_sum": 79839.36026673684,
+            "powder_units": 174563.75776213693,
+            "lower_stone_units": 11637.583850809131,
+            "material_gold": 446883219.87107044,
+            "conversion_gold": 1216153.8198621634,
+            "sell_gold": 20355829.0850179,
+            "sell_exp_adjusted": 23702569.08758226,
+            "material_exp_adjusted": 35328716.038987935,
+            "lower_stone_adjusted_exp": 19178719.914852608,
+            "formal_terminal_count": 14.770926983077016,
+            "value_sum_curve_baseline": 77.61497754063325,
+            "value_sum_tier2_low": 77.61497754063325,
+            "value_sum_tier2_mid": 82.93035125667015,
+            "value_sum_tier2_high": 85.58803811468857,
+            "native_heirloom": 0.4379593222541082,
+            "converted_heirloom": 0.713916109125441,
+            "speed22": 1.3288434290092215,
+            "output60": 0.02305049064495306
+          },
+          "rift_stamina": 21093.174696473045,
+          "saint_stamina": 78906.82530352696,
+          "cycles": 248.15499642909464
+        },
+        "balanced_output_m2": {
+          "rate": 0.07714287406503682,
+          "per_100k": {
+            "value_sum": 77.14287406503682,
+            "legacy_stamina_sum": 79794.65841331711,
+            "powder_units": 174811.44410502666,
+            "lower_stone_units": 11654.096273668445,
+            "material_gold": 447517296.9088681,
+            "conversion_gold": 1208756.4016909578,
+            "sell_gold": 21755794.59035517,
+            "sell_exp_adjusted": 23745897.258038145,
+            "material_exp_adjusted": 35389662.96288914,
+            "lower_stone_adjusted_exp": 19211993.96504827,
+            "formal_terminal_count": 14.68108084528949,
+            "value_sum_curve_baseline": 77.14287406503682,
+            "value_sum_tier2_low": 77.14287406503682,
+            "value_sum_tier2_mid": 82.42591630994599,
+            "value_sum_tier2_high": 85.06743743240054,
+            "native_heirloom": 0.43529537613497454,
+            "converted_heirloom": 0.7095736189633335,
+            "speed22": 1.3207605612272875,
+            "output60": 0.02291028295447234
+          },
+          "rift_stamina": 20964.872641881146,
+          "saint_stamina": 79035.12735811886,
+          "cycles": 246.64556049271934
+        },
+        "balanced_output_m4": {
+          "rate": 0.076980247438985,
+          "per_100k": {
+            "value_sum": 76.980247438985,
+            "legacy_stamina_sum": 79819.51661477848,
+            "powder_units": 174854.73683477042,
+            "lower_stone_units": 11656.982455651363,
+            "material_gold": 447628126.2970121,
+            "conversion_gold": 1206208.1951623834,
+            "sell_gold": 21869990.735861875,
+            "sell_exp_adjusted": 23748504.546579666,
+            "material_exp_adjusted": 35398320.6490867,
+            "lower_stone_adjusted_exp": 19216765.18226062,
+            "formal_terminal_count": 14.650131328907062,
+            "value_sum_curve_baseline": 76.980247438985,
+            "value_sum_tier2_low": 76.980247438985,
+            "value_sum_tier2_mid": 82.25215238383903,
+            "value_sum_tier2_high": 84.88810485626601,
+            "native_heirloom": 0.43437772017238874,
+            "converted_heirloom": 0.708077750874596,
+            "speed22": 1.3179762362135006,
+            "output60": 0.022861985272230982
+          },
+          "rift_stamina": 20920.676122828965,
+          "saint_stamina": 79079.32387717103,
+          "cycles": 246.12560144504667
+        },
+        "balanced_high_priority_m2": {
+          "rate": 0.0770057128171695,
+          "per_100k": {
+            "value_sum": 77.00571281716951,
+            "legacy_stamina_sum": 79783.62099074048,
+            "powder_units": 174882.18243140136,
+            "lower_stone_units": 11658.812162093425,
+            "material_gold": 447698387.0243873,
+            "conversion_gold": 1206607.2137272872,
+            "sell_gold": 22157423.12097059,
+            "sell_exp_adjusted": 23757885.310032126,
+            "material_exp_adjusted": 35406767.950997874,
+            "lower_stone_adjusted_exp": 19221334.625031404,
+            "formal_terminal_count": 14.654977651790592,
+            "value_sum_curve_baseline": 77.00571281716951,
+            "value_sum_tier2_low": 77.00571281716951,
+            "value_sum_tier2_mid": 82.27936172956898,
+            "value_sum_tier2_high": 84.91618618576867,
+            "native_heirloom": 0.43452141408462097,
+            "converted_heirloom": 0.7083119858674667,
+            "speed22": 1.3184122280998603,
+            "output60": 0.02286954810971689
+          },
+          "rift_stamina": 20927.596767371786,
+          "saint_stamina": 79072.40323262822,
+          "cycles": 246.20702079260923
+        }
+      }
+    }
+  },
+  "summary": {
+    "yield_minus_20pct": {
+      "current_formal": {
+        "rate": {
+          "mean": 0.06916278109360785,
+          "interval95": [
+            0.05339979034147965,
+            0.08492577184573605
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 69.16278109360786,
+            "interval95": [
+              53.39979034147966,
+              84.92577184573607
+            ]
+          },
+          "speed22": {
+            "mean": 0.2325392402050618,
+            "interval95": [
+              -0.4129896906041898,
+              0.8780681710143133
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.6205135539961764,
+            "interval95": [
+              0.4251059279469178,
+              0.8159211800454349
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 1.1016805106005763,
+            "interval95": [
+              0.8908958620785864,
+              1.3124651591225662
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 27690.31910292232,
+          "interval95": [
+            27284.97288821719,
+            28095.66531762745
+          ]
+        },
+        "saint_stamina": {
+          "mean": 72309.68089707769,
+          "interval95": [
+            71904.33468237256,
+            72715.02711178282
+          ]
+        },
+        "cycles": {
+          "mean": 325.7684600343802,
+          "interval95": [
+            320.99968103784926,
+            330.53723903091117
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": -0.0005019408117374391,
+          "interval95": [
+            -0.0006154730299744051,
+            -0.00038840859350047313
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": -0.0009564836450846228,
+          "interval95": [
+            -0.0011728207132001777,
+            -0.0007401465769690678
+          ]
+        }
+      },
+      "global_10_14": {
+        "rate": {
+          "mean": 0.06966472190534528,
+          "interval95": [
+            0.053788484331860224,
+            0.08554095947883034
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 69.66472190534529,
+            "interval95": [
+              53.788484331860225,
+              85.54095947883036
+            ]
+          },
+          "speed22": {
+            "mean": 0.234226697082022,
+            "interval95": [
+              -0.415986614017671,
+              0.8844400081817151
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.6250231818581937,
+            "interval95": [
+              0.4281596782263224,
+              0.821886685490065
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 1.1096803715835093,
+            "interval95": [
+              0.8973235720409518,
+              1.3220371711260668
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 27891.332404752866,
+          "interval95": [
+            27480.096199586806,
+            28302.568609918926
+          ]
+        },
+        "saint_stamina": {
+          "mean": 72108.66759524713,
+          "interval95": [
+            71697.43139008107,
+            72519.90380041319
+          ]
+        },
+        "cycles": {
+          "mean": 328.1333224088573,
+          "interval95": [
+            323.2952494069036,
+            332.97139541081094
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0005019408117374391,
+          "interval95": [
+            0.00038840859350047313,
+            0.0006154730299744051
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": -0.00045454283334718374,
+          "interval95": [
+            -0.0005573477059067512,
+            -0.0003517379607876163
+          ]
+        }
+      },
+      "global_12_17": {
+        "rate": {
+          "mean": 0.07011926473869247,
+          "interval95": [
+            0.054140483884359256,
+            0.08609804559302568
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 70.11926473869246,
+            "interval95": [
+              54.14048388435925,
+              86.09804559302567
+            ]
+          },
+          "speed22": {
+            "mean": 0.2357548023119614,
+            "interval95": [
+              -0.4187005289060432,
+              0.8902101335299659
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.6291070416671165,
+            "interval95": [
+              0.4309246877533668,
+              0.8272893955808662
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 1.1169248637126379,
+            "interval95": [
+              0.9031438214056852,
+              1.3307059060195905
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 28073.36475917164,
+          "interval95": [
+            27656.76055311092,
+            28489.96896523236
+          ]
+        },
+        "saint_stamina": {
+          "mean": 71926.63524082836,
+          "interval95": [
+            71510.03103476763,
+            72343.23944688909
+          ]
+        },
+        "cycles": {
+          "mean": 330.27487951966634,
+          "interval95": [
+            325.3736535660108,
+            335.1761054733219
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0009564836450846228,
+          "interval95": [
+            0.0007401465769690678,
+            0.0011728207132001777
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 0.00045454283334718374,
+          "interval95": [
+            0.0003517379607876163,
+            0.0005573477059067512
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "global_14_18": {
+        "rate": {
+          "mean": 0.07054043273846569,
+          "interval95": [
+            0.05446664683484534,
+            0.08661421864208604
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 70.54043273846568,
+            "interval95": [
+              54.466646834845335,
+              86.61421864208603
+            ]
+          },
+          "speed22": {
+            "mean": 0.2371706991000452,
+            "interval95": [
+              -0.42121516160168015,
+              0.8955565598017705
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.6328911102141282,
+            "interval95": [
+              0.43348633711201123,
+              0.8322958833162453
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 1.1236374770867736,
+            "interval95": [
+              0.9085362728499462,
+              1.338738681323601
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 28242.031944656268,
+          "interval95": [
+            27820.422980212574,
+            28663.640909099962
+          ]
+        },
+        "saint_stamina": {
+          "mean": 71757.96805534374,
+          "interval95": [
+            71336.35909090005,
+            72179.57701978742
+          ]
+        },
+        "cycles": {
+          "mean": 332.25919934889725,
+          "interval95": [
+            327.2990938848538,
+            337.2193048129407
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0013776516448578357,
+          "interval95": [
+            0.0010660641466306092,
+            0.0016892391430850622
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 0.0008757108331203967,
+          "interval95": [
+            0.0006776554876437792,
+            0.0010737661785970142
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": 0.0004211679997732129,
+          "interval95": [
+            0.0003259175070715339,
+            0.0005164184924748919
+          ]
+        }
+      },
+      "balanced_output_m2": {
+        "rate": {
+          "mean": 0.06996735459346318,
+          "interval95": [
+            0.05402284311637537,
+            0.08591186607055099
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 69.96735459346317,
+            "interval95": [
+              54.02284311637536,
+              85.91186607055097
+            ]
+          },
+          "speed22": {
+            "mean": 0.23524410371917384,
+            "interval95": [
+              -0.41779352820525273,
+              0.8882817356436004
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.6277421906149128,
+            "interval95": [
+              0.43000064963546014,
+              0.8254837315943654
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 1.11450371803407,
+            "interval95": [
+              0.9011987217788224,
+              1.3278087142893176
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 28012.52870754149,
+          "interval95": [
+            27597.72211884767,
+            28427.33529623531
+          ]
+        },
+        "saint_stamina": {
+          "mean": 71987.47129245852,
+          "interval95": [
+            71572.6647037647,
+            72402.27788115233
+          ]
+        },
+        "cycles": {
+          "mean": 329.55916126519395,
+          "interval95": [
+            324.679083751149,
+            334.4392387792389
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0008045734998553267,
+          "interval95": [
+            0.0006225935551501347,
+            0.0009865534445605186
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 0.0003026326881178876,
+          "interval95": [
+            0.00023418494893713402,
+            0.00037108042729864116
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": -0.0001519101452292962,
+          "interval95": [
+            -0.0001862672807709603,
+            -0.0001175530096876321
+          ]
+        }
+      },
+      "balanced_output_m4": {
+        "rate": {
+          "mean": 0.06977043454942833,
+          "interval95": [
+            0.05387034724150434,
+            0.08567052185735231
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 69.77043454942833,
+            "interval95": [
+              53.87034724150435,
+              85.67052185735231
+            ]
+          },
+          "speed22": {
+            "mean": 0.2345820883861062,
+            "interval95": [
+              -0.4166177889737246,
+              0.8857819657459369
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.6259729526169062,
+            "interval95": [
+              0.428802780243476,
+              0.8231431249903365
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 1.111365210507026,
+            "interval95": [
+              0.8986772414519635,
+              1.3240531795620885
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 27933.667439155837,
+          "interval95": [
+            27521.187161001293,
+            28346.14771731038
+          ]
+        },
+        "saint_stamina": {
+          "mean": 72066.33256084415,
+          "interval95": [
+            71653.85228268961,
+            72478.8128389987
+          ]
+        },
+        "cycles": {
+          "mean": 328.6313816371275,
+          "interval95": [
+            323.77867248236817,
+            333.48409079188684
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0006076534558204782,
+          "interval95": [
+            0.0004702112197596844,
+            0.0007450956918812721
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 0.00010571264408303915,
+          "interval95": [
+            8.180262456996397e-05,
+            0.00012962266359611434
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": -0.0003488301892641446,
+          "interval95": [
+            -0.00042772504626060136,
+            -0.0002699353322676879
+          ]
+        }
+      },
+      "balanced_high_priority_m2": {
+        "rate": {
+          "mean": 0.06980129213090085,
+          "interval95": [
+            0.05389424368848772,
+            0.08570834057331397
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 69.80129213090086,
+            "interval95": [
+              53.894243688487734,
+              85.70834057331399
+            ]
+          },
+          "speed22": {
+            "mean": 0.23468582731144777,
+            "interval95": [
+              -0.41680202930513127,
+              0.8861736839280268
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.6262501952223717,
+            "interval95": [
+              0.42899048171288057,
+              0.8235099087318628
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 1.11185701845888,
+            "interval95": [
+              0.8990723545897181,
+              1.324641682328042
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 27946.02508996086,
+          "interval95": [
+            27533.17953130637,
+            28358.870648615353
+          ]
+        },
+        "saint_stamina": {
+          "mean": 72053.97491003915,
+          "interval95": [
+            71641.12935138465,
+            72466.82046869365
+          ]
+        },
+        "cycles": {
+          "mean": 328.77676576424545,
+          "interval95": [
+            323.91975919183966,
+            333.63377233665125
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0006385110372930033,
+          "interval95": [
+            0.0004940896868196882,
+            0.0007829323877663185
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 0.00013657022555556425,
+          "interval95": [
+            0.0001056810888734238,
+            0.00016745936223770469
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": -0.0003179726077916195,
+          "interval95": [
+            -0.0003898883458169308,
+            -0.00024605686976630827
+          ]
+        }
+      }
+    },
+    "baseline": {
+      "current_formal": {
+        "rate": {
+          "mean": 0.0683817679740763,
+          "interval95": [
+            0.050885343410720936,
+            0.08587819253743167
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 68.3817679740763,
+            "interval95": [
+              50.88534341072093,
+              85.87819253743166
+            ]
+          },
+          "speed22": {
+            "mean": 0.24929302885350987,
+            "interval95": [
+              -0.44274441924383345,
+              0.9413304769508533
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.5323785617837262,
+            "interval95": [
+              0.36423212197064986,
+              0.7005250015968025
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 0.9451319340654764,
+            "interval95": [
+              0.7636048633254557,
+              1.126659004805497
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 23754.278476644584,
+          "interval95": [
+            23379.412017914066,
+            24129.1449353751
+          ]
+        },
+        "saint_stamina": {
+          "mean": 76245.72152335542,
+          "interval95": [
+            75870.8550646249,
+            76620.58798208593
+          ]
+        },
+        "cycles": {
+          "mean": 279.46209972523036,
+          "interval95": [
+            275.0519060931066,
+            283.8722933573541
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": -0.0004252850357146287,
+          "interval95": [
+            -0.000533160891268068,
+            -0.00031740918016118935
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": -0.0008096942258576684,
+          "interval95": [
+            -0.0010150708288968456,
+            -0.0006043176228184913
+          ]
+        }
+      },
+      "global_10_14": {
+        "rate": {
+          "mean": 0.06880705300979092,
+          "interval95": [
+            0.05120300566253176,
+            0.08641110035705009
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 68.80705300979092,
+            "interval95": [
+              51.20300566253175,
+              86.41110035705009
+            ]
+          },
+          "speed22": {
+            "mean": 0.2508430116603657,
+            "interval95": [
+              -0.4454971887088094,
+              0.9471832120295408
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.5356949236888412,
+            "interval95": [
+              0.3664716472790043,
+              0.7049182000986781
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 0.9510141297481818,
+            "interval95": [
+              0.7683220133595987,
+              1.1337062461367649
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 23902.06540217429,
+          "interval95": [
+            23522.533050055492,
+            24281.597754293085
+          ]
+        },
+        "saint_stamina": {
+          "mean": 76097.93459782572,
+          "interval95": [
+            75718.40224570692,
+            76477.46694994452
+          ]
+        },
+        "cycles": {
+          "mean": 281.20076943734455,
+          "interval95": [
+            276.7356829418293,
+            285.6658559328598
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0004252850357146287,
+          "interval95": [
+            0.00031740918016118935,
+            0.000533160891268068
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": -0.00038440919014303966,
+          "interval95": [
+            -0.0004819099526113808,
+            -0.0002869084276746985
+          ]
+        }
+      },
+      "global_12_17": {
+        "rate": {
+          "mean": 0.06919146219993397,
+          "interval95": [
+            0.051490145261633716,
+            0.08689277913823422
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 69.19146219993397,
+            "interval95": [
+              51.490145261633714,
+              86.89277913823422
+            ]
+          },
+          "speed22": {
+            "mean": 0.25224401152162834,
+            "interval95": [
+              -0.4479853644624118,
+              0.9524733875056685
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.5386925903195225,
+            "interval95": [
+              0.3684956567706992,
+              0.7088895238683459
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 0.9563310060220047,
+            "interval95": [
+              0.7725854200007313,
+              1.140076592043278
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 24035.64845465237,
+          "interval95": [
+            23651.87533387483,
+            24419.421575429915
+          ]
+        },
+        "saint_stamina": {
+          "mean": 75964.35154534763,
+          "interval95": [
+            75580.57842457008,
+            76348.12466612518
+          ]
+        },
+        "cycles": {
+          "mean": 282.77233476061616,
+          "interval95": [
+            278.25735686911565,
+            287.28731265211667
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0008096942258576684,
+          "interval95": [
+            0.0006043176228184913,
+            0.0010150708288968456
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 0.00038440919014303966,
+          "interval95": [
+            0.0002869084276746985,
+            0.0004819099526113808
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "global_14_18": {
+        "rate": {
+          "mean": 0.06954700366919095,
+          "interval95": [
+            0.05175573004918793,
+            0.08733827728919397
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 69.54700366919096,
+            "interval95": [
+              51.75573004918794,
+              87.33827728919397
+            ]
+          },
+          "speed22": {
+            "mean": 0.2535397930729391,
+            "interval95": [
+              -0.4502866724975398,
+              0.957366258643418
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.5414651910584862,
+            "interval95": [
+              0.3703674334566077,
+              0.7125629486603647
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 0.9612486420760148,
+            "interval95": [
+              0.7765283406060931,
+              1.1459689435459364
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 24159.200378101035,
+          "interval95": [
+            23771.484076044686,
+            24546.916680157385
+          ]
+        },
+        "saint_stamina": {
+          "mean": 75840.79962189897,
+          "interval95": [
+            75453.08331984263,
+            76228.51592395532
+          ]
+        },
+        "cycles": {
+          "mean": 284.2258868011886,
+          "interval95": [
+            279.6645185417022,
+            288.787255060675
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.001165235695114654,
+          "interval95": [
+            0.0008696863239402284,
+            0.0014607850662890793
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 0.0007399506594000252,
+          "interval95": [
+            0.000552277100764975,
+            0.0009276242180350754
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": 0.00035554146925698555,
+          "interval95": [
+            0.0002653686602505767,
+            0.0004457142782633944
+          ]
+        }
+      },
+      "balanced_output_m2": {
+        "rate": {
+          "mean": 0.06906306656011861,
+          "interval95": [
+            0.05139423745444342,
+            0.0867318956657938
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 69.06306656011861,
+            "interval95": [
+              51.39423745444342,
+              86.73189566579381
+            ]
+          },
+          "speed22": {
+            "mean": 0.25177606759272286,
+            "interval95": [
+              -0.4471542960446757,
+              0.9507064312301214
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.5376913408526846,
+            "interval95": [
+              0.3678196500414951,
+              0.707563031663874
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 0.9545551238323424,
+            "interval95": [
+              0.7711614471931062,
+              1.1379488004715785
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 23991.0306280661,
+          "interval95": [
+            23608.676417198094,
+            24373.384838934104
+          ]
+        },
+        "saint_stamina": {
+          "mean": 76008.9693719339,
+          "interval95": [
+            75626.6151610659,
+            76391.3235828019
+          ]
+        },
+        "cycles": {
+          "mean": 282.2474191537188,
+          "interval95": [
+            277.74913431997754,
+            286.74570398746005
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0006812985860423143,
+          "interval95": [
+            0.0005084872772289127,
+            0.0008541098948557158
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 0.0002560135503276856,
+          "interval95": [
+            0.000191078088666961,
+            0.00032094901198841016
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": -0.00012839563981535408,
+          "interval95": [
+            -0.0001609609420488871,
+            -9.583033758182107e-05
+          ]
+        }
+      },
+      "balanced_output_m4": {
+        "rate": {
+          "mean": 0.06889654219105351,
+          "interval95": [
+            0.05126984962537855,
+            0.08652323475672848
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 68.89654219105351,
+            "interval95": [
+              51.26984962537854,
+              86.52323475672848
+            ]
+          },
+          "speed22": {
+            "mean": 0.2511691610179077,
+            "interval95": [
+              -0.446076429967804,
+              0.9484147520036195
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.536392764126552,
+            "interval95": [
+              0.3669428613685514,
+              0.7058426668845525
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 0.9522518759147633,
+            "interval95": [
+              0.7693145615717225,
+              1.1351891902578042
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 23933.16303040087,
+          "interval95": [
+            23552.646309787346,
+            24313.67975101439
+          ]
+        },
+        "saint_stamina": {
+          "mean": 76066.83696959914,
+          "interval95": [
+            75686.32024898562,
+            76447.35369021267
+          ]
+        },
+        "cycles": {
+          "mean": 281.566623887069,
+          "interval95": [
+            277.08995658573343,
+            286.04329118840457
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0005147742169772124,
+          "interval95": [
+            0.00038419972993746794,
+            0.0006453487040169569
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 8.948918126258365e-05,
+          "interval95": [
+            6.679054856084406e-05,
+            0.00011218781396432323
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": -0.000294920008880456,
+          "interval95": [
+            -0.000369722141073851,
+            -0.00022011787668706098
+          ]
+        }
+      },
+      "balanced_high_priority_m2": {
+        "rate": {
+          "mean": 0.0689226252208297,
+          "interval95": [
+            0.05128933286482657,
+            0.08655591757683284
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 68.9226252208297,
+            "interval95": [
+              51.28933286482657,
+              86.55591757683283
+            ]
+          },
+          "speed22": {
+            "mean": 0.2512642222382987,
+            "interval95": [
+              -0.44624525869521825,
+              0.9487737031718156
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.5365961633266431,
+            "interval95": [
+              0.3670801910782989,
+              0.7061121355749872
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 0.9526126383185873,
+            "interval95": [
+              0.7696038396689471,
+              1.1356214369682276
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 23942.226946488834,
+          "interval95": [
+            23561.421990631105,
+            24323.031902346564
+          ]
+        },
+        "saint_stamina": {
+          "mean": 76057.77305351116,
+          "interval95": [
+            75676.96809765343,
+            76438.5780093689
+          ]
+        },
+        "cycles": {
+          "mean": 281.67325819398627,
+          "interval95": [
+            277.1931998897777,
+            286.15331649819484
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0005408572467534081,
+          "interval95": [
+            0.00040366713612917957,
+            0.0006780473573776367
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 0.0001155722110387794,
+          "interval95": [
+            8.625795302027455e-05,
+            0.00014488646905728425
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": -0.00026883697910426023,
+          "interval95": [
+            -0.00033702348496269597,
+            -0.00020065047324582447
+          ]
+        }
+      }
+    },
+    "yield_plus_20pct": {
+      "current_formal": {
+        "rate": {
+          "mean": 0.06779478410459068,
+          "interval95": [
+            0.048986563310168235,
+            0.08660300489901313
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 67.79478410459068,
+            "interval95": [
+              48.986563310168236,
+              86.60300489901311
+            ]
+          },
+          "speed22": {
+            "mean": 0.26187152187559176,
+            "interval95": [
+              -0.46508382285105093,
+              0.9888268666022344
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.4661675357749107,
+            "interval95": [
+              0.3186080582861318,
+              0.6137270132636896
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 0.8275409738532725,
+            "interval95": [
+              0.6681390974346181,
+              0.986942850271927
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 20798.006493987687,
+          "interval95": [
+            20451.876309244093,
+            21144.13667873128
+          ]
+        },
+        "saint_stamina": {
+          "mean": 79201.99350601231,
+          "interval95": [
+            78855.86332126871,
+            79548.1236907559
+          ]
+        },
+        "cycles": {
+          "mean": 244.68242934103162,
+          "interval95": [
+            240.61030952051874,
+            248.7545491615445
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": -0.00036886784458323716,
+          "interval95": [
+            -0.00047025238410817755,
+            -0.00026748330505829677
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": -0.0007018148837093244,
+          "interval95": [
+            -0.0008947047790826556,
+            -0.0005089249883359932
+          ]
+        }
+      },
+      "global_10_14": {
+        "rate": {
+          "mean": 0.06816365194917391,
+          "interval95": [
+            0.04925427356103655,
+            0.08707303033731127
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 68.16365194917393,
+            "interval95": [
+              49.254273561036555,
+              87.0730303373113
+            ]
+          },
+          "speed22": {
+            "mean": 0.26329576261518567,
+            "interval95": [
+              -0.46761327440456973,
+              0.994204799634941
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.46870845702945113,
+            "interval95": [
+              0.32032036585978557,
+              0.6170965481991166
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 0.8320472797551883,
+            "interval95": [
+              0.6717476148071869,
+              0.9923469447031897
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 20911.215975263014,
+          "interval95": [
+            20561.317973384157,
+            21261.11397714187
+          ]
+        },
+        "saint_stamina": {
+          "mean": 79088.78402473699,
+          "interval95": [
+            78738.88602285813,
+            79438.68202661585
+          ]
+        },
+        "cycles": {
+          "mean": 246.0143055913296,
+          "interval95": [
+            241.89785851040182,
+            250.13075267225736
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.00036886784458323716,
+          "interval95": [
+            0.00026748330505829677,
+            0.00047025238410817755
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": -0.0003329470391260872,
+          "interval95": [
+            -0.00042445240535021256,
+            -0.00024144167290196183
+          ]
+        }
+      },
+      "global_12_17": {
+        "rate": {
+          "mean": 0.0684965989883,
+          "interval95": [
+            0.0494959219972204,
+            0.0874972759793796
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 68.49659898830001,
+            "interval95": [
+              49.4959219972204,
+              87.49727597937962
+            ]
+          },
+          "speed22": {
+            "mean": 0.2645813008725112,
+            "interval95": [
+              -0.46989639034957986,
+              0.9990589920946022
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.4710019799509705,
+            "interval95": [
+              0.3218657341948525,
+              0.6201382257070884
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 0.836114788693355,
+            "interval95": [
+              0.6750044658993136,
+              0.9972251114873963
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 21013.401399112965,
+          "interval95": [
+            20660.085961040164,
+            21366.716837185766
+          ]
+        },
+        "saint_stamina": {
+          "mean": 78986.59860088704,
+          "interval95": [
+            78633.28316281423,
+            79339.91403895985
+          ]
+        },
+        "cycles": {
+          "mean": 247.21648704838785,
+          "interval95": [
+            243.05983483576665,
+            251.37313926100904
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0007018148837093244,
+          "interval95": [
+            0.0005089249883359932,
+            0.0008947047790826556
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 0.0003329470391260872,
+          "interval95": [
+            0.00024144167290196183,
+            0.00042445240535021256
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "global_14_18": {
+        "rate": {
+          "mean": 0.06880412701392964,
+          "interval95": [
+            0.049719128997573345,
+            0.08788912503028594
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 68.80412701392964,
+            "interval95": [
+              49.71912899757335,
+              87.88912503028594
+            ]
+          },
+          "speed22": {
+            "mean": 0.2657686858018443,
+            "interval95": [
+              -0.47200518598407537,
+              1.003542557587764
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.47312043796211195,
+            "interval95": [
+              0.3232929500968102,
+              0.6229479258274138
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 0.8398717906976578,
+            "interval95": [
+              0.6780124372237202,
+              1.0017311441715955
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 21107.78580123116,
+          "interval95": [
+            20751.29913801545,
+            21464.27246444687
+          ]
+        },
+        "saint_stamina": {
+          "mean": 78892.21419876884,
+          "interval95": [
+            78535.72753555313,
+            79248.70086198454
+          ]
+        },
+        "cycles": {
+          "mean": 248.32689177919013,
+          "interval95": [
+            244.1329310354759,
+            252.52085252290436
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0010093429093389588,
+          "interval95": [
+            0.0007319392281058832,
+            0.0012867465905720345
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 0.0006404750647557217,
+          "interval95": [
+            0.0004644558933746411,
+            0.0008164942361368022
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": 0.0003075280256296345,
+          "interval95": [
+            0.00022301421168831472,
+            0.00039204183957095424
+          ]
+        }
+      },
+      "balanced_output_m2": {
+        "rate": {
+          "mean": 0.06838544136805208,
+          "interval95": [
+            0.0494152444499724,
+            0.08735563828613177
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 68.38544136805207,
+            "interval95": [
+              49.41524444997239,
+              87.35563828613175
+            ]
+          },
+          "speed22": {
+            "mean": 0.2641521122454575,
+            "interval95": [
+              -0.4691341513479324,
+              0.9974383758388474
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.4702362607393314,
+            "interval95": [
+              0.32134981819825054,
+              0.6191227032804123
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 0.834756807667632,
+            "interval95": [
+              0.6739171622692348,
+              0.9955964530660293
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 20979.285753035132,
+          "interval95": [
+            20627.113001784244,
+            21331.45850428602
+          ]
+        },
+        "saint_stamina": {
+          "mean": 79020.71424696487,
+          "interval95": [
+            78668.54149571399,
+            79372.88699821575
+          ]
+        },
+        "cycles": {
+          "mean": 246.81512650629568,
+          "interval95": [
+            242.67191766804996,
+            250.9583353445414
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0005906572634613958,
+          "interval95": [
+            0.0004283166683181142,
+            0.0007529978586046774
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 0.00022178941887815857,
+          "interval95": [
+            0.00016083335744029265,
+            0.00028274548031602447
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": -0.00011115762024792864,
+          "interval95": [
+            -0.00014170692602000242,
+            -8.060831447585486e-05
+          ]
+        }
+      },
+      "balanced_output_m4": {
+        "rate": {
+          "mean": 0.06824121644266018,
+          "interval95": [
+            0.04931056780016945,
+            0.0871718650851509
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 68.24121644266017,
+            "interval95": [
+              49.31056780016945,
+              87.1718650851509
+            ]
+          },
+          "speed22": {
+            "mean": 0.2635952472427001,
+            "interval95": [
+              -0.46814515910303534,
+              0.9953356535884356
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.46924275943045374,
+            "interval95": [
+              0.3206804024294996,
+              0.6178051164314079
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 0.8329948569305583,
+            "interval95": [
+              0.6725063718670397,
+              0.993483341994077
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 20935.02139559212,
+          "interval95": [
+            20584.32924006334,
+            21285.7135511209
+          ]
+        },
+        "saint_stamina": {
+          "mean": 79064.97860440788,
+          "interval95": [
+            78714.2864488791,
+            79415.67075993666
+          ]
+        },
+        "cycles": {
+          "mean": 246.29436935990734,
+          "interval95": [
+            242.16857929486284,
+            250.42015942495183
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.00044643233806949956,
+          "interval95": [
+            0.00032372968221294497,
+            0.0005691349939260541
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 7.756449348626237e-05,
+          "interval95": [
+            5.6246376266561145e-05,
+            9.888261070596359e-05
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": -0.00025538254563982484,
+          "interval95": [
+            -0.0003255697962452025,
+            -0.0001851952950344472
+          ]
+        }
+      },
+      "balanced_high_priority_m2": {
+        "rate": {
+          "mean": 0.06826380028043466,
+          "interval95": [
+            0.04932695897111327,
+            0.08720064158975604
+          ]
+        },
+        "per_100k": {
+          "value_sum": {
+            "mean": 68.26380028043467,
+            "interval95": [
+              49.32695897111327,
+              87.20064158975606
+            ]
+          },
+          "speed22": {
+            "mean": 0.26368244561997206,
+            "interval95": [
+              -0.4683000234210703,
+              0.9956649146610144
+            ]
+          },
+          "native_heirloom": {
+            "mean": 0.46939832983857777,
+            "interval95": [
+              0.3207852225876171,
+              0.6180114370895384
+            ]
+          },
+          "converted_heirloom": {
+            "mean": 0.8332707567840519,
+            "interval95": [
+              0.672727282294391,
+              0.9938142312737128
+            ]
+          }
+        },
+        "rift_stamina": {
+          "mean": 20941.952648522,
+          "interval95": [
+            20591.028386361908,
+            21292.876910682095
+          ]
+        },
+        "saint_stamina": {
+          "mean": 79058.047351478,
+          "interval95": [
+            78707.1230893179,
+            79408.9716136381
+          ]
+        },
+        "cycles": {
+          "mean": 246.37591351202354,
+          "interval95": [
+            242.24739278072835,
+            250.50443424331874
+          ]
+        },
+        "minus_current_formal": {
+          "mean": 0.0004690161758439809,
+          "interval95": [
+            0.00034010672289893,
+            0.0005979256287890318
+          ]
+        },
+        "minus_global_10_14": {
+          "mean": 0.00010014833126074373,
+          "interval95": [
+            7.262341579407715e-05,
+            0.00012767324672741033
+          ]
+        },
+        "minus_global_12_17": {
+          "mean": -0.00023279870786534345,
+          "interval95": [
+            -0.00029677915959342506,
+            -0.00016881825613726184
+          ]
+        }
+      }
+    }
+  },
+  "pareto": [
+    {
+      "candidate": "current_formal",
+      "efficiency_gain_vs_current": 0.0,
+      "global_12_17_efficiency_gain_retained": 0.0,
+      "false_stop_probability_mass": 0,
+      "release_class": "reference"
+    },
+    {
+      "candidate": "global_10_14",
+      "efficiency_gain_vs_current": 0.0004252850357146287,
+      "global_12_17_efficiency_gain_retained": 0.5252415320908898,
+      "false_stop_probability_mass": 0.8,
+      "release_class": "conservative_history"
+    },
+    {
+      "candidate": "global_12_17",
+      "efficiency_gain_vs_current": 0.0008096942258576684,
+      "global_12_17_efficiency_gain_retained": 1.0,
+      "false_stop_probability_mass": 3.7,
+      "release_class": "balanced_reference"
+    },
+    {
+      "candidate": "global_14_18",
+      "efficiency_gain_vs_current": 0.001165235695114654,
+      "global_12_17_efficiency_gain_retained": 1.4391058474949334,
+      "false_stop_probability_mass": 8.0,
+      "release_class": "aggressive_reference"
+    },
+    {
+      "candidate": "balanced_output_m2",
+      "efficiency_gain_vs_current": 0.0006812985860423143,
+      "global_12_17_efficiency_gain_retained": 0.8414270032871346,
+      "false_stop_probability_mass": 3.7,
+      "release_class": "user_review"
+    },
+    {
+      "candidate": "balanced_output_m4",
+      "efficiency_gain_vs_current": 0.0005147742169772124,
+      "global_12_17_efficiency_gain_retained": 0.6357637247961574,
+      "false_stop_probability_mass": 2.2,
+      "release_class": "user_review"
+    },
+    {
+      "candidate": "balanced_high_priority_m2",
+      "efficiency_gain_vs_current": 0.0005408572467534081,
+      "global_12_17_efficiency_gain_retained": 0.6679771566612139,
+      "false_stop_probability_mass": 1.8,
+      "release_class": "user_review"
+    }
+  ],
+  "freeze": "not_frozen_pending_user_confirmation"
+}

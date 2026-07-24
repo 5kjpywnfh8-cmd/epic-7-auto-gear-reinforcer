@@ -1,0 +1,1747 @@
+{
+  "study": "epic_concentration_rescue_v4_baseline_drift_audit_20260721",
+  "scope": "read_only_bridge_no_policy_change_no_holdout_no_independent_validation",
+  "historical_bridge": {
+    "v2": {
+      "study": "epic_concentration_rescue_v2_exact_health_20260720",
+      "schema_version": 2,
+      "estimator_hash": "0e88cea7d8d1e30763d002442c289f82fa074a0e5625081628b44716bb2c63ef",
+      "strategy_hash": "5a747cb9d7c3f0929199d17c36bc463e21b298841a4012cb318d837302ef047a",
+      "resource_model_hash": "e91e14a4e8620a662593384bd56bb813734f9f2aaddfb71ce34900e1fa427ef6",
+      "per_seed": {
+        "20260712": {
+          "formal_baili_per_100": 0.04804720268954205,
+          "value_per_100k": 48.047202689542054,
+          "total_stamina": 152.9020647406345,
+          "rift_stamina_per_100k": 55591.13942913998,
+          "saint_stamina_per_100k": 44408.86057086002,
+          "cycles_per_100k": 654.0134050487056,
+          "epic": {
+            "shards": 157,
+            "path_mass": 8.049047276848802,
+            "flow": {
+              "value_sum": 2.07595131069288,
+              "legacy_stamina_sum": 252.6625631366135,
+              "powder_units": 493.42311140960464,
+              "lower_stone_units": 32.89487409397365,
+              "material_gold": 1263163.165208588,
+              "conversion_gold": 28378.575071501433,
+              "sell_gold": 202048.59840823276,
+              "sell_exp_adjusted": 64018.19078540988,
+              "material_exp_adjusted": 100007.82567857351,
+              "lower_stone_adjusted_exp": 54305.72879020941,
+              "formal_terminal_count": 0.416702417381681,
+              "value_sum_curve_baseline": 2.07595131069288,
+              "value_sum_tier2_low": 2.07595131069288,
+              "value_sum_tier2_mid": 2.07595131069288,
+              "value_sum_tier2_high": 2.07595131069288,
+              "native_heirloom": 0.035416666666666666,
+              "converted_heirloom": 0.09999999999999999,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 157,
+              "branch_count_total": 4496,
+              "branch_count_min": 17,
+              "branch_count_max": 62,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 157.0,
+              "branch_probability_sum_is_one": true,
+              "target_key_counts": {
+                "atkFlat": 21,
+                "atkPct": 62,
+                "cdmg": 85,
+                "crit": 88,
+                "defFlat": 25,
+                "defPct": 76,
+                "eff": 81,
+                "hpFlat": 33,
+                "hpPct": 79,
+                "res": 78
+              }
+            }
+          },
+          "heroic": {
+            "shards": 80,
+            "path_mass": 79.99999999999999,
+            "flow": {
+              "value_sum": 1.35,
+              "legacy_stamina_sum": 1599.0127907659742,
+              "powder_units": 3146.0499999999993,
+              "lower_stone_units": 209.73666666666685,
+              "material_gold": 8053888.0,
+              "conversion_gold": 20000.0,
+              "sell_gold": 1225200.0,
+              "sell_exp_adjusted": 415065.0,
+              "material_exp_adjusted": 646747.385,
+              "lower_stone_adjusted_exp": 351847.0,
+              "formal_terminal_count": 0.30000000000000004,
+              "value_sum_curve_baseline": 1.35,
+              "value_sum_tier2_low": 1.35,
+              "value_sum_tier2_mid": 1.75,
+              "value_sum_tier2_high": 1.9500000000000002,
+              "native_heirloom": 0.0,
+              "converted_heirloom": 0.0,
+              "speed22": 0.1,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 80,
+              "branch_count_total": 80,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 80.0,
+              "branch_probability_sum_is_one": true
+            }
+          }
+        },
+        "20260713": {
+          "formal_baili_per_100": 0.06002263177506976,
+          "value_per_100k": 60.02263177506976,
+          "total_stamina": 157.64785147722958,
+          "rift_stamina_per_100k": 53917.639348403856,
+          "saint_stamina_per_100k": 46082.36065159615,
+          "cycles_per_100k": 634.3251688047512,
+          "epic": {
+            "shards": 157,
+            "path_mass": 8.049047276848802,
+            "flow": {
+              "value_sum": 2.1751965014300283,
+              "legacy_stamina_sum": 262.24315945901736,
+              "powder_units": 510.3149545440032,
+              "lower_stone_units": 34.02099696960024,
+              "material_gold": 1306406.2836326486,
+              "conversion_gold": 24041.666666666664,
+              "sell_gold": 202048.59840823276,
+              "sell_exp_adjusted": 66182.90908991714,
+              "material_exp_adjusted": 103643.42602169201,
+              "lower_stone_adjusted_exp": 56277.840633750966,
+              "formal_terminal_count": 0.44253575071501444,
+              "value_sum_curve_baseline": 2.1751965014300283,
+              "value_sum_tier2_low": 2.1751965014300283,
+              "value_sum_tier2_mid": 2.1751965014300283,
+              "value_sum_tier2_high": 2.1751965014300283,
+              "native_heirloom": 0.13753575071501428,
+              "converted_heirloom": 0.15958333333333333,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 157,
+              "branch_count_total": 4496,
+              "branch_count_min": 17,
+              "branch_count_max": 62,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 157.0,
+              "branch_probability_sum_is_one": true,
+              "target_key_counts": {
+                "atkFlat": 21,
+                "atkPct": 62,
+                "cdmg": 85,
+                "crit": 88,
+                "defFlat": 25,
+                "defPct": 76,
+                "eff": 81,
+                "hpFlat": 33,
+                "hpPct": 79,
+                "res": 78
+              }
+            }
+          },
+          "heroic": {
+            "shards": 80,
+            "path_mass": 79.99999999999999,
+            "flow": {
+              "value_sum": 1.81,
+              "legacy_stamina_sum": 1707.8047699560163,
+              "powder_units": 3343.2499999999995,
+              "lower_stone_units": 222.8833333333335,
+              "material_gold": 8558720.0,
+              "conversion_gold": 50000.0,
+              "sell_gold": 1225200.0,
+              "sell_exp_adjusted": 439302.0,
+              "material_exp_adjusted": 686182.68,
+              "lower_stone_adjusted_exp": 373232.0,
+              "formal_terminal_count": 0.5,
+              "value_sum_curve_baseline": 1.81,
+              "value_sum_tier2_low": 1.81,
+              "value_sum_tier2_mid": 1.81,
+              "value_sum_tier2_high": 1.81,
+              "native_heirloom": 0.0,
+              "converted_heirloom": 0.0,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 80,
+              "branch_count_total": 80,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 80.0,
+              "branch_probability_sum_is_one": true
+            }
+          }
+        },
+        "20260714": {
+          "formal_baili_per_100": 0.17347222446651261,
+          "value_per_100k": 173.4722244665126,
+          "total_stamina": 157.2821741342537,
+          "rift_stamina_per_100k": 54042.99658742337,
+          "saint_stamina_per_100k": 45957.00341257663,
+          "cycles_per_100k": 635.7999598520396,
+          "epic": {
+            "shards": 157,
+            "path_mass": 8.049047276848802,
+            "flow": {
+              "value_sum": 1.5007083333333333,
+              "legacy_stamina_sum": 245.35677967665436,
+              "powder_units": 480.59265678891506,
+              "lower_stone_units": 32.039510452594364,
+              "material_gold": 1230317.2013796233,
+              "conversion_gold": 23999.999999999996,
+              "sell_gold": 202048.59840823276,
+              "sell_exp_adjusted": 62724.29167656885,
+              "material_exp_adjusted": 97734.18471089906,
+              "lower_stone_adjusted_exp": 53072.35944243986,
+              "formal_terminal_count": 0.3745833333333334,
+              "value_sum_curve_baseline": 1.5007083333333333,
+              "value_sum_tier2_low": 1.5007083333333333,
+              "value_sum_tier2_mid": 1.5007083333333333,
+              "value_sum_tier2_high": 1.5007083333333333,
+              "native_heirloom": 0.06291666666666666,
+              "converted_heirloom": 0.08208333333333334,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 157,
+              "branch_count_total": 4496,
+              "branch_count_min": 17,
+              "branch_count_max": 62,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 157.0,
+              "branch_probability_sum_is_one": true,
+              "target_key_counts": {
+                "atkFlat": 21,
+                "atkPct": 62,
+                "cdmg": 85,
+                "crit": 88,
+                "defFlat": 25,
+                "defPct": 76,
+                "eff": 81,
+                "hpFlat": 33,
+                "hpPct": 79,
+                "res": 78
+              }
+            }
+          },
+          "heroic": {
+            "shards": 80,
+            "path_mass": 79.99999999999999,
+            "flow": {
+              "value_sum": 5.9,
+              "legacy_stamina_sum": 1705.8568990039523,
+              "powder_units": 3349.9000000000005,
+              "lower_stone_units": 223.32666666666682,
+              "material_gold": 8575744.0,
+              "conversion_gold": 80000.0,
+              "sell_gold": 1225200.0,
+              "sell_exp_adjusted": 439980.0,
+              "material_exp_adjusted": 685986.47,
+              "lower_stone_adjusted_exp": 373129.0,
+              "formal_terminal_count": 1.0,
+              "value_sum_curve_baseline": 5.9,
+              "value_sum_tier2_low": 5.9,
+              "value_sum_tier2_mid": 6.300000000000001,
+              "value_sum_tier2_high": 6.5,
+              "native_heirloom": 0.0,
+              "converted_heirloom": 0.0,
+              "speed22": 0.1,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 80,
+              "branch_count_total": 80,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 80.0,
+              "branch_probability_sum_is_one": true
+            }
+          }
+        },
+        "20260715": {
+          "formal_baili_per_100": 0.0652864261100182,
+          "value_per_100k": 65.2864261100182,
+          "total_stamina": 157.43186044506038,
+          "rift_stamina_per_100k": 53991.6124726626,
+          "saint_stamina_per_100k": 46008.3875273374,
+          "cycles_per_100k": 635.1954408548542,
+          "epic": {
+            "shards": 157,
+            "path_mass": 8.049047276848802,
+            "flow": {
+              "value_sum": 1.4942083333333334,
+              "legacy_stamina_sum": 239.77869741564734,
+              "powder_units": 471.05376573617144,
+              "lower_stone_units": 31.403584382411438,
+              "material_gold": 1205897.6402845988,
+              "conversion_gold": 26208.333333333332,
+              "sell_gold": 202048.59840823276,
+              "sell_exp_adjusted": 61639.9173560834,
+              "material_exp_adjusted": 95783.99357728474,
+              "lower_stone_adjusted_exp": 52014.597343332905,
+              "formal_terminal_count": 0.3387500000000001,
+              "value_sum_curve_baseline": 1.4942083333333334,
+              "value_sum_tier2_low": 1.4942083333333334,
+              "value_sum_tier2_mid": 1.4942083333333334,
+              "value_sum_tier2_high": 1.4942083333333334,
+              "native_heirloom": 0.03791666666666666,
+              "converted_heirloom": 0.056249999999999994,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 157,
+              "branch_count_total": 4496,
+              "branch_count_min": 17,
+              "branch_count_max": 62,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 157.0,
+              "branch_probability_sum_is_one": true,
+              "target_key_counts": {
+                "atkFlat": 21,
+                "atkPct": 62,
+                "cdmg": 85,
+                "crit": 88,
+                "defFlat": 25,
+                "defPct": 76,
+                "eff": 81,
+                "hpFlat": 33,
+                "hpPct": 79,
+                "res": 78
+              }
+            }
+          },
+          "heroic": {
+            "shards": 80,
+            "path_mass": 79.99999999999999,
+            "flow": {
+              "value_sum": 2.09,
+              "legacy_stamina_sum": 1705.7829285986836,
+              "powder_units": 3334.1,
+              "lower_stone_units": 222.2733333333335,
+              "material_gold": 8535296.0,
+              "conversion_gold": 50000.0,
+              "sell_gold": 1225200.0,
+              "sell_exp_adjusted": 434858.0,
+              "material_exp_adjusted": 681445.2350000001,
+              "lower_stone_adjusted_exp": 370662.5,
+              "formal_terminal_count": 0.5,
+              "value_sum_curve_baseline": 2.09,
+              "value_sum_tier2_low": 2.09,
+              "value_sum_tier2_mid": 2.09,
+              "value_sum_tier2_high": 2.09,
+              "native_heirloom": 0.0,
+              "converted_heirloom": 0.0,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 80,
+              "branch_count_total": 80,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 80.0,
+              "branch_probability_sum_is_one": true
+            }
+          }
+        },
+        "20260716": {
+          "formal_baili_per_100": 0.075603704595656,
+          "value_per_100k": 75.603704595656,
+          "total_stamina": 154.75592230035858,
+          "rift_stamina_per_100k": 54925.20010641496,
+          "saint_stamina_per_100k": 45074.79989358504,
+          "cycles_per_100k": 646.1788247813524,
+          "epic": {
+            "shards": 157,
+            "path_mass": 8.049047276848802,
+            "flow": {
+              "value_sum": 1.5548263106928804,
+              "legacy_stamina_sum": 243.02915727753546,
+              "powder_units": 474.60170148236733,
+              "lower_stone_units": 31.640113432157847,
+              "material_gold": 1214980.355794861,
+              "conversion_gold": 23461.90840483476,
+              "sell_gold": 202048.59840823276,
+              "sell_exp_adjusted": 61718.18761623769,
+              "material_exp_adjusted": 96416.009219534,
+              "lower_stone_adjusted_exp": 52357.42876695894,
+              "formal_terminal_count": 0.3625357507150143,
+              "value_sum_curve_baseline": 1.5548263106928804,
+              "value_sum_tier2_low": 1.5548263106928804,
+              "value_sum_tier2_mid": 1.5548263106928804,
+              "value_sum_tier2_high": 1.5548263106928804,
+              "native_heirloom": 0.057916666666666665,
+              "converted_heirloom": 0.06125,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 157,
+              "branch_count_total": 4496,
+              "branch_count_min": 17,
+              "branch_count_max": 62,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 157.0,
+              "branch_probability_sum_is_one": true,
+              "target_key_counts": {
+                "atkFlat": 21,
+                "atkPct": 62,
+                "cdmg": 85,
+                "crit": 88,
+                "defFlat": 25,
+                "defPct": 76,
+                "eff": 81,
+                "hpFlat": 33,
+                "hpPct": 79,
+                "res": 78
+              }
+            }
+          },
+          "heroic": {
+            "shards": 80,
+            "path_mass": 79.99999999999999,
+            "flow": {
+              "value_sum": 2.4000000000000004,
+              "legacy_stamina_sum": 1643.4650785606282,
+              "powder_units": 3240.1500000000005,
+              "lower_stone_units": 216.0100000000002,
+              "material_gold": 8294784.0,
+              "conversion_gold": 40000.0,
+              "sell_gold": 1225200.0,
+              "sell_exp_adjusted": 421682.0,
+              "material_exp_adjusted": 659421.7450000001,
+              "lower_stone_adjusted_exp": 358719.0,
+              "formal_terminal_count": 0.5,
+              "value_sum_curve_baseline": 2.4000000000000004,
+              "value_sum_tier2_low": 2.4000000000000004,
+              "value_sum_tier2_mid": 2.4000000000000004,
+              "value_sum_tier2_high": 2.4000000000000004,
+              "native_heirloom": 0.0,
+              "converted_heirloom": 0.0,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 80,
+              "branch_count_total": 80,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 80.0,
+              "branch_probability_sum_is_one": true
+            }
+          }
+        }
+      }
+    },
+    "v3": {
+      "study": "epic_concentration_rescue_v3_system_compatible_health_20260720",
+      "schema_version": 3,
+      "estimator_hash": "82912e6937aa1d1d7206aec69e48cff64c271b12ad53755b95d16d900fd793c4",
+      "strategy_hash": "5a747cb9d7c3f0929199d17c36bc463e21b298841a4012cb318d837302ef047a",
+      "resource_model_hash": "e91e14a4e8620a662593384bd56bb813734f9f2aaddfb71ce34900e1fa427ef6",
+      "per_seed": {
+        "20260712": {
+          "formal_baili_per_100": 0.08205415776290165,
+          "value_per_100k": 82.05415776290164,
+          "total_stamina": 172.70953973431781,
+          "rift_stamina_per_100k": 49215.57901825054,
+          "saint_stamina_per_100k": 50784.420981749456,
+          "cycles_per_100k": 579.0068119794181,
+          "epic": {
+            "shards": 157,
+            "path_mass": 157.0,
+            "flow": {
+              "value_sum": 12.791231649804782,
+              "legacy_stamina_sum": 3401.462934432005,
+              "powder_units": 6859.588726058331,
+              "lower_stone_units": 457.3059150705553,
+              "material_gold": 17560547.138709344,
+              "conversion_gold": 211270.9692190474,
+              "sell_gold": 3956375.0000000065,
+              "sell_exp_adjusted": 934242.9596268139,
+              "material_exp_adjusted": 1421793.5916377131,
+              "lower_stone_adjusted_exp": 772279.0303144458,
+              "formal_terminal_count": 2.9650482056274097,
+              "value_sum_curve_baseline": 12.791231649804782,
+              "value_sum_tier2_low": 12.791231649804782,
+              "value_sum_tier2_mid": 12.791231649804782,
+              "value_sum_tier2_high": 12.791231649804782,
+              "native_heirloom": 0.22211908404834765,
+              "converted_heirloom": 0.44832554438867556,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 157,
+              "branch_count_total": 4496,
+              "branch_count_min": 17,
+              "branch_count_max": 62,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 157.0,
+              "branch_probability_sum_is_one": true,
+              "target_key_counts": {
+                "atkFlat": 21,
+                "atkPct": 62,
+                "cdmg": 85,
+                "crit": 88,
+                "defFlat": 25,
+                "defPct": 76,
+                "eff": 81,
+                "hpFlat": 33,
+                "hpPct": 79,
+                "res": 78
+              }
+            }
+          },
+          "heroic": {
+            "shards": 80,
+            "path_mass": 79.99999999999999,
+            "flow": {
+              "value_sum": 1.35,
+              "legacy_stamina_sum": 1599.0127907659742,
+              "powder_units": 3146.0499999999993,
+              "lower_stone_units": 209.73666666666685,
+              "material_gold": 8053888.0,
+              "conversion_gold": 20000.0,
+              "sell_gold": 1225200.0,
+              "sell_exp_adjusted": 415065.0,
+              "material_exp_adjusted": 646747.385,
+              "lower_stone_adjusted_exp": 351847.0,
+              "formal_terminal_count": 0.30000000000000004,
+              "value_sum_curve_baseline": 1.35,
+              "value_sum_tier2_low": 1.35,
+              "value_sum_tier2_mid": 1.75,
+              "value_sum_tier2_high": 1.9500000000000002,
+              "native_heirloom": 0.0,
+              "converted_heirloom": 0.0,
+              "speed22": 0.1,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 80,
+              "branch_count_total": 80,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 80.0,
+              "branch_probability_sum_is_one": true
+            }
+          }
+        },
+        "20260713": {
+          "formal_baili_per_100": 0.09617742764686314,
+          "value_per_100k": 96.17742764686314,
+          "total_stamina": 177.53693185821464,
+          "rift_stamina_per_100k": 47877.362253777756,
+          "saint_stamina_per_100k": 52122.63774622223,
+          "cycles_per_100k": 563.2630853385618,
+          "epic": {
+            "shards": 157,
+            "path_mass": 157.0,
+            "flow": {
+              "value_sum": 14.126988673602696,
+              "legacy_stamina_sum": 3423.117003500605,
+              "powder_units": 6904.825174172074,
+              "lower_stone_units": 460.3216782781381,
+              "material_gold": 17676352.445880532,
+              "conversion_gold": 202874.35113152672,
+              "sell_gold": 3956375.0000000065,
+              "sell_exp_adjusted": 938949.6329507781,
+              "material_exp_adjusted": 1429834.9123463787,
+              "lower_stone_adjusted_exp": 776640.9769215082,
+              "formal_terminal_count": 3.060678916690042,
+              "value_sum_curve_baseline": 14.126988673602696,
+              "value_sum_tier2_low": 14.126988673602696,
+              "value_sum_tier2_mid": 14.126988673602696,
+              "value_sum_tier2_high": 14.126988673602696,
+              "native_heirloom": 0.42711908404834764,
+              "converted_heirloom": 0.6597212221222124,
+              "speed22": 0.0,
+              "output60": 0.018333333333333333
+            },
+            "branch_contract": {
+              "gear_count": 157,
+              "branch_count_total": 4496,
+              "branch_count_min": 17,
+              "branch_count_max": 62,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 157.0,
+              "branch_probability_sum_is_one": true,
+              "target_key_counts": {
+                "atkFlat": 21,
+                "atkPct": 62,
+                "cdmg": 85,
+                "crit": 88,
+                "defFlat": 25,
+                "defPct": 76,
+                "eff": 81,
+                "hpFlat": 33,
+                "hpPct": 79,
+                "res": 78
+              }
+            }
+          },
+          "heroic": {
+            "shards": 80,
+            "path_mass": 79.99999999999999,
+            "flow": {
+              "value_sum": 1.81,
+              "legacy_stamina_sum": 1707.8047699560163,
+              "powder_units": 3343.2499999999995,
+              "lower_stone_units": 222.8833333333335,
+              "material_gold": 8558720.0,
+              "conversion_gold": 50000.0,
+              "sell_gold": 1225200.0,
+              "sell_exp_adjusted": 439302.0,
+              "material_exp_adjusted": 686182.68,
+              "lower_stone_adjusted_exp": 373232.0,
+              "formal_terminal_count": 0.5,
+              "value_sum_curve_baseline": 1.81,
+              "value_sum_tier2_low": 1.81,
+              "value_sum_tier2_mid": 1.81,
+              "value_sum_tier2_high": 1.81,
+              "native_heirloom": 0.0,
+              "converted_heirloom": 0.0,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 80,
+              "branch_count_total": 80,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 80.0,
+              "branch_probability_sum_is_one": true
+            }
+          }
+        },
+        "20260714": {
+          "formal_baili_per_100": 0.19759122493175862,
+          "value_per_100k": 197.59122493175863,
+          "total_stamina": 177.50622629393897,
+          "rift_stamina_per_100k": 47885.64422480902,
+          "saint_stamina_per_100k": 52114.35577519099,
+          "cycles_per_100k": 563.3605202918708,
+          "epic": {
+            "shards": 157,
+            "path_mass": 157.0,
+            "flow": {
+              "value_sum": 13.730355323916214,
+              "legacy_stamina_sum": 3461.2885665343765,
+              "powder_units": 6953.591563720504,
+              "lower_stone_units": 463.5727709146999,
+              "material_gold": 17801194.4031245,
+              "conversion_gold": 223585.03772867713,
+              "sell_gold": 3956375.0000000065,
+              "sell_exp_adjusted": 944022.7974172767,
+              "material_exp_adjusted": 1440142.4954782357,
+              "lower_stone_adjusted_exp": 782232.3690357049,
+              "formal_terminal_count": 3.2208368186822662,
+              "value_sum_curve_baseline": 13.730355323916214,
+              "value_sum_tier2_low": 13.730355323916214,
+              "value_sum_tier2_mid": 13.730355323916214,
+              "value_sum_tier2_high": 13.730355323916214,
+              "native_heirloom": 0.3518996546597598,
+              "converted_heirloom": 0.5264829879930932,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 157,
+              "branch_count_total": 4496,
+              "branch_count_min": 17,
+              "branch_count_max": 62,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 157.0,
+              "branch_probability_sum_is_one": true,
+              "target_key_counts": {
+                "atkFlat": 21,
+                "atkPct": 62,
+                "cdmg": 85,
+                "crit": 88,
+                "defFlat": 25,
+                "defPct": 76,
+                "eff": 81,
+                "hpFlat": 33,
+                "hpPct": 79,
+                "res": 78
+              }
+            }
+          },
+          "heroic": {
+            "shards": 80,
+            "path_mass": 79.99999999999999,
+            "flow": {
+              "value_sum": 5.9,
+              "legacy_stamina_sum": 1705.8568990039523,
+              "powder_units": 3349.9000000000005,
+              "lower_stone_units": 223.32666666666682,
+              "material_gold": 8575744.0,
+              "conversion_gold": 80000.0,
+              "sell_gold": 1225200.0,
+              "sell_exp_adjusted": 439980.0,
+              "material_exp_adjusted": 685986.47,
+              "lower_stone_adjusted_exp": 373129.0,
+              "formal_terminal_count": 1.0,
+              "value_sum_curve_baseline": 5.9,
+              "value_sum_tier2_low": 5.9,
+              "value_sum_tier2_mid": 6.300000000000001,
+              "value_sum_tier2_high": 6.5,
+              "native_heirloom": 0.0,
+              "converted_heirloom": 0.0,
+              "speed22": 0.1,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 80,
+              "branch_count_total": 80,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 80.0,
+              "branch_probability_sum_is_one": true
+            }
+          }
+        },
+        "20260715": {
+          "formal_baili_per_100": 0.09915510393019765,
+          "value_per_100k": 99.15510393019767,
+          "total_stamina": 177.28971556782716,
+          "rift_stamina_per_100k": 47944.12339585534,
+          "saint_stamina_per_100k": 52055.87660414466,
+          "cycles_per_100k": 564.0485105394746,
+          "epic": {
+            "shards": 157,
+            "path_mass": 157.0,
+            "flow": {
+              "value_sum": 12.956804471594438,
+              "legacy_stamina_sum": 3397.0491924120392,
+              "powder_units": 6858.9524560390955,
+              "lower_stone_units": 457.26349706927283,
+              "material_gold": 17558918.28746009,
+              "conversion_gold": 211879.2583799235,
+              "sell_gold": 3956375.0000000065,
+              "sell_exp_adjusted": 933399.6321472632,
+              "material_exp_adjusted": 1420348.2211730846,
+              "lower_stone_adjusted_exp": 771495.1182096893,
+              "formal_terminal_count": 2.95542776926072,
+              "value_sum_curve_baseline": 12.956804471594438,
+              "value_sum_tier2_low": 12.956804471594438,
+              "value_sum_tier2_mid": 12.956804471594438,
+              "value_sum_tier2_high": 12.956804471594438,
+              "native_heirloom": 0.21541666666666667,
+              "converted_heirloom": 0.49842168186248015,
+              "speed22": 0.0,
+              "output60": 0.021666666666666667
+            },
+            "branch_contract": {
+              "gear_count": 157,
+              "branch_count_total": 4496,
+              "branch_count_min": 17,
+              "branch_count_max": 62,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 157.0,
+              "branch_probability_sum_is_one": true,
+              "target_key_counts": {
+                "atkFlat": 21,
+                "atkPct": 62,
+                "cdmg": 85,
+                "crit": 88,
+                "defFlat": 25,
+                "defPct": 76,
+                "eff": 81,
+                "hpFlat": 33,
+                "hpPct": 79,
+                "res": 78
+              }
+            }
+          },
+          "heroic": {
+            "shards": 80,
+            "path_mass": 79.99999999999999,
+            "flow": {
+              "value_sum": 2.09,
+              "legacy_stamina_sum": 1705.7829285986836,
+              "powder_units": 3334.1,
+              "lower_stone_units": 222.2733333333335,
+              "material_gold": 8535296.0,
+              "conversion_gold": 50000.0,
+              "sell_gold": 1225200.0,
+              "sell_exp_adjusted": 434858.0,
+              "material_exp_adjusted": 681445.2350000001,
+              "lower_stone_adjusted_exp": 370662.5,
+              "formal_terminal_count": 0.5,
+              "value_sum_curve_baseline": 2.09,
+              "value_sum_tier2_low": 2.09,
+              "value_sum_tier2_mid": 2.09,
+              "value_sum_tier2_high": 2.09,
+              "native_heirloom": 0.0,
+              "converted_heirloom": 0.0,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 80,
+              "branch_count_total": 80,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 80.0,
+              "branch_probability_sum_is_one": true
+            }
+          }
+        },
+        "20260716": {
+          "formal_baili_per_100": 0.10681611221662546,
+          "value_per_100k": 106.81611221662547,
+          "total_stamina": 174.45744924719025,
+          "rift_stamina_per_100k": 48722.48239716194,
+          "saint_stamina_per_100k": 51277.51760283806,
+          "cycles_per_100k": 573.2056752607288,
+          "epic": {
+            "shards": 157,
+            "path_mass": 157.0,
+            "flow": {
+              "value_sum": 12.442376654302418,
+              "legacy_stamina_sum": 3376.9029177878706,
+              "powder_units": 6820.656924234501,
+              "lower_stone_units": 454.71046161563345,
+              "material_gold": 17460881.72604034,
+              "conversion_gold": 209807.90461143386,
+              "sell_gold": 3956375.0000000065,
+              "sell_exp_adjusted": 928172.6735865758,
+              "material_exp_adjusted": 1412214.7231530994,
+              "lower_stone_adjusted_exp": 767083.2002831493,
+              "formal_terminal_count": 2.888553655606527,
+              "value_sum_curve_baseline": 12.442376654302418,
+              "value_sum_tier2_low": 12.442376654302418,
+              "value_sum_tier2_mid": 12.442376654302418,
+              "value_sum_tier2_high": 12.442376654302418,
+              "native_heirloom": 0.31708333333333333,
+              "converted_heirloom": 0.5247167216721672,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 157,
+              "branch_count_total": 4496,
+              "branch_count_min": 17,
+              "branch_count_max": 62,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 157.0,
+              "branch_probability_sum_is_one": true,
+              "target_key_counts": {
+                "atkFlat": 21,
+                "atkPct": 62,
+                "cdmg": 85,
+                "crit": 88,
+                "defFlat": 25,
+                "defPct": 76,
+                "eff": 81,
+                "hpFlat": 33,
+                "hpPct": 79,
+                "res": 78
+              }
+            }
+          },
+          "heroic": {
+            "shards": 80,
+            "path_mass": 79.99999999999999,
+            "flow": {
+              "value_sum": 2.4000000000000004,
+              "legacy_stamina_sum": 1643.4650785606282,
+              "powder_units": 3240.1500000000005,
+              "lower_stone_units": 216.0100000000002,
+              "material_gold": 8294784.0,
+              "conversion_gold": 40000.0,
+              "sell_gold": 1225200.0,
+              "sell_exp_adjusted": 421682.0,
+              "material_exp_adjusted": 659421.7450000001,
+              "lower_stone_adjusted_exp": 358719.0,
+              "formal_terminal_count": 0.5,
+              "value_sum_curve_baseline": 2.4000000000000004,
+              "value_sum_tier2_low": 2.4000000000000004,
+              "value_sum_tier2_mid": 2.4000000000000004,
+              "value_sum_tier2_high": 2.4000000000000004,
+              "native_heirloom": 0.0,
+              "converted_heirloom": 0.0,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 80,
+              "branch_count_total": 80,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 80.0,
+              "branch_probability_sum_is_one": true
+            }
+          }
+        }
+      }
+    },
+    "v4": {
+      "study": "epic_concentration_rescue_v4_bound_health_20260720",
+      "schema_version": 4,
+      "estimator_hash": "4b6dcef7e30f4f223118c9cb592ecc6ae73c9df131b633d3017900f04a81a4cb",
+      "strategy_hash": "5a747cb9d7c3f0929199d17c36bc463e21b298841a4012cb318d837302ef047a",
+      "resource_model_hash": "e91e14a4e8620a662593384bd56bb813734f9f2aaddfb71ce34900e1fa427ef6",
+      "per_seed": {
+        "20260712": {
+          "formal_baili_per_100": 0.08205415776290165,
+          "value_per_100k": 82.05415776290164,
+          "total_stamina": 172.70953973431781,
+          "rift_stamina_per_100k": 49215.57901825054,
+          "saint_stamina_per_100k": 50784.420981749456,
+          "cycles_per_100k": 579.0068119794181,
+          "epic": {
+            "shards": 157,
+            "path_mass": 157.0,
+            "flow": {
+              "value_sum": 12.791231649804782,
+              "legacy_stamina_sum": 3401.462934432005,
+              "powder_units": 6859.588726058331,
+              "lower_stone_units": 457.3059150705553,
+              "material_gold": 17560547.138709344,
+              "conversion_gold": 211270.9692190474,
+              "sell_gold": 3956375.0000000065,
+              "sell_exp_adjusted": 934242.9596268139,
+              "material_exp_adjusted": 1421793.5916377131,
+              "lower_stone_adjusted_exp": 772279.0303144458,
+              "formal_terminal_count": 2.9650482056274097,
+              "value_sum_curve_baseline": 12.791231649804782,
+              "value_sum_tier2_low": 12.791231649804782,
+              "value_sum_tier2_mid": 12.791231649804782,
+              "value_sum_tier2_high": 12.791231649804782,
+              "native_heirloom": 0.22211908404834765,
+              "converted_heirloom": 0.44832554438867556,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 157,
+              "branch_count_total": 4496,
+              "branch_count_min": 17,
+              "branch_count_max": 62,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 157.0,
+              "branch_probability_sum_is_one": true,
+              "target_key_counts": {
+                "atkFlat": 21,
+                "atkPct": 62,
+                "cdmg": 85,
+                "crit": 88,
+                "defFlat": 25,
+                "defPct": 76,
+                "eff": 81,
+                "hpFlat": 33,
+                "hpPct": 79,
+                "res": 78
+              }
+            }
+          },
+          "heroic": {
+            "shards": 80,
+            "path_mass": 79.99999999999999,
+            "flow": {
+              "value_sum": 1.35,
+              "legacy_stamina_sum": 1599.0127907659742,
+              "powder_units": 3146.0499999999993,
+              "lower_stone_units": 209.73666666666685,
+              "material_gold": 8053888.0,
+              "conversion_gold": 20000.0,
+              "sell_gold": 1225200.0,
+              "sell_exp_adjusted": 415065.0,
+              "material_exp_adjusted": 646747.385,
+              "lower_stone_adjusted_exp": 351847.0,
+              "formal_terminal_count": 0.30000000000000004,
+              "value_sum_curve_baseline": 1.35,
+              "value_sum_tier2_low": 1.35,
+              "value_sum_tier2_mid": 1.75,
+              "value_sum_tier2_high": 1.9500000000000002,
+              "native_heirloom": 0.0,
+              "converted_heirloom": 0.0,
+              "speed22": 0.1,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 80,
+              "branch_count_total": 80,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 80.0,
+              "branch_probability_sum_is_one": true
+            }
+          }
+        },
+        "20260713": {
+          "formal_baili_per_100": 0.09617742764686314,
+          "value_per_100k": 96.17742764686314,
+          "total_stamina": 177.53693185821464,
+          "rift_stamina_per_100k": 47877.362253777756,
+          "saint_stamina_per_100k": 52122.63774622223,
+          "cycles_per_100k": 563.2630853385618,
+          "epic": {
+            "shards": 157,
+            "path_mass": 157.0,
+            "flow": {
+              "value_sum": 14.126988673602696,
+              "legacy_stamina_sum": 3423.117003500605,
+              "powder_units": 6904.825174172074,
+              "lower_stone_units": 460.3216782781381,
+              "material_gold": 17676352.445880532,
+              "conversion_gold": 202874.35113152672,
+              "sell_gold": 3956375.0000000065,
+              "sell_exp_adjusted": 938949.6329507781,
+              "material_exp_adjusted": 1429834.9123463787,
+              "lower_stone_adjusted_exp": 776640.9769215082,
+              "formal_terminal_count": 3.060678916690042,
+              "value_sum_curve_baseline": 14.126988673602696,
+              "value_sum_tier2_low": 14.126988673602696,
+              "value_sum_tier2_mid": 14.126988673602696,
+              "value_sum_tier2_high": 14.126988673602696,
+              "native_heirloom": 0.42711908404834764,
+              "converted_heirloom": 0.6597212221222124,
+              "speed22": 0.0,
+              "output60": 0.018333333333333333
+            },
+            "branch_contract": {
+              "gear_count": 157,
+              "branch_count_total": 4496,
+              "branch_count_min": 17,
+              "branch_count_max": 62,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 157.0,
+              "branch_probability_sum_is_one": true,
+              "target_key_counts": {
+                "atkFlat": 21,
+                "atkPct": 62,
+                "cdmg": 85,
+                "crit": 88,
+                "defFlat": 25,
+                "defPct": 76,
+                "eff": 81,
+                "hpFlat": 33,
+                "hpPct": 79,
+                "res": 78
+              }
+            }
+          },
+          "heroic": {
+            "shards": 80,
+            "path_mass": 79.99999999999999,
+            "flow": {
+              "value_sum": 1.81,
+              "legacy_stamina_sum": 1707.8047699560163,
+              "powder_units": 3343.2499999999995,
+              "lower_stone_units": 222.8833333333335,
+              "material_gold": 8558720.0,
+              "conversion_gold": 50000.0,
+              "sell_gold": 1225200.0,
+              "sell_exp_adjusted": 439302.0,
+              "material_exp_adjusted": 686182.68,
+              "lower_stone_adjusted_exp": 373232.0,
+              "formal_terminal_count": 0.5,
+              "value_sum_curve_baseline": 1.81,
+              "value_sum_tier2_low": 1.81,
+              "value_sum_tier2_mid": 1.81,
+              "value_sum_tier2_high": 1.81,
+              "native_heirloom": 0.0,
+              "converted_heirloom": 0.0,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 80,
+              "branch_count_total": 80,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 80.0,
+              "branch_probability_sum_is_one": true
+            }
+          }
+        },
+        "20260714": {
+          "formal_baili_per_100": 0.19759122493175862,
+          "value_per_100k": 197.59122493175863,
+          "total_stamina": 177.50622629393897,
+          "rift_stamina_per_100k": 47885.64422480902,
+          "saint_stamina_per_100k": 52114.35577519099,
+          "cycles_per_100k": 563.3605202918708,
+          "epic": {
+            "shards": 157,
+            "path_mass": 157.0,
+            "flow": {
+              "value_sum": 13.730355323916214,
+              "legacy_stamina_sum": 3461.2885665343765,
+              "powder_units": 6953.591563720504,
+              "lower_stone_units": 463.5727709146999,
+              "material_gold": 17801194.4031245,
+              "conversion_gold": 223585.03772867713,
+              "sell_gold": 3956375.0000000065,
+              "sell_exp_adjusted": 944022.7974172767,
+              "material_exp_adjusted": 1440142.4954782357,
+              "lower_stone_adjusted_exp": 782232.3690357049,
+              "formal_terminal_count": 3.2208368186822662,
+              "value_sum_curve_baseline": 13.730355323916214,
+              "value_sum_tier2_low": 13.730355323916214,
+              "value_sum_tier2_mid": 13.730355323916214,
+              "value_sum_tier2_high": 13.730355323916214,
+              "native_heirloom": 0.3518996546597598,
+              "converted_heirloom": 0.5264829879930932,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 157,
+              "branch_count_total": 4496,
+              "branch_count_min": 17,
+              "branch_count_max": 62,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 157.0,
+              "branch_probability_sum_is_one": true,
+              "target_key_counts": {
+                "atkFlat": 21,
+                "atkPct": 62,
+                "cdmg": 85,
+                "crit": 88,
+                "defFlat": 25,
+                "defPct": 76,
+                "eff": 81,
+                "hpFlat": 33,
+                "hpPct": 79,
+                "res": 78
+              }
+            }
+          },
+          "heroic": {
+            "shards": 80,
+            "path_mass": 79.99999999999999,
+            "flow": {
+              "value_sum": 5.9,
+              "legacy_stamina_sum": 1705.8568990039523,
+              "powder_units": 3349.9000000000005,
+              "lower_stone_units": 223.32666666666682,
+              "material_gold": 8575744.0,
+              "conversion_gold": 80000.0,
+              "sell_gold": 1225200.0,
+              "sell_exp_adjusted": 439980.0,
+              "material_exp_adjusted": 685986.47,
+              "lower_stone_adjusted_exp": 373129.0,
+              "formal_terminal_count": 1.0,
+              "value_sum_curve_baseline": 5.9,
+              "value_sum_tier2_low": 5.9,
+              "value_sum_tier2_mid": 6.300000000000001,
+              "value_sum_tier2_high": 6.5,
+              "native_heirloom": 0.0,
+              "converted_heirloom": 0.0,
+              "speed22": 0.1,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 80,
+              "branch_count_total": 80,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 80.0,
+              "branch_probability_sum_is_one": true
+            }
+          }
+        },
+        "20260715": {
+          "formal_baili_per_100": 0.09915510393019765,
+          "value_per_100k": 99.15510393019767,
+          "total_stamina": 177.28971556782716,
+          "rift_stamina_per_100k": 47944.12339585534,
+          "saint_stamina_per_100k": 52055.87660414466,
+          "cycles_per_100k": 564.0485105394746,
+          "epic": {
+            "shards": 157,
+            "path_mass": 157.0,
+            "flow": {
+              "value_sum": 12.956804471594438,
+              "legacy_stamina_sum": 3397.0491924120392,
+              "powder_units": 6858.9524560390955,
+              "lower_stone_units": 457.26349706927283,
+              "material_gold": 17558918.28746009,
+              "conversion_gold": 211879.2583799235,
+              "sell_gold": 3956375.0000000065,
+              "sell_exp_adjusted": 933399.6321472632,
+              "material_exp_adjusted": 1420348.2211730846,
+              "lower_stone_adjusted_exp": 771495.1182096893,
+              "formal_terminal_count": 2.95542776926072,
+              "value_sum_curve_baseline": 12.956804471594438,
+              "value_sum_tier2_low": 12.956804471594438,
+              "value_sum_tier2_mid": 12.956804471594438,
+              "value_sum_tier2_high": 12.956804471594438,
+              "native_heirloom": 0.21541666666666667,
+              "converted_heirloom": 0.49842168186248015,
+              "speed22": 0.0,
+              "output60": 0.021666666666666667
+            },
+            "branch_contract": {
+              "gear_count": 157,
+              "branch_count_total": 4496,
+              "branch_count_min": 17,
+              "branch_count_max": 62,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 157.0,
+              "branch_probability_sum_is_one": true,
+              "target_key_counts": {
+                "atkFlat": 21,
+                "atkPct": 62,
+                "cdmg": 85,
+                "crit": 88,
+                "defFlat": 25,
+                "defPct": 76,
+                "eff": 81,
+                "hpFlat": 33,
+                "hpPct": 79,
+                "res": 78
+              }
+            }
+          },
+          "heroic": {
+            "shards": 80,
+            "path_mass": 79.99999999999999,
+            "flow": {
+              "value_sum": 2.09,
+              "legacy_stamina_sum": 1705.7829285986836,
+              "powder_units": 3334.1,
+              "lower_stone_units": 222.2733333333335,
+              "material_gold": 8535296.0,
+              "conversion_gold": 50000.0,
+              "sell_gold": 1225200.0,
+              "sell_exp_adjusted": 434858.0,
+              "material_exp_adjusted": 681445.2350000001,
+              "lower_stone_adjusted_exp": 370662.5,
+              "formal_terminal_count": 0.5,
+              "value_sum_curve_baseline": 2.09,
+              "value_sum_tier2_low": 2.09,
+              "value_sum_tier2_mid": 2.09,
+              "value_sum_tier2_high": 2.09,
+              "native_heirloom": 0.0,
+              "converted_heirloom": 0.0,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 80,
+              "branch_count_total": 80,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 80.0,
+              "branch_probability_sum_is_one": true
+            }
+          }
+        },
+        "20260716": {
+          "formal_baili_per_100": 0.10681611221662546,
+          "value_per_100k": 106.81611221662547,
+          "total_stamina": 174.45744924719025,
+          "rift_stamina_per_100k": 48722.48239716194,
+          "saint_stamina_per_100k": 51277.51760283806,
+          "cycles_per_100k": 573.2056752607288,
+          "epic": {
+            "shards": 157,
+            "path_mass": 157.0,
+            "flow": {
+              "value_sum": 12.442376654302418,
+              "legacy_stamina_sum": 3376.9029177878706,
+              "powder_units": 6820.656924234501,
+              "lower_stone_units": 454.71046161563345,
+              "material_gold": 17460881.72604034,
+              "conversion_gold": 209807.90461143386,
+              "sell_gold": 3956375.0000000065,
+              "sell_exp_adjusted": 928172.6735865758,
+              "material_exp_adjusted": 1412214.7231530994,
+              "lower_stone_adjusted_exp": 767083.2002831493,
+              "formal_terminal_count": 2.888553655606527,
+              "value_sum_curve_baseline": 12.442376654302418,
+              "value_sum_tier2_low": 12.442376654302418,
+              "value_sum_tier2_mid": 12.442376654302418,
+              "value_sum_tier2_high": 12.442376654302418,
+              "native_heirloom": 0.31708333333333333,
+              "converted_heirloom": 0.5247167216721672,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 157,
+              "branch_count_total": 4496,
+              "branch_count_min": 17,
+              "branch_count_max": 62,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 157.0,
+              "branch_probability_sum_is_one": true,
+              "target_key_counts": {
+                "atkFlat": 21,
+                "atkPct": 62,
+                "cdmg": 85,
+                "crit": 88,
+                "defFlat": 25,
+                "defPct": 76,
+                "eff": 81,
+                "hpFlat": 33,
+                "hpPct": 79,
+                "res": 78
+              }
+            }
+          },
+          "heroic": {
+            "shards": 80,
+            "path_mass": 79.99999999999999,
+            "flow": {
+              "value_sum": 2.4000000000000004,
+              "legacy_stamina_sum": 1643.4650785606282,
+              "powder_units": 3240.1500000000005,
+              "lower_stone_units": 216.0100000000002,
+              "material_gold": 8294784.0,
+              "conversion_gold": 40000.0,
+              "sell_gold": 1225200.0,
+              "sell_exp_adjusted": 421682.0,
+              "material_exp_adjusted": 659421.7450000001,
+              "lower_stone_adjusted_exp": 358719.0,
+              "formal_terminal_count": 0.5,
+              "value_sum_curve_baseline": 2.4000000000000004,
+              "value_sum_tier2_low": 2.4000000000000004,
+              "value_sum_tier2_mid": 2.4000000000000004,
+              "value_sum_tier2_high": 2.4000000000000004,
+              "native_heirloom": 0.0,
+              "converted_heirloom": 0.0,
+              "speed22": 0.0,
+              "output60": 0.0
+            },
+            "branch_contract": {
+              "gear_count": 80,
+              "branch_count_total": 80,
+              "probability_sum_min": 1.0,
+              "probability_sum_max": 1.0,
+              "weighted_path_mass": 80.0,
+              "branch_probability_sum_is_one": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "fixed_replays": {
+    "Epic": {
+      "gear_index": 51,
+      "threshold": 37.7363,
+      "gear_signature": [
+        0,
+        "Epic",
+        85,
+        "armor",
+        "defFlat",
+        [
+          [
+            "hpFlat",
+            179.0,
+            1
+          ],
+          [
+            "crit",
+            4.0,
+            1
+          ],
+          [
+            "hpPct",
+            8.0,
+            1
+          ],
+          [
+            "defPct",
+            6.0,
+            1
+          ]
+        ]
+      ],
+      "branch_summary": {
+        "branch_count": 59,
+        "probability_sum": 1.0,
+        "probability_min": 0.0028327832783278327,
+        "probability_max": 0.08333333333333333,
+        "target_keys": [
+          "crit",
+          "defPct",
+          "hpFlat",
+          "hpPct"
+        ]
+      },
+      "modes": [
+        {
+          "mode": "baseline_only",
+          "rank": "Epic",
+          "seed": 20260715,
+          "runs_per_branch": 10,
+          "branch_paths": 590,
+          "flow": {
+            "value_sum": 0.2513804630463047,
+            "legacy_stamina_sum": 40.15656540501479,
+            "powder_units": 87.28549579958003,
+            "lower_stone_units": 5.819033053305338,
+            "material_gold": 223450.8692469248,
+            "conversion_gold": 3110.986098609861,
+            "sell_gold": 25524.999999999967,
+            "sell_exp_adjusted": 10368.30023002301,
+            "material_exp_adjusted": 16078.55470997098,
+            "lower_stone_adjusted_exp": 8728.549579957993,
+            "formal_terminal_count": 0.031109860986098612,
+            "value_sum_curve_baseline": 0.2513804630463047,
+            "value_sum_tier2_low": 0.2513804630463047,
+            "value_sum_tier2_mid": 0.2513804630463047,
+            "value_sum_tier2_high": 0.2513804630463047,
+            "native_heirloom": 0.0,
+            "converted_heirloom": 0.0,
+            "speed22": 0.0,
+            "output60": 0.0
+          },
+          "terminal_stop_or_continue_counts": {
+            "stop": 569,
+            "continue": 21
+          },
+          "action_sequences": {
+            "+0:continue,+3:continue,+6:stop": 471,
+            "+0:continue,+3:continue,+6:continue,+9:stop": 70,
+            "+0:continue,+3:continue,+6:continue,+9:continue,+12:stop": 28,
+            "+0:continue,+3:continue,+6:continue,+9:continue,+12:continue": 21
+          }
+        },
+        {
+          "mode": "candidate_impossible",
+          "rank": "Epic",
+          "seed": 20260715,
+          "runs_per_branch": 10,
+          "branch_paths": 590,
+          "flow": {
+            "value_sum": 0.2513804630463047,
+            "legacy_stamina_sum": 40.15656540501479,
+            "powder_units": 87.28549579958003,
+            "lower_stone_units": 5.819033053305338,
+            "material_gold": 223450.8692469248,
+            "conversion_gold": 3110.986098609861,
+            "sell_gold": 25524.999999999967,
+            "sell_exp_adjusted": 10368.30023002301,
+            "material_exp_adjusted": 16078.55470997098,
+            "lower_stone_adjusted_exp": 8728.549579957993,
+            "formal_terminal_count": 0.031109860986098612,
+            "value_sum_curve_baseline": 0.2513804630463047,
+            "value_sum_tier2_low": 0.2513804630463047,
+            "value_sum_tier2_mid": 0.2513804630463047,
+            "value_sum_tier2_high": 0.2513804630463047,
+            "native_heirloom": 0.0,
+            "converted_heirloom": 0.0,
+            "speed22": 0.0,
+            "output60": 0.0
+          },
+          "terminal_stop_or_continue_counts": {
+            "stop": 569,
+            "continue": 21
+          },
+          "action_sequences": {
+            "+0:continue,+3:continue,+6:stop": 471,
+            "+0:continue,+3:continue,+6:continue,+9:stop": 70,
+            "+0:continue,+3:continue,+6:continue,+9:continue,+12:stop": 28,
+            "+0:continue,+3:continue,+6:continue,+9:continue,+12:continue": 21
+          }
+        },
+        {
+          "mode": "v4",
+          "rank": "Epic",
+          "seed": 20260715,
+          "runs_per_branch": 10,
+          "branch_paths": 590,
+          "flow": {
+            "value_sum": 0.43212126212621277,
+            "legacy_stamina_sum": 74.14784267689376,
+            "powder_units": 150.28786566156637,
+            "lower_stone_units": 10.019191044104419,
+            "material_gold": 384736.9360936109,
+            "conversion_gold": 7722.947294729473,
+            "sell_gold": 25524.999999999967,
+            "sell_exp_adjusted": 17132.788578857886,
+            "material_exp_adjusted": 27692.82661141116,
+            "lower_stone_adjusted_exp": 15028.786566156625,
+            "formal_terminal_count": 0.07722947294729472,
+            "value_sum_curve_baseline": 0.43212126212621277,
+            "value_sum_tier2_low": 0.43212126212621277,
+            "value_sum_tier2_mid": 0.43212126212621277,
+            "value_sum_tier2_high": 0.43212126212621277,
+            "native_heirloom": 0.0,
+            "converted_heirloom": 0.0,
+            "speed22": 0.0,
+            "output60": 0.0
+          },
+          "terminal_stop_or_continue_counts": {
+            "stop": 439,
+            "continue": 151
+          },
+          "action_sequences": {
+            "+0:continue,+3:continue,+6:stop": 258,
+            "+0:continue,+3:continue,+6:continue,+9:continue,+12:continue": 151,
+            "+0:continue,+3:continue,+6:continue,+9:continue,+12:stop": 67,
+            "+0:continue,+3:continue,+6:continue,+9:stop": 114
+          }
+        }
+      ],
+      "baseline_only_equals_candidate_impossible": true,
+      "baseline_and_impossible_action_sequences_equal": true,
+      "v4_action_sequence_differs_from_baseline": true,
+      "v4_differs_only_if_rescue_action_changes": true,
+      "flow_delta_v4_minus_baseline": {
+        "value_sum": 0.1807407990799081,
+        "legacy_stamina_sum": 33.99127727187897,
+        "powder_units": 63.00236986198634,
+        "lower_stone_units": 4.200157990799081,
+        "material_gold": 161286.0668466861,
+        "conversion_gold": 4611.9611961196115,
+        "sell_gold": 0.0,
+        "sell_exp_adjusted": 6764.488348834877,
+        "material_exp_adjusted": 11614.271901440181,
+        "lower_stone_adjusted_exp": 6300.236986198632,
+        "formal_terminal_count": 0.046119611961196114,
+        "value_sum_curve_baseline": 0.1807407990799081,
+        "value_sum_tier2_low": 0.1807407990799081,
+        "value_sum_tier2_mid": 0.1807407990799081,
+        "value_sum_tier2_high": 0.1807407990799081,
+        "native_heirloom": 0.0,
+        "converted_heirloom": 0.0,
+        "speed22": 0.0,
+        "output60": 0.0
+      }
+    },
+    "Heroic": {
+      "gear_index": 14,
+      "threshold": 37.7363,
+      "gear_signature": [
+        0,
+        "Heroic",
+        85,
+        "weapon",
+        "atkFlat",
+        [
+          [
+            "atkPct",
+            8.0,
+            1
+          ],
+          [
+            "res",
+            7.0,
+            1
+          ],
+          [
+            "hpPct",
+            5.0,
+            1
+          ]
+        ]
+      ],
+      "branch_summary": {
+        "branch_count": 1,
+        "probability_sum": 1.0
+      },
+      "modes": [
+        {
+          "mode": "baseline_only",
+          "rank": "Heroic",
+          "seed": 20260715,
+          "runs_per_branch": 10,
+          "branch_paths": 10,
+          "flow": {
+            "value_sum": 0.0,
+            "legacy_stamina_sum": 26.273016966669537,
+            "powder_units": 54.10000000000001,
+            "lower_stone_units": 3.6066666666666665,
+            "material_gold": 138496.0,
+            "conversion_gold": 0.0,
+            "sell_gold": 15315.0,
+            "sell_exp_adjusted": 6140.0,
+            "material_exp_adjusted": 9953.2,
+            "lower_stone_adjusted_exp": 5410.0,
+            "formal_terminal_count": 0.0,
+            "value_sum_curve_baseline": 0.0,
+            "value_sum_tier2_low": 0.0,
+            "value_sum_tier2_mid": 0.0,
+            "value_sum_tier2_high": 0.0,
+            "native_heirloom": 0.0,
+            "converted_heirloom": 0.0,
+            "speed22": 0.0,
+            "output60": 0.0
+          },
+          "terminal_stop_or_continue_counts": {
+            "stop": 10,
+            "continue": 0
+          },
+          "action_sequences": {
+            "+0:continue,+3:continue,+6:continue,+9:continue,+12:stop": 2,
+            "+0:continue,+3:continue,+6:stop": 8
+          }
+        },
+        {
+          "mode": "candidate_impossible",
+          "rank": "Heroic",
+          "seed": 20260715,
+          "runs_per_branch": 10,
+          "branch_paths": 10,
+          "flow": {
+            "value_sum": 0.0,
+            "legacy_stamina_sum": 26.273016966669537,
+            "powder_units": 54.10000000000001,
+            "lower_stone_units": 3.6066666666666665,
+            "material_gold": 138496.0,
+            "conversion_gold": 0.0,
+            "sell_gold": 15315.0,
+            "sell_exp_adjusted": 6140.0,
+            "material_exp_adjusted": 9953.2,
+            "lower_stone_adjusted_exp": 5410.0,
+            "formal_terminal_count": 0.0,
+            "value_sum_curve_baseline": 0.0,
+            "value_sum_tier2_low": 0.0,
+            "value_sum_tier2_mid": 0.0,
+            "value_sum_tier2_high": 0.0,
+            "native_heirloom": 0.0,
+            "converted_heirloom": 0.0,
+            "speed22": 0.0,
+            "output60": 0.0
+          },
+          "terminal_stop_or_continue_counts": {
+            "stop": 10,
+            "continue": 0
+          },
+          "action_sequences": {
+            "+0:continue,+3:continue,+6:continue,+9:continue,+12:stop": 2,
+            "+0:continue,+3:continue,+6:stop": 8
+          }
+        },
+        {
+          "mode": "v4",
+          "rank": "Heroic",
+          "seed": 20260715,
+          "runs_per_branch": 10,
+          "branch_paths": 10,
+          "flow": {
+            "value_sum": 0.0,
+            "legacy_stamina_sum": 31.213848936353457,
+            "powder_units": 70.85,
+            "lower_stone_units": 4.7233333333333345,
+            "material_gold": 181376.0,
+            "conversion_gold": 0.0,
+            "sell_gold": 15315.0,
+            "sell_exp_adjusted": 8510.0,
+            "material_exp_adjusted": 13040.300000000001,
+            "lower_stone_adjusted_exp": 7085.0,
+            "formal_terminal_count": 0.0,
+            "value_sum_curve_baseline": 0.0,
+            "value_sum_tier2_low": 0.0,
+            "value_sum_tier2_mid": 0.0,
+            "value_sum_tier2_high": 0.0,
+            "native_heirloom": 0.0,
+            "converted_heirloom": 0.0,
+            "speed22": 0.0,
+            "output60": 0.0
+          },
+          "terminal_stop_or_continue_counts": {
+            "stop": 9,
+            "continue": 1
+          },
+          "action_sequences": {
+            "+0:continue,+3:continue,+6:continue,+9:continue,+12:continue": 1,
+            "+0:continue,+3:continue,+6:stop": 8,
+            "+0:continue,+3:continue,+6:continue,+9:continue,+12:stop": 1
+          }
+        }
+      ],
+      "baseline_only_equals_candidate_impossible": true,
+      "baseline_and_impossible_action_sequences_equal": true,
+      "v4_action_sequence_differs_from_baseline": true,
+      "v4_differs_only_if_rescue_action_changes": true,
+      "flow_delta_v4_minus_baseline": {
+        "value_sum": 0.0,
+        "legacy_stamina_sum": 4.94083196968392,
+        "powder_units": 16.749999999999986,
+        "lower_stone_units": 1.116666666666668,
+        "material_gold": 42880.0,
+        "conversion_gold": 0.0,
+        "sell_gold": 0.0,
+        "sell_exp_adjusted": 2370.0,
+        "material_exp_adjusted": 3087.1000000000004,
+        "lower_stone_adjusted_exp": 1675.0,
+        "formal_terminal_count": 0.0,
+        "value_sum_curve_baseline": 0.0,
+        "value_sum_tier2_low": 0.0,
+        "value_sum_tier2_mid": 0.0,
+        "value_sum_tier2_high": 0.0,
+        "native_heirloom": 0.0,
+        "converted_heirloom": 0.0,
+        "speed22": 0.0,
+        "output60": 0.0
+      }
+    }
+  },
+  "branch_contract": {
+    "gear_count": 157,
+    "branch_count_total": 4496,
+    "branch_count_min": 17,
+    "branch_count_max": 62,
+    "probability_sum_min": 1.0,
+    "probability_sum_max": 1.0,
+    "weighted_path_mass": 157.0,
+    "branch_probability_sum_is_one": true,
+    "target_key_counts": {
+      "atkFlat": 21,
+      "atkPct": 62,
+      "cdmg": 85,
+      "crit": 88,
+      "defFlat": 25,
+      "defPct": 76,
+      "eff": 81,
+      "hpFlat": 33,
+      "hpPct": 79,
+      "res": 78
+    }
+  },
+  "code_hashes": {
+    "v2_estimator": "0e88cea7d8d1e30763d002442c289f82fa074a0e5625081628b44716bb2c63ef",
+    "v3_estimator": "82912e6937aa1d1d7206aec69e48cff64c271b12ad53755b95d16d900fd793c4",
+    "v4_estimator": "4b6dcef7e30f4f223118c9cb592ecc6ae73c9df131b633d3017900f04a81a4cb",
+    "official_plus3_branch_module": "baf95012c991b68a682ffc1b23ce585a4a987100e7e23bdbe1dae0791024aa11",
+    "audit_script": "55460f13cffd640446b7250ea32d864a2007b3883e429753108b32b4d12f9a09"
+  },
+  "findings": {
+    "v2_epic_path_mass": 40.24523638424401,
+    "v3_v4_full_epic_path_mass": 785.0,
+    "v2_epic_expected_path_mass": 785,
+    "v3_v4_current_formal_equal": true,
+    "v2_baseline_84_4864_is_invalid_underweighted_epic_branch_history": true,
+    "v4_current_formal_allowed_for_future_comparison": true,
+    "v4_candidate_positive_signal_not_release_or_validation": true
+  }
+}

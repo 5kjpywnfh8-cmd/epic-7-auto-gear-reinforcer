@@ -1,0 +1,1040 @@
+{
+  "study": "reforged_inventory_set_weight_r800_weighted_closure_audit_20260718",
+  "schema_version": 2,
+  "execution": {
+    "trajectory_generation": "not_run_read_only_audit",
+    "secondary_stage": "r800",
+    "r50_clusters": 5,
+    "r50_sample_mass_per_cluster": 50,
+    "r800_clusters": 20,
+    "r800_sample_mass_per_cluster": 800,
+    "r200_clusters": 0,
+    "r400_clusters": 0
+  },
+  "r50_scope": "final full-joint four-rule comparison only; R50 does not supply the R400 five-layer historical bridge fields",
+  "scenarios": {
+    "uniform_observed_sets": {
+      "rules": {
+        "current_formal": {
+          "absolute_cost": {
+            "mean": 11458.89821431202,
+            "interval95": [
+              10936.298459458032,
+              12080.362283040584
+            ],
+            "relative_half_width": 0.049920324021799516,
+            "cluster_count": 25,
+            "ess": 20.64516519073591,
+            "max_cluster_share": 0.054997814420442555,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 8.726842505250746,
+          "rift_stamina_per_100k": 14375.850919385774,
+          "saint_stamina_per_100k": 85624.14908061422,
+          "cycles_per_100k": 169.12765787512674,
+          "native_heirloom_per_100k": 0.4555189453724563,
+          "converted_heirloom_per_100k": 0.515774953036469,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 0.0,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        },
+        "global_12_17": {
+          "absolute_cost": {
+            "mean": 11365.844827758325,
+            "interval95": [
+              10845.563151007782,
+              11980.897366331732
+            ],
+            "relative_half_width": 0.049944998921293164,
+            "cluster_count": 25,
+            "ess": 20.637888692561603,
+            "max_cluster_share": 0.05500886368016821,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 8.798290097694647,
+          "rift_stamina_per_100k": 14496.459353659628,
+          "saint_stamina_per_100k": 85503.54064634036,
+          "cycles_per_100k": 170.54658063128974,
+          "native_heirloom_per_100k": 0.45878821473084364,
+          "converted_heirloom_per_100k": 0.5201021271197445,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": -1.4551915228366852e-11,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 7.144759244390175e-05,
+            "interval95": [
+              6.658639380442526e-05,
+              7.59122117032756e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        },
+        "output_8_13_tank_10_17": {
+          "absolute_cost": {
+            "mean": 11405.592282769127,
+            "interval95": [
+              10885.30319601271,
+              12024.21902214327
+            ],
+            "relative_half_width": 0.049927956299611234,
+            "cluster_count": 25,
+            "ess": 20.64516519073591,
+            "max_cluster_share": 0.054997814420442555,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 8.767628854406263,
+          "rift_stamina_per_100k": 14443.03884842803,
+          "saint_stamina_per_100k": 85556.96115157196,
+          "cycles_per_100k": 169.9181040991533,
+          "native_heirloom_per_100k": 0.4576478888868758,
+          "converted_heirloom_per_100k": 0.5181855130193675,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": -1.4551915228366852e-11,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 4.078634915551799e-05,
+            "interval95": [
+              3.8600029795266694e-05,
+              4.280254665837112e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        },
+        "output_8_13_tank_12_17": {
+          "absolute_cost": {
+            "mean": 11401.320261922094,
+            "interval95": [
+              10881.164409023548,
+              12019.783331363593
+            ],
+            "relative_half_width": 0.04993364348086872,
+            "cluster_count": 25,
+            "ess": 20.64516519073591,
+            "max_cluster_share": 0.054997814420442555,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 8.770914043523367,
+          "rift_stamina_per_100k": 14448.45058686161,
+          "saint_stamina_per_100k": 85551.54941313839,
+          "cycles_per_100k": 169.9817716101366,
+          "native_heirloom_per_100k": 0.4578193673891029,
+          "converted_heirloom_per_100k": 0.5183796746834025,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 0.0,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 4.4071538272620614e-05,
+            "interval95": [
+              4.168932268590851e-05,
+              4.6255494814979176e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        }
+      }
+    },
+    "reforged_inventory_all": {
+      "rules": {
+        "current_formal": {
+          "absolute_cost": {
+            "mean": 8449.152511407028,
+            "interval95": [
+              7879.120806718482,
+              9083.245959009491
+            ],
+            "relative_half_width": 0.07125715571267917,
+            "cluster_count": 25,
+            "ess": 20.31152876562038,
+            "max_cluster_share": 0.06662209992853468,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 11.8355065629354,
+          "rift_stamina_per_100k": 14324.943940517003,
+          "saint_stamina_per_100k": 85675.05605948302,
+          "cycles_per_100k": 168.5287522413765,
+          "native_heirloom_per_100k": 0.5622289381442569,
+          "converted_heirloom_per_100k": 0.6499488104443029,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 1.4551915228366852e-11,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        },
+        "global_12_17": {
+          "absolute_cost": {
+            "mean": 8386.920775040047,
+            "interval95": [
+              7821.216232548884,
+              9015.942730329778
+            ],
+            "relative_half_width": 0.07122557430949315,
+            "cluster_count": 25,
+            "ess": 20.3088204763308,
+            "max_cluster_share": 0.06662747269982078,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 11.92332712830741,
+          "rift_stamina_per_100k": 14432.40017800096,
+          "saint_stamina_per_100k": 85567.59982199906,
+          "cycles_per_100k": 169.79294327059955,
+          "native_heirloom_per_100k": 0.5661459188298936,
+          "converted_heirloom_per_100k": 0.6548242957528337,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 1.4551915228366852e-11,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 8.782056537200676e-05,
+            "interval95": [
+              8.181790028246975e-05,
+              9.410709938931054e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        },
+        "output_8_13_tank_10_17": {
+          "absolute_cost": {
+            "mean": 8413.709117008897,
+            "interval95": [
+              7846.204275327075,
+              9045.349364315047
+            ],
+            "relative_half_width": 0.07126138260257991,
+            "cluster_count": 25,
+            "ess": 20.31152876562038,
+            "max_cluster_share": 0.06662209992853468,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 11.885364541286918,
+          "rift_stamina_per_100k": 14385.288864587228,
+          "saint_stamina_per_100k": 85614.71113541277,
+          "cycles_per_100k": 169.23869252455563,
+          "native_heirloom_per_100k": 0.5645973706298065,
+          "converted_heirloom_per_100k": 0.6526867696138925,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 0.0,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 4.9857978351516494e-05,
+            "interval95": [
+              4.642676862276658e-05,
+              5.3341221710070594e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        },
+        "output_8_13_tank_12_17": {
+          "absolute_cost": {
+            "mean": 8410.883470319633,
+            "interval95": [
+              7843.548511012921,
+              9042.241745399755
+            ],
+            "relative_half_width": 0.07125846164774416,
+            "cluster_count": 25,
+            "ess": 20.31152876562038,
+            "max_cluster_share": 0.06662209992853468,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 11.889357444182943,
+          "rift_stamina_per_100k": 14390.121620147063,
+          "saint_stamina_per_100k": 85609.87837985293,
+          "cycles_per_100k": 169.29554847231842,
+          "native_heirloom_per_100k": 0.5647870478137452,
+          "converted_heirloom_per_100k": 0.65290604054021,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 0.0,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 5.385088124754307e-05,
+            "interval95": [
+              5.014598067744694e-05,
+              5.7590179106465494e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        }
+      }
+    },
+    "reforged_inventory_epic": {
+      "rules": {
+        "current_formal": {
+          "absolute_cost": {
+            "mean": 8400.919529933559,
+            "interval95": [
+              7846.335332717531,
+              9023.630943417891
+            ],
+            "relative_half_width": 0.07006944933262985,
+            "cluster_count": 25,
+            "ess": 20.33104669596089,
+            "max_cluster_share": 0.06542864824253504,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 11.903458858722205,
+          "rift_stamina_per_100k": 14324.198152461287,
+          "saint_stamina_per_100k": 85675.8018475387,
+          "cycles_per_100k": 168.51997826425045,
+          "native_heirloom_per_100k": 0.5684812951482304,
+          "converted_heirloom_per_100k": 0.6590171515104549,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 0.0,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        },
+        "global_12_17": {
+          "absolute_cost": {
+            "mean": 8339.320106373154,
+            "interval95": [
+              7787.593010961673,
+              8957.518028284852
+            ],
+            "relative_half_width": 0.07014510789848973,
+            "cluster_count": 25,
+            "ess": 20.3276932487547,
+            "max_cluster_share": 0.06543516344614156,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 11.991385235779239,
+          "rift_stamina_per_100k": 14431.442520924187,
+          "saint_stamina_per_100k": 85568.55747907581,
+          "cycles_per_100k": 169.78167671675513,
+          "native_heirloom_per_100k": 0.5723643322214582,
+          "converted_heirloom_per_100k": 0.6639511713744438,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 0.0,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 8.792637705703349e-05,
+            "interval95": [
+              8.191262360386815e-05,
+              9.425753895636081e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        },
+        "output_8_13_tank_10_17": {
+          "absolute_cost": {
+            "mean": 8365.693162236215,
+            "interval95": [
+              7813.475608692815,
+              8986.040262630386
+            ],
+            "relative_half_width": 0.07008173926523355,
+            "cluster_count": 25,
+            "ess": 20.33104669596089,
+            "max_cluster_share": 0.06542864824253504,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 11.953582095433823,
+          "rift_stamina_per_100k": 14384.51466913273,
+          "saint_stamina_per_100k": 85615.48533086728,
+          "cycles_per_100k": 169.229584342738,
+          "native_heirloom_per_100k": 0.5708750634521351,
+          "converted_heirloom_per_100k": 0.6617921493555536,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 0.0,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 5.0123236711618196e-05,
+            "interval95": [
+              4.6708989173914126e-05,
+              5.358327930217628e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        },
+        "output_8_13_tank_12_17": {
+          "absolute_cost": {
+            "mean": 8362.862907627401,
+            "interval95": [
+              7810.807621282315,
+              8983.037551904305
+            ],
+            "relative_half_width": 0.07008544463600197,
+            "cluster_count": 25,
+            "ess": 20.33104669596089,
+            "max_cluster_share": 0.06542864824253504,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 11.957627561823879,
+          "rift_stamina_per_100k": 14389.382839206492,
+          "saint_stamina_per_100k": 85610.61716079352,
+          "cycles_per_100k": 169.28685693184107,
+          "native_heirloom_per_100k": 0.5710682654449502,
+          "converted_heirloom_per_100k": 0.6620161205364136,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 1.4551915228366852e-11,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 5.4168703101674376e-05,
+            "interval95": [
+              5.046197112893239e-05,
+              5.792213472145813e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        }
+      }
+    },
+    "reforged_inventory_heroic": {
+      "rules": {
+        "current_formal": {
+          "absolute_cost": {
+            "mean": 8654.635856254974,
+            "interval95": [
+              8019.651620687701,
+              9349.223543022013
+            ],
+            "relative_half_width": 0.07681270156348573,
+            "cluster_count": 25,
+            "ess": 20.17052525313054,
+            "max_cluster_share": 0.07170647245286312,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 11.554501155323237,
+          "rift_stamina_per_100k": 14328.028024856883,
+          "saint_stamina_per_100k": 85671.97197514311,
+          "cycles_per_100k": 168.56503558655157,
+          "native_heirloom_per_100k": 0.5363733564747328,
+          "converted_heirloom_per_100k": 0.6124481953905092,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 0.0,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        },
+        "global_12_17": {
+          "absolute_cost": {
+            "mean": 8589.690133256861,
+            "interval95": [
+              7959.6868156118335,
+              9278.554617687538
+            ],
+            "relative_half_width": 0.07677039460186227,
+            "cluster_count": 25,
+            "ess": 20.17052525313054,
+            "max_cluster_share": 0.07170647245286312,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 11.64186349549772,
+          "rift_stamina_per_100k": 14436.360703309245,
+          "saint_stamina_per_100k": 85563.63929669074,
+          "cycles_per_100k": 169.83953768599113,
+          "native_heirloom_per_100k": 0.5404288177187075,
+          "converted_heirloom_per_100k": 0.6170788503072128,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": -1.4551915228366852e-11,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 8.736234017448288e-05,
+            "interval95": [
+              8.10876309306225e-05,
+              9.395546378972337e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        },
+        "output_8_13_tank_10_17": {
+          "absolute_cost": {
+            "mean": 8618.267879945895,
+            "interval95": [
+              7986.111047911266,
+              9309.797462289174
+            ],
+            "relative_half_width": 0.076795385848822,
+            "cluster_count": 25,
+            "ess": 20.17052525313054,
+            "max_cluster_share": 0.07170647245286312,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 11.603259656466816,
+          "rift_stamina_per_100k": 14388.490450836509,
+          "saint_stamina_per_100k": 85611.5095491635,
+          "cycles_per_100k": 169.27635824513538,
+          "native_heirloom_per_100k": 0.5386367826982881,
+          "converted_heirloom_per_100k": 0.615032647599558,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 1.4551915228366852e-11,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 4.87585011435792e-05,
+            "interval95": [
+              4.516848475096501e-05,
+              5.243913400919571e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        },
+        "output_8_13_tank_12_17": {
+          "absolute_cost": {
+            "mean": 8615.461864522607,
+            "interval95": [
+              7983.527974307579,
+              9306.788319667698
+            ],
+            "relative_half_width": 0.07679567074686611,
+            "cluster_count": 25,
+            "ess": 20.17052525313054,
+            "max_cluster_share": 0.07170647245286312,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 11.607038783583672,
+          "rift_stamina_per_100k": 14393.176714528201,
+          "saint_stamina_per_100k": 85606.82328547181,
+          "cycles_per_100k": 169.3314907591553,
+          "native_heirloom_per_100k": 0.5388122141659875,
+          "converted_heirloom_per_100k": 0.615232960841277,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 1.4551915228366852e-11,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 5.2537628260435065e-05,
+            "interval95": [
+              4.864500567804131e-05,
+              5.6524661337160886e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        }
+      }
+    },
+    "top4_equal": {
+      "rules": {
+        "current_formal": {
+          "absolute_cost": {
+            "mean": 6769.566502426996,
+            "interval95": [
+              6325.445453215851,
+              7284.803749494756
+            ],
+            "relative_half_width": 0.07085817798931143,
+            "cluster_count": 25,
+            "ess": 20.1463086315039,
+            "max_cluster_share": 0.06741032464927457,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 14.771994626856598,
+          "rift_stamina_per_100k": 14276.987713215867,
+          "saint_stamina_per_100k": 85723.01228678413,
+          "cycles_per_100k": 167.9645613319514,
+          "native_heirloom_per_100k": 0.7327645948380249,
+          "converted_heirloom_per_100k": 0.8191502452650552,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 0.0,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        },
+        "global_12_17": {
+          "absolute_cost": {
+            "mean": 6724.323629403684,
+            "interval95": [
+              6283.323699206563,
+              7235.9045261591455
+            ],
+            "relative_half_width": 0.07083097716974827,
+            "cluster_count": 25,
+            "ess": 20.1463086315039,
+            "max_cluster_share": 0.06741032464927457,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 14.871384173528847,
+          "rift_stamina_per_100k": 14373.046733849544,
+          "saint_stamina_per_100k": 85626.95326615045,
+          "cycles_per_100k": 169.09466745705345,
+          "native_heirloom_per_100k": 0.7376948119642901,
+          "converted_heirloom_per_100k": 0.8246616859059377,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 0.0,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 9.938954667224921e-05,
+            "interval95": [
+              9.265644384717255e-05,
+              0.00010611910603197314
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        },
+        "output_8_13_tank_10_17": {
+          "absolute_cost": {
+            "mean": 6743.731098611387,
+            "interval95": [
+              6301.416977958609,
+              7256.778708147848
+            ],
+            "relative_half_width": 0.07083332032515051,
+            "cluster_count": 25,
+            "ess": 20.1463086315039,
+            "max_cluster_share": 0.06741032464927457,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 14.828586510602591,
+          "rift_stamina_per_100k": 14331.683212998973,
+          "saint_stamina_per_100k": 85668.31678700102,
+          "cycles_per_100k": 168.60803779998793,
+          "native_heirloom_per_100k": 0.7355718344702991,
+          "converted_heirloom_per_100k": 0.8222884305014795,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 0.0,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 5.6591883745992985e-05,
+            "interval95": [
+              5.275546553199298e-05,
+              6.037199168607704e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        },
+        "output_8_13_tank_12_17": {
+          "absolute_cost": {
+            "mean": 6741.691285099861,
+            "interval95": [
+              6299.602214866496,
+              7254.580522696248
+            ],
+            "relative_half_width": 0.07082631549299775,
+            "cluster_count": 25,
+            "ess": 20.1463086315039,
+            "max_cluster_share": 0.06741032464927457,
+            "method": "source_stratified_clustered_positive_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            },
+            "status": "ok"
+          },
+          "formal_baili_per_100k": 14.833073151987078,
+          "rift_stamina_per_100k": 14336.019507828343,
+          "saint_stamina_per_100k": 85663.98049217167,
+          "cycles_per_100k": 168.65905303327463,
+          "native_heirloom_per_100k": 0.7357943942558482,
+          "converted_heirloom_per_100k": 0.8225372278699701,
+          "speed22_per_100k": 0.0,
+          "stamina_conservation_error": 1.4551915228366852e-11,
+          "total_sample_mass": 16250.0,
+          "sample_mass_by_source": {
+            "r50": 250.0,
+            "r800": 16000.0
+          },
+          "source_cluster_counts": {
+            "r50": 5,
+            "r800": 20
+          },
+          "paired_delta_vs_current": {
+            "mean": 6.10785251304799e-05,
+            "interval95": [
+              5.703324845174329e-05,
+              6.503936717716999e-05
+            ],
+            "unit": "formal_baili_per_100_total_stamina",
+            "cluster_count": 25,
+            "method": "paired_common_path_source_stratified_bootstrap",
+            "bootstrap_strata": {
+              "r50": 5,
+              "r800": 20
+            }
+          }
+        }
+      }
+    }
+  },
+  "next_expansion_required": false,
+  "r800_required": false,
+  "freeze": "not_frozen_no_holdout"
+}
