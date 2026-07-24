@@ -96,6 +96,19 @@
     "samples_private_or_real": 7,
     "root": 5
   },
+  "final_private_gate_scan": {
+    "files": 339,
+    "bytes": 223321159,
+    "max_file_bytes": 26483765,
+    "ipv4_endpoint_marker_files": 5,
+    "absolute_path_marker_files": 4,
+    "pcap_or_raw_payload_marker_files": 1,
+    "account_or_instance_field_files": 37,
+    "commits_pushed": ["64639eb", "bdde672", "5c21038"],
+    "files_deleted": 0,
+    "files_moved": 0,
+    "files_ignored_in_this_gate": 0
+  },
   "private_externalization_authorized_for_this_inventory": false,
-  "status": "phase_3_reproducible_reports_ignored_private_decision_pending"
+  "status": "phase_4_private_externalization_authorization_pending"
 }
