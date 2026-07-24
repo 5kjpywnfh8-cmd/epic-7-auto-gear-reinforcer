@@ -2112,3 +2112,14 @@ GUI 验收关注点：
 - 折叠未跟踪目录后共有 `400` 个状态条目，其中 `31` 个为已跟踪修改、`369` 个为未跟踪文件/目录；完整 `--untracked-files=all` 递归统计在 `60` 秒内超时，说明深层未跟踪内容仍是扫描卡顿来源。
 - 当前决定为“需要继续整理，但不直接清空”。31 个既有改动必须先独立审阅并决定分组提交；未跟踪内容需另建只读分类任务，再区分提交、保留、隔离、忽略和无法判断项。
 - 状态更新为 `cleanup_recommended_full_untracked_scan_timed_out; destructive_cleanup_not_authorized`。本轮未删除、移动、回退或暂存任何用户文件，不执行 `git clean`，不修改 `.git` 异常引用。
+
+#### 工作区完整清理与 Git 收口（2026-07-25，阶段一进行中）
+
+- 用户已授权执行完整收口，最终闸门为 `git status --porcelain` 无输出、本地与远程同步、无暂存和未推送提交；未知文件删除和私人数据外传仍必须在精确清单后重新确认。
+- 唯一权威任务说明：[工作区完整清理与Git收口任务说明](工作区完整清理与Git收口任务说明.md)。禁止 `git reset`、`git restore`、`git checkout` 回退、`git clean`、宽泛忽略和 `git add -A`；不得修复 `.git` 内异常引用。
+- 起始分支为 `codex/batch-013-plus3-verification-20260724`，HEAD `0c41890d8f064c8fdd4af40c3f512cdde80e2708` 与远程同步；已创建专用分支 `codex/worktree-cleanup-20260725`。
+- 起始已跟踪修改为 `31` 个文件、约 `3013` 行新增和 `312` 行删除，暂存区 `0`；这些既有改动必须按任务来源和功能分组审阅、验证、独立提交，不能整体提交或回退。
+- 前次折叠未跟踪状态为 `369` 个文件/目录，完整递归扫描曾在 60 秒超时；本轮改用目录级、限时、可续跑分类。415 个已隔离精确副本保持恢复来源，3 个分叉副本和 `.git` 异常项继续保留。
+- 阶段一安全基线已完成：[Markdown](reports/worktree_cleanup_baseline_20260725.md) / [JSON](reports/worktree_cleanup_baseline_20260725.json)。完整未跟踪枚举为 `255840` 个文件；工作区排除 `.git` 后为 `256449` 个文件、`2379545803` 字节。
+- `reports` 是主要卡顿来源：`255347` 个文件、`1972226214` 字节，主体为研究 resume 分片；`manual_acceptance` 含私人游戏截图和操作证据，未经本轮外传授权不得推送。现有 `reports/*.md` 忽略规则过宽，必须在逐份分类后移除或替换。
+- 当前状态：`phase_1_complete_phase_2_tracked_review_in_progress_no_cleanup_performed`。尚未删除、忽略、移动、暂存、提交或上传任何待分类内容；下一步审阅全部 31 个既有已跟踪修改并按任务来源/功能分组。

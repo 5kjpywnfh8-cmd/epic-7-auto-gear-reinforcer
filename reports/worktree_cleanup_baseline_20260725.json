@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-25T01:32:30.7081957+08:00",
+  "task": "worktree_cleanup_20260725",
+  "git": {
+    "base_branch": "codex/batch-013-plus3-verification-20260724",
+    "base_head": "0c41890d8f064c8fdd4af40c3f512cdde80e2708",
+    "base_ahead": 0,
+    "base_behind": 0,
+    "branch": "codex/worktree-cleanup-20260725",
+    "remote": "https://github.com/5kjpywnfh8-cmd/epic-7-auto-gear-reinforcer.git",
+    "tracked_files": 202,
+    "base_tracked_modified": 31,
+    "base_insertions": 3013,
+    "base_deletions": 312,
+    "base_staged": 0,
+    "folded_status_after_task_docs": {
+      "total": 402,
+      "tracked_modified": 32,
+      "untracked_entries": 370
+    },
+    "untracked_files": 255840
+  },
+  "filesystem": {
+    "excludes_git_directory": true,
+    "files": 256449,
+    "bytes": 2379545803,
+    "top_level_directories": [
+      {"path": "reports", "files": 255347, "bytes": 1972226214},
+      {"path": "manual_acceptance", "files": 539, "bytes": 358971633},
+      {"path": "runtime_cache", "files": 18, "bytes": 36065690},
+      {"path": "samples", "files": 26, "bytes": 4523344},
+      {"path": "tools", "files": 130, "bytes": 3258137},
+      {"path": "src", "files": 105, "bytes": 1852435},
+      {"path": "tests", "files": 177, "bytes": 1381191},
+      {"path": "建议结果", "files": 3, "bytes": 32378},
+      {"path": "e7_enhance", "files": 13, "bytes": 2923},
+      {"path": "__pycache__", "files": 2, "bytes": 404},
+      {"path": ".vscode", "files": 1, "bytes": 40}
+    ]
+  },
+  "safety": {
+    "cleanup_performed": false,
+    "private_upload_authorized_for_this_task": false,
+    "broad_report_ignore_rule_requires_replacement": true,
+    "git_internal_refs_modified": false
+  }
+}
