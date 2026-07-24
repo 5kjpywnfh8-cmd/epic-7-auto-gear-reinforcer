@@ -157,4 +157,9 @@
 - 已将过宽的 `reports/*.md` 替换为精确规则：仅忽略 `reports/*_resume_*/`、`reports/test_logs_*/`、`reports/epic_threshold_matrix_single_debug/`、`reports/visual/`、`runtime_cache/` 和本地 `.vscode/`；未删除任何文件，顶层权威报告继续可见。
 - 重新分类结果：`reports/` 共 `127855` 个文件、`1100733173` 字节，其中 `60` 个生成/调试目录是主要扫描噪声；顶层报告仍有 `316` 个文件、`176552041` 字节待逐份审阅。源码/测试/工具未跟踪文件共 `98` 个，`manual_acceptance` 未跟踪入口共 `276` 个，其中 `190` 个为截图、PCAP、日志或 PID 等私人/操作证据。
 - 校准组已通过 `32` 项定向测试并提交 `fc4e2e9`；策略/DP/资源组已通过 `92` 项定向测试并提交 `ede8e5e`；GUI 组已通过 `33` 项定向测试并提交 `77baf88`，三次均已推送到 `origin/codex/worktree-cleanup-20260725`。
-- 当前未删除、移动、回退或混入私人证据；已跟踪代码改动已全部分组提交，剩余 6 个说明文档待提交。下一步提交文档后，再单独审核 `src/tests/tools` 新文件、顶层报告和私人 `manual_acceptance` 证据。
+- 已补齐运行时依赖并提交 `04bb9af`，只读 OCR/MuMu/离线汇总工具提交 `4cad58d`，可复现研究工具提交 `cef92cc`；均已推送，未包含 `reports/`、`samples/` 或 `manual_acceptance/` 私人证据。
+- 统一全量测试 `tools/run_all_tests.py` 真实退出码 `0`，耗时 `292.8` 秒，输出 `ALL TEST FILES PASSED`；2 个 Qt 用例各自动重试一次后通过。
+- 根目录未跟踪文档共 `68` 个：3 个内容分叉副本继续保留；2 个历史任务文档含具体本地连接标识，当前不推送、不静默改写；其余 63 个文档通过 UTF-8 读取检查，进入项目文档提交候选。
+- 安全根目录文档已形成本地提交 `aa00b55`；首次推送被外传闸门拒绝，因为总计划历史段落仍保留 4 处具体本地端点。未绕过拒绝，也未推送该提交。
+- 已将总计划中 4 处历史端点机械替换为 `<local-adb-endpoint-redacted>`；复核结果为具体端点命中 `0`、占位符 `4`、UTF-8 可读、`git diff --check` 通过，文件 SHA-256 为 `763affa2bafa27f223e01326a7ec79077db4b2b9548c679e188ed25043fb3503`。
+- 当前状态：`phase_3_endpoint_redaction_verified_safe_docs_push_pending`。未删除、移动、回退或混入私人证据；下一步独立提交并推送脱敏，再审核顶层报告、样本和私人 `manual_acceptance` 证据。
