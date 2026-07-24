@@ -6,22 +6,26 @@ from pathlib import Path
 from typing import Any
 
 from .airtest_adapter import NullAirtestAdapter
+from .epic_plus3_prospective import normalized_fingerprint, observe_trusted_fribbels_state
 from .gui_support import (
     DEFAULT_GEAR_FORM,
+    DISPLAY_VALUE_LABELS,
     build_gear_dict,
     format_debug_details,
     load_gear_file,
     load_gear_collection,
+    load_gear_collection_with_report,
     save_gear_file,
     save_suggestion_file,
     suggest_from_form,
     summary_view_model,
 )
 from .acceptance_replay import AcceptanceReplay
+from .manual_sample_store import ManualSampleStore
 from .models import Gear
 
 try:
-    from PySide6.QtCore import Qt
+    from PySide6.QtCore import QObject, QThread, Qt, Signal, Slot
     from PySide6.QtWidgets import (
         QApplication,
         QAbstractItemView,
@@ -64,6 +68,7 @@ SET_OPTIONS = [
     ("Penetration", "穿透"), ("Torrent", "激流"), ("Resist", "抵抗"),
     ("Hit", "命中"), ("Injury", "伤口"), ("Protection", "保护"),
     ("Riposte", "回击"), ("Opener", "先手"), ("Chase", "追击"),
+    ("ReversalSet", "逆袭"), ("UnitySet", "夹攻"),
 ]
 SLOT_OPTIONS = [
     ("Weapon", "武器"), ("Helmet", "头盔"), ("Armor", "衣服"),
@@ -101,8 +106,13 @@ if PYSIDE6_IMPORT_ERROR is None:
             self.resize(max(1024, width), max(680, height))
             self.airtest_adapter = NullAirtestAdapter()
             self.current_result: dict[str, Any] | None = None
+            self.current_gear_code = ""
+            self.current_instance_id = ""
+            self.current_roll_history: list[dict[str, Any]] = []
+            self.current_gear_source = ""
             self.sample_forms: list[dict[str, Any]] = []
             self.sample_index = 0
+            self._trusted_runtime_fingerprints: set[str] = set()
             self._build_ui()
             self.set_form(DEFAULT_GEAR_FORM)
 
@@ -116,6 +126,7 @@ if PYSIDE6_IMPORT_ERROR is None:
             self.import_button = QPushButton("导入装备 JSON")
             self.load_acceptance_button = QPushButton("加载验收样本")
             self.replay_button = QPushButton("验收强化回放")
+            self.real_sample_manager_button = QPushButton("真实样本管理")
             self.prev_sample_button = QPushButton("上一件")
             self.next_sample_button = QPushButton("下一件")
             self.sample_counter_label = QLabel("1 / 1")
@@ -139,6 +150,7 @@ if PYSIDE6_IMPORT_ERROR is None:
                 button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
                 toolbar_layout.addWidget(button, index // 4, index % 4)
             toolbar_layout.addWidget(self.sample_counter_label, 2, 1)
+            toolbar_layout.addWidget(self.real_sample_manager_button, 2, 2)
             for column in range(4):
                 toolbar_layout.setColumnStretch(column, 1)
             layout.addWidget(toolbar)
@@ -259,6 +271,7 @@ if PYSIDE6_IMPORT_ERROR is None:
             self.import_button.clicked.connect(self.import_gear)
             self.load_acceptance_button.clicked.connect(self.load_acceptance_samples)
             self.replay_button.clicked.connect(self.open_replay)
+            self.real_sample_manager_button.clicked.connect(self.open_real_sample_manager)
             self.prev_sample_button.clicked.connect(self.prev_sample)
             self.next_sample_button.clicked.connect(self.next_sample)
             self.save_gear_button.clicked.connect(self.save_gear)
@@ -280,6 +293,10 @@ if PYSIDE6_IMPORT_ERROR is None:
             self.reforge_status_label.setText("85级默认可重铸" if self.level_spin.value() == 85 else "90级已完成终局")
 
         def set_form(self, form: dict[str, Any]) -> None:
+            self.current_gear_code = str(form.get("code") or "")
+            self.current_instance_id = str(form.get("instance_id") or "")
+            self.current_roll_history = list(form.get("rollHistory") or [])
+            self.current_gear_source = str(form.get("gear_source") or "")
             set_combo_text(self.set_combo, str(form.get("set") or "Speed"))
             set_combo_text(self.slot_combo, str(form.get("slot") or "Weapon"))
             set_combo_text(self.main_combo, str(form.get("main_type") or "Attack"))
@@ -302,17 +319,32 @@ if PYSIDE6_IMPORT_ERROR is None:
                 self.substat_table.setItem(row, 1, QTableWidgetItem(format_value(stat.get("value", 0))))
                 self.substat_table.setItem(row, 2, QTableWidgetItem(str(int(float(stat.get("rolls") or 0)))))
 
-        def load_forms_from_path(self, path: Path) -> None:
+        def load_forms_from_path(self, path: Path) -> dict[str, Any]:
             try:
-                forms = load_gear_collection(path)
+                forms, report = load_gear_collection_with_report(path)
             except json.JSONDecodeError:
                 # Saved single-result packages retain the existing tolerant loader path.
                 forms = [load_gear_file(path)]
+                report = {
+                    "source_format": "native",
+                    "total_items": 1,
+                    "loaded_items": 1,
+                    "skipped_items": 0,
+                    "skipped_by_reason": {},
+                }
             self.sample_forms = forms
+            self._trusted_runtime_fingerprints = set()
+            if report.get("source_format") == "fribbels":
+                for form in forms:
+                    try:
+                        self._trusted_runtime_fingerprints.add(normalized_fingerprint(Gear.from_dict(build_gear_dict(form))))
+                    except (KeyError, TypeError, ValueError):
+                        continue
             self.sample_index = 0
             self.set_form(forms[0])
             self.run_suggest()
             self.update_sample_controls()
+            return report
 
         def load_acceptance_samples(self) -> None:
             directory = Path(__file__).resolve().parents[2] / "samples" / "manual_acceptance"
@@ -336,6 +368,10 @@ if PYSIDE6_IMPORT_ERROR is None:
 
         def open_replay(self) -> None:
             AcceptanceReplayDialog(self).exec()
+
+        def open_real_sample_manager(self) -> None:
+            records_path = Path(__file__).resolve().parents[2] / "manual_acceptance" / "real_sample_records.json"
+            RealSampleManagerDialog(self, records_path).exec()
 
         def prev_sample(self) -> None:
             if not self.sample_forms:
@@ -383,8 +419,11 @@ if PYSIDE6_IMPORT_ERROR is None:
                 "level": self.level_spin.value(),
                 "rank": combo_value(self.rank_combo),
                 "substats": substats,
-                "rollHistory": [],
+                "rollHistory": list(self.current_roll_history),
+                "code": self.current_gear_code,
+                "instance_id": self.current_instance_id,
                 "item_source": combo_value(self.item_source_combo),
+                "gear_source": self.current_gear_source,
                 "reforge_eligible": self.level_spin.value() == 85,
             }
 
@@ -393,7 +432,9 @@ if PYSIDE6_IMPORT_ERROR is None:
             if not path:
                 return
             try:
-                self.load_forms_from_path(Path(path))
+                report = self.load_forms_from_path(Path(path))
+                if report.get("source_format") == "fribbels":
+                    QMessageBox.information(self, "Fribbels 导入完成", collection_import_message(report))
             except Exception as exc:
                 QMessageBox.warning(self, "导入失败", chinese_error(str(exc)))
 
@@ -422,9 +463,21 @@ if PYSIDE6_IMPORT_ERROR is None:
                 form = self.form_data()
                 gear_data = build_gear_dict(form)
                 self.current_result = suggest_from_form(form)
+                self._observe_trusted_runtime_state(gear_data, self.current_result)
                 self.render_result(self.current_result, gear_data)
             except Exception as exc:
                 QMessageBox.warning(self, "判断失败", chinese_error(str(exc)))
+
+        def _observe_trusted_runtime_state(self, gear_data: dict[str, Any], result: dict[str, Any]) -> None:
+            """Observe only unchanged states from a complete Fribbels import."""
+            try:
+                fingerprint = normalized_fingerprint(Gear.from_dict(gear_data))
+                if fingerprint in self._trusted_runtime_fingerprints:
+                    observe_trusted_fribbels_state(gear_data, result)
+            except Exception:
+                # Observation is deliberately invisible and must never change
+                # the existing suggestion/error flow.
+                pass
 
         def render_result(self, result: dict[str, Any], gear_data: dict[str, Any] | None = None) -> None:
             summary = summary_view_model(result)
@@ -444,6 +497,420 @@ else:
 
 
 if PYSIDE6_IMPORT_ERROR is None:
+
+    class _ManualSampleTask(QObject):
+        progress = Signal(str, int, int)
+        finished = Signal()
+
+        def __init__(self, kind: str, records_path: Path, payload: dict[str, Any]) -> None:
+            super().__init__()
+            self.kind = kind
+            self.records_path = records_path
+            self.payload = payload
+            self.store: ManualSampleStore | None = None
+            self.result: Any = None
+            self.error: Exception | None = None
+
+        @Slot()
+        def run(self) -> None:
+            try:
+                self.store = ManualSampleStore(self.records_path)
+                if self.kind == "import":
+                    self.result = self.store.import_path(self.payload["path"], self.progress.emit)
+                elif self.kind == "save":
+                    self.result = self.store.update_review(
+                        self.payload["sample_id"],
+                        self.payload["snapshot_id"],
+                        decision=self.payload["decision"],
+                        consistency=self.payload["consistency"],
+                        reason=self.payload["reason"],
+                        note=self.payload["note"],
+                        progress=self.progress.emit,
+                    )
+                else:
+                    raise ValueError("未知的真实样本后台任务。")
+            except Exception as exc:  # The GUI converts this into a Chinese message on its own thread.
+                self.error = exc
+            finally:
+                self.finished.emit()
+
+    class RealSampleManagerDialog(QDialog):
+        """独立的真实装备人工验收窗口，不改变主窗口布局。"""
+
+        def __init__(self, parent: QWidget | None = None, records_path: Path | None = None) -> None:
+            super().__init__(parent)
+            self.setWindowTitle("真实样本管理")
+            self.setMinimumSize(980, 640)
+            self.resize(1180, 760)
+            default_path = Path(__file__).resolve().parents[2] / "manual_acceptance" / "real_sample_records.json"
+            self.store = ManualSampleStore(records_path or default_path)
+            self._snapshots: list[dict[str, Any]] = []
+            self._current_snapshot: dict[str, Any] | None = None
+            self._task_thread: QThread | None = None
+            self._task_worker: _ManualSampleTask | None = None
+            self._task_kind: str | None = None
+            self.last_operation_timings_ms: dict[str, float] = {}
+            self._build_ui()
+            self.refresh_records()
+
+        @property
+        def is_busy(self) -> bool:
+            return self._task_thread is not None
+
+        def _build_ui(self) -> None:
+            layout = QVBoxLayout(self)
+            filters = QHBoxLayout()
+            self.import_records_button = QPushButton("导入兼容装备 JSON")
+            self.enhance_filter = QComboBox()
+            for enhance in (0, 3, 6, 9, 12, 15):
+                self.enhance_filter.addItem(f"+{enhance}", f"enhance:{enhance}")
+            self.enhance_filter.addItem("全部未满强化", "unfinished")
+            self.enhance_filter.addItem("全部", "all")
+            self.source_filter = self._filter_combo("全部装备来源", [("normal_85", "普通 85"), ("rift_85", "异界 85（仅红装）")])
+            self.acceptance_batch_filter = QComboBox()
+            self.acceptance_batch_filter.addItem("全部验收批次", "")
+            self.rank_filter = self._filter_combo("全部品质", [("Epic", "红装"), ("Heroic", "紫装")])
+            self.slot_filter = self._filter_combo("全部部位", [(value, label) for value, label in SLOT_OPTIONS])
+            self.set_filter = self._filter_combo("全部套装", [(value, label) for value, label in SET_OPTIONS])
+            self.review_filter = self._filter_combo("全部审核状态", [("pending", "待审核"), ("reviewed", "已审核")])
+            self.inconsistent_filter = QComboBox()
+            self.inconsistent_filter.addItem("全部一致性", False)
+            self.inconsistent_filter.addItem("仅工具与人工不一致", True)
+            for widget in (
+                self.import_records_button, self.enhance_filter, self.source_filter, self.acceptance_batch_filter, self.rank_filter,
+                self.slot_filter, self.set_filter, self.review_filter, self.inconsistent_filter,
+            ):
+                filters.addWidget(widget)
+            layout.addLayout(filters)
+            self.task_status_label = QLabel("状态：空闲")
+            self.task_status_label.setWordWrap(True)
+            layout.addWidget(self.task_status_label)
+
+            content = QSplitter(Qt.Horizontal)
+            self.record_table = QTableWidget(0, 10)
+            self.record_table.setHorizontalHeaderLabels([
+                "样本编号", "装备来源", "验收批次", "品质", "强化", "套装", "部位", "工具建议", "人工判断", "审核状态",
+            ])
+            self.record_table.setSelectionBehavior(QAbstractItemView.SelectRows)
+            self.record_table.setSelectionMode(QAbstractItemView.SingleSelection)
+            self.record_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+            self.record_table.horizontalHeader().setSectionResizeMode(QHeaderView.Interactive)
+            self.record_table.horizontalHeader().setStretchLastSection(True)
+            for column, width in enumerate((180, 112, 180, 72, 64, 76, 72, 100, 100, 82)):
+                self.record_table.setColumnWidth(column, width)
+            content.addWidget(self.record_table)
+
+            self.details_text = QPlainTextEdit()
+            self.details_text.setReadOnly(True)
+            self.details_text.setLineWrapMode(QPlainTextEdit.WidgetWidth)
+            self.details_text.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+            content.addWidget(self.details_text)
+            content.setSizes([560, 620])
+            layout.addWidget(content, 1)
+
+            review_box = QGroupBox("人工记录")
+            review_layout = QGridLayout(review_box)
+            self.human_decision_combo = self._filter_combo("未填写", [
+                ("continue", "继续"), ("cautious_continue", "谨慎继续"), ("stop", "停止"),
+                ("keep", "保留"), ("convert", "转换/过渡"), ("uncertain", "不确定"),
+            ])
+            self.consistency_combo = self._filter_combo("未填写", [
+                ("一致", "一致"), ("不完全一致", "不完全一致"), ("不一致", "不一致"),
+            ])
+            self.reason_combo = self._filter_combo("未填写", [
+                ("目标体系错误", "目标体系错误"), ("转换候选错误", "转换候选错误"), ("继续/停止分歧", "继续/停止分歧"),
+                ("门槛不合理", "门槛不合理"), ("输入识别错误", "输入识别错误"), ("debug 不清楚", "debug 不清楚"), ("其他", "其他"),
+            ])
+            self.note_edit = QLineEdit()
+            self.save_review_button = QPushButton("保存记录")
+            review_layout.addWidget(QLabel("人工判断"), 0, 0)
+            review_layout.addWidget(self.human_decision_combo, 0, 1)
+            review_layout.addWidget(QLabel("一致性"), 0, 2)
+            review_layout.addWidget(self.consistency_combo, 0, 3)
+            review_layout.addWidget(QLabel("分歧原因"), 1, 0)
+            review_layout.addWidget(self.reason_combo, 1, 1)
+            review_layout.addWidget(QLabel("备注"), 1, 2)
+            review_layout.addWidget(self.note_edit, 1, 3)
+            review_layout.addWidget(self.save_review_button, 0, 4, 2, 1)
+            review_layout.setColumnStretch(3, 1)
+            layout.addWidget(review_box)
+
+            self.import_records_button.clicked.connect(self.import_records)
+            self.record_table.itemSelectionChanged.connect(self._select_current_record)
+            self.save_review_button.clicked.connect(self.save_review)
+            for combo in (
+                self.enhance_filter, self.source_filter, self.acceptance_batch_filter, self.rank_filter, self.slot_filter,
+                self.set_filter, self.review_filter, self.inconsistent_filter,
+            ):
+                combo.currentIndexChanged.connect(self.refresh_records)
+
+        @staticmethod
+        def _filter_combo(empty_label: str, items: list[tuple[str, str]]) -> QComboBox:
+            combo = QComboBox()
+            combo.addItem(empty_label, "")
+            for value, label in items:
+                combo.addItem(label, value)
+            return combo
+
+        def import_records(self) -> None:
+            path, _ = QFileDialog.getOpenFileName(self, "导入真实样本 JSON", "", "JSON Files (*.json);;All Files (*)")
+            if not path:
+                return
+            self._start_task("import", {"path": Path(path)})
+
+        def _start_task(self, kind: str, payload: dict[str, Any]) -> None:
+            if self.is_busy:
+                return
+            thread = QThread(self)
+            worker = _ManualSampleTask(kind, self.store.records_path, payload)
+            worker.moveToThread(thread)
+            thread.started.connect(worker.run)
+            worker.progress.connect(self._update_task_status)
+            worker.finished.connect(thread.quit)
+            thread.finished.connect(self._finish_task)
+            thread.finished.connect(worker.deleteLater)
+            thread.finished.connect(thread.deleteLater)
+            self._task_thread = thread
+            self._task_worker = worker
+            self._task_kind = kind
+            self._set_task_busy(True)
+            self.task_status_label.setText("状态：正在导入真实样本..." if kind == "import" else "状态：正在保存人工记录...")
+            thread.start()
+
+        def _set_task_busy(self, busy: bool) -> None:
+            self.import_records_button.setEnabled(not busy)
+            self.save_review_button.setEnabled(not busy and self._current_snapshot is not None)
+
+        def _update_task_status(self, stage: str, current: int, total: int) -> None:
+            if total > 1:
+                self.task_status_label.setText(f"状态：{stage}（{current}/{total}）")
+            else:
+                self.task_status_label.setText(f"状态：{stage}")
+
+        def _finish_task(self) -> None:
+            worker = self._task_worker
+            kind = self._task_kind
+            self._task_thread = None
+            self._task_worker = None
+            self._task_kind = None
+            if worker is None:
+                return
+            if worker.error is not None:
+                self.task_status_label.setText("状态：操作失败")
+                QMessageBox.warning(self, "真实样本操作失败", chinese_error(str(worker.error)))
+                self._set_task_busy(False)
+                return
+            if worker.store is not None:
+                self.store = worker.store
+            if kind == "import":
+                result = worker.result
+                self.last_operation_timings_ms = dict(result.timings_ms)
+                self._refresh_acceptance_batch_filter(result.batch_id)
+                self._clear_non_batch_filters()
+                self.refresh_records()
+                pending = sum(item.get("review_status") == "pending" for item in self._snapshots)
+                self.task_status_label.setText(
+                    f"状态：当前批次 {result.batch_name or '全部'}，记录 {len(self._snapshots)} 件，待审核 {pending} 件。"
+                )
+                message = (
+                    f"新增样本 {result.imported} 件；已有样本加入批次 {result.existing_added_to_batch} 件；"
+                    f"完全重复 {result.duplicates} 件。"
+                )
+                if result.errors:
+                    message += "\n导入错误：\n" + "\n".join(result.errors)
+                QMessageBox.information(self, "真实样本导入完成", message)
+            elif kind == "save":
+                self.last_operation_timings_ms = dict(worker.result or {})
+                updated = self._snapshot_by_id(worker.payload["sample_id"], worker.payload["snapshot_id"])
+                if updated is not None:
+                    self._update_saved_row(updated)
+                self.task_status_label.setText("状态：人工记录已保存，CSV 已更新。")
+            self._set_task_busy(False)
+
+        def refresh_records(self) -> None:
+            self._refresh_acceptance_batch_filter()
+            self._snapshots = [item for item in self.store.list_snapshots() if self._matches_filters(item)]
+            self.record_table.setUpdatesEnabled(False)
+            self.record_table.blockSignals(True)
+            try:
+                self.record_table.setRowCount(len(self._snapshots))
+                for row, snapshot in enumerate(self._snapshots):
+                    self._fill_record_row(row, snapshot)
+            finally:
+                self.record_table.blockSignals(False)
+                self.record_table.setUpdatesEnabled(True)
+            self._current_snapshot = None
+            self.details_text.clear()
+            self.save_review_button.setEnabled(False)
+            if not self.is_busy:
+                current_batch = self.acceptance_batch_filter.currentText()
+                pending = sum(item.get("review_status") == "pending" for item in self._snapshots)
+                self.task_status_label.setText(f"状态：当前批次 {current_batch}，记录 {len(self._snapshots)} 件，待审核 {pending} 件。")
+
+        def _fill_record_row(self, row: int, snapshot: dict[str, Any]) -> None:
+            gear = snapshot.get("gear") or {}
+            summary = snapshot.get("summary_view") or {}
+            review = snapshot.get("human_review") or {}
+            values = [
+                snapshot.get("sample_id", ""), self._display(gear.get("itemSource", "")),
+                "、".join(batch.get("batch_name") or batch.get("batch_id") or "" for batch in snapshot.get("acceptance_batches") or []),
+                self._display(gear.get("rank", "")), f"+{gear.get('enhance', 0)}", self._display(gear.get("set", "")),
+                self._display(gear.get("slot", "")), summary.get("recommendation_label", ""), review.get("decision", ""),
+                snapshot.get("review_status", "pending"),
+            ]
+            for column, value in enumerate(values):
+                item = self.record_table.item(row, column)
+                if item is None:
+                    self.record_table.setItem(row, column, QTableWidgetItem(str(value)))
+                else:
+                    item.setText(str(value))
+
+        @staticmethod
+        def _display(value: Any) -> str:
+            text = str(value or "")
+            return DISPLAY_VALUE_LABELS.get(text, text)
+
+        def _gear_view(self, gear: dict[str, Any]) -> dict[str, Any]:
+            main = dict(gear.get("mainStat") or {})
+            main["type"] = self._display(main.get("type"))
+            substats = []
+            for item in gear.get("substats") or []:
+                stat = dict(item)
+                stat["type"] = self._display(stat.get("type"))
+                substats.append(stat)
+            return {
+                "套装": self._display(gear.get("set")),
+                "部位": self._display(gear.get("slot")),
+                "主属性": main,
+                "强化等级": gear.get("enhance"),
+                "装备等级": gear.get("level"),
+                "品质": self._display(gear.get("rank")),
+                "副属性": substats,
+                "装备实例编号": gear.get("instanceId"),
+                "装备类型编号": gear.get("code"),
+                "装备来源": self._display(gear.get("itemSource")),
+            }
+
+        def _refresh_acceptance_batch_filter(self, select_batch_id: str | None = None) -> None:
+            previous = select_batch_id if select_batch_id is not None else str(self.acceptance_batch_filter.currentData() or "")
+            batches = self.store.list_batches()
+            self.acceptance_batch_filter.blockSignals(True)
+            try:
+                self.acceptance_batch_filter.clear()
+                self.acceptance_batch_filter.addItem("全部验收批次", "")
+                for batch_id, batch in batches.items():
+                    self.acceptance_batch_filter.addItem(str(batch.get("batch_name") or batch_id), batch_id)
+                set_combo_text(self.acceptance_batch_filter, previous)
+            finally:
+                self.acceptance_batch_filter.blockSignals(False)
+
+        def _clear_non_batch_filters(self) -> None:
+            self.enhance_filter.blockSignals(True)
+            try:
+                set_combo_text(self.enhance_filter, "all")
+                for combo in (self.source_filter, self.rank_filter, self.slot_filter, self.set_filter, self.review_filter, self.inconsistent_filter):
+                    combo.setCurrentIndex(0)
+            finally:
+                self.enhance_filter.blockSignals(False)
+
+        def _matches_filters(self, snapshot: dict[str, Any]) -> bool:
+            gear = snapshot.get("gear") or {}
+            enhance = int(gear.get("enhance") or 0)
+            mode = self.enhance_filter.currentData()
+            if isinstance(mode, str) and mode.startswith("enhance:") and enhance != int(mode.split(":", 1)[1]):
+                return False
+            if mode == "unfinished" and enhance >= 15:
+                return False
+            for combo, key in (
+                (self.source_filter, "itemSource"), (self.rank_filter, "rank"),
+                (self.slot_filter, "slot"), (self.set_filter, "set"),
+            ):
+                selected = str(combo.currentData() or "")
+                if selected and gear.get(key) != selected:
+                    return False
+            selected_status = str(self.review_filter.currentData() or "")
+            if selected_status and snapshot.get("review_status") != selected_status:
+                return False
+            selected_batch = str(self.acceptance_batch_filter.currentData() or "")
+            if selected_batch and selected_batch not in (snapshot.get("acceptance_batch_ids") or []):
+                return False
+            if bool(self.inconsistent_filter.currentData()):
+                review = snapshot.get("human_review") or {}
+                if review.get("consistency") not in ("不完全一致", "不一致"):
+                    return False
+            return True
+
+        def _select_current_record(self) -> None:
+            selected = self.record_table.selectionModel().selectedRows()
+            if not selected:
+                return
+            self._current_snapshot = self._snapshots[selected[0].row()]
+            snapshot = self._current_snapshot
+            review = snapshot.get("human_review") or {}
+            set_combo_text(self.human_decision_combo, str(review.get("decision") or ""))
+            set_combo_text(self.consistency_combo, str(review.get("consistency") or ""))
+            set_combo_text(self.reason_combo, str(review.get("reason") or ""))
+            self.note_edit.setText(str(review.get("note") or ""))
+            self.details_text.setPlainText(json.dumps({
+                "装备字段": self._gear_view(snapshot.get("gear") or {}),
+                "样本来源与验收批次": {
+                    "原始数据来源": snapshot.get("original_source_files") or [],
+                    "所属验收批次": [
+                        {
+                            "验收批次": batch.get("batch_name") or batch.get("batch_id"),
+                            "批次用途": batch.get("purpose") or "",
+                            "覆盖标签": batch.get("tags") or [],
+                        }
+                        for batch in snapshot.get("acceptance_batches") or []
+                    ],
+                },
+                "工具建议": snapshot.get("summary_view"),
+                "关键调试": snapshot.get("debug_view"),
+            }, ensure_ascii=False, indent=2))
+            self.save_review_button.setEnabled(True)
+
+        def save_review(self) -> None:
+            if self._current_snapshot is None:
+                return
+            decision = str(self.human_decision_combo.currentData() or "")
+            consistency = str(self.consistency_combo.currentData() or "")
+            if decision and not consistency:
+                recommendation = (self._current_snapshot.get("summary_view") or {}).get("recommendation")
+                consistency = "一致" if decision == recommendation else "不一致"
+            self._start_task("save", {
+                "sample_id": self._current_snapshot["sample_id"],
+                "snapshot_id": self._current_snapshot["snapshot_id"],
+                "decision": decision,
+                "consistency": consistency,
+                "reason": str(self.reason_combo.currentData() or ""),
+                "note": self.note_edit.text().strip(),
+            })
+
+        def _snapshot_by_id(self, sample_id: str, snapshot_id: str) -> dict[str, Any] | None:
+            return next((item for item in self.store.list_snapshots() if item["sample_id"] == sample_id and item["snapshot_id"] == snapshot_id), None)
+
+        def _update_saved_row(self, updated: dict[str, Any]) -> None:
+            row = next((index for index, item in enumerate(self._snapshots) if item["snapshot_id"] == updated["snapshot_id"]), None)
+            if row is not None and self._matches_filters(updated):
+                self._snapshots[row] = updated
+                self._fill_record_row(row, updated)
+                self.record_table.selectRow(row)
+                return
+            if row is not None:
+                self._snapshots.pop(row)
+                self.record_table.removeRow(row)
+                if self._snapshots:
+                    self.record_table.selectRow(min(row, len(self._snapshots) - 1))
+                else:
+                    self._current_snapshot = None
+                    self.details_text.clear()
+
+        def closeEvent(self, event: Any) -> None:
+            if self.is_busy:
+                QMessageBox.warning(self, "真实样本管理", "后台任务正在进行，请等待完成后再关闭窗口。")
+                event.ignore()
+                return
+            event.accept()
 
     class AcceptanceReplayDialog(QDialog):
         def __init__(self, parent: QWidget | None = None) -> None:
@@ -577,6 +1044,19 @@ def chinese_error(message: str) -> str:
     for source, target in replacements.items():
         if source in message:
             return target
+    return message
+
+
+def collection_import_message(report: dict[str, Any]) -> str:
+    skipped = int(report.get("skipped_items") or 0)
+    reasons = report.get("skipped_by_reason") or {}
+    reason_text = "；".join(f"{reason} {count} 件" for reason, count in reasons.items())
+    message = (
+        f"已加载 {int(report.get('loaded_items') or 0)} 件85级 +0/+3 红装或紫装，"
+        f"已跳过 {skipped} 件。"
+    )
+    if reason_text:
+        message += f"\n跳过明细：{reason_text}。"
     return message
 
 

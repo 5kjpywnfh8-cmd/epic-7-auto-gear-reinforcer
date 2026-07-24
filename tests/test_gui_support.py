@@ -1,6 +1,7 @@
 import json
 import tempfile
 import unittest
+from collections import Counter
 from pathlib import Path
 
 from src.e7_enhance.airtest_adapter import NullAirtestAdapter
@@ -9,6 +10,7 @@ from src.e7_enhance.gui_support import (
     build_gear_dict,
     format_debug_details,
     load_gear_collection,
+    load_gear_collection_with_report,
     debug_view_model,
     load_gear_file,
     save_gear_file,
@@ -20,6 +22,205 @@ from src.e7_enhance.cli import load_single_gear
 
 
 class GuiSupportTest(unittest.TestCase):
+    @staticmethod
+    def fribbels_export_payload():
+        epic_substats = [
+            {"type": "EffectResistancePercent", "value": 5, "rolls": 1},
+            {"type": "DefensePercent", "value": 6, "rolls": 1},
+            {"type": "HealthPercent", "value": 6, "rolls": 1},
+            {"type": "CriticalHitChancePercent", "value": 5, "rolls": 1},
+        ]
+        return {
+            "export_time": "2026-06-10T20:37:43",
+            "item_count": 7,
+            "hero_count": 0,
+            "heroes": [],
+            "items": [
+                {
+                    "id": "epic-armor",
+                    "ingameId": "ingame-armor",
+                    "gear": "Armor",
+                    "rank": "Epic",
+                    "set": "TorrentSet",
+                    "level": 85,
+                    "enhance": 0,
+                    "main": {"type": "Defense", "value": 300},
+                    "substats": epic_substats,
+                    "raw": {"code": "ecd6a"},
+                },
+                {
+                    "id": "heroic-weapon",
+                    "gear": "Weapon",
+                    "rank": "Heroic",
+                    "set": "SpeedSet",
+                    "level": 85,
+                    "enhance": 0,
+                    "main": {"type": "Attack", "value": 525},
+                    "substats": [
+                        {"type": "Speed", "value": 4, "rolls": 1},
+                        {"type": "HealthPercent", "value": 7, "rolls": 1},
+                        {"type": "CriticalHitChancePercent", "value": 4, "rolls": 1},
+                    ],
+                    "raw": {"code": "spd-w"},
+                },
+                {
+                    "id": "epic-boots",
+                    "gear": "Boots",
+                    "rank": "Epic",
+                    "set": "set_chase",
+                    "level": 85,
+                    "enhance": 3,
+                    "main": {"type": "Speed", "value": 40},
+                    "substats": [
+                        {"type": "AttackPercent", "value": 8, "rolls": 2},
+                        {"type": "CriticalHitChancePercent", "value": 4, "rolls": 1},
+                        {"type": "CriticalHitDamagePercent", "value": 7, "rolls": 1},
+                        {"type": "HealthPercent", "value": 6, "rolls": 1},
+                    ],
+                    "raw": {"code": "chase-b"},
+                },
+                {
+                    "id": "level-78",
+                    "gear": "Armor",
+                    "rank": "Epic",
+                    "set": "TorrentSet",
+                    "level": 78,
+                    "enhance": 0,
+                    "main": {"type": "Defense", "value": 280},
+                    "substats": epic_substats,
+                    "raw": {"code": "skip-78"},
+                },
+                {
+                    "id": "level-88",
+                    "gear": "Armor",
+                    "rank": "Epic",
+                    "set": "TorrentSet",
+                    "level": 88,
+                    "enhance": 3,
+                    "main": {"type": "Defense", "value": 310},
+                    "substats": epic_substats,
+                    "raw": {"code": "skip-88"},
+                },
+                {
+                    "id": "plus-15",
+                    "gear": "Armor",
+                    "rank": "Epic",
+                    "set": "TorrentSet",
+                    "level": 85,
+                    "enhance": 15,
+                    "main": {"type": "Defense", "value": 300},
+                    "substats": epic_substats,
+                    "raw": {"code": "skip-15"},
+                },
+                {
+                    "id": "rare",
+                    "gear": "Armor",
+                    "rank": "Rare",
+                    "set": "TorrentSet",
+                    "level": 85,
+                    "enhance": 0,
+                    "main": {"type": "Defense", "value": 300},
+                    "substats": epic_substats[:2],
+                    "raw": {"code": "skip-rare"},
+                },
+            ],
+        }
+
+    def test_fribbels_export_filters_and_normalizes_plus0_plus3_forms(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "gear_fribbels.json"
+            path.write_text(json.dumps(self.fribbels_export_payload()), encoding="utf-8")
+
+            forms, report = load_gear_collection_with_report(path)
+
+        self.assertEqual(len(forms), 3)
+        self.assertEqual(report["source_format"], "fribbels")
+        self.assertEqual(report["total_items"], 7)
+        self.assertEqual(report["loaded_items"], 3)
+        self.assertEqual(report["skipped_items"], 4)
+        self.assertEqual(
+            report["skipped_by_reason"],
+            {"装备等级不是85级": 2, "强化等级不是+0/+3": 1, "品质不是红装/紫装": 1},
+        )
+        self.assertEqual(forms[0]["set"], "Torrent")
+        self.assertEqual(forms[0]["slot"], "Armor")
+        self.assertEqual(forms[0]["main_type"], "Defense")
+        self.assertEqual(forms[0]["code"], "ecd6a")
+        self.assertEqual(forms[0]["instance_id"], "ingame-armor")
+        self.assertEqual(forms[1]["rank"], "Heroic")
+        self.assertEqual(forms[1]["instance_id"], "heroic-weapon")
+        self.assertEqual(len([item for item in forms[1]["substats"] if item["type"]]), 3)
+        self.assertEqual(forms[2]["set"], "Chase")
+        self.assertEqual(forms[2]["enhance"], 3)
+        self.assertEqual(forms[2]["substats"][0]["rolls"], 2)
+        self.assertTrue(all(form["item_source"] == "normal_85" for form in forms))
+
+    def test_fribbels_export_without_eligible_items_has_chinese_error(self):
+        payload = self.fribbels_export_payload()
+        payload["items"] = [payload["items"][3], payload["items"][5]]
+        payload["item_count"] = 2
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "gear_fribbels.json"
+            path.write_text(json.dumps(payload), encoding="utf-8")
+
+            with self.assertRaisesRegex(ValueError, "没有可导入的85级.*红装或紫装"):
+                load_gear_collection_with_report(path)
+
+    def test_fribbels_set_and_slot_values_are_chinese_in_debug(self):
+        for raw_set, label in (("ReversalSet", "逆袭"), ("UnitySet", "夹攻")):
+            with self.subTest(raw_set=raw_set), tempfile.TemporaryDirectory() as tmp:
+                payload = self.fribbels_export_payload()
+                payload["items"] = [payload["items"][0]]
+                payload["items"][0]["set"] = raw_set
+                payload["item_count"] = 1
+                path = Path(tmp) / "gear_fribbels.json"
+                path.write_text(json.dumps(payload), encoding="utf-8")
+
+                form = load_gear_collection(path)[0]
+                details = format_debug_details(suggest_from_form(form), build_gear_dict(form))
+
+                self.assertIn(label, details)
+                self.assertNotIn(raw_set, details)
+                self.assertNotIn("Armor", details)
+                self.assertNotIn("set_", details)
+
+    def test_native_collection_keeps_strict_import_behavior(self):
+        payload = {
+            "items": [
+                {
+                    "set": "Speed",
+                    "slot": "Weapon",
+                    "mainStat": {"type": "Attack", "value": 525},
+                    "enhance": 0,
+                    "level": 78,
+                    "rank": "Epic",
+                    "substats": [],
+                }
+            ]
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "native.json"
+            path.write_text(json.dumps(payload), encoding="utf-8")
+
+            with self.assertRaisesRegex(ValueError, "Unsupported equipment level"):
+                load_gear_collection_with_report(path)
+
+    def test_real_fribbels_acceptance_subset_has_expected_distribution(self):
+        forms, report = load_gear_collection_with_report(
+            Path("samples/real_acceptance_fribbels_20260610_plus0_plus3.json")
+        )
+
+        self.assertEqual(report["source_format"], "fribbels")
+        self.assertEqual(report["loaded_items"], 425)
+        self.assertEqual(report["skipped_items"], 0)
+        self.assertEqual(
+            Counter((form["enhance"], form["rank"]) for form in forms),
+            Counter({(0, "Epic"): 337, (0, "Heroic"): 80, (3, "Epic"): 8}),
+        )
+        self.assertTrue(all(form["level"] == 85 for form in forms))
+        self.assertTrue(all(form["code"] for form in forms))
+        self.assertEqual(len({form["instance_id"] for form in forms}), 425)
+
     def test_debug_details_are_chinese_and_preserve_full_category_diagnostics(self):
         form = load_gear_file(Path("建议结果/07.json"))
         result = suggest_from_form(form)
@@ -55,6 +256,23 @@ class GuiSupportTest(unittest.TestCase):
         self.assertNotIn("candidate_evaluations", details)
         self.assertNotIn("terminal_reach_probability", details)
 
+    def test_debug_view_shows_native_and_max_conversion_gs_in_chinese(self):
+        result = suggest_from_form(load_gear_file(Path("建议结果/14.json")))
+        debug = debug_view_model(result)
+        candidate = debug["lightweight_basis"]["候选体系评估"][0]
+        future_75 = debug["lightweight_basis"]["终局 75+ 未来可期"]
+
+        self.assertEqual(candidate["当前重铸前有效 GS（按候选体系）"], 24.0)
+        self.assertEqual(candidate["当前重铸后有效 GS（按候选体系）"], 29.7)
+        self.assertEqual(candidate["终局预期有效 GS（未转换）"], 52.2)
+        self.assertEqual(candidate["终局预期有效 GS（按转换满值）"], 64.3)
+        self.assertEqual(candidate["转换满值 GS 增益"], 12.1)
+        self.assertEqual(candidate["转换满值来源"], "Fribbels modValues.reforged.greater upper bound (100% quality)")
+        self.assertEqual(future_75["终局 75+ 未来可期门槛"], 75.0)
+        self.assertEqual(future_75["当前终局目标"], "正式体系")
+        self.assertIn("未转换终局 75+ 未来可期概率", future_75)
+        self.assertIn("满值转换后终局 75+ 未来可期概率", future_75)
+
     def test_form_can_load_sample_and_get_concise_suggestion(self):
         form = load_gear_file(Path("samples/gear.json"))
 
@@ -68,7 +286,7 @@ class GuiSupportTest(unittest.TestCase):
         self.assertIn(summary["recommendation"], {"stop", "continue", "cautious_continue", "keep", "convert", "uncertain"})
         self.assertIn("target_profile", summary)
         self.assertIsInstance(summary["reasons"], list)
-        self.assertEqual(debug["strategy_version"], "baili-formal-dp-v1")
+        self.assertEqual(debug["strategy_version"], "baili-formal-dp-v1-epic-balanced")
         self.assertEqual(debug["strategy_name"], "normal_epic_dp_assisted")
         self.assertIn("dp_decision", debug)
         self.assertIn("lightweight_decision", debug)
@@ -126,6 +344,7 @@ class GuiSupportTest(unittest.TestCase):
                 "enhance": 12,
                 "level": 85,
                 "rank": "Epic",
+                "instance_id": "ingame-save-test",
                 "reforge_eligible": True,
                 "substats": [
                     {"type": "Speed", "value": 18, "rolls": 4},
@@ -147,10 +366,15 @@ class GuiSupportTest(unittest.TestCase):
 
             saved_gear = json.loads(gear_path.read_text(encoding="utf-8"))
             saved_result = json.loads(result_path.read_text(encoding="utf-8"))
+            reloaded = load_gear_file(gear_path)
 
         self.assertEqual(saved_gear["mainStat"]["type"], gear["mainStat"]["type"])
         self.assertTrue(saved_gear["reforgeEligible"])
         self.assertEqual(saved_gear["itemSource"], "normal_85")
+        self.assertEqual(gear["instanceId"], "ingame-save-test")
+        self.assertEqual(saved_gear["instanceId"], "ingame-save-test")
+        self.assertEqual(saved_result["gear"]["instanceId"], "ingame-save-test")
+        self.assertEqual(reloaded["instance_id"], "ingame-save-test")
         self.assertEqual(saved_result["gear"]["set"], "Speed")
         self.assertIn("summary", saved_result["suggestion"])
         self.assertIn("debug", saved_result["suggestion"])
@@ -278,13 +502,13 @@ class GuiSupportTest(unittest.TestCase):
     def test_normalized_acceptance_samples_have_expected_import_results(self):
         root = Path("samples/manual_acceptance")
         expected = {
-            "01_normal_epic_plus0.json": ("lightweight_prediction", "cautious_continue"),
-            "02_normal_epic_plus3.json": ("lightweight_prediction", "cautious_continue"),
+            "01_normal_epic_plus0.json": ("lightweight_prediction", "continue"),
+            "02_normal_epic_plus3.json": ("lightweight_prediction", "continue"),
             "03_normal_epic_plus6_speed.json": ("exact_dp", "continue"),
-            "04_rift_epic_plus0.json": ("lightweight_prediction", "cautious_continue"),
-            "05_legacy_reforge_false.json": ("lightweight_prediction", "cautious_continue"),
+            "04_rift_epic_plus0.json": ("lightweight_prediction", "continue"),
+            "05_legacy_reforge_false.json": ("lightweight_prediction", "continue"),
             "07_high_speed_early.json": ("lightweight_prediction", "continue"),
-            "08_normal_heroic_plus9_replay.json": ("exact_dp", "continue"),
+            "08_normal_heroic_plus9_replay.json": ("heroic_speed22_rescue", "stop"),
             "09_speed_boot_output_full.json": ("lightweight_prediction", "continue"),
             "10_speed_boot_tank_full.json": ("lightweight_prediction", "continue"),
             "11_attack_boot_with_speed.json": ("lightweight_prediction", "cautious_continue"),
@@ -300,6 +524,47 @@ class GuiSupportTest(unittest.TestCase):
                 self.assertEqual(result["summary"]["recommendation"], recommendation)
         with self.assertRaisesRegex(ValueError, "rift_85 only supports Epic"):
             load_gear_file(root / "06_invalid_rift_heroic.json")
+
+    def test_gui_debug_shows_early_speed_gamble_hit_details_in_chinese(self):
+        result = suggest_from_form(load_gear_file(Path("samples/manual_acceptance/02_normal_epic_plus3.json")))
+
+        speed_route = debug_view_model(result)["lightweight_basis"]["早期赌速度"]
+
+        self.assertTrue(speed_route["路线资格"])
+        self.assertTrue(speed_route["是否进入速度路线"])
+        self.assertTrue(speed_route["部位资格"])
+        self.assertEqual(speed_route["品质初始速度阈值"], 2)
+        self.assertEqual(speed_route["Epic 硬门槛"], 2)
+        self.assertTrue(speed_route["+3 是否命中速度"])
+        self.assertEqual(speed_route["下一检查点"], 6)
+
+    def test_gui_debug_shows_ordinary_result_after_epic_speed_miss(self):
+        result = suggest_from_form({
+            "set": "Destruction",
+            "slot": "Armor",
+            "main_type": "Defense",
+            "main_value": 300,
+            "enhance": 3,
+            "level": 85,
+            "rank": "Epic",
+            "item_source": "normal_85",
+            "substats": [
+                {"type": "Speed", "value": 2, "rolls": 1},
+                {"type": "EffectResistancePercent", "value": 8, "rolls": 1},
+                {"type": "EffectivenessPercent", "value": 8, "rolls": 1},
+                {"type": "Health", "value": 180, "rolls": 2},
+            ],
+        })
+
+        speed_route = debug_view_model(result)["lightweight_basis"]["早期赌速度"]
+
+        self.assertEqual(speed_route["当前速度"], 2.0)
+        self.assertEqual(speed_route["品质初始速度阈值"], 2)
+        self.assertEqual(speed_route["Epic 硬门槛"], 2)
+        self.assertFalse(speed_route["+3 是否命中速度"])
+        self.assertFalse(speed_route["路线资格"])
+        self.assertFalse(speed_route["是否进入速度路线"])
+        self.assertEqual(speed_route["未命中后普通策略结果"], "谨慎继续")
 
     def test_saved_result_package_07_is_high_confidence_early_continue(self):
         form = load_gear_file(Path("建议结果/07.json"))

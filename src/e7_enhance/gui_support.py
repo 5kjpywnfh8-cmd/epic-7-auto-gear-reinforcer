@@ -8,6 +8,7 @@ from typing import Any
 
 from .enhance_policy import advise_gear
 from .models import Gear, validate_gear_source_rank, validate_gear_structure
+from .rules import SET_CODE_TO_NAME
 from .strategy_defaults import DEFAULT_GEAR_SOURCE
 
 
@@ -29,9 +30,38 @@ DEFAULT_GEAR_FORM: dict[str, Any] = {
     "substats": DEFAULT_SUBSTATS,
     "rollHistory": [],
     "code": "",
+    "instance_id": "",
     "item_source": "normal_85",
     "gear_source": DEFAULT_GEAR_SOURCE,
     "enable_dp_assist": None,
+}
+
+FRIBBELS_SET_TO_FORM_VALUE = {
+    "AttackSet": "Attack",
+    "CounterSet": "Counter",
+    "CriticalSet": "Critical",
+    "DestructionSet": "Destruction",
+    "HealthSet": "Health",
+    "HitSet": "Hit",
+    "ImmunitySet": "Immunity",
+    "ProtectionSet": "Protection",
+    "ResistSet": "Resist",
+    "ReversalSet": "ReversalSet",
+    "RiposteSet": "Riposte",
+    "SpeedSet": "Speed",
+    "TorrentSet": "Torrent",
+    "UnitySet": "UnitySet",
+    "set_chase": "Chase",
+    "set_opener": "Opener",
+}
+
+FRIBBELS_SLOT_TO_FORM_VALUE = {
+    "Weapon": "Weapon",
+    "Helmet": "Helmet",
+    "Armor": "Armor",
+    "Necklace": "Necklace",
+    "Ring": "Ring",
+    "Boots": "Boots",
 }
 
 RECOMMENDATION_LABELS = {
@@ -64,6 +94,14 @@ DEBUG_FIELD_LABELS = {
     "dp_best_target_category": "终局目标类别",
     "dp_best_source_row": "终局来源规则",
     "dp_override_applied": "DP 是否覆盖基础建议",
+    "heroic_speed22_rescue": "紫装中后期22速M1救回",
+    "heroic_speed22_checkpoint": "当前节点",
+    "heroic_speed22_p22": "精确P22（终局22速以上概率）",
+    "heroic_speed22_baseline_action": "基础动作",
+    "heroic_speed22_rescued": "是否M1救回",
+    "heroic_speed22_reason": "救回原因",
+    "heroic_speed22_scope": "适用范围",
+    "epic_early_stop": "Epic 非速度 +0/+3 均衡止损",
     "lightweight_basis": "轻量预测依据",
     "lightweight_route": "轻量预测路线",
     "lightweight_full_categories": "完整命中分类",
@@ -82,6 +120,11 @@ DEBUG_FIELD_LABELS = {
     "valid_substats": "有效副属性",
     "invalid_substats": "无效副属性",
     "roll_hit_analysis": "强化命中分析",
+    "resource_calibration_status": "资源校准状态",
+    "resource_calibration_cost": "资源校准体力/百里分",
+    "resource_calibration_lambda": "资源校准 lambda",
+    "resource_calibration_message": "资源校准说明",
+    "resource_material": "强化材料与来源记账",
     "set": "套装",
     "slot": "部位",
     "mainStat": "主属性",
@@ -94,6 +137,7 @@ DEBUG_FIELD_LABELS = {
     "rolls": "强化次数",
     "rollHistory": "强化记录",
     "code": "装备编号",
+    "instanceId": "装备实例编号",
     "reforgeEligible": "默认可重铸",
     "itemSource": "装备来源",
     "gearSource": "装备来源规则",
@@ -136,6 +180,8 @@ DISPLAY_VALUE_LABELS = {
     "lightweight_continue": "继续",
     "lightweight_review": "待 +6 精确复核",
     "lightweight_stop": "停止",
+    "formal_category": "正式体系",
+    "future_75_fallback": "未来可期 75+ 后备",
     "continue": "继续",
     "stop": "停止",
     "cautious_continue": "谨慎继续",
@@ -146,13 +192,22 @@ DISPLAY_VALUE_LABELS = {
     "normal_heroic_dp_assisted": "普通 85 紫装 DP 策略",
     "rift_epic_dp_assisted": "异界 85 红装 DP 策略",
     "baili-formal-dp-v1": "百里正式 DP v1",
+    "baili-formal-dp-v1-epic-balanced": "百里正式 DP v1（Epic 均衡止损）",
     "current_static": "当前静态评分",
     "weapon": "武器",
+    "Weapon": "武器",
     "helmet": "头盔",
+    "helm": "头盔",
+    "Helmet": "头盔",
     "armor": "衣服",
+    "Armor": "衣服",
     "necklace": "项链",
+    "neck": "项链",
+    "Necklace": "项链",
     "ring": "戒指",
+    "Ring": "戒指",
     "boot": "鞋子",
+    "Boots": "鞋子",
     "left_fixed": "左三固定主属性",
     "right": "右三主属性",
     "output": "输出套装组",
@@ -181,6 +236,21 @@ DISPLAY_VALUE_LABELS = {
     "Attack": "攻击",
     "Defense": "防御",
     "Health": "生命",
+    "Immunity": "免疫",
+    "Counter": "反击",
+    "Lifesteal": "吸血",
+    "Penetration": "穿透",
+    "Torrent": "激流",
+    "Resist": "抵抗",
+    "Hit": "命中",
+    "Injury": "伤口",
+    "Protection": "保护",
+    "Riposte": "回击",
+    "Opener": "先手",
+    "Chase": "追击",
+    "ReversalSet": "逆袭",
+    "set_revenant": "逆袭",
+    "UnitySet": "夹攻",
     "AttackPercent": "攻击%",
     "DefensePercent": "防御%",
     "HealthPercent": "生命%",
@@ -190,6 +260,7 @@ DISPLAY_VALUE_LABELS = {
     "EffectResistancePercent": "效果抗性%",
     "rift_new_1_32": "异界新版本来源规则 1.32",
 }
+DISPLAY_VALUE_LABELS.update(SET_CODE_TO_NAME)
 
 
 def load_gear_file(path: Path) -> dict[str, Any]:
@@ -206,7 +277,15 @@ def load_gear_file(path: Path) -> dict[str, Any]:
 
 
 def load_gear_collection(path: Path) -> list[dict[str, Any]]:
+    forms, _ = load_gear_collection_with_report(path)
+    return forms
+
+
+def load_gear_collection_with_report(path: Path) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     data = json.loads(path.read_text(encoding="utf-8"))
+    if is_fribbels_export(data):
+        return _load_fribbels_collection(data)
+
     if isinstance(data, list):
         items = data
     elif isinstance(data, dict):
@@ -228,7 +307,88 @@ def load_gear_collection(path: Path) -> list[dict[str, Any]]:
         forms.append(form)
     if not forms:
         raise ValueError("gear collection contains no valid gear objects")
-    return forms
+    skipped_items = len(items) - len(forms)
+    report = {
+        "source_format": "native",
+        "total_items": len(items),
+        "loaded_items": len(forms),
+        "skipped_items": skipped_items,
+        "skipped_by_reason": {"非装备对象": skipped_items} if skipped_items else {},
+    }
+    return forms, report
+
+
+def is_fribbels_export(data: Any) -> bool:
+    if not isinstance(data, dict) or not isinstance(data.get("items"), list):
+        return False
+    items = data["items"]
+    has_export_metadata = "export_time" in data and ("item_count" in data or "heroes" in data)
+    has_fribbels_item = any(
+        isinstance(item, dict) and "gear" in item and "main" in item and "raw" in item
+        for item in items
+    )
+    return has_export_metadata and (not items or has_fribbels_item)
+
+
+def _load_fribbels_collection(data: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    items = data.get("items") or []
+    forms: list[dict[str, Any]] = []
+    skipped_by_reason: dict[str, int] = {}
+
+    def skip(reason: str) -> None:
+        skipped_by_reason[reason] = skipped_by_reason.get(reason, 0) + 1
+
+    for item in items:
+        if not isinstance(item, dict):
+            skip("非装备对象")
+            continue
+        if int(as_number(item.get("enhance"), -1)) not in {0, 3}:
+            skip("强化等级不是+0/+3")
+            continue
+        if int(as_number(item.get("level"), 0)) != 85:
+            skip("装备等级不是85级")
+            continue
+        if str(item.get("rank") or "") not in {"Epic", "Heroic"}:
+            skip("品质不是红装/紫装")
+            continue
+        try:
+            form = form_from_gear_dict(_fribbels_item_to_gear_dict(item), item_source="normal_85")
+        except ValueError:
+            skip("装备字段不符合当前规则")
+            continue
+        form["item_source"] = "normal_85"
+        form["gear_source"] = DEFAULT_GEAR_SOURCE
+        forms.append(form)
+
+    if not forms:
+        raise ValueError("Fribbels 导出中没有可导入的85级 +0/+3 红装或紫装。")
+
+    return forms, {
+        "source_format": "fribbels",
+        "total_items": len(items),
+        "loaded_items": len(forms),
+        "skipped_items": sum(skipped_by_reason.values()),
+        "skipped_by_reason": skipped_by_reason,
+    }
+
+
+def _fribbels_item_to_gear_dict(item: dict[str, Any]) -> dict[str, Any]:
+    raw = item.get("raw") if isinstance(item.get("raw"), dict) else {}
+    raw_set = str(item.get("set") or raw.get("f") or "")
+    raw_slot = str(item.get("gear") or raw.get("type") or "")
+    return {
+        "set": FRIBBELS_SET_TO_FORM_VALUE.get(raw_set, raw_set),
+        "slot": FRIBBELS_SLOT_TO_FORM_VALUE.get(raw_slot, raw_slot),
+        "mainStat": item.get("main") or {},
+        "enhance": item.get("enhance", 0),
+        "level": item.get("level", 85),
+        "rank": item.get("rank", "Epic"),
+        "substats": list(item.get("substats") or []),
+        "rollHistory": list(item.get("rollHistory") or []),
+        "code": str(item.get("code") or raw.get("code") or item.get("id") or ""),
+        "instanceId": str(item.get("ingameId") or item.get("id") or "").strip(),
+        "reforgeEligible": True,
+    }
 
 
 def form_from_gear_dict(data: dict[str, Any], item_source: str = "normal_85") -> dict[str, Any]:
@@ -249,6 +409,7 @@ def form_from_gear_dict(data: dict[str, Any], item_source: str = "normal_85") ->
             "substats": [stat_to_form(item) for item in data.get("substats", [])],
             "rollHistory": data.get("rollHistory", []),
             "code": data.get("code", ""),
+            "instance_id": str(data.get("instanceId") or data.get("instance_id") or "").strip(),
             "reforge_eligible": gear.level == 85,
         }
     )
@@ -292,6 +453,7 @@ def build_gear_dict(form: dict[str, Any]) -> dict[str, Any]:
         "substats": substats,
         "rollHistory": list(form.get("rollHistory") or []),
         "code": str(form.get("code") or ""),
+        "instanceId": str(form.get("instance_id") or "").strip(),
         "reforgeEligible": int(as_number(form.get("level"), 85)) == 85,
         "itemSource": str(form.get("item_source") or "normal_85"),
         "gearSource": str(form.get("gear_source") or DEFAULT_GEAR_SOURCE),
@@ -328,12 +490,14 @@ def debug_view_model(result: dict[str, Any]) -> dict[str, Any]:
     decision_mode_label = {
         "lightweight_prediction": "轻量预测（+0/+3）：+0/+3 使用单件轻量预测；+6 后按实际强化分支进行精确 DP。",
         "exact_dp": "精确 DP（+6/+9/+12）",
+        "heroic_speed22_rescue": "紫装中后期22速M1救回（基础百里边际低档策略）",
     }.get(decision_mode, decision_mode)
     lightweight = dp.get("lightweight_basis") or {}
     exact_dp_ran = decision_mode == "exact_dp"
+    next_check_at = (result.get("summary") or {}).get("next_check_at")
     lightweight_decision = {
         "lightweight_continue": "轻量预测：继续",
-        "lightweight_review": "轻量预测：待 +6 精确复核",
+        "lightweight_review": f"轻量预测：待 +{next_check_at} 复核" if next_check_at is not None else "轻量预测：待下一节点复核",
         "lightweight_stop": "轻量预测：停止",
     }.get(dp.get("dp_decision")) if decision_mode == "lightweight_prediction" else None
     lightweight_group = lightweight.get("calibration_group") or {}
@@ -366,19 +530,89 @@ def debug_view_model(result: dict[str, Any]) -> dict[str, Any]:
             "部位最大合法有效副属性数": item.get("max_legal_valid_substat_count"),
             "三条合法属性部位路径": item.get("slot_limited_three_valid_path"),
             "终局低档 GS 门槛": item.get("formal_terminal_gs_threshold"),
+            "当前重铸前有效 GS（按候选体系）": item.get("current_pre_reforge_gs"),
+            "当前重铸后有效 GS（按候选体系）": item.get("current_reforged_gs"),
             "当前重铸后 GS": item.get("current_reforged_gs"),
+            "终局预期有效 GS（未转换）": item.get("expected_final_gs_native"),
+            "终局预期有效 GS（按转换满值）": item.get("expected_final_gs_after_max_conversion") if item.get("expected_final_gs_after_max_conversion") is not None else "不适用",
             "终局预期 GS": item.get("expected_final_gs"),
             "理论下界": item.get("theoretical_lower_bound"),
             "理论上界": item.get("theoretical_upper_bound"),
-            "终局达标概率": item.get("terminal_reach_probability"),
+            "未转换正式体系低档达标概率": item.get("terminal_reach_probability_native"),
+            "正式体系低档达标概率": item.get("terminal_reach_probability"),
             "转换候选": item.get("is_conversion_candidate"),
             "待转换副属性": item.get("conversion_candidate"),
             "转换目标副属性": item.get("conversion_target_stat"),
+            "转换满值": item.get("conversion_max_value") if item.get("conversion_max_value") is not None else "不适用",
+            "转换满值 GS 增益": item.get("conversion_max_gs_gain") if item.get("is_conversion_candidate") else "不适用",
+            "转换满值来源": item.get("conversion_max_value_source") or "不适用",
+            "待转换副属性终局强化次数分布": item.get("conversion_terminal_roll_distribution") or "不适用",
             "是否合格候选": item.get("qualified"),
             "拒绝原因": item.get("rejection_reasons"),
         }
         for item in lightweight.get("candidate_evaluations", [])
     ]
+    future_75_view = {
+        "终局全部副属性预期 GS（未转换）": lightweight.get("expected_final_total_substat_gs_native"),
+        "终局 75+ 未来可期门槛": lightweight.get("future_75_gs_threshold"),
+        "未转换终局 75+ 未来可期概率": lightweight.get("terminal_future_75_probability_native"),
+        "终局全部副属性预期 GS（按转换满值）": lightweight.get("expected_final_total_substat_gs_after_max_conversion") if lightweight.get("expected_final_total_substat_gs_after_max_conversion") is not None else "不适用",
+        "满值转换后终局 75+ 未来可期概率": lightweight.get("terminal_future_75_probability_after_max_conversion") if lightweight.get("terminal_future_75_probability_after_max_conversion") is not None else "不适用",
+        "当前终局 75+ 未来可期概率": lightweight.get("terminal_future_75_probability"),
+        "当前终局目标": DISPLAY_VALUE_LABELS.get(lightweight.get("terminal_goal_type"), lightweight.get("terminal_goal_type")),
+        "当前终局目标概率": lightweight.get("terminal_goal_probability"),
+    }
+    early_speed_gamble = lightweight.get("early_speed_gamble") or {}
+    rescue = dp.get("heroic_speed22_rescue") or {}
+    rescue_view = {
+        "当前节点": rescue.get("checkpoint"),
+        "精确P22": rescue.get("p22"),
+        "基础动作": rescue.get("baseline_action"),
+        "是否救回": rescue.get("rescued"),
+        "救回原因": rescue.get("reason"),
+        "适用范围": rescue.get("scope"),
+    } if rescue else None
+    epic_stop = dp.get("epic_early_stop") or {}
+    epic_stop_features = epic_stop.get("features") or {}
+    epic_stop_checks = epic_stop.get("checks") or {}
+    epic_stop_view = {
+        "候选": epic_stop.get("candidate_key"),
+        "规则版本": epic_stop.get("rule_version"),
+        "是否适用": epic_stop.get("eligible"),
+        "适用范围": epic_stop.get("scope_reason"),
+        "当前节点": epic_stop.get("checkpoint"),
+        "体系": epic_stop.get("category"),
+        "体系组": epic_stop.get("system_group"),
+        "GS 止损门槛": epic_stop.get("threshold"),
+        "终局概率上限": epic_stop.get("terminal_probability_max"),
+        "当前有效 GS": epic_stop_features.get("effective_gs"),
+        "当前有效词条数": epic_stop_features.get("current_valid"),
+        "终局达标概率": epic_stop_features.get("probability"),
+        "满值转换价值": epic_stop_features.get("conversion_value"),
+        "满值转换 GS 增益（正式判定量）": epic_stop_features.get("conversion_gs_gain"),
+        "四项止损条件": epic_stop_checks or None,
+        "原正式二元动作": epic_stop.get("baseline_action"),
+        "最终二元动作": epic_stop.get("final_action"),
+        "是否新增止损": epic_stop.get("added_stop"),
+        "原因": epic_stop.get("reason"),
+    } if epic_stop else None
+    early_speed_gamble_view = {
+        "路线资格": early_speed_gamble.get("eligible"),
+        "是否进入速度路线": early_speed_gamble.get("continue_route"),
+        "部位资格": early_speed_gamble.get("slot_eligible"),
+        "品质初始速度阈值": early_speed_gamble.get("rank_threshold"),
+        "Epic 硬门槛": early_speed_gamble.get("rank_threshold") if early_speed_gamble.get("rank") == "Epic" else "不适用",
+        "当前速度": early_speed_gamble.get("current_speed"),
+        "速度跳数": early_speed_gamble.get("speed_rolls"),
+        "+3 是否命中速度": early_speed_gamble.get("plus3_hit_speed"),
+        "未命中后普通策略结果": RECOMMENDATION_LABELS.get(
+            early_speed_gamble.get("fallback_recommendation", ""),
+            "不适用",
+        ),
+        "未命中后普通策略路线": early_speed_gamble.get("fallback_route") or "不适用",
+        "路线结束原因": early_speed_gamble.get("route_end_reason"),
+        "下一检查点": early_speed_gamble.get("next_check_at"),
+    } if early_speed_gamble else None
     lightweight_basis_view = {
         "命中的完整分类": [item.get("category") for item in lightweight.get("full_category_matches", [])],
         "选择分类": lightweight.get("selected_full_category"),
@@ -394,6 +628,8 @@ def debug_view_model(result: dict[str, Any]) -> dict[str, Any]:
         "校准门槛": threshold_view,
         "理论下界": lightweight.get("theoretical_lower_bound"),
         "理论上界": lightweight.get("theoretical_upper_bound"),
+        "早期赌速度": early_speed_gamble_view,
+        "终局 75+ 未来可期": future_75_view,
         "候选体系评估": candidate_views,
         "候选排序依据": lightweight.get("candidate_selection_reason"),
         "决策依据": lightweight.get("decision_reason"),
@@ -404,6 +640,11 @@ def debug_view_model(result: dict[str, Any]) -> dict[str, Any]:
         "strategy_version": debug.get("strategy_version"),
         "strategy_name": strategy.get("policy_name"),
         "enable_dp_assist": strategy.get("enable_dp_assist"),
+        "resource_calibration_status": strategy.get("resource_calibration_status"),
+        "resource_calibration_cost": strategy.get("resource_calibration_cost_per_baili_score"),
+        "resource_calibration_lambda": strategy.get("resource_calibration_lambda"),
+        "resource_calibration_message": dp.get("resource_calibration_message"),
+        "resource_material": dp.get("resource_material"),
         "baseline_recommendation": dp.get("baseline_recommendation"),
         "decision_mode": decision_mode_label,
         "dp_decision": dp.get("dp_decision") if exact_dp_ran else "未运行精确 DP",
@@ -419,6 +660,8 @@ def debug_view_model(result: dict[str, Any]) -> dict[str, Any]:
         "dp_best_target_category": dp.get("dp_best_target_category"),
         "dp_best_source_row": dp.get("dp_best_source_row"),
         "dp_override_applied": dp.get("overrode_baseline"),
+        "heroic_speed22_rescue": rescue_view,
+        "epic_early_stop": epic_stop_view,
         "lightweight_basis": lightweight_basis_view,
         "lightweight_route": lightweight.get("route"),
         "lightweight_full_categories": [item.get("category") for item in lightweight.get("full_category_matches", [])],
@@ -449,10 +692,16 @@ def format_debug_details(result: dict[str, Any], gear_data: dict[str, Any]) -> s
             "strategy_version", "strategy_name", "enable_dp_assist", "official_score", "effective_score",
             "baili_score", "target_score", "rating_level", "rating_semantics", "fit_status",
         ]),
+        ("资源与校准", [
+            "resource_calibration_status", "resource_calibration_cost", "resource_calibration_lambda",
+            "resource_calibration_message", "resource_material",
+        ]),
         ("决策", [
             "baseline_recommendation", "decision_mode", "dp_decision", "lightweight_decision",
             "dp_utility", "dp_continue_utility", "dp_override_applied", "dp_best_target_category",
             "dp_best_source_row",
+            "heroic_speed22_rescue",
+            "epic_early_stop",
         ]),
         ("终局速度与价值", [
             "dp_expected_terminal_value", "dp_expected_final_speed", "dp_expected_speed_rolls",
@@ -539,6 +788,7 @@ def save_gear_file(path: Path, form: dict[str, Any]) -> None:
     validate_gear_structure(gear)
     validate_gear_source_rank(gear, str(form.get("item_source") or "normal_85"))
     payload = gear.to_dict()
+    payload["instanceId"] = str(form.get("instance_id") or "").strip()
     payload["itemSource"] = str(form.get("item_source") or "normal_85")
     payload["gearSource"] = str(form.get("gear_source") or DEFAULT_GEAR_SOURCE)
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
