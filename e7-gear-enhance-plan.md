@@ -2038,7 +2038,7 @@ GUI 验收关注点：
 
 - 完整重启后，MuMu 进程与唯一 ADB `device` 闸门恢复正常；Computer Use 仍因已知 `0x80004002` 无法截图，按既有授权使用无 serial/IP 的 ADB 二进制流截图和从当前截图派生的输入坐标。
 - 新页面截图、可信快照 `20260722_132045` 双文件哈希、正式 `pair_batch_013.json` 唯一候选、实例 `4182712419`、最低 OCR 置信度 `0.990471` 和建议哈希全部通过。操作前材料精确为粉末 `2`、下级强化石 `1`、上级强化石 `0`、金币 `17,600`，预览目标 `+3`。
-- 仅发送一次授权强化确认；结果为生命值 `12% -> 19%`、速度 `3 -> 7`（`+4`）、GS `30 -> 41`，其余基线副属性不变。金币 `346,670,175 -> 346,652,575`，消耗 `17,600`；材料消耗与授权一致。
+- 仅发送一次授权强化确认；结果为主属性生命值 `12% -> 19%`、副属性速度 `3 -> 7`（`+4`），其余基线副属性不变。游戏官方展示装备分数 `30 -> 41` 仅作结果记录，不作为本次强化策略输入，也不改变正式评分模型。金币 `346,670,175 -> 346,652,575`，消耗 `17,600`；材料消耗与授权一致。
 - 到达 `+3` 后立即停止，未继续 `+6`，未发送第二次强化或其他资源操作。证据见 [操作报告](manual_acceptance/single_item_confirmation/operation_013_plus3_20260724_112042/operation_report.md) 与 [operation manifest](manual_acceptance/single_item_confirmation/operation_013_plus3_20260724_112042/operation_manifest.json)。
 - 当前状态：`completed_target_013_plus3_stopped; offline_summary_verified`。`+6` 不在本次授权内；不修改正式策略、DP、评分、资源模型、GUI、Holdout、OCR 门槛或自动化规则。
 
@@ -2054,4 +2054,4 @@ GUI 验收关注点：
 - 分支 `codex/batch-013-plus3-verification-20260724` 已创建本地提交 `ad8e983`，保存任务文档、测试、013 操作截图/manifest/报告和 20260724 离线汇总；其他工作区既有代码改动未暂存、未回退。
 - Git 提交后的自动 geometric repack 因既有无效引用 `main - 副本` 报错，但提交对象和 HEAD 校验正常；为避免破坏文件，未删除或修复该引用。
 - 推送到 GitHub `origin` 被安全策略拦截：提交包含游戏截图和工作区文档，远程仓库的私有/可信状态未建立。不得绕过，需先向用户说明外传范围并取得新的显式授权。
-- 当前发布状态：`git_push_blocked_pending_explicit_external_export_approval`；本地证据、提交和分支完整保留。
+- 用户已明确授权将本轮截图、文档、测试和报告推送至 `origin`；当前发布状态：`git_push_authorized_pending_publish`。本地证据、提交和分支完整保留。

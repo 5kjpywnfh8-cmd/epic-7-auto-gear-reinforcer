@@ -41,9 +41,9 @@
 | 字段 | 基线 | 实际结果 |
 | --- | --- | --- |
 | 强化等级 | 0 | 3 |
-| 主属性 | {"type": "HealthPercent", "value": 12} | {"type": "HealthPercent", "value": 19} |
+| 主属性（生命值） | {"type": "HealthPercent", "value": 12} | {"type": "HealthPercent", "value": 19} |
 | 副属性 | [{"type": "DefensePercent", "value": 8}, {"type": "Speed", "value": 3}, {"type": "EffectResistancePercent", "value": 6}, {"type": "EffectivenessPercent", "value": 6}] | [{"type": "DefensePercent", "value": 8}, {"type": "Speed", "value": 7}, {"type": "EffectResistancePercent", "value": 6}, {"type": "EffectivenessPercent", "value": 6}] |
-| 装备分数 | 30 | 41 |
+| 游戏官方展示装备分数（仅作记录） | 30 | 41 |
 
 - 变化字段：`[{"after": 19, "before": 12, "field": "main.value", "type": "HealthPercent"}, {"after": 7, "before": 3, "field": "substats[Speed].value", "type": "Speed"}, {"after": 41, "before": 30, "field": "gear_score"}]`
 - 关键检查：`{"advice_hash_gate": true, "attribute_change_observed": true, "attribute_types_unchanged": true, "checkpoint_reached": true, "device_gate": true, "ocr_confidence_gate": true, "operation_authorization": true, "operation_status_completed": true, "page_gate": true, "pair_advice_hash_gate": true, "pair_snapshot_identity": true, "pairing_candidate_gate": true, "pairing_file_gate": true, "resource_gate": true, "schema_version": true, "shadow_checkpoint_matches": true, "single_action_gate": true, "snapshot_gate": true, "stop_reason_gate": true, "target_matches_baseline": true, "trusted_snapshot_identity": true}`
