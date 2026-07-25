@@ -1,0 +1,10 @@
+{
+  "fail_closed_count": 0,
+  "formal_strategy_modified": false,
+  "records": [],
+  "schema_version": "e7_enhance.fresh_snapshot_report/1.0",
+  "scope": "offline_fresh_snapshot_repairing_contract",
+  "snapshot_count": 0,
+  "status": "not_ready",
+  "verified_count": 0
+}

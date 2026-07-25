@@ -25,8 +25,11 @@ def _visible_main_matches(
     if str((item.get("main") or {}).get("type")) != expected[0]:
         return False
     mode = fields.get("main_value_mode")
+    if mode == "current_item_main_value":
+        current_main = _stat(item.get("main") or {})
+        return current_main == expected
     if mode != "raw_main_stat_base_for_plus0" or int(fields["enhance"]) != 0:
-        raise ValueError("backpack pairing currently supports raw +0 main values only")
+        raise ValueError("unsupported backpack main-value matching mode")
     value = raw.get("mainStatBaseValue")
     if not isinstance(value, (int, float)):
         return False
