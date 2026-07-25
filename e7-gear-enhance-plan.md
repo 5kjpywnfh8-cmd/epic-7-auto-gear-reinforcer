@@ -2375,3 +2375,9 @@ GUI 验收关注点：
 - 用户已选择 A 方案，授权标准读取器为登录/公告执行 force-stop/monkey 重启、自动点击和前三轮 `KEYCODE_BACK`；`+0` 新鲜真实读取现可按固定标准命令执行，并已授权向指定 Fribbels API 上传本账号 TCP 载荷。
 - 授权严格限于读取器的登录/公告流程。装备、材料、强化页面输入，强化、选材、导入和任何资源消耗仍禁止；出现超出此范围的行为必须停止。
 - 当前状态更新为 `fresh_read_authorized_ready_for_standard_reader_execution`。本轮仅同步 Markdown，未运行读取器、ADB 或 GUI，未抓包、重启、上传、点击、强化、选材或消耗资源。执行模型记录为 `gpt-5.6-terra + high`。
+
+#### `+0` 标准新鲜读取未抓到账号同步包（2026-07-26）
+
+- A 方案固定标准命令已运行一次，读取器完整输出结论为“Fribbels 解出 `0` 件装备，账号同步包可能未抓到”。批次 `20260726_012048` 仅产生 `1312188` 字节 PCAP；新的 `player_data.json`、`reader_result.json` 和不可变 snapshot 均未生成，`current` 仍为 2026-07-22 历史文件，不得作为本任务新鲜 `+0` 证据。
+- 读取器诊断：`packet_count=2969`；协议为 `udp=812`、`tcp=2144`、`ip_other=5`、`other=8`；`tcp_payload_bytes=1100894`、`udp_payload_bytes=2880`、`tcp_payload_groups=478`；`observed_ports=[443,9997,51390,5138,80,39518,442,8081,53,32946,39542,56248]`。
+- 当前状态更新为 `fresh_read_fail_closed_no_account_sync_20260726_012048`。停止重试、目标配对、导入和任何游戏内操作，直至用户另行授权且环境发生可解释变化；本轮没有强化、选材或资源消耗。执行模型记录为 `gpt-5.6-terra + high`。
