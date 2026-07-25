@@ -1,0 +1,9 @@
+{
+  "material_pool": "common",
+  "rarity": "Epic",
+  "current_checkpoint": 0,
+  "target_checkpoint": 3,
+  "allowed_materials": ["powder", "upper_enhance_stone"],
+  "inventory": {"powder": 20, "upper_enhance_stone": 1},
+  "material_priority": ["upper_enhance_stone", "powder"]
+}

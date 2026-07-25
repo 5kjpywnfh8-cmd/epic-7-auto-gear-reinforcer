@@ -2274,3 +2274,22 @@ GUI 验收关注点：
 - 当前有效操作契约继续固定为“一件装备、一个复核节点、到点停止并重新授权”。“一次人工审核累计硬预算后以 `+15` 为目标上限”仅作为未来候选契约，未替代当前规则，也不构成模拟器操作或资源消耗授权。
 - 尚未实现的执行闸门明确为：离散整数预算与事前硬上限、多节点新鲜权威状态、非标准节点契约、持久化幂等状态机与故障恢复、单件目标上限 `+15` 受控试点。上级强化石在模型验证前必须 fail closed。
 - 当前状态更新为 `automation_boundary_revision_complete_offline_budget_task_pending_authorization`。下一步仍是等待用户单独授权“自动预算与硬上限离线规划器”；本轮不修改正式策略、DP、评分、资源模型、GUI、OCR、Holdout 或自动化，不操作模拟器。
+
+#### 自动预算与硬上限离线规划器启动（2026-07-25）
+
+- 用户已明确授权“自动预算与硬上限离线规划器”；唯一权威任务说明为[自动预算与硬上限离线规划器任务说明](自动预算与硬上限离线规划器任务说明.md)。本阶段只实现纯 Python 离线整数规划、硬上限核对、结构化 fail-closed 和可复跑测试，不接 GUI、OCR、ADB、MuMu 或模拟器。
+- 模块支持标准节点分段、普通装备/饰品材料池、允许材料集合、库存、材料优先级、预计消耗、建议硬上限和用户审核硬上限。上级强化石在没有已发布离散模型前必须返回 `unsupported_material`，不得猜测或静默忽略。
+- 任何成功计划必须证明不超过库存、分段/累计材料硬上限和金币硬上限；非标准节点、跨材料池、硬上限不完整、无可行整数组合或真实规则无法证明时均 fail closed。规划结果不构成实际操作授权。
+- 代码实现和代码测试按用户指定使用 `gpt-5.6-terra + high`；主 agent 只负责审阅、验证和文档同步。当前状态更新为 `offline_budget_planner_authorized_pending_terra_high_implementation`。
+- 首次 Terra high 实现已产出规划模块、CLI、18 项定向测试和验证报告，但独立 Terra high 只读审阅发现 3 个高优先级缺口：非法分段硬上限/预览类型会被静默当成未提供，仅提供一类硬上限即可误标为完整验证，以及五段计划的库存/分段/累计越限性质证据不足；另有 CLI/Markdown 原始错误详情安全化缺口。当前状态更新为 `offline_budget_planner_implementation_review_failed_corrections_in_progress`，未提交、未推送，不得进入状态机开发。
+- Terra high 已完成上述修复：非映射硬上限/预览严格 fail closed，仅完整分段与累计硬上限可进入验证模式；材料常量改为直接引用 `resource_model`；新增五段库存、逐段、累计和 81 组有界矩阵安全测试；CLI/Markdown 错误输出已安全化。规划器 `27/27`、资源模型 `15/15`、CLI `1/1`、五段矩阵越限 `0`，当前状态更新为 `offline_budget_planner_corrections_complete_second_review_pending`。
+- 二次 Terra high 只读审阅未发现新的实现类 P1/P2，但指出 81 组矩阵尚未分别改变五个分段的粉末/下级强化石上限，也未独立改变累计下级强化石上限；该 P2 测试证据缺口必须补齐。当前状态更新为 `offline_budget_planner_second_review_test_coverage_gap_correction_in_progress`，仍不提交、不推送、不进入状态机开发。
+- Terra high 已补齐测试维度：五段分段材料上限 `40` 组、累计两种材料 `8` 组、两种材料库存 `8` 组，总计 `56` 组，成功 `30`、fail closed `26`、越限 `0`；规划器测试更新为 `29/29`。当前状态更新为 `offline_budget_planner_test_coverage_gap_fixed_final_review_pending`，等待最终独立复核与公开定向测试复跑。
+- 最终 Terra high 复核未发现实现类 P1，但发现两项 P2 证据精度问题：计划量为 `0` 的分段边界存在重复输入却按独立标签计数；五段矩阵成功断言未强制完整五段和固定端点。当前状态更新为 `offline_budget_planner_final_review_evidence_precision_correction_in_progress`，修复前不提交、不推送。
+- Terra high 已修复两项证据问题：56 个标签候选中 3 个重复 alias 不计入独立证据，最终独立输入为 `53`（分段 `37`、累计 `8`、库存 `8`）；成功 `28`、fail closed `25`、结构或越限违规 `0`。每个成功结果均强制五段固定路线和唯一端点，规划器测试更新为 `30/30`。当前状态更新为 `offline_budget_planner_evidence_precision_fixed_final_gate_review_pending`。
+- 聚焦 Terra high 复核发现 `53` 实为覆盖轴案例数，跨维度全局规范化请求为 `40`、重复请求案例 `13`；报告必须区分这些口径。成功结果 oracle 也尚未精确拒绝额外、未知或跨池材料键。当前状态更新为 `offline_budget_planner_final_gate_oracle_and_global_dedup_correction_in_progress`，仍不提交、不推送。
+- Terra high 已修复全局统计与 oracle：报告输出 raw `56`、alias `3`、coverage `53`、global unique `40`、duplicate `13`，coverage 成功/失败 `28/25`，unique 成功/失败 `15/25`；oracle 精确校验材料池、允许集合和所有材料键，synthetic 回归覆盖缺失/额外/未知/跨池/错误材料池，违规 `0`。规划器测试 `34/34`，当前状态更新为 `offline_budget_planner_global_dedup_oracle_fixed_final_review_pending`。
+- 最终 Terra high 独立只读审阅未发现新的 P1/P2，离线规划器任务完成闸门通过。实现提供单一 `plan_budget()` 入口、稳定 JSON/Markdown、`budget-plan` CLI、完整硬上限验证和结构化 fail closed；报告见 [JSON](reports/offline_budget_planner_validation_20260725.json) 与 [Markdown](reports/offline_budget_planner_validation_20260725.md)。
+- 最终验证：规划器 `34/34`、资源模型回归 `15/15`、CLI 回归 `1/1`、Python 3.9 语法、报告生成、成功/失败 CLI smoke 和 `git diff --check` 均通过；未读取或恢复私人归档，未运行依赖私人夹具的全量测试。
+- 当前状态更新为 `offline_budget_planner_complete_validated_commit_push_pending`。饰品离散材料和上级强化石继续 `unsupported_material`；Good/Great、宠物加成、期望值与分数材料不作为执行输入。规划器只提供离线计划，不验证实时库存、页面或实际消耗，也不构成材料选择或强化授权。
+- 下一步候选为“多节点新鲜快照与重新配对契约”，必须另建独立任务说明并取得用户授权；不得自动开始 GUI、OCR、ADB、MuMu 或执行状态机开发。

@@ -8,6 +8,7 @@ from .calibration import CalibrationOptions, calibrate_policies, render_calibrat
 from .enhance_policy import advise_gear
 from .enhance_simulator import SimulationOptions, render_simulation_summary, simulate_drops, simulate_gear
 from .models import Gear, validate_gear_source_rank, validate_gear_structure
+from .offline_budget_planner import BudgetPlanningRequest, canonical_json, plan_budget, render_markdown
 from .reporter import render_batch_markdown, render_result
 from .resource_model import red_epic_resource_table, render_resource_table
 from .score_engine import evaluate_gear
@@ -39,6 +40,11 @@ def main(argv: list[str] | None = None) -> int:
     resource = subparsers.add_parser("resource")
     resource.add_argument("--gear-source", default=None)
     resource.add_argument("--debug", action="store_true")
+
+    budget = subparsers.add_parser("budget-plan")
+    budget.add_argument("--input", required=True)
+    budget.add_argument("--output-json")
+    budget.add_argument("--output-markdown")
 
     simulate = subparsers.add_parser("simulate")
     simulate.add_argument("--input")
@@ -139,6 +145,38 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(table, ensure_ascii=False, indent=2) if args.debug else render_resource_table(table))
         return 0
 
+    if args.command == "budget-plan":
+        try:
+            raw_payload = Path(args.input).read_text(encoding="utf-8")
+        except (OSError, UnicodeError):
+            print(_budget_input_failure_json("input_read_error", "budget input could not be read"))
+            return 2
+        try:
+            payload = json.loads(raw_payload, strict=False)
+        except json.JSONDecodeError:
+            print(_budget_input_failure_json("invalid_json", "budget input is not valid JSON"))
+            return 2
+        if not isinstance(payload, dict):
+            print(_budget_input_failure_json("invalid_request", "budget input must be a JSON object"))
+            return 2
+        request = BudgetPlanningRequest.from_dict(payload)
+        result = plan_budget(request)
+        output_json = canonical_json(result)
+        try:
+            if args.output_json:
+                path = Path(args.output_json)
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(output_json + "\n", encoding="utf-8")
+            if args.output_markdown:
+                path = Path(args.output_markdown)
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(render_markdown(result), encoding="utf-8")
+        except (OSError, UnicodeError):
+            print(_budget_input_failure_json("output_write_error", "budget output could not be written"))
+            return 2
+        print(output_json)
+        return 0 if result.success else 2
+
     if args.command == "simulate":
         options = SimulationOptions(
             runs=args.runs,
@@ -180,6 +218,19 @@ def main(argv: list[str] | None = None) -> int:
 
 def load_json(path: str) -> dict | list:
     return json.loads(Path(path).read_text(encoding="utf-8"), strict=False)
+
+
+def _budget_input_failure_json(code: str, detail: str) -> str:
+    return json.dumps(
+        {
+            "failure": {"code": code, "detail": detail},
+            "mode": "not_planned",
+            "success": False,
+        },
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    )
 
 
 def load_single_gear(path: str) -> tuple[Gear, str, str]:

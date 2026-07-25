@@ -1,0 +1,4776 @@
+{
+  "accessory_adjacent_checkpoint_results": [
+    {
+      "cumulative_applied_hard_limit": null,
+      "cumulative_expected_consumption": null,
+      "cumulative_suggested_hard_limit": null,
+      "failure": {
+        "code": "unsupported_material",
+        "detail": "accessory_powder: no publicly tracked discrete accessory material model"
+      },
+      "hard_limit_check": "not_checked",
+      "material_pool": "accessory",
+      "mode": "not_planned",
+      "objective_order": [
+        "minimum_gold",
+        "minimum_base_experience_overflow",
+        "minimum_material_count",
+        "material_priority"
+      ],
+      "rarity": "Epic",
+      "rules_version": "offline_budget_planner/v1",
+      "segments": [],
+      "success": false
+    },
+    {
+      "cumulative_applied_hard_limit": null,
+      "cumulative_expected_consumption": null,
+      "cumulative_suggested_hard_limit": null,
+      "failure": {
+        "code": "unsupported_material",
+        "detail": "accessory_powder: no publicly tracked discrete accessory material model"
+      },
+      "hard_limit_check": "not_checked",
+      "material_pool": "accessory",
+      "mode": "not_planned",
+      "objective_order": [
+        "minimum_gold",
+        "minimum_base_experience_overflow",
+        "minimum_material_count",
+        "material_priority"
+      ],
+      "rarity": "Epic",
+      "rules_version": "offline_budget_planner/v1",
+      "segments": [],
+      "success": false
+    },
+    {
+      "cumulative_applied_hard_limit": null,
+      "cumulative_expected_consumption": null,
+      "cumulative_suggested_hard_limit": null,
+      "failure": {
+        "code": "unsupported_material",
+        "detail": "accessory_powder: no publicly tracked discrete accessory material model"
+      },
+      "hard_limit_check": "not_checked",
+      "material_pool": "accessory",
+      "mode": "not_planned",
+      "objective_order": [
+        "minimum_gold",
+        "minimum_base_experience_overflow",
+        "minimum_material_count",
+        "material_priority"
+      ],
+      "rarity": "Epic",
+      "rules_version": "offline_budget_planner/v1",
+      "segments": [],
+      "success": false
+    },
+    {
+      "cumulative_applied_hard_limit": null,
+      "cumulative_expected_consumption": null,
+      "cumulative_suggested_hard_limit": null,
+      "failure": {
+        "code": "unsupported_material",
+        "detail": "accessory_powder: no publicly tracked discrete accessory material model"
+      },
+      "hard_limit_check": "not_checked",
+      "material_pool": "accessory",
+      "mode": "not_planned",
+      "objective_order": [
+        "minimum_gold",
+        "minimum_base_experience_overflow",
+        "minimum_material_count",
+        "material_priority"
+      ],
+      "rarity": "Epic",
+      "rules_version": "offline_budget_planner/v1",
+      "segments": [],
+      "success": false
+    },
+    {
+      "cumulative_applied_hard_limit": null,
+      "cumulative_expected_consumption": null,
+      "cumulative_suggested_hard_limit": null,
+      "failure": {
+        "code": "unsupported_material",
+        "detail": "accessory_powder: no publicly tracked discrete accessory material model"
+      },
+      "hard_limit_check": "not_checked",
+      "material_pool": "accessory",
+      "mode": "not_planned",
+      "objective_order": [
+        "minimum_gold",
+        "minimum_base_experience_overflow",
+        "minimum_material_count",
+        "material_priority"
+      ],
+      "rarity": "Epic",
+      "rules_version": "offline_budget_planner/v1",
+      "segments": [],
+      "success": false
+    }
+  ],
+  "common_adjacent_checkpoint_results": [
+    {
+      "cumulative_applied_hard_limit": null,
+      "cumulative_expected_consumption": {
+        "gold": 22400,
+        "materials": {
+          "lower_enhance_stone": 1,
+          "powder": 5
+        }
+      },
+      "cumulative_suggested_hard_limit": {
+        "gold": 22400,
+        "materials": {
+          "lower_enhance_stone": 1,
+          "powder": 5
+        }
+      },
+      "failure": null,
+      "hard_limit_check": "not_provided",
+      "material_pool": "common",
+      "mode": "proposal_only",
+      "objective_order": [
+        "minimum_gold",
+        "minimum_base_experience_overflow",
+        "minimum_material_count",
+        "material_priority"
+      ],
+      "rarity": "Epic",
+      "rules_version": "offline_budget_planner/v1",
+      "segments": [
+        {
+          "applied_hard_limit": null,
+          "experience_overflow": 31,
+          "from_checkpoint": 0,
+          "gold": 22400,
+          "materials": {
+            "lower_enhance_stone": 1,
+            "powder": 5
+          },
+          "preview_base_experience": null,
+          "provided_base_experience": 2000,
+          "required_base_experience": 1969,
+          "suggested_hard_limit": {
+            "gold": 22400,
+            "materials": {
+              "lower_enhance_stone": 1,
+              "powder": 5
+            }
+          },
+          "to_checkpoint": 3
+        }
+      ],
+      "success": true
+    },
+    {
+      "cumulative_applied_hard_limit": null,
+      "cumulative_expected_consumption": {
+        "gold": 48000,
+        "materials": {
+          "lower_enhance_stone": 3,
+          "powder": 3
+        }
+      },
+      "cumulative_suggested_hard_limit": {
+        "gold": 48000,
+        "materials": {
+          "lower_enhance_stone": 3,
+          "powder": 3
+        }
+      },
+      "failure": null,
+      "hard_limit_check": "not_provided",
+      "material_pool": "common",
+      "mode": "proposal_only",
+      "objective_order": [
+        "minimum_gold",
+        "minimum_base_experience_overflow",
+        "minimum_material_count",
+        "material_priority"
+      ],
+      "rarity": "Epic",
+      "rules_version": "offline_budget_planner/v1",
+      "segments": [
+        {
+          "applied_hard_limit": null,
+          "experience_overflow": 75,
+          "from_checkpoint": 3,
+          "gold": 48000,
+          "materials": {
+            "lower_enhance_stone": 3,
+            "powder": 3
+          },
+          "preview_base_experience": null,
+          "provided_base_experience": 4800,
+          "required_base_experience": 4725,
+          "suggested_hard_limit": {
+            "gold": 48000,
+            "materials": {
+              "lower_enhance_stone": 3,
+              "powder": 3
+            }
+          },
+          "to_checkpoint": 6
+        }
+      ],
+      "success": true
+    },
+    {
+      "cumulative_applied_hard_limit": null,
+      "cumulative_expected_consumption": {
+        "gold": 110400,
+        "materials": {
+          "lower_enhance_stone": 7,
+          "powder": 6
+        }
+      },
+      "cumulative_suggested_hard_limit": {
+        "gold": 110400,
+        "materials": {
+          "lower_enhance_stone": 7,
+          "powder": 6
+        }
+      },
+      "failure": null,
+      "hard_limit_check": "not_provided",
+      "material_pool": "common",
+      "mode": "proposal_only",
+      "objective_order": [
+        "minimum_gold",
+        "minimum_base_experience_overflow",
+        "minimum_material_count",
+        "material_priority"
+      ],
+      "rarity": "Epic",
+      "rules_version": "offline_budget_planner/v1",
+      "segments": [
+        {
+          "applied_hard_limit": null,
+          "experience_overflow": 75,
+          "from_checkpoint": 6,
+          "gold": 110400,
+          "materials": {
+            "lower_enhance_stone": 7,
+            "powder": 6
+          },
+          "preview_base_experience": null,
+          "provided_base_experience": 11100,
+          "required_base_experience": 11025,
+          "suggested_hard_limit": {
+            "gold": 110400,
+            "materials": {
+              "lower_enhance_stone": 7,
+              "powder": 6
+            }
+          },
+          "to_checkpoint": 9
+        }
+      ],
+      "success": true
+    },
+    {
+      "cumulative_applied_hard_limit": null,
+      "cumulative_expected_consumption": {
+        "gold": 216000,
+        "materials": {
+          "lower_enhance_stone": 15,
+          "powder": 0
+        }
+      },
+      "cumulative_suggested_hard_limit": {
+        "gold": 216000,
+        "materials": {
+          "lower_enhance_stone": 15,
+          "powder": 0
+        }
+      },
+      "failure": null,
+      "hard_limit_check": "not_provided",
+      "material_pool": "common",
+      "mode": "proposal_only",
+      "objective_order": [
+        "minimum_gold",
+        "minimum_base_experience_overflow",
+        "minimum_material_count",
+        "material_priority"
+      ],
+      "rarity": "Epic",
+      "rules_version": "offline_budget_planner/v1",
+      "segments": [
+        {
+          "applied_hard_limit": null,
+          "experience_overflow": 355,
+          "from_checkpoint": 9,
+          "gold": 216000,
+          "materials": {
+            "lower_enhance_stone": 15,
+            "powder": 0
+          },
+          "preview_base_experience": null,
+          "provided_base_experience": 22500,
+          "required_base_experience": 22145,
+          "suggested_hard_limit": {
+            "gold": 216000,
+            "materials": {
+              "lower_enhance_stone": 15,
+              "powder": 0
+            }
+          },
+          "to_checkpoint": 12
+        }
+      ],
+      "success": true
+    },
+    {
+      "cumulative_applied_hard_limit": null,
+      "cumulative_expected_consumption": {
+        "gold": 416000,
+        "materials": {
+          "lower_enhance_stone": 28,
+          "powder": 8
+        }
+      },
+      "cumulative_suggested_hard_limit": {
+        "gold": 416000,
+        "materials": {
+          "lower_enhance_stone": 28,
+          "powder": 8
+        }
+      },
+      "failure": null,
+      "hard_limit_check": "not_provided",
+      "material_pool": "common",
+      "mode": "proposal_only",
+      "objective_order": [
+        "minimum_gold",
+        "minimum_base_experience_overflow",
+        "minimum_material_count",
+        "material_priority"
+      ],
+      "rarity": "Epic",
+      "rules_version": "offline_budget_planner/v1",
+      "segments": [
+        {
+          "applied_hard_limit": null,
+          "experience_overflow": 13,
+          "from_checkpoint": 12,
+          "gold": 416000,
+          "materials": {
+            "lower_enhance_stone": 28,
+            "powder": 8
+          },
+          "preview_base_experience": null,
+          "provided_base_experience": 42800,
+          "required_base_experience": 42787,
+          "suggested_hard_limit": {
+            "gold": 416000,
+            "materials": {
+              "lower_enhance_stone": 28,
+              "powder": 8
+            }
+          },
+          "to_checkpoint": 15
+        }
+      ],
+      "success": true
+    }
+  ],
+  "fail_closed_gaps": [
+    "accessory discrete material experience and gold model is not publicly tracked",
+    "upper enhancement stone discrete material model is not published",
+    "Good/Great, pet bonus, and fractional 50/50 research accounting are not execution inputs"
+  ],
+  "five_segment_bounded_matrix": {
+    "boundary_catalog": [
+      {
+        "dimension": "segment_material_hard_limit",
+        "independent_inputs": [
+          {
+            "aliases": [],
+            "primary_label": "zero",
+            "value": 0
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_minus_one",
+            "value": 4
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned",
+            "value": 5
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_plus_one",
+            "value": 6
+          }
+        ],
+        "material": "powder",
+        "planned_value": 5,
+        "scope": "to_checkpoint_3"
+      },
+      {
+        "dimension": "segment_material_hard_limit",
+        "independent_inputs": [
+          {
+            "aliases": [
+              "planned_minus_one"
+            ],
+            "primary_label": "zero",
+            "value": 0
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned",
+            "value": 1
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_plus_one",
+            "value": 2
+          }
+        ],
+        "material": "lower_enhance_stone",
+        "planned_value": 1,
+        "scope": "to_checkpoint_3"
+      },
+      {
+        "dimension": "segment_material_hard_limit",
+        "independent_inputs": [
+          {
+            "aliases": [],
+            "primary_label": "zero",
+            "value": 0
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_minus_one",
+            "value": 2
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned",
+            "value": 3
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_plus_one",
+            "value": 4
+          }
+        ],
+        "material": "powder",
+        "planned_value": 3,
+        "scope": "to_checkpoint_6"
+      },
+      {
+        "dimension": "segment_material_hard_limit",
+        "independent_inputs": [
+          {
+            "aliases": [],
+            "primary_label": "zero",
+            "value": 0
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_minus_one",
+            "value": 2
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned",
+            "value": 3
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_plus_one",
+            "value": 4
+          }
+        ],
+        "material": "lower_enhance_stone",
+        "planned_value": 3,
+        "scope": "to_checkpoint_6"
+      },
+      {
+        "dimension": "segment_material_hard_limit",
+        "independent_inputs": [
+          {
+            "aliases": [],
+            "primary_label": "zero",
+            "value": 0
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_minus_one",
+            "value": 5
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned",
+            "value": 6
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_plus_one",
+            "value": 7
+          }
+        ],
+        "material": "powder",
+        "planned_value": 6,
+        "scope": "to_checkpoint_9"
+      },
+      {
+        "dimension": "segment_material_hard_limit",
+        "independent_inputs": [
+          {
+            "aliases": [],
+            "primary_label": "zero",
+            "value": 0
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_minus_one",
+            "value": 6
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned",
+            "value": 7
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_plus_one",
+            "value": 8
+          }
+        ],
+        "material": "lower_enhance_stone",
+        "planned_value": 7,
+        "scope": "to_checkpoint_9"
+      },
+      {
+        "dimension": "segment_material_hard_limit",
+        "independent_inputs": [
+          {
+            "aliases": [
+              "planned_minus_one",
+              "planned"
+            ],
+            "primary_label": "zero",
+            "value": 0
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_plus_one",
+            "value": 1
+          }
+        ],
+        "material": "powder",
+        "planned_value": 0,
+        "scope": "to_checkpoint_12"
+      },
+      {
+        "dimension": "segment_material_hard_limit",
+        "independent_inputs": [
+          {
+            "aliases": [],
+            "primary_label": "zero",
+            "value": 0
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_minus_one",
+            "value": 14
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned",
+            "value": 15
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_plus_one",
+            "value": 16
+          }
+        ],
+        "material": "lower_enhance_stone",
+        "planned_value": 15,
+        "scope": "to_checkpoint_12"
+      },
+      {
+        "dimension": "segment_material_hard_limit",
+        "independent_inputs": [
+          {
+            "aliases": [],
+            "primary_label": "zero",
+            "value": 0
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_minus_one",
+            "value": 7
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned",
+            "value": 8
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_plus_one",
+            "value": 9
+          }
+        ],
+        "material": "powder",
+        "planned_value": 8,
+        "scope": "to_checkpoint_15"
+      },
+      {
+        "dimension": "segment_material_hard_limit",
+        "independent_inputs": [
+          {
+            "aliases": [],
+            "primary_label": "zero",
+            "value": 0
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_minus_one",
+            "value": 27
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned",
+            "value": 28
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_plus_one",
+            "value": 29
+          }
+        ],
+        "material": "lower_enhance_stone",
+        "planned_value": 28,
+        "scope": "to_checkpoint_15"
+      },
+      {
+        "dimension": "cumulative_material_hard_limit",
+        "independent_inputs": [
+          {
+            "aliases": [],
+            "primary_label": "zero",
+            "value": 0
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_minus_one",
+            "value": 21
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned",
+            "value": 22
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_plus_one",
+            "value": 23
+          }
+        ],
+        "material": "powder",
+        "planned_value": 22,
+        "scope": "full_route_0_to_15"
+      },
+      {
+        "dimension": "cumulative_material_hard_limit",
+        "independent_inputs": [
+          {
+            "aliases": [],
+            "primary_label": "zero",
+            "value": 0
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_minus_one",
+            "value": 53
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned",
+            "value": 54
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_plus_one",
+            "value": 55
+          }
+        ],
+        "material": "lower_enhance_stone",
+        "planned_value": 54,
+        "scope": "full_route_0_to_15"
+      },
+      {
+        "dimension": "inventory_material",
+        "independent_inputs": [
+          {
+            "aliases": [],
+            "primary_label": "zero",
+            "value": 0
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_minus_one",
+            "value": 21
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned",
+            "value": 22
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_plus_one",
+            "value": 23
+          }
+        ],
+        "material": "powder",
+        "planned_value": 22,
+        "scope": "full_route_0_to_15"
+      },
+      {
+        "dimension": "inventory_material",
+        "independent_inputs": [
+          {
+            "aliases": [],
+            "primary_label": "zero",
+            "value": 0
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_minus_one",
+            "value": 53
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned",
+            "value": 54
+          },
+          {
+            "aliases": [],
+            "primary_label": "planned_plus_one",
+            "value": 55
+          }
+        ],
+        "material": "lower_enhance_stone",
+        "planned_value": 54,
+        "scope": "full_route_0_to_15"
+      }
+    ],
+    "coverage_axes": {
+      "boundary_labels": [
+        "zero",
+        "planned_minus_one",
+        "planned",
+        "planned_plus_one"
+      ],
+      "materials": [
+        "powder",
+        "lower_enhance_stone"
+      ],
+      "segment_endpoints": [
+        3,
+        6,
+        9,
+        12,
+        15
+      ]
+    },
+    "coverage_case_catalog": [
+      {
+        "aliases": [],
+        "boundary": "zero",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 0,
+        "material": "powder",
+        "planner_success": false,
+        "request_sha256": "a0ac682ebae2b6f9f69e9b80d06344b4a7e01b53f4ddb6c4e869db6647eb77cd",
+        "scope": "to_checkpoint_3",
+        "success": false,
+        "value": 0,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_minus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 1,
+        "material": "powder",
+        "planner_success": false,
+        "request_sha256": "000b31a36547bbb997909d0a579b2e7e6a13bf27c891c1dac835ae0b2180b26d",
+        "scope": "to_checkpoint_3",
+        "success": false,
+        "value": 4,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": null,
+        "global_unique_request_index": 2,
+        "material": "powder",
+        "planner_success": true,
+        "request_sha256": "4531e64e1bca44d37f58ef0614f1d96debb8619cab2ca094a23efc1c6c6e7bce",
+        "scope": "to_checkpoint_3",
+        "success": true,
+        "value": 5,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_plus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": null,
+        "global_unique_request_index": 3,
+        "material": "powder",
+        "planner_success": true,
+        "request_sha256": "786c22397091a5520b8f89ccb3cb86633e320d03ddf9e0f8d27f148bf4527985",
+        "scope": "to_checkpoint_3",
+        "success": true,
+        "value": 6,
+        "violations": []
+      },
+      {
+        "aliases": [
+          "planned_minus_one"
+        ],
+        "boundary": "zero",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 4,
+        "material": "lower_enhance_stone",
+        "planner_success": false,
+        "request_sha256": "199e6c270888f3b8c2aa5a53685e70905414b4275cd4e2ca2053bd42e512b3b2",
+        "scope": "to_checkpoint_3",
+        "success": false,
+        "value": 0,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned",
+        "dimension": "segment_material_hard_limit",
+        "duplicate_request": true,
+        "failure_code": null,
+        "global_unique_request_index": 2,
+        "material": "lower_enhance_stone",
+        "planner_success": true,
+        "request_sha256": "4531e64e1bca44d37f58ef0614f1d96debb8619cab2ca094a23efc1c6c6e7bce",
+        "scope": "to_checkpoint_3",
+        "success": true,
+        "value": 1,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_plus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": null,
+        "global_unique_request_index": 5,
+        "material": "lower_enhance_stone",
+        "planner_success": true,
+        "request_sha256": "416293de28fbd06214a6ae031bb4fa7d689cb905da88f00c60df369122a66a7f",
+        "scope": "to_checkpoint_3",
+        "success": true,
+        "value": 2,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "zero",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 6,
+        "material": "powder",
+        "planner_success": false,
+        "request_sha256": "22cd8f80ee14b6a08f02964cc315aa9a12869eaaa3c87aefe0afee116daa6ab6",
+        "scope": "to_checkpoint_6",
+        "success": false,
+        "value": 0,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_minus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 7,
+        "material": "powder",
+        "planner_success": false,
+        "request_sha256": "7a851c07c8807e3e0fe954186996aeac03d58038eab35d01c11651d802a2a0f2",
+        "scope": "to_checkpoint_6",
+        "success": false,
+        "value": 2,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned",
+        "dimension": "segment_material_hard_limit",
+        "duplicate_request": true,
+        "failure_code": null,
+        "global_unique_request_index": 2,
+        "material": "powder",
+        "planner_success": true,
+        "request_sha256": "4531e64e1bca44d37f58ef0614f1d96debb8619cab2ca094a23efc1c6c6e7bce",
+        "scope": "to_checkpoint_6",
+        "success": true,
+        "value": 3,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_plus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": null,
+        "global_unique_request_index": 8,
+        "material": "powder",
+        "planner_success": true,
+        "request_sha256": "6d5ca948835fe305823ce142d4b5b0de7582f0e7da1831f1886b20f7bfdb76b5",
+        "scope": "to_checkpoint_6",
+        "success": true,
+        "value": 4,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "zero",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 9,
+        "material": "lower_enhance_stone",
+        "planner_success": false,
+        "request_sha256": "f41cf20b530cefbce7f16c47c439e370fe9a37efce0f0bcb0022640264c5705e",
+        "scope": "to_checkpoint_6",
+        "success": false,
+        "value": 0,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_minus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 10,
+        "material": "lower_enhance_stone",
+        "planner_success": false,
+        "request_sha256": "914bdfdaf40a14e0f59107354839a719ab1c513950621e454cd13145413c92be",
+        "scope": "to_checkpoint_6",
+        "success": false,
+        "value": 2,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned",
+        "dimension": "segment_material_hard_limit",
+        "duplicate_request": true,
+        "failure_code": null,
+        "global_unique_request_index": 2,
+        "material": "lower_enhance_stone",
+        "planner_success": true,
+        "request_sha256": "4531e64e1bca44d37f58ef0614f1d96debb8619cab2ca094a23efc1c6c6e7bce",
+        "scope": "to_checkpoint_6",
+        "success": true,
+        "value": 3,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_plus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": null,
+        "global_unique_request_index": 11,
+        "material": "lower_enhance_stone",
+        "planner_success": true,
+        "request_sha256": "15073ba365788c46069958e2380863e4a4b4626e1efedaf5586c80b1b622ee96",
+        "scope": "to_checkpoint_6",
+        "success": true,
+        "value": 4,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "zero",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 12,
+        "material": "powder",
+        "planner_success": false,
+        "request_sha256": "36d7264ba5ae2d33eaac4f6df57a347b23eccf0e372cf1c1ef558d7e3d28901b",
+        "scope": "to_checkpoint_9",
+        "success": false,
+        "value": 0,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_minus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 13,
+        "material": "powder",
+        "planner_success": false,
+        "request_sha256": "bb10c170995c7d956ab98bc02f197820e9caca9dd5e22056c130871569d0b925",
+        "scope": "to_checkpoint_9",
+        "success": false,
+        "value": 5,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned",
+        "dimension": "segment_material_hard_limit",
+        "duplicate_request": true,
+        "failure_code": null,
+        "global_unique_request_index": 2,
+        "material": "powder",
+        "planner_success": true,
+        "request_sha256": "4531e64e1bca44d37f58ef0614f1d96debb8619cab2ca094a23efc1c6c6e7bce",
+        "scope": "to_checkpoint_9",
+        "success": true,
+        "value": 6,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_plus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": null,
+        "global_unique_request_index": 14,
+        "material": "powder",
+        "planner_success": true,
+        "request_sha256": "58f86321327f6a4fbeef36ff221bfaff20f6cf8dd256235f184d253ddd00e981",
+        "scope": "to_checkpoint_9",
+        "success": true,
+        "value": 7,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "zero",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 15,
+        "material": "lower_enhance_stone",
+        "planner_success": false,
+        "request_sha256": "16028a5332e9420ed9d0f122065ef9366894d6c6809a00ca356b6ee284cfd28b",
+        "scope": "to_checkpoint_9",
+        "success": false,
+        "value": 0,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_minus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 16,
+        "material": "lower_enhance_stone",
+        "planner_success": false,
+        "request_sha256": "bab887d2d9cc0715484757aa5266fbe48ffe9ed983db74eecb46281b43d224d6",
+        "scope": "to_checkpoint_9",
+        "success": false,
+        "value": 6,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned",
+        "dimension": "segment_material_hard_limit",
+        "duplicate_request": true,
+        "failure_code": null,
+        "global_unique_request_index": 2,
+        "material": "lower_enhance_stone",
+        "planner_success": true,
+        "request_sha256": "4531e64e1bca44d37f58ef0614f1d96debb8619cab2ca094a23efc1c6c6e7bce",
+        "scope": "to_checkpoint_9",
+        "success": true,
+        "value": 7,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_plus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": null,
+        "global_unique_request_index": 17,
+        "material": "lower_enhance_stone",
+        "planner_success": true,
+        "request_sha256": "e3f3a58165a4ee85f1aea066ea39bb2942706fac6d1078239456ceefa9fe65b4",
+        "scope": "to_checkpoint_9",
+        "success": true,
+        "value": 8,
+        "violations": []
+      },
+      {
+        "aliases": [
+          "planned_minus_one",
+          "planned"
+        ],
+        "boundary": "zero",
+        "dimension": "segment_material_hard_limit",
+        "duplicate_request": true,
+        "failure_code": null,
+        "global_unique_request_index": 2,
+        "material": "powder",
+        "planner_success": true,
+        "request_sha256": "4531e64e1bca44d37f58ef0614f1d96debb8619cab2ca094a23efc1c6c6e7bce",
+        "scope": "to_checkpoint_12",
+        "success": true,
+        "value": 0,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_plus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": null,
+        "global_unique_request_index": 18,
+        "material": "powder",
+        "planner_success": true,
+        "request_sha256": "8b8483138d51fbd72c81bf31ea10b772d1e14fb3afc0c6263270a93e441456b6",
+        "scope": "to_checkpoint_12",
+        "success": true,
+        "value": 1,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "zero",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 19,
+        "material": "lower_enhance_stone",
+        "planner_success": false,
+        "request_sha256": "e741bbbc9af1cb9a1fca12320aea16071412b5a327dc206e4cd988e9876474c9",
+        "scope": "to_checkpoint_12",
+        "success": false,
+        "value": 0,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_minus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 20,
+        "material": "lower_enhance_stone",
+        "planner_success": false,
+        "request_sha256": "1eb761da9e62e89195d622de0a9ebe3e76f3d226aa1f92ea67ddcb43f46326fe",
+        "scope": "to_checkpoint_12",
+        "success": false,
+        "value": 14,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned",
+        "dimension": "segment_material_hard_limit",
+        "duplicate_request": true,
+        "failure_code": null,
+        "global_unique_request_index": 2,
+        "material": "lower_enhance_stone",
+        "planner_success": true,
+        "request_sha256": "4531e64e1bca44d37f58ef0614f1d96debb8619cab2ca094a23efc1c6c6e7bce",
+        "scope": "to_checkpoint_12",
+        "success": true,
+        "value": 15,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_plus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": null,
+        "global_unique_request_index": 21,
+        "material": "lower_enhance_stone",
+        "planner_success": true,
+        "request_sha256": "52a2bfb4e66c99c52682ef16140f0b5ce6df953b3a2fa6f2bc509020ef43c7e3",
+        "scope": "to_checkpoint_12",
+        "success": true,
+        "value": 16,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "zero",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 22,
+        "material": "powder",
+        "planner_success": false,
+        "request_sha256": "0974e4ce7a600dadbc15bf1c07b2fe7bafc9801fb27b6520e3f06f3096734984",
+        "scope": "to_checkpoint_15",
+        "success": false,
+        "value": 0,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_minus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 23,
+        "material": "powder",
+        "planner_success": false,
+        "request_sha256": "78ffce43ab7d6fad7dc12a5193614e21e464cc645c913004623de49dbba52cda",
+        "scope": "to_checkpoint_15",
+        "success": false,
+        "value": 7,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned",
+        "dimension": "segment_material_hard_limit",
+        "duplicate_request": true,
+        "failure_code": null,
+        "global_unique_request_index": 2,
+        "material": "powder",
+        "planner_success": true,
+        "request_sha256": "4531e64e1bca44d37f58ef0614f1d96debb8619cab2ca094a23efc1c6c6e7bce",
+        "scope": "to_checkpoint_15",
+        "success": true,
+        "value": 8,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_plus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": null,
+        "global_unique_request_index": 24,
+        "material": "powder",
+        "planner_success": true,
+        "request_sha256": "bc3914a6852b837078e4ab9d16af6cfc810c03b692d390073d90105ac8ae846c",
+        "scope": "to_checkpoint_15",
+        "success": true,
+        "value": 9,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "zero",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 25,
+        "material": "lower_enhance_stone",
+        "planner_success": false,
+        "request_sha256": "c024c0e245e8b2231f37d6558eaf30cd5e3d06ba36eab5c8d02dfff449c100b8",
+        "scope": "to_checkpoint_15",
+        "success": false,
+        "value": 0,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_minus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 26,
+        "material": "lower_enhance_stone",
+        "planner_success": false,
+        "request_sha256": "77e1289656de02f601fc7a0e587cd6dcfcfd02a0dcaeed387cfd2b97336cb63e",
+        "scope": "to_checkpoint_15",
+        "success": false,
+        "value": 27,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned",
+        "dimension": "segment_material_hard_limit",
+        "duplicate_request": true,
+        "failure_code": null,
+        "global_unique_request_index": 2,
+        "material": "lower_enhance_stone",
+        "planner_success": true,
+        "request_sha256": "4531e64e1bca44d37f58ef0614f1d96debb8619cab2ca094a23efc1c6c6e7bce",
+        "scope": "to_checkpoint_15",
+        "success": true,
+        "value": 28,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_plus_one",
+        "dimension": "segment_material_hard_limit",
+        "failure_code": null,
+        "global_unique_request_index": 27,
+        "material": "lower_enhance_stone",
+        "planner_success": true,
+        "request_sha256": "c891e7322b6dedeb26f3514e31871b62f9d34c0468df875db2f62c908722b775",
+        "scope": "to_checkpoint_15",
+        "success": true,
+        "value": 29,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "zero",
+        "dimension": "cumulative_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 28,
+        "material": "powder",
+        "planner_success": false,
+        "request_sha256": "bb2282367054a20c752db1871b2e6f5a4e99aa5bc92f6873d4a87e9dd855700e",
+        "scope": "full_route_0_to_15",
+        "success": false,
+        "value": 0,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_minus_one",
+        "dimension": "cumulative_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 29,
+        "material": "powder",
+        "planner_success": false,
+        "request_sha256": "6f0629352f9f283c0c2089b06028eef77f0608b1126ddcf7d0765e87ad9dfc0e",
+        "scope": "full_route_0_to_15",
+        "success": false,
+        "value": 21,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned",
+        "dimension": "cumulative_material_hard_limit",
+        "duplicate_request": true,
+        "failure_code": null,
+        "global_unique_request_index": 2,
+        "material": "powder",
+        "planner_success": true,
+        "request_sha256": "4531e64e1bca44d37f58ef0614f1d96debb8619cab2ca094a23efc1c6c6e7bce",
+        "scope": "full_route_0_to_15",
+        "success": true,
+        "value": 22,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_plus_one",
+        "dimension": "cumulative_material_hard_limit",
+        "failure_code": null,
+        "global_unique_request_index": 30,
+        "material": "powder",
+        "planner_success": true,
+        "request_sha256": "2b4ae3837140d3b9576e57149ee0d8ce88e54721cb6095423630cbca2104adb7",
+        "scope": "full_route_0_to_15",
+        "success": true,
+        "value": 23,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "zero",
+        "dimension": "cumulative_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 31,
+        "material": "lower_enhance_stone",
+        "planner_success": false,
+        "request_sha256": "1a8e811dc9ce79a1ed931d5650dfdd91d7da87e7b842ec013d39697701fa55f6",
+        "scope": "full_route_0_to_15",
+        "success": false,
+        "value": 0,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_minus_one",
+        "dimension": "cumulative_material_hard_limit",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 32,
+        "material": "lower_enhance_stone",
+        "planner_success": false,
+        "request_sha256": "a8a6c688681b8a9881e9192bb63f25b53ae212a8f15874b53332db03aa6aad74",
+        "scope": "full_route_0_to_15",
+        "success": false,
+        "value": 53,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned",
+        "dimension": "cumulative_material_hard_limit",
+        "duplicate_request": true,
+        "failure_code": null,
+        "global_unique_request_index": 2,
+        "material": "lower_enhance_stone",
+        "planner_success": true,
+        "request_sha256": "4531e64e1bca44d37f58ef0614f1d96debb8619cab2ca094a23efc1c6c6e7bce",
+        "scope": "full_route_0_to_15",
+        "success": true,
+        "value": 54,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_plus_one",
+        "dimension": "cumulative_material_hard_limit",
+        "failure_code": null,
+        "global_unique_request_index": 33,
+        "material": "lower_enhance_stone",
+        "planner_success": true,
+        "request_sha256": "e6e6263f91c302cd56ffefba4c7066d508d0f549dd8c92e3a29efdbb4d39e3f9",
+        "scope": "full_route_0_to_15",
+        "success": true,
+        "value": 55,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "zero",
+        "dimension": "inventory_material",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 34,
+        "material": "powder",
+        "planner_success": false,
+        "request_sha256": "9d1c272f57fd00d61a0a76d2d44c5e5c7ba2f935b5b8dab7cb48590146f185f9",
+        "scope": "full_route_0_to_15",
+        "success": false,
+        "value": 0,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_minus_one",
+        "dimension": "inventory_material",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 35,
+        "material": "powder",
+        "planner_success": false,
+        "request_sha256": "33429fde9078a7cce5b2d0c0727fcb4912155d15b50ae23b2905ed68ddcd4c89",
+        "scope": "full_route_0_to_15",
+        "success": false,
+        "value": 21,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned",
+        "dimension": "inventory_material",
+        "failure_code": null,
+        "global_unique_request_index": 36,
+        "material": "powder",
+        "planner_success": true,
+        "request_sha256": "4b27abc0a99bc3b5317b625004a0ddee3b915b4aee15d514bac982d1a8e5709e",
+        "scope": "full_route_0_to_15",
+        "success": true,
+        "value": 22,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_plus_one",
+        "dimension": "inventory_material",
+        "duplicate_request": true,
+        "failure_code": null,
+        "global_unique_request_index": 2,
+        "material": "powder",
+        "planner_success": true,
+        "request_sha256": "4531e64e1bca44d37f58ef0614f1d96debb8619cab2ca094a23efc1c6c6e7bce",
+        "scope": "full_route_0_to_15",
+        "success": true,
+        "value": 23,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "zero",
+        "dimension": "inventory_material",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 37,
+        "material": "lower_enhance_stone",
+        "planner_success": false,
+        "request_sha256": "983182d2f898e785551cdeec6b0a2f90d106c7125f795a4d9261083e378979df",
+        "scope": "full_route_0_to_15",
+        "success": false,
+        "value": 0,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_minus_one",
+        "dimension": "inventory_material",
+        "failure_code": "no_feasible_integer_combination",
+        "global_unique_request_index": 38,
+        "material": "lower_enhance_stone",
+        "planner_success": false,
+        "request_sha256": "afa1043e38e769cc05794877e93b4da1417fe16ca7abd4fd280d758b1103471c",
+        "scope": "full_route_0_to_15",
+        "success": false,
+        "value": 53,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned",
+        "dimension": "inventory_material",
+        "failure_code": null,
+        "global_unique_request_index": 39,
+        "material": "lower_enhance_stone",
+        "planner_success": true,
+        "request_sha256": "19836206950143aa12b469642846b434aad37088fcf747af5b0b9d683d0b5bbe",
+        "scope": "full_route_0_to_15",
+        "success": true,
+        "value": 54,
+        "violations": []
+      },
+      {
+        "aliases": [],
+        "boundary": "planned_plus_one",
+        "dimension": "inventory_material",
+        "duplicate_request": true,
+        "failure_code": null,
+        "global_unique_request_index": 2,
+        "material": "lower_enhance_stone",
+        "planner_success": true,
+        "request_sha256": "4531e64e1bca44d37f58ef0614f1d96debb8619cab2ca094a23efc1c6c6e7bce",
+        "scope": "full_route_0_to_15",
+        "success": true,
+        "value": 55,
+        "violations": []
+      }
+    ],
+    "coverage_case_count": 53,
+    "coverage_dimensions": {
+      "cumulative_material_hard_limit": {
+        "coverage_case_count": 8,
+        "coverage_fail_closed_count": 4,
+        "coverage_success_count": 4,
+        "invariant_violation_count": 0,
+        "violation_case_count": 0
+      },
+      "inventory_material": {
+        "coverage_case_count": 8,
+        "coverage_fail_closed_count": 4,
+        "coverage_success_count": 4,
+        "invariant_violation_count": 0,
+        "violation_case_count": 0
+      },
+      "segment_material_hard_limit": {
+        "coverage_case_count": 37,
+        "coverage_fail_closed_count": 17,
+        "coverage_success_count": 20,
+        "invariant_violation_count": 0,
+        "violation_case_count": 0
+      }
+    },
+    "coverage_results": {
+      "fail_closed_count": 25,
+      "invariant_violation_count": 0,
+      "success_count": 28,
+      "violation_case_count": 0
+    },
+    "duplicate_request_case_count": 13,
+    "global_unique_request_catalog": [
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 0
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 0,
+        "planner_success": false,
+        "request_sha256": "a0ac682ebae2b6f9f69e9b80d06344b4a7e01b53f4ddb6c4e869db6647eb77cd",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 4
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 1,
+        "planner_success": false,
+        "request_sha256": "000b31a36547bbb997909d0a579b2e7e6a13bf27c891c1dac835ae0b2180b26d",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 14,
+        "failure_code": null,
+        "first_coverage_case_index": 2,
+        "planner_success": true,
+        "request_sha256": "4531e64e1bca44d37f58ef0614f1d96debb8619cab2ca094a23efc1c6c6e7bce",
+        "status": "success",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 6
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": null,
+        "first_coverage_case_index": 3,
+        "planner_success": true,
+        "request_sha256": "786c22397091a5520b8f89ccb3cb86633e320d03ddf9e0f8d27f148bf4527985",
+        "status": "success",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 0,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 4,
+        "planner_success": false,
+        "request_sha256": "199e6c270888f3b8c2aa5a53685e70905414b4275cd4e2ca2053bd42e512b3b2",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 2,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": null,
+        "first_coverage_case_index": 6,
+        "planner_success": true,
+        "request_sha256": "416293de28fbd06214a6ae031bb4fa7d689cb905da88f00c60df369122a66a7f",
+        "status": "success",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 0
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 7,
+        "planner_success": false,
+        "request_sha256": "22cd8f80ee14b6a08f02964cc315aa9a12869eaaa3c87aefe0afee116daa6ab6",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 2
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 8,
+        "planner_success": false,
+        "request_sha256": "7a851c07c8807e3e0fe954186996aeac03d58038eab35d01c11651d802a2a0f2",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 4
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": null,
+        "first_coverage_case_index": 10,
+        "planner_success": true,
+        "request_sha256": "6d5ca948835fe305823ce142d4b5b0de7582f0e7da1831f1886b20f7bfdb76b5",
+        "status": "success",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 0,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 11,
+        "planner_success": false,
+        "request_sha256": "f41cf20b530cefbce7f16c47c439e370fe9a37efce0f0bcb0022640264c5705e",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 2,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 12,
+        "planner_success": false,
+        "request_sha256": "914bdfdaf40a14e0f59107354839a719ab1c513950621e454cd13145413c92be",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 4,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": null,
+        "first_coverage_case_index": 14,
+        "planner_success": true,
+        "request_sha256": "15073ba365788c46069958e2380863e4a4b4626e1efedaf5586c80b1b622ee96",
+        "status": "success",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 0
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 15,
+        "planner_success": false,
+        "request_sha256": "36d7264ba5ae2d33eaac4f6df57a347b23eccf0e372cf1c1ef558d7e3d28901b",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 5
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 16,
+        "planner_success": false,
+        "request_sha256": "bb10c170995c7d956ab98bc02f197820e9caca9dd5e22056c130871569d0b925",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 7
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": null,
+        "first_coverage_case_index": 18,
+        "planner_success": true,
+        "request_sha256": "58f86321327f6a4fbeef36ff221bfaff20f6cf8dd256235f184d253ddd00e981",
+        "status": "success",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 0,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 19,
+        "planner_success": false,
+        "request_sha256": "16028a5332e9420ed9d0f122065ef9366894d6c6809a00ca356b6ee284cfd28b",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 6,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 20,
+        "planner_success": false,
+        "request_sha256": "bab887d2d9cc0715484757aa5266fbe48ffe9ed983db74eecb46281b43d224d6",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 8,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": null,
+        "first_coverage_case_index": 22,
+        "planner_success": true,
+        "request_sha256": "e3f3a58165a4ee85f1aea066ea39bb2942706fac6d1078239456ceefa9fe65b4",
+        "status": "success",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 1
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": null,
+        "first_coverage_case_index": 24,
+        "planner_success": true,
+        "request_sha256": "8b8483138d51fbd72c81bf31ea10b772d1e14fb3afc0c6263270a93e441456b6",
+        "status": "success",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 0,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 25,
+        "planner_success": false,
+        "request_sha256": "e741bbbc9af1cb9a1fca12320aea16071412b5a327dc206e4cd988e9876474c9",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 14,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 26,
+        "planner_success": false,
+        "request_sha256": "1eb761da9e62e89195d622de0a9ebe3e76f3d226aa1f92ea67ddcb43f46326fe",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 16,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": null,
+        "first_coverage_case_index": 28,
+        "planner_success": true,
+        "request_sha256": "52a2bfb4e66c99c52682ef16140f0b5ce6df953b3a2fa6f2bc509020ef43c7e3",
+        "status": "success",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 0
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 29,
+        "planner_success": false,
+        "request_sha256": "0974e4ce7a600dadbc15bf1c07b2fe7bafc9801fb27b6520e3f06f3096734984",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 7
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 30,
+        "planner_success": false,
+        "request_sha256": "78ffce43ab7d6fad7dc12a5193614e21e464cc645c913004623de49dbba52cda",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 9
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": null,
+        "first_coverage_case_index": 32,
+        "planner_success": true,
+        "request_sha256": "bc3914a6852b837078e4ab9d16af6cfc810c03b692d390073d90105ac8ae846c",
+        "status": "success",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 0,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 33,
+        "planner_success": false,
+        "request_sha256": "c024c0e245e8b2231f37d6558eaf30cd5e3d06ba36eab5c8d02dfff449c100b8",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 27,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 34,
+        "planner_success": false,
+        "request_sha256": "77e1289656de02f601fc7a0e587cd6dcfcfd02a0dcaeed387cfd2b97336cb63e",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 29,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": null,
+        "first_coverage_case_index": 36,
+        "planner_success": true,
+        "request_sha256": "c891e7322b6dedeb26f3514e31871b62f9d34c0468df875db2f62c908722b775",
+        "status": "success",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 0
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 37,
+        "planner_success": false,
+        "request_sha256": "bb2282367054a20c752db1871b2e6f5a4e99aa5bc92f6873d4a87e9dd855700e",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 21
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 38,
+        "planner_success": false,
+        "request_sha256": "6f0629352f9f283c0c2089b06028eef77f0608b1126ddcf7d0765e87ad9dfc0e",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 23
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": null,
+        "first_coverage_case_index": 40,
+        "planner_success": true,
+        "request_sha256": "2b4ae3837140d3b9576e57149ee0d8ce88e54721cb6095423630cbca2104adb7",
+        "status": "success",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 0,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 41,
+        "planner_success": false,
+        "request_sha256": "1a8e811dc9ce79a1ed931d5650dfdd91d7da87e7b842ec013d39697701fa55f6",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 53,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 42,
+        "planner_success": false,
+        "request_sha256": "a8a6c688681b8a9881e9192bb63f25b53ae212a8f15874b53332db03aa6aad74",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 55,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": null,
+        "first_coverage_case_index": 44,
+        "planner_success": true,
+        "request_sha256": "e6e6263f91c302cd56ffefba4c7066d508d0f549dd8c92e3a29efdbb4d39e3f9",
+        "status": "success",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 0
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 45,
+        "planner_success": false,
+        "request_sha256": "9d1c272f57fd00d61a0a76d2d44c5e5c7ba2f935b5b8dab7cb48590146f185f9",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 21
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 46,
+        "planner_success": false,
+        "request_sha256": "33429fde9078a7cce5b2d0c0727fcb4912155d15b50ae23b2905ed68ddcd4c89",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 55,
+            "powder": 22
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": null,
+        "first_coverage_case_index": 47,
+        "planner_success": true,
+        "request_sha256": "4b27abc0a99bc3b5317b625004a0ddee3b915b4aee15d514bac982d1a8e5709e",
+        "status": "success",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 0,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 49,
+        "planner_success": false,
+        "request_sha256": "983182d2f898e785551cdeec6b0a2f90d106c7125f795a4d9261083e378979df",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 53,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": "no_feasible_integer_combination",
+        "first_coverage_case_index": 50,
+        "planner_success": false,
+        "request_sha256": "afa1043e38e769cc05794877e93b4da1417fe16ca7abd4fd280d758b1103471c",
+        "status": "fail_closed",
+        "violations": []
+      },
+      {
+        "canonical_request": {
+          "allowed_materials": [
+            "powder",
+            "lower_enhance_stone"
+          ],
+          "cumulative_hard_limits": {
+            "gold": 812800,
+            "materials": {
+              "lower_enhance_stone": 54,
+              "powder": 22
+            }
+          },
+          "current_checkpoint": 0,
+          "inventory": {
+            "lower_enhance_stone": 54,
+            "powder": 23
+          },
+          "material_pool": "common",
+          "material_priority": [
+            "lower_enhance_stone",
+            "powder"
+          ],
+          "rarity": "Epic",
+          "segment_hard_limits": {
+            "12": {
+              "gold": 216000,
+              "materials": {
+                "lower_enhance_stone": 15,
+                "powder": 0
+              }
+            },
+            "15": {
+              "gold": 416000,
+              "materials": {
+                "lower_enhance_stone": 28,
+                "powder": 8
+              }
+            },
+            "3": {
+              "gold": 22400,
+              "materials": {
+                "lower_enhance_stone": 1,
+                "powder": 5
+              }
+            },
+            "6": {
+              "gold": 48000,
+              "materials": {
+                "lower_enhance_stone": 3,
+                "powder": 3
+              }
+            },
+            "9": {
+              "gold": 110400,
+              "materials": {
+                "lower_enhance_stone": 7,
+                "powder": 6
+              }
+            }
+          },
+          "target_checkpoint": 15
+        },
+        "coverage_case_count": 1,
+        "failure_code": null,
+        "first_coverage_case_index": 51,
+        "planner_success": true,
+        "request_sha256": "19836206950143aa12b469642846b434aad37088fcf747af5b0b9d683d0b5bbe",
+        "status": "success",
+        "violations": []
+      }
+    ],
+    "global_unique_request_count": 40,
+    "invariant_violation_count": 0,
+    "local_alias_count": 3,
+    "outcomes_sha256": "6aebb1a94c0e8d66bbfded5d9e9b1a0e06dd8a7f90d430d5b5d1619cdd5194d0",
+    "raw_label_candidate_count": 56,
+    "unique_request_results": {
+      "fail_closed_count": 25,
+      "success_count": 15,
+      "violation_case_count": 0
+    }
+  },
+  "five_segment_exact_limit_result": {
+    "cumulative_applied_hard_limit": {
+      "gold": 812800,
+      "materials": {
+        "lower_enhance_stone": 54,
+        "powder": 22
+      }
+    },
+    "cumulative_expected_consumption": {
+      "gold": 812800,
+      "materials": {
+        "lower_enhance_stone": 54,
+        "powder": 22
+      }
+    },
+    "cumulative_suggested_hard_limit": {
+      "gold": 812800,
+      "materials": {
+        "lower_enhance_stone": 54,
+        "powder": 22
+      }
+    },
+    "failure": null,
+    "hard_limit_check": "passed",
+    "material_pool": "common",
+    "mode": "validated_against_hard_limits",
+    "objective_order": [
+      "minimum_gold",
+      "minimum_base_experience_overflow",
+      "minimum_material_count",
+      "material_priority"
+    ],
+    "rarity": "Epic",
+    "rules_version": "offline_budget_planner/v1",
+    "segments": [
+      {
+        "applied_hard_limit": {
+          "gold": 22400,
+          "materials": {
+            "lower_enhance_stone": 1,
+            "powder": 5
+          }
+        },
+        "experience_overflow": 31,
+        "from_checkpoint": 0,
+        "gold": 22400,
+        "materials": {
+          "lower_enhance_stone": 1,
+          "powder": 5
+        },
+        "preview_base_experience": null,
+        "provided_base_experience": 2000,
+        "required_base_experience": 1969,
+        "suggested_hard_limit": {
+          "gold": 22400,
+          "materials": {
+            "lower_enhance_stone": 1,
+            "powder": 5
+          }
+        },
+        "to_checkpoint": 3
+      },
+      {
+        "applied_hard_limit": {
+          "gold": 48000,
+          "materials": {
+            "lower_enhance_stone": 3,
+            "powder": 3
+          }
+        },
+        "experience_overflow": 75,
+        "from_checkpoint": 3,
+        "gold": 48000,
+        "materials": {
+          "lower_enhance_stone": 3,
+          "powder": 3
+        },
+        "preview_base_experience": null,
+        "provided_base_experience": 4800,
+        "required_base_experience": 4725,
+        "suggested_hard_limit": {
+          "gold": 48000,
+          "materials": {
+            "lower_enhance_stone": 3,
+            "powder": 3
+          }
+        },
+        "to_checkpoint": 6
+      },
+      {
+        "applied_hard_limit": {
+          "gold": 110400,
+          "materials": {
+            "lower_enhance_stone": 7,
+            "powder": 6
+          }
+        },
+        "experience_overflow": 75,
+        "from_checkpoint": 6,
+        "gold": 110400,
+        "materials": {
+          "lower_enhance_stone": 7,
+          "powder": 6
+        },
+        "preview_base_experience": null,
+        "provided_base_experience": 11100,
+        "required_base_experience": 11025,
+        "suggested_hard_limit": {
+          "gold": 110400,
+          "materials": {
+            "lower_enhance_stone": 7,
+            "powder": 6
+          }
+        },
+        "to_checkpoint": 9
+      },
+      {
+        "applied_hard_limit": {
+          "gold": 216000,
+          "materials": {
+            "lower_enhance_stone": 15,
+            "powder": 0
+          }
+        },
+        "experience_overflow": 355,
+        "from_checkpoint": 9,
+        "gold": 216000,
+        "materials": {
+          "lower_enhance_stone": 15,
+          "powder": 0
+        },
+        "preview_base_experience": null,
+        "provided_base_experience": 22500,
+        "required_base_experience": 22145,
+        "suggested_hard_limit": {
+          "gold": 216000,
+          "materials": {
+            "lower_enhance_stone": 15,
+            "powder": 0
+          }
+        },
+        "to_checkpoint": 12
+      },
+      {
+        "applied_hard_limit": {
+          "gold": 416000,
+          "materials": {
+            "lower_enhance_stone": 28,
+            "powder": 8
+          }
+        },
+        "experience_overflow": 13,
+        "from_checkpoint": 12,
+        "gold": 416000,
+        "materials": {
+          "lower_enhance_stone": 28,
+          "powder": 8
+        },
+        "preview_base_experience": null,
+        "provided_base_experience": 42800,
+        "required_base_experience": 42787,
+        "suggested_hard_limit": {
+          "gold": 416000,
+          "materials": {
+            "lower_enhance_stone": 28,
+            "powder": 8
+          }
+        },
+        "to_checkpoint": 15
+      }
+    ],
+    "success": true
+  },
+  "five_segment_reference_proposal": {
+    "cumulative_applied_hard_limit": null,
+    "cumulative_expected_consumption": {
+      "gold": 812800,
+      "materials": {
+        "lower_enhance_stone": 54,
+        "powder": 22
+      }
+    },
+    "cumulative_suggested_hard_limit": {
+      "gold": 812800,
+      "materials": {
+        "lower_enhance_stone": 54,
+        "powder": 22
+      }
+    },
+    "failure": null,
+    "hard_limit_check": "not_provided",
+    "material_pool": "common",
+    "mode": "proposal_only",
+    "objective_order": [
+      "minimum_gold",
+      "minimum_base_experience_overflow",
+      "minimum_material_count",
+      "material_priority"
+    ],
+    "rarity": "Epic",
+    "rules_version": "offline_budget_planner/v1",
+    "segments": [
+      {
+        "applied_hard_limit": null,
+        "experience_overflow": 31,
+        "from_checkpoint": 0,
+        "gold": 22400,
+        "materials": {
+          "lower_enhance_stone": 1,
+          "powder": 5
+        },
+        "preview_base_experience": null,
+        "provided_base_experience": 2000,
+        "required_base_experience": 1969,
+        "suggested_hard_limit": {
+          "gold": 22400,
+          "materials": {
+            "lower_enhance_stone": 1,
+            "powder": 5
+          }
+        },
+        "to_checkpoint": 3
+      },
+      {
+        "applied_hard_limit": null,
+        "experience_overflow": 75,
+        "from_checkpoint": 3,
+        "gold": 48000,
+        "materials": {
+          "lower_enhance_stone": 3,
+          "powder": 3
+        },
+        "preview_base_experience": null,
+        "provided_base_experience": 4800,
+        "required_base_experience": 4725,
+        "suggested_hard_limit": {
+          "gold": 48000,
+          "materials": {
+            "lower_enhance_stone": 3,
+            "powder": 3
+          }
+        },
+        "to_checkpoint": 6
+      },
+      {
+        "applied_hard_limit": null,
+        "experience_overflow": 75,
+        "from_checkpoint": 6,
+        "gold": 110400,
+        "materials": {
+          "lower_enhance_stone": 7,
+          "powder": 6
+        },
+        "preview_base_experience": null,
+        "provided_base_experience": 11100,
+        "required_base_experience": 11025,
+        "suggested_hard_limit": {
+          "gold": 110400,
+          "materials": {
+            "lower_enhance_stone": 7,
+            "powder": 6
+          }
+        },
+        "to_checkpoint": 9
+      },
+      {
+        "applied_hard_limit": null,
+        "experience_overflow": 355,
+        "from_checkpoint": 9,
+        "gold": 216000,
+        "materials": {
+          "lower_enhance_stone": 15,
+          "powder": 0
+        },
+        "preview_base_experience": null,
+        "provided_base_experience": 22500,
+        "required_base_experience": 22145,
+        "suggested_hard_limit": {
+          "gold": 216000,
+          "materials": {
+            "lower_enhance_stone": 15,
+            "powder": 0
+          }
+        },
+        "to_checkpoint": 12
+      },
+      {
+        "applied_hard_limit": null,
+        "experience_overflow": 13,
+        "from_checkpoint": 12,
+        "gold": 416000,
+        "materials": {
+          "lower_enhance_stone": 28,
+          "powder": 8
+        },
+        "preview_base_experience": null,
+        "provided_base_experience": 42800,
+        "required_base_experience": 42787,
+        "suggested_hard_limit": {
+          "gold": 416000,
+          "materials": {
+            "lower_enhance_stone": 28,
+            "powder": 8
+          }
+        },
+        "to_checkpoint": 15
+      }
+    ],
+    "success": true
+  },
+  "implementation_model": "gpt-5.6-terra",
+  "objective_order": [
+    "minimum_gold",
+    "minimum_base_experience_overflow",
+    "minimum_material_count",
+    "material_priority"
+  ],
+  "operation_authorization": false,
+  "public_evidence": {
+    "checkpoint_requirements": {
+      "scope": "published per-level requirements aggregated only across standard adjacent checkpoints",
+      "source": "src/e7_enhance/resource_model.py RED_LEVEL_EXP/PURPLE_LEVEL_EXP"
+    },
+    "common_materials": {
+      "lower_enhance_stone": {
+        "base_experience": 1500,
+        "gold_per_unit": 14400
+      },
+      "planning_interpretation": "integer base experience sufficient without probabilistic bonus",
+      "powder": {
+        "base_experience": 100,
+        "gold_per_unit": 1600
+      },
+      "source": "src/e7_enhance/resource_model.py"
+    }
+  },
+  "reasoning_effort": "high",
+  "report_type": "offline_budget_planner_validation",
+  "rules_version": "offline_budget_planner/v1",
+  "validation_date": "2026-07-25"
+}

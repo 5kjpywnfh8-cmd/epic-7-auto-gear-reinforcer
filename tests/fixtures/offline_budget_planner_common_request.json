@@ -1,0 +1,13 @@
+{
+  "material_pool": "common",
+  "rarity": "Epic",
+  "current_checkpoint": 0,
+  "target_checkpoint": 3,
+  "allowed_materials": ["powder", "lower_enhance_stone"],
+  "inventory": {"powder": 5, "lower_enhance_stone": 1},
+  "material_priority": ["lower_enhance_stone", "powder"],
+  "segment_hard_limits": {
+    "3": {"materials": {"powder": 5, "lower_enhance_stone": 1}, "gold": 22400}
+  },
+  "cumulative_hard_limits": {"materials": {"powder": 5, "lower_enhance_stone": 1}, "gold": 22400}
+}
