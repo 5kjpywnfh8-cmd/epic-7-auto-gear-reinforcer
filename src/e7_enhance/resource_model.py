@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from math import ceil, floor
+from math import floor
 from typing import Any
 
 from .models import round1
@@ -12,17 +12,32 @@ POWDER_EXP = 100
 POWDER_GOLD = 1600
 LOWER_ENHANCE_STONE_EXP = 1500
 LOWER_ENHANCE_STONE_USE_GOLD = 14400
+UPPER_ENHANCE_STONE_EXP = 4500
+UPPER_ENHANCE_STONE_USE_GOLD = 43200
 GOOD_PROBABILITY = 0.055
 GREAT_PROBABILITY = 0.055
+NORMAL_OUTCOME_WEIGHT = 178
+GOOD_OUTCOME_WEIGHT = 11
+GREAT_OUTCOME_WEIGHT = 11
+OUTCOME_WEIGHT_DENOMINATOR = 200
+PAGE_BASE_EXP_MULTIPLIER_NUMERATOR = 1166
+PAGE_BASE_EXP_MULTIPLIER_DENOMINATOR = 1000
+PAGE_BASE_EXP_MULTIPLIER = 1.166
+GOOD_GREAT_EXPECTED_EXP_MULTIPLIER = 1.0825
+CONTINUOUS_EXPECTED_ENHANCE_EXP_MULTIPLIER = 1.262195
+# Compatibility exports for callers that previously imported the old names.
+# The pet component is historical only: the verified page multiplier already
+# resolves it before the Good/Great layer is evaluated.
 PET_ENHANCE_EXP_MULTIPLIER = 1.066
-EXPECTED_ENHANCE_EXP_MULTIPLIER = 1.15395
+EXPECTED_ENHANCE_EXP_MULTIPLIER = CONTINUOUS_EXPECTED_ENHANCE_EXP_MULTIPLIER
 DEFAULT_CONVERSION_GOLD_COST = 100000
 
-# Good and Great are mutually exclusive. Pet bonus is applied after either result.
+# Good and Great are mutually exclusive. The account page multiplier is
+# resolved first, so this random layer must not apply a pet multiplier again.
 ENHANCE_EXP_OUTCOMES = (
-    (0.89, 1.0 * PET_ENHANCE_EXP_MULTIPLIER),
-    (GOOD_PROBABILITY, 1.5 * PET_ENHANCE_EXP_MULTIPLIER),
-    (GREAT_PROBABILITY, 2.0 * PET_ENHANCE_EXP_MULTIPLIER),
+    (0.89, 1),
+    (GOOD_PROBABILITY, 1.5),
+    (GREAT_PROBABILITY, 2),
 )
 
 RED_LEVEL_EXP = {
@@ -81,6 +96,7 @@ class MaterialCost:
     powder_base_exp: float
     lower_stone_base_exp: float
     gross_base_material_exp: float
+    page_effective_exp: float
     expected_returned_powder_exp: float
     net_base_material_exp: float
     expected_effective_exp: float
@@ -107,6 +123,7 @@ class MaterialCost:
             powder_base_exp=self.powder_base_exp + other.powder_base_exp,
             lower_stone_base_exp=self.lower_stone_base_exp + other.lower_stone_base_exp,
             gross_base_material_exp=self.gross_base_material_exp + other.gross_base_material_exp,
+            page_effective_exp=self.page_effective_exp + other.page_effective_exp,
             expected_returned_powder_exp=self.expected_returned_powder_exp + other.expected_returned_powder_exp,
             net_base_material_exp=self.net_base_material_exp + other.net_base_material_exp,
             expected_effective_exp=self.expected_effective_exp + other.expected_effective_exp,
@@ -131,7 +148,7 @@ class ResourceRates:
 
     @property
     def expected_enhance_exp_per_unit(self) -> float:
-        return self.enhance_exp_per_unit * EXPECTED_ENHANCE_EXP_MULTIPLIER
+        return self.enhance_exp_per_unit * CONTINUOUS_EXPECTED_ENHANCE_EXP_MULTIPLIER
 
     @property
     def expected_enhance_exp_per_stamina(self) -> float:
@@ -214,19 +231,67 @@ class GearSource:
         return expected_stones * rates.stamina_equivalent(stone_material)
 
 
+def page_effective_experience(base_experience: int) -> int:
+    """Return the account-page ordinary result with integer-only arithmetic."""
+    if not isinstance(base_experience, int) or isinstance(base_experience, bool) or base_experience < 0:
+        raise ValueError("base_experience must be a non-negative integer")
+    return base_experience * PAGE_BASE_EXP_MULTIPLIER_NUMERATOR // PAGE_BASE_EXP_MULTIPLIER_DENOMINATOR
+
+
+def random_outcome_expected_experience(ordinary_experience: int) -> float:
+    """Expected Good/Great result from an already floored page result."""
+    if not isinstance(ordinary_experience, int) or isinstance(ordinary_experience, bool) or ordinary_experience < 0:
+        raise ValueError("ordinary_experience must be a non-negative integer")
+    return _weighted_outcome_total(_random_outcome_experiences(ordinary_experience)) / OUTCOME_WEIGHT_DENOMINATOR
+
+
+def _random_outcome_experiences(ordinary_experience: int) -> tuple[int, int, int]:
+    return ordinary_experience, ordinary_experience * 3 // 2, ordinary_experience * 2
+
+
+def _weighted_outcome_total(outcomes: tuple[int, int, int]) -> int:
+    ordinary, good, great = outcomes
+    return (
+        NORMAL_OUTCOME_WEIGHT * ordinary
+        + GOOD_OUTCOME_WEIGHT * good
+        + GREAT_OUTCOME_WEIGHT * great
+    )
+
+
+def _minimum_base_experience_for_page_requirement(requirement: int) -> int:
+    return (requirement * PAGE_BASE_EXP_MULTIPLIER_DENOMINATOR + PAGE_BASE_EXP_MULTIPLIER_NUMERATOR - 1) // PAGE_BASE_EXP_MULTIPLIER_NUMERATOR
+
+
+def _minimum_expected_grid_experience(requirement: int) -> int:
+    for gross in range(0, ((requirement + POWDER_EXP - 1) // POWDER_EXP) * POWDER_EXP + 1, POWDER_EXP):
+        ordinary_experience = page_effective_experience(gross)
+        if _weighted_outcome_total(_random_outcome_experiences(ordinary_experience)) >= requirement * OUTCOME_WEIGHT_DENOMINATOR:
+            return gross
+    raise AssertionError("expected material grid search must find a sufficient value")
+
+
 def material_cost_for_level(nominal_exp: float) -> MaterialCost:
     # The material pool is mixed by base experience contribution: half powder,
     # half lower stones.  Node accounting remains on the 100-exp grid; stone
     # quantities are expected fractional units and reconcile in the long run.
-    gross = ceil(nominal_exp / (POWDER_EXP * EXPECTED_ENHANCE_EXP_MULTIPLIER)) * POWDER_EXP
+    # Long-run material demand is an expected-value model. Each candidate batch
+    # first resolves the deterministic page result, then applies Good/Great to
+    # its integer outcomes. The offline planner deliberately uses a stricter
+    # deterministic page threshold for executable integer plans.
+    if int(nominal_exp) != nominal_exp or nominal_exp < 0:
+        raise ValueError("nominal_exp must be a non-negative integer value")
+    requirement = int(nominal_exp)
+    gross = _minimum_expected_grid_experience(requirement)
+    ordinary_page_experience = page_effective_experience(gross)
     powder_base_exp = gross / 2
     lower_stone_base_exp = gross / 2
     powder_units = powder_base_exp / POWDER_EXP
     lower_stone_units = lower_stone_base_exp / LOWER_ENHANCE_STONE_EXP
-    expected_return = 0.0
-    for probability, multiplier in ENHANCE_EXP_OUTCOMES:
-        overflow = max(0.0, gross * multiplier - nominal_exp)
-        expected_return += probability * floor(overflow / POWDER_EXP) * POWDER_EXP
+    outcomes = _random_outcome_experiences(ordinary_page_experience)
+    returned_experience = tuple(
+        floor(max(0, outcome - requirement) / POWDER_EXP) * POWDER_EXP for outcome in outcomes
+    )
+    expected_return = _weighted_outcome_total(returned_experience) / OUTCOME_WEIGHT_DENOMINATOR
     return MaterialCost(
         nominal_exp=float(nominal_exp),
         powder_units=powder_units,
@@ -234,9 +299,10 @@ def material_cost_for_level(nominal_exp: float) -> MaterialCost:
         powder_base_exp=powder_base_exp,
         lower_stone_base_exp=lower_stone_base_exp,
         gross_base_material_exp=float(gross),
+        page_effective_exp=float(ordinary_page_experience),
         expected_returned_powder_exp=expected_return,
         net_base_material_exp=gross - expected_return,
-        expected_effective_exp=gross * EXPECTED_ENHANCE_EXP_MULTIPLIER,
+        expected_effective_exp=_weighted_outcome_total(outcomes) / OUTCOME_WEIGHT_DENOMINATOR,
         powder_gold=float(powder_units * POWDER_GOLD),
         lower_stone_gold=float(lower_stone_units * LOWER_ENHANCE_STONE_USE_GOLD),
     )
@@ -248,7 +314,7 @@ def interval_material_costs(level_exp: dict[int, int]) -> dict[int, MaterialCost
     for checkpoint in CHECKPOINTS:
         if checkpoint == 0:
             continue
-        total = MaterialCost(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        total = MaterialCost(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         for level in range(lower + 1, checkpoint + 1):
             total += material_cost_for_level(level_exp[level])
         result[checkpoint] = total
@@ -388,7 +454,7 @@ def cumulative_cost(calibration: ResourceCalibration, enhance: int) -> ResourceA
 
 
 def cumulative_material_cost(calibration: ResourceCalibration, enhance: int) -> MaterialCost:
-    total = MaterialCost(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    total = MaterialCost(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
     for checkpoint in CHECKPOINTS:
         if checkpoint == 0:
             continue
@@ -555,7 +621,13 @@ def resource_snapshot(
         "material_scarcity_coefficient": material_scarcity,
         "material_mix_base_exp_ratio": {"powder": 0.5, "lower_stone": 0.5},
         "base_exp_granularity": POWDER_EXP,
-        "expected_enhance_exp_multiplier": EXPECTED_ENHANCE_EXP_MULTIPLIER,
+        "page_base_exp_multiplier": PAGE_BASE_EXP_MULTIPLIER,
+        "page_base_exp_multiplier_fraction": {
+            "numerator": PAGE_BASE_EXP_MULTIPLIER_NUMERATOR,
+            "denominator": PAGE_BASE_EXP_MULTIPLIER_DENOMINATOR,
+        },
+        "good_great_expected_exp_multiplier": GOOD_GREAT_EXPECTED_EXP_MULTIPLIER,
+        "continuous_expected_enhance_exp_multiplier": CONTINUOUS_EXPECTED_ENHANCE_EXP_MULTIPLIER,
         "gear_source_metadata": gear_source_metadata(gear_source or calibration.default_gear_source or "unconfirmed", calibration),
         "acquisition_status": "confirmed" if acquisition_stamina is not None else "unconfirmed",
         "gear_acquisition_stamina": round1(acquisition_stamina) if acquisition_stamina is not None else None,
@@ -566,6 +638,7 @@ def resource_snapshot(
         "powder_base_exp": round1(material.powder_base_exp),
         "lower_stone_base_exp": round1(material.lower_stone_base_exp),
         "gross_base_material_exp": round1(material.gross_base_material_exp),
+        "page_effective_exp": round1(material.page_effective_exp),
         "expected_returned_powder_exp": round1(material.expected_returned_powder_exp),
         "expected_effective_exp": round1(material.expected_effective_exp),
         "powder_gold": round1(material.powder_gold),
@@ -596,7 +669,9 @@ def red_epic_resource_table(gear_source: str | None = None) -> dict[str, Any]:
             "gold_per_8_stamina": calibration.rates.gold_per_unit,
             "base_enhance_exp_per_8_stamina": calibration.rates.enhance_exp_per_unit,
             "expected_enhance_exp_per_8_stamina": calibration.rates.expected_enhance_exp_per_unit,
-            "expected_enhance_exp_multiplier": EXPECTED_ENHANCE_EXP_MULTIPLIER,
+            "page_base_exp_multiplier": PAGE_BASE_EXP_MULTIPLIER,
+            "good_great_expected_exp_multiplier": GOOD_GREAT_EXPECTED_EXP_MULTIPLIER,
+            "continuous_expected_enhance_exp_multiplier": CONTINUOUS_EXPECTED_ENHANCE_EXP_MULTIPLIER,
             "gold_per_stamina": round1(calibration.rates.gold_per_stamina),
             "enhance_exp_per_stamina": round1(calibration.rates.enhance_exp_per_stamina),
         },
@@ -616,16 +691,16 @@ def render_resource_table(table: dict[str, Any]) -> str:
         f"来源映射：{source['display_name']} / {source['source_type']} / {source['mapping_status']}",
         f"单次体力：{source['stamina_per_clear']}；宠物装备已含：{source['gear_acquisition_includes_pet_gear']}",
         f"额外下级强化石：概率 {source['extra_lower_stone_probability']}，期望 {source['expected_lower_stones_per_clear']} 个/次，{source['expected_lower_stone_base_exp_per_clear']} 基础经验/次；使用金币 {source['lower_stone_use_gold']}",
-        f"资源产出：{rates['gold_per_8_stamina']} 金币/8体力，{rates['base_enhance_exp_per_8_stamina']} 基础强化经验/8体力，{rates['expected_enhance_exp_per_8_stamina']} 期望强化经验/8体力",
-        f"期望强化经验倍率：{rates['expected_enhance_exp_multiplier']}",
+        f"资源产出：{rates['gold_per_8_stamina']} 金币/8体力，{rates['base_enhance_exp_per_8_stamina']} 基础强化经验/8体力，{rates['expected_enhance_exp_per_8_stamina']} 连续期望强化经验/8体力",
+        f"页面基础倍率：{rates['page_base_exp_multiplier']}；Good/Great 期望倍率：{rates['good_great_expected_exp_multiplier']}；连续派生倍率：{rates['continuous_expected_enhance_exp_multiplier']}",
         f"转换成本：{table['conversion_gold_cost']} 金币（{table['conversion_stamina_cost']} 体力等价）",
         "",
-        "| 节点 | 标称经验 | 粉末数 | 下级石数 | 粉/石基础经验 | 粉/石金币 | 返还粉末经验 | 净材料经验 | 净金币 | 瓶颈 |",
-        "|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|",
+        "| 节点 | 标称经验 | 基础/页面经验 | 粉末数 | 下级石数 | 粉/石基础经验 | 粉/石金币 | 返还粉末经验 | 净材料经验 | 净金币 | 瓶颈 |",
+        "|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|",
     ]
     for item in table["checkpoints"]:
         lines.append(
-            f"| +{item['enhance']} | {item['nominal_enhance_exp']} | {item['powder_units']} | {item['lower_stone_units']} | "
+            f"| +{item['enhance']} | {item['nominal_enhance_exp']} | {item['gross_base_material_exp']} / {item['page_effective_exp']} | {item['powder_units']} | {item['lower_stone_units']} | "
             f"{item['powder_base_exp']} / {item['lower_stone_base_exp']} | {item['powder_gold']} / {item['lower_stone_gold']} | "
             f"{item['expected_returned_powder_exp']} | {item['net_enhance_exp']} | {item['net_gold']} | {item['bottleneck']} |"
         )

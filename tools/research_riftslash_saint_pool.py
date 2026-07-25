@@ -95,7 +95,7 @@ def _empty_flow() -> dict[str, float]:
 
 
 def _zero_material() -> MaterialCost:
-    return MaterialCost(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    return MaterialCost(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 
 def _material_between(rank: str, start: int, stop: int) -> MaterialCost:

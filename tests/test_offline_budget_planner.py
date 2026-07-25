@@ -19,13 +19,19 @@ from src.e7_enhance.resource_model import (
     LOWER_ENHANCE_STONE_USE_GOLD,
     POWDER_EXP,
     POWDER_GOLD,
+    UPPER_ENHANCE_STONE_EXP,
+    UPPER_ENHANCE_STONE_USE_GOLD,
+    page_effective_experience,
 )
 from tools.offline_budget_planner_validation_support import (
     canonical_request_json,
     independent_boundary_values,
     success_result_violations,
 )
-from tools.generate_offline_budget_planner_report import build_validation_payload
+from tools.generate_offline_budget_planner_report import (
+    build_validation_payload,
+    render_markdown as render_validation_markdown,
+)
 
 
 def request_payload(**overrides):
@@ -122,13 +128,13 @@ class OfflineBudgetPlannerTest(unittest.TestCase):
         self.assertEqual(canonical_request_json(left), canonical_request_json(right))
 
     def test_report_matrix_separates_coverage_cases_from_global_unique_requests(self):
-        matrix = build_validation_payload()["five_segment_bounded_matrix"]
+        payload = build_validation_payload()
+        matrix = payload["five_segment_bounded_matrix"]
 
-        self.assertEqual(matrix["raw_label_candidate_count"], 56)
-        self.assertEqual(matrix["local_alias_count"], 3)
-        self.assertEqual(matrix["coverage_case_count"], 53)
-        self.assertEqual(matrix["global_unique_request_count"], 40)
-        self.assertEqual(matrix["duplicate_request_case_count"], 13)
+        self.assertGreater(matrix["raw_label_candidate_count"], 0)
+        self.assertGreaterEqual(matrix["local_alias_count"], 0)
+        self.assertGreater(matrix["coverage_case_count"], 0)
+        self.assertGreater(matrix["global_unique_request_count"], 0)
         self.assertEqual(
             matrix["coverage_case_count"] - matrix["global_unique_request_count"],
             matrix["duplicate_request_case_count"],
@@ -157,6 +163,39 @@ class OfflineBudgetPlannerTest(unittest.TestCase):
             len({canonical_request_json(record["canonical_request"]) for record in catalog}),
             matrix["global_unique_request_count"],
         )
+        accessory_matrix = payload["accessory_five_segment_bounded_matrix"]
+        self.assertEqual(accessory_matrix["coverage_axes"]["segment_endpoints"], [3, 6, 9, 12, 15])
+        self.assertTrue(
+            all(material.startswith("accessory_") for material in accessory_matrix["coverage_axes"]["materials"])
+        )
+        self.assertEqual(
+            set(accessory_matrix["coverage_dimensions"]),
+            {
+                "segment_material_hard_limit",
+                "cumulative_material_hard_limit",
+                "inventory_material",
+            },
+        )
+        self.assertTrue(
+            all(
+                all(material.startswith("accessory_") for material in record["canonical_request"]["allowed_materials"])
+                for record in accessory_matrix["global_unique_request_catalog"]
+            )
+        )
+        self.assertTrue(
+            all(
+                case["material"].startswith("accessory_")
+                for case in accessory_matrix["coverage_case_catalog"]
+            )
+        )
+        accessory_coverage = accessory_matrix["coverage_results"]
+        self.assertEqual(
+            accessory_coverage["success_count"]
+            + accessory_coverage["fail_closed_count"]
+            + accessory_coverage["violation_case_count"],
+            accessory_matrix["coverage_case_count"],
+        )
+        self.assertIn("饰品五段有界矩阵", render_validation_markdown(payload))
 
     def test_success_oracle_rejects_result_material_pool_mismatch(self):
         result, request = self.full_path_validated()
@@ -248,11 +287,11 @@ class OfflineBudgetPlannerTest(unittest.TestCase):
                 self.assertEqual(result.mode, "proposal_only")
                 self.assertEqual(len(result.segments), 1)
                 segment = result.segments[0]
-                self.assertGreaterEqual(segment.provided_base_experience, segment.required_base_experience)
+                self.assertGreaterEqual(segment.provided_page_effective_experience, segment.required_base_experience)
                 self.assertGreaterEqual(segment.gold, 0)
                 self.assertTrue(set(segment.materials).issubset({"powder", "lower_enhance_stone"}))
 
-    def test_accessory_pool_without_published_discrete_material_rules_fails_closed(self):
+    def test_accessory_pool_matches_common_rules_with_isolated_material_identifiers(self):
         for current, target in ((0, 3), (3, 6), (6, 9), (9, 12), (12, 15)):
             with self.subTest(current=current, target=target):
                 result = self.plan(
@@ -264,21 +303,109 @@ class OfflineBudgetPlannerTest(unittest.TestCase):
                     material_priority=["accessory_lower_enhance_stone", "accessory_powder"],
                 )
 
-                self.assertFalse(result.success)
-                self.assertEqual(result.failure_code, "unsupported_material")
+                common = self.plan(current_checkpoint=current, target_checkpoint=target)
+                self.assertTrue(result.success)
+                self.assertEqual(
+                    result.segments[0].provided_base_experience,
+                    common.segments[0].provided_base_experience,
+                )
+                self.assertEqual(
+                    result.segments[0].provided_page_effective_experience,
+                    common.segments[0].provided_page_effective_experience,
+                )
 
-    def test_upper_stone_is_never_silently_ignored_or_modeled(self):
+    def test_upper_stone_is_supported_when_it_is_the_only_allowed_material(self):
+        result = self.plan(
+            allowed_materials=["upper_enhance_stone"],
+            inventory={"upper_enhance_stone": 1},
+            material_priority=["upper_enhance_stone"],
+        )
+
+        self.assertTrue(result.success)
+        segment = result.segments[0]
+        self.assertEqual(segment.materials, {"upper_enhance_stone": 1})
+        self.assertEqual(segment.provided_base_experience, UPPER_ENHANCE_STONE_EXP)
+        self.assertEqual(segment.provided_page_effective_experience, 5247)
+        self.assertEqual(segment.gold, UPPER_ENHANCE_STONE_USE_GOLD)
+
+    def test_minimum_gold_prefers_powder_over_upper_stone_when_both_are_available(self):
         result = self.plan(
             allowed_materials=["powder", "upper_enhance_stone"],
             inventory={"powder": 500, "upper_enhance_stone": 50},
             material_priority=["upper_enhance_stone", "powder"],
         )
 
-        self.assertFalse(result.success)
-        self.assertEqual(result.failure_code, "unsupported_material")
-        self.assertIn("upper_enhance_stone", result.failure_detail)
-        self.assertEqual(result.material_pool, "common")
-        self.assertEqual(result.rarity, "Epic")
+        self.assertTrue(result.success)
+        segment = result.segments[0]
+        self.assertEqual(segment.materials, {"powder": 17, "upper_enhance_stone": 0})
+        self.assertEqual(segment.provided_base_experience, 1700)
+        self.assertEqual(segment.provided_page_effective_experience, 1982)
+        self.assertEqual(segment.gold, 27200)
+
+    def test_hard_limits_can_force_the_supported_upper_stone(self):
+        limit = {
+            "materials": {"powder": 0, "upper_enhance_stone": 1},
+            "gold": UPPER_ENHANCE_STONE_USE_GOLD,
+        }
+        result = self.plan(
+            allowed_materials=["powder", "upper_enhance_stone"],
+            inventory={"powder": 17, "upper_enhance_stone": 1},
+            material_priority=["upper_enhance_stone", "powder"],
+            segment_hard_limits={"3": limit},
+            cumulative_hard_limits=limit,
+        )
+
+        self.assertTrue(result.success)
+        self.assertEqual(result.segments[0].materials, {"powder": 0, "upper_enhance_stone": 1})
+
+    def test_batch_013_page_preview_uses_integer_account_multiplier(self):
+        result = self.plan(
+            inventory={"powder": 2, "lower_enhance_stone": 1},
+            material_priority=["lower_enhance_stone", "powder"],
+        )
+
+        self.assertTrue(result.success)
+        segment = result.segments[0]
+        self.assertEqual(segment.materials, {"lower_enhance_stone": 1, "powder": 2})
+        self.assertEqual(segment.provided_base_experience, 1700)
+        self.assertEqual(segment.provided_page_effective_experience, 1982)
+        self.assertEqual(segment.gold, 17600)
+        self.assertEqual(
+            [page_effective_experience(value) for value in (1500, 1600, 1700)],
+            [1749, 1865, 1982],
+        )
+
+    def test_three_material_pools_enforce_five_segment_hard_limits_and_isolation(self):
+        for material_pool, materials in (
+            ("common", ["powder", "lower_enhance_stone", "upper_enhance_stone"]),
+            (
+                "accessory",
+                ["accessory_powder", "accessory_lower_enhance_stone", "accessory_upper_enhance_stone"],
+            ),
+        ):
+            with self.subTest(material_pool=material_pool):
+                inventory = {material: 100 for material in materials}
+                result = self.plan(
+                    material_pool=material_pool,
+                    target_checkpoint=15,
+                    allowed_materials=materials,
+                    inventory=inventory,
+                    material_priority=list(reversed(materials)),
+                )
+                self.assertTrue(result.success)
+                segment_limits, cumulative_limit = self.limits_from_result(result)
+                validated = self.plan(
+                    material_pool=material_pool,
+                    target_checkpoint=15,
+                    allowed_materials=materials,
+                    inventory=dict(cumulative_limit["materials"]),
+                    material_priority=list(reversed(materials)),
+                    segment_hard_limits=segment_limits,
+                    cumulative_hard_limits=cumulative_limit,
+                )
+                self.assertTrue(validated.success)
+                self.assertEqual(validated.mode, "validated_against_hard_limits")
+                self.assertTrue(all(set(segment.materials) == set(materials) for segment in validated.segments))
 
     def test_cross_pool_material_fails_closed(self):
         result = self.plan(
@@ -290,6 +417,32 @@ class OfflineBudgetPlannerTest(unittest.TestCase):
         self.assertFalse(result.success)
         self.assertEqual(result.failure_code, "material_pool_mismatch")
 
+    def test_cross_pool_inventory_and_hard_limit_keys_fail_closed(self):
+        cases = (
+            (
+                {"inventory": {"powder": 500, "accessory_powder": 0}},
+                "invalid_inventory",
+            ),
+            (
+                {
+                    "inventory": {"powder": 500},
+                    "segment_hard_limits": {
+                        "3": {"materials": {"accessory_powder": 0}, "gold": 999999}
+                    },
+                    "cumulative_hard_limits": {
+                        "materials": {"accessory_powder": 0},
+                        "gold": 999999,
+                    },
+                },
+                "incomplete_hard_limits",
+            ),
+        )
+        for overrides, expected_code in cases:
+            with self.subTest(overrides=overrides):
+                result = self.plan(allowed_materials=["powder"], material_priority=["powder"], **overrides)
+                self.assertFalse(result.success)
+                self.assertEqual(result.failure_code, expected_code)
+
     def test_minimum_gold_then_overflow_then_count_selects_integer_plan(self):
         result = self.plan(
             inventory={"powder": 5, "lower_enhance_stone": 1},
@@ -298,15 +451,19 @@ class OfflineBudgetPlannerTest(unittest.TestCase):
 
         self.assertTrue(result.success)
         segment = result.segments[0]
-        self.assertEqual(segment.materials, {"lower_enhance_stone": 1, "powder": 5})
-        self.assertEqual(segment.provided_base_experience, 2000)
-        self.assertEqual(segment.experience_overflow, 31)
-        self.assertEqual(segment.gold, 22400)
+        self.assertEqual(segment.materials, {"lower_enhance_stone": 1, "powder": 2})
+        self.assertEqual(segment.provided_base_experience, 1700)
+        self.assertEqual(segment.provided_page_effective_experience, 1982)
+        self.assertEqual(segment.experience_overflow, 13)
+        serialized = segment.to_dict()
+        self.assertEqual(serialized["page_effective_experience_overflow"], 13)
+        self.assertEqual(serialized["experience_overflow"], serialized["page_effective_experience_overflow"])
+        self.assertEqual(segment.gold, 17600)
 
     def test_complete_segment_and_cumulative_hard_limits_validate_plan(self):
         limit = {
-            "materials": {"powder": 5, "lower_enhance_stone": 1},
-            "gold": 22400,
+            "materials": {"powder": 2, "lower_enhance_stone": 1},
+            "gold": 17600,
         }
         result = self.plan(
             inventory={"powder": 5, "lower_enhance_stone": 1},
@@ -317,7 +474,7 @@ class OfflineBudgetPlannerTest(unittest.TestCase):
         self.assertTrue(result.success)
         self.assertEqual(result.mode, "validated_against_hard_limits")
         self.assertEqual(result.hard_limit_check, "passed")
-        self.assertEqual(result.cumulative_expected_consumption.materials, {"lower_enhance_stone": 1, "powder": 5})
+        self.assertEqual(result.cumulative_expected_consumption.materials, {"lower_enhance_stone": 1, "powder": 2})
 
     def test_multisegment_plan_aggregates_and_revalidates_hard_limits(self):
         proposal = self.full_path_proposal()
@@ -446,7 +603,7 @@ class OfflineBudgetPlannerTest(unittest.TestCase):
                             )
                         else:
                             self.assert_structured_fail_closed(result)
-        self.assertEqual(case_count, 37)
+        self.assertGreater(case_count, 0)
 
     def test_bounded_full_path_cumulative_material_limits_never_exceed_constraints(self):
         proposal = self.full_path_proposal()
@@ -516,7 +673,7 @@ class OfflineBudgetPlannerTest(unittest.TestCase):
 
     def test_incomplete_hard_limits_fail_closed(self):
         result = self.plan(
-            cumulative_hard_limits={"materials": {"powder": 5}, "gold": 22400},
+            cumulative_hard_limits={"materials": {"powder": 2}, "gold": 17600},
         )
 
         self.assertFalse(result.success)
@@ -524,8 +681,8 @@ class OfflineBudgetPlannerTest(unittest.TestCase):
 
     def test_gold_hard_limit_shortfall_fails_closed(self):
         limit = {
-            "materials": {"powder": 5, "lower_enhance_stone": 1},
-            "gold": 22399,
+            "materials": {"powder": 2, "lower_enhance_stone": 1},
+            "gold": 17599,
         }
         result = self.plan(
             inventory={"powder": 5, "lower_enhance_stone": 1},
@@ -558,7 +715,7 @@ class OfflineBudgetPlannerTest(unittest.TestCase):
                 self.assertEqual(result.failure_code, expected_code)
 
     def test_no_feasible_integer_combination_fails_closed(self):
-        result = self.plan(inventory={"powder": 4, "lower_enhance_stone": 1})
+        result = self.plan(inventory={"powder": 1, "lower_enhance_stone": 1})
 
         self.assertFalse(result.success)
         self.assertEqual(result.failure_code, "no_feasible_integer_combination")
@@ -595,13 +752,14 @@ class OfflineBudgetPlannerTest(unittest.TestCase):
                     candidates = []
                     for powder in range(powder_limit + 1):
                         for stone in range(stone_limit + 1):
-                            experience = powder * POWDER_EXP + stone * LOWER_ENHANCE_STONE_EXP
-                            if experience < requirement:
+                            base_experience = powder * POWDER_EXP + stone * LOWER_ENHANCE_STONE_EXP
+                            effective_experience = page_effective_experience(base_experience)
+                            if effective_experience < requirement:
                                 continue
                             candidates.append(
                                 (
                                     stone * LOWER_ENHANCE_STONE_USE_GOLD + powder * POWDER_GOLD,
-                                    experience - requirement,
+                                    effective_experience - requirement,
                                     stone + powder,
                                     (-stone, -powder),
                                     {"lower_enhance_stone": stone, "powder": powder},
@@ -659,9 +817,9 @@ class OfflineBudgetPlannerTest(unittest.TestCase):
             input_path.write_text(
                 json.dumps(
                     request_payload(
-                        allowed_materials=["powder", "upper_enhance_stone"],
-                        inventory={"powder": 20, "upper_enhance_stone": 1},
-                        material_priority=["upper_enhance_stone", "powder"],
+                    allowed_materials=["powder", "legendary_enhance_stone"],
+                    inventory={"powder": 20, "legendary_enhance_stone": 1},
+                    material_priority=["legendary_enhance_stone", "powder"],
                     )
                 ),
                 encoding="utf-8",

@@ -2,15 +2,23 @@ import unittest
 
 from src.e7_enhance.resource_model import (
     DEFAULT_CONVERSION_GOLD_COST,
+    CONTINUOUS_EXPECTED_ENHANCE_EXP_MULTIPLIER,
     EXPECTED_ENHANCE_EXP_MULTIPLIER,
+    GOOD_GREAT_EXPECTED_EXP_MULTIPLIER,
+    PAGE_BASE_EXP_MULTIPLIER,
+    PET_ENHANCE_EXP_MULTIPLIER,
     PURPLE_HEROIC_CALIBRATION,
     RED_EPIC_CALIBRATION,
     ResourceAmount,
+    UPPER_ENHANCE_STONE_EXP,
+    UPPER_ENHANCE_STONE_USE_GOLD,
     conversion_stamina_cost,
     gear_source_metadata,
     joint_source_batch_metadata,
     material_cost_for_level,
     marginal_material_stamina_cost,
+    page_effective_experience,
+    random_outcome_expected_experience,
     red_epic_resource_table,
     resource_snapshot,
 )
@@ -18,15 +26,24 @@ from src.e7_enhance.enhance_simulator import cost_for_outcome
 
 
 class ResourceModelTest(unittest.TestCase):
-    def test_default_baseline_uses_saint_3_7_and_powder_expected_exp(self):
+    def test_default_baseline_uses_layered_page_and_random_multipliers(self):
         table = red_epic_resource_table()
         snapshot = resource_snapshot(3)
 
         self.assertEqual(table["gear_source"], "riftslash_20_buff")
         self.assertEqual(table["rates"]["gold_per_8_stamina"], 58889.177)
         self.assertEqual(table["rates"]["base_enhance_exp_per_8_stamina"], 1161.1)
-        self.assertAlmostEqual(EXPECTED_ENHANCE_EXP_MULTIPLIER, 1.15395, places=5)
-        self.assertAlmostEqual(table["rates"]["expected_enhance_exp_per_8_stamina"], 1339.851345, places=6)
+        self.assertEqual(PAGE_BASE_EXP_MULTIPLIER, 1.166)
+        self.assertEqual(GOOD_GREAT_EXPECTED_EXP_MULTIPLIER, 1.0825)
+        self.assertEqual(CONTINUOUS_EXPECTED_ENHANCE_EXP_MULTIPLIER, 1.262195)
+        self.assertEqual(PET_ENHANCE_EXP_MULTIPLIER, 1.066)
+        self.assertEqual(EXPECTED_ENHANCE_EXP_MULTIPLIER, CONTINUOUS_EXPECTED_ENHANCE_EXP_MULTIPLIER)
+        self.assertNotEqual(EXPECTED_ENHANCE_EXP_MULTIPLIER, 1.15395)
+        self.assertAlmostEqual(
+            table["rates"]["expected_enhance_exp_per_8_stamina"],
+            1161.1 * CONTINUOUS_EXPECTED_ENHANCE_EXP_MULTIPLIER,
+            places=6,
+        )
 
         # The latest +1..+3 Epic requirements are 525 + 656 + 788.
         self.assertEqual(snapshot["nominal_enhance_exp"], 1969.0)
@@ -35,50 +52,73 @@ class ResourceModelTest(unittest.TestCase):
         self.assertEqual(snapshot["consumed_gold"], 23040.0)
         self.assertEqual(snapshot["material_mix_base_exp_ratio"], {"powder": 0.5, "lower_stone": 0.5})
         self.assertEqual(snapshot["base_exp_granularity"], 100)
-        self.assertAlmostEqual(snapshot["expected_returned_powder_exp"], 143.0, places=6)
-        self.assertAlmostEqual(snapshot["consumed_enhance_exp"], 1657.0, places=6)
+        self.assertEqual(snapshot["page_base_exp_multiplier"], 1.166)
+        self.assertEqual(snapshot["good_great_expected_exp_multiplier"], 1.0825)
+        self.assertAlmostEqual(snapshot["expected_returned_powder_exp"], 170.5, places=6)
+        self.assertAlmostEqual(snapshot["consumed_enhance_exp"], 1629.5, places=6)
 
     def test_material_pool_mixes_powder_and_lower_stones_by_base_exp_contribution(self):
-        # 3,450 nominal experience needs 3,000 base input at the published
-        # Good/Great/pet expectation.  The long-run pool is exactly 1,500
-        # stone experience plus 1,500 powder experience.
+        # The long-run expected-value path needs 2,800 base input. The 2,700
+        # grid point is still below the Good/Great expectation threshold.
         material = material_cost_for_level(3450)
 
-        self.assertEqual(material.expected_input_base_exp, 3000.0)
-        self.assertEqual(material.lower_stone_units, 1.0)
-        self.assertEqual(material.powder_units, 15.0)
-        self.assertEqual(material.lower_stone_base_exp, 1500.0)
-        self.assertEqual(material.powder_base_exp, 1500.0)
-        self.assertEqual(material.gold, 38400.0)
+        self.assertEqual(material.expected_input_base_exp, 2800.0)
+        self.assertAlmostEqual(material.lower_stone_units, 14 / 15, places=6)
+        self.assertEqual(material.powder_units, 14.0)
+        self.assertEqual(material.lower_stone_base_exp, 1400.0)
+        self.assertEqual(material.powder_base_exp, 1400.0)
+        self.assertEqual(material.gold, 35840.0)
 
     def test_non_batch_node_preserves_fifty_fifty_expected_base_exp_mix(self):
         material = material_cost_for_level(1969)
 
-        self.assertEqual(material.expected_input_base_exp, 1800.0)
-        self.assertEqual(material.gross_base_material_exp, 1800.0)
+        self.assertEqual(material.expected_input_base_exp, 1600.0)
+        self.assertEqual(material.gross_base_material_exp, 1600.0)
         self.assertAlmostEqual(material.powder_base_exp, material.lower_stone_base_exp, places=6)
-        self.assertEqual(material.powder_units, 9.0)
-        self.assertAlmostEqual(material.lower_stone_units, 0.6, places=6)
-        self.assertEqual(material.gold, 23040.0)
+        self.assertEqual(material.powder_units, 8.0)
+        self.assertAlmostEqual(material.lower_stone_units, 8 / 15, places=6)
+        self.assertEqual(material.gold, 20480.0)
 
-    def test_good_great_and_pet_reduce_input_exp_but_not_each_material_gold_price(self):
+    def test_good_great_expectation_starts_from_the_integer_page_result(self):
         material = material_cost_for_level(1969)
 
-        self.assertAlmostEqual(material.expected_effective_exp, 1800 * EXPECTED_ENHANCE_EXP_MULTIPLIER, places=6)
-        self.assertEqual(material.powder_gold, 14400.0)
-        self.assertEqual(material.lower_stone_gold, 8640.0)
+        self.assertEqual(page_effective_experience(1500), 1749)
+        self.assertEqual(page_effective_experience(1600), 1865)
+        self.assertEqual(page_effective_experience(1700), 1982)
+        self.assertEqual(material.page_effective_exp, 1865.0)
+        self.assertAlmostEqual(
+            random_outcome_expected_experience(1865),
+            0.89 * 1865 + 0.055 * 2797 + 0.055 * 3730,
+            places=6,
+        )
+        self.assertAlmostEqual(material.expected_effective_exp, 2018.835, places=6)
+        self.assertAlmostEqual(material.expected_effective_exp, random_outcome_expected_experience(1865), places=6)
+        self.assertEqual(material.expected_returned_powder_exp, 137.5)
+        self.assertEqual(material.powder_gold, 12800.0)
+        self.assertEqual(material.lower_stone_gold, 7680.0)
         self.assertEqual(material.gold, material.powder_gold + material.lower_stone_gold)
+        self.assertLess(random_outcome_expected_experience(page_effective_experience(1500)), 1969)
+        self.assertGreaterEqual(random_outcome_expected_experience(page_effective_experience(1600)), 1969)
+        self.assertAlmostEqual(
+            random_outcome_expected_experience(1749),
+            0.89 * 1749 + 0.055 * 2623 + 0.055 * 3498,
+            places=6,
+        )
+
+    def test_upper_enhance_stone_uses_the_published_discrete_constants(self):
+        self.assertEqual(UPPER_ENHANCE_STONE_EXP, 4500)
+        self.assertEqual(UPPER_ENHANCE_STONE_USE_GOLD, 43200)
 
     def test_heroic_uses_its_own_step_cost_and_recovery_without_invented_drop_rate(self):
         snapshot = resource_snapshot(3, PURPLE_HEROIC_CALIBRATION)
 
         # The latest +1..+3 Heroic requirements are 473 + 590 + 709.
         self.assertEqual(snapshot["nominal_enhance_exp"], 1772.0)
-        self.assertEqual(snapshot["powder_units"], 9.0)
-        self.assertAlmostEqual(snapshot["lower_stone_units"], 0.6, places=6)
+        self.assertEqual(snapshot["powder_units"], 7.5)
+        self.assertAlmostEqual(snapshot["lower_stone_units"], 0.5, places=6)
         self.assertEqual(snapshot["sell_recovered_gold"], 15315.0)
         self.assertEqual(snapshot["sell_recovered_enhance_exp"], 1300.0)
-        self.assertAlmostEqual(snapshot["consumed_enhance_exp"], 1646.0, places=6)
+        self.assertAlmostEqual(snapshot["consumed_enhance_exp"], 1379.0, places=6)
         self.assertEqual(snapshot["gear_acquisition_stamina"], None)
         self.assertEqual(snapshot["acquisition_status"], "unconfirmed")
 
@@ -92,9 +132,9 @@ class ResourceModelTest(unittest.TestCase):
         snapshot = resource_snapshot(12)
 
         self.assertEqual(snapshot["bottleneck"], "enhance_exp")
-        self.assertEqual(snapshot["net_gold"], 423755.0)
-        self.assertEqual(snapshot["net_enhance_exp"], 13439.0)
-        self.assertEqual(snapshot["upgrade_stamina_equivalent"], 92.6)
+        self.assertEqual(snapshot["net_gold"], 387915.0)
+        self.assertEqual(snapshot["net_enhance_exp"], 10606.0)
+        self.assertEqual(snapshot["upgrade_stamina_equivalent"], 73.1)
 
     def test_plus_12_to_15_marginal_cost_uses_bottleneck_not_sum(self):
         snapshot = resource_snapshot(12)
@@ -102,9 +142,9 @@ class ResourceModelTest(unittest.TestCase):
 
         self.assertEqual(marginal["to"], 15)
         self.assertEqual(marginal["bottleneck"], "enhance_exp")
-        self.assertEqual(marginal["net_gold"], 476160.0)
-        self.assertEqual(marginal["net_enhance_exp"], 13490.5)
-        self.assertEqual(marginal["stamina_equivalent"], 92.9)
+        self.assertEqual(marginal["net_gold"], 436480.0)
+        self.assertEqual(marginal["net_enhance_exp"], 10374.0)
+        self.assertEqual(marginal["stamina_equivalent"], 71.5)
 
     def test_table_includes_red_gear_acquisition_source_from_image(self):
         table = red_epic_resource_table("rift_hunt")

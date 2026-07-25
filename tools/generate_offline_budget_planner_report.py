@@ -19,6 +19,8 @@ from src.e7_enhance.resource_model import (
     LOWER_ENHANCE_STONE_USE_GOLD,
     POWDER_EXP,
     POWDER_GOLD,
+    UPPER_ENHANCE_STONE_EXP,
+    UPPER_ENHANCE_STONE_USE_GOLD,
 )
 from tools.offline_budget_planner_validation_support import (
     canonical_request_json,
@@ -38,9 +40,9 @@ def _common_request(current: int, target: int) -> dict[str, Any]:
         "rarity": "Epic",
         "current_checkpoint": current,
         "target_checkpoint": target,
-        "allowed_materials": ["powder", "lower_enhance_stone"],
-        "inventory": {"powder": 1000, "lower_enhance_stone": 100},
-        "material_priority": ["lower_enhance_stone", "powder"],
+        "allowed_materials": ["powder", "lower_enhance_stone", "upper_enhance_stone"],
+        "inventory": {"powder": 1000, "lower_enhance_stone": 100, "upper_enhance_stone": 100},
+        "material_priority": ["upper_enhance_stone", "lower_enhance_stone", "powder"],
     }
 
 
@@ -50,9 +52,9 @@ def _accessory_request(current: int, target: int) -> dict[str, Any]:
         "rarity": "Epic",
         "current_checkpoint": current,
         "target_checkpoint": target,
-        "allowed_materials": ["accessory_powder", "accessory_lower_enhance_stone"],
-        "inventory": {"accessory_powder": 1000, "accessory_lower_enhance_stone": 100},
-        "material_priority": ["accessory_lower_enhance_stone", "accessory_powder"],
+        "allowed_materials": ["accessory_powder", "accessory_lower_enhance_stone", "accessory_upper_enhance_stone"],
+        "inventory": {"accessory_powder": 1000, "accessory_lower_enhance_stone": 100, "accessory_upper_enhance_stone": 100},
+        "material_priority": ["accessory_upper_enhance_stone", "accessory_lower_enhance_stone", "accessory_powder"],
     }
 
 
@@ -72,8 +74,7 @@ def _limits_from_result(result: Any) -> tuple[dict[str, Any], dict[str, Any]]:
     )
 
 
-def _five_segment_bounded_matrix() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
-    reference_request = _common_request(0, 15)
+def _five_segment_bounded_matrix(reference_request: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
     proposal = plan_budget(BudgetPlanningRequest.from_dict(reference_request))
     assert proposal.success and proposal.mode == "proposal_only"
     base_segments, base_cumulative = _limits_from_result(proposal)
@@ -201,7 +202,7 @@ def _five_segment_bounded_matrix() -> tuple[dict[str, Any], dict[str, Any], dict
 
     for segment in proposal.segments:
         endpoint = str(segment.to_checkpoint)
-        for material in ("powder", "lower_enhance_stone"):
+        for material in reference_request["allowed_materials"]:
             dimension = "segment_material_hard_limit"
             scope = f"to_checkpoint_{endpoint}"
             for boundary in boundaries_for(dimension, scope, material, segment.materials[material]):
@@ -217,7 +218,7 @@ def _five_segment_bounded_matrix() -> tuple[dict[str, Any], dict[str, Any], dict
                     json.loads(json.dumps(base_cumulative)),
                 )
 
-    for material in ("powder", "lower_enhance_stone"):
+    for material in reference_request["allowed_materials"]:
         dimension = "cumulative_material_hard_limit"
         scope = "full_route_0_to_15"
         for boundary in boundaries_for(dimension, scope, material, base_cumulative["materials"][material]):
@@ -233,7 +234,7 @@ def _five_segment_bounded_matrix() -> tuple[dict[str, Any], dict[str, Any], dict
                 cumulative_limit,
             )
 
-    for material in ("powder", "lower_enhance_stone"):
+    for material in reference_request["allowed_materials"]:
         dimension = "inventory_material"
         scope = "full_route_0_to_15"
         for boundary in boundaries_for(dimension, scope, material, base_cumulative["materials"][material]):
@@ -290,7 +291,7 @@ def _five_segment_bounded_matrix() -> tuple[dict[str, Any], dict[str, Any], dict
         "coverage_case_catalog": outcomes,
         "coverage_axes": {
             "segment_endpoints": [3, 6, 9, 12, 15],
-            "materials": ["powder", "lower_enhance_stone"],
+            "materials": list(reference_request["allowed_materials"]),
             "boundary_labels": ["zero", "planned_minus_one", "planned", "planned_plus_one"],
         },
         "invariant_violation_count": len(violations),
@@ -315,10 +316,15 @@ def build_validation_payload() -> dict[str, Any]:
         common_result = plan_budget(BudgetPlanningRequest.from_dict(_common_request(current, target)))
         accessory_result = plan_budget(BudgetPlanningRequest.from_dict(_accessory_request(current, target)))
         assert common_result.success
-        assert not accessory_result.success and accessory_result.failure_code == "unsupported_material"
+        assert accessory_result.success
         common.append(common_result.to_dict())
         accessory.append(accessory_result.to_dict())
-    five_segment_proposal, five_segment_validated, bounded_matrix = _five_segment_bounded_matrix()
+    five_segment_proposal, five_segment_validated, bounded_matrix = _five_segment_bounded_matrix(
+        _common_request(0, 15)
+    )
+    accessory_five_segment_proposal, accessory_five_segment_validated, accessory_bounded_matrix = (
+        _five_segment_bounded_matrix(_accessory_request(0, 15))
+    )
     return {
         "report_type": "offline_budget_planner_validation",
         "validation_date": VALIDATION_DATE,
@@ -332,8 +338,12 @@ def build_validation_payload() -> dict[str, Any]:
                     "base_experience": LOWER_ENHANCE_STONE_EXP,
                     "gold_per_unit": LOWER_ENHANCE_STONE_USE_GOLD,
                 },
+                "upper_enhance_stone": {
+                    "base_experience": UPPER_ENHANCE_STONE_EXP,
+                    "gold_per_unit": UPPER_ENHANCE_STONE_USE_GOLD,
+                },
                 "source": "src/e7_enhance/resource_model.py",
-                "planning_interpretation": "integer base experience sufficient without probabilistic bonus",
+                "planning_interpretation": "floor(base_experience * 1166 / 1000) reaches each checkpoint requirement",
             },
             "checkpoint_requirements": {
                 "source": "src/e7_enhance/resource_model.py RED_LEVEL_EXP/PURPLE_LEVEL_EXP",
@@ -341,9 +351,9 @@ def build_validation_payload() -> dict[str, Any]:
             },
         },
         "fail_closed_gaps": [
-            "accessory discrete material experience and gold model is not publicly tracked",
-            "upper enhancement stone discrete material model is not published",
-            "Good/Great, pet bonus, and fractional 50/50 research accounting are not execution inputs",
+            "cross-pool material identifiers, inventory keys, and hard-limit keys are rejected",
+            "unknown or unsupported material identifiers are rejected",
+            "Good/Great remains a resource-model expectation layer, not an execution input",
         ],
         "objective_order": common[0]["objective_order"],
         "common_adjacent_checkpoint_results": common,
@@ -351,6 +361,9 @@ def build_validation_payload() -> dict[str, Any]:
         "five_segment_reference_proposal": five_segment_proposal,
         "five_segment_exact_limit_result": five_segment_validated,
         "five_segment_bounded_matrix": bounded_matrix,
+        "accessory_five_segment_reference_proposal": accessory_five_segment_proposal,
+        "accessory_five_segment_exact_limit_result": accessory_five_segment_validated,
+        "accessory_five_segment_bounded_matrix": accessory_bounded_matrix,
         "operation_authorization": False,
     }
 
@@ -371,9 +384,11 @@ def render_markdown(payload: dict[str, Any]) -> str:
         f"- 普通材料：粉末 `{payload['public_evidence']['common_materials']['powder']['base_experience']}` 基础经验、"
         f"`{payload['public_evidence']['common_materials']['powder']['gold_per_unit']}` 金币；下级强化石 "
         f"`{payload['public_evidence']['common_materials']['lower_enhance_stone']['base_experience']}` 基础经验、"
-        f"`{payload['public_evidence']['common_materials']['lower_enhance_stone']['gold_per_unit']}` 金币。",
+        f"`{payload['public_evidence']['common_materials']['lower_enhance_stone']['gold_per_unit']}` 金币；上级强化石 "
+        f"`{payload['public_evidence']['common_materials']['upper_enhance_stone']['base_experience']}` 基础经验、"
+        f"`{payload['public_evidence']['common_materials']['upper_enhance_stone']['gold_per_unit']}` 金币。",
         "- 节点需求：仅聚合已跟踪 `RED_LEVEL_EXP` / `PURPLE_LEVEL_EXP` 的标准相邻节点。",
-        "- 成功计划按基础经验保证足额，不把 Good/Great、宠物加成、期望值或分数材料当作实际执行规则。",
+        "- 成功计划按 `floor(基础经验 * 1166 / 1000)` 保证足额；Good/Great 仅属于资源模型期望层。",
         "",
         "## 相邻节点验证",
         "",
@@ -384,10 +399,16 @@ def render_markdown(payload: dict[str, Any]) -> str:
         segment = result["segments"][0]
         lines.append(
             f"| common | +{segment['from_checkpoint']} -> +{segment['to_checkpoint']} | success | "
-            f"需求 {segment['required_base_experience']}，计划金币 {segment['gold']} |"
+            f"需求 {segment['required_experience']}，基础 {segment['provided_base_experience']}，页面 {segment['provided_page_effective_experience']}，"
+            f"页面溢出 {segment['page_effective_experience_overflow']}，计划金币 {segment['gold']} |"
         )
     for result in payload["accessory_adjacent_checkpoint_results"]:
-        lines.append(f"| accessory | 标准相邻节点 | fail closed | `{result['failure']['code']}` |")
+        segment = result["segments"][0]
+        lines.append(
+            f"| accessory | +{segment['from_checkpoint']} -> +{segment['to_checkpoint']} | success | "
+            f"需求 {segment['required_experience']}，基础 {segment['provided_base_experience']}，页面 {segment['provided_page_effective_experience']}，"
+            f"页面溢出 {segment['page_effective_experience_overflow']}，计划金币 {segment['gold']} |"
+        )
     matrix = payload["five_segment_bounded_matrix"]
     lines.extend(
         [
@@ -405,7 +426,7 @@ def render_markdown(payload: dict[str, Any]) -> str:
             f"fail closed `{matrix['unique_request_results']['fail_closed_count']}`；"
             f"违规请求 `{matrix['unique_request_results']['violation_case_count']}`。",
             f"- 结果摘要 SHA-256：`{matrix['outcomes_sha256']}`。",
-            "- 覆盖节点：`+3/+6/+9/+12/+15`；材料：`powder`、`lower_enhance_stone`；"
+            "- 覆盖节点：`+3/+6/+9/+12/+15`；材料：`powder`、`lower_enhance_stone`、`upper_enhance_stone`；"
             "边界值：`0`、`计划值-1`、`计划值`、`计划值+1`（非负化）。",
             "- 边界值按实际非负整数去重；重复标签作为 `aliases` 写入 JSON 的 `boundary_catalog`，"
             "不会重复执行或计入覆盖案例，也不计为全局唯一请求。",
@@ -432,16 +453,43 @@ def render_markdown(payload: dict[str, Any]) -> str:
             "且每种材料和金币均未超过库存、分段硬上限及累计硬上限；"
             "分段汇总必须等于累计结果。",
             "- 材料组合只来自允许集合且属于正确材料池。",
-            "- 目标排序固定为：最小金币、最小基础经验溢出、最少材料数、用户材料优先级。",
+            "- 目标排序固定为：最小金币、最小页面有效经验溢出、最少材料数、用户材料优先级。",
             "- 同一请求的规范化 JSON 字节级稳定。",
-            "- 上级强化石、跨池材料、未发布饰品离散规则、库存/硬上限/预览不一致均 fail closed。",
+            "- 跨池、未知材料、库存/硬上限/预览不一致均 fail closed；上级石与饰品材料按已验证离散常量规划。",
             "- 只有完整分段与完整累计硬上限同时提供并通过时，结果模式才为 `validated_against_hard_limits`。",
             "",
             "## 阻断与风险",
             "",
-            "- 饰品材料的真实离散经验和金币常量未在公开可复跑输入中得到证明，因此该材料池只能拒绝，不能生成执行计划。",
-            "- 上级强化石没有已发布离散模型，任何允许请求仍返回 `unsupported_material`。",
+            "- 饰品和普通材料池常量相同但材料 ID、库存与硬上限严格隔离；报告不验证实时库存。",
+            "- 传说强化石仍不在支持范围，任何未知材料请求仍返回 fail closed。",
             "- 离线预算器不验证实时页面、真实库存或实际消耗，也不实现点击前拦截、状态机或节点后新鲜快照。",
+        ]
+    )
+    accessory_matrix = payload["accessory_five_segment_bounded_matrix"]
+    accessory_materials = ", ".join(accessory_matrix["coverage_axes"]["materials"])
+    lines.extend(
+        [
+            "",
+            "## 饰品五段有界矩阵",
+            "",
+            f"- 覆盖节点：`+3/+6/+9/+12/+15`；材料：`{accessory_materials}`。",
+            f"- 覆盖案例：`{accessory_matrix['coverage_case_count']}`；全局唯一请求："
+            f"`{accessory_matrix['global_unique_request_count']}`；重复案例："
+            f"`{accessory_matrix['duplicate_request_case_count']}`。",
+            f"- 覆盖结果：成功 `{accessory_matrix['coverage_results']['success_count']}`；"
+            f"fail closed `{accessory_matrix['coverage_results']['fail_closed_count']}`；"
+            f"违规 `{accessory_matrix['coverage_results']['violation_case_count']}`。",
+            "| 覆盖维度 | 覆盖案例 | 成功 | fail closed | 违规案例 | 违规项 |",
+            "|---|---:|---:|---:|---:|---:|",
+            *(
+                f"| {dimension} | {stats['coverage_case_count']} | {stats['coverage_success_count']} | "
+                f"{stats['coverage_fail_closed_count']} | {stats['violation_case_count']} | "
+                f"{stats['invariant_violation_count']} |"
+                for dimension, stats in sorted(accessory_matrix["coverage_dimensions"].items())
+            ),
+            f"- 分段材料硬上限 `{accessory_matrix['coverage_dimensions']['segment_material_hard_limit']['coverage_case_count']}`；"
+            f"累计材料硬上限 `{accessory_matrix['coverage_dimensions']['cumulative_material_hard_limit']['coverage_case_count']}`；"
+            f"库存 `{accessory_matrix['coverage_dimensions']['inventory_material']['coverage_case_count']}`。",
         ]
     )
     return "\n".join(lines) + "\n"

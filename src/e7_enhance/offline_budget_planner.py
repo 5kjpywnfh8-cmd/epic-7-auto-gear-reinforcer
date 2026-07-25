@@ -1,9 +1,9 @@
 """Deterministic, offline integer material plans for enhancement checkpoints.
 
 This module deliberately does not reuse the expected-value material quantities
-from :mod:`resource_model`.  It only imports the published per-level experience
-requirements and uses a conservative base-experience threshold, so a successful
-plan is an integer plan that is sufficient even without Good/Great or pet bonus.
+from :mod:`resource_model`. It only imports the published per-level experience
+requirements and requires the integer account-page result to reach each node.
+Good/Great remains outside its deterministic planning threshold.
 """
 
 from __future__ import annotations
@@ -11,24 +11,28 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 from html import escape
-from math import ceil
 from typing import Any, Mapping, Sequence
 
 from .resource_model import (
     CHECKPOINTS,
     LOWER_ENHANCE_STONE_EXP,
     LOWER_ENHANCE_STONE_USE_GOLD,
+    PAGE_BASE_EXP_MULTIPLIER_DENOMINATOR,
+    PAGE_BASE_EXP_MULTIPLIER_NUMERATOR,
     POWDER_EXP,
     POWDER_GOLD,
     PURPLE_LEVEL_EXP,
     RED_LEVEL_EXP,
+    UPPER_ENHANCE_STONE_EXP,
+    UPPER_ENHANCE_STONE_USE_GOLD,
+    page_effective_experience,
 )
 
 
-RULES_VERSION = "offline_budget_planner/v1"
+RULES_VERSION = "offline_budget_planner/v2"
 OBJECTIVE_ORDER = (
     "minimum_gold",
-    "minimum_base_experience_overflow",
+    "minimum_page_effective_experience_overflow",
     "minimum_material_count",
     "material_priority",
 )
@@ -56,34 +60,30 @@ MATERIALS: dict[str, MaterialDefinition] = {
     "upper_enhance_stone": MaterialDefinition(
         "upper_enhance_stone",
         "common",
-        None,
-        None,
-        "unsupported",
-        "no published discrete experience and gold model",
+        UPPER_ENHANCE_STONE_EXP,
+        UPPER_ENHANCE_STONE_USE_GOLD,
+        "supported",
     ),
     "accessory_powder": MaterialDefinition(
         "accessory_powder",
         "accessory",
-        None,
-        None,
-        "unsupported",
-        "no publicly tracked discrete accessory material model",
+        POWDER_EXP,
+        POWDER_GOLD,
+        "supported",
     ),
     "accessory_lower_enhance_stone": MaterialDefinition(
         "accessory_lower_enhance_stone",
         "accessory",
-        None,
-        None,
-        "unsupported",
-        "no publicly tracked discrete accessory material model",
+        LOWER_ENHANCE_STONE_EXP,
+        LOWER_ENHANCE_STONE_USE_GOLD,
+        "supported",
     ),
     "accessory_upper_enhance_stone": MaterialDefinition(
         "accessory_upper_enhance_stone",
         "accessory",
-        None,
-        None,
-        "unsupported",
-        "no published discrete accessory material model",
+        UPPER_ENHANCE_STONE_EXP,
+        UPPER_ENHANCE_STONE_USE_GOLD,
+        "supported",
     ),
 }
 
@@ -173,6 +173,7 @@ class SegmentPlan:
     preview_base_experience: int | None
     materials: dict[str, int]
     provided_base_experience: int
+    provided_page_effective_experience: int
     experience_overflow: int
     gold: int
     suggested_hard_limit: Consumption
@@ -182,10 +183,13 @@ class SegmentPlan:
         return {
             "from_checkpoint": self.from_checkpoint,
             "to_checkpoint": self.to_checkpoint,
+            "required_experience": self.required_base_experience,
             "required_base_experience": self.required_base_experience,
             "preview_base_experience": self.preview_base_experience,
             "materials": dict(sorted(self.materials.items())),
             "provided_base_experience": self.provided_base_experience,
+            "provided_page_effective_experience": self.provided_page_effective_experience,
+            "page_effective_experience_overflow": self.experience_overflow,
             "experience_overflow": self.experience_overflow,
             "gold": self.gold,
             "suggested_hard_limit": self.suggested_hard_limit.to_dict(),
@@ -238,6 +242,7 @@ class BudgetPlanResult:
 class _Candidate:
     materials: tuple[int, ...]
     provided_base_experience: int
+    provided_page_effective_experience: int
     gold: int
 
 
@@ -302,7 +307,7 @@ def plan_budget(request: BudgetPlanningRequest) -> BudgetPlanResult:
                     validated.cumulative_hard_limits,
                 ):
                     continue
-                candidate_value = (used_overflow + candidate.provided_base_experience - requirement, path + (candidate,))
+                candidate_value = (used_overflow + candidate.provided_page_effective_experience - requirement, path + (candidate,))
                 existing = next_states.get(total_materials)
                 if existing is None or _state_key(candidate_value, material_order) < _state_key(existing, material_order):
                     next_states[total_materials] = candidate_value
@@ -371,15 +376,16 @@ def render_markdown(result: BudgetPlanResult) -> str:
             f"- 排序：`{' -> '.join(result.objective_order)}`",
             f"- 硬上限核对：`{result.hard_limit_check}`",
             "",
-            "| 分段 | 需求基础经验 | 投入基础经验 | 溢出 | 材料 | 金币 |",
-            "|---|---:|---:|---:|---|---:|",
+            "| 分段 | 需求经验 | 投入基础经验 | 页面有效经验 | 页面溢出 | 材料 | 金币 |",
+            "|---|---:|---:|---:|---:|---|---:|",
         ]
     )
     for segment in result.segments:
         materials = ", ".join(f"{name}={quantity}" for name, quantity in sorted(segment.materials.items()))
         lines.append(
             f"| +{segment.from_checkpoint} -> +{segment.to_checkpoint} | {segment.required_base_experience} | "
-            f"{segment.provided_base_experience} | {segment.experience_overflow} | {materials} | {segment.gold} |"
+            f"{segment.provided_base_experience} | {segment.provided_page_effective_experience} | "
+            f"{segment.experience_overflow} | {materials} | {segment.gold} |"
         )
     assert result.cumulative_expected_consumption is not None
     lines.extend(
@@ -587,41 +593,90 @@ def _segment_candidates(
     inventory: Mapping[str, int],
     hard_limit: Consumption | None,
 ) -> tuple[_Candidate, ...]:
+    def candidate_from_counts(counts: tuple[int, ...]) -> _Candidate | None:
+        base_experience = sum(
+            count * int(definition.base_experience or 0) for count, definition in zip(counts, definitions)
+        )
+        effective_experience = page_effective_experience(base_experience)
+        if effective_experience < requirement or not _within_inventory(counts, material_order, inventory):
+            return None
+        gold = _gold_for_counts(counts, definitions)
+        if hard_limit is not None and not _within_limit(counts, gold, material_order, hard_limit):
+            return None
+        return _Candidate(counts, base_experience, effective_experience, gold)
+
     if len(definitions) == 1:
         definition = definitions[0]
         assert definition.base_experience is not None
-        count = ceil(requirement / definition.base_experience)
+        count = _minimum_count_for_page_requirement(requirement, definition.base_experience)
         counts = (count,)
-        gold = _gold_for_counts(counts, definitions)
-        if _within_inventory(counts, material_order, inventory) and (
-            hard_limit is None or _within_limit(counts, gold, material_order, hard_limit)
-        ):
-            return (_Candidate(counts, count * definition.base_experience, gold),)
-        return ()
+        candidate = candidate_from_counts(counts)
+        return (candidate,) if candidate is not None else ()
 
-    # The current public discrete catalog has exactly two supported materials.
-    # For a fixed count of the first, the least count of the second that reaches
-    # the target dominates every larger second count: all costs are positive and
-    # all constraints are upper bounds. This is equivalent to the full bounded
-    # grid while keeping +15 plans tractable.
-    first, second = definitions
-    assert first.base_experience is not None and second.base_experience is not None
-    first_upper = min(inventory[material_order[0]], ceil(requirement / first.base_experience))
-    if hard_limit is not None:
-        first_upper = min(first_upper, hard_limit.materials[material_order[0]])
-    candidates = []
-    for first_count in range(first_upper + 1):
-        remaining = max(0, requirement - first_count * first.base_experience)
-        second_count = ceil(remaining / second.base_experience)
-        counts = (first_count, second_count)
-        if not _within_inventory(counts, material_order, inventory):
-            continue
-        gold = _gold_for_counts(counts, definitions)
-        if hard_limit is not None and not _within_limit(counts, gold, material_order, hard_limit):
-            continue
-        experience = first_count * first.base_experience + second_count * second.base_experience
-        candidates.append(_Candidate(counts, experience, gold))
-    return tuple(sorted(candidates, key=lambda item: (item.gold, item.provided_base_experience - requirement, sum(item.materials), item.materials)))
+    # For each combination of non-powder materials, the least powder count that
+    # reaches the integer page threshold dominates all larger powder counts.
+    # This is exhaustive for the supported three-material catalog while keeping
+    # the five checkpoint dynamic program bounded by node requirements.
+    filler_index = min(
+        range(len(definitions)),
+        key=lambda index: int(definitions[index].base_experience or 0),
+    )
+    filler = definitions[filler_index]
+    assert filler.base_experience is not None
+    non_filler_indices = tuple(index for index in range(len(definitions)) if index != filler_index)
+    upper_bounds = []
+    for index in non_filler_indices:
+        definition = definitions[index]
+        assert definition.base_experience is not None
+        bound = min(inventory[material_order[index]], _minimum_count_for_page_requirement(requirement, definition.base_experience))
+        if hard_limit is not None:
+            bound = min(bound, hard_limit.materials[material_order[index]])
+        upper_bounds.append(bound)
+
+    candidates: list[_Candidate] = []
+
+    def visit(position: int, counts: list[int], fixed_base_experience: int) -> None:
+        if position == len(non_filler_indices):
+            remaining_base_experience = max(0, _minimum_base_experience_for_page_requirement(requirement) - fixed_base_experience)
+            filler_count = (remaining_base_experience + filler.base_experience - 1) // filler.base_experience
+            counts[filler_index] = filler_count
+            candidate = candidate_from_counts(tuple(counts))
+            if candidate is not None:
+                candidates.append(candidate)
+            return
+        index = non_filler_indices[position]
+        definition = definitions[index]
+        assert definition.base_experience is not None
+        for count in range(upper_bounds[position] + 1):
+            counts[index] = count
+            visit(position + 1, counts, fixed_base_experience + count * definition.base_experience)
+        counts[index] = 0
+
+    visit(0, [0] * len(definitions), 0)
+    return tuple(
+        sorted(
+            candidates,
+            key=lambda item: (
+                item.gold,
+                item.provided_page_effective_experience - requirement,
+                sum(item.materials),
+                item.materials,
+            ),
+        )
+    )
+
+
+def _minimum_count_for_page_requirement(requirement: int, material_experience: int) -> int:
+    if requirement <= 0:
+        return 0
+    minimum_base_experience = _minimum_base_experience_for_page_requirement(requirement)
+    return (minimum_base_experience + material_experience - 1) // material_experience
+
+
+def _minimum_base_experience_for_page_requirement(requirement: int) -> int:
+    return (
+        requirement * PAGE_BASE_EXP_MULTIPLIER_DENOMINATOR + PAGE_BASE_EXP_MULTIPLIER_NUMERATOR - 1
+    ) // PAGE_BASE_EXP_MULTIPLIER_NUMERATOR
 
 
 def _gold_for_counts(counts: Sequence[int], definitions: Sequence[MaterialDefinition]) -> int:
@@ -673,7 +728,8 @@ def _to_segment_plan(
         preview_base_experience=preview,
         materials=consumption.materials,
         provided_base_experience=candidate.provided_base_experience,
-        experience_overflow=candidate.provided_base_experience - requirement,
+        provided_page_effective_experience=candidate.provided_page_effective_experience,
+        experience_overflow=candidate.provided_page_effective_experience - requirement,
         gold=candidate.gold,
         suggested_hard_limit=consumption,
         applied_hard_limit=hard_limit,
