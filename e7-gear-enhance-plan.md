@@ -2321,3 +2321,12 @@ GUI 验收关注点：
 - 报告生成器保留 common 的既有五段矩阵字段，并新增完整的 `accessory_*` 五段 proposal、exact limit 与 bounded matrix JSON 字段；Markdown 单列饰品五段矩阵。两池均独立覆盖 `+3/+6/+9/+12/+15`、库存、分段硬上限和累计硬上限，饰品矩阵材料键仅为 `accessory_*`。资源模型 `16/16`、规划器 `39/39`、临时报告生成、Python 3.9 语法、矩阵/溢出 smoke 与 `git diff --check` 均通过；未读取私人文件，未提交、未推送。当前状态为 `accessory_material_and_account_multiplier_planner_fix_main_review_gaps_corrected_validated_not_committed`。
 - 主工作区最终补充验证通过：共享研究桥接 `7/7`，另一个直接研究测试退出码 `0`。公开验证 JSON/Markdown 已刷新，common/accessory 五段矩阵各 `69` 个覆盖案例、`49` 个全局唯一请求、违规 `0`；CLI smoke 已刷新为 `offline_budget_planner/v2`，`+0 -> +3` 为 `1` 下级石加 `2` 粉末、基础/页面 `1,700/1,982`、金币 `17,600`。当前状态为 `accessory_material_and_account_multiplier_planner_fix_completed_validated_commit_push_pending`。
 - 提交 `54a64a6 feat: support accessory enhancement budget planning` 已成功推送至 `origin/codex/policy-v1-manifest-20260725`，当前状态更新为 `accessory_material_and_account_multiplier_planner_fix_completed_validated_published`。提交后的 Git 自动 geometric repack 因已知异常引用 `refs/heads/main - 副本` 报警，但未修改该引用。
+
+#### 多节点新鲜快照与重新配对契约阶段建立（2026-07-25）
+
+- 用户已同意建立新的工程阶段任务说明并提交推送。独立任务说明为[多节点新鲜快照与重新配对契约任务说明](多节点新鲜快照与重新配对契约任务说明.md)，本阶段唯一权威来源为该任务说明、根目录 `AGENTS.md` 和本总计划。
+- 离线预算规划器及饰品材料支持已经完成并发布；当前下一阶段聚焦强化后 `+3/+6/+9/+12` 节点的新鲜权威状态、同批双文件严格配对、唯一装备身份连续性和旧证据失效契约。
+- 本阶段初始范围仅包含离线 schema/验证器、fail-closed 规则、公开回归测试和不含私人证据的验证报告；不接 GUI、OCR、ADB、MuMu、自动点击、材料选择或资源消耗。
+- 新节点必须重新取得独立采集标识和同批 `player_data.json`/`reader_result.json`，并重新校验页面、装备字段、`0.98` 置信度、哈希、实例 ID、节点顺序和建议哈希；零/多候选、旧快照复用、跨批、哈希不一致、低置信度、节点跳跃或未知结果继续 fail closed。
+- 可信快照 `20260722_132045` 仅作历史只读配对证据，不能充当强化后任何新节点的当前状态。当前阶段不改变正式策略、DP、评分、资源模型、GUI、OCR 门槛、Holdout 或自动化规则。
+- 代码实现和代码测试按用户指定使用 `gpt-5.6-terra + high`。任务说明已建立并推送，但尚未授权开始代码实现；当前状态为 `phase_established_ready_for_implementation_authorization`。
