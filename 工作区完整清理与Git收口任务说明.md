@@ -219,4 +219,5 @@
 - 已将 `339/339` 个文件按原相对路径可恢复移动至 `%USERPROFILE%\Documents\第七史诗强化装备脚本_私人证据归档_20260725\`；目标逐文件大小和 SHA-256 均验证通过，源文件剩余 `0`，未上传、删除、覆盖或改写私人内容。
 - 归档内已生成 `restore_manifest_20260725.json`、`restore_manifest_20260725.csv` 和 `restore_manifest_20260725.sha256`；JSON/CSV 自身 SHA-256 分别为 `5bd788ace12ea3140358fcb48c096187c7e1cf41c6de9e9764cb12fbe4d17796`、`c3030b08dd73e11659767d5338f1fd307075352d99311db2a480d6cb6cb86f9a`。
 - 移动后 `git ls-files --others --exclude-standard` 为 `0`；最终汇总见 [Markdown](reports/worktree_cleanup_closure_20260725.md) 与 [JSON](reports/worktree_cleanup_closure_20260725.json)。
-- 当前状态：`worktree_cleanup_complete_after_closure_push`；本收口文档提交并推送成功后，任务目标全部达成。
+- 收口提交 `d2f60fa` 已推送至 `origin/codex/worktree-cleanup-20260725`；最终 `git status --porcelain` 为空，本地与远程 `ahead/behind=0/0`。
+- 当前状态：`worktree_cleanup_complete`。

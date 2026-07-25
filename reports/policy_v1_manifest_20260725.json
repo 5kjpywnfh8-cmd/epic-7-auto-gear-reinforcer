@@ -1,0 +1,465 @@
+{
+  "schema_version": "e7_enhance.policy_manifest/1.0",
+  "generated_on": "2026-07-25",
+  "strategy_version": "baili-formal-dp-v1-epic-balanced",
+  "manifest_sha256": "565ecd81d9f1354129bbc91ebbd54f291c33249b83371e0be7a5f3316d6c2adb",
+  "freeze_status": "not_ready",
+  "behavior_inputs": [
+    {
+      "path": "src/e7_enhance/calibration.py",
+      "bytes": 101519,
+      "sha256": "b21e266e52619e3b64f778f5f2ad24769d0bd5c03766fe9e8063b83ccb75ff1b"
+    },
+    {
+      "path": "src/e7_enhance/enhance_policy.py",
+      "bytes": 33757,
+      "sha256": "76420af1f696fefe59954fb958c0ef19d8d0918a8bb0ecc03e56ef63f697cf8a"
+    },
+    {
+      "path": "src/e7_enhance/lightweight_calibration_rules.json",
+      "bytes": 89,
+      "sha256": "28ce1a0a0a04aa81e3d3b34a6d74f122e27b4bcd51703fbd2a2358954960476d"
+    },
+    {
+      "path": "src/e7_enhance/models.py",
+      "bytes": 7701,
+      "sha256": "ee62a5c6073c30820f72fbce704dbcb049cb18939e177c03a64fbe4a3a2db1d4"
+    },
+    {
+      "path": "src/e7_enhance/modification_values.py",
+      "bytes": 3065,
+      "sha256": "5ad20051c73d314927a91af42145c326f261a324bf439eef033878def78f0be5"
+    },
+    {
+      "path": "src/e7_enhance/resource_model.py",
+      "bytes": 26812,
+      "sha256": "e91e14a4e8620a662593384bd56bb813734f9f2aaddfb71ce34900e1fa427ef6"
+    },
+    {
+      "path": "src/e7_enhance/rules.py",
+      "bytes": 21798,
+      "sha256": "28f84c739dd4a6910a4f0a817f80561eb3933a77bc77eadfec04994cfa32968d"
+    },
+    {
+      "path": "src/e7_enhance/score_engine.py",
+      "bytes": 19580,
+      "sha256": "e546acf80cf899ef3d6c4a567bfdf5b00cbacc7fe00682a71cbef845b2f472fe"
+    },
+    {
+      "path": "src/e7_enhance/strategy_defaults.py",
+      "bytes": 2061,
+      "sha256": "e179533b50410cd2bfc8045f47605ce4d01f206b028b5aeaf4408ed67fddf893"
+    },
+    {
+      "path": "装备强化与评分规则审阅.md",
+      "bytes": 16126,
+      "sha256": "91bc665ac305e838bd51a75ba5793705a172f26f2b1a3b9cf64250ea2ccb7996"
+    }
+  ],
+  "supported_inputs": {
+    "item_source_ranks": [
+      {
+        "item_source": "normal_85",
+        "rank": "Epic"
+      },
+      {
+        "item_source": "normal_85",
+        "rank": "Heroic"
+      },
+      {
+        "item_source": "rift_85",
+        "rank": "Epic"
+      }
+    ],
+    "equipment_levels": [
+      85,
+      90
+    ],
+    "enhancement_checkpoints": [
+      0,
+      3,
+      6,
+      9,
+      12,
+      15
+    ],
+    "slots": [
+      {
+        "slot": "armor",
+        "main_stats": [
+          "defFlat"
+        ]
+      },
+      {
+        "slot": "boot",
+        "main_stats": [
+          "atkFlat",
+          "atkPct",
+          "defFlat",
+          "defPct",
+          "hpFlat",
+          "hpPct",
+          "spd"
+        ]
+      },
+      {
+        "slot": "helm",
+        "main_stats": [
+          "hpFlat"
+        ]
+      },
+      {
+        "slot": "neck",
+        "main_stats": [
+          "atkFlat",
+          "atkPct",
+          "cdmg",
+          "crit",
+          "defFlat",
+          "defPct",
+          "hpFlat",
+          "hpPct"
+        ]
+      },
+      {
+        "slot": "ring",
+        "main_stats": [
+          "atkFlat",
+          "atkPct",
+          "defFlat",
+          "defPct",
+          "eff",
+          "hpFlat",
+          "hpPct",
+          "res"
+        ]
+      },
+      {
+        "slot": "weapon",
+        "main_stats": [
+          "atkFlat"
+        ]
+      }
+    ],
+    "sets": [
+      {
+        "code": "set_acc",
+        "name": "命中"
+      },
+      {
+        "code": "set_att",
+        "name": "攻击"
+      },
+      {
+        "code": "set_chase",
+        "name": "追加"
+      },
+      {
+        "code": "set_counter",
+        "name": "反击"
+      },
+      {
+        "code": "set_cri",
+        "name": "暴击"
+      },
+      {
+        "code": "set_cri_dmg",
+        "name": "爆伤"
+      },
+      {
+        "code": "set_debuff",
+        "name": "弱化"
+      },
+      {
+        "code": "set_def",
+        "name": "防御"
+      },
+      {
+        "code": "set_immune",
+        "name": "免疫"
+      },
+      {
+        "code": "set_max_hp",
+        "name": "生命"
+      },
+      {
+        "code": "set_opener",
+        "name": "开战"
+      },
+      {
+        "code": "set_penetrate",
+        "name": "贯穿"
+      },
+      {
+        "code": "set_rage",
+        "name": "全力"
+      },
+      {
+        "code": "set_res",
+        "name": "抵抗"
+      },
+      {
+        "code": "set_revenant",
+        "name": "逆袭"
+      },
+      {
+        "code": "set_riposte",
+        "name": "回击"
+      },
+      {
+        "code": "set_scar",
+        "name": "伤口"
+      },
+      {
+        "code": "set_shield",
+        "name": "守护"
+      },
+      {
+        "code": "set_speed",
+        "name": "速度"
+      },
+      {
+        "code": "set_torrent",
+        "name": "激流"
+      },
+      {
+        "code": "set_vampire",
+        "name": "吸血"
+      }
+    ],
+    "default_gear_source": "riftslash_20_buff",
+    "unknown_input_contract": {
+      "item_source": "reject",
+      "rank_for_source": "reject",
+      "equipment_level": "reject",
+      "enhancement_checkpoint": "reject",
+      "slot": "reject",
+      "main_stat_for_slot": "reject",
+      "substat": "reject",
+      "set": "not_rejected"
+    }
+  },
+  "default_strategies": [
+    {
+      "item_source": "normal_85",
+      "rank": "Epic",
+      "gear_source": "riftslash_20_buff",
+      "policy_name": "normal_epic_dp_assisted",
+      "enable_dp_assist": true,
+      "resource_calibration_status": "published"
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Heroic",
+      "gear_source": "riftslash_20_buff",
+      "policy_name": "baili_marginal_low",
+      "enable_dp_assist": false,
+      "resource_calibration_status": "unpublished"
+    },
+    {
+      "item_source": "rift_85",
+      "rank": "Epic",
+      "gear_source": "riftslash_20_buff",
+      "policy_name": "rift_epic_dp_assisted",
+      "enable_dp_assist": true,
+      "resource_calibration_status": "published"
+    }
+  ],
+  "decision_contract": {
+    "entrypoint": "src.e7_enhance.enhance_policy.advise_gear",
+    "summary_fields": [
+      "recommendation",
+      "next_check_at",
+      "target_profile",
+      "reasons"
+    ],
+    "review_required_recommendations": [
+      "cautious_continue",
+      "uncertain"
+    ],
+    "automation_boundary": "manifest_does_not_authorize_clicks_or_resource_consumption"
+  },
+  "decision_routes": [
+    {
+      "item_source": "normal_85",
+      "rank": "Epic",
+      "checkpoint": 0,
+      "segment": "all",
+      "owner": "lightweight_prediction",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Epic",
+      "checkpoint": 3,
+      "segment": "all",
+      "owner": "lightweight_prediction",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Epic",
+      "checkpoint": 6,
+      "segment": "all",
+      "owner": "exact_dp",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Epic",
+      "checkpoint": 9,
+      "segment": "all",
+      "owner": "exact_dp",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Epic",
+      "checkpoint": 12,
+      "segment": "all",
+      "owner": "exact_dp",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Epic",
+      "checkpoint": 15,
+      "segment": "all",
+      "owner": "terminal_summary",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Heroic",
+      "checkpoint": 0,
+      "segment": "all",
+      "owner": "lightweight_prediction",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Heroic",
+      "checkpoint": 3,
+      "segment": "all",
+      "owner": "lightweight_prediction",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Heroic",
+      "checkpoint": 6,
+      "segment": "non_boot_with_speed",
+      "owner": "heroic_speed22_rescue",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Heroic",
+      "checkpoint": 6,
+      "segment": "fallback",
+      "owner": "baseline_policy",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Heroic",
+      "checkpoint": 9,
+      "segment": "non_boot_with_speed",
+      "owner": "heroic_speed22_rescue",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Heroic",
+      "checkpoint": 9,
+      "segment": "fallback",
+      "owner": "baseline_policy",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Heroic",
+      "checkpoint": 12,
+      "segment": "non_boot_with_speed",
+      "owner": "heroic_speed22_rescue",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Heroic",
+      "checkpoint": 12,
+      "segment": "fallback",
+      "owner": "baseline_policy",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "normal_85",
+      "rank": "Heroic",
+      "checkpoint": 15,
+      "segment": "all",
+      "owner": "terminal_summary",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "rift_85",
+      "rank": "Epic",
+      "checkpoint": 0,
+      "segment": "all",
+      "owner": "lightweight_prediction",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "rift_85",
+      "rank": "Epic",
+      "checkpoint": 3,
+      "segment": "all",
+      "owner": "lightweight_prediction",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "rift_85",
+      "rank": "Epic",
+      "checkpoint": 6,
+      "segment": "all",
+      "owner": "exact_dp",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "rift_85",
+      "rank": "Epic",
+      "checkpoint": 9,
+      "segment": "all",
+      "owner": "exact_dp",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "rift_85",
+      "rank": "Epic",
+      "checkpoint": 12,
+      "segment": "all",
+      "owner": "exact_dp",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    },
+    {
+      "item_source": "rift_85",
+      "rank": "Epic",
+      "checkpoint": 15,
+      "segment": "all",
+      "owner": "terminal_summary",
+      "output_contract": "summary.recommendation + summary.next_check_at"
+    }
+  ],
+  "readiness": {
+    "gates": {
+      "behavior_inputs_hashed": true,
+      "supported_scope_complete": true,
+      "decision_route_coverage_complete": true,
+      "unknown_set_fail_closed": false,
+      "full_regression_matrix_evidence_attached": false
+    },
+    "gaps": [
+      "unknown_set_not_rejected_by_advise_gear",
+      "full_regression_matrix_evidence_not_attached"
+    ]
+  }
+}

@@ -1,4 +1,3 @@
-import json
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -115,33 +114,21 @@ class EnhancePolicyTest(unittest.TestCase):
             "cautious_continue",
         )
 
-    @staticmethod
-    def _real_snapshot(snapshot_id: str) -> dict:
-        payload = json.loads(
-            (Path("manual_acceptance") / "real_sample_records.json").read_text(encoding="utf-8")
-        )
-        for record in payload["records"]:
-            for snapshot in record.get("snapshots") or []:
-                if snapshot.get("snapshot_id") == snapshot_id:
-                    return snapshot
-        raise AssertionError(f"Missing real acceptance snapshot: {snapshot_id}")
+    def test_documented_acceptance_cases_define_the_early_speed_gamble_route(self):
+        cases = [
+            ("Epic +0 非鞋 5 速", self._early_speed_gear(slot="Armor", speed=5), "continue"),
+            ("Heroic +0 项链 4 速", self._early_speed_gear(rank="Heroic", slot="Necklace", speed=4), "continue"),
+            ("Heroic +0 戒指 4 速", self._early_speed_gear(rank="Heroic", slot="Ring", speed=4), "continue"),
+            (
+                "Epic +3 戒指未跳速度",
+                self._early_speed_gear(slot="Ring", enhance=3, speed=4, speed_rolls=1, output_substats=True),
+                "cautious_continue",
+            ),
+        ]
 
-    def test_real_samples_define_the_early_speed_gamble_route(self):
-        expected = {
-            "snapshot-09e26a5b532f5cb2": "continue",
-            "snapshot-d6784ef1d24815df": "continue",
-            "snapshot-c573444cd19cd9c3": "continue",
-            "snapshot-3eee02a609e1e806": "cautious_continue",
-        }
-
-        for snapshot_id, recommendation in expected.items():
-            with self.subTest(snapshot_id=snapshot_id):
-                snapshot = self._real_snapshot(snapshot_id)
-                gear_data = snapshot["gear"]
-                result = advise_gear(
-                    Gear.from_dict(gear_data),
-                    item_source=gear_data["itemSource"],
-                )
+        for label, (gear, item_source), recommendation in cases:
+            with self.subTest(label=label):
+                result = advise_gear(gear, item_source=item_source)
                 basis = result["debug"]["dp_assist"]["lightweight_basis"]
 
                 self.assertEqual(result["summary"]["recommendation"], recommendation)
@@ -152,20 +139,23 @@ class EnhancePolicyTest(unittest.TestCase):
                 self.assertIn("route_end_reason", basis["early_speed_gamble"])
                 self.assertIn("next_check_at", basis["early_speed_gamble"])
 
-        first = self._real_snapshot("snapshot-09e26a5b532f5cb2")
-        positive = advise_gear(Gear.from_dict(first["gear"]), item_source="normal_85")
+        first, first_source = cases[0][1]
+        positive = advise_gear(first, item_source=first_source)
         self.assertEqual(positive["debug"]["dp_assist"]["lightweight_basis"]["route"], "早期赌速度")
 
-        missed = self._real_snapshot("snapshot-3eee02a609e1e806")
-        missed_result = advise_gear(Gear.from_dict(missed["gear"]), item_source="normal_85")
+        missed, missed_source = cases[3][1]
+        missed_result = advise_gear(missed, item_source=missed_source)
         missed_speed = missed_result["debug"]["dp_assist"]["lightweight_basis"]["early_speed_gamble"]
         self.assertFalse(missed_speed["plus3_hit_speed"])
         self.assertEqual(missed_speed["route_end_reason"], "+3 未命中速度，退出早期赌速度路线")
 
-        for snapshot_id in ("snapshot-b6abed008bef3ff6", "snapshot-639d421f7a018374"):
-            with self.subTest(snapshot_id=snapshot_id):
-                snapshot = self._real_snapshot(snapshot_id)
-                result = advise_gear(Gear.from_dict(snapshot["gear"]), item_source="normal_85")
+        boot_cases = [
+            ("Epic 鞋子", self._early_speed_gear(slot="Boots", speed=5)),
+            ("Heroic 鞋子", self._early_speed_gear(rank="Heroic", slot="Boots", speed=4)),
+        ]
+        for label, (gear, item_source) in boot_cases:
+            with self.subTest(label=label):
+                result = advise_gear(gear, item_source=item_source)
                 basis = result["debug"]["dp_assist"]["lightweight_basis"]
                 self.assertNotEqual(basis["route"], "早期赌速度")
                 self.assertFalse(basis["early_speed_gamble"]["slot_eligible"])

@@ -2209,4 +2209,24 @@ GUI 验收关注点：
 - 移动前二次验证通过：未跟踪集合仍为 `339` 个文件、`223321159` 字节，最大文件 `26483765` 字节，集合 SHA-256 仍为 `1b33e73a3cfdb243bb1cf91bb58d0300ae727c9152a7698463f192fd94f9b76a`；不安全路径、重解析点和目标冲突均为 `0`。
 - 已将 `339/339` 个文件按原相对路径可恢复移动至 `%USERPROFILE%\Documents\第七史诗强化装备脚本_私人证据归档_20260725\`，目标逐文件大小和 SHA-256 全部通过；源文件剩余 `0`，未上传、删除、覆盖或改写私人内容。
 - 归档内已生成 JSON、CSV 和校验文件；移动后 Git 未跟踪文件为 `0`。最终汇总见 [Markdown](reports/worktree_cleanup_closure_20260725.md) 与 [JSON](reports/worktree_cleanup_closure_20260725.json)。
-- 当前状态更新为 `worktree_cleanup_complete_after_closure_push`；本收口文档提交并推送成功后，任务目标全部达成，随后只需核验工作区为空且本地与远程同步。
+- 收口提交 `d2f60fa` 已推送至 `origin/codex/worktree-cleanup-20260725`；最终 `git status --porcelain` 为空，本地与远程 `ahead/behind=0/0`，工作区清理任务状态更新为 `worktree_cleanup_complete`。
+
+#### 功能开发恢复：策略 V1 冻结清单与覆盖矩阵（2026-07-25）
+
+- 工作区清理闸门已完成，用户已明确要求恢复功能开发。当前最先执行的功能任务为[策略V1冻结清单与覆盖矩阵生成器任务说明](策略V1冻结清单与覆盖矩阵生成器任务说明.md)。
+- 本任务只新增确定性的只读 manifest/报告生成能力：记录正式策略版本、行为输入文件哈希、支持范围、默认策略和各节点决策路由；不会修改正式策略、DP、评分、资源模型、GUI、Holdout、OCR 门槛或自动化。
+- 对无法证明满足的冻结条件必须输出 `not_ready` 和明确缺口，不得把生成 manifest 解释为策略已经发布或冻结。
+- 已实现只读 manifest 模块与 CLI，输出 `10` 个行为输入哈希、`3` 个来源/品质组合和 `21` 条节点路由；报告见 [JSON](reports/policy_v1_manifest_20260725.json) 与 [Markdown](reports/policy_v1_manifest_20260725.md)。
+- 核心 manifest SHA-256 为 `565ecd81d9f1354129bbc91ebbd54f291c33249b83371e0be7a5f3316d6c2adb`；Python 3.9 定向测试 `7/7`、语法检查和 CLI smoke 均通过。
+- 当前冻结状态为 `not_ready`，明确缺口为核心 `advise_gear` 未规范拒绝未知套装，以及本清单尚未附着完整回归矩阵证据；本轮不修改策略。
+- 当前状态更新为 `policy_v1_manifest_implemented_targeted_validation_passed_full_suite_pending`。
+- 扩大策略回归发现 `tests/test_enhance_policy.py` 的既有用例直接依赖已归档私人记录，产生 5 个 `FileNotFoundError`；其余策略断言未失败。为保持工作区清理边界，本轮不读取或恢复私人归档，只把该用例替换为语义等价的最小合成夹具后继续全量验证。
+- 自包含修复后该策略文件 `43/43` 通过；统一全量入口真实退出码 `1`，新 manifest 测试通过，但另有 `13` 个既有测试组继续依赖已归档的少数真实样本、Holdout 和 batch `004` 证据。不得跳过测试或静默恢复私人文件。
+- 当前状态更新为 `policy_v1_manifest_targeted_passed_full_suite_blocked_awaiting_temporary_private_fixture_authorization`。推荐在用户明确授权后临时复制精确测试依赖、运行全量测试，再删除临时副本并验证归档哈希和 Git 状态；不暂存、不提交、不上传私人文件。
+- 用户已明确授权只临时恢复统一全量测试所需的精确私人夹具：恢复前按归档清单逐文件校验 SHA-256 且目标必须不存在，测试后删除临时副本并复核归档原件及集合 SHA-256 不变；这些文件不得暂存、提交或上传。当前状态更新为 `policy_v1_manifest_private_fixture_restore_authorized_preflight_in_progress`。
+- 首轮临时恢复 9 个文件后，全量入口真实退出码 `1`、耗时 `270.2` 秒；除 `test_single_item_confirmation.py` 外全部测试组通过。唯一新增依赖是 batch `004` 操作包引用的 `preflight_20260723_102914/pair_batch_004.json`；其缺失造成该组 2 个失败和 2 个错误，不是 manifest 模块回归。
+- 首轮 9 个临时副本已全部删除；归档 `339/339` 个文件、总字节数和逐文件 SHA-256 复核通过，集合 SHA-256 仍为 `1b33e73a3cfdb243bb1cf91bb58d0300ae727c9152a7698463f192fd94f9b76a`，Git 未出现私人夹具。当前状态更新为 `policy_v1_manifest_second_full_suite_preflight_pending_with_pairing_baseline`。
+- 第二轮补入 batch `004` 配对基线后，单件组底层验证通过，聚合用例仍因已跟踪 batch `013` 操作包缺少其归档配对基线而 `1/5` 失败。归档清单中 `pair_batch_013.json` 唯一存在，因此临时依赖扩展为共 11 个文件；batch `013` 操作包本身无需恢复。当前状态更新为 `policy_v1_manifest_batch_013_pairing_baseline_preflight_pending`。
+- 补入唯一匹配的 batch `013` 配对基线后，单件组 `5/5` 通过；统一全量入口真实退出码 `0`、耗时 `270.3` 秒并输出 `ALL TEST FILES PASSED`。一个 Qt 用例两次以退出码 `3221226505` 失败后由既有 runner 第三次重试通过。
+- 全量测试后已删除全部 `11` 个临时私人夹具；归档 `339/339` 个文件、`223321159` 字节和逐文件 SHA-256 最终复核通过，集合 SHA-256 仍为 `1b33e73a3cfdb243bb1cf91bb58d0300ae727c9152a7698463f192fd94f9b76a`。暂存区为空，Git 未跟踪项只剩本任务 6 个非私人产物。
+- 当前状态更新为 `policy_v1_manifest_implementation_and_validation_complete_commit_push_pending`。全量 runner 通过不等于机器可读回归证据已附着，manifest 继续正确输出 `not_ready`；未知套装拒绝与回归证据附着仍是后续独立缺口。
