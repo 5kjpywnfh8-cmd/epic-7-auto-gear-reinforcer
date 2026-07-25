@@ -2230,3 +2230,5 @@ GUI 验收关注点：
 - 补入唯一匹配的 batch `013` 配对基线后，单件组 `5/5` 通过；统一全量入口真实退出码 `0`、耗时 `270.3` 秒并输出 `ALL TEST FILES PASSED`。一个 Qt 用例两次以退出码 `3221226505` 失败后由既有 runner 第三次重试通过。
 - 全量测试后已删除全部 `11` 个临时私人夹具；归档 `339/339` 个文件、`223321159` 字节和逐文件 SHA-256 最终复核通过，集合 SHA-256 仍为 `1b33e73a3cfdb243bb1cf91bb58d0300ae727c9152a7698463f192fd94f9b76a`。暂存区为空，Git 未跟踪项只剩本任务 6 个非私人产物。
 - 当前状态更新为 `policy_v1_manifest_implementation_and_validation_complete_commit_push_pending`。全量 runner 通过不等于机器可读回归证据已附着，manifest 继续正确输出 `not_ready`；未知套装拒绝与回归证据附着仍是后续独立缺口。
+- 功能、测试、报告和任务文档已由提交 `335dc6e` 推送至 `origin/codex/policy-v1-manifest-20260725`。提交后的 geometric repack 仅受既有异常引用 `refs/heads/main - 副本` 影响，提交对象和远程推送均成功，本轮未修改该引用。
+- 当前状态更新为 `policy_v1_manifest_task_complete`；后续最先处理的仍是独立的未知套装 fail-closed 与机器可读回归证据附着缺口，不得在本任务中静默改变正式策略。
