@@ -2369,3 +2369,9 @@ GUI 验收关注点：
 - 用户已授权 `+0` 新鲜真实读取和向指定 Fribbels API 上传本账号 TCP 载荷，但授权文字同时禁止页面点击。只读核对标准固定读取命令确认，`--auto-enter-seconds 105` 在启动 `tcpdump` 后会 force-stop/monkey 重启 Epic Seven、在 105 秒内循环 ADB `input tap` 登录/公告位置，并在前三轮发送 `KEYCODE_BACK`。
 - 因此标准命令与“零页面点击”约束冲突，不能执行；当前状态更新为 `fresh_read_authorized_blocked_by_standard_reader_page_input_conflict`。本轮未启动抓包、未重启、未上传、未点击、未强化、未选材或消耗资源。
 - 下一步仅等待用户明确二选一：A（推荐）允许标准读取器仅为登录/公告执行自动点击和重启，仍禁止装备/材料/强化页面输入；或 B 保持零页面点击，另行授权偏离固定标准命令并评估 `--auto-enter-seconds 0`，不保证同步或读取成功。保留既有四项参数和 `gpt-5.6-terra + high` 模型要求。
+
+#### `+0` 新鲜真实读取 A 方案授权（2026-07-26）
+
+- 用户已选择 A 方案，授权标准读取器为登录/公告执行 force-stop/monkey 重启、自动点击和前三轮 `KEYCODE_BACK`；`+0` 新鲜真实读取现可按固定标准命令执行，并已授权向指定 Fribbels API 上传本账号 TCP 载荷。
+- 授权严格限于读取器的登录/公告流程。装备、材料、强化页面输入，强化、选材、导入和任何资源消耗仍禁止；出现超出此范围的行为必须停止。
+- 当前状态更新为 `fresh_read_authorized_ready_for_standard_reader_execution`。本轮仅同步 Markdown，未运行读取器、ADB 或 GUI，未抓包、重启、上传、点击、强化、选材或消耗资源。执行模型记录为 `gpt-5.6-terra + high`。
