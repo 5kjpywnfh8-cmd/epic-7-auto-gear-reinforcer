@@ -2335,3 +2335,10 @@ GUI 验收关注点：
 - 公开 `not_ready` JSON/Markdown 报告已生成，不含私人路径、设备地址或原始载荷。Python 3.9 定向验证：新契约 `9/9`、配对器 `6/6`、MuMu 数据适配器 `7/7`，语法检查与 `git diff --check` 通过。旧单件测试因私人归档样本不在工作区而未通过，按任务边界未读取或恢复该归档。
 - 主 agent 审阅发现并修复了“非 `+0` 节点可独立启动验证链”的连续性缺口；修正后重跑通过。本轮未修改正式策略、DP、评分、资源模型、GUI/OCR/ADB/MuMu/Holdout/自动化，未读取私人归档。当前状态为 `fresh_snapshot_contract_implemented_validated_commit_push_pending`。
 - 实现提交 `0ceabc1 feat: add fresh snapshot pairing contract` 已成功推送至 `origin/codex/policy-v1-manifest-20260725`，当前状态为 `fresh_snapshot_contract_implemented_validated_published`。提交后的 Git 自动 geometric repack 因已知异常引用 `refs/heads/main - 副本` 报警，但未修改该引用。
+
+#### 真实多节点新鲜快照采集与契约验收阶段建立（2026-07-25）
+
+- 用户已明确授权按顺序进入真实多节点采集与契约验收阶段，但首先只建立独立任务说明；本阶段唯一权威来源为[真实多节点新鲜快照采集与契约验收任务说明](真实多节点新鲜快照采集与契约验收任务说明.md)、根目录 `AGENTS.md`、[多节点新鲜快照与重新配对契约任务说明](多节点新鲜快照与重新配对契约任务说明.md)和[MuMu抓包读取与真实装备导入任务说明](MuMu抓包读取与真实装备导入任务说明.md)。
+- 当前尚未提供四项执行参数：目标装备实例及可复核指纹、连续节点计划、允许材料来源、每段及累计材料/金币资源硬上限；也尚未单独授权只读预检。因此不得连接 MuMu、ADB、OCR，不得抓包、读取真实快照、导入档案、强化、选材或消耗资源。
+- 任务说明已固定顺序闸门：先补齐四项参数，再取得只读预检授权，之后才可按节点逐次取得真实读取授权、运行离线契约，并在每段人工操作前再次取得明确授权。每个节点均要求新鲜同批 `player_data.json`/`reader_result.json`、唯一实例连续性、预期 `raw` 等级、页面明确性和 `0.98` OCR 闸门；任一异常继续 fail closed。
+- 后续代码实现和代码测试必须使用 `gpt-5.6-terra + high`；实际模型和 reasoning effort 必须如实记录。当前状态为 `awaiting_execution_parameters_and_read_only_preflight_authorization`。本轮只更新 Markdown，未操作 GUI/OCR/ADB/MuMu，未读取私人归档，未改动正式策略、DP、评分、资源模型、GUI、OCR 门槛、Holdout 或自动化规则。
