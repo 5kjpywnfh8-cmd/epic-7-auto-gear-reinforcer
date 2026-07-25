@@ -84,8 +84,12 @@
 
 ## 当前状态
 
-`sync_trigger_page_authorized_ready_for_implementation`。实际执行模型为 `gpt-5.6-terra + high`。
+`implementation_verified_awaiting_real_read`。实际执行模型为 `gpt-5.6-terra + high`。
 
 离线红灯探针 `tools/mumu_capture_sync_probe.py` 已实际运行：失败 PCAP 在 `60--120` 秒 TCP 载荷仅 `759` 字节，退出码 `1`，连续 `3` 次结果一致；成功批次 `20260722_132045` 为 `405198` 字节，退出码 `0`。ACK 跨流碰撞均为 `0`；失败样本去重损失 `11014`，小于成功样本 `44761`；协议、分帧和可打印比例相近。因此 TCP 分组、ACK 跨流碰撞或协议/分帧变化不是本故障已证根因。
 
-可证结论是：现读取器固定的登录/公告驱动不能保证触发账号同步。用户现已明确授权状态感知地进入大厅后只读导航装备/英雄页面，或采用等价同步触发方式，并允许修复后一次标准真实读取及既有 Fribbels API 验证。仍禁止强化页输入、材料选择、装备变更、导入、资源消耗、OCR 和正式模型相关改动；不得盲改，必须先完成最小实现、红灯探针与定向验证。本轮仅同步授权，未修改代码、未提交。
+可证结论是：现读取器固定的登录/公告驱动不能保证触发账号同步。用户已授权状态感知地进入大厅后只读导航装备/英雄页面，或采用等价同步触发方式，并允许修复后一次标准真实读取及既有 Fribbels API 验证。仍禁止强化页输入、材料选择、装备变更、导入、资源消耗、OCR 和正式模型相关改动。
+
+最小实现已在外部读取器 `D:\VScode\Epic-7-tools.v1.2\readers\mumu_capture\reader.py` 完成：`capture_pcap` 的登录驱动后调用 `trigger_read_only_sync`；该函数先用 `dumpsys window windows` 确认 Epic Seven 前台，只有此前置成立时才单次点击 `HERO_LOBBY_TAP=(0.10,0.89)`，非前台 fail-closed，未使用 OCR。新增 `tests/test_mumu_sync_trigger.py`；修复前红灯为 `AttributeError`、退出码 `1`，修复后 `unittest 3/3`、退出码 `0`，Python 3.9 内存语法检查退出码 `0`。`tools/mumu_capture_sync_probe.py` 基线仍为失败 `759` 字节/退出码 `1`、成功 `405198` 字节/退出码 `0`。
+
+尚未执行真实 MuMu、ADB 或 API 调用。下一步是主 agent 精确审阅实现后，按既有授权执行一次标准真实读取；本轮仅同步结果，未修改代码、未提交。

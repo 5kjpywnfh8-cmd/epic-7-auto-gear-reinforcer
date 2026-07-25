@@ -2403,3 +2403,10 @@ GUI 验收关注点：
 - 授权仍严格排除强化页输入、材料选择、装备变更、导入、任何资源消耗、OCR，以及正式策略、DP、评分、资源模型、Holdout 和自动化规则改动。实现必须保持最小范围，不能借此盲改读取器或扩大真实操作。
 - 仓库离线红灯探针 `tools/mumu_capture_sync_probe.py` 的权威基线为：失败 `759` 字节、退出码 `1`；成功批次 `20260722_132045` 为 `405198` 字节、退出码 `0`。修复必须先使用该探针验证，再执行获准的一次真实读取。
 - 当前状态更新为 `sync_trigger_page_authorized_ready_for_implementation`。实际模型记录为 `gpt-5.6-terra + high`；本轮仅同步 Markdown，未修改代码、未提交。
+
+#### MuMu 同步触发最小实现与离线验证完成（2026-07-26）
+
+- 外部读取器 `D:\VScode\Epic-7-tools.v1.2\readers\mumu_capture\reader.py` 已最小实现：`capture_pcap` 的登录驱动后调用 `trigger_read_only_sync`。该函数以 `dumpsys window windows` 确认 Epic Seven 为前台；仅此前置通过时，单次点击 `HERO_LOBBY_TAP=(0.10,0.89)` 触发同步，非前台 fail-closed。未使用 OCR，未增加强化、材料或装备变更操作。
+- 新增 `tests/test_mumu_sync_trigger.py`。修复前红灯为 `AttributeError`、退出码 `1`；修复后 `unittest 3/3`、退出码 `0`，Python 3.9 内存语法检查退出码 `0`。`tools/mumu_capture_sync_probe.py` 的失败 `759` 字节/退出码 `1`、成功 `405198` 字节/退出码 `0` 基线保持不变，供下一次读取结果判定。
+- 尚未执行真实 MuMu、ADB、标准读取或 Fribbels API 调用，未产生新 `player_data.json`、`reader_result.json` 或 snapshot，因而不得宣称读取功能已在真实环境恢复。仍禁止强化页输入、材料选择、装备变更、导入、资源消耗、OCR 和正式模型相关改动。
+- 当前状态更新为 `implementation_verified_awaiting_real_read`。下一步为主 agent 精确审阅后，按已获授权执行一次标准真实读取；实际模型为 `gpt-5.6-terra + high`。本轮仅同步 Markdown，未修改代码、未提交。
