@@ -2363,3 +2363,9 @@ GUI 验收关注点：
 - 在不抓包、不重启游戏、不操作页面/OCR、不导入、不强化、不选材和不消耗资源的范围内，使用 `current/player_data.json` 与 `snapshots/20260722_132045/reader_result.json` 完成历史文件侧配对：`player_items=2670`、`raw_items=2670`、`candidate_count=1`、`candidate_enhance=0`；脱敏候选身份哈希为 `36465dfb10980dc0f50293f10813e60777199cb50a6e4fe88d8774627b309b93`。
 - `player_sha256=3d74e2d69147d5a1053f0ebccc217ed2c64842fa2ce91cce6413e5fea364185b`，`reader_sha256=3831f40814c015166794bf44fbd55d153668532d549e612aff431c24e42f900b`。标准 `current/player_data.json` 与 `gear_fribbels.json` 时间为 `2026-07-22T05:20:45Z/2026-07-22T05:20:46Z`；未记录原始实例 ID。
 - 上述结果仅为 `2026-07-22` 历史快照的文件侧唯一配对，不是本任务新鲜 `+0` 证据，不能替代同批新鲜双文件、页面/OCR 核验或离线契约验收。当前状态保持 `read_only_preflight_passed_awaiting_fresh_read_authorization`；下一步仅等待用户单独明确授权 `+0` 新鲜真实读取。
+
+#### `+0` 新鲜真实读取授权冲突（2026-07-26）
+
+- 用户已授权 `+0` 新鲜真实读取和向指定 Fribbels API 上传本账号 TCP 载荷，但授权文字同时禁止页面点击。只读核对标准固定读取命令确认，`--auto-enter-seconds 105` 在启动 `tcpdump` 后会 force-stop/monkey 重启 Epic Seven、在 105 秒内循环 ADB `input tap` 登录/公告位置，并在前三轮发送 `KEYCODE_BACK`。
+- 因此标准命令与“零页面点击”约束冲突，不能执行；当前状态更新为 `fresh_read_authorized_blocked_by_standard_reader_page_input_conflict`。本轮未启动抓包、未重启、未上传、未点击、未强化、未选材或消耗资源。
+- 下一步仅等待用户明确二选一：A（推荐）允许标准读取器仅为登录/公告执行自动点击和重启，仍禁止装备/材料/强化页面输入；或 B 保持零页面点击，另行授权偏离固定标准命令并评估 `--auto-enter-seconds 0`，不保证同步或读取成功。保留既有四项参数和 `gpt-5.6-terra + high` 模型要求。
