@@ -2349,3 +2349,17 @@ GUI 验收关注点：
 - 目标 `item_instance_id` 尚未且不得人工填写，必须由后续正式配对器唯一确定。上级强化石硬上限为 `0`，未列材料、跨池材料或任何超限输入均 fail closed。
 - 用户已授权的范围仍仅为只读预检。当前不得执行 `+0` 真实读取、抓包、OCR 页面操作、导入档案、强化、选材或资源消耗；这些操作均须后续阶段逐项获得明确授权。当前状态更新为 `execution_parameters_recorded_read_only_preflight_authorized`。
 - 本轮仅同步两份 Markdown；实际模型记录要求保持 `gpt-5.6-terra + high`。未操作 GUI/OCR/ADB/MuMu，未读取私人归档，未修改正式策略、DP、评分、资源模型、GUI、OCR 门槛、Holdout 或自动化规则。
+
+#### 真实多节点新鲜快照只读预检通过（2026-07-26）
+
+- 在已记录四项执行参数和只读预检授权的范围内，ADB 检查退出码为 `0`，`device_count=1`、`other_state_count=0`；Root 检查通过。未记录、复用或传入固定设备地址。
+- 读取器源码实际 `tcpdump` 探针 `su -c 'tcpdump --help >/dev/null 2>&1 && echo READY'` 返回 `tcpdump_probe_exit=0`、`tcpdump_ready=True`，因此 `tcpdump` 前置通过。此前 `command -v tcpdump` 的退出码 `2` 是不兼容探针方式，不代表读取器失败；读取器路径均存在。
+- 标准 `current/player_data.json` 与 `gear_fribbels.json` 存在，但时间仅为 `2026-07-22 05:20:45/46 UTC`，只作旧输出，未被作为本任务新鲜节点证据；目标唯一配对未开始。
+- 本轮未执行抓包、重启游戏、页面操作、OCR、导入、强化、选材或资源消耗。当前状态更新为 `read_only_preflight_passed_awaiting_fresh_read_authorization`，下一步仅等待用户对 `+0` 新鲜真实读取的明确授权；保留既有四项参数和 `gpt-5.6-terra + high` 模型要求。
+
+#### 真实多节点历史快照文件侧唯一配对（2026-07-26）
+
+- 只读预检保持通过：ADB `device_count=1`、`other_state_count=0`，Root=`True`，读取器源码实际 `tcpdump --help ... && echo READY` 探针返回 `exit=0`、`READY=True`，标准路径存在。
+- 在不抓包、不重启游戏、不操作页面/OCR、不导入、不强化、不选材和不消耗资源的范围内，使用 `current/player_data.json` 与 `snapshots/20260722_132045/reader_result.json` 完成历史文件侧配对：`player_items=2670`、`raw_items=2670`、`candidate_count=1`、`candidate_enhance=0`；脱敏候选身份哈希为 `36465dfb10980dc0f50293f10813e60777199cb50a6e4fe88d8774627b309b93`。
+- `player_sha256=3d74e2d69147d5a1053f0ebccc217ed2c64842fa2ce91cce6413e5fea364185b`，`reader_sha256=3831f40814c015166794bf44fbd55d153668532d549e612aff431c24e42f900b`。标准 `current/player_data.json` 与 `gear_fribbels.json` 时间为 `2026-07-22T05:20:45Z/2026-07-22T05:20:46Z`；未记录原始实例 ID。
+- 上述结果仅为 `2026-07-22` 历史快照的文件侧唯一配对，不是本任务新鲜 `+0` 证据，不能替代同批新鲜双文件、页面/OCR 核验或离线契约验收。当前状态保持 `read_only_preflight_passed_awaiting_fresh_read_authorization`；下一步仅等待用户单独明确授权 `+0` 新鲜真实读取。
