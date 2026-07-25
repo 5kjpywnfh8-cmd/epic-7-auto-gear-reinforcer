@@ -2197,3 +2197,16 @@ GUI 验收关注点：
 - 339 个源文件、`223321159` 字节全部存在；不安全相对路径 `0`、重解析点 `0`，集合 SHA-256 为 `1b33e73a3cfdb243bb1cf91bb58d0300ae727c9152a7698463f192fd94f9b76a`。
 - C 盘可用空间 `226711515136` 字节，超过两倍源集合空间要求。预检报告见 [Markdown](reports/worktree_cleanup_private_archive_preflight_20260725.md) 与 [JSON](reports/worktree_cleanup_private_archive_preflight_20260725.json)。
 - 本轮未创建目录、移动、复制、删除、忽略或上传文件。当前状态更新为 `private_archive_preflight_passed_awaiting_explicit_user_choice`；只有用户明确选择私有归档方案后才允许执行。
+
+#### 私人归档执行授权（2026-07-25）
+
+- 用户已明确授权将预检覆盖的 `339` 个未跟踪文件可恢复移动至 `%USERPROFILE%\Documents\第七史诗强化装备脚本_私人证据归档_20260725\`，并生成逐文件 SHA-256 恢复清单。
+- 授权不扩展到删除、覆盖、内容改写、私人数据上传或 `.git` 异常引用处理；移动前仍须重新验证文件集合、路径安全、重解析点、目标冲突和磁盘空间，任一变化立即 `fail_closed`。
+- 当前状态更新为 `private_archive_authorized_revalidation_pending`。
+
+#### 私人归档完成与工作区收口（2026-07-25）
+
+- 移动前二次验证通过：未跟踪集合仍为 `339` 个文件、`223321159` 字节，最大文件 `26483765` 字节，集合 SHA-256 仍为 `1b33e73a3cfdb243bb1cf91bb58d0300ae727c9152a7698463f192fd94f9b76a`；不安全路径、重解析点和目标冲突均为 `0`。
+- 已将 `339/339` 个文件按原相对路径可恢复移动至 `%USERPROFILE%\Documents\第七史诗强化装备脚本_私人证据归档_20260725\`，目标逐文件大小和 SHA-256 全部通过；源文件剩余 `0`，未上传、删除、覆盖或改写私人内容。
+- 归档内已生成 JSON、CSV 和校验文件；移动后 Git 未跟踪文件为 `0`。最终汇总见 [Markdown](reports/worktree_cleanup_closure_20260725.md) 与 [JSON](reports/worktree_cleanup_closure_20260725.json)。
+- 当前状态更新为 `worktree_cleanup_complete_after_closure_push`；本收口文档提交并推送成功后，任务目标全部达成，随后只需核验工作区为空且本地与远程同步。

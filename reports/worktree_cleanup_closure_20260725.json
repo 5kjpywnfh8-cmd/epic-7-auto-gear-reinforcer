@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-07-25",
+  "status": "worktree_cleanup_complete_after_closure_push",
+  "branch": "codex/worktree-cleanup-20260725",
+  "archive": {
+    "location": "%USERPROFILE%\\Documents\\第七史诗强化装备脚本_私人证据归档_20260725\\",
+    "files_moved": 339,
+    "bytes_moved": 223321159,
+    "source_files_remaining": 0,
+    "destination_files_verified": 339,
+    "source_collection_sha256": "1b33e73a3cfdb243bb1cf91bb58d0300ae727c9152a7698463f192fd94f9b76a",
+    "destination_collection_sha256": "1b33e73a3cfdb243bb1cf91bb58d0300ae727c9152a7698463f192fd94f9b76a"
+  },
+  "restore_manifests": {
+    "json": "restore_manifest_20260725.json",
+    "json_sha256": "5bd788ace12ea3140358fcb48c096187c7e1cf41c6de9e9764cb12fbe4d17796",
+    "csv": "restore_manifest_20260725.csv",
+    "csv_sha256": "c3030b08dd73e11659767d5338f1fd307075352d99311db2a480d6cb6cb86f9a",
+    "checksum_file": "restore_manifest_20260725.sha256",
+    "stored_outside_git": true
+  },
+  "actions": {
+    "files_deleted": 0,
+    "files_overwritten": 0,
+    "private_files_uploaded": 0,
+    "content_rewritten": 0
+  },
+  "git": {
+    "untracked_files_after_move": 0,
+    "closure_docs_commit": "this_closure_commit",
+    "push": "required_for_completion"
+  },
+  "testing": {
+    "code_changed": false,
+    "full_suite_rerun": false,
+    "prior_full_suite_exit_code": 0,
+    "prior_full_suite_output": "ALL TEST FILES PASSED"
+  }
+}
