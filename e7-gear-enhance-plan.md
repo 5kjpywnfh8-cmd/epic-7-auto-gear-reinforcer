@@ -2329,8 +2329,9 @@ GUI 验收关注点：
 - 本阶段初始范围仅包含离线 schema/验证器、fail-closed 规则、公开回归测试和不含私人证据的验证报告；不接 GUI、OCR、ADB、MuMu、自动点击、材料选择或资源消耗。
 - 新节点必须重新取得独立采集标识和同批 `player_data.json`/`reader_result.json`，并重新校验页面、装备字段、`0.98` 置信度、哈希、实例 ID、节点顺序和建议哈希；零/多候选、旧快照复用、跨批、哈希不一致、低置信度、节点跳跃或未知结果继续 fail closed。
 - 可信快照 `20260722_132045` 仅作历史只读配对证据，不能充当强化后任何新节点的当前状态。当前阶段不改变正式策略、DP、评分、资源模型、GUI、OCR 门槛、Holdout 或自动化规则。
-- 代码实现和代码测试按用户指定使用 `gpt-5.6-terra + high`。任务说明已建立并推送，但尚未授权开始代码实现；当前状态为 `phase_established_ready_for_implementation_authorization`。
-- [已被本条覆盖] 用户已明确授权实现，实际代码与测试由 `gpt-5.6-terra + high` 子 agent 执行。新增纯离线节点快照契约验证器，仅最小扩展背包配对器的非 `+0` 当前主属性匹配，保持旧单件只读报告和 `+0` 配对兼容。
+- [已被后文覆盖] 代码实现和代码测试按用户指定使用 `gpt-5.6-terra + high`。任务说明已建立并推送，但尚未授权开始代码实现；当前状态为 `phase_established_ready_for_implementation_authorization`。
+- 用户已明确授权实现，实际代码与测试由 `gpt-5.6-terra + high` 子 agent 执行。新增纯离线节点快照契约验证器，仅最小扩展背包配对器的非 `+0` 当前主属性匹配，保持旧单件只读报告和 `+0` 配对兼容。
 - 新契约覆盖 `0 -> 3 -> 6 -> 9 -> 12 -> 15`、同批双 JSON 规范化内容 SHA-256、采集标识/时间顺序、页面明确性、`0.98` 置信度、唯一实例连续性、raw 节点校验和旧快照/旧建议哈希失效。零/多候选、跨批、哈希不一致、页面不明确、低置信度、节点跳跃、实例漂移、未知结果和非 `+0` 起始链均 fail closed，不生成继续建议。
 - 公开 `not_ready` JSON/Markdown 报告已生成，不含私人路径、设备地址或原始载荷。Python 3.9 定向验证：新契约 `9/9`、配对器 `6/6`、MuMu 数据适配器 `7/7`，语法检查与 `git diff --check` 通过。旧单件测试因私人归档样本不在工作区而未通过，按任务边界未读取或恢复该归档。
 - 主 agent 审阅发现并修复了“非 `+0` 节点可独立启动验证链”的连续性缺口；修正后重跑通过。本轮未修改正式策略、DP、评分、资源模型、GUI/OCR/ADB/MuMu/Holdout/自动化，未读取私人归档。当前状态为 `fresh_snapshot_contract_implemented_validated_commit_push_pending`。
+- 实现提交 `0ceabc1 feat: add fresh snapshot pairing contract` 已成功推送至 `origin/codex/policy-v1-manifest-20260725`，当前状态为 `fresh_snapshot_contract_implemented_validated_published`。提交后的 Git 自动 geometric repack 因已知异常引用 `refs/heads/main - 副本` 报警，但未修改该引用。
