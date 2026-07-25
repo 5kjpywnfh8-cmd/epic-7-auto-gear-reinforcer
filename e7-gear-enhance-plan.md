@@ -2232,3 +2232,23 @@ GUI 验收关注点：
 - 当前状态更新为 `policy_v1_manifest_implementation_and_validation_complete_commit_push_pending`。全量 runner 通过不等于机器可读回归证据已附着，manifest 继续正确输出 `not_ready`；未知套装拒绝与回归证据附着仍是后续独立缺口。
 - 功能、测试、报告和任务文档已由提交 `335dc6e` 推送至 `origin/codex/policy-v1-manifest-20260725`。提交后的 geometric repack 仅受既有异常引用 `refs/heads/main - 副本` 影响，提交对象和远程推送均成功，本轮未修改该引用。
 - 当前状态更新为 `policy_v1_manifest_task_complete`；后续最先处理的仍是独立的未知套装 fail-closed 与机器可读回归证据附着缺口，不得在本任务中静默改变正式策略。
+
+#### 策略 V1 剩余冻结闸门收口启动（2026-07-25）
+
+- 用户已明确要求修复 V1 manifest 对 Epic `+0/+3` 内部分组规则的可见性，并继续完成未知套装 fail-closed 与机器可读完整回归矩阵证据两个剩余闸门。
+- 新的唯一权威任务说明为[策略V1剩余冻结闸门收口任务说明](策略V1剩余冻结闸门收口任务说明.md)。唯一允许的正式行为变化是统一入口拒绝未知套装；Epic 三组阈值、四项联合条件和其他正式策略数值保持不变。
+- 回归证据必须由可重跑工具产生并绑定策略版本、行为输入、测试输入和真实测试结果；证据缺失、失败、覆盖不完整或哈希漂移时继续输出 `not_ready`，不得手工把闸门改为通过。
+- 当前状态更新为 `policy_v1_remaining_gates_authorized_implementation_in_progress`；GUI、OCR、模拟器操作和自动强化均不在本任务范围。
+- 固定回归矩阵第二轮已通过 `9` 个文件、`123` 项测试和 `13/13` 覆盖要求，manifest 定向测试 `10/10` 通过并达到五闸门 `ready`。
+- 首次统一全量入口在外层 `600` 秒达到真实退出码 `124`；终止前发现 `UnitySet` 是 GUI 已公开支持并显示为“夹攻”的既有套装，但正式别名/代码表遗漏，统一未知套装拒绝后导致真实导入少两件。当前只允许补齐 `UnitySet -> set_unity -> 夹攻` 别名，不新增体系分组、权重或门槛。
+- 本次全量测试的 `11` 个临时私人夹具已全部删除，归档 `339/339` 个文件、`223321159` 字节及恢复清单哈希复核不变。当前状态更新为 `policy_v1_remaining_gates_unity_alias_compatibility_fix_in_progress`。
+
+#### 策略 V1 五闸门收口完成（2026-07-25）
+
+- 未知套装现在由统一结构校验入口 fail closed；为保持既有公开兼容性，只补齐 `UnitySet -> set_unity -> 夹攻`，未把夹攻套加入任何体系分组、权重或门槛。
+- V1 manifest 已显式展开 Epic 非速度 `+0/+3` 的三组规则和四项联合止损条件，不再只显示外层 `lightweight_prediction`。正式门槛仍为 `pure_output=8/13`、`pure_tank=10/17`、默认组 `12/17`，策略动作未修改。
+- 机器可读回归证据见 [policy_v1_regression_evidence_20260725.json](reports/policy_v1_regression_evidence_20260725.json)：`9` 个文件、`123` 项测试、`13/13` 覆盖要求通过，证据核心 SHA-256 为 `db625509456c59ab53dd1bd7cd217a43eed248760a7923fd7003986cc680393c`。
+- 当前 [V1 manifest JSON](reports/policy_v1_manifest_20260725.json) / [Markdown](reports/policy_v1_manifest_20260725.md) 为 `5/5 ready`、缺口 `0`，核心 SHA-256 为 `050041e19c7626d20deb73e95e2894ce48a5c0e7cd685a4ae471914d7d97423b`。旧任务中的 `not_ready` 已明确标记为历史状态并由本段覆盖。
+- manifest 定向测试 `11/11`、固定策略矩阵 `123/123`、Python 3.9 语法检查和 CLI `--require-ready` 通过。统一全量入口真实退出码 `0`、耗时 `278.7` 秒、输出 `ALL TEST FILES PASSED`；两项 Qt 用例首次原生异常退出，均由既有 runner 第二次重试通过。
+- 全量测试后 `11/11` 个临时私人夹具已删除，归档 `339/339` 个文件、`223321159` 字节及恢复清单哈希复核不变，工作区私人测试文件剩余 `0`。
+- 当前状态更新为 `policy_v1_five_gates_ready_commit_push_pending`。唯一权威任务说明为[策略V1剩余冻结闸门收口任务说明](策略V1剩余冻结闸门收口任务说明.md)；`ready` 只表示策略 V1 契约冻结就绪，不授权模拟器点击、材料选择或资源消耗。

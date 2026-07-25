@@ -175,6 +175,10 @@ SET_ALIASES = {
     "ReversalSet": "set_revenant",
     "Revenant": "set_revenant",
     "逆袭": "set_revenant",
+    "set_unity": "set_unity",
+    "UnitySet": "set_unity",
+    "Unity": "set_unity",
+    "夹攻": "set_unity",
 }
 
 SET_CODE_TO_NAME = {
@@ -199,6 +203,7 @@ SET_CODE_TO_NAME = {
     "set_rage": "全力",
     "set_debuff": "弱化",
     "set_revenant": "逆袭",
+    "set_unity": "夹攻",
 }
 
 # OCR and import adapters use these established external names while all

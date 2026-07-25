@@ -1,0 +1,493 @@
+{
+  "schema_version": "e7_enhance.policy_regression_evidence/1.0",
+  "generated_on": "2026-07-25",
+  "evidence_sha256": "db625509456c59ab53dd1bd7cd217a43eed248760a7923fd7003986cc680393c",
+  "strategy_version": "baili-formal-dp-v1-epic-balanced",
+  "status": "passed",
+  "scope": "policy_v1_required_regression_matrix",
+  "behavior_inputs": [
+    {
+      "path": "src/e7_enhance/calibration.py",
+      "bytes": 101519,
+      "sha256": "b21e266e52619e3b64f778f5f2ad24769d0bd5c03766fe9e8063b83ccb75ff1b"
+    },
+    {
+      "path": "src/e7_enhance/enhance_policy.py",
+      "bytes": 33757,
+      "sha256": "76420af1f696fefe59954fb958c0ef19d8d0918a8bb0ecc03e56ef63f697cf8a"
+    },
+    {
+      "path": "src/e7_enhance/epic_early_stop.py",
+      "bytes": 6048,
+      "sha256": "6184b9e0b64a4f35c28a432cb05b3aa6d2ee004162f7ef28defde41c7ad96a07"
+    },
+    {
+      "path": "src/e7_enhance/lightweight_calibration.py",
+      "bytes": 24642,
+      "sha256": "d928925cdae73b5f94cb5d6bb7fdc51bf5326011603d7a2865c1ee12506b7048"
+    },
+    {
+      "path": "src/e7_enhance/lightweight_calibration_rules.json",
+      "bytes": 89,
+      "sha256": "28ce1a0a0a04aa81e3d3b34a6d74f122e27b4bcd51703fbd2a2358954960476d"
+    },
+    {
+      "path": "src/e7_enhance/models.py",
+      "bytes": 7831,
+      "sha256": "03348c94cffaa93f49b01de54516a4947363b6d338ce3831caba7bdf49d1abd5"
+    },
+    {
+      "path": "src/e7_enhance/modification_values.py",
+      "bytes": 3065,
+      "sha256": "5ad20051c73d314927a91af42145c326f261a324bf439eef033878def78f0be5"
+    },
+    {
+      "path": "src/e7_enhance/resource_model.py",
+      "bytes": 26812,
+      "sha256": "e91e14a4e8620a662593384bd56bb813734f9f2aaddfb71ce34900e1fa427ef6"
+    },
+    {
+      "path": "src/e7_enhance/rules.py",
+      "bytes": 21937,
+      "sha256": "98e3bd77c1c08d6608b599288c948559366790e0206bb2dd280943710cd2004e"
+    },
+    {
+      "path": "src/e7_enhance/score_engine.py",
+      "bytes": 19580,
+      "sha256": "e546acf80cf899ef3d6c4a567bfdf5b00cbacc7fe00682a71cbef845b2f472fe"
+    },
+    {
+      "path": "src/e7_enhance/strategy_defaults.py",
+      "bytes": 2061,
+      "sha256": "e179533b50410cd2bfc8045f47605ce4d01f206b028b5aeaf4408ed67fddf893"
+    },
+    {
+      "path": "装备强化与评分规则审阅.md",
+      "bytes": 16126,
+      "sha256": "91bc665ac305e838bd51a75ba5793705a172f26f2b1a3b9cf64250ea2ccb7996"
+    }
+  ],
+  "test_inputs": [
+    {
+      "path": "tests/test_calibration.py",
+      "bytes": 31725,
+      "sha256": "8a8918465ae2aaf77daa14dfdaf68d0af5ebdf3d2f06b43c47d10cd39ae0bcc8"
+    },
+    {
+      "path": "tests/test_enhance_policy.py",
+      "bytes": 49579,
+      "sha256": "a5780e6faa3f5467da4ec22526f064c63ccb1125c5bbe74c21a73adefda04c47"
+    },
+    {
+      "path": "tests/test_epic_early_stop.py",
+      "bytes": 8530,
+      "sha256": "fc6b5fc9d51363c962b4b7f9cf107a75824d1281e896a5661ef017133360e433"
+    },
+    {
+      "path": "tests/test_heroic_speed22_rescue.py",
+      "bytes": 3894,
+      "sha256": "992d2e998283825f9a0c7522e0d7f31ea61db21ae9813a7eb8fa985a9a446027"
+    },
+    {
+      "path": "tests/test_research_epic_exact_plus3_joint_pool.py",
+      "bytes": 752,
+      "sha256": "c02bb5d103ba8cb4bf41110533ff7ac99d37a9ecb341ba88ec8cb3c7774f4e3b"
+    },
+    {
+      "path": "tests/test_resource_model.py",
+      "bytes": 10425,
+      "sha256": "63489b3650edfeb7b2489b4ae86727a2e031f55ca98eae59e695f8cd230140d9"
+    },
+    {
+      "path": "tests/test_route_solver.py",
+      "bytes": 13450,
+      "sha256": "363e4ed0ce467a118314b94b250be97f67acd53a938318cd50d4f1daab3b0e8b"
+    },
+    {
+      "path": "tests/test_score_engine.py",
+      "bytes": 5946,
+      "sha256": "e87bae36a409920d0d9e4f1b301d7de40c75d4bcb636bfc83e9c3011eb26add4"
+    },
+    {
+      "path": "tests/test_strategy_defaults.py",
+      "bytes": 1187,
+      "sha256": "1aeaa27f0548ca15eeab1bd39f4c9419a6f8ef884aca22afffe2039fc7f4d88c"
+    }
+  ],
+  "execution_inputs": [
+    {
+      "path": "tools/capture_policy_v1_regression_evidence.py",
+      "bytes": 3251,
+      "sha256": "2cbfb331c06e2d5ff994abfbae4cbea40ad1edecfd1ba573c8ad4a42ed8383e5"
+    }
+  ],
+  "coverage_dimensions": {
+    "item_source_ranks": [
+      {
+        "item_source": "normal_85",
+        "rank": "Epic"
+      },
+      {
+        "item_source": "normal_85",
+        "rank": "Heroic"
+      },
+      {
+        "item_source": "rift_85",
+        "rank": "Epic"
+      }
+    ],
+    "enhancement_checkpoints": [
+      0,
+      3,
+      6,
+      9,
+      12,
+      15
+    ],
+    "slot_segments": [
+      "boot",
+      "non_boot"
+    ],
+    "route_boundaries": [
+      "conversion",
+      "epic_non_speed_early_stop",
+      "heroic_speed22_rescue_m1",
+      "speed_hard_route",
+      "stop_recovery",
+      "terminal_summary",
+      "unknown_set_rejection"
+    ]
+  },
+  "coverage_requirements": [
+    {
+      "id": "normal_epic_early_checkpoints",
+      "test_ids": [
+        "tests/test_enhance_policy.py::EnhancePolicyTest::test_normal_epic_plus_3_all_valid_uses_lightweight_prediction_before_plus6_dp",
+        "tests/test_epic_early_stop.py::EpicEarlyStopTest::test_policy_wiring_stops_and_uses_each_immediate_checkpoint"
+      ],
+      "passed": true
+    },
+    {
+      "id": "normal_epic_middle_checkpoints",
+      "test_ids": [
+        "tests/test_enhance_policy.py::EnhancePolicyTest::test_normal_epic_dp_covers_plus6_and_later_checkpoints",
+        "tests/test_calibration.py::CalibrationTest::test_dp_assisted_calls_route_solver_at_all_pre_final_checkpoints"
+      ],
+      "passed": true
+    },
+    {
+      "id": "terminal_checkpoint",
+      "test_ids": [
+        "tests/test_enhance_policy.py::EnhancePolicyTest::test_plus_15_uses_final_disposition_without_dp"
+      ],
+      "passed": true
+    },
+    {
+      "id": "normal_heroic_fallback",
+      "test_ids": [
+        "tests/test_strategy_defaults.py::StrategyDefaultsTest::test_normal_heroic_falls_back_to_non_dp_strategy_until_resource_calibration_is_published",
+        "tests/test_enhance_policy.py::EnhancePolicyTest::test_normal_heroic_debug_explains_unpublished_resource_calibration_fallback"
+      ],
+      "passed": true
+    },
+    {
+      "id": "rift_epic_route",
+      "test_ids": [
+        "tests/test_strategy_defaults.py::StrategyDefaultsTest::test_rift_epic_defaults_to_dp_assisted",
+        "tests/test_enhance_policy.py::EnhancePolicyTest::test_rift_epic_default_uses_dp_assist"
+      ],
+      "passed": true
+    },
+    {
+      "id": "boot_boundary",
+      "test_ids": [
+        "tests/test_enhance_policy.py::EnhancePolicyTest::test_speed_main_boot_full_output_category_continues_without_speed_substat",
+        "tests/test_epic_early_stop.py::EpicEarlyStopTest::test_scope_excludes_other_routes"
+      ],
+      "passed": true
+    },
+    {
+      "id": "speed_hard_route",
+      "test_ids": [
+        "tests/test_enhance_policy.py::EnhancePolicyTest::test_epic_non_boot_initial_speed_two_uses_hard_early_speed_route_for_both_sources"
+      ],
+      "passed": true
+    },
+    {
+      "id": "heroic_speed22_rescue_m1",
+      "test_ids": [
+        "tests/test_heroic_speed22_rescue.py::HeroicSpeed22RescueTest::test_legal_plus12_fourteen_speed_four_rolls_is_rescued_and_debugged"
+      ],
+      "passed": true
+    },
+    {
+      "id": "stop_recovery",
+      "test_ids": [
+        "tests/test_research_epic_exact_plus3_joint_pool.py::ExactPlus3JointPoolTest::test_interval_outcome_preserves_start_and_stop"
+      ],
+      "passed": true
+    },
+    {
+      "id": "conversion_boundary",
+      "test_ids": [
+        "tests/test_enhance_policy.py::EnhancePolicyTest::test_plus3_conversion_candidate_uses_terminal_max_modification_gs",
+        "tests/test_route_solver.py::RouteSolverTest::test_conversion_crossing_formal_rule_has_higher_utility"
+      ],
+      "passed": true
+    },
+    {
+      "id": "epic_early_system_groups",
+      "test_ids": [
+        "tests/test_epic_early_stop.py::EpicEarlyStopTest::test_exact_category_mapping_and_thresholds_are_frozen",
+        "tests/test_epic_early_stop.py::EpicEarlyStopTest::test_stop_requires_every_frozen_condition"
+      ],
+      "passed": true
+    },
+    {
+      "id": "unknown_set_rejection",
+      "test_ids": [
+        "tests/test_enhance_policy.py::EnhancePolicyTest::test_strategy_rejects_unknown_set"
+      ],
+      "passed": true
+    },
+    {
+      "id": "score_and_resource_boundaries",
+      "test_ids": [
+        "tests/test_score_engine.py::ScoreEngineTest::test_theoretical_bound_uses_distinct_legal_conversion_and_missing_substat",
+        "tests/test_resource_model.py::ResourceModelTest::test_plus_12_to_15_marginal_cost_uses_bottleneck_not_sum"
+      ],
+      "passed": true
+    }
+  ],
+  "test_runs": [
+    {
+      "path": "tests/test_calibration.py",
+      "commands": [
+        [
+          "python",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_calibration.py"
+        ]
+      ],
+      "exit_code": 0,
+      "tests_run": 32,
+      "duration_seconds": 5.077,
+      "output_sha256": "05242c9af3a9b75849d8bbd24a1fba77a36ad63d70fe7a75cdf87738e0a2aa5f"
+    },
+    {
+      "path": "tests/test_enhance_policy.py",
+      "commands": [
+        [
+          "python",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_enhance_policy.py"
+        ]
+      ],
+      "exit_code": 0,
+      "tests_run": 44,
+      "duration_seconds": 0.652,
+      "output_sha256": "eefe3501643a09c66dd78d9226b7db61a615ff2707d5d78278c4547bc9be4602"
+    },
+    {
+      "path": "tests/test_epic_early_stop.py",
+      "commands": [
+        [
+          "python",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_epic_early_stop.py",
+          "-k",
+          "exact_category_mapping_and_thresholds_are_frozen"
+        ],
+        [
+          "python",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_epic_early_stop.py",
+          "-k",
+          "stop_requires_every_frozen_condition"
+        ],
+        [
+          "python",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_epic_early_stop.py",
+          "-k",
+          "scope_excludes_other_routes"
+        ],
+        [
+          "python",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_epic_early_stop.py",
+          "-k",
+          "policy_wiring_stops_and_uses_each_immediate_checkpoint"
+        ]
+      ],
+      "exit_code": 0,
+      "tests_run": 4,
+      "duration_seconds": 0.528,
+      "output_sha256": "8966c4d17ca74c3dcdfd45e5a2890316a1048417493e343cd5fb703efce1cb62"
+    },
+    {
+      "path": "tests/test_heroic_speed22_rescue.py",
+      "commands": [
+        [
+          "python",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_heroic_speed22_rescue.py"
+        ]
+      ],
+      "exit_code": 0,
+      "tests_run": 5,
+      "duration_seconds": 0.121,
+      "output_sha256": "174762efdf501d6cf4ace1169b354ccb564f0ae8bfcd79d0a2926b5b7869c918"
+    },
+    {
+      "path": "tests/test_research_epic_exact_plus3_joint_pool.py",
+      "commands": [
+        [
+          "python",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_research_epic_exact_plus3_joint_pool.py"
+        ]
+      ],
+      "exit_code": 0,
+      "tests_run": 2,
+      "duration_seconds": 0.148,
+      "output_sha256": "59b4eb1a15fd7afa85b717295720b12cbe3d2767abca4aa37489bd7dd59a8791"
+    },
+    {
+      "path": "tests/test_resource_model.py",
+      "commands": [
+        [
+          "python",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_resource_model.py"
+        ]
+      ],
+      "exit_code": 0,
+      "tests_run": 15,
+      "duration_seconds": 0.085,
+      "output_sha256": "5c7c11bc042242de8a9e2fc4dc65b5c650081335108501d681c36ecf65c00e12"
+    },
+    {
+      "path": "tests/test_route_solver.py",
+      "commands": [
+        [
+          "python",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_route_solver.py"
+        ]
+      ],
+      "exit_code": 0,
+      "tests_run": 12,
+      "duration_seconds": 0.765,
+      "output_sha256": "46c820b4e2dbcadc5c146c706c09bae6a9f7afe3ba91d62705c52433b5120c38"
+    },
+    {
+      "path": "tests/test_score_engine.py",
+      "commands": [
+        [
+          "python",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_score_engine.py"
+        ]
+      ],
+      "exit_code": 0,
+      "tests_run": 6,
+      "duration_seconds": 0.111,
+      "output_sha256": "6e71934b6ace53dd829cdce7c5406705a52a2aa9aa87cb64b4af388f3a129d5e"
+    },
+    {
+      "path": "tests/test_strategy_defaults.py",
+      "commands": [
+        [
+          "python",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_strategy_defaults.py"
+        ]
+      ],
+      "exit_code": 0,
+      "tests_run": 3,
+      "duration_seconds": 0.083,
+      "output_sha256": "8b4f63629a034a2e6e27098d4a75a4879f75a6f380560b79acbe8b94cf2722f8"
+    }
+  ],
+  "summary": {
+    "test_files": 9,
+    "tests_run": 123,
+    "requirements_passed": 13,
+    "requirements_total": 13,
+    "all_test_runs_passed": true,
+    "all_requirements_passed": true
+  }
+}

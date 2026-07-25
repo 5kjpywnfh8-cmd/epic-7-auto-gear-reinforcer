@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
-from .rules import RANK_ALIASES, SET_ALIASES, SLOT_ALIASES, STAT_TYPE_TO_KEY, PERCENT_STAT_KEYS
+from .rules import PERCENT_STAT_KEYS, RANK_ALIASES, SET_ALIASES, SET_CODE_TO_NAME, SLOT_ALIASES, STAT_TYPE_TO_KEY
 
 
 SLOT_FORBIDDEN_SUBSTAT_KEYS = {
@@ -182,6 +182,8 @@ def validate_gear_substats(gear: Gear) -> None:
 
 
 def validate_gear_structure(gear: Gear) -> None:
+    if gear.set not in SET_CODE_TO_NAME:
+        raise ValueError(f"Unknown gear set: {gear.set or '<empty>'}")
     if gear.level not in SUPPORTED_EQUIPMENT_LEVELS:
         raise ValueError(f"Unsupported equipment level: {gear.level}")
     if gear.enhance not in SUPPORTED_ENHANCEMENT_CHECKPOINTS:

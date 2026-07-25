@@ -929,6 +929,27 @@ class EnhancePolicyTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Unknown substats"):
             advise_gear(gear, item_source="normal_85")
 
+    def test_strategy_rejects_unknown_set(self):
+        gear = Gear.from_dict(
+            {
+                "set": "set_future_unknown",
+                "slot": "Helmet",
+                "mainStat": {"type": "Health", "value": 2700},
+                "enhance": 12,
+                "level": 85,
+                "rank": "Epic",
+                "substats": [
+                    {"type": "Speed", "value": 12, "rolls": 3},
+                    {"type": "HealthPercent", "value": 8, "rolls": 2},
+                    {"type": "DefensePercent", "value": 8, "rolls": 2},
+                    {"type": "EffectResistancePercent", "value": 8, "rolls": 2},
+                ],
+            }
+        )
+
+        with self.assertRaisesRegex(ValueError, "Unknown gear set: set_future_unknown"):
+            advise_gear(gear, item_source="normal_85")
+
     def test_85_legacy_reforge_flag_does_not_change_strategy_suggestion(self):
         base = {
             "set": "Speed",

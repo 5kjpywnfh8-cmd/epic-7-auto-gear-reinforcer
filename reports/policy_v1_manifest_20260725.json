@@ -2,8 +2,8 @@
   "schema_version": "e7_enhance.policy_manifest/1.0",
   "generated_on": "2026-07-25",
   "strategy_version": "baili-formal-dp-v1-epic-balanced",
-  "manifest_sha256": "565ecd81d9f1354129bbc91ebbd54f291c33249b83371e0be7a5f3316d6c2adb",
-  "freeze_status": "not_ready",
+  "manifest_sha256": "050041e19c7626d20deb73e95e2894ce48a5c0e7cd685a4ae471914d7d97423b",
+  "freeze_status": "ready",
   "behavior_inputs": [
     {
       "path": "src/e7_enhance/calibration.py",
@@ -16,14 +16,24 @@
       "sha256": "76420af1f696fefe59954fb958c0ef19d8d0918a8bb0ecc03e56ef63f697cf8a"
     },
     {
+      "path": "src/e7_enhance/epic_early_stop.py",
+      "bytes": 6048,
+      "sha256": "6184b9e0b64a4f35c28a432cb05b3aa6d2ee004162f7ef28defde41c7ad96a07"
+    },
+    {
+      "path": "src/e7_enhance/lightweight_calibration.py",
+      "bytes": 24642,
+      "sha256": "d928925cdae73b5f94cb5d6bb7fdc51bf5326011603d7a2865c1ee12506b7048"
+    },
+    {
       "path": "src/e7_enhance/lightweight_calibration_rules.json",
       "bytes": 89,
       "sha256": "28ce1a0a0a04aa81e3d3b34a6d74f122e27b4bcd51703fbd2a2358954960476d"
     },
     {
       "path": "src/e7_enhance/models.py",
-      "bytes": 7701,
-      "sha256": "ee62a5c6073c30820f72fbce704dbcb049cb18939e177c03a64fbe4a3a2db1d4"
+      "bytes": 7831,
+      "sha256": "03348c94cffaa93f49b01de54516a4947363b6d338ce3831caba7bdf49d1abd5"
     },
     {
       "path": "src/e7_enhance/modification_values.py",
@@ -37,8 +47,8 @@
     },
     {
       "path": "src/e7_enhance/rules.py",
-      "bytes": 21798,
-      "sha256": "28f84c739dd4a6910a4f0a817f80561eb3933a77bc77eadfec04994cfa32968d"
+      "bytes": 21937,
+      "sha256": "98e3bd77c1c08d6608b599288c948559366790e0206bb2dd280943710cd2004e"
     },
     {
       "path": "src/e7_enhance/score_engine.py",
@@ -223,6 +233,10 @@
         "name": "激流"
       },
       {
+        "code": "set_unity",
+        "name": "夹攻"
+      },
+      {
         "code": "set_vampire",
         "name": "吸血"
       }
@@ -236,7 +250,7 @@
       "slot": "reject",
       "main_stat_for_slot": "reject",
       "substat": "reject",
-      "set": "not_rejected"
+      "set": "reject"
     }
   },
   "default_strategies": [
@@ -286,7 +300,8 @@
       "checkpoint": 0,
       "segment": "all",
       "owner": "lightweight_prediction",
-      "output_contract": "summary.recommendation + summary.next_check_at"
+      "output_contract": "summary.recommendation + summary.next_check_at",
+      "policy_detail_ref": "epic_non_speed_early_stop"
     },
     {
       "item_source": "normal_85",
@@ -294,7 +309,8 @@
       "checkpoint": 3,
       "segment": "all",
       "owner": "lightweight_prediction",
-      "output_contract": "summary.recommendation + summary.next_check_at"
+      "output_contract": "summary.recommendation + summary.next_check_at",
+      "policy_detail_ref": "epic_non_speed_early_stop"
     },
     {
       "item_source": "normal_85",
@@ -449,17 +465,112 @@
       "output_contract": "summary.recommendation + summary.next_check_at"
     }
   ],
+  "policy_details": {
+    "epic_non_speed_early_stop": {
+      "candidate_key": "output_8_13_tank_10_17",
+      "rule_version": "epic-early-stop-v1-20260720",
+      "scope": {
+        "item_source": "normal_85",
+        "rank": "Epic",
+        "equipment_level": 85,
+        "checkpoints": [
+          0,
+          3
+        ],
+        "excluded_slots": [
+          "boot"
+        ],
+        "initial_speed": "lt_2"
+      },
+      "threshold_groups": [
+        {
+          "system_group": "pure_output",
+          "categories": [
+            "输出",
+            "输出(必爆)"
+          ],
+          "display_categories": [
+            "输出",
+            "输出(必爆)"
+          ],
+          "effective_gs_max": {
+            "0": 8.0,
+            "3": 13.0
+          }
+        },
+        {
+          "system_group": "pure_tank",
+          "categories": [
+            "抗坦",
+            "纯肉",
+            "命坦"
+          ],
+          "display_categories": [
+            "抗坦",
+            "纯肉",
+            "命坦"
+          ],
+          "effective_gs_max": {
+            "0": 10.0,
+            "3": 17.0
+          }
+        },
+        {
+          "system_group": "default",
+          "categories": [
+            "双效",
+            "半肉(血防)",
+            "半肉(通用)",
+            "半肉(白字)",
+            "unknown_candidate"
+          ],
+          "display_categories": [
+            "双效",
+            "半肉(血防)",
+            "半肉(通用)",
+            "半肉(白字)",
+            "未知候选分组"
+          ],
+          "effective_gs_max": {
+            "0": 12.0,
+            "3": 17.0
+          }
+        }
+      ],
+      "activation": {
+        "require_all": true,
+        "effective_gs_max": "threshold_groups[].effective_gs_max",
+        "current_valid_substat_count_max": 2,
+        "terminal_reach_probability_max": {
+          "0": 0.002,
+          "3": 0.01
+        },
+        "conversion_max_gs_gain_max": 0.0,
+        "baseline_stop_preserved": true
+      },
+      "unknown_candidate_group_contract": "uses_default_threshold_only_after_known_set_validation",
+      "unknown_set_contract": "rejected_before_candidate_evaluation"
+    }
+  },
+  "regression_evidence": {
+    "path": "reports/policy_v1_regression_evidence_20260725.json",
+    "status": "attached_verified",
+    "sha256": "892817868b18cc0e6b73a554c3c1eb68e2d4fd228aa98d8fa5342cd4eb1c9b70",
+    "evidence_sha256": "db625509456c59ab53dd1bd7cd217a43eed248760a7923fd7003986cc680393c",
+    "generated_on": "2026-07-25",
+    "test_files": 9,
+    "tests_run": 123,
+    "requirements_passed": 13,
+    "requirements_total": 13
+  },
   "readiness": {
     "gates": {
       "behavior_inputs_hashed": true,
       "supported_scope_complete": true,
       "decision_route_coverage_complete": true,
-      "unknown_set_fail_closed": false,
-      "full_regression_matrix_evidence_attached": false
+      "unknown_set_fail_closed": true,
+      "full_regression_matrix_evidence_attached": true
     },
-    "gaps": [
-      "unknown_set_not_rejected_by_advise_gear",
-      "full_regression_matrix_evidence_not_attached"
-    ]
+    "gaps": []
   }
 }
