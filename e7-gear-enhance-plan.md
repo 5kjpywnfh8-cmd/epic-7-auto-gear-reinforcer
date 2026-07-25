@@ -2381,3 +2381,11 @@ GUI 验收关注点：
 - A 方案固定标准命令已运行一次，读取器完整输出结论为“Fribbels 解出 `0` 件装备，账号同步包可能未抓到”。批次 `20260726_012048` 仅产生 `1312188` 字节 PCAP；新的 `player_data.json`、`reader_result.json` 和不可变 snapshot 均未生成，`current` 仍为 2026-07-22 历史文件，不得作为本任务新鲜 `+0` 证据。
 - 读取器诊断：`packet_count=2969`；协议为 `udp=812`、`tcp=2144`、`ip_other=5`、`other=8`；`tcp_payload_bytes=1100894`、`udp_payload_bytes=2880`、`tcp_payload_groups=478`；`observed_ports=[443,9997,51390,5138,80,39518,442,8081,53,32946,39542,56248]`。
 - 当前状态更新为 `fresh_read_fail_closed_no_account_sync_20260726_012048`。停止重试、目标配对、导入和任何游戏内操作，直至用户另行授权且环境发生可解释变化；本轮没有强化、选材或资源消耗。执行模型记录为 `gpt-5.6-terra + high`。
+
+#### MuMu 新鲜读取 0 件装备离线诊断与修复阶段建立（2026-07-26）
+
+- 用户已要求定位“为什么读取不了”并修复读取功能；独立任务说明为 [MuMu新鲜读取0件装备诊断与修复任务说明](MuMu新鲜读取0件装备诊断与修复任务说明.md)，本阶段唯一权威来源为该说明、根目录 `AGENTS.md`、[MuMu抓包读取与真实装备导入任务说明](MuMu抓包读取与真实装备导入任务说明.md) 和本总计划。
+- 权威失败事实维持不变：批次 `20260726_012048` 的 `packet_count=2969`、`tcp_payload_bytes=1100894`、`tcp_payload_groups=478`，但 Fribbels 解出 `0` 件；仅落盘 PCAP，未生成新的 `player_data.json`、`reader_result.json` 或 snapshot。此前“未抓到账号同步包”仅为读取器当前诊断，尚不是已验证根因。
+- 执行顺序固定为 diagnosing-bugs 离线反馈回路：先以失败/成功 PCAP 的非敏感结构建立实际运行过的确定性红灯回放，再复现最小化、提出至少三项可证伪假设并逐项探测；只有根因定位且红灯回归测试存在后，才允许对 `D:\VScode\Epic-7-tools.v1.2` 作最小修复并用原失败 PCAP 离线回放验证。
+- 本阶段明确不重传载荷、不运行 MuMu/ADB/OCR/GUI、不点击、不强化、不选材、不导入；不修改正式策略、DP、评分、资源模型、Holdout 或自动化规则。不得把旧快照作为新鲜读取成功证据；离线修复完成也不得自动触发真实读取。
+- 实际模型记录为 `gpt-5.6-terra + high`。当前状态为 `offline_diagnosis_task_established_awaiting_execution`：尚未建立或运行红灯测试、尚未验证任何根因假设、尚未修改外部读取器；本轮仅创建/同步 Markdown，未提交。
