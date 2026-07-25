@@ -2293,3 +2293,4 @@ GUI 验收关注点：
 - 最终验证：规划器 `34/34`、资源模型回归 `15/15`、CLI 回归 `1/1`、Python 3.9 语法、报告生成、成功/失败 CLI smoke 和 `git diff --check` 均通过；未读取或恢复私人归档，未运行依赖私人夹具的全量测试。
 - 当前状态更新为 `offline_budget_planner_complete_validated_commit_push_pending`。饰品离散材料和上级强化石继续 `unsupported_material`；Good/Great、宠物加成、期望值与分数材料不作为执行输入。规划器只提供离线计划，不验证实时库存、页面或实际消耗，也不构成材料选择或强化授权。
 - 下一步候选为“多节点新鲜快照与重新配对契约”，必须另建独立任务说明并取得用户授权；不得自动开始 GUI、OCR、ADB、MuMu 或执行状态机开发。
+- 本任务产物已由提交 `c5b2379` 推送至 `origin/codex/policy-v1-manifest-20260725`；当前状态更新为 `offline_budget_planner_complete_validated_published`。下一步候选仍为“多节点新鲜快照与重新配对契约”，未取得新的独立任务授权前不开始。
