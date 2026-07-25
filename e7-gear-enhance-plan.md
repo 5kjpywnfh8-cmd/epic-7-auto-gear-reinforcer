@@ -2410,3 +2410,10 @@ GUI 验收关注点：
 - 新增 `tests/test_mumu_sync_trigger.py`。修复前红灯为 `AttributeError`、退出码 `1`；修复后 `unittest 3/3`、退出码 `0`，Python 3.9 内存语法检查退出码 `0`。`tools/mumu_capture_sync_probe.py` 的失败 `759` 字节/退出码 `1`、成功 `405198` 字节/退出码 `0` 基线保持不变，供下一次读取结果判定。
 - 尚未执行真实 MuMu、ADB、标准读取或 Fribbels API 调用，未产生新 `player_data.json`、`reader_result.json` 或 snapshot，因而不得宣称读取功能已在真实环境恢复。仍禁止强化页输入、材料选择、装备变更、导入、资源消耗、OCR 和正式模型相关改动。
 - 当前状态更新为 `implementation_verified_awaiting_real_read`。下一步为主 agent 精确审阅后，按已获授权执行一次标准真实读取；实际模型为 `gpt-5.6-terra + high`。本轮仅同步 Markdown，未修改代码、未提交。
+
+#### MuMu 同步触发候选真实验证失败并撤销（2026-07-26）
+
+- 标准读取命令按授权仅执行一次，批次 `20260726_015751` 仍为 Fribbels `0` 件：`packet_count=2814`、`udp/tcp/ip_other/other=802/2003/5/4`、`tcp_payload_bytes=1083301`、`udp_payload_bytes=2856`、`tcp_payload_groups=448`、`observed_ports=[443,9997,51390,5138,80,40098,442,33538,8081,53,40118,52600]`。仅生成 `1283593` 字节 PCAP，无新 `player_data.json`、`reader_result.json` 或 snapshot，`current` 仍是 `2026-07-22` 历史文件。
+- 本次 `tools/mumu_capture_sync_probe.py` 为 `814` 字节、退出码 `1`。可证结论为：前台包确认不能区分 Unity 内部页面，单次英雄入口点击候选未触发账号同步，读取功能尚未恢复。
+- 候选已精确撤销：外部 `reader.py` 恢复原长度 `8874`，候选测试已删除，Python 3.9 内存语法检查退出码 `0`。禁止继续盲点点击、自动重跑或重传 API 载荷；不得将本次失败 PCAP 或旧 `current` 当作新鲜成功输出。
+- 需要用户新的明确授权并另建任务后，才能研究只读截图/模板状态识别，或用户手动确认页面后再触发读取。当前状态为 `real_validation_failed_candidate_reverted_awaiting_visual_state_authorization`，实际模型 `gpt-5.6-terra + high`；本轮仅同步 Markdown，未修改代码、未提交。
