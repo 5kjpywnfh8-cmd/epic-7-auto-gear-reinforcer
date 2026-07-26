@@ -2584,4 +2584,4 @@ GUI 验收关注点：
 - 现有 `PureVisualSamplingExecutor` 保持兼容，决策结果新增 `mode` 和 `verification` 字段；未修改 MuMu/ADB/Fribbels、正式策略、DP、评分、资源模型、GUI/OCR/Holdout 或正式自动化规则。
 - 主审补充并确认边界校验：候选数拒绝布尔值、锚点数值限制在 `[0,1]`、资源键与预期账本一致、post-action 时间戳必须晚于 pre-action。
 - 验证：运行时公开测试 `7/7`、旧 dry-run 公开测试 `6/6`、Python 3.9 语法检查通过、`git diff --check` 通过；未连接设备、未读取或上传游戏数据、未采集真实截图、未发送游戏点击、未强化或消耗资源。
-- 当前状态：`implementation_verified_offline_pending_commit_push_20260726`。下一步仅提交并推送本任务相关代码、测试和任务文档；真实截图/OCR/ADB/游戏点击仍需另建任务并重新授权。
+- 提交 `eecbca7 feat: wire offline pure visual runtime` 已成功推送至 `origin/codex/policy-v1-manifest-20260725`；提交后的 Git geometric repack 仍因既有异常引用 `refs/heads/main - 副本` 报警，但未修改该引用。当前状态：`implementation_verified_offline_published_20260726`。真实截图/OCR/ADB/游戏点击仍需另建任务并重新授权。
