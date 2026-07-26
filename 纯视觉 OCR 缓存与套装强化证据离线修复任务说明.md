@@ -57,7 +57,7 @@
 - 强化解析仅消费 `region=enhance` 的唯一 `+N`，或无 `+N` 时唯一 `exp0/...`；区域外、缺失、重复、非零经验和低于 `0.98` 的证据均拒绝。ADB 局部适配链同时要求实际存在 `enhance` 局部区域。
 - 新增公开合成测试覆盖显式缓存绑定/缺模型、缩放锚点、区域外强化、重复与低置信度证据，以及完整视觉未确认链路。
 - 验证退出码均为 `0`：`test_ocr_paddle.py` `14/14`、`test_visual_set_template_matcher.py` `7/7`、`test_visual_adb_recognition.py` `8/8`、`test_visual_platform.py` `7/7`、`test_visual_templates.py` `5/5`、`test_visual_*.py` `65/65`；Python 3.9 `py_compile` 与 `git diff --check` 通过。
-- 本轮未执行真实 ADB、截图、OCR 推理、页面导航、输入、点击、强化、选材、资源消耗、底层读取、外部上传、联网或模型下载，也未读取私人截图。按当前指令未提交或推送。
+- 本轮未执行真实 ADB、截图、OCR 推理、页面导航、输入、点击、强化、选材、资源消耗、底层读取、外部上传、联网或模型下载，也未读取私人截图。实现与测试已精确提交为 `cf7ce61` 并推送当前分支；提交时 Git 仍报告既有 `refs/heads/main - 副本` 异常引用的 geometric repack 错误，但该引用未被修改。
 
 ## 未完成项、风险与下一步
 
