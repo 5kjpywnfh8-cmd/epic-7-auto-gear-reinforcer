@@ -74,6 +74,109 @@ class WindowsReadOnlyDriver(Protocol):
         ...
 
 
+@dataclass(frozen=True)
+class WindowsClientWindow:
+    """Opaque identity returned by an injected existing-window enumerator."""
+
+    native_id: str
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.native_id, str) or not self.native_id.strip():
+            raise ValueError("native_id is required")
+
+
+class WindowsClientAreaApi(Protocol):
+    """System-specific read-only client-area operations supplied by the caller.
+
+    The protocol intentionally excludes Computer Use state APIs and every
+    activation, move, keyboard, or mouse operation.
+    """
+
+    def find_existing_windows(self, config: WindowsCaptureConfig) -> Sequence[WindowsClientWindow]:
+        ...
+
+    def client_viewport(self, window: WindowsClientWindow) -> tuple[int, int]:
+        ...
+
+    def capture_client_png(self, window: WindowsClientWindow, viewport: tuple[int, int]) -> bytes:
+        ...
+
+
+class WindowsClientAreaDriver:
+    """Concrete read-only driver built on an injected client-area API.
+
+    It is deliberately independent of Computer Use's screenshot path.  The
+    caller may later bind this seam to a supported system API, while tests use
+    a fake API and this class remains free of platform imports.
+    """
+
+    def __init__(self, api: WindowsClientAreaApi) -> None:
+        self._api = api
+        self._windows: dict[str, WindowsClientWindow] = {}
+        self._sources: dict[str, str] = {}
+        self._viewports: dict[str, tuple[int, int]] = {}
+
+    def locate_window(self, config: WindowsCaptureConfig) -> PlatformWindow | None:
+        try:
+            candidates = self._api.find_existing_windows(config)
+        except Exception as exc:
+            raise WindowsCaptureError("existing Windows enumeration failed") from exc
+        if not isinstance(candidates, Sequence) or isinstance(candidates, (str, bytes)):
+            raise WindowsCaptureError("existing Windows enumeration is invalid")
+        if not candidates:
+            return None
+        if len(candidates) != 1 or not isinstance(candidates[0], WindowsClientWindow):
+            raise WindowsCaptureError("target window is ambiguous or invalid")
+        native = candidates[0]
+        window = PlatformWindow(native.native_id, config.source)
+        self._windows[window.identifier] = native
+        self._sources[window.identifier] = window.source
+        return window
+
+    def client_viewport(self, window: PlatformWindow) -> tuple[int, int]:
+        native = self._window(window)
+        viewport = self._read_viewport(native)
+        self._viewports[window.identifier] = viewport
+        return viewport
+
+    def capture_png(self, window: PlatformWindow) -> bytes:
+        native = self._window(window)
+        expected = self._viewports.get(window.identifier)
+        if expected is None:
+            raise WindowsCaptureError("client viewport must be read before capture")
+        current = self._read_viewport(native)
+        if current != expected:
+            raise WindowsCaptureError("client viewport changed before capture")
+        try:
+            payload = self._api.capture_client_png(native, current)
+        except Exception as exc:
+            raise WindowsCaptureError("client-area PNG capture failed") from exc
+        if not isinstance(payload, bytes) or not payload or not payload.startswith(PNG_SIGNATURE):
+            raise WindowsCaptureError("client-area capture did not return non-empty PNG bytes")
+        return payload
+
+    def _window(self, window: PlatformWindow) -> WindowsClientWindow:
+        if not isinstance(window, PlatformWindow):
+            raise WindowsCaptureError("platform window identity is invalid")
+        native = self._windows.get(window.identifier)
+        if native is None or self._sources.get(window.identifier) != window.source:
+            raise WindowsCaptureError("platform window is no longer available")
+        return native
+
+    def _read_viewport(self, native: WindowsClientWindow) -> tuple[int, int]:
+        try:
+            viewport = self._api.client_viewport(native)
+        except Exception as exc:
+            raise WindowsCaptureError("client viewport lookup failed") from exc
+        if (
+            not isinstance(viewport, tuple)
+            or len(viewport) != 2
+            or any(isinstance(value, bool) or not isinstance(value, int) or value <= 0 for value in viewport)
+        ):
+            raise WindowsCaptureError("client viewport is invalid")
+        return viewport
+
+
 class LazyWindowsReadOnlyBackend:
     """Lazily construct an injected read-only Windows driver on first use.
 

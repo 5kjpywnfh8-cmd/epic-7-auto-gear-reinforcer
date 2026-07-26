@@ -2647,7 +2647,9 @@ GUI 验收关注点：
 
 - 用户已批准进入下一步；已建立独立任务说明：[Windows 只读截图驱动兼容修复任务说明](Windows只读截图驱动兼容修复任务说明.md)。
 - 本轮范围仅为离线实现不依赖 `SetIsBorderRequired` 的只读捕获后端/适配 seam、fake 测试和回归验证；不得连接、激活或输入 MuMu/Epic Seven，不读取或上传底层数据。
-- 执行模型记录为 `gpt-5.6-terra + high`。当前状态：`task_established_awaiting_offline_driver_implementation`；真实窗口预检必须另行授权。
+- 已新增 `WindowsClientWindow`、`WindowsClientAreaApi`、`WindowsClientAreaDriver`，并覆盖唯一窗口、视口/来源漂移和 PNG 失败闸门；相关视觉/OCR 回归 `52/52` 通过，Python 语法检查和 `git diff --check` 通过。
+- 该实现仍是离线注入 seam，尚未绑定具体 Windows 系统 API；未执行真实截图/OCR。执行模型记录为 `gpt-5.6-terra + high`，当前状态更新为 `implementation_verified_offline_pending_system_api_binding`。
+- 下一步需另建“Windows 客户区 API 系统绑定与只读预检”任务并取得明确授权；不得把本轮离线结果写成真实截图已修复。
 #### 会话子 agent 自动派发策略说明（2026-07-26，已被后文覆盖）
 - 本节“新会话中默认不自动启动子 agent”及“派发需要当前轮明确授权”的结论已被用户于同日的后续澄清覆盖，仅作历史对照。
 

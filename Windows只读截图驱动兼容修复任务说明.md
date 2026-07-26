@@ -51,7 +51,11 @@
 
 ## 当前状态
 
-`task_established_awaiting_offline_driver_implementation`
+`implementation_verified_offline_pending_system_api_binding`
 
 - 执行模型记录：`gpt-5.6-terra + high`。
-- 上游真实预检已因 `SetIsBorderRequired` 不支持而 fail-closed；本轮尚未修改代码，尚未连接真实窗口。
+- 已新增 `WindowsClientWindow`、`WindowsClientAreaApi` 和 `WindowsClientAreaDriver`：只依赖注入的既有窗口枚举、客户区视口和 PNG 捕获能力；不引用 `SetIsBorderRequired` 或 Computer Use 截图路径。
+- 已覆盖唯一窗口、窗口缺失/歧义、来源漂移、视口二次校验、空/非 PNG 载荷和后端异常的 fake/offline 回归。
+- 验证：`python -B -m unittest tests.test_visual_platform tests.test_visual_adapter tests.test_visual_runtime tests.test_visual_click tests.test_visual_sampling tests.test_ocr_stage1_readonly tests.test_ocr_paddle` 为 `52/52` 通过；Python 语法检查和 `git diff --check` 通过。
+- 未完成：具体 Windows 系统 API 绑定、真实截图/OCR 和真实只读预检；本轮未连接或控制 MuMu/ADB，未采集或上传任何游戏数据。
+- 下一步必须另建“Windows 客户区 API 系统绑定与只读预检”任务并取得明确授权；在此之前不得调用真实窗口或把该 seam 写成真实截图已修复。

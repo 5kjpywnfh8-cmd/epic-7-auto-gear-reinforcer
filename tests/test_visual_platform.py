@@ -17,6 +17,8 @@ from src.e7_enhance.visual_platform import (
     LocalRecognitionEvidenceParser,
     LazyWindowsReadOnlyBackend,
     PaddleLinesOcrRecognizer,
+    WindowsClientAreaDriver,
+    WindowsClientWindow,
     WindowsCaptureConfig,
 )
 from src.e7_enhance.visual_runtime import SamplingRequest
@@ -50,6 +52,33 @@ class FakeWindowsDriver:
 
     def capture_png(self, window):
         self.calls.append(("capture", window.identifier))
+        return self.payload
+
+
+class FakeClientAreaApi:
+    def __init__(self, *, windows=(WindowsClientWindow("native-1"),), payload=PNG_BYTES, viewport=(1600, 900)):
+        self.windows = list(windows)
+        self.payload = payload
+        self.viewport = viewport
+        self.calls = []
+        self.error = None
+
+    def find_existing_windows(self, config):
+        self.calls.append(("find", config.window_title, config.window_class, config.process_id))
+        if self.error:
+            raise self.error
+        return list(self.windows)
+
+    def client_viewport(self, window):
+        self.calls.append(("viewport", window.native_id))
+        if self.error:
+            raise self.error
+        return self.viewport
+
+    def capture_client_png(self, window, viewport):
+        self.calls.append(("capture", window.native_id, viewport))
+        if self.error:
+            raise self.error
         return self.payload
 
 
@@ -108,6 +137,55 @@ class LazyWindowsBackendTest(unittest.TestCase):
         backend = LazyWindowsReadOnlyBackend(WindowsCaptureConfig(window_title="Epic Seven"), lambda: missing_window)
         with self.assertRaises(Exception):
             PlatformFrameSource(backend).capture()
+
+
+class WindowsClientAreaDriverTest(unittest.TestCase):
+    def test_client_area_driver_uses_injected_existing_window_api_without_set_border_interface(self):
+        api = FakeClientAreaApi()
+        driver = WindowsClientAreaDriver(api)
+        backend = LazyWindowsReadOnlyBackend(
+            WindowsCaptureConfig(window_title="Epic Seven", source="fake-platform"),
+            lambda: driver,
+            timestamp_factory=lambda: "2026-07-26T10:00:00+08:00",
+        )
+
+        captured = PlatformFrameSource(backend).capture()
+
+        self.assertEqual(captured.payload, PNG_BYTES)
+        self.assertEqual(captured.source, "fake-platform:native-1")
+        self.assertEqual(api.calls, [
+            ("find", "Epic Seven", None, None),
+            ("viewport", "native-1"),
+            ("viewport", "native-1"),
+            ("capture", "native-1", (1600, 900)),
+        ])
+
+    def test_client_area_driver_rejects_missing_or_ambiguous_windows_viewport_change_empty_payload_and_api_error(self):
+        config = WindowsCaptureConfig(window_title="Epic Seven")
+        self.assertIsNone(WindowsClientAreaDriver(FakeClientAreaApi(windows=())).locate_window(config))
+        with self.assertRaises(Exception):
+            WindowsClientAreaDriver(FakeClientAreaApi(windows=(WindowsClientWindow("one"), WindowsClientWindow("two")))).locate_window(config)
+
+        api = FakeClientAreaApi()
+        driver = WindowsClientAreaDriver(api)
+        window = driver.locate_window(config)
+        driver.client_viewport(window)
+        api.viewport = (1601, 900)
+        with self.assertRaises(Exception):
+            driver.capture_png(window)
+        with self.assertRaises(Exception):
+            driver.client_viewport(PlatformWindow("native-1", "different-source"))
+
+        empty = WindowsClientAreaDriver(FakeClientAreaApi(payload=b""))
+        window = empty.locate_window(config)
+        empty.client_viewport(window)
+        with self.assertRaises(Exception):
+            empty.capture_png(window)
+
+        failed = FakeClientAreaApi()
+        failed.error = OSError("offline api failure")
+        with self.assertRaises(Exception):
+            WindowsClientAreaDriver(failed).locate_window(config)
 
         non_png = FakeWindowsDriver(payload=b"not-a-png")
         backend = LazyWindowsReadOnlyBackend(WindowsCaptureConfig(window_title="Epic Seven"), lambda: non_png)
