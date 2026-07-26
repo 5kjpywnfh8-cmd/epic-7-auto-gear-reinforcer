@@ -70,17 +70,21 @@ class LocalSetIconTemplateRecognizerTest(unittest.TestCase):
         path.write_bytes(payload)
         return SetIconTemplate(identifier, path, "offline://fixture", "0" * 40, "0" * 64, (8, 8), len(payload))
 
-    def test_matches_unique_set_anchor_with_auditable_candidate_evidence(self):
+    def test_prefers_set_icon_with_auditable_candidate_evidence(self):
         with tempfile.TemporaryDirectory(prefix="e7-set-matcher-") as directory:
             payload = patterned_png()
             template = self._template(Path(directory), "hit", payload)
             recognizer = LocalSetIconTemplateRecognizer(template_loader=lambda: {"hit": template})
 
-            anchors = recognizer.recognize(frame(), {"set_anchor": sample(payload)})
+            anchors = recognizer.recognize(frame(), {
+                "set_icon": sample(payload, name="set_icon"),
+                "set_anchor": sample(png(8, 8, bytes((0, 0, 0)) * 8 * 8)),
+            })
 
         self.assertEqual(len(anchors), 1)
         self.assertEqual(anchors[0]["name"], "set_icon:hit")
         self.assertEqual(anchors[0]["candidate_id"], "hit")
+        self.assertEqual(anchors[0]["region"], "set_icon")
         self.assertEqual(anchors[0]["score"], 1.0)
         self.assertEqual(anchors[0]["threshold"], 0.98)
         self.assertGreater(anchors[0]["bright_ratio"], 0)
@@ -127,10 +131,10 @@ class LocalSetIconTemplateRecognizerTest(unittest.TestCase):
             template = self._template(Path(directory), "hit", payload)
             blank = png(8, 8, bytes((0, 0, 0)) * 8 * 8)
             cases = (
-                (LocalSetIconTemplateRecognizer(template_loader=lambda: {}), {"set_anchor": sample(payload)}),
-                (LocalSetIconTemplateRecognizer(template_loader=lambda: {"hit": template}), {"set_anchor": sample(b"not-a-png")}),
-                (LocalSetIconTemplateRecognizer(template_loader=lambda: {"hit": template}), {"set_anchor": sample(payload, bounds=(0, 0, 7, 8))}),
-                (LocalSetIconTemplateRecognizer(template_loader=lambda: {"hit": template}), {"set_anchor": sample(blank)}),
+                (LocalSetIconTemplateRecognizer(template_loader=lambda: {}), {"set_icon": sample(payload, name="set_icon")}),
+                (LocalSetIconTemplateRecognizer(template_loader=lambda: {"hit": template}), {"set_icon": sample(b"not-a-png", name="set_icon")}),
+                (LocalSetIconTemplateRecognizer(template_loader=lambda: {"hit": template}), {"set_icon": sample(payload, name="set_icon", bounds=(0, 0, 7, 8))}),
+                (LocalSetIconTemplateRecognizer(template_loader=lambda: {"hit": template}), {"set_icon": sample(blank, name="set_icon")}),
             )
             for recognizer, regions in cases:
                 with self.subTest(regions=tuple(regions)):
@@ -143,7 +147,7 @@ class LocalSetIconTemplateRecognizerTest(unittest.TestCase):
             speed = self._template(Path(directory), "speed", payload)
             recognizer = LocalSetIconTemplateRecognizer(template_loader=lambda: {"hit": hit, "speed": speed})
 
-            self.assertEqual(recognizer.recognize(frame(), {"set_anchor": sample(payload)}), [])
+            self.assertEqual(recognizer.recognize(frame(), {"set_icon": sample(payload, name="set_icon")}), [])
 
     def test_same_template_at_multiple_best_positions_fails_closed(self):
         with tempfile.TemporaryDirectory(prefix="e7-set-matcher-") as directory:
@@ -160,7 +164,7 @@ class LocalSetIconTemplateRecognizerTest(unittest.TestCase):
                         viewport=(16, 8),
                         captured_at="2026-07-26T10:00:00+08:00",
                     ),
-                    {"set_anchor": sample(repeated, bounds=(0, 0, 16, 8))},
+                    {"set_icon": sample(repeated, name="set_icon", bounds=(0, 0, 16, 8))},
                 ),
                 [],
             )
@@ -188,7 +192,7 @@ class _FixturePaddleLines:
             {"text": "暴击伤害", "confidence": 0.999}, {"text": "5%", "confidence": 0.999},
             {"text": "生命值", "confidence": 0.999}, {"text": "159", "confidence": 0.999},
             {"text": "装备分数", "confidence": 0.999}, {"text": "25", "confidence": 0.999},
-            {"text": "速度套装(0/4)", "confidence": 0.999},
+            {"text": "速度套装(0/4)", "confidence": 0.999, "region": "set_text"},
             {"text": "exp0/525", "confidence": 0.999, "region": "enhance"},
         ]
 
@@ -213,7 +217,8 @@ class LocalSetIconTemplateMatcherPipelineTest(unittest.TestCase):
                 "schema_version": 1,
                 "template": "offline_fixture",
                 "regions": [
-                    {"name": "set_anchor", "bounds": {"left": 0, "top": 0, "right": 0.5, "bottom": 2 / 3}},
+                    {"name": "set_icon", "bounds": {"left": 0, "top": 0, "right": 0.5, "bottom": 2 / 3}},
+                    {"name": "set_text", "bounds": {"left": 0.5, "top": 2 / 3, "right": 1, "bottom": 1}},
                     {"name": "detail_panel", "bounds": {"left": 0.5, "top": 0, "right": 1, "bottom": 1}},
                     {"name": "enhance", "bounds": {"left": 0.5, "top": 0, "right": 1, "bottom": 0.5}},
                 ],
@@ -239,6 +244,9 @@ class LocalSetIconTemplateMatcherPipelineTest(unittest.TestCase):
         self.assertEqual(gate.status, "ready")
         self.assertEqual(gate.mode, "visual_only")
         self.assertEqual(gate.verification, "unverified")
+        self.assertEqual(evidence.anchors[0]["region"], "set_icon")
+        self.assertEqual(evidence.target["visible_fields"]["set"], "SpeedSet")
+        self.assertNotIn("name", evidence.target["visible_fields"])
 
 
 if __name__ == "__main__":

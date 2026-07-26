@@ -64,7 +64,7 @@ class InMemoryPngRegionExtractorTest(unittest.TestCase):
         crop = InMemoryPngRegionExtractor().extract(frame(raw, viewport=(1280, 720)), region)
 
         self.assertEqual(parse_png_viewport(crop), (474, 65))
-        for name in ("set", "set_anchor", "enhance", "enhance_anchor"):
+        for name in ("set", "set_anchor", "set_icon", "set_text", "enhance", "enhance_anchor"):
             bounds = definitions[name]
             pixels = tuple(round(bounds[key] * dimension) for key, dimension in zip(
                 ("left", "top", "right", "bottom"), (1280, 720, 1280, 720)
@@ -214,7 +214,7 @@ class AdbLocalRecognitionEvidenceParserTest(unittest.TestCase):
         self.assertEqual(template.calls, 1)
         self.assertEqual(lines.calls, 1)
         self.assertEqual(set(template.region_names), {
-            "detail_header_anchor", "set", "set_anchor", "slot", "rank", "enhance", "enhance_anchor", "level", "main", "substats", "detail_score_anchor",
+            "detail_header_anchor", "set", "set_anchor", "set_icon", "set_text", "slot", "rank", "enhance", "enhance_anchor", "level", "main", "substats", "detail_score_anchor",
         })
         self.assertTrue(all(width > 0 and height > 0 for width, height in template.crop_viewports.values()))
         self.assertEqual(transport.calls.count("devices -l"), 3)

@@ -21,6 +21,7 @@ from src.e7_enhance.visual_platform import (
     WindowsClientWindow,
     WindowsCaptureConfig,
 )
+from src.e7_enhance.ocr_regions import equipment_regions
 from src.e7_enhance.visual_runtime import SamplingRequest
 
 
@@ -99,7 +100,7 @@ def paddle_lines(set_confidence=0.999):
         {"text": "暴击率", "confidence": 0.999}, {"text": "5%", "confidence": 0.999},
         {"text": "速度", "confidence": 0.999}, {"text": "2", "confidence": 0.999},
         {"text": "装备分数", "confidence": 0.999}, {"text": "25", "confidence": 0.999},
-        {"text": "爆伤套装(0/4)", "confidence": set_confidence}, {"text": "exp0/525", "confidence": 0.999, "region": "enhance"},
+        {"text": "爆伤套装(0/4)", "confidence": set_confidence, "region": "set_text"}, {"text": "exp0/525", "confidence": 0.999, "region": "enhance"},
     ]
 
 
@@ -221,6 +222,7 @@ class LocalRecognitionEvidenceParserTest(unittest.TestCase):
         self.assertEqual(evidence.target["visible_fields"]["mainStat"], {"type": "Attack", "value": 100.0})
         self.assertEqual(len(evidence.target["visible_fields"]["substats"]), 4)
         self.assertGreaterEqual(evidence.target["field_confidence"]["set"], 0.98)
+        self.assertNotIn("name", evidence.target["visible_fields"])
 
     def test_invalid_region_definition_low_ocr_confidence_and_missing_templates_fail_closed(self):
         invalid_regions = lambda: {
@@ -235,6 +237,13 @@ class LocalRecognitionEvidenceParserTest(unittest.TestCase):
             )
         with self.assertRaises(LocalRecognitionError):
             self._parser(set_confidence=0.97).parse(
+                SamplingRequest("operation-001", "pre_action", 0), StableFrames((frame(), frame(), frame()))
+            )
+
+        set_text_out_of_bounds = equipment_regions()
+        next(region for region in set_text_out_of_bounds["regions"] if region["name"] == "set_text")["bounds"]["left"] = -0.01
+        with self.assertRaises(LocalRecognitionError):
+            self._parser(region_provider=lambda: set_text_out_of_bounds).parse(
                 SamplingRequest("operation-001", "pre_action", 0), StableFrames((frame(), frame(), frame()))
             )
 

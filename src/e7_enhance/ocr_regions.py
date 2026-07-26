@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import Iterable
 
 
-OCR_REGION_SCHEMA_VERSION = 1
+OCR_REGION_SCHEMA_VERSION = 2
 
 
 def _region(name: str, left: float, top: float, right: float, bottom: float) -> dict:
@@ -18,6 +18,10 @@ DEFAULT_EQUIPMENT_REGIONS = (
     _region("rank", 0.60, 0.08, 0.97, 0.16),
     _region("set", 0.63984375, 0.76, 0.95, 0.86),
     _region("set_anchor", 0.63984375, 0.76, 0.95, 0.86),
+    # These are independent candidate crops.  The icon is template evidence;
+    # the text crop is the only local PaddleOCR entry for the set field.
+    _region("set_icon", 0.63984375, 0.7638888889, 0.703125, 0.8555555556),
+    _region("set_text", 0.703125, 0.7638888889, 0.875, 0.8555555556),
     _region("enhance", 0.63984375, 0.16, 0.95, 0.25),
     _region("enhance_anchor", 0.63984375, 0.16, 0.95, 0.25),
     _region("level", 0.60, 0.16, 0.97, 0.25),
@@ -51,7 +55,7 @@ def equipment_regions() -> dict:
     regions = [dict(region, bounds=dict(region["bounds"])) for region in DEFAULT_EQUIPMENT_REGIONS]
     return {
         "schema_version": OCR_REGION_SCHEMA_VERSION,
-        "template": "equipment_detail_normalized_v1",
+        "template": "equipment_detail_normalized_v2",
         "regions": regions,
         "validation_errors": validate_regions(regions),
         "click_coordinates": None,

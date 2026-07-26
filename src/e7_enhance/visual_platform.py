@@ -318,6 +318,11 @@ class PaddleLinesOcrRecognizer:
         self._line_source = line_source
 
     def recognize(self, frame: VisualFrame, regions: Mapping[str, RegionSample]) -> Mapping[str, Any]:
+        if not any(
+            isinstance(regions.get(name), RegionSample)
+            for name in ("set_text", "set_name", "set_anchor", "set")
+        ):
+            raise LocalRecognitionError("PaddleOCR set-text local region is unavailable")
         lines = self._line_source(frame, regions)
         if not isinstance(lines, list):
             raise LocalRecognitionError("Paddle line source must return a list")

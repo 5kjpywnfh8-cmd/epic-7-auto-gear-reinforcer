@@ -25,6 +25,12 @@ BACKPACK_DETAIL_SET_NAME = {
     "right": 0.95,
     "bottom": 0.86,
 }
+BACKPACK_DETAIL_SET_TEXT = {
+    "left": 0.703125,
+    "top": 0.7638888889,
+    "right": 0.875,
+    "bottom": 0.8555555556,
+}
 BACKPACK_DETAIL_ENHANCE_EVIDENCE = {
     "left": 0.63984375,
     "top": 0.16,
@@ -36,6 +42,7 @@ BACKPACK_DETAIL_ENHANCE_EVIDENCE = {
 # their values point at the corrected detail-panel layout.
 BACKPACK_ENHANCE_PANEL = BACKPACK_DETAIL_PANEL
 BACKPACK_SET_NAME = BACKPACK_DETAIL_SET_NAME
+BACKPACK_SET_TEXT = BACKPACK_DETAIL_SET_TEXT
 
 
 class PaddleOcrError(RuntimeError):
@@ -57,6 +64,8 @@ _SLOTS = {"武器": "Weapon", "头盔": "Helmet", "衣服": "Armor", "项链": "
 _ENHANCE_TOKEN = re.compile(r"\+([0-9]+)")
 _EXPERIENCE_TOKEN = re.compile(r"exp([0-9]+)/[0-9]+", re.IGNORECASE)
 _ENHANCE_REGION = "enhance"
+_SET_TEXT_REGION = "set_text"
+_LEGACY_SET_REGIONS = frozenset(("set_name", "set_anchor", "set"))
 _PADDLE_MODEL_LAYOUT = {
     "det_model_dir": ("userprofile", ".paddleocr", "whl", "det", "ch", "ch_PP-OCRv4_det_infer"),
     "rec_model_dir": ("userprofile", ".paddleocr", "whl", "rec", "ch", "ch_PP-OCRv4_rec_infer"),
@@ -176,8 +185,24 @@ def parse_backpack_enhance_lines(lines: list[dict[str, Any]]) -> dict[str, Any]:
         fields["level"] = _field(normalized[level_index], confidences[level_index]) | {"normalized": 85}
 
     set_candidates = [index for index, text in enumerate(normalized) if "套装" in text]
+    local_set_candidates = [
+        index for index in set_candidates
+        if lines[index].get("region") == _SET_TEXT_REGION or lines[index].get("region") in _LEGACY_SET_REGIONS
+    ]
+    if local_set_candidates:
+        set_candidates = local_set_candidates
+    elif any("region" in lines[index] for index in set_candidates):
+        # A supplied local OCR crop must be one of the approved set crops.
+        # Do not fall back to a broad panel line when that evidence is absent.
+        set_candidates = []
+    set_values = {
+        value for index in set_candidates
+        if (value := _set_display_name(re.sub(r"\(\d+/\d+\)$", "", normalized[index]))) is not None
+    }
     set_index = max(set_candidates, key=lambda index: confidences[index]) if set_candidates else None
-    if set_index is None:
+    if len(set_values) > 1:
+        errors.append("conflicting:set")
+    elif set_index is None:
         errors.append("unrecognized:set")
     else:
         set_text = re.sub(r"\(\d+/\d+\)$", "", normalized[set_index])
@@ -185,7 +210,16 @@ def parse_backpack_enhance_lines(lines: list[dict[str, Any]]) -> dict[str, Any]:
         if set_value is None:
             errors.append("unrecognized:set")
         else:
-            fields["set"] = _field(normalized[set_index], confidences[set_index]) | {"normalized": set_value}
+            region = lines[set_index].get("region")
+            source = (
+                "set_text_local" if region == _SET_TEXT_REGION
+                else "set_text_legacy_region" if region in _LEGACY_SET_REGIONS
+                else "set_text_legacy_unscoped"
+            )
+            fields["set"] = _field(normalized[set_index], confidences[set_index]) | {
+                "normalized": set_value,
+                "source": source,
+            }
 
     enhance, enhance_error = _enhance_evidence(lines, normalized)
     if enhance is None:
@@ -323,6 +357,17 @@ def _set_bounds(width: int, height: int) -> tuple[int, int, int, int]:
     return left, top, right, bottom
 
 
+def _set_text_bounds(width: int, height: int) -> tuple[int, int, int, int]:
+    _validate_detail_viewport(width, height)
+    left = round(width * BACKPACK_DETAIL_SET_TEXT["left"])
+    top = round(height * BACKPACK_DETAIL_SET_TEXT["top"])
+    right = round(width * BACKPACK_DETAIL_SET_TEXT["right"])
+    bottom = round(height * BACKPACK_DETAIL_SET_TEXT["bottom"])
+    if not (0 <= left < right <= width and 0 <= top < bottom <= height):
+        raise PaddleOcrError("backpack set-text crop is outside image bounds")
+    return left, top, right, bottom
+
+
 def _enhance_bounds(width: int, height: int) -> tuple[int, int, int, int]:
     _validate_detail_viewport(width, height)
     left = round(width * BACKPACK_DETAIL_ENHANCE_EVIDENCE["left"])
@@ -386,6 +431,7 @@ def recognize_backpack_enhance(image_path: Path, *, cache_root: Path) -> dict[st
         source_dimensions = source.size
         bounds = _crop_bounds(*source_dimensions)
         set_bounds = _set_bounds(*source_dimensions)
+        set_text_bounds = _set_text_bounds(*source_dimensions)
         enhance_bounds = _enhance_bounds(*source_dimensions)
         try:
             engine = PaddleOCR(**_paddle_engine_kwargs(Path(cache_root)))
@@ -401,12 +447,12 @@ def recognize_backpack_enhance(image_path: Path, *, cache_root: Path) -> dict[st
         crop = ImageEnhance.Contrast(crop).enhance(1.15)
         detail_result = engine.ocr(np.asarray(crop), cls=False)[0] or []
         result_lines.append(("right_detail_panel", crop.size, detail_result))
-        set_crop = source.crop(set_bounds).resize(
-            (max(1, (set_bounds[2] - set_bounds[0]) * 6), max(1, (set_bounds[3] - set_bounds[1]) * 6)),
+        set_crop = source.crop(set_text_bounds).resize(
+            (max(1, (set_text_bounds[2] - set_text_bounds[0]) * 6), max(1, (set_text_bounds[3] - set_text_bounds[1]) * 6)),
             Image.Resampling.LANCZOS,
         )
         set_crop = ImageEnhance.Contrast(set_crop).enhance(1.15)
-        result_lines.append(("set_name", set_crop.size, engine.ocr(np.asarray(set_crop), cls=False)[0] or []))
+        result_lines.append((_SET_TEXT_REGION, set_crop.size, engine.ocr(np.asarray(set_crop), cls=False)[0] or []))
         enhance_crop = source.crop(enhance_bounds).resize(
             (max(1, (enhance_bounds[2] - enhance_bounds[0]) * 6), max(1, (enhance_bounds[3] - enhance_bounds[1]) * 6)),
             Image.Resampling.LANCZOS,
@@ -460,7 +506,14 @@ def recognize_backpack_enhance(image_path: Path, *, cache_root: Path) -> dict[st
         "source_size": len(source_bytes),
         "source_dimensions": {"width": source_dimensions[0], "height": source_dimensions[1]},
         "crop_bounds": {"left": bounds[0], "top": bounds[1], "right": bounds[2], "bottom": bounds[3]},
-        "set_bounds": {"left": set_bounds[0], "top": set_bounds[1], "right": set_bounds[2], "bottom": set_bounds[3]},
+        "set_bounds": {
+            "left": set_bounds[0], "top": set_bounds[1],
+            "right": set_bounds[2], "bottom": set_bounds[3],
+        },
+        "set_text_bounds": {
+            "left": set_text_bounds[0], "top": set_text_bounds[1],
+            "right": set_text_bounds[2], "bottom": set_text_bounds[3],
+        },
         "enhance_bounds": {"left": enhance_bounds[0], "top": enhance_bounds[1], "right": enhance_bounds[2], "bottom": enhance_bounds[3]},
         "experience_context": "enhance_local_crop",
         "lines": lines,

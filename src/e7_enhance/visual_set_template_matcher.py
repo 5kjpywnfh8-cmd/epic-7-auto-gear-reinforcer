@@ -46,7 +46,9 @@ class LocalSetIconTemplateRecognizer:
         """Return a sole high-confidence candidate, or no anchors at all."""
         if not isinstance(frame, VisualFrame) or not isinstance(regions, Mapping):
             return []
-        sample = regions.get("set_anchor") or regions.get("set")
+        sample = regions.get("set_icon")
+        if sample is None:
+            sample = regions.get("set_anchor") or regions.get("set")
         if not isinstance(sample, RegionSample) or not _sample_matches_bounds(sample, frame.viewport):
             return []
         try:
@@ -86,6 +88,7 @@ class LocalSetIconTemplateRecognizer:
         return [{
             "name": f"set_icon:{best[0]}",
             "candidate_id": best[0],
+            "region": sample.region.name,
             "score": round(best[1], 6),
             "threshold": self._threshold,
             "bright_ratio": round(best[2], 6),
