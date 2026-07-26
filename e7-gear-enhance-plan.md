@@ -2842,3 +2842,15 @@ GUI 验收关注点：
 - 新增模板测试 `5/5`；视觉 ADB/平台/运行时/采样/适配回归 `43/43`；OCR 回归 `27/27`；来源 tree `26/26` blob 一致；`py_compile`、`git diff --check` 通过。
 - 这些图标仍只是离线候选模板，不是实际套装识别结果；尚未实现 `LocalTemplateRecognizer` 图像匹配，也未执行真实 ADB/OCR/点击。结果口径仍为 `mode=visual_only`、`verification=unverified`。
 - 上游根目录未声明 LICENSE，当前风险已记录；下一步需另建局部模板匹配器任务说明并完成离线验证，之后才可申请新的真实只读单帧校准。当前状态：`offline_set_icon_assets_verified_pending_local_matcher_20260726`。
+
+#### 纯视觉局部套装模板匹配器任务建立（2026-07-26）
+- 已按项目规则创建并完整阅读[纯视觉局部套装模板匹配器任务说明](纯视觉局部套装模板匹配器任务说明.md)，本文件为本轮唯一权威来源；范围仅限离线局部模板匹配器设计、实现和公开测试。
+- 任务明确复用 `load_set_icon_templates()`、`RegionSample`、`LocalTemplateRecognizer` 和现有 fail-closed 证据链；不得联网、执行真实 ADB/OCR、点击、页面导航、强化、选材、资源消耗或底层读取。
+- 当前状态：`task_established_offline_local_set_template_matcher_pending_implementation_20260726`；执行模型记录为 `gpt-5.6-terra + high`。
+
+#### 纯视觉局部套装模板匹配器离线实现完成（2026-07-26）
+
+- 已按[纯视觉局部套装模板匹配器任务说明](纯视觉局部套装模板匹配器任务说明.md)新增 `LocalSetIconTemplateRecognizer`，保持既有 `LocalTemplateRecognizer` 注入协议和证据 schema 不变；它只在内存中比较 `set_anchor`/`set` 局部 PNG 与本地已校验模板，输出 `set_icon:<id>` 候选锚点而非字段确认。
+- 匹配阈值固定为 `0.98` 且不可由调用方降低。模板缺失、损坏输入、区域边界与 PNG 尺寸不一致、低分、跨模板并列、同模板多位置并列均 fail-closed；未增加全屏坐标猜测、缩放猜测、自动重试或任何点击行为。
+- 新增合成公开测试，覆盖唯一命中、`set` 回退和 fail-closed 分支，并验证 `VisualAdapterSampler -> AdbLocalRecognitionEvidenceParser -> VisualEvidenceGate` 完整离线链路仍只产生 `mode=visual_only`、`verification=unverified`。定向视觉回归 `52/52`、`py_compile` 与 `git diff --check` 均通过（退出码 `0`）。
+- 未执行真实 MuMu/ADB、截图、OCR、导航、点击、强化、选材、资源消耗、Fribbels/PCAP/TCP 读取或外部上传。匹配器是可注入的局部候选组件，实际证据链仍需后续页面锚点组合；Fribbels 上游资产许可证声明缺失的既有风险仍保留，本地合成测试不构成真实设备校准。当前状态：`offline_local_set_template_matcher_verified_pending_real_readonly_calibration_20260726`；真实单帧校准需另行任务说明并取得单独授权。
