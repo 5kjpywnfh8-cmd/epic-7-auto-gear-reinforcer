@@ -2659,3 +2659,9 @@ GUI 验收关注点：
 - 旧《子agent续作指令临时禁用规则任务说明.md》关于“不得自动派发”的解释已被本节覆盖，仅保留其聊天交接文本禁用规则。当前权威任务说明：[子agent自动执行恢复规则任务说明.md](子agent自动执行恢复规则任务说明.md)。
 - 验证：规则关键词检索确认内部自动派发与人类交接文本限制已分离；`git diff --check` 通过。
 - 当前状态：`subagent_internal_auto_dispatch_enabled_human_handoff_text_still_opt_in_20260726`；本轮仅更新执行规则文档，不改变现有功能、正式策略或运行时任务范围。
+#### 纯视觉 ADB 截图与受控点击迁移（2026-07-26）
+- 本轮唯一权威任务说明为[纯视觉 ADB 截图与受控点击迁移任务说明](纯视觉%20ADB%20截图与受控点击迁移任务说明.md)。用户正式选择 MuMu 主路线为“ADB 截图 -> 局部模板/PaddleOCR 识别 -> 视觉决策 -> 单次受控 ADB 点击 -> 新截图后验”；视觉结果固定标记 `mode=visual_only`、`verification=unverified`，不得表述为服务器确认。
+- 此前“Windows 只读截图预检”及其 `SetIsBorderRequired failed: 不支持此接口 (0x80004002)` 结论仅作历史对照，已被本条 ADB 主路线覆盖，不再作为纯视觉主路线阻断。Windows 截图实现仍仅保留为非 ADB 场景备用，不在本轮修改。
+- 当前第一阶段只实现和验证只读 ADB PNG 帧源：先运行 MuMu 官方 `adb.exe devices -l`，只接受自动发现且状态为 `device` 的唯一设备；随后仅使用 `adb exec-out screencap -p` 获取 PNG，并接入既有 `VisualFrame`、`PlatformFrameSource`、`VisualAdapterSampler`、稳定帧、帧哈希、视口、时间戳、局部区域、PaddleOCR 和 `0.98` 字段置信度门槛。
+- ADB 不可用、设备不唯一、命令失败、PNG 损坏、旋转/视口漂移、黑屏、旧帧、区域越界、锚点缺失、低置信度和字段矛盾均必须 fail-closed，禁止自动重试。不得调用 `input tap`、`swipe`、`keyevent`，不得导航、强化、选材、重启游戏或消耗资源；不得使用 Fribbels、PCAP、TCP 载荷、`player_data.json`、底层读取或外部上传。
+- 按用户要求记录实际执行模型为 `gpt-5.6-terra + high`。离线实现已完成：新增 `src/e7_enhance/visual_adb.py` 与 `tests/test_visual_adb.py`，覆盖唯一 `device` 自动发现、只读命令白名单、禁止 `192.168.x.x:5555` 序列号、完整 PNG chunk/CRC、内置像素解码黑屏拒绝、设备身份、旋转/视口漂移、稳定帧和 `VisualAdapterSampler` 全链路；定向 ADB 测试 `6/6`、全部视觉测试 `40/40`、语法检查和 `git diff --check` 均通过。全量测试 `534` 项为 `504` 通过、`7` 失败、`23` 错误，失败均落在缺失私人归档/历史 holdout 或既有研究矩阵/策略清单状态，未读取或恢复归档，不归因于本次 ADB 改动。当前状态为 `offline_adb_frame_source_verified_pending_real_readonly_preflight`：尚未执行真实 ADB 预检，未进行局部 OCR、页面导航、点击、强化、选材或资源操作。
