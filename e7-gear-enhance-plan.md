@@ -2689,3 +2689,20 @@ GUI 验收关注点：
 - 只读审计结果：默认 Python `3.13.13` 不可见 `PIL`、`paddleocr`、`paddle`；项目 Python `3.9.2` 可导入 `PIL 11.3.0`，但 `paddleocr` 因 `.cache\\paddle` 权限拒绝、`paddle` 因循环初始化错误而无法导入。
 - 依赖导入闸门未通过，本轮未执行 ADB、截图、OCR、模板识别、页面导航或任何输入；未安装依赖、未联网、未下载模型、未修改游戏环境。
 - 当前状态更新为 `dependency_audit_failed_import_fail_closed_20260726`。下一步需另建“纯视觉 OCR 运行环境修复与依赖复验”任务并取得明确授权，不能在当前任务中擅自修复环境。
+
+#### 纯视觉 OCR 运行环境修复与依赖复验阶段建立（2026-07-26）
+- 用户已批准进入下一步并询问 Paddle 初始化失败原因；本阶段唯一权威任务说明为[纯视觉 OCR 运行环境修复与依赖复验任务说明](纯视觉%20OCR%20运行环境修复与依赖复验任务说明.md)。
+- 当前先做只读最小复现和根因诊断，不安装/卸载/升级依赖，不修改缓存权限，不联网，不下载模型，不执行 ADB、截图、OCR、页面导航或任何游戏操作。
+- 执行模型记录为 `gpt-5.6-terra + high`；当前状态：`diagnosis_authorized_terra_high_in_progress`。
+
+#### Paddle 导入失败根因诊断完成（2026-07-26）
+- Python 3.9.2 干净进程导入 `paddlepaddle 2.6.2` 时，在 `paddle/dataset/common.py:62` 创建 `C:\Users\orangine\.cache\paddle\dataset`，被当前运行环境工作区外写入闸门拒绝，报 `PermissionError: [WinError 5]`。
+- `paddleocr 2.10.0` 先导入 `paddle`，因此同样在缓存目录创建阶段失败；尚未进入 OCR 引擎或模型下载。版本与 `requirements-ocr.txt` 一致，普通 ACL 读数显示父目录对用户有完整控制。
+- 之前的 `partially initialized module 'paddle'` 只是在同进程第一次导入失败后的二次症状，干净进程未复现为独立根因。
+- 当前状态更新为 `diagnosis_complete_environment_write_gate_blocked_repair_authorization_pending_20260726`。尚未修复环境、安装依赖、联网、执行 ADB 或真实 OCR；最小修复需要单独授权可写 Paddle 缓存根目录或受控环境写入。
+
+#### Paddle 工作区缓存导入复验授权（2026-07-26）
+- 用户明确批准下一步，授权将 Paddle 缓存重定向到已批准的本地可写 ASCII 工作区路径做一次全新 Python 3.9 导入复验；中文仓库路径会被现有 `_configure_cache()` 拒绝。不安装/升级依赖、不修改用户目录 ACL、不联网、不下载模型、不执行 ADB/OCR/游戏操作。
+- 全新 Python `3.9.2` 进程在 ASCII 工作区缓存下成功导入 `paddle 2.6.2` 与 `paddleocr 2.10.0`，退出码 `0`；未构造 OCR 引擎、未下载模型、未执行 ADB/OCR/游戏操作。
+- 根因闭环为默认用户缓存写入被环境阻断，中文仓库路径又被现有 ASCII 保护拒绝；当前状态更新为 `repair_verified_ascii_cache_imports_ready_for_readonly_ocr_20260726`。
+- 下一步是建立/执行真实 ADB 局部识别只读复验，仍禁止任何输入和强化。
