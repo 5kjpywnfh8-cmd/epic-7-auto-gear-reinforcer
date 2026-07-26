@@ -2753,3 +2753,17 @@ GUI 验收关注点：
 - 本地 PaddleOCR 对局部图像返回 92 行并运行现有解析，但 fail-closed：`unrecognized:set`、`missing:enhance`、`low_confidence:substats[2]`（`0.927478`）。部分结果显示英雄武器、85、攻击力 100、暴击率 5%、攻击力 8%，不能视为目标装备或服务器确认。
 - 未执行第二次截图、稳定帧采样、`VisualEvidence` 包装、模板点击、页面导航、ADB 输入、强化、选材、资源消耗、底层读取或外部上传；结果保持 `mode=visual_only`、`verification=unverified`。
 - 执行模型记录为 `gpt-5.6-terra + high`；当前状态：`real_adb_single_frame_local_ocr_completed_fail_closed_20260726`。下一步需目标装备详情页就绪后另行授权新单帧复验；稳定帧证据需另行授权。
+
+#### 纯视觉目标装备详情页单帧字段复验任务建立（2026-07-26）
+- 用户已将画面切换到目标装备详情页，并提供本次视觉目标指纹：命中套武器、红装/传说、85级、`+0`、主属性攻击力 `100`、副属性暴击率 `5%`/攻击力 `8%`/效果抗性 `8%`、官方分数 `28`。
+- 已创建并完整阅读唯一权威任务说明：[纯视觉目标装备详情页单帧字段复验任务说明](纯视觉目标装备详情页单帧字段复验任务说明.md)。本轮只授权一次自动发现唯一设备后的 ADB 内存截图和局部 PaddleOCR 字段比较；不点击、不导航、不强化、不选材、不消耗资源、不落盘、不上传。
+- 结果继续固定为 `mode=visual_only`、`verification=unverified`；单帧通过不等于服务器确认，也不构成稳定帧或自动强化授权。执行模型记录为 `gpt-5.6-terra + high`。
+- 当前状态：`authorized_target_detail_single_frame_pending_20260726`。
+
+#### 纯视觉目标装备详情页单帧字段复验 fail-closed（2026-07-26）
+- 已按[纯视觉目标装备详情页单帧字段复验任务说明](纯视觉目标装备详情页单帧字段复验任务说明.md)执行一次真实只读 ADB 单帧和内存局部 PaddleOCR；未执行第二次截图、稳定帧、任何输入或游戏操作。
+- 自动发现唯一 `emulator-5554 device`；PNG 视口 `1280x720`、`858918` 字节，帧哈希 `5df31a9f02817c90c7e7e636489c338415411c5f65650906fc2c8e29e5b1fef2`，局部裁剪原始 `370x430`、送 OCR `740x860`，均未落盘。该哈希与上一轮混合背包画面完全相同，存在旧帧/页面未更新风险。
+- OCR 返回 `20` 行，仅识别到 `85`（`0.999722`）；缺失套装、部位、强化、主/副属性和分数，原因：`missing:enhance`、`unrecognized:gear_score`、`unrecognized:main_and_substats`、`unrecognized:rank_slot`、`unrecognized:set`。目标指纹比对为 `false`，结果保持 `mode=visual_only`、`verification=unverified`。
+- 当前状态：`target_detail_single_frame_failed_stale_or_wrong_page_fail_closed_20260726`。下一次读取前必须在目标详情页实际刷新后另行更新任务说明并取得新的单次只读授权；受控点击、强化和资源操作仍未授权。
+@@
+#### 纯视觉真实ADB模型就绪局部OCR只读复验完成（2026-07-26）
