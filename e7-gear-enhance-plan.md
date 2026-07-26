@@ -2642,6 +2642,12 @@ GUI 验收关注点：
 - `list_apps()` 已唯一返回 MuMu Android 设备窗口 `MuMu安卓设备`（窗口 ID `3276970`）；调用 `get_window_state({ include_screenshot: true })` 时失败，原始错误为 `SetIsBorderRequired failed: 不支持此接口 (0x80004002)`。
 - 因未获得 PNG/视口/时间戳，本轮未执行局部模板/OCR、装备指纹绑定或字段判定；未激活、点击、导航、底层读取、上传或资源操作。当前状态更新为 `real_windows_capture_failed_fail_closed_20260726`。
 - 下一步需另建 Windows 只读截图驱动兼容修复任务，先离线实现并验证不依赖该接口的捕获后端，再重新授权真实预检；不得在当前任务内自动重试或换窗口。
+
+#### Windows 只读截图驱动兼容修复（2026-07-26）
+
+- 用户已批准进入下一步；已建立独立任务说明：[Windows 只读截图驱动兼容修复任务说明](Windows只读截图驱动兼容修复任务说明.md)。
+- 本轮范围仅为离线实现不依赖 `SetIsBorderRequired` 的只读捕获后端/适配 seam、fake 测试和回归验证；不得连接、激活或输入 MuMu/Epic Seven，不读取或上传底层数据。
+- 执行模型记录为 `gpt-5.6-terra + high`。当前状态：`task_established_awaiting_offline_driver_implementation`；真实窗口预检必须另行授权。
 #### 会话子 agent 自动派发策略说明（2026-07-26，已被后文覆盖）
 - 本节“新会话中默认不自动启动子 agent”及“派发需要当前轮明确授权”的结论已被用户于同日的后续澄清覆盖，仅作历史对照。
 
