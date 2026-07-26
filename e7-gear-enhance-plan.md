@@ -2887,3 +2887,15 @@ GUI 验收关注点：
 - 只允许一次唯一 `device` 自动发现、一次 `exec-out screencap -p`、内存 PNG/视口/非黑屏/哈希校验、右侧详情局部裁剪、一次模板匹配和一次本地 PaddleOCR；禁止 ADB 输入、页面导航、点击、强化、选材、资源消耗、底层读取和外部上传。
 - 真实只读执行已完成但 fail-closed：唯一设备 `emulator-5554`，一次 PNG 视口 `1280x720`、`808663` 字节，帧 SHA-256 `5da516911e79a92aad5709b0cc1ee44bcd9f4915d5063a97add7127cabd29ea8`，未落盘且未输入。右侧 OCR 识别到武器、85、攻击100、暴击5%、攻击8%、效果抗性8%、分数28，但品质为 `Heroic` 而非目标 `Epic`；命中套装最高置信度 `0.906965`、模板无唯一锚点、强化局部无 `+0/exp0`。
 - 当前状态更新为 `readonly_fresh_frame_completed_fail_closed_waiting_target_page_confirmation`。需要用户把 MuMu 实际切换到目标红装/传说命中套武器的详细页，并确认强化 `+0` 证据可见；在此之前不得再次截图、不得进入 ADB 点击接线。校准通过后才可另建“真实单次受控 ADB 点击接线”任务说明。
+
+#### 纯视觉真实 ADB 目标装备新鲜单帧校准再次授权（2026-07-26）
+- 用户确认已将 MuMu 切换到另一件红装详细页，并批准继续一次新的只读校准；该确认已写入唯一权威任务说明：[纯视觉真实 ADB 目标装备新鲜单帧校准任务说明](纯视觉真实ADB目标装备新鲜单帧校准任务说明.md)。
+- 本次仅允许唯一 `device` 自动发现、一次 `exec-out screencap -p`、内存 PNG/视口/哈希校验、右侧详情/套装/强化局部模板与 PaddleOCR；禁止第二次截图、自动重试、ADB 输入、页面导航、点击、强化、选材、资源消耗、底层读取和外部上传。
+- 结果继续固定为 `mode=visual_only`、`verification=unverified`；任一目标字段、套装模板或 `+0` 强化证据未达到 `0.98` 即 fail-closed。执行模型记录：`gpt-5.6-terra + high`；当前状态：`authorized_fresh_target_page_single_frame_pending_20260726`。
+
+#### 纯视觉真实 ADB 目标装备新鲜单帧校准再次执行 fail-closed（2026-07-26）
+- 依赖和唯一设备闸门通过：Python `3.9.2`、PaddleOCR `2.10.0`、唯一 `emulator-5554 device`；只执行一次 `exec-out screencap -p`，PNG 未落盘、未上传。
+- 新鲜帧视口 `1280x720`、字节数 `789595`、SHA-256 `4b7768b6c043f45a5a9f356279a894c17cecec2306eea2339ed6a388ba4dab54`，与已知旧帧不同。右侧详情/套装/强化局部均在内存裁剪，模板匹配未返回唯一锚点。
+- OCR 识别到传说武器、命中套装、攻击力 `100`、装备分数 `28`；套装局部置信度 `0.973498` 低于 `0.98`，强化局部缺少唯一 `+0/exp0`，等级未形成唯一 `85`。结果 `accepted=false`，原因：`low_confidence:set`、`missing:enhance`、`unrecognized:level`。
+- 本轮没有第二次截图、ADB 输入、导航、点击、强化、选材、资源消耗、底层读取或上传；结果保持 `mode=visual_only`、`verification=unverified`、`click_performed=false`。执行模型：`gpt-5.6-terra + high`。
+- 当前状态：`real_adb_fresh_target_frame_completed_fail_closed_20260726`。在套装达到唯一 `0.98`、等级/强化证据明确通过前，不进入受控点击接线；需要用户补充可见的 `85` 与 `+0`/`exp0/...` 页面证据，或授权另建只读页面校准任务。

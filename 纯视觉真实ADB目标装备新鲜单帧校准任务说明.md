@@ -59,8 +59,27 @@
 
 ## 当前状态
 
-`readonly_fresh_frame_completed_fail_closed_waiting_target_page_confirmation`
+`authorized_fresh_target_page_single_frame_pending_20260726`
 
 ## 模型记录
 
 本轮执行模型：`gpt-5.6-terra + high`。
+
+## 新一轮只读授权记录（2026-07-26）
+
+- 用户确认已将 MuMu 切换到另一件红装详细页，并明确允许继续本任务的下一次只读校准。
+- 本次授权仅覆盖一次唯一 `device` 自动发现、一次 `exec-out screencap -p`、内存 PNG/视口/哈希校验、右侧详情/套装/强化局部裁剪、一次本地模板匹配和一次 PaddleOCR；不覆盖任何 ADB 输入、页面导航、点击、强化、选材、资源消耗、底层读取或外部上传。
+- 本轮仍必须保持 `mode=visual_only`、`verification=unverified`、`0.98` 字段门槛和 fail-closed；不得自动重试或使用人工描述补齐字段。
+
+## 新一轮只读执行结果（2026-07-26）
+
+- 依赖闸门通过：Python `3.9.2`、`paddle 2.6.2`、`paddleocr 2.10.0`，批准 ASCII 缓存中的检测/识别/分类模型均存在。
+- 自动发现结果为唯一 `emulator-5554 device`；仅执行一次 `exec-out screencap -p`。PNG 全程在内存校验和裁剪，视口 `1280x720`，字节数 `789595`，帧 SHA-256 `4b7768b6c043f45a5a9f356279a894c17cecec2306eea2339ed6a388ba4dab54`，未命中已知旧帧集合，未落盘、未上传。
+- 右侧详情区域 `(768,58)-(1242,619)`、套装区域 `(819,547)-(1216,619)`、强化区域 `(819,115)-(1216,180)` 均在内存裁剪；局部模板匹配返回空锚点。
+- PaddleOCR 返回 `38` 行；识别到传说武器（`Epic`）、命中套装、攻击力 `100`、装备分数 `28`。套装独立局部置信度 `0.973498 < 0.98`；强化局部没有唯一 `+0` 或 `exp0/...`；解析未形成唯一等级 `85`。
+- 解析结果：`accepted=false`，拒绝原因 `low_confidence:set`、`missing:enhance`、`unrecognized:level`。结果保持 `mode=visual_only`、`verification=unverified`、`click_performed=false`。
+- 本轮未执行第二次截图、任何 ADB 输入、页面导航、点击、强化、选材、资源消耗、底层读取或外部上传。
+
+## 当前状态
+
+`real_adb_fresh_target_frame_completed_fail_closed_20260726`
