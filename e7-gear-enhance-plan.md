@@ -2437,3 +2437,15 @@ GUI 验收关注点：
 - 单次获准大厅探针确认大厅相似度 `0.9705`，但四方格点击后仍为大厅。只读证据显示 `wm size=720x1280`，活动 `dumpsys input` Viewport 的逻辑/物理帧均为 `1280x720`；现有 rotation=1 映射把目标点送到屏外约 `(685,1239)`。根因收敛为输入帧映射错误，状态更新为 `visual_entry_chain_authorized_input_frame_mapping_fix_required`；修复与回归通过前禁止继续点击或抓包。
 - 修复后当前大厅截图受频道提示、资源数字和角色动画影响，相似度为 `0.874`，而资料弹窗为 `0.6196`；`0.92` 整屏阈值会误拒真实大厅。下一步将阈值收敛为 `0.85` 并记录回归，继续要求模板存在、PNG 有效和目标页二次确认。
 - 输入帧解析与动态阈值修复已完成：活动 Viewport 归一化映射、重复等价 Viewport 去重、缺失帧 fail-closed；导航回归 `10/10`、Python 3.9 语法通过。大厅确认后只读尝试 `(1239,35)`、`(1248,24)`、`(35,1245)` 三种有依据坐标，均未打开控制界面，最后一次大厅相似度 `0.8686`。已停止，不抓包、不上传、不进入目标页；状态更新为 `visual_entry_chain_authorized_menu_navigation_blocked_fail_closed`。
+
+#### 控制界面整屏模板已补齐（2026-07-26）
+
+- 用户提供并确认大厅闭合截图与四方格展开后的控制界面整屏截图；控制面板截图对应最初序列的“图四”，而最初“图二”仍仅是装备保管箱参考；此前“缺少菜单整屏模板”的阻断已被后文覆盖。
+- 菜单截图中左下方公文包图标确认是背包入口，按参考分辨率暂用归一化坐标 `(0.735, 0.820)`；新鲜目标背包模板仍使用用户图一，英雄入口不在本次读取路径内。
+- 当前状态更新为 `visual_entry_chain_menu_template_received_ready_for_readonly_validation`。下一步只做模板/坐标预检、导航回归和精确审阅，之后才可按《MuMu抓包读取与真实装备导入任务说明.md》执行一次标准真实读取；不强化、不选材、不改装备、不导入、不采集 OCR 字段。
+
+#### 只读导航后真实读取被 Fribbels 413 拒绝（2026-07-26）
+
+- 导航回归 `10/10`、三份 PNG 模板预检通过；ADB 自动发现 `emulator-5554`，读取前大厅相似度 `0.9754`。按授权执行唯一一次 240 秒读取，批次 `20260726_115345` 的 PCAP 为 `18,823,101` 字节，`tcp_payload_bytes=18,283,414`、`tcp_payload_groups=534`。
+- Fribbels API 返回 HTTP `413 Request Entity Too Large`，因此没有同批 `fribbels_raw_response.json`、`reader_result.json`、snapshot 或新 `player_data.json`；`current` 仍是 2026-07-22 历史输出，不能充当新鲜节点证据。
+- 本轮未强化、选材、改装备、导入、OCR 或资源消耗；已停止重试。后续若继续，必须先另建“Fribbels 请求体上限与载荷分批”任务说明并完成离线验证，不能直接重传本批 TCP 载荷。当前状态：`real_validation_failed_fribbels_413_oversized_payload_20260726_115345`。
