@@ -1,0 +1,269 @@
+{
+    "schema_version":  1,
+    "template_set":  "fribbels_set_icons_v1",
+    "repository":  "fribbels/Fribbels-Epic-7-Optimizer",
+    "commit":  "b291cbbc415f11abede146859edc7b67d26e9c4b",
+    "source_license":  "not_declared_in_repository_root",
+    "templates":  [
+                      {
+                          "id":  "attack",
+                          "filename":  "setattack.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setattack.png",
+                          "source_blob_sha":  "bd3f8ef26a50dd4c9e56a40d354f0d4f42207d9a",
+                          "sha256":  "f1f4804c490338e31a69649ffc00d23aa40e47984e1460bb60dd275eb06d5154",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "block",
+                          "filename":  "setblock.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setblock.png",
+                          "source_blob_sha":  "8b629ceebde54bcac71d51d6de7fcb4cd8fc33fd",
+                          "sha256":  "48c6b84b15ff160d4b5364538a49c85305fe40037a60932cdadf5846ac7a274e",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  2386
+                      },
+                      {
+                          "id":  "counter",
+                          "filename":  "setcounter.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setcounter.png",
+                          "source_blob_sha":  "82ef9e63e179d3df8c84d685bf2b60f5dd070127",
+                          "sha256":  "a5db4519415d8c4d74fa0aa06f3ffb477e7fa82e2589658a0b97c6c98fe5d480",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "critical",
+                          "filename":  "setcritical.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setcritical.png",
+                          "source_blob_sha":  "8dbf9cfb85510144037259c566f3ef107fc7794e",
+                          "sha256":  "003e3e8b64a9fda8e1d8b0a5e4a49a8bdeadcc83dc6c4e80f465cb896a28bfec",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "defense",
+                          "filename":  "setdefense.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setdefense.png",
+                          "source_blob_sha":  "fa78edcbe0ac9fd908c55d2fcfd27bd1bebde03c",
+                          "sha256":  "dc7934f0ddc46fdbc5f64d02621c7e1040b07bbce95e8246cc93d001e2fb9451",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "destruction",
+                          "filename":  "setdestruction.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setdestruction.png",
+                          "source_blob_sha":  "1379867bbd5258187d41e29d2442eec45670de25",
+                          "sha256":  "10cd7589d158ac8c5a0eb0a9d1b9669773b7bf2835799c3614b3636782575626",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "fervor",
+                          "filename":  "setfervor.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setfervor.png",
+                          "source_blob_sha":  "aa00113f511f4da2e15079a596c241b658d234f8",
+                          "sha256":  "f918daddfec1923650f3be5bfd5079a2cf20bc723c3b69e2f903dac07e5b6dac",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  2214
+                      },
+                      {
+                          "id":  "heal",
+                          "filename":  "setheal.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setheal.png",
+                          "source_blob_sha":  "4745831f0cde9729eb6f0f0de0feac8b080db166",
+                          "sha256":  "a07ce966ae861b1f2948c4a056b54b1fa89675e1f4f33fc64398531e4eed05a6",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "health",
+                          "filename":  "sethealth.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/sethealth.png",
+                          "source_blob_sha":  "149da5ae72f3a91724aa012f8636dfde28e619f1",
+                          "sha256":  "bd66bf8398a88496c1da49f2fb19ba8aa1eaed1d5f934424cfa7667966b8d460",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "hit",
+                          "filename":  "sethit.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/sethit.png",
+                          "source_blob_sha":  "2f966a123af7400354dbd2708afbca6e2ee45d23",
+                          "sha256":  "62e4e0db143b537eb76f89784469ca1794e3af662080c501a28a629f15ca033d",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "immunity",
+                          "filename":  "setimmunity.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setimmunity.png",
+                          "source_blob_sha":  "d9758326fe7e7866ba5f5bd835589ecff7479993",
+                          "sha256":  "e6d24f7eb4304e370f8da180e3203495858d3b8c5ec805b6f9f156a2aadb0717",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "injury",
+                          "filename":  "setinjury.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setinjury.png",
+                          "source_blob_sha":  "ef11b6b55a995a5dbe51e12a5fcbaba7188aa85e",
+                          "sha256":  "865b4e0162d319a8e4021570a055a73387385a796171f47805e5eab8f92d77a3",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "lifesteal",
+                          "filename":  "setlifesteal.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setlifesteal.png",
+                          "source_blob_sha":  "151a44f66107cd3f4bd1372a8c2670f494f792ff",
+                          "sha256":  "2f92a11314d2abbb687fa675b5787a7eb7ebba40c81aacd761c83daaf51acb4b",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "penetration",
+                          "filename":  "setpenetration.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setpenetration.png",
+                          "source_blob_sha":  "a602ed1636b33d3d29f5968db0bc464b2d762c7e",
+                          "sha256":  "8ea7266314cc69d3b1dababdb55b2a72ab911a775b9337852d1e732946a09f05",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "protection",
+                          "filename":  "setprotection.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setprotection.png",
+                          "source_blob_sha":  "89bdc48d0a6da1cf72a8f3448f4d95e16299e086",
+                          "sha256":  "812ae832e2e5e8c9bb45b518ab83799468631f7063a89b554653bb605cef7d21",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  2345
+                      },
+                      {
+                          "id":  "pursuit",
+                          "filename":  "setpursuit.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setpursuit.png",
+                          "source_blob_sha":  "dcf146a9c67dd554dd042b915e3001238d76a218",
+                          "sha256":  "1a6972b56ca4d9332e4953a72ad18c649550a8076e960b9d99373adf74508835",
+                          "width":  43,
+                          "height":  44,
+                          "bytes":  2382
+                      },
+                      {
+                          "id":  "rage",
+                          "filename":  "setrage.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setrage.png",
+                          "source_blob_sha":  "c508b4aa8ddf766b86d572d1cb90ffaa250d744e",
+                          "sha256":  "263b01925ed73a7b2a644d33aff13af2db46d6c1721cf1ddb2ec443d9722717c",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "resist",
+                          "filename":  "setresist.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setresist.png",
+                          "source_blob_sha":  "3324ca81498989e76f0d20c7dea7b167e9f73dec",
+                          "sha256":  "af10443b018972f014ebb5fcbf3dea241d09643e5cbaf94650d9e38a7087baa6",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "revenge",
+                          "filename":  "setrevenge.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setrevenge.png",
+                          "source_blob_sha":  "723bca99239179d730c8db3746d9c87c4ae10c08",
+                          "sha256":  "5b254556682db3582af02a6091d1766fbe73318bab6d326a94d89caf5463ec08",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "reversal",
+                          "filename":  "setreversal.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setreversal.png",
+                          "source_blob_sha":  "fb9dc0f4e6f0bb0f6f6a99a5a70f7794bc959b09",
+                          "sha256":  "34b0c2c9d46d14613dd9dbb72538976f96ce2dc90e9235a6e2d8a621a1d4d51c",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  2363
+                      },
+                      {
+                          "id":  "riposte",
+                          "filename":  "setriposte.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setriposte.png",
+                          "source_blob_sha":  "b8cf300733bdf4b9de11d69dd885df02b7be3ac2",
+                          "sha256":  "56163cce905fcebacd4b8445ffb19eea40737e3c000677d1dee87c1ce586ecd3",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  2368
+                      },
+                      {
+                          "id":  "speed",
+                          "filename":  "setspeed.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setspeed.png",
+                          "source_blob_sha":  "cb0535c45d59e407d818018698dde047f0ef69bd",
+                          "sha256":  "b8f6d40e73a9005b923be5132f243780db0fecdaa29a83e6c9dc11a103286677",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "torrent",
+                          "filename":  "settorrent.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/settorrent.png",
+                          "source_blob_sha":  "8ab9c711101188d34e474d1d8738300c5487c9ae",
+                          "sha256":  "3414d48a37871faba5c22d7ac44e07c03950914ffe3bccb0be1724cdb82fa3f8",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  2375
+                      },
+                      {
+                          "id":  "unity",
+                          "filename":  "setunity.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setunity.png",
+                          "source_blob_sha":  "422d97ec403eda26a4e5af482c181e45b6dbb9ac",
+                          "sha256":  "b800c49afe73a19d243f805d25a4d62ba81e6944180616fd747587872d890090",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  5808
+                      },
+                      {
+                          "id":  "warfare",
+                          "filename":  "setwarfare.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setwarfare.png",
+                          "source_blob_sha":  "7e1185e11f27f2194449e251d2d949b8e3cf12f5",
+                          "sha256":  "71f68b966f9962646de3436f988ea4de6d623c0f8f75dc84bb6dcd4f2a820e00",
+                          "width":  43,
+                          "height":  44,
+                          "bytes":  2341
+                      },
+                      {
+                          "id":  "weakening",
+                          "filename":  "setweakening.png",
+                          "source_url":  "https://raw.githubusercontent.com/fribbels/Fribbels-Epic-7-Optimizer/b291cbbc415f11abede146859edc7b67d26e9c4b/app/assets/setweakening.png",
+                          "source_blob_sha":  "0d1a059a7915e37412ddb1c25e2af2a14cce2f23",
+                          "sha256":  "4f7ef6fc685dc2d677990c5c6f5c9a3a8dc2fd3f061287d9a74d8d83ebc48bd7",
+                          "width":  44,
+                          "height":  44,
+                          "bytes":  4425
+                      }
+                  ]
+}

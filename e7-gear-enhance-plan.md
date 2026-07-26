@@ -2828,3 +2828,17 @@ GUI 验收关注点：
 - 真实账号截图和裁剪在未取得持久化授权前只允许内存处理；离线回归继续使用合成/公开 fixture。
 - 只要套装置信度、强化等级、页面锚点或字段一致性未通过 `0.98` 契约，就必须停机等待人工确认或新的只读授权，不能猜测、重试或降低门槛。
 - 当前状态维持 `real_adb_single_frame_target_fields_matched_set_enhance_fail_closed_20260726`；下一步仍需另建离线模板/预处理任务，随后才讨论受控页面导航和点击授权。
+
+#### 纯视觉套装图标模板补充任务建立（2026-07-26）
+- 用户批准从 `fribbels/Fribbels-Epic-7-Optimizer` 获取套装图标模板；本轮唯一权威任务说明为[纯视觉套装图标模板补充任务说明](纯视觉%20套装图标模板补充任务说明.md)。
+- 目标是把来源仓库 `app/assets/set*.png` 固定为本地离线候选模板，覆盖当前目标 `sethit.png`；清单记录来源仓库、原始路径、固定版本、尺寸和 SHA-256，运行时不联网。
+- 模板仅是局部识别输入，不是字段确认或服务器确认；现有稳定帧、局部区域、`0.98` 置信度、`mode=visual_only`、`verification=unverified` 和 fail-closed 规则不变。
+- 本轮禁止修改正式策略、DP、评分、资源模型、GUI、OCR 门槛、ADB 帧源、点击执行器和自动化规则；禁止真实 ADB、截图、OCR、页面导航、点击、强化、选材、资源消耗、底层读取和外部上传。
+- 当前状态：`template_assets_task_authorized_pending_manifest_20260726`；执行模型记录为 `gpt-5.6-terra + high`。
+
+#### 纯视觉套装图标模板补充完成（2026-07-26）
+- 已按[纯视觉套装图标模板补充任务说明](纯视觉%20套装图标模板补充任务说明.md)固定获取 Fribbels 主分支提交 `b291cbbc415f11abede146859edc7b67d26e9c4b` 的 `set*.png` 共 26 项，清单逐项记录 blob SHA、完整文件 SHA-256、尺寸和字节数；`sethit.png` 已包含。
+- 新增本地离线资产目录 `assets/visual/set_icons/fribbels/`、`manifest.json` 和 `src/e7_enhance/visual_templates.py` 加载器。加载器校验固定来源、路径、PNG 首流结构、尺寸、字节数和哈希，任一模板异常即整套 fail-closed；运行时不联网。
+- 新增模板测试 `5/5`；视觉 ADB/平台/运行时/采样/适配回归 `43/43`；OCR 回归 `27/27`；来源 tree `26/26` blob 一致；`py_compile`、`git diff --check` 通过。
+- 这些图标仍只是离线候选模板，不是实际套装识别结果；尚未实现 `LocalTemplateRecognizer` 图像匹配，也未执行真实 ADB/OCR/点击。结果口径仍为 `mode=visual_only`、`verification=unverified`。
+- 上游根目录未声明 LICENSE，当前风险已记录；下一步需另建局部模板匹配器任务说明并完成离线验证，之后才可申请新的真实只读单帧校准。当前状态：`offline_set_icon_assets_verified_pending_local_matcher_20260726`。
