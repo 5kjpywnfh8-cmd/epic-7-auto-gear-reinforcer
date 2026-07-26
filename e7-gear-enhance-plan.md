@@ -2449,3 +2449,21 @@ GUI 验收关注点：
 - 导航回归 `10/10`、三份 PNG 模板预检通过；ADB 自动发现 `emulator-5554`，读取前大厅相似度 `0.9754`。按授权执行唯一一次 240 秒读取，批次 `20260726_115345` 的 PCAP 为 `18,823,101` 字节，`tcp_payload_bytes=18,283,414`、`tcp_payload_groups=534`。
 - Fribbels API 返回 HTTP `413 Request Entity Too Large`，因此没有同批 `fribbels_raw_response.json`、`reader_result.json`、snapshot 或新 `player_data.json`；`current` 仍是 2026-07-22 历史输出，不能充当新鲜节点证据。
 - 本轮未强化、选材、改装备、导入、OCR 或资源消耗；已停止重试。后续若继续，必须先另建“Fribbels 请求体上限与载荷分批”任务说明并完成离线验证，不能直接重传本批 TCP 载荷。当前状态：`real_validation_failed_fribbels_413_oversized_payload_20260726_115345`。
+
+#### Fribbels 载荷上限与分批解码任务建立（2026-07-26）
+
+- 代码审计确认当前 `fribbels_decode.py` 不含本地 Fribbels 解密算法，只能提取 TCP groups 并调用既有 API；本地无法替代服务端解码。
+- 用户已明确要求：若不能本地解码，则对同一批 TCP groups 进行大小受限分批。已建立独立任务说明 [MuMu Fribbels载荷上限与分批解码任务说明](MuMu%20Fribbels载荷上限与分批解码任务说明.md)，本轮先做离线预算审计，不直接重传。
+- 当前状态更新为 `task_established_awaiting_offline_payload_budget_audit`；执行模型记录为 `gpt-5.6-terra + high`。
+
+#### Fribbels 分批实现与离线预算验证完成（2026-07-26）
+
+- 已确认没有本地 Fribbels 解密算法，仍必须调用既有接口；新增确定性请求体预算、分批发送、批次去重合并和任一批失败 fail-closed。
+- 对失败批次 `20260726_115345` 离线审计：排除 `1` 条超大 TLS 流（`16,820,767` 字节，明确记录在诊断中），剩余 `525` 个 group，请求体 `2,901,695` 字节，预算 `7,000,000` 字节，预计 `1` 批。
+- 新增分批公开测试后，读取器全量测试 `20/20`、Python 3.9 语法检查通过；尚未进行新的 API 请求。当前状态：`implementation_verified_awaiting_batched_api_validation`。
+
+#### 分批 API 验证仍为 0 件装备（2026-07-26）
+
+- 使用同一批 `20260726_115345` 新鲜 PCAP 执行一次受限分批请求；接口接受请求，未再返回 `413`，但 Fribbels 解出 `0` 件装备。
+- 未生成新的 `player_data.json`、`reader_result.json` 或 snapshot；`current` 仍为 2026-07-22 历史输出，不得作为新鲜节点证据。
+- 分批只解决请求体上限，未证明这批流量包含可解码账号同步包；已停止重传、TLS 流调整、重新抓包、配对和导入。当前状态：`batched_api_validation_failed_zero_items_20260726_115345`。
