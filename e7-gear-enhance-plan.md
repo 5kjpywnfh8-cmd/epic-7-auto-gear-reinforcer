@@ -2740,3 +2740,16 @@ GUI 验收关注点：
 - 全新 Python `3.9.2` 进程导入 `paddle 2.6.2`、`paddleocr 2.10.0` 成功，并在仅允许缓存命中的离线探针下构造 `PaddleOCR`、`TextDetector` 和 `TextRecognizer` 成功，退出码 `0`。
 - 本轮未执行 ADB、截图、OCR 识别、页面导航、点击、强化、选材或资源消耗；“模型缺失即停止”仅作为前一探针历史对照，已被本授权覆盖。
 - 执行模型记录为 `gpt-5.6-terra + high`；当前状态：`model_downloaded_offline_engine_verified_pending_real_adb_ocr_20260726`。
+
+#### 真实 ADB 模型就绪局部 OCR 只读复验阶段建立（2026-07-26）
+- 用户批准进入下一步；本轮唯一权威任务说明为[纯视觉真实 ADB 模型就绪局部 OCR 只读复验任务说明](纯视觉真实ADB模型就绪局部OCR只读复验任务说明.md)。
+- 本轮仅允许自动发现唯一 `device`、执行一次 `exec-out screencap -p`、内存 PNG/装备区域校验和一次本地 PaddleOCR 局部识别；禁止第二次截图、稳定帧包装、VisualEvidence 稳定证据、ADB 输入、页面导航、点击、强化、选材、资源消耗、底层读取和外部上传。
+- 结果必须保持 `mode=visual_only`、`verification=unverified`；单帧局部 OCR 通过不等于服务器确认、装备底层确认或强化成功。
+- 执行模型记录为 `gpt-5.6-terra + high`；当前状态：`authorized_real_adb_single_frame_local_ocr_pending_20260726`。
+
+#### 真实 ADB 模型就绪局部 OCR 只读复验完成（2026-07-26）
+- 已按[纯视觉真实 ADB 模型就绪局部 OCR 只读复验任务说明](纯视觉真实ADB模型就绪局部OCR只读复验任务说明.md)执行一次真实只读单帧探针。
+- 自动发现唯一 `emulator-5554 device`；一次 PNG 内存校验通过，视口 `1280x720`、`858918` 字节、帧哈希 `5df31a9f02817c90c7e7e636489c338415411c5f65650906fc2c8e29e5b1fef2`；局部裁剪 `1152x533`、`701013` 字节通过，均未落盘。
+- 本地 PaddleOCR 对局部图像返回 92 行并运行现有解析，但 fail-closed：`unrecognized:set`、`missing:enhance`、`low_confidence:substats[2]`（`0.927478`）。部分结果显示英雄武器、85、攻击力 100、暴击率 5%、攻击力 8%，不能视为目标装备或服务器确认。
+- 未执行第二次截图、稳定帧采样、`VisualEvidence` 包装、模板点击、页面导航、ADB 输入、强化、选材、资源消耗、底层读取或外部上传；结果保持 `mode=visual_only`、`verification=unverified`。
+- 执行模型记录为 `gpt-5.6-terra + high`；当前状态：`real_adb_single_frame_local_ocr_completed_fail_closed_20260726`。下一步需目标装备详情页就绪后另行授权新单帧复验；稳定帧证据需另行授权。
