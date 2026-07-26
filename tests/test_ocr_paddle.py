@@ -6,11 +6,13 @@ import unittest
 
 from src.e7_enhance.ocr_paddle import (
     BACKPACK_DETAIL_PANEL,
+    BACKPACK_DETAIL_ENHANCE_EVIDENCE,
     BACKPACK_DETAIL_SET_NAME,
     BACKPACK_ENHANCE_PANEL,
     BACKPACK_SET_NAME,
     PaddleOcrError,
     _crop_bounds,
+    _enhance_bounds,
     _configure_cache,
     _set_bounds,
     parse_backpack_enhance_lines,
@@ -33,17 +35,52 @@ class OcrPaddleTest(unittest.TestCase):
 
     def test_right_detail_crop_and_anchor_regions_are_stable_and_inside_image(self):
         self.assertEqual(_crop_bounds(1280, 720), (768, 58, 1242, 619))
-        self.assertEqual(_set_bounds(1280, 720), (768, 547, 1242, 619))
+        self.assertEqual(_set_bounds(1280, 720), (819, 547, 1216, 619))
+        self.assertEqual(_enhance_bounds(1280, 720), (819, 115, 1216, 180))
         self.assertEqual(BACKPACK_DETAIL_PANEL["left"], 0.60)
         self.assertEqual(BACKPACK_DETAIL_SET_NAME["bottom"], 0.86)
+        self.assertEqual(BACKPACK_DETAIL_ENHANCE_EVIDENCE["top"], 0.16)
         self.assertIs(BACKPACK_ENHANCE_PANEL, BACKPACK_DETAIL_PANEL)
         self.assertIs(BACKPACK_SET_NAME, BACKPACK_DETAIL_SET_NAME)
         self.assertEqual(_crop_bounds(1920, 1080), (1152, 87, 1863, 929))
-        self.assertEqual(_set_bounds(1920, 1080), (1152, 821, 1863, 929))
+        self.assertEqual(_set_bounds(1920, 1080), (1228, 821, 1824, 929))
+        self.assertEqual(_enhance_bounds(1920, 1080), (1228, 173, 1824, 270))
         with self.assertRaises(PaddleOcrError):
             _crop_bounds(720, 1280)
         names = {region["name"] for region in equipment_regions()["regions"]}
-        self.assertTrue({"detail_header_anchor", "detail_score_anchor"}.issubset(names))
+        self.assertTrue({"detail_header_anchor", "set_anchor", "enhance_anchor", "detail_score_anchor"}.issubset(names))
+
+    def test_enhance_evidence_requires_explicit_non_conflicting_text(self):
+        direct = self._base_lines()
+        direct[-1] = {"text": "+3", "confidence": 0.999}
+        self.assertEqual(parse_backpack_enhance_lines(direct)["fields"]["enhance"]["normalized"], 3)
+        self.assertEqual(parse_backpack_enhance_lines(self._base_lines() + [{"text": "+3", "confidence": 0.999}])["fields"]["enhance"]["normalized"], 3)
+
+        no_evidence = self._base_lines()[:-1]
+        parsed = parse_backpack_enhance_lines(no_evidence)
+        self.assertFalse(parsed["accepted"])
+        self.assertIn("missing:enhance", parsed["rejection_reasons"])
+
+        nonzero_experience = self._base_lines()
+        nonzero_experience[-1] = {"text": "exp1/525", "confidence": 0.999}
+        parsed = parse_backpack_enhance_lines(nonzero_experience)
+        self.assertFalse(parsed["accepted"])
+        self.assertIn("unrecognized:enhance_from_experience_bar", parsed["rejection_reasons"])
+
+        conflicting = self._base_lines()[:-1] + [
+            {"text": "+0", "confidence": 0.999}, {"text": "+3", "confidence": 0.999},
+        ]
+        parsed = parse_backpack_enhance_lines(conflicting)
+        self.assertFalse(parsed["accepted"])
+        self.assertIn("conflicting:enhance_evidence", parsed["rejection_reasons"])
+
+    def test_observed_low_confidence_set_remains_rejected(self):
+        parsed = parse_backpack_enhance_lines([
+            {**line, "confidence": 0.971498} if line["text"] == "命中套装(0/2)" else line
+            for line in self._base_lines("命中套装(0/2)")
+        ])
+        self.assertFalse(parsed["accepted"])
+        self.assertIn("low_confidence:set", parsed["rejection_reasons"])
 
     def test_cache_path_rejects_non_ascii_windows_path(self):
         with self.assertRaises(PaddleOcrError):

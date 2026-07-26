@@ -21,10 +21,16 @@ BACKPACK_DETAIL_PANEL = {
     "bottom": 0.86,
 }
 BACKPACK_DETAIL_SET_NAME = {
-    "left": 0.60,
+    "left": 0.63984375,
     "top": 0.76,
-    "right": 0.9703125,
+    "right": 0.95,
     "bottom": 0.86,
+}
+BACKPACK_DETAIL_ENHANCE_EVIDENCE = {
+    "left": 0.63984375,
+    "top": 0.16,
+    "right": 0.95,
+    "bottom": 0.25,
 }
 
 # Preserve the previous public constants and helper call sites while making
@@ -49,6 +55,8 @@ _STAT_LABELS = {
 }
 _RANKS = {"传说": "Epic", "英雄": "Heroic", "稀有": "Rare", "高级": "Good", "普通": "Normal"}
 _SLOTS = {"武器": "Weapon", "头盔": "Helmet", "衣服": "Armor", "项链": "Necklace", "戒指": "Ring", "鞋子": "Boots"}
+_ENHANCE_TOKEN = re.compile(r"\+([0-9]+)")
+_EXPERIENCE_TOKEN = re.compile(r"exp([0-9]+)/[0-9]+", re.IGNORECASE)
 def _clean_text(value: object) -> str:
     return re.sub(r"\s+", "", str(value or "")).replace("（", "(").replace("）", ")")
 
@@ -101,6 +109,37 @@ def _apply_local_retries(lines: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return selected
 
 
+def _enhance_evidence(lines: list[dict[str, Any]], normalized: list[str]) -> tuple[dict[str, Any] | None, str | None]:
+    """Accept only an explicit level token or an explicit zero-experience bar."""
+    direct = [
+        (index, int(match.group(1)))
+        for index, text in enumerate(normalized)
+        if (match := _ENHANCE_TOKEN.fullmatch(text))
+    ]
+    experience = [
+        (index, int(match.group(1)))
+        for index, text in enumerate(normalized)
+        if (match := _EXPERIENCE_TOKEN.fullmatch(text))
+    ]
+    direct_values = {value for _, value in direct}
+    experience_values = {value for _, value in experience}
+    if len(direct_values) > 1 or (experience_values and len(experience_values) > 1):
+        return None, "conflicting:enhance_evidence"
+    if direct:
+        index, value = direct[0]
+        return _field(normalized[index], float(lines[index].get("confidence", 0) or 0)) | {"normalized": value}, None
+    if experience_values == {0}:
+        index = experience[0][0]
+        return (
+            _field(normalized[index], float(lines[index].get("confidence", 0) or 0))
+            | {"normalized": 0, "source": "experience_bar"},
+            None,
+        )
+    if experience:
+        return None, "unrecognized:enhance_from_experience_bar"
+    return None, "missing:enhance"
+
+
 def parse_backpack_enhance_lines(lines: list[dict[str, Any]]) -> dict[str, Any]:
     """Parse only stable labels from OCR lines; missing fields reject closed."""
     lines = _apply_local_retries(lines)
@@ -140,18 +179,11 @@ def parse_backpack_enhance_lines(lines: list[dict[str, Any]]) -> dict[str, Any]:
         else:
             fields["set"] = _field(normalized[set_index], confidences[set_index]) | {"normalized": set_value}
 
-    enhance_index = next((index for index, text in enumerate(normalized) if re.fullmatch(r"\+[0-9]+", text)), None)
-    exp_index = next((index for index, text in enumerate(normalized) if re.fullmatch(r"exp[0-9]+/[0-9]+", text, re.IGNORECASE)), None)
-    if enhance_index is not None:
-        fields["enhance"] = _field(normalized[enhance_index], confidences[enhance_index]) | {"normalized": int(normalized[enhance_index][1:])}
-    elif exp_index is not None:
-        current_exp = int(re.match(r"exp([0-9]+)/", normalized[exp_index], re.IGNORECASE).group(1))
-        if current_exp == 0:
-            fields["enhance"] = _field(normalized[exp_index], confidences[exp_index]) | {"normalized": 0, "source": "experience_bar"}
-        else:
-            errors.append("unrecognized:enhance_from_experience_bar")
+    enhance, enhance_error = _enhance_evidence(lines, normalized)
+    if enhance is None:
+        errors.append(str(enhance_error))
     else:
-        errors.append("missing:enhance")
+        fields["enhance"] = enhance
 
     score_index = next((index for index, text in enumerate(normalized) if text == "装备分数"), None)
     stat_start = next((index for index, text in enumerate(normalized) if text in _STAT_LABELS), None)
@@ -258,6 +290,17 @@ def _set_bounds(width: int, height: int) -> tuple[int, int, int, int]:
     return left, top, right, bottom
 
 
+def _enhance_bounds(width: int, height: int) -> tuple[int, int, int, int]:
+    _validate_detail_viewport(width, height)
+    left = round(width * BACKPACK_DETAIL_ENHANCE_EVIDENCE["left"])
+    top = round(height * BACKPACK_DETAIL_ENHANCE_EVIDENCE["top"])
+    right = round(width * BACKPACK_DETAIL_ENHANCE_EVIDENCE["right"])
+    bottom = round(height * BACKPACK_DETAIL_ENHANCE_EVIDENCE["bottom"])
+    if not (0 <= left < right <= width and 0 <= top < bottom <= height):
+        raise PaddleOcrError("backpack enhance-evidence crop is outside image bounds")
+    return left, top, right, bottom
+
+
 def _local_stat_retry(
     engine: Any,
     image: Any,
@@ -311,6 +354,7 @@ def recognize_backpack_enhance(image_path: Path, *, cache_root: Path) -> dict[st
         source_dimensions = source.size
         bounds = _crop_bounds(*source_dimensions)
         set_bounds = _set_bounds(*source_dimensions)
+        enhance_bounds = _enhance_bounds(*source_dimensions)
         engine = PaddleOCR(lang="ch", use_angle_cls=False, show_log=False)
         result_lines = []
         crop = source.crop(bounds).resize(
@@ -326,14 +370,12 @@ def recognize_backpack_enhance(image_path: Path, *, cache_root: Path) -> dict[st
         )
         set_crop = ImageEnhance.Contrast(set_crop).enhance(1.15)
         result_lines.append(("set_name", set_crop.size, engine.ocr(np.asarray(set_crop), cls=False)[0] or []))
-        full_result = engine.ocr(np.asarray(source), cls=False)[0] or []
-        experience_rows = [
-            row for row in full_result
-            if isinstance(row, (list, tuple)) and len(row) == 2
-            and isinstance(row[1], (list, tuple)) and len(row[1]) == 2
-            and re.fullmatch(r"exp\s*[0-9]+\s*/\s*[0-9]+", str(row[1][0]), re.IGNORECASE)
-        ]
-        result_lines.append(("full_frame_experience", source_dimensions, experience_rows))
+        enhance_crop = source.crop(enhance_bounds).resize(
+            (max(1, (enhance_bounds[2] - enhance_bounds[0]) * 6), max(1, (enhance_bounds[3] - enhance_bounds[1]) * 6)),
+            Image.Resampling.LANCZOS,
+        )
+        enhance_crop = ImageEnhance.Contrast(enhance_crop).enhance(1.15)
+        result_lines.append(("enhance_evidence", enhance_crop.size, engine.ocr(np.asarray(enhance_crop), cls=False)[0] or []))
 
     lines = []
     for region, crop_size, result in result_lines:
@@ -382,7 +424,8 @@ def recognize_backpack_enhance(image_path: Path, *, cache_root: Path) -> dict[st
         "source_dimensions": {"width": source_dimensions[0], "height": source_dimensions[1]},
         "crop_bounds": {"left": bounds[0], "top": bounds[1], "right": bounds[2], "bottom": bounds[3]},
         "set_bounds": {"left": set_bounds[0], "top": set_bounds[1], "right": set_bounds[2], "bottom": set_bounds[3]},
-        "experience_context": "full_frame_filtered",
+        "enhance_bounds": {"left": enhance_bounds[0], "top": enhance_bounds[1], "right": enhance_bounds[2], "bottom": enhance_bounds[3]},
+        "experience_context": "enhance_local_crop",
         "lines": lines,
         "parsed": parsed,
         "click_performed": False,
