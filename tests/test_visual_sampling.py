@@ -64,6 +64,8 @@ class PureVisualSamplingExecutorTest(unittest.TestCase):
         self.assertEqual(decision.next_action, "dry_run_propose_enhance_to_plus3")
         self.assertTrue(decision.dry_run)
         self.assertFalse(decision.click_sent)
+        self.assertEqual(decision.mode, "visual_only")
+        self.assertEqual(decision.verification, "unverified")
         self.assertEqual(clicker.calls, 0)
         self.assertEqual(decision.resource_ledger["planned"], {
             "powder": 2,

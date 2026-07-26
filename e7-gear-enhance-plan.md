@@ -2550,3 +2550,38 @@ GUI 验收关注点：
 - 目标固定为用户提供的红装 85 武器、爆伤套、攻击 100、生命 4%/爆伤 4%/暴击 5%/速度 2，`+0 -> +3`，资源上限粉末 2、下级强化石 1、上级强化石 0、金币 17600。真实点击执行需另建任务并重新取得授权。
 - 已新增 `src/e7_enhance/visual_sampling.py` 与 `tests/test_visual_sampling.py`；目标匹配、页面/候选/节点/资源 fail-closed 和点击器零调用覆盖均通过，定向测试 `6/6`、Python 3.9 语法检查和 `git diff --check` 通过。
 - 原型仅接受结构化视觉采样证据并输出 dry-run `+0 -> +3` 建议，不调用点击器；真实截图/OCR/ADB 接线仍未完成，当前状态为 `visual_sampling_prototype_dry_run_verified_runtime_integration_pending`。
+
+#### 纯视觉采样方案设计拆分（2026-07-26）
+
+- 用户要求当前会话继续保留 MuMu/Fribbels 底层读取方案，将纯视觉方案设计推送到新会话。
+- 已创建独立任务说明：[纯视觉采样方案设计任务说明.md](纯视觉采样方案设计任务说明.md)。新会话仅做离线设计、接口审阅和验证矩阵，不连接 ADB/MuMu、不上传数据、不点击、不强化。
+- 当前会话主线保持为底层读取与 Fribbels `413 Request Entity Too Large` 载荷上限问题；纯视觉设计结论不得覆盖新鲜快照契约或正式自动强化边界。
+- 新会话已完成离线设计报告：[纯视觉采样方案设计_20260726.md](reports/纯视觉采样方案设计_20260726.md)。设计确认纯视觉只能做页面/目标预检和稳定等待，不能替代每个实际强化节点的新鲜同批双文件、raw 强化等级、实例连续性或资源对账。
+- 已审阅现有 `visual_sampling.py`、`fresh_snapshot_contract.py`、`ocr_backpack_pair.py`、`mumu_player_data.py`、`single_item_confirmation.py` 及公开测试；保留现有 dry-run 与新鲜契约，不修改代码。
+- 离线定向回归基线为视觉 `6/6`、新鲜契约 `9/9`、MuMu 数据适配 `7/7`、背包配对 `6/6`；未读取私人归档、未接 ADB/MuMu、未采集真实截图、未上传数据。
+- 后续实现必须另建任务说明，依次拆为视觉证据 schema/稳定帧、混合节点编排器、外部读取器适配和单节点受控操作；当前不自动下发或开始这些任务。
+- 状态：`design_complete_offline_only_runtime_integration_pending_20260726`；本会话仍保留底层读取主线。
+
+#### 用户要求改为纯视觉闭环自动强化候选模式（2026-07-26）
+
+- 用户明确拒绝“每节点底层读取”的运行时方案，要求纯视觉进行自动强化，以降低读取延迟。
+- 前一节关于“视觉只能预检、每次实际强化后必须新鲜读取”的结论已被本节覆盖，仅保留为底层可验证模式的历史对照；本节不修改 MuMu/Fribbels 契约，也不把纯视觉结果伪装为服务端确认。
+- 已将 [纯视觉采样方案设计任务说明.md](纯视觉采样方案设计任务说明.md) 和 [reports/纯视觉采样方案设计_20260726.md](reports/纯视觉采样方案设计_20260726.md) 修订为纯视觉闭环候选口径：`bootstrap -> pre_action -> single_action -> post_action -> next_node`，每节点要求连续稳定帧、目标指纹、节点变化和资源数字一致。
+- 纯视觉输出必须携带 `mode=visual_only`、`verification=unverified`；视觉上的强化等级、材料/金币变化不能证明服务端状态、实例 ID 连续性或真实扣款。任何不稳定、节点跳跃、资源矛盾、页面漂移、超时或点击后未知结果均停止且禁止自动重试。
+- 当前仍只完成离线设计和原型审阅，未实现视觉采样器、点击器接线或真实多节点运行；实现前必须另建独立任务说明并取得明确实现授权。当前状态：`pure_visual_closed_loop_design_revised_offline_implementation_pending_20260726`。
+
+#### 纯视觉运行时接线实现授权（2026-07-26）
+
+- 用户已明确批准开始纯视觉运行时接线；已建立唯一实现任务说明：[纯视觉运行时接线实现任务说明.md](纯视觉运行时接线实现任务说明.md)。
+- 本轮实现范围限定为离线 `VisualEvidence`、稳定帧/局部锚点校验、纯视觉单节点状态机和可注入 fake sampler/fake clicker；不连接 MuMu/ADB，不读取或上传游戏数据，不执行真实页面点击、强化、选材或资源消耗。
+- 实现输出必须携带 `mode=visual_only`、`verification=unverified`，视觉结果不得转换为新鲜快照或服务端确认；点击后未知结果、节点跳跃、资源矛盾和不稳定证据必须停止且禁止自动重试。
+- 执行模型记录为 `gpt-5.6-terra + high`。当前状态：`implementation_authorized_pending_terra_high`；代码修改和测试尚未开始。
+
+#### 纯视觉运行时接线离线实现完成（2026-07-26）
+
+- 已完成 [纯视觉运行时接线实现任务说明.md](纯视觉运行时接线实现任务说明.md) 授权范围内的代码接线：新增 `src/e7_enhance/visual_runtime.py`，提供 `VisualEvidence`、稳定帧/双锚点/字段置信度/唯一目标/资源预览闸门，以及 `pre_action -> single_action -> post_action -> next_node` 单节点编排。
+- `VisualOnlyEnhanceExecutor` 只调用注入式 sampler/clicker；每节点至多一次点击，点击异常、post 采样失败、旧帧复用、时间戳不递增、节点跳跃和资源矛盾均 fail-closed 且禁止自动重试。结果显式携带 `mode=visual_only`、`verification=unverified`。
+- 现有 `PureVisualSamplingExecutor` 保持兼容，决策结果新增 `mode` 和 `verification` 字段；未修改 MuMu/ADB/Fribbels、正式策略、DP、评分、资源模型、GUI/OCR/Holdout 或正式自动化规则。
+- 主审补充并确认边界校验：候选数拒绝布尔值、锚点数值限制在 `[0,1]`、资源键与预期账本一致、post-action 时间戳必须晚于 pre-action。
+- 验证：运行时公开测试 `7/7`、旧 dry-run 公开测试 `6/6`、Python 3.9 语法检查通过、`git diff --check` 通过；未连接设备、未读取或上传游戏数据、未采集真实截图、未发送游戏点击、未强化或消耗资源。
+- 当前状态：`implementation_verified_offline_pending_commit_push_20260726`。下一步仅提交并推送本任务相关代码、测试和任务文档；真实截图/OCR/ADB/游戏点击仍需另建任务并重新授权。

@@ -44,6 +44,8 @@ class VisualSamplingDecision:
     stop_reasons: tuple[str, ...]
     resource_ledger: dict[str, dict[str, int]]
     evidence_summary: dict[str, Any]
+    mode: str = "visual_only"
+    verification: str = "unverified"
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -54,6 +56,8 @@ class VisualSamplingDecision:
             "stop_reasons": list(self.stop_reasons),
             "resource_ledger": self.resource_ledger,
             "evidence_summary": self.evidence_summary,
+            "mode": self.mode,
+            "verification": self.verification,
         }
 
 
