@@ -2585,3 +2585,12 @@ GUI 验收关注点：
 - 主审补充并确认边界校验：候选数拒绝布尔值、锚点数值限制在 `[0,1]`、资源键与预期账本一致、post-action 时间戳必须晚于 pre-action。
 - 验证：运行时公开测试 `7/7`、旧 dry-run 公开测试 `6/6`、Python 3.9 语法检查通过、`git diff --check` 通过；未连接设备、未读取或上传游戏数据、未采集真实截图、未发送游戏点击、未强化或消耗资源。
 - 提交 `eecbca7 feat: wire offline pure visual runtime` 已成功推送至 `origin/codex/policy-v1-manifest-20260725`；提交后的 Git geometric repack 仍因既有异常引用 `refs/heads/main - 副本` 报警，但未修改该引用。当前状态：`implementation_verified_offline_published_20260726`。真实截图/OCR/ADB/游戏点击仍需另建任务并重新授权。
+
+#### 纯视觉点击执行器开发任务建立（2026-07-26）
+
+- 用户已明确批准开发纯视觉点击执行器；独立任务说明为[纯视觉点击执行器开发任务说明.md](纯视觉点击执行器开发任务说明.md)。
+- 本阶段只实现可注入窗口后端的归一化坐标单次点击器和离线回归，不连接 MuMu/ADB，不运行真实截图/OCR，不执行真实页面点击、强化、选材或资源消耗。
+- 点击器必须要求显式单次授权，校验坐标和视口，调用前记录尝试，后端异常按未知结果处理并禁止内部重试；上层仍由 `VisualOnlyEnhanceExecutor` 负责视觉证据闸门和 `unknown_result` 停止。
+- 已完成 `src/e7_enhance/visual_click.py` 与 `tests/test_visual_click.py`：归一化坐标换算、视口/授权校验、一次性尝试锁定、后端异常未知结果和极大数坐标 fail-closed 均有覆盖。
+- 定向验证 `tests.test_visual_click`、`tests.test_visual_runtime`、`tests.test_visual_sampling` 共 `17/17` 通过；Python 语法检查和 `git diff --check` 通过。仅使用 fake backend，未连接 MuMu/ADB，未采集截图/OCR，未执行真实点击、强化、选材或资源消耗。
+- 执行模型记录为 `gpt-5.6-terra + high`。实现提交已创建，当前状态：`implementation_verified_offline_committed_pending_push_20260726`；待推送后再做工作区和远端跟踪复核。
