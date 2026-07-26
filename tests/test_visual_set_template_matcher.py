@@ -21,6 +21,21 @@ def png(width: int, height: int, pixels: bytes) -> bytes:
     return b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", width.to_bytes(4, "big") + height.to_bytes(4, "big") + b"\x08\x02\x00\x00\x00") + chunk(b"IDAT", zlib.compress(rows)) + chunk(b"IEND", b"")
 
 
+def indexed_png(width: int, height: int, indices: bytes) -> bytes:
+    def chunk(kind: bytes, data: bytes) -> bytes:
+        return len(data).to_bytes(4, "big") + kind + data + (zlib.crc32(kind + data) & 0xFFFFFFFF).to_bytes(4, "big")
+
+    rows = b"".join(b"\x00" + indices[offset:offset + width] for offset in range(0, len(indices), width))
+    palette = bytes((32, 64, 96, 255, 240, 220))
+    return (
+        b"\x89PNG\r\n\x1a\n"
+        + chunk(b"IHDR", width.to_bytes(4, "big") + height.to_bytes(4, "big") + b"\x08\x03\x00\x00\x00")
+        + chunk(b"PLTE", palette)
+        + chunk(b"IDAT", zlib.compress(rows))
+        + chunk(b"IEND", b"")
+    )
+
+
 def patterned_png(width: int = 8, height: int = 8) -> bytes:
     return png(width, height, patterned_pixels(width, height))
 
@@ -88,6 +103,57 @@ class LocalSetIconTemplateRecognizerTest(unittest.TestCase):
         self.assertEqual(anchors[0]["score"], 1.0)
         self.assertEqual(anchors[0]["threshold"], 0.98)
         self.assertGreater(anchors[0]["bright_ratio"], 0)
+        self.assertEqual(anchors[0]["candidate_results"], [{
+            "region": "set_icon",
+            "pixel_bounds": {"left": 0, "top": 0, "right": 8, "bottom": 8},
+            "score": 1.0,
+            "unique": True,
+            "rejection_reason": None,
+            "candidate_id": "hit",
+            "bright_ratio": 1.0,
+            "anchor_bounds": {"left": 0, "top": 0, "right": 8, "bottom": 8},
+            "template_scale": 1.0,
+        }])
+
+    def test_explicit_candidates_report_each_result_and_only_one_can_enter_evidence(self):
+        with tempfile.TemporaryDirectory(prefix="e7-set-matcher-") as directory:
+            payload = patterned_png()
+            template = self._template(Path(directory), "hit", payload)
+            recognizer = LocalSetIconTemplateRecognizer(template_loader=lambda: {"hit": template})
+            low_score_pixels = bytearray(patterned_pixels(8, 8))
+            low_score_pixels[:12] = b"\x00" * 12
+
+            anchors = recognizer.recognize(frame(), {
+                "set_icon": sample(payload, name="set_icon"),
+                "set_icon_1": sample(png(8, 8, bytes(low_score_pixels)), name="set_icon_1"),
+            })
+
+        self.assertEqual(len(anchors), 1)
+        results = anchors[0]["candidate_results"]
+        self.assertEqual([item["region"] for item in results], ["set_icon", "set_icon_1"])
+        self.assertEqual(results[0]["score"], 1.0)
+        self.assertTrue(results[0]["unique"])
+        self.assertIsNone(results[0]["rejection_reason"])
+        self.assertLess(results[1]["score"], 0.98)
+        self.assertTrue(results[1]["unique"])
+        self.assertEqual(results[1]["rejection_reason"], "low_confidence")
+
+    def test_multiple_high_confidence_crops_fail_closed_with_audit_results(self):
+        with tempfile.TemporaryDirectory(prefix="e7-set-matcher-") as directory:
+            payload = patterned_png()
+            template = self._template(Path(directory), "hit", payload)
+            recognizer = LocalSetIconTemplateRecognizer(template_loader=lambda: {"hit": template})
+
+            anchors = recognizer.recognize(frame(), {
+                "set_icon": sample(payload, name="set_icon"),
+                "set_icon_1": sample(payload, name="set_icon_1"),
+            })
+
+        self.assertEqual(anchors, [])
+        self.assertEqual(len(recognizer.last_candidate_results), 2)
+        self.assertTrue(all(item["score"] == 1.0 for item in recognizer.last_candidate_results))
+        self.assertTrue(all(item["unique"] for item in recognizer.last_candidate_results))
+        self.assertTrue(all(item["rejection_reason"] == "multiple_high_confidence_candidates" for item in recognizer.last_candidate_results))
 
     def test_uses_set_region_when_set_anchor_is_not_available(self):
         with tempfile.TemporaryDirectory(prefix="e7-set-matcher-") as directory:
@@ -139,6 +205,65 @@ class LocalSetIconTemplateRecognizerTest(unittest.TestCase):
             for recognizer, regions in cases:
                 with self.subTest(regions=tuple(regions)):
                     self.assertEqual(recognizer.recognize(frame(), regions), [])
+
+    def test_invalid_png_candidate_rejects_the_entire_explicit_candidate_set(self):
+        with tempfile.TemporaryDirectory(prefix="e7-set-matcher-") as directory:
+            payload = patterned_png()
+            template = self._template(Path(directory), "hit", payload)
+            recognizer = LocalSetIconTemplateRecognizer(template_loader=lambda: {"hit": template})
+
+            anchors = recognizer.recognize(frame(), {
+                "set_icon": sample(payload, name="set_icon"),
+                "set_icon_1": sample(b"not-a-png", name="set_icon_1"),
+            })
+
+        self.assertEqual(anchors, [])
+        self.assertEqual(recognizer.last_candidate_results[0]["rejection_reason"], "candidate_input_invalid")
+        self.assertEqual(recognizer.last_candidate_results[1]["rejection_reason"], "invalid_png")
+
+    def test_template_png_suffix_after_iend_is_decoded_as_its_first_complete_stream(self):
+        with tempfile.TemporaryDirectory(prefix="e7-set-matcher-") as directory:
+            payload = patterned_png()
+            template = self._template(Path(directory), "hit", payload + b"upstream-source-asset-suffix")
+            recognizer = LocalSetIconTemplateRecognizer(template_loader=lambda: {"hit": template})
+
+            anchors = recognizer.recognize(frame(), {"set_icon": sample(payload, name="set_icon")})
+
+        self.assertEqual(len(anchors), 1)
+        self.assertEqual(anchors[0]["candidate_id"], "hit")
+
+    def test_indexed_palette_template_is_decoded_without_relaxing_match_threshold(self):
+        with tempfile.TemporaryDirectory(prefix="e7-set-matcher-") as directory:
+            indices = bytes((index % 2) for index in range(8 * 8))
+            template_payload = indexed_png(8, 8, indices)
+            sample_payload = png(8, 8, b"".join(
+                bytes((32, 64, 96) if index == 0 else (255, 240, 220))
+                for index in indices
+            ))
+            template = self._template(Path(directory), "speed", template_payload)
+            recognizer = LocalSetIconTemplateRecognizer(template_loader=lambda: {"speed": template})
+
+            anchors = recognizer.recognize(frame(), {
+                "set_icon_tight_red": sample(sample_payload, name="set_icon_tight_red"),
+            })
+
+        self.assertEqual(len(anchors), 1)
+        self.assertEqual(anchors[0]["candidate_id"], "speed")
+        self.assertGreaterEqual(anchors[0]["score"], 0.98)
+
+    def test_invalid_template_png_and_unlisted_candidate_name_fail_closed(self):
+        with tempfile.TemporaryDirectory(prefix="e7-set-matcher-") as directory:
+            payload = patterned_png()
+            invalid_template = self._template(Path(directory), "hit", b"not-a-png")
+            recognizer = LocalSetIconTemplateRecognizer(template_loader=lambda: {"hit": invalid_template})
+
+            self.assertEqual(recognizer.recognize(frame(), {"set_icon": sample(payload, name="set_icon")}), [])
+            self.assertEqual(recognizer.last_candidate_results[0]["rejection_reason"], "template_png_invalid")
+
+            valid_template = self._template(Path(directory), "speed", payload)
+            recognizer = LocalSetIconTemplateRecognizer(template_loader=lambda: {"speed": valid_template})
+            self.assertEqual(recognizer.recognize(frame(), {"set_icon_4": sample(payload, name="set_icon_4")}), [])
+            self.assertEqual(recognizer.last_candidate_results, ())
 
     def test_tied_best_template_candidates_fail_closed(self):
         with tempfile.TemporaryDirectory(prefix="e7-set-matcher-") as directory:

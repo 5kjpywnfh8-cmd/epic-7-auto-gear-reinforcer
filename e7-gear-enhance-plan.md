@@ -21,6 +21,18 @@
 
 ## Summary
 
+### 纯视觉套装多裁切方案离线对比（2026-07-27）
+
+任务说明：[纯视觉套装多裁切方案离线对比任务说明.md](纯视觉套装多裁切方案离线对比任务说明.md)。
+
+用户已授权仅对套装图标/文字进行离线多裁切方案比较。当前状态：`offline_set_crop_comparison_text_wide_pass_icon_low_fail_closed_20260727`。候选裁切必须显式、有限、可审计；在同一帧并行比较，不得动态猜测、自动重试或降低 `0.98` 门槛。未进入真实 ADB、点击接线或自动强化。执行模型：`gpt-5.6-terra + high`。
+
+- 已新增红装图标宽/紧裁切和套装文字宽/紧裁切，基准图标为 `(875,540)-(925,596)`（`1280x720`）。默认 parser manifest 与 PaddleOCR 入口均未接入；套装匹配器仅增加受控首个 `IEND` 和 8-bit 调色板 PNG 解码。
+- 纯内存比较器要求图标、文字各自唯一达到 `0.98` 且值一致；越界、重复最佳候选、低置信度和字段矛盾均 fail-closed。输出固定 `mode=visual_only`、`verification=unverified`、`click_performed=false`。
+- 验证：公开合成比较测试 4/4、相邻 OCR 回归 15/15、Python 3.9 AST 语法检查和 `git diff --check` 均通过。报告：[reports/visual_set_crop_comparison_20260727.md](reports/visual_set_crop_comparison_20260727.md)。
+- 追加离线截图实测：未标注 `before_page.png` 的 `set_text_wide_red` 为 `速度套装（0/4） @ 0.981642`，通过门槛；紧裁切 `0.961027` 拒绝。标注图 `before_page(1).png` 宽候选 `0.977467`，并含人工标注干扰行，拒绝。图标候选最高约 `0.853229` / `0.792352`，均未通过；完整套装证据仍 fail-closed。报告：[reports/visual_set_crop_comparison_20260727.md](reports/visual_set_crop_comparison_20260727.md)。
+- 本节状态覆盖此前“模板仅 weakening 可解码”的历史诊断：当前 matcher 已受控支持首个 `IEND` 后附加字节和 8-bit 调色板模板，但真实图标分数仍低于 `0.98`，不得据此放行。
+
 ## 真实样本身份核验（2026-07-11）
 
 状态：已修复 Fribbels 装备实例身份归并；可开始正式人工验收。
@@ -2959,3 +2971,25 @@ GUI 验收关注点：
 - 本次确认为装备详细页，但识别到的是另一件速度套武器：`传说武器` `0.995034`、攻击力 `100` `0.998722`、副属性生命 `201`/效果命中 `4%`/效果抗性 `6%`/速度 `4`、装备分数 `27`；套装文字 `速度套装(0/4)` 仅 `0.963903`，模板无唯一候选，强化证据缺失，等级未形成唯一 `85`。
 - 解析拒绝：`low_confidence:set`、`missing:enhance`、`unrecognized:level`；结果保持 `mode=visual_only`、`verification=unverified`、`click_performed=false`，没有任何 ADB 输入或强化相关操作。
 - 当前状态：`real_adb_target_local_calibration_retry_completed_fail_closed_target_mismatch_20260727`。下一步需用户切换到目标命中套红装武器并另建任务说明、重新授权单次只读校准；在此前不得进入点击接线。
+
+#### 纯视觉等级字段未识别原因诊断（2026-07-27）
+
+- 用户提供的 `before_page.png` 已确认等级文字位于右侧详情装备图标左上角，参考位置约为 `(883,183)-(907,207)`（`1280x720`）。
+- 现行 `level` ROI `(0.60,0.16)-(0.97,0.25)` 映射为 `(768,115)-(1242,180)`，没有覆盖该文字；真实 Paddle 入口还使用广域 `BACKPACK_DETAIL_PANEL`，未建立独立图标等级裁剪。
+- 解析器只接受清洗后精确等于 `85` 的 token。最新重试的 `unrecognized:level` 表示没有形成可接受的精确 token；若 token 存在但低于 `0.98`，才会记录 `low_confidence:level`。根因是 ROI/字号/装饰干扰与严格 token 组合，不是应降低门槛。
+- 当前结论不改变 `0.98`、`mode=visual_only`、`verification=unverified`、fail-closed 或禁止点击规则。修复前需另建离线“图标锚点派生等级局部与唯一 85 解析”任务，离线通过后再申请新的只读校准。
+
+#### 纯视觉新增等级与套装区域离线置信度校准任务建立（2026-07-27）
+
+- 用户提供新的布局参考图 `before_page(1).png`，新增装备等级标注并调整套装图标/文字位置；本轮另用上一轮 `before_page.png` 的速度套做同口径复测。
+- 本轮唯一权威任务说明为[纯视觉新增等级与套装区域离线置信度校准任务说明](纯视觉新增等级与套装区域离线置信度校准任务说明.md)。范围仅限两张用户截图的离线内存裁切、PaddleOCR/模板置信度验证和公开测试；不执行 ADB、真实截图、点击或强化。
+- 保持 `0.98`、唯一性、`mode=visual_only`、`verification=unverified`、`click_performed=false` 和 fail-closed；不得用截图上的人工标注文字替代真实字段证据，也不得以缺失推断强化状态。
+- 当前状态：`task_established_visual_level_set_region_offline_calibration_pending_20260727`；执行模型记录：`gpt-5.6-terra + high`。
+
+#### 纯视觉新增等级与套装区域离线置信度校准完成（2026-07-27）
+
+- 权威任务说明：[纯视觉新增等级与套装区域离线置信度校准任务说明](纯视觉新增等级与套装区域离线置信度校准任务说明.md)。两张用户截图均为 `1280x720`，只做离线内存验证，未落盘裁剪图。
+- 新等级局部 `(876,172)-(923,218)` 在两张截图分别得到 `85 @ 0.995268`、`85 @ 0.990371`，均通过 `0.98`；说明“图标左上角独立等级局部”方向正确。
+- 速度套文字局部 `(916,544)-(1034,592)` 仅 `0.935075`、`0.940840`，低于 `0.98`；套装图标局部无唯一候选，速度套完整契约仍未通过。完整链仍有 `missing:enhance`，新标注图还出现广域 OCR 被标注文字干扰的 `unrecognized:level/set`。
+- 发现模板匹配实现缺口：26 个真实模板中 17 个在 `IEND` 后有上游附加字节、8 个使用当前严格解码器不支持的 PNG 格式，只有 `weakening` 可解码；`LocalSetIconTemplateRecognizer` 因此在真实 `speed` 模板比较前就返回空候选。该结论是实现诊断，不是套装置信度通过。
+- 当前状态：`offline_visual_level_pass_set_text_low_template_decoder_gap_fail_closed_20260727`。保持 `0.98`、`mode=visual_only`、`verification=unverified`、fail-closed；下一步须另建离线模板解码/套装文字区域修复任务，完成公开回归后再申请真实只读校准。
