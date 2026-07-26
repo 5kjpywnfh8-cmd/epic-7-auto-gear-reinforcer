@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import hashlib
-import os
 from pathlib import Path
 import re
 from typing import Any
@@ -57,6 +56,13 @@ _RANKS = {"传说": "Epic", "英雄": "Heroic", "稀有": "Rare", "高级": "Goo
 _SLOTS = {"武器": "Weapon", "头盔": "Helmet", "衣服": "Armor", "项链": "Necklace", "戒指": "Ring", "鞋子": "Boots"}
 _ENHANCE_TOKEN = re.compile(r"\+([0-9]+)")
 _EXPERIENCE_TOKEN = re.compile(r"exp([0-9]+)/[0-9]+", re.IGNORECASE)
+_ENHANCE_REGION = "enhance"
+_PADDLE_MODEL_LAYOUT = {
+    "det_model_dir": ("userprofile", ".paddleocr", "whl", "det", "ch", "ch_PP-OCRv4_det_infer"),
+    "rec_model_dir": ("userprofile", ".paddleocr", "whl", "rec", "ch", "ch_PP-OCRv4_rec_infer"),
+    "cls_model_dir": ("userprofile", ".paddleocr", "whl", "cls", "ch_ppocr_mobile_v2.0_cls_infer"),
+}
+_PADDLE_REQUIRED_MODEL_FILES = ("inference.pdmodel", "inference.pdiparams")
 def _clean_text(value: object) -> str:
     return re.sub(r"\s+", "", str(value or "")).replace("（", "(").replace("）", ")")
 
@@ -110,29 +116,31 @@ def _apply_local_retries(lines: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 def _enhance_evidence(lines: list[dict[str, Any]], normalized: list[str]) -> tuple[dict[str, Any] | None, str | None]:
-    """Accept only an explicit level token or an explicit zero-experience bar."""
+    """Accept one explicit enhancement-local token, never inferred page context."""
     direct = [
         (index, int(match.group(1)))
         for index, text in enumerate(normalized)
-        if (match := _ENHANCE_TOKEN.fullmatch(text))
+        if lines[index].get("region") == _ENHANCE_REGION and (match := _ENHANCE_TOKEN.fullmatch(text))
     ]
     experience = [
         (index, int(match.group(1)))
         for index, text in enumerate(normalized)
-        if (match := _EXPERIENCE_TOKEN.fullmatch(text))
+        if lines[index].get("region") == _ENHANCE_REGION and (match := _EXPERIENCE_TOKEN.fullmatch(text))
     ]
-    direct_values = {value for _, value in direct}
-    experience_values = {value for _, value in experience}
-    if len(direct_values) > 1 or (experience_values and len(experience_values) > 1):
+    if len(direct) > 1 or len(experience) > 1:
         return None, "conflicting:enhance_evidence"
     if direct:
         index, value = direct[0]
-        return _field(normalized[index], float(lines[index].get("confidence", 0) or 0)) | {"normalized": value}, None
-    if experience_values == {0}:
+        return (
+            _field(normalized[index], float(lines[index].get("confidence", 0) or 0))
+            | {"normalized": value, "source": "enhance_local"},
+            None,
+        )
+    if experience and experience[0][1] == 0:
         index = experience[0][0]
         return (
             _field(normalized[index], float(lines[index].get("confidence", 0) or 0))
-            | {"normalized": 0, "source": "experience_bar"},
+            | {"normalized": 0, "source": "enhance_local_experience_bar"},
             None,
         )
     if experience:
@@ -248,15 +256,40 @@ def parse_backpack_enhance_lines(lines: list[dict[str, Any]]) -> dict[str, Any]:
 
 def _configure_cache(cache_root: Path) -> Path:
     cache_root = Path(cache_root).resolve()
-    if not str(cache_root).isascii():
+    if not cache_root.is_dir() or not str(cache_root).isascii():
         raise PaddleOcrError("PaddleOCR cache path must be ASCII on Windows")
     user_profile = cache_root / "userprofile"
-    user_profile.mkdir(parents=True, exist_ok=True)
-    os.environ["USERPROFILE"] = str(user_profile)
-    os.environ["HOME"] = str(user_profile)
-    os.environ["PADDLE_HOME"] = str(user_profile / "paddle")
-    os.environ["PADDLEOCR_HOME"] = str(user_profile / "paddleocr")
+    if not user_profile.is_dir():
+        raise PaddleOcrError("PaddleOCR cache user profile is missing")
     return user_profile
+
+
+def _paddle_model_directories(cache_root: Path) -> dict[str, str]:
+    """Return only audited local PaddleOCR model paths under one ASCII cache root."""
+    root = Path(cache_root).resolve()
+    _configure_cache(root)
+    directories: dict[str, str] = {}
+    for parameter, relative_path in _PADDLE_MODEL_LAYOUT.items():
+        directory = root.joinpath(*relative_path).resolve()
+        try:
+            directory.relative_to(root)
+        except ValueError as exc:
+            raise PaddleOcrError("PaddleOCR model path escapes the approved cache root") from exc
+        if not directory.is_dir() or not all((directory / name).is_file() for name in _PADDLE_REQUIRED_MODEL_FILES):
+            raise PaddleOcrError(f"PaddleOCR cached model is missing:{parameter}")
+        directories[parameter] = str(directory)
+    return directories
+
+
+def _paddle_engine_kwargs(cache_root: Path) -> dict[str, Any]:
+    """Fix both engine version and all model directories to the approved cache."""
+    return {
+        "lang": "ch",
+        "ocr_version": "PP-OCRv4",
+        "use_angle_cls": False,
+        "show_log": False,
+        **_paddle_model_directories(cache_root),
+    }
 
 
 def _validate_detail_viewport(width: int, height: int) -> None:
@@ -341,7 +374,6 @@ def recognize_backpack_enhance(image_path: Path, *, cache_root: Path) -> dict[st
     """Recognize text in a backpack enhancement screenshot without side effects."""
     image_path = Path(image_path)
     source_bytes = image_path.read_bytes()
-    _configure_cache(Path(cache_root))
     try:
         import numpy as np
         from PIL import Image, ImageEnhance
@@ -355,7 +387,12 @@ def recognize_backpack_enhance(image_path: Path, *, cache_root: Path) -> dict[st
         bounds = _crop_bounds(*source_dimensions)
         set_bounds = _set_bounds(*source_dimensions)
         enhance_bounds = _enhance_bounds(*source_dimensions)
-        engine = PaddleOCR(lang="ch", use_angle_cls=False, show_log=False)
+        try:
+            engine = PaddleOCR(**_paddle_engine_kwargs(Path(cache_root)))
+        except PaddleOcrError:
+            raise
+        except Exception as exc:
+            raise PaddleOcrError("PaddleOCR engine initialization failed") from exc
         result_lines = []
         crop = source.crop(bounds).resize(
             (max(1, (bounds[2] - bounds[0]) * 2), max(1, (bounds[3] - bounds[1]) * 2)),
@@ -375,7 +412,7 @@ def recognize_backpack_enhance(image_path: Path, *, cache_root: Path) -> dict[st
             Image.Resampling.LANCZOS,
         )
         enhance_crop = ImageEnhance.Contrast(enhance_crop).enhance(1.15)
-        result_lines.append(("enhance_evidence", enhance_crop.size, engine.ocr(np.asarray(enhance_crop), cls=False)[0] or []))
+        result_lines.append((_ENHANCE_REGION, enhance_crop.size, engine.ocr(np.asarray(enhance_crop), cls=False)[0] or []))
 
     lines = []
     for region, crop_size, result in result_lines:

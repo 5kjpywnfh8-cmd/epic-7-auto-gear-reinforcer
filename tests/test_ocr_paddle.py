@@ -14,6 +14,7 @@ from src.e7_enhance.ocr_paddle import (
     _crop_bounds,
     _enhance_bounds,
     _configure_cache,
+    _paddle_engine_kwargs,
     _set_bounds,
     parse_backpack_enhance_lines,
 )
@@ -30,7 +31,7 @@ class OcrPaddleTest(unittest.TestCase):
             {"text": "暴击伤害", "confidence": critical_confidence}, {"text": "5%", "confidence": 0.999},
             {"text": "生命值", "confidence": 0.999}, {"text": "159", "confidence": 0.999},
             {"text": "装备分数", "confidence": 0.999}, {"text": "25", "confidence": 0.999},
-            {"text": set_name, "confidence": 0.999}, {"text": "exp0/525", "confidence": 0.999},
+            {"text": set_name, "confidence": 0.999}, {"text": "exp0/525", "confidence": 0.999, "region": "enhance"},
         ]
 
     def test_right_detail_crop_and_anchor_regions_are_stable_and_inside_image(self):
@@ -52,9 +53,9 @@ class OcrPaddleTest(unittest.TestCase):
 
     def test_enhance_evidence_requires_explicit_non_conflicting_text(self):
         direct = self._base_lines()
-        direct[-1] = {"text": "+3", "confidence": 0.999}
+        direct[-1] = {"text": "+3", "confidence": 0.999, "region": "enhance"}
         self.assertEqual(parse_backpack_enhance_lines(direct)["fields"]["enhance"]["normalized"], 3)
-        self.assertEqual(parse_backpack_enhance_lines(self._base_lines() + [{"text": "+3", "confidence": 0.999}])["fields"]["enhance"]["normalized"], 3)
+        self.assertEqual(parse_backpack_enhance_lines(self._base_lines() + [{"text": "+3", "confidence": 0.999, "region": "enhance"}])["fields"]["enhance"]["normalized"], 3)
 
         no_evidence = self._base_lines()[:-1]
         parsed = parse_backpack_enhance_lines(no_evidence)
@@ -62,13 +63,13 @@ class OcrPaddleTest(unittest.TestCase):
         self.assertIn("missing:enhance", parsed["rejection_reasons"])
 
         nonzero_experience = self._base_lines()
-        nonzero_experience[-1] = {"text": "exp1/525", "confidence": 0.999}
+        nonzero_experience[-1] = {"text": "exp1/525", "confidence": 0.999, "region": "enhance"}
         parsed = parse_backpack_enhance_lines(nonzero_experience)
         self.assertFalse(parsed["accepted"])
         self.assertIn("unrecognized:enhance_from_experience_bar", parsed["rejection_reasons"])
 
         conflicting = self._base_lines()[:-1] + [
-            {"text": "+0", "confidence": 0.999}, {"text": "+3", "confidence": 0.999},
+            {"text": "+0", "confidence": 0.999, "region": "enhance"}, {"text": "+3", "confidence": 0.999, "region": "enhance"},
         ]
         parsed = parse_backpack_enhance_lines(conflicting)
         self.assertFalse(parsed["accepted"])
@@ -88,9 +89,36 @@ class OcrPaddleTest(unittest.TestCase):
 
     def test_cache_path_is_process_local_and_ascii(self):
         with tempfile.TemporaryDirectory(prefix="e7ocr-") as temporary:
-            path = _configure_cache(Path(temporary))
+            cache_root = Path(temporary)
+            path = cache_root / "userprofile"
+            path.mkdir()
+            self.assertEqual(_configure_cache(cache_root), path)
             self.assertTrue(path.name == "userprofile")
             self.assertTrue(str(path).isascii())
+
+    def test_explicit_model_paths_are_bound_to_approved_cache_and_missing_models_reject(self):
+        with tempfile.TemporaryDirectory(prefix="e7ocr-") as temporary:
+            cache_root = Path(temporary)
+            for relative in (
+                ("userprofile", ".paddleocr", "whl", "det", "ch", "ch_PP-OCRv4_det_infer"),
+                ("userprofile", ".paddleocr", "whl", "rec", "ch", "ch_PP-OCRv4_rec_infer"),
+                ("userprofile", ".paddleocr", "whl", "cls", "ch_ppocr_mobile_v2.0_cls_infer"),
+            ):
+                directory = cache_root.joinpath(*relative)
+                directory.mkdir(parents=True)
+                for filename in ("inference.pdmodel", "inference.pdiparams"):
+                    (directory / filename).write_bytes(b"public-fixture")
+
+            kwargs = _paddle_engine_kwargs(cache_root)
+
+            self.assertEqual(kwargs["ocr_version"], "PP-OCRv4")
+            self.assertFalse(kwargs["use_angle_cls"])
+            self.assertTrue(all(Path(kwargs[name]).is_relative_to(cache_root) for name in (
+                "det_model_dir", "rec_model_dir", "cls_model_dir",
+            )))
+            (Path(kwargs["rec_model_dir"]) / "inference.pdmodel").unlink()
+            with self.assertRaises(PaddleOcrError):
+                _paddle_engine_kwargs(cache_root)
 
     def test_parser_extracts_epic_ring_and_rejects_missing_enhance_low_set_confidence(self):
         texts = [
@@ -104,7 +132,8 @@ class OcrPaddleTest(unittest.TestCase):
             ("速度套装(0/4)", 0.976382), ("exp0/525", 0.9931),
         ]
         parsed = parse_backpack_enhance_lines([
-            {"text": text, "confidence": confidence} for text, confidence in texts
+            {"text": text, "confidence": confidence, **({"region": "enhance"} if text.startswith("exp") else {})}
+            for text, confidence in texts
         ])
         self.assertFalse(parsed["accepted"])
         self.assertEqual(parsed["fields"]["rank"]["normalized"], "Epic")
@@ -125,7 +154,7 @@ class OcrPaddleTest(unittest.TestCase):
             {"text": "防御力", "confidence": 0.999}, {"text": "5%", "confidence": 0.999},
             {"text": "装备分数", "confidence": 0.999}, {"text": "27", "confidence": 0.999},
             {"text": "速度套装(0/4)", "confidence": 0.976}, {"text": "速度套装(0/4)", "confidence": 0.998},
-            {"text": "exp0/525", "confidence": 0.993},
+            {"text": "exp0/525", "confidence": 0.993, "region": "enhance"},
         ]
         parsed = parse_backpack_enhance_lines(lines)
         self.assertTrue(parsed["accepted"])
@@ -140,6 +169,26 @@ class OcrPaddleTest(unittest.TestCase):
         parsed = parse_backpack_enhance_lines(self._base_lines())
         self.assertTrue(parsed["accepted"], parsed["rejection_reasons"])
         self.assertEqual(parsed["fields"]["set"]["normalized"], "InjurySet")
+
+    def test_enhance_evidence_rejects_nonlocal_duplicate_and_low_confidence_tokens(self):
+        nonlocal_lines = self._base_lines()
+        nonlocal_lines[-1] = {"text": "+0", "confidence": 0.999, "region": "right_detail_panel"}
+        parsed = parse_backpack_enhance_lines(nonlocal_lines)
+        self.assertFalse(parsed["accepted"])
+        self.assertIn("missing:enhance", parsed["rejection_reasons"])
+
+        duplicate = self._base_lines()
+        duplicate[-1] = {"text": "+0", "confidence": 0.999, "region": "enhance"}
+        duplicate.append({"text": "+0", "confidence": 0.999, "region": "enhance"})
+        parsed = parse_backpack_enhance_lines(duplicate)
+        self.assertFalse(parsed["accepted"])
+        self.assertIn("conflicting:enhance_evidence", parsed["rejection_reasons"])
+
+        low_confidence = self._base_lines()
+        low_confidence[-1]["confidence"] = 0.979
+        parsed = parse_backpack_enhance_lines(low_confidence)
+        self.assertFalse(parsed["accepted"])
+        self.assertIn("low_confidence:enhance", parsed["rejection_reasons"])
 
     def test_low_confidence_critical_damage_rejects_without_local_retry(self):
         parsed = parse_backpack_enhance_lines(self._base_lines(critical_confidence=0.949667))

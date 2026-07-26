@@ -99,7 +99,7 @@ def paddle_lines(set_confidence=0.999):
         {"text": "暴击率", "confidence": 0.999}, {"text": "5%", "confidence": 0.999},
         {"text": "速度", "confidence": 0.999}, {"text": "2", "confidence": 0.999},
         {"text": "装备分数", "confidence": 0.999}, {"text": "25", "confidence": 0.999},
-        {"text": "爆伤套装(0/4)", "confidence": set_confidence}, {"text": "exp0/525", "confidence": 0.999},
+        {"text": "爆伤套装(0/4)", "confidence": set_confidence}, {"text": "exp0/525", "confidence": 0.999, "region": "enhance"},
     ]
 
 

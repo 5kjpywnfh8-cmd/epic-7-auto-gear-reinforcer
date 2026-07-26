@@ -114,7 +114,7 @@ def accepted_lines(*, set_confidence=0.999, extra=()):
         {"text": "暴击伤害", "confidence": 0.999}, {"text": "5%", "confidence": 0.999},
         {"text": "生命值", "confidence": 0.999}, {"text": "159", "confidence": 0.999},
         {"text": "装备分数", "confidence": 0.999}, {"text": "25", "confidence": 0.999},
-        {"text": "速度套装(0/4)", "confidence": set_confidence}, {"text": "exp0/525", "confidence": 0.999},
+        {"text": "速度套装(0/4)", "confidence": set_confidence}, {"text": "exp0/525", "confidence": 0.999, "region": "enhance"},
     ]
     return lines + list(extra)
 
@@ -241,6 +241,14 @@ class AdbLocalRecognitionEvidenceParserTest(unittest.TestCase):
             sampler.capture(SamplingRequest("operation-001", "pre_action", 0))
 
         self.assertEqual(line_source.calls, 1)
+
+    def test_enhance_token_outside_enhance_region_rejects_full_adapter_chain(self):
+        lines = accepted_lines()
+        lines[-1] = {"text": "+0", "confidence": 0.999, "region": "detail_panel"}
+        sampler, _ = adb_sampler(FakeTemplateRecognizer(anchors()), FakePaddleLineSource(lines))
+
+        with self.assertRaises(EvidenceParseError):
+            sampler.capture(SamplingRequest("operation-001", "pre_action", 0))
 
 
 if __name__ == "__main__":

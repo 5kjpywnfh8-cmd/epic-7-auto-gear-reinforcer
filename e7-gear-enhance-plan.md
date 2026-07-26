@@ -2866,3 +2866,18 @@ GUI 验收关注点：
 - 解析结果 `accepted=false`，拒绝原因 `low_confidence:set`、`missing:enhance`；结果仍为 `mode=visual_only`、`verification=unverified`、`click_performed=false`。未执行 ADB 输入、导航、点击、强化、选材、资源消耗、底层读取或外部上传。
 - 本轮 PaddleOCR 初始化日志显示模型实际下载到了默认 `C:\Users\orangine\.paddleocr`，未完全命中预期 ASCII 缓存 `D:\VScode\cultivation\e7_ocr_cache`；该缓存路由问题已记录，未重试或删除缓存。离线视觉 `52/52`、OCR `27/27`、`py_compile` 和 `git diff --check` 通过。
 - 当前状态：`real_adb_set_template_matcher_single_frame_fail_closed_20260726`。下一步需另建离线任务评估模板预处理/区域锚点与显式强化等级来源；套装和强化两项均未通过前，不得进入受控点击或自动强化。
+
+#### 纯视觉 OCR 缓存与套装强化证据离线修复任务建立（2026-07-26）
+- 用户批准进入下一步；本轮唯一权威任务说明为[纯视觉 OCR 缓存与套装强化证据离线修复任务说明](纯视觉%20OCR%20缓存与套装强化证据离线修复任务说明.md)。
+- 本轮只允许离线审阅、最小实现和公开测试：显式绑定 PaddleOCR 模型目录到批准 ASCII 缓存，评估套装图标模板预处理/局部锚点，并固化强化证据只能来自强化局部的唯一 `+N` 或 `exp0/...`。
+- 禁止真实 ADB、截图、OCR 识别、页面导航、ADB 输入、点击、强化、选材、资源消耗、底层读取、外部上传、联网和模型下载；不读取现有私人截图文件。
+- 保持 `0.98` 字段门槛、`mode=visual_only`、`verification=unverified` 和 fail-closed；完成离线验证前不得进入新的真实只读校准或受控点击任务。
+- 执行模型记录为 `gpt-5.6-terra + high`；当前状态：`task_established_offline_ocr_cache_template_enhance_evidence_pending_implementation_20260726`。
+
+#### 纯视觉 OCR 缓存与套装强化证据离线修复（2026-07-26，已完成离线验证）
+- 权威任务说明：[纯视觉 OCR 缓存与套装强化证据离线修复任务说明](纯视觉%20OCR%20缓存与套装强化证据离线修复任务说明.md)。此前同条目的 `pending_implementation` 状态已被本记录覆盖。
+- PaddleOCR 固定为 `PP-OCRv4`，检测/识别/方向分类目录显式绑定到传入 ASCII 缓存根下已校验的本地模型；缺目录、路径逃逸、非 ASCII 或缺模型均在初始化前 fail-closed，不再依赖默认用户缓存。
+- 套装局部匹配仅新增固定 `(0.5, 1.0, 2.0)` 最近邻缩放和可审计局部锚点输出；阈值仍为 `0.98`，任何模板、尺度或位置并列继续拒绝，候选不构成套装确认。
+- 强化等级只能来自 `enhance` 局部的唯一 `+N`，或无 `+N` 时唯一 `exp0/...`；区域外、缺失、重复、非零经验或低置信度全部拒绝。完整适配链同样要求 `enhance` 区域存在。
+- 离线公开验证退出码均为 `0`：OCR `14/14`、套装匹配 `7/7`、ADB 局部适配 `8/8`、视觉平台 `7/7`、模板加载 `5/5`、视觉回归 `65/65`，Python 3.9 `py_compile` 和 `git diff --check` 通过。未执行真实 ADB、截图、OCR 推理、导航、输入、点击、强化、资源操作、底层读取、上传、联网或下载；未提交或推送。
+- 当前仍是离线候选能力，未证明真实页面字段、模型推理或模板命中达到 `0.98`；保持 `mode=visual_only`、`verification=unverified` 与 fail-closed。任何真实只读校准或后续操作必须另建任务说明并单独授权。

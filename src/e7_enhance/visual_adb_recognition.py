@@ -63,6 +63,8 @@ class PaddleLineSourceRecognizer:
         self._line_source = line_source
 
     def recognize(self, frame: VisualFrame, regions: Mapping[str, RegionSample]) -> Mapping[str, Any]:
+        if "enhance" not in regions or not isinstance(regions["enhance"], RegionSample):
+            raise LocalRecognitionError("PaddleOCR enhance-local region is unavailable")
         try:
             lines = self._line_source.read_lines(frame, regions)
         except Exception as exc:

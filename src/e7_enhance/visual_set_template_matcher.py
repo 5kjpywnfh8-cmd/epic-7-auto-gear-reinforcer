@@ -18,7 +18,10 @@ from .visual_templates import SetIconTemplate, load_set_icon_templates
 
 
 SET_ICON_MATCH_THRESHOLD = 0.98
-ALLOWED_TEMPLATE_SCALES = (1.0,)
+# The nearest-neighbor scale set is intentionally small and fixed.  It permits
+# only deterministic icon-size drift; interpolation, rotation, and crop
+# guessing remain rejected.
+ALLOWED_TEMPLATE_SCALES = (0.5, 1.0, 2.0)
 _COARSE_MASK_SAMPLES = 12
 _COARSE_STEP = 2
 _FULL_CANDIDATES = 8
@@ -59,7 +62,7 @@ class LocalSetIconTemplateRecognizer:
         ):
             return []
 
-        candidates: list[tuple[str, float, float]] = []
+        candidates: list[tuple[str, float, float, int, int, int, int, float]] = []
         for identifier, template in templates.items():
             if not isinstance(identifier, str) or not isinstance(template, SetIconTemplate):
                 return []
@@ -69,11 +72,11 @@ class LocalSetIconTemplateRecognizer:
             except Exception:
                 return []
             if result is not None:
-                score, bright_ratio, ambiguous = result
+                score, bright_ratio, ambiguous, left, top, width, height, scale = result
                 if ambiguous:
                     return []
                 if score >= self._threshold and bright_ratio > 0:
-                    candidates.append((identifier, score, bright_ratio))
+                    candidates.append((identifier, score, bright_ratio, left, top, width, height, scale))
         if not candidates:
             return []
         candidates.sort(key=lambda item: (-item[1], item[0]))
@@ -86,6 +89,9 @@ class LocalSetIconTemplateRecognizer:
             "score": round(best[1], 6),
             "threshold": self._threshold,
             "bright_ratio": round(best[2], 6),
+            "anchor_bounds": {"left": best[3], "top": best[4], "right": best[3] + best[5], "bottom": best[4] + best[6]},
+            "template_scale": best[7],
+            "preprocess": "rgba_nearest_neighbor",
         }]
 
 
@@ -128,50 +134,78 @@ def _decode_pixels(payload: bytes) -> tuple[int, int, tuple[tuple[int, int, int,
 def _best_match(
     sample: tuple[int, int, tuple[tuple[int, int, int, int], ...]],
     template: tuple[int, int, tuple[tuple[int, int, int, int], ...]],
-) -> tuple[float, float, bool] | None:
+) -> tuple[float, float, bool, int, int, int, int, float] | None:
     sample_width, sample_height, sample_pixels = sample
-    template_width, template_height, template_pixels = template
-    if 1.0 not in ALLOWED_TEMPLATE_SCALES or template_width > sample_width or template_height > sample_height:
-        return None
-    mask = [
-        (index % template_width, index // template_width, pixel)
-        for index, pixel in enumerate(template_pixels)
-        if pixel[3] >= 32
-    ]
-    if len(mask) < _COARSE_MASK_SAMPLES:
-        return None
-    coarse_step = max(1, len(mask) // _COARSE_MASK_SAMPLES)
-    coarse_mask = mask[::coarse_step][:_COARSE_MASK_SAMPLES]
-    positions = _coarse_positions(sample_width - template_width, sample_height - template_height)
-    scored = sorted(
-        ((_score(sample_pixels, sample_width, x, y, coarse_mask), x, y) for x, y in positions),
-        reverse=True,
-    )[:_FULL_CANDIDATES]
-    if not scored:
-        return None
-    full_positions = {
-        (x + dx, y + dy)
-        for _, x, y in scored
-        for dx in (-1, 0, 1)
-        for dy in (-1, 0, 1)
-        if 0 <= x + dx <= sample_width - template_width and 0 <= y + dy <= sample_height - template_height
-    }
-    full_scores = [
-        (
-            _score(sample_pixels, sample_width, x, y, mask),
-            _bright_ratio(sample_pixels, sample_width, x, y, template_width, template_height),
-            x,
-            y,
+    template_width, template_height, _ = template
+    all_scores: list[tuple[float, float, int, int, int, int, float]] = []
+    for scale in ALLOWED_TEMPLATE_SCALES:
+        scaled = _scale_template(template, scale)
+        if scaled is None:
+            continue
+        width, height, pixels = scaled
+        if width > sample_width or height > sample_height:
+            continue
+        mask = [
+            (index % width, index // width, pixel)
+            for index, pixel in enumerate(pixels)
+            if pixel[3] >= 32
+        ]
+        if len(mask) < _COARSE_MASK_SAMPLES:
+            continue
+        coarse_step = max(1, len(mask) // _COARSE_MASK_SAMPLES)
+        coarse_mask = mask[::coarse_step][:_COARSE_MASK_SAMPLES]
+        positions = _coarse_positions(sample_width - width, sample_height - height)
+        scored = sorted(
+            ((_score(sample_pixels, sample_width, x, y, coarse_mask), x, y) for x, y in positions),
+            reverse=True,
+        )[:_FULL_CANDIDATES]
+        full_positions = {
+            (x + dx, y + dy)
+            for _, x, y in scored
+            for dx in (-1, 0, 1)
+            for dy in (-1, 0, 1)
+            if 0 <= x + dx <= sample_width - width and 0 <= y + dy <= sample_height - height
+        }
+        all_scores.extend(
+            (
+                _score(sample_pixels, sample_width, x, y, mask),
+                _bright_ratio(sample_pixels, sample_width, x, y, width, height),
+                x,
+                y,
+                width,
+                height,
+                scale,
+            )
+            for x, y in full_positions
         )
-        for x, y in full_positions
-    ]
-    if not full_scores:
+    if not all_scores:
         return None
-    best_score = max(score for score, _, _, _ in full_scores)
-    best = [entry for entry in full_scores if entry[0] == best_score]
+    best_score = max(score for score, *_ in all_scores)
+    best = [entry for entry in all_scores if entry[0] == best_score]
     if len(best) != 1:
-        return best[0][0], best[0][1], True
-    return best[0][0], best[0][1], False
+        score, bright_ratio, left, top, width, height, scale = best[0]
+        return score, bright_ratio, True, left, top, width, height, scale
+    return (*best[0][:2], False, *best[0][2:])
+
+
+def _scale_template(
+    template: tuple[int, int, tuple[tuple[int, int, int, int], ...]], scale: float
+) -> tuple[int, int, tuple[tuple[int, int, int, int], ...]] | None:
+    width, height, pixels = template
+    if scale not in ALLOWED_TEMPLATE_SCALES:
+        return None
+    scaled_width, scaled_height = round(width * scale), round(height * scale)
+    if scaled_width <= 0 or scaled_height <= 0:
+        return None
+    return (
+        scaled_width,
+        scaled_height,
+        tuple(
+            pixels[min(height - 1, int(y / scale)) * width + min(width - 1, int(x / scale))]
+            for y in range(scaled_height)
+            for x in range(scaled_width)
+        ),
+    )
 
 
 def _coarse_positions(max_x: int, max_y: int) -> tuple[tuple[int, int], ...]:

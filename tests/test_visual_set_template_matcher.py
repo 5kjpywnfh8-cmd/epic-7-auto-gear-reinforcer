@@ -38,6 +38,19 @@ def patterned_pixels(width: int, height: int) -> bytes:
     )
 
 
+def scaled_pixels(width: int, height: int, scale: int) -> bytes:
+    return bytes(
+        value
+        for y in range(height * scale)
+        for x in range(width * scale)
+        for value in (
+            (255 if ((x // scale) + (y // scale)) % 2 else 32),
+            (240 if (x // scale) % 3 else 64),
+            (220 if (y // scale) % 3 else 96),
+        )
+    )
+
+
 def frame() -> VisualFrame:
     return VisualFrame.from_bytes(
         source="offline-fixture",
@@ -81,6 +94,32 @@ class LocalSetIconTemplateRecognizerTest(unittest.TestCase):
             anchors = recognizer.recognize(frame(), {"set": sample(payload, name="set")})
 
         self.assertEqual(anchors[0]["candidate_id"], "hit")
+
+    def test_nearest_neighbor_scale_and_local_anchor_are_auditable(self):
+        with tempfile.TemporaryDirectory(prefix="e7-set-matcher-") as directory:
+            template_payload = patterned_png()
+            template = self._template(Path(directory), "hit", template_payload)
+            pixels = bytearray(bytes((1, 1, 1)) * 20 * 18)
+            icon = scaled_pixels(8, 8, 2)
+            for row in range(16):
+                destination = ((row + 1) * 20 + 2) * 3
+                pixels[destination:destination + 16 * 3] = icon[row * 16 * 3:(row + 1) * 16 * 3]
+            recognizer = LocalSetIconTemplateRecognizer(template_loader=lambda: {"hit": template})
+
+            anchors = recognizer.recognize(
+                VisualFrame.from_bytes(
+                    source="offline-fixture",
+                    payload=png(20, 18, bytes(pixels)),
+                    viewport=(20, 18),
+                    captured_at="2026-07-26T10:00:00+08:00",
+                ),
+                {"set_anchor": sample(png(20, 18, bytes(pixels)), bounds=(0, 0, 20, 18))},
+            )
+
+        self.assertEqual(len(anchors), 1)
+        self.assertEqual(anchors[0]["template_scale"], 2.0)
+        self.assertEqual(anchors[0]["anchor_bounds"], {"left": 2, "top": 1, "right": 18, "bottom": 17})
+        self.assertEqual(anchors[0]["preprocess"], "rgba_nearest_neighbor")
 
     def test_missing_templates_invalid_png_viewport_drift_and_low_score_fail_closed(self):
         with tempfile.TemporaryDirectory(prefix="e7-set-matcher-") as directory:
@@ -150,7 +189,7 @@ class _FixturePaddleLines:
             {"text": "生命值", "confidence": 0.999}, {"text": "159", "confidence": 0.999},
             {"text": "装备分数", "confidence": 0.999}, {"text": "25", "confidence": 0.999},
             {"text": "速度套装(0/4)", "confidence": 0.999},
-            {"text": "exp0/525", "confidence": 0.999},
+            {"text": "exp0/525", "confidence": 0.999, "region": "enhance"},
         ]
 
 
@@ -176,6 +215,7 @@ class LocalSetIconTemplateMatcherPipelineTest(unittest.TestCase):
                 "regions": [
                     {"name": "set_anchor", "bounds": {"left": 0, "top": 0, "right": 0.5, "bottom": 2 / 3}},
                     {"name": "detail_panel", "bounds": {"left": 0.5, "top": 0, "right": 1, "bottom": 1}},
+                    {"name": "enhance", "bounds": {"left": 0.5, "top": 0, "right": 1, "bottom": 0.5}},
                 ],
                 "validation_errors": [],
             }
