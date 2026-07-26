@@ -2593,4 +2593,4 @@ GUI 验收关注点：
 - 点击器必须要求显式单次授权，校验坐标和视口，调用前记录尝试，后端异常按未知结果处理并禁止内部重试；上层仍由 `VisualOnlyEnhanceExecutor` 负责视觉证据闸门和 `unknown_result` 停止。
 - 已完成 `src/e7_enhance/visual_click.py` 与 `tests/test_visual_click.py`：归一化坐标换算、视口/授权校验、一次性尝试锁定、后端异常未知结果和极大数坐标 fail-closed 均有覆盖。
 - 定向验证 `tests.test_visual_click`、`tests.test_visual_runtime`、`tests.test_visual_sampling` 共 `17/17` 通过；Python 语法检查和 `git diff --check` 通过。仅使用 fake backend，未连接 MuMu/ADB，未采集截图/OCR，未执行真实点击、强化、选材或资源消耗。
-- 执行模型记录为 `gpt-5.6-terra + high`。实现提交已创建，当前状态：`implementation_verified_offline_committed_pending_push_20260726`；待推送后再做工作区和远端跟踪复核。
+- 执行模型记录为 `gpt-5.6-terra + high`。提交 `2a071f3 feat: add fail-closed visual click executor` 已推送至 `origin/codex/policy-v1-manifest-20260725`；当前状态：`implementation_verified_offline_published_20260726`。真实窗口后端仍需另建任务和明确运行授权。
