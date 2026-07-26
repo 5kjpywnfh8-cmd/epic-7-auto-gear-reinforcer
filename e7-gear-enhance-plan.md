@@ -2806,5 +2806,18 @@ GUI 验收关注点：
 - 解析器仅接受明确唯一 `+N` 或无 `+N` 时唯一 `exp0/...`，低置信度、缺失、非零经验条、不同等级证据均 fail-closed；同屏经验条不覆盖明确 `+N`，全帧经验条扫描改为强化局部 OCR。
 - 定向公开测试 `67/67`、`py_compile`、`git diff --check` 通过；未执行真实 ADB、截图、OCR、输入、导航、点击、强化、选材、资源消耗或上传。
 - 当前状态更新为 `offline_set_crop_enhance_evidence_verified_pending_real_frame_calibration_20260726`。坐标仍是离线候选，下一步需另建任务说明并取得一次单独的真实只读 ADB 单帧校准授权。
-@@
-#### 纯视觉真实ADB模型就绪局部OCR只读复验完成（2026-07-26）
+
+#### 套装与强化证据真实 ADB 单帧校准已授权（2026-07-26）
+- 用户确认目标装备详细页已经打开并批准下一步；本轮唯一权威任务说明为[纯视觉套装与强化证据真实 ADB 单帧校准任务说明](纯视觉套装与强化证据真实ADB单帧校准任务说明.md)。
+- 本轮只允许唯一 `device` 自动发现、一次 `exec-out screencap -p`、内存 PNG 校验和当前右侧详情/套装/强化局部 PaddleOCR；不得执行第二次截图、自动重试或任何 ADB 输入。
+- 继续保持 `0.98` 字段门槛、`mode=visual_only`、`verification=unverified`；旧帧哈希只作历史对照，不再单独作为页面未刷新判据。
+- 禁止点击、导航、强化、选材、资源消耗、底层读取、外部上传和私人截图落盘。执行模型记录为 `gpt-5.6-terra + high`。
+- 当前状态：`authorized_real_adb_single_frame_set_enhance_calibration_pending_20260726`。
+
+#### 套装与强化证据真实 ADB 单帧校准 fail-closed（2026-07-26）
+- 已按[纯视觉套装与强化证据真实 ADB 单帧校准任务说明](纯视觉套装与强化证据真实ADB单帧校准任务说明.md)完成唯一一次授权截图：自动发现 `emulator-5554 device`；内存 PNG `1280x720`、`859033` 字节、SHA-256 `50499822de5a2b297f2dbb23489bf3461903cca73988c458afd6c10cd0cc2e3e`。该哈希不同于前一真实帧，仅证明取得不同帧。
+- 右侧详情字段与用户目标一致且均通过 `0.98`：英雄武器、85级、攻击力 `100`、暴击率 `5%`、攻击力 `8%`、效果抗性 `8%`、装备分数 `28`。
+- 整体仍 fail-closed：命中套文字虽可规范化，但详情/局部置信度仅 `0.906965`/`0.905730`；强化局部没有 `+0` 或 `exp0/...`。拒绝原因为 `low_confidence:set`、`missing:enhance`，不得用人工描述或缺失文本推断。
+- 真实帧和局部裁剪未落盘、未上传；未执行第二次截图、ADB 输入、导航、点击、强化、选材或资源消耗。结果保持 `mode=visual_only`、`verification=unverified`。
+- 离线回归：视觉测试 `52/52`、OCR 测试 `27/27`、`py_compile`、`git diff --check` 均通过。执行模型记录为 `gpt-5.6-terra + high`。
+- 当前状态：`real_adb_single_frame_target_fields_matched_set_enhance_fail_closed_20260726`。下一步先另建离线任务评估套装图标模板/预处理，并确认哪个页面提供显式 `+0` 证据；在两项通过前不得进入受控点击或自动强化。
