@@ -2706,3 +2706,13 @@ GUI 验收关注点：
 - 全新 Python `3.9.2` 进程在 ASCII 工作区缓存下成功导入 `paddle 2.6.2` 与 `paddleocr 2.10.0`，退出码 `0`；未构造 OCR 引擎、未下载模型、未执行 ADB/OCR/游戏操作。
 - 根因闭环为默认用户缓存写入被环境阻断，中文仓库路径又被现有 ASCII 保护拒绝；当前状态更新为 `repair_verified_ascii_cache_imports_ready_for_readonly_ocr_20260726`。
 - 下一步是建立/执行真实 ADB 局部识别只读复验，仍禁止任何输入和强化。
+
+#### 真实 ADB 局部识别只读复验任务（2026-07-26）
+- 已创建并完整阅读唯一权威任务说明：[纯视觉真实 ADB 局部识别只读复验任务说明](纯视觉真实ADB局部识别只读复验任务说明.md)。
+- 用户已批准进入下一步；授权仅覆盖一次真实只读 ADB 截图及内存局部模板/PaddleOCR 识别，不覆盖点击、页面导航、强化、选材、资源消耗、底层读取或外部上传。
+- 执行顺序固定为：ASCII 工作区缓存中的 Python 3.9.2 依赖导入闸门 -> 官方 `adb.exe devices -l` 唯一 `device` -> 单次 `exec-out screencap -p` -> 内存 PNG/稳定帧/视口/哈希/区域校验 -> 局部模板/PaddleOCR -> `VisualEvidence`。
+- 结果必须继续标记 `mode=visual_only`、`verification=unverified`；任一依赖、设备、PNG、视口、稳定帧、区域、锚点、OCR 模型或 `0.98` 字段门槛失败都 fail-closed 且禁止自动重试。
+- 任务当前状态：`real_adb_readonly_capture_failed_probe_validator_fail_closed_20260726`；执行模型记录为 `gpt-5.6-terra + high`。
+- 本轮依赖导入和唯一设备发现通过；按单次截图约束调用一次 `exec-out screencap -p`，但内存内容校验回调因探针未定义 `_nonblack` 抛出 `NameError`，链路以 `FrameCaptureError` fail-closed 停止。截图未落盘，未重试，未执行 OCR、模板识别、证据生成或任何游戏操作。
+- 该停止原因是本地只读探针 wiring 错误，不是设备不唯一或 PNG 已证损坏；不能把本轮写成真实页面/装备识别成功。
+- 下一步必须先另行更新任务说明并取得新授权，修复探针内容校验后再进行一次单次真实只读截图；在新证据通过前不进入受控点击任务。
