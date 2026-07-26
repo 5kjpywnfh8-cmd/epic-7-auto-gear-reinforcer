@@ -2854,3 +2854,15 @@ GUI 验收关注点：
 - 匹配阈值固定为 `0.98` 且不可由调用方降低。模板缺失、损坏输入、区域边界与 PNG 尺寸不一致、低分、跨模板并列、同模板多位置并列均 fail-closed；未增加全屏坐标猜测、缩放猜测、自动重试或任何点击行为。
 - 新增合成公开测试，覆盖唯一命中、`set` 回退和 fail-closed 分支，并验证 `VisualAdapterSampler -> AdbLocalRecognitionEvidenceParser -> VisualEvidenceGate` 完整离线链路仍只产生 `mode=visual_only`、`verification=unverified`。定向视觉回归 `52/52`、`py_compile` 与 `git diff --check` 均通过（退出码 `0`）。
 - 未执行真实 MuMu/ADB、截图、OCR、导航、点击、强化、选材、资源消耗、Fribbels/PCAP/TCP 读取或外部上传。匹配器是可注入的局部候选组件，实际证据链仍需后续页面锚点组合；Fribbels 上游资产许可证声明缺失的既有风险仍保留，本地合成测试不构成真实设备校准。当前状态：`offline_local_set_template_matcher_verified_pending_real_readonly_calibration_20260726`；真实单帧校准需另行任务说明并取得单独授权。
+
+#### 纯视觉局部套装模板匹配器真实 ADB 单帧校准任务建立（2026-07-26）
+- 已创建并完整阅读[纯视觉局部套装模板匹配器真实 ADB 单帧校准任务说明](纯视觉局部套装模板匹配器真实ADB单帧校准任务说明.md)，本文件为本轮唯一权威来源；用户已批准进入下一步。
+- 本轮仅允许唯一 `device` 自动发现、一次 `exec-out screencap -p`、内存 PNG 校验、局部模板匹配和一次本地 OCR 解析；不得第二次截图、重试、输入、导航、点击、强化、选材、资源消耗、底层读取或外部上传。
+- 当前状态：`authorized_real_adb_set_template_matcher_single_frame_pending_20260726`；执行模型记录为 `gpt-5.6-terra + high`。
+
+#### 纯视觉局部套装模板匹配器真实 ADB 单帧校准 fail-closed（2026-07-26）
+- 已按[纯视觉局部套装模板匹配器真实 ADB 单帧校准任务说明](纯视觉局部套装模板匹配器真实ADB单帧校准任务说明.md)执行唯一一次真实只读截图：自动发现唯一 `emulator-5554 device`；内存 PNG `1280x720`、`808714` 字节、SHA-256 `105fe23ed7dd4b1b828566eec5f362969cebab0339c152c5c00b3a1e54f0dd5f`；未落盘、未上传、未执行第二次截图。
+- 套装局部 `(819,547)-(1216,619)`、`397x72` 裁剪未产生唯一模板锚点；不得把模板未命中写成套装确认。PaddleOCR 共返回 `35` 行，右侧目标字段均达到 `0.98`，但套装 `HitSet` 置信度 `0.906965`、独立套装局部 `0.905730`，强化局部无 `+0`/`exp0/...`。
+- 解析结果 `accepted=false`，拒绝原因 `low_confidence:set`、`missing:enhance`；结果仍为 `mode=visual_only`、`verification=unverified`、`click_performed=false`。未执行 ADB 输入、导航、点击、强化、选材、资源消耗、底层读取或外部上传。
+- 本轮 PaddleOCR 初始化日志显示模型实际下载到了默认 `C:\Users\orangine\.paddleocr`，未完全命中预期 ASCII 缓存 `D:\VScode\cultivation\e7_ocr_cache`；该缓存路由问题已记录，未重试或删除缓存。离线视觉 `52/52`、OCR `27/27`、`py_compile` 和 `git diff --check` 通过。
+- 当前状态：`real_adb_set_template_matcher_single_frame_fail_closed_20260726`。下一步需另建离线任务评估模板预处理/区域锚点与显式强化等级来源；套装和强化两项均未通过前，不得进入受控点击或自动强化。
