@@ -2665,3 +2665,16 @@ GUI 验收关注点：
 - 当前第一阶段只实现和验证只读 ADB PNG 帧源：先运行 MuMu 官方 `adb.exe devices -l`，只接受自动发现且状态为 `device` 的唯一设备；随后仅使用 `adb exec-out screencap -p` 获取 PNG，并接入既有 `VisualFrame`、`PlatformFrameSource`、`VisualAdapterSampler`、稳定帧、帧哈希、视口、时间戳、局部区域、PaddleOCR 和 `0.98` 字段置信度门槛。
 - ADB 不可用、设备不唯一、命令失败、PNG 损坏、旋转/视口漂移、黑屏、旧帧、区域越界、锚点缺失、低置信度和字段矛盾均必须 fail-closed，禁止自动重试。不得调用 `input tap`、`swipe`、`keyevent`，不得导航、强化、选材、重启游戏或消耗资源；不得使用 Fribbels、PCAP、TCP 载荷、`player_data.json`、底层读取或外部上传。
 - 按用户要求记录实际执行模型为 `gpt-5.6-terra + high`。离线实现已完成：新增 `src/e7_enhance/visual_adb.py` 与 `tests/test_visual_adb.py`，覆盖唯一 `device` 自动发现、只读命令白名单、禁止 `192.168.x.x:5555` 序列号、完整 PNG chunk/CRC、内置像素解码黑屏拒绝、设备身份、旋转/视口漂移、稳定帧和 `VisualAdapterSampler` 全链路；定向 ADB 测试 `6/6`、全部视觉测试 `40/40`、语法检查和 `git diff --check` 均通过。全量测试 `534` 项为 `504` 通过、`7` 失败、`23` 错误，失败均落在缺失私人归档/历史 holdout 或既有研究矩阵/策略清单状态，未读取或恢复归档，不归因于本次 ADB 改动。随后按授权完成一次真实只读预检：官方 MuMu ADB 自动发现唯一 `emulator-5554`（`device`），一次 `exec-out screencap -p` 在内存中通过 PNG/黑屏校验，视口 `1280x720`、字节数 `879645`、帧哈希 `45b852ca53abc3776c54f55a18a11c6da2bb2b981001aa1a604531b0ad43aa97`；未落盘、未 OCR、未输入、未导航、未强化、未选材、未消耗资源、未读取底层数据、未上传。当前状态为 `real_readonly_adb_preflight_passed_pending_post_preflight_commit`：真实局部 OCR、页面识别和受控点击仍未开始。
+
+#### 纯视觉 ADB 局部模板与 PaddleOCR 只读识别阶段建立（2026-07-26）
+- 用户已批准进入下一阶段；本阶段唯一权威任务说明为[纯视觉 ADB 局部模板与 PaddleOCR 只读识别任务说明](纯视觉%20ADB%20局部模板与%20PaddleOCR%20只读识别任务说明.md)。
+- 阶段范围冻结为 ADB `VisualFrame` 的内存局部裁剪、局部模板锚点、PaddleOCR 行解析和 `VisualEvidence` 证据绑定；保持 `mode=visual_only`、`verification=unverified` 和 `0.98` 字段置信度门槛。
+- 本阶段禁止任何 ADB 输入、页面导航、点击、强化、选材、资源消耗、底层读取和外部上传；真实只读识别预检仅在离线实现和定向测试通过后执行一次，截图不落盘。
+- 执行模型记录为 `gpt-5.6-terra + high`；当前状态：`implementation_verified_offline_real_readonly_ocr_blocked_dependencies_20260726`。
+
+#### 纯视觉 ADB 局部模板与 PaddleOCR 只读识别完成（2026-07-26）
+- 新增 `src/e7_enhance/visual_adb_recognition.py` 与 `tests/test_visual_adb_recognition.py`：完成 ADB PNG 内存局部裁剪、模板锚点/Paddle 行源注入、证据 provenance 绑定和 fail-closed 解析；未改变既有 ADB 帧源、视觉状态机、OCR 门槛、正式策略或自动化规则。
+- 离线定向回归 `70/70` 通过，语法检查和 `git diff --check` 通过；执行模型记录为 `gpt-5.6-terra + high`。
+- 按本阶段允许的真实只读预检自动发现唯一 `emulator-5554`，一次截图 `1280x720`、`878846` 字节、PNG/内容校验通过，内存局部裁剪 `1152x533` 通过；未保存、未上传、未输入、未导航、未强化、未选材、未消耗资源、未读取底层数据。
+- 真实 OCR/模板识别未执行：当前环境缺少 `PIL`、`paddleocr`、`paddle`，按 fail-closed 停止。当前结果是“帧源和局部裁剪真实预检通过、OCR 依赖阻断”，不是页面或装备识别成功，也不是服务器确认。
+- 下一步先建立依赖审计/真实局部识别只读复验任务；受控点击仍必须另建任务说明并单独授权。链接：[纯视觉 ADB 局部模板与 PaddleOCR 只读识别任务说明](纯视觉%20ADB%20局部模板与%20PaddleOCR%20只读识别任务说明.md)。
