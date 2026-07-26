@@ -125,6 +125,10 @@ Set-Location 'C:\Users\orangine\Documents\第七史诗强化装备脚本'
 
 ## 失败处理
 
+## 读取器参数同步说明（2026-07-26）
+
+当前 `local_tools\read_mumu.py` 为防止未确认页面时盲目点击，真实读取还必须显式提供大厅、控制界面、目标页面 PNG 模板，以及控制界面入口的 `--entry-tap X_RATIO Y_RATIO`。模板应来自用户当前授权的界面截图；缺少任一项时读取器会在 ADB/抓包前 fail-closed。标准命令中的 `--seconds 240 --auto-enter-seconds 105` 保持不变。
+
 失败时必须保留并报告读取器完整输出，不得只写“读取失败”。至少区分：
 
 | 分类 | 处理 |
