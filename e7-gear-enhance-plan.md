@@ -2594,3 +2594,11 @@ GUI 验收关注点：
 - 已完成 `src/e7_enhance/visual_click.py` 与 `tests/test_visual_click.py`：归一化坐标换算、视口/授权校验、一次性尝试锁定、后端异常未知结果和极大数坐标 fail-closed 均有覆盖。
 - 定向验证 `tests.test_visual_click`、`tests.test_visual_runtime`、`tests.test_visual_sampling` 共 `17/17` 通过；Python 语法检查和 `git diff --check` 通过。仅使用 fake backend，未连接 MuMu/ADB，未采集截图/OCR，未执行真实点击、强化、选材或资源消耗。
 - 执行模型记录为 `gpt-5.6-terra + high`。提交 `2a071f3 feat: add fail-closed visual click executor` 已推送至 `origin/codex/policy-v1-manifest-20260725`；当前状态：`implementation_verified_offline_published_20260726`。真实窗口后端仍需另建任务和明确运行授权。
+
+#### 纯视觉截图与窗口适配层开发任务建立（2026-07-26）
+
+- 用户已批准进入下一步纯视觉适配层开发；独立任务说明为[纯视觉截图与窗口适配层开发任务说明.md](纯视觉截图与窗口适配层开发任务说明.md)。
+- 本阶段只实现 `VisualFrame`、稳定帧收集器、证据解析器 seam 和 callback/file-backed fake 适配，不连接 MuMu/ADB，不采集真实截图/OCR，不执行真实页面点击、强化、选材或资源消耗。
+- 适配层必须校验帧哈希、视口、时间戳和解析结果；任何漂移、异常或未知状态 fail-closed，禁止自动重试；现有单节点状态机和点击器接口保持兼容。
+- 已完成 `src/e7_enhance/visual_adapter.py` 与 `tests/test_visual_adapter.py`：`VisualFrame`、callback/file-backed source、稳定帧收集器、证据解析器 seam 和 `VisualAdapterSampler`；帧哈希、视口、来源、时间戳和证据绑定均有 fail-closed 校验。
+- 定向验证 `tests.test_visual_adapter`、`tests.test_visual_runtime`、`tests.test_visual_click`、`tests.test_visual_sampling` 共 `24/24` 通过；Python 语法检查通过；本轮目标文件的 `git diff --check` 通过。仅使用 callback/file-backed fake，未连接 MuMu/ADB，未采集真实截图/OCR，未执行真实窗口点击、强化、选材或资源消耗。
