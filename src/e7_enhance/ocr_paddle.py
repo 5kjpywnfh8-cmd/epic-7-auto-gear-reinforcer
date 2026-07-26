@@ -10,18 +10,27 @@ from typing import Any
 from .rules import SET_ALIASES, SET_DISPLAY_NAMES
 
 OCR_PADDLE_SCHEMA_VERSION = 1
-BACKPACK_ENHANCE_PANEL = {
-    "left": 0.015625,
-    "top": 0.0972222222,
-    "right": 0.3046875,
-    "bottom": 0.6944444444,
+# The equipment fields live in the selected item's right-hand detail panel,
+# not in the left-hand backpack grid.  These are normalized candidate bounds
+# from the supplied layout reference and require a future read-only frame
+# calibration before they can be treated as a confirmed production layout.
+BACKPACK_DETAIL_PANEL = {
+    "left": 0.60,
+    "top": 0.0805555556,
+    "right": 0.9703125,
+    "bottom": 0.86,
 }
-BACKPACK_SET_NAME = {
-    "left": 0.05078125,
-    "top": 0.5972222222,
-    "right": 0.171875,
-    "bottom": 0.6527777778,
+BACKPACK_DETAIL_SET_NAME = {
+    "left": 0.60,
+    "top": 0.76,
+    "right": 0.9703125,
+    "bottom": 0.86,
 }
+
+# Preserve the previous public constants and helper call sites while making
+# their values point at the corrected detail-panel layout.
+BACKPACK_ENHANCE_PANEL = BACKPACK_DETAIL_PANEL
+BACKPACK_SET_NAME = BACKPACK_DETAIL_SET_NAME
 
 
 class PaddleOcrError(RuntimeError):
@@ -218,21 +227,32 @@ def _configure_cache(cache_root: Path) -> Path:
     return user_profile
 
 
+def _validate_detail_viewport(width: int, height: int) -> None:
+    if not isinstance(width, int) or not isinstance(height, int) or width <= 0 or height <= 0:
+        raise PaddleOcrError("backpack detail viewport is invalid")
+    # The calibrated detail layout is landscape 16:9.  A rotated or materially
+    # drifted viewport would otherwise produce a plausible but wrong crop.
+    if width <= height or abs((width / height) - (16 / 9)) > 0.02:
+        raise PaddleOcrError("backpack detail viewport is not a supported landscape layout")
+
+
 def _crop_bounds(width: int, height: int) -> tuple[int, int, int, int]:
-    left = round(width * BACKPACK_ENHANCE_PANEL["left"])
-    top = round(height * BACKPACK_ENHANCE_PANEL["top"])
-    right = round(width * BACKPACK_ENHANCE_PANEL["right"])
-    bottom = round(height * BACKPACK_ENHANCE_PANEL["bottom"])
+    _validate_detail_viewport(width, height)
+    left = round(width * BACKPACK_DETAIL_PANEL["left"])
+    top = round(height * BACKPACK_DETAIL_PANEL["top"])
+    right = round(width * BACKPACK_DETAIL_PANEL["right"])
+    bottom = round(height * BACKPACK_DETAIL_PANEL["bottom"])
     if not (0 <= left < right <= width and 0 <= top < bottom <= height):
         raise PaddleOcrError("backpack enhancement crop is outside image bounds")
     return left, top, right, bottom
 
 
 def _set_bounds(width: int, height: int) -> tuple[int, int, int, int]:
-    left = round(width * BACKPACK_SET_NAME["left"])
-    top = round(height * BACKPACK_SET_NAME["top"])
-    right = round(width * BACKPACK_SET_NAME["right"])
-    bottom = round(height * BACKPACK_SET_NAME["bottom"])
+    _validate_detail_viewport(width, height)
+    left = round(width * BACKPACK_DETAIL_SET_NAME["left"])
+    top = round(height * BACKPACK_DETAIL_SET_NAME["top"])
+    right = round(width * BACKPACK_DETAIL_SET_NAME["right"])
+    bottom = round(height * BACKPACK_DETAIL_SET_NAME["bottom"])
     if not (0 <= left < right <= width and 0 <= top < bottom <= height):
         raise PaddleOcrError("backpack set-name crop is outside image bounds")
     return left, top, right, bottom
@@ -298,8 +318,8 @@ def recognize_backpack_enhance(image_path: Path, *, cache_root: Path) -> dict[st
             Image.Resampling.LANCZOS,
         )
         crop = ImageEnhance.Contrast(crop).enhance(1.15)
-        left_result = engine.ocr(np.asarray(crop), cls=False)[0] or []
-        result_lines.append(("left_panel", crop.size, left_result))
+        detail_result = engine.ocr(np.asarray(crop), cls=False)[0] or []
+        result_lines.append(("right_detail_panel", crop.size, detail_result))
         set_crop = source.crop(set_bounds).resize(
             (max(1, (set_bounds[2] - set_bounds[0]) * 6), max(1, (set_bounds[3] - set_bounds[1]) * 6)),
             Image.Resampling.LANCZOS,
@@ -334,7 +354,7 @@ def recognize_backpack_enhance(image_path: Path, *, cache_root: Path) -> dict[st
     # The parser accepts a retry only when it confirms the original token and
     # independently clears the unchanged global confidence threshold.
     for index, line in enumerate(list(lines)):
-        if line["region"] != "left_panel" or line["confidence"] >= 0.98:
+        if line["region"] != "right_detail_panel" or line["confidence"] >= 0.98:
             continue
         if _clean_text(line["text"]) not in _STAT_LABELS and _parse_number(line["text"]) is None:
             continue

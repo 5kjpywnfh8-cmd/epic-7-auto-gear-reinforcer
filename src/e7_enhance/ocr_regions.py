@@ -13,13 +13,15 @@ def _region(name: str, left: float, top: float, right: float, bottom: float) -> 
 
 
 DEFAULT_EQUIPMENT_REGIONS = (
-    _region("set", 0.05, 0.04, 0.48, 0.12),
-    _region("slot", 0.52, 0.04, 0.95, 0.12),
-    _region("rank", 0.05, 0.13, 0.35, 0.20),
-    _region("enhance", 0.66, 0.13, 0.95, 0.20),
-    _region("level", 0.05, 0.21, 0.35, 0.28),
-    _region("main", 0.05, 0.29, 0.95, 0.40),
-    _region("substats", 0.05, 0.41, 0.95, 0.78),
+    _region("detail_header_anchor", 0.60, 0.07, 0.97, 0.16),
+    _region("slot", 0.60, 0.08, 0.97, 0.16),
+    _region("rank", 0.60, 0.08, 0.97, 0.16),
+    _region("set", 0.60, 0.76, 0.9703125, 0.86),
+    _region("enhance", 0.60, 0.16, 0.97, 0.25),
+    _region("level", 0.60, 0.16, 0.97, 0.25),
+    _region("main", 0.60, 0.25, 0.97, 0.42),
+    _region("substats", 0.60, 0.42, 0.97, 0.73),
+    _region("detail_score_anchor", 0.60, 0.73, 0.97, 0.82),
 )
 
 

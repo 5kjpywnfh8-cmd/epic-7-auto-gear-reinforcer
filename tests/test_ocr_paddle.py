@@ -5,12 +5,17 @@ import tempfile
 import unittest
 
 from src.e7_enhance.ocr_paddle import (
+    BACKPACK_DETAIL_PANEL,
+    BACKPACK_DETAIL_SET_NAME,
+    BACKPACK_ENHANCE_PANEL,
+    BACKPACK_SET_NAME,
     PaddleOcrError,
     _crop_bounds,
     _configure_cache,
     _set_bounds,
     parse_backpack_enhance_lines,
 )
+from src.e7_enhance.ocr_regions import equipment_regions
 
 
 class OcrPaddleTest(unittest.TestCase):
@@ -26,9 +31,19 @@ class OcrPaddleTest(unittest.TestCase):
             {"text": set_name, "confidence": 0.999}, {"text": "exp0/525", "confidence": 0.999},
         ]
 
-    def test_backpack_crop_is_stable_and_inside_image(self):
-        self.assertEqual(_crop_bounds(1280, 720), (20, 70, 390, 500))
-        self.assertEqual(_set_bounds(1280, 720), (65, 430, 220, 470))
+    def test_right_detail_crop_and_anchor_regions_are_stable_and_inside_image(self):
+        self.assertEqual(_crop_bounds(1280, 720), (768, 58, 1242, 619))
+        self.assertEqual(_set_bounds(1280, 720), (768, 547, 1242, 619))
+        self.assertEqual(BACKPACK_DETAIL_PANEL["left"], 0.60)
+        self.assertEqual(BACKPACK_DETAIL_SET_NAME["bottom"], 0.86)
+        self.assertIs(BACKPACK_ENHANCE_PANEL, BACKPACK_DETAIL_PANEL)
+        self.assertIs(BACKPACK_SET_NAME, BACKPACK_DETAIL_SET_NAME)
+        self.assertEqual(_crop_bounds(1920, 1080), (1152, 87, 1863, 929))
+        self.assertEqual(_set_bounds(1920, 1080), (1152, 821, 1863, 929))
+        with self.assertRaises(PaddleOcrError):
+            _crop_bounds(720, 1280)
+        names = {region["name"] for region in equipment_regions()["regions"]}
+        self.assertTrue({"detail_header_anchor", "detail_score_anchor"}.issubset(names))
 
     def test_cache_path_rejects_non_ascii_windows_path(self):
         with self.assertRaises(PaddleOcrError):

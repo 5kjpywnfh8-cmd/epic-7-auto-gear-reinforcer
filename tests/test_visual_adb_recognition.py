@@ -7,6 +7,7 @@ from src.e7_enhance.visual_adb import parse_png_viewport
 from src.e7_enhance.visual_adb import AdbScreencapBackend
 from src.e7_enhance.visual_adapter import EvidenceParseError, PlatformFrameSource, VisualAdapterSampler, VisualFrame
 from src.e7_enhance.visual_platform import LocalRegion
+from src.e7_enhance.ocr_regions import equipment_regions
 from src.e7_enhance.visual_adb_recognition import (
     AdbLocalRecognitionEvidenceParser,
     InMemoryPngRegionExtractor,
@@ -51,6 +52,23 @@ def frame(payload=None, viewport=(100, 100)):
 
 
 class InMemoryPngRegionExtractorTest(unittest.TestCase):
+    def test_public_fake_raw_frame_audit_crops_right_detail_regions_and_rejects_anchor_bounds(self):
+        definitions = {region["name"]: region["bounds"] for region in equipment_regions()["regions"]}
+        header = definitions["detail_header_anchor"]
+        pixels = tuple(round(header[name] * dimension) for name, dimension in zip(
+            ("left", "top", "right", "bottom"), (1280, 720, 1280, 720)
+        ))
+        region = LocalRegion("detail_header_anchor", header, pixels)
+        raw = png(1280, 720)
+
+        crop = InMemoryPngRegionExtractor().extract(frame(raw, viewport=(1280, 720)), region)
+
+        self.assertEqual(parse_png_viewport(crop), (474, 65))
+        with self.assertRaises(PngRegionRecognitionError):
+            InMemoryPngRegionExtractor().extract(
+                frame(raw, viewport=(1280, 720)), LocalRegion("bad_anchor", {}, (768, 50, 1281, 108))
+            )
+
     def test_crops_png_region_in_memory_with_pixel_bounds(self):
         region = LocalRegion("set", {"left": 0.1, "top": 0.2, "right": 0.4, "bottom": 0.5}, (10, 20, 40, 50))
 
@@ -185,7 +203,9 @@ class AdbLocalRecognitionEvidenceParserTest(unittest.TestCase):
         self.assertTrue(all(score >= 0.98 for score in evidence.target["field_confidence"].values()))
         self.assertEqual(template.calls, 1)
         self.assertEqual(lines.calls, 1)
-        self.assertEqual(set(template.region_names), {"set", "slot", "rank", "enhance", "level", "main", "substats"})
+        self.assertEqual(set(template.region_names), {
+            "detail_header_anchor", "set", "slot", "rank", "enhance", "level", "main", "substats", "detail_score_anchor",
+        })
         self.assertTrue(all(width > 0 and height > 0 for width, height in template.crop_viewports.values()))
         self.assertEqual(transport.calls.count("devices -l"), 3)
 
