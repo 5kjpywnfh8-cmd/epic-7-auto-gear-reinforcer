@@ -2948,3 +2948,14 @@ GUI 验收关注点：
 - 内存区域边界校验通过，但套装模板没有唯一候选；OCR 主要返回“持有点数”“选择套装”，`85` 置信度 `0.797087`，目标字段和强化证据均未形成。解析拒绝：`low_confidence:level`、`missing:enhance`、`unrecognized:gear_score`、`unrecognized:main_and_substats`、`unrecognized:rank_slot`、`unrecognized:set`。
 - 本轮结果固定为 `mode=visual_only`、`verification=unverified`、`click_performed=false`；没有 ADB 输入、导航、点击、强化、选材、资源消耗、底层读取或上传。
 - 当前状态：`real_adb_target_local_calibration_completed_fail_closed_page_mismatch_20260727`。下一步需用户确认 MuMu 已位于目标装备右侧详细信息页，并另建任务说明、重新取得单次只读授权；在此前不得进入点击接线。
+
+#### 纯视觉真实 ADB 目标装备局部校准重试任务建立（2026-07-27）
+
+- 用户说明上次打开了错误界面，已切换到正确页面并要求按原任务再试一次；本轮唯一权威任务说明为[纯视觉真实ADB目标装备局部校准重试任务说明](纯视觉真实ADB目标装备局部校准重试任务说明.md)。
+- 本轮只允许一次官方 `adb.exe devices -l` 自动发现和一次由唯一 `device` 序列号派生的 `exec-out screencap -p`；PNG 只在内存中校验和局部识别，不落盘、不上传。
+- 仍保持 `0.98`、`mode=visual_only`、`verification=unverified`、`click_performed=false` 和 fail-closed；不把单帧校准当作正式稳定采样。
+- 禁止 ADB 输入、导航、点击、强化、选材、资源消耗、底层读取、外部上传、模型下载、第二次截图和自动重试。执行模型：`gpt-5.6-terra + high`。
+- 重试已执行但 fail-closed：唯一 `emulator-5554 device` 通过；唯一 PNG `1280x720`、`791019` 字节、SHA-256 `b0da5db49cdb9ead4d63924210f92fad023a62cb35a567cc2c81e0f59ea03e97`，未落盘、未上传、未重试。
+- 本次确认为装备详细页，但识别到的是另一件速度套武器：`传说武器` `0.995034`、攻击力 `100` `0.998722`、副属性生命 `201`/效果命中 `4%`/效果抗性 `6%`/速度 `4`、装备分数 `27`；套装文字 `速度套装(0/4)` 仅 `0.963903`，模板无唯一候选，强化证据缺失，等级未形成唯一 `85`。
+- 解析拒绝：`low_confidence:set`、`missing:enhance`、`unrecognized:level`；结果保持 `mode=visual_only`、`verification=unverified`、`click_performed=false`，没有任何 ADB 输入或强化相关操作。
+- 当前状态：`real_adb_target_local_calibration_retry_completed_fail_closed_target_mismatch_20260727`。下一步需用户切换到目标命中套红装武器并另建任务说明、重新授权单次只读校准；在此前不得进入点击接线。
