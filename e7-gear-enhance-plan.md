@@ -2633,6 +2633,13 @@ GUI 验收关注点：
 - 主 agent 串行复核验证：视觉适配、运行时、点击器、采样和平台接线定向测试 `32/32` 通过；Python 语法检查和目标文件 `git diff --check` 通过。
 - 仅使用 fake/offline 输入，未连接 MuMu/ADB，未采集真实截图，未运行真实 OCR，未执行任何窗口输入、游戏点击、强化、选材或资源消耗。
 - 具体 Windows 截图驱动实例化、真实只读截图/OCR、页面识别和人工监督单节点验证仍未完成，不能写成真实运行结论。当前状态：`implementation_verified_offline_pending_real_windows_driver`。
+
+#### 纯视觉真实 Windows 只读预检（2026-07-26）
+
+- 用户已确认人工打开背包中的一件装备详情页，并授权进入真实只读预检；独立任务说明为[纯视觉真实 Windows 只读预检任务说明](纯视觉真实 Windows 只读预检任务说明.md)。
+- 本轮仅允许通过 Computer Use 定位已存在的唯一窗口并读取一张内存截图，执行局部页面/装备详情识别；不激活、不点击、不导航、不发送输入，不读取或上传底层数据。
+- 识别仍使用现有 `0.98` 字段门槛，输出必须标记 `mode=visual_only`、`verification=unverified`；截图失败、窗口不唯一、区域/字段不确定时 fail-closed 且禁止自动重试。
+- 执行模型记录为 `gpt-5.6-terra + high`。当前状态：`authorized_readonly_preflight_in_progress`；真实预检结果待记录。
 #### 会话子 agent 自动派发策略说明（2026-07-26，已被后文覆盖）
 - 本节“新会话中默认不自动启动子 agent”及“派发需要当前轮明确授权”的结论已被用户于同日的后续澄清覆盖，仅作历史对照。
 
