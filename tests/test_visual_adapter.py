@@ -12,10 +12,14 @@ from src.e7_enhance.visual_adapter import (
     FrameCaptureError,
     FrameTimestampError,
     FrameViewportDriftError,
+    LazyPlatformFrameSource,
+    PlatformFrameSource,
+    PlatformWindow,
     StableFrameCollector,
     UnstableFrameError,
     VisualAdapterSampler,
     VisualFrame,
+    WindowUnavailableError,
 )
 from src.e7_enhance.visual_runtime import SamplingRequest, VisualEvidence
 
@@ -153,6 +157,98 @@ class OfflineFrameSourceTest(unittest.TestCase):
 
         self.assertEqual(captured.payload, b"recorded-offline-frame")
         self.assertEqual(captured.source, "file:fixture.bin")
+
+
+class FakePlatformBackend:
+    def __init__(
+        self,
+        *,
+        windows=(PlatformWindow("fixture-window", "fake-platform"),),
+        viewport=(1600, 900),
+        payload=b"platform-frame",
+        captured_at="2026-07-26T10:00:00+08:00",
+        error=None,
+    ):
+        self.windows = list(windows)
+        self.viewport = viewport
+        self.payload = payload
+        self.captured_at_value = captured_at
+        self.error = error
+        self.calls = []
+
+    def locate_window(self):
+        self.calls.append("locate_window")
+        if self.error:
+            raise self.error
+        return self.windows.pop(0) if self.windows else None
+
+    def viewport_size(self, window):
+        self.calls.append(("viewport_size", window.identifier))
+        return self.viewport
+
+    def capture_frame(self, window):
+        self.calls.append(("capture_frame", window.identifier))
+        return self.payload
+
+    def captured_at(self):
+        self.calls.append("captured_at")
+        return self.captured_at_value
+
+
+class PlatformFrameSourceTest(unittest.TestCase):
+    def test_platform_backend_is_lazy_until_capture_then_records_window_metadata(self):
+        factory_calls = []
+        backend = FakePlatformBackend()
+        source = LazyPlatformFrameSource(lambda: factory_calls.append("created") or backend)
+
+        self.assertEqual(factory_calls, [])
+        self.assertEqual(backend.calls, [])
+
+        captured = source.capture()
+
+        self.assertEqual(factory_calls, ["created"])
+        self.assertEqual(captured.source, "fake-platform:fixture-window")
+        self.assertEqual(captured.viewport, (1600, 900))
+        self.assertEqual(captured.payload, b"platform-frame")
+        self.assertEqual(backend.calls, [
+            "locate_window",
+            ("viewport_size", "fixture-window"),
+            ("capture_frame", "fixture-window"),
+            "captured_at",
+        ])
+
+    def test_missing_window_backend_exception_bad_payload_and_timestamp_fail_closed(self):
+        with self.assertRaises(WindowUnavailableError):
+            PlatformFrameSource(FakePlatformBackend(windows=())).capture()
+        with self.assertRaises(FrameCaptureError):
+            PlatformFrameSource(FakePlatformBackend(error=OSError("offline failure"))).capture()
+        with self.assertRaises(FrameCaptureError):
+            PlatformFrameSource(FakePlatformBackend(payload="not-bytes")).capture()
+        with self.assertRaises(FrameTimestampError):
+            PlatformFrameSource(FakePlatformBackend(captured_at="invalid")).capture()
+
+    def test_platform_viewport_and_source_drift_are_rejected_by_existing_stability_collector(self):
+        first = PlatformWindow("fixture-window-a", "fake-platform")
+        second = PlatformWindow("fixture-window-b", "fake-platform")
+        source = PlatformFrameSource(FakePlatformBackend(windows=(first, second, first)))
+        with self.assertRaises(UnstableFrameError):
+            StableFrameCollector().collect(source)
+
+        class ViewportDriftBackend(FakePlatformBackend):
+            def __init__(self, **kwargs):
+                super().__init__(**kwargs)
+                self.viewport_reads = 0
+
+            def viewport_size(self, window):
+                self.viewport_reads += 1
+                value = super().viewport_size(window)
+                return (1601, 900) if self.viewport_reads == 2 else value
+
+        repeated_window = PlatformWindow("fixture-window", "fake-platform")
+        with self.assertRaises(FrameViewportDriftError):
+            StableFrameCollector().collect(
+                PlatformFrameSource(ViewportDriftBackend(windows=(repeated_window,) * 3))
+            )
 
 
 class VisualAdapterSamplerTest(unittest.TestCase):

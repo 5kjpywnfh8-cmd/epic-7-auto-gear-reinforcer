@@ -1602,7 +1602,7 @@ GUI 验收关注点：
 - 失败必须报告读取器完整输出，并区分 ADB、Root/tcpdump、空抓包、未抓到同步、Fribbels 解码、加速器导致 UDP 或其他接口流量。外层超时先检查三类输出是否落盘，不得盲目重跑。
 - 当前状态：`reader_migration_documented_ready_for_fresh_read`。本轮仅更新规则并核验新入口存在，尚未使用新入口生成新 `mumu_live/current/player_data.json`；此前 `waiting_for_manual_backpack_navigation_before_capture` 状态已被本节覆盖。
 
-#### 子 agent 续作指令临时禁用（2026-07-21）
+#### 子 agent 续作指令临时禁用（2026-07-21，已被 2026-07-26 内部自动执行规则覆盖部分口径）
 
 - 用户明确要求暂时禁用自动发布子 agent 续作指令；本规则覆盖计划前文“存在明确下一任务时必须自动附带续作指令”的旧要求，旧要求当前仅作历史对照。
 - 禁用期间，即使存在可执行下一步，也只在任务说明与本计划中记录，不在最终回复自动生成 `给子 agent 的续作指令：` 或 `text` 代码块。
@@ -2603,3 +2603,27 @@ GUI 验收关注点：
 - 已完成 `src/e7_enhance/visual_adapter.py` 与 `tests/test_visual_adapter.py`：`VisualFrame`、callback/file-backed source、稳定帧收集器、证据解析器 seam 和 `VisualAdapterSampler`；帧哈希、视口、来源、时间戳和证据绑定均有 fail-closed 校验。
 - 定向验证 `tests.test_visual_adapter`、`tests.test_visual_runtime`、`tests.test_visual_click`、`tests.test_visual_sampling` 共 `24/24` 通过；Python 语法检查通过；本轮目标文件的 `git diff --check` 通过。仅使用 callback/file-backed fake，未连接 MuMu/ADB，未采集真实截图/OCR，未执行真实窗口点击、强化、选材或资源消耗。
 - 执行模型记录为 `gpt-5.6-terra + high`。提交 `a75f5ff feat: add offline visual frame adapters` 已推送至 `origin/codex/policy-v1-manifest-20260725`；当前状态：`implementation_verified_visual_adapter_offline_published_20260726`。真实平台驱动仍需另建任务与运行授权。
+
+#### 纯视觉真实截图与窗口后端接线任务建立（2026-07-26）
+
+- 用户已批准下一步纯视觉接线；已建立独立任务说明：[纯视觉真实截图与窗口后端接线任务说明.md](纯视觉真实截图与窗口后端接线任务说明.md)。
+- 本轮仅实现可注入的平台窗口/截图后端协议及离线 fake 回归，保持真实后端惰性；不连接或控制 MuMu/ADB，不采集真实截图，不运行 OCR，不点击页面，不强化、不选材、不消耗资源。
+- 后端必须复用 `FrameSource`/`VisualAdapterSampler` 的 fail-closed 约束，记录窗口、视口、来源和时间戳；真实平台运行需另行授权。
+- 执行模型记录为 `gpt-5.6-terra + high`。当前状态：`implementation_authorized_pending_terra_high`。
+
+#### 纯视觉真实截图与窗口后端接线离线实现完成（2026-07-26）
+
+- 已完成 [纯视觉真实截图与窗口后端接线任务说明.md](纯视觉真实截图与窗口后端接线任务说明.md) 授权范围内的离线实现：`visual_adapter.py` 新增 `PlatformWindow`、`PlatformWindowBackend`、`PlatformFrameSource` 和 `LazyPlatformFrameSource`。
+- 真实后端保持惰性构造；窗口缺失、后端异常、非字节截图载荷、时间戳异常和既有视口/来源漂移均 fail-closed，未增加自动重试或设备依赖。
+- 主 agent 复核验证：视觉适配、运行时、点击器和采样定向测试 `27/27` 通过；Python 语法检查通过；本轮目标文件 `git diff --check` 通过。
+- 仅使用 offline fake 后端，未连接 MuMu/ADB，未采集真实截图，未运行 OCR，未执行真实窗口输入、游戏点击、强化、选材或资源消耗。
+- 未完成项为真实平台后端实例化、真实截图/OCR、只读页面识别和人工监督单节点验证；这些仍需独立任务和明确运行授权。当前状态：`implementation_verified_offline_pending_real_runtime_authorization`。
+#### 会话子 agent 自动派发策略说明（2026-07-26，已被后文覆盖）
+- 本节“新会话中默认不自动启动子 agent”及“派发需要当前轮明确授权”的结论已被用户于同日的后续澄清覆盖，仅作历史对照。
+
+#### 子 agent 自动执行恢复（2026-07-26）
+- 用户明确恢复内部子 agent 的默认自动执行分工：简单代码实现、测试补充、研究器改动和文档机械同步，按 `AGENTS.md` 的既有分工自动派发；每项实际工作仍须先建立或更新独立的 `*任务说明.md`，并遵守同一文件范围不得由多个子 agent 并行修改等约束。
+- 继续禁止自动生成面向人类的 `给子 agent 的续作指令：` 或 `text` 代码块。只有用户当轮明确要求给出该类指令时，才使用既有固定格式；该限制不影响内部子 agent 的创建、启动、续跑或派发。
+- 旧《子agent续作指令临时禁用规则任务说明.md》关于“不得自动派发”的解释已被本节覆盖，仅保留其聊天交接文本禁用规则。当前权威任务说明：[子agent自动执行恢复规则任务说明.md](子agent自动执行恢复规则任务说明.md)。
+- 验证：规则关键词检索确认内部自动派发与人类交接文本限制已分离；`git diff --check` 通过。
+- 当前状态：`subagent_internal_auto_dispatch_enabled_human_handoff_text_still_opt_in_20260726`；本轮仅更新执行规则文档，不改变现有功能、正式策略或运行时任务范围。

@@ -39,6 +39,10 @@ class FrameTimestampError(VisualAdapterError):
     """Frame metadata has no timezone-aware timestamp."""
 
 
+class WindowUnavailableError(FrameCaptureError):
+    """The injected backend could not uniquely locate its target window."""
+
+
 class EvidenceParseError(VisualAdapterError):
     """Evidence could not be parsed or did not match its stable frame record."""
 
@@ -82,6 +86,36 @@ class FrameSource(Protocol):
     """Injectable source of one frame; implementations remain platform-neutral."""
 
     def capture(self) -> VisualFrame:
+        ...
+
+
+@dataclass(frozen=True)
+class PlatformWindow:
+    """Opaque platform-window identity exposed by an injected backend."""
+
+    identifier: str
+    source: str
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.identifier, str) or not self.identifier.strip():
+            raise WindowUnavailableError("window identifier is required")
+        if not isinstance(self.source, str) or not self.source.strip():
+            raise WindowUnavailableError("window source is required")
+
+
+class PlatformWindowBackend(Protocol):
+    """Platform boundary for future read-only window and frame integrations."""
+
+    def locate_window(self) -> PlatformWindow | None:
+        ...
+
+    def viewport_size(self, window: PlatformWindow) -> tuple[int, int]:
+        ...
+
+    def capture_frame(self, window: PlatformWindow) -> bytes:
+        ...
+
+    def captured_at(self) -> str:
         ...
 
 
@@ -188,6 +222,60 @@ class FileBackedFrameSource:
             viewport=self._viewport,
             captured_at=self._captured_at,
         )
+
+
+class PlatformFrameSource:
+    """Adapt one injected platform backend to the read-only ``FrameSource`` seam."""
+
+    def __init__(self, backend: PlatformWindowBackend) -> None:
+        self._backend = backend
+
+    def capture(self) -> VisualFrame:
+        try:
+            window = self._backend.locate_window()
+        except Exception as exc:
+            raise FrameCaptureError("platform window lookup failed") from exc
+        if window is None:
+            raise WindowUnavailableError("platform window is unavailable")
+        if not isinstance(window, PlatformWindow):
+            raise WindowUnavailableError("platform window identity is invalid")
+        try:
+            viewport = self._backend.viewport_size(window)
+            payload = self._backend.capture_frame(window)
+            captured_at = self._backend.captured_at()
+        except Exception as exc:
+            raise FrameCaptureError("platform frame capture failed") from exc
+        if not isinstance(payload, bytes):
+            raise FrameCaptureError("platform frame payload must be bytes")
+        return VisualFrame.from_bytes(
+            source=f"{window.source}:{window.identifier}",
+            payload=payload,
+            viewport=viewport,
+            captured_at=captured_at,
+        )
+
+
+class LazyPlatformFrameSource:
+    """Delay external backend construction until a caller explicitly captures."""
+
+    def __init__(self, backend_factory: Callable[[], PlatformWindowBackend]) -> None:
+        if not callable(backend_factory):
+            raise TypeError("platform backend factory must be callable")
+        self._backend_factory = backend_factory
+        self._source: PlatformFrameSource | None = None
+        self._factory_attempted = False
+
+    def capture(self) -> VisualFrame:
+        if self._source is None:
+            if self._factory_attempted:
+                raise FrameCaptureError("platform backend construction already failed")
+            self._factory_attempted = True
+            try:
+                backend = self._backend_factory()
+            except Exception as exc:
+                raise FrameCaptureError("platform backend construction failed") from exc
+            self._source = PlatformFrameSource(backend)
+        return self._source.capture()
 
 
 class CallbackEvidenceParser:
