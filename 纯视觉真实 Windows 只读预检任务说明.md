@@ -48,9 +48,16 @@
 - 需要任何窗口输入、页面导航、设备控制、网络上传、底层数据读取、强化、选材或资源操作时立即停止。
 - 无法唯一确认窗口、截图、稳定页面、局部区域、字段置信度或目标指纹时 fail-closed，禁止自动重试。
 
+## 预检结果
+
+- `list_apps()` 返回 MuMu Android 设备窗口唯一候选：`MuMu安卓设备`（窗口 ID `3276970`）；未激活该窗口。
+- 对该已返回窗口调用 `get_window_state({ include_screenshot: true })` 时，Windows 截图后端返回：`SetIsBorderRequired failed: 不支持此接口 (0x80004002)`。
+- 未获得 PNG 截图、视口或时间戳，因此未执行局部模板/OCR、装备指纹绑定或字段判定；没有点击、导航、底层读取、上传或资源操作。
+
 ## 当前状态
 
-`authorized_readonly_preflight_in_progress`
+`real_windows_capture_failed_fail_closed_20260726`
 
 - 执行模型记录：`gpt-5.6-terra + high`。
-- 已完成离线适配层和局部识别接线；本轮尚未执行真实窗口截图。
+- 离线适配层和局部识别接线已验证；真实 Windows 截图驱动实例化因系统捕获接口不支持而失败。
+- 下一步必须另建“Windows 只读截图驱动兼容修复”任务，先实现并离线验证一个不依赖 `SetIsBorderRequired` 的只读捕获后端，再重新取得真实预检授权；在此之前不得继续调用截图、切换窗口或进入强化。

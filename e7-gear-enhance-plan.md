@@ -2639,7 +2639,9 @@ GUI 验收关注点：
 - 用户已确认人工打开背包中的一件装备详情页，并授权进入真实只读预检；独立任务说明为[纯视觉真实 Windows 只读预检任务说明](纯视觉真实 Windows 只读预检任务说明.md)。
 - 本轮仅允许通过 Computer Use 定位已存在的唯一窗口并读取一张内存截图，执行局部页面/装备详情识别；不激活、不点击、不导航、不发送输入，不读取或上传底层数据。
 - 识别仍使用现有 `0.98` 字段门槛，输出必须标记 `mode=visual_only`、`verification=unverified`；截图失败、窗口不唯一、区域/字段不确定时 fail-closed 且禁止自动重试。
-- 执行模型记录为 `gpt-5.6-terra + high`。当前状态：`authorized_readonly_preflight_in_progress`；真实预检结果待记录。
+- `list_apps()` 已唯一返回 MuMu Android 设备窗口 `MuMu安卓设备`（窗口 ID `3276970`）；调用 `get_window_state({ include_screenshot: true })` 时失败，原始错误为 `SetIsBorderRequired failed: 不支持此接口 (0x80004002)`。
+- 因未获得 PNG/视口/时间戳，本轮未执行局部模板/OCR、装备指纹绑定或字段判定；未激活、点击、导航、底层读取、上传或资源操作。当前状态更新为 `real_windows_capture_failed_fail_closed_20260726`。
+- 下一步需另建 Windows 只读截图驱动兼容修复任务，先离线实现并验证不依赖该接口的捕获后端，再重新授权真实预检；不得在当前任务内自动重试或换窗口。
 #### 会话子 agent 自动派发策略说明（2026-07-26，已被后文覆盖）
 - 本节“新会话中默认不自动启动子 agent”及“派发需要当前轮明确授权”的结论已被用户于同日的后续澄清覆盖，仅作历史对照。
 
