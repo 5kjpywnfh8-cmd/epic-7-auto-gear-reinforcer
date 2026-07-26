@@ -2936,3 +2936,15 @@ GUI 验收关注点：
 - 离线验证退出码均为 `0`：定向 OCR/视觉 `37/37`，全部视觉测试 `65/65`，全部 OCR 测试 `30/30`，Python 3.9 `py_compile` 与 `git diff --check` 通过。执行模型：`gpt-5.6-terra + high`。
 - 本轮未执行真实 ADB、截图、PaddleOCR 推理、页面导航、ADB 输入、点击、强化、选材、资源消耗、底层读取、外部上传或模型下载；结果口径继续为 `mode=visual_only`、`verification=unverified`、fail-closed。
 - 未完成项与风险：新 `set_icon`/`set_text` 坐标尚未用新的真实只读帧校准，模板与文字未做自动合并，不能声称真实套装已达到 `0.98`。下一步需另建只读校准任务并重新授权；在此之前不进入 ADB 点击接线或自动强化。
+
+#### 纯视觉真实 ADB 目标装备局部校准任务建立（2026-07-27）
+
+- 用户确认已打开目标红装详细页并授权继续；本轮唯一权威任务说明为[纯视觉真实ADB目标装备局部校准任务说明](纯视觉真实ADB目标装备局部校准任务说明.md)。
+- 本轮只允许一次官方 MuMu `adb.exe devices -l` 自动发现和一次由唯一 `device` 序列号派生的 `exec-out screencap -p`；PNG 只在内存中校验和局部裁剪，不落盘、不上传。
+- 本轮只做单帧校准观测，复用现有红装局部区域、模板/OCR 和 `0.98` 门槛；结果固定为 `mode=visual_only`、`verification=unverified`、`click_performed=false`。不以单帧观测替代正式稳定帧契约。
+- 用户口径“未强化装备不显示 `+0`，只要未满 15 即可强化”已记录为校准观察规则；本轮不把 `+0` OCR 缺失直接推断为 +0，也不修改正式门槛或自动化规则。
+- 禁止 ADB 输入、导航、点击、强化、选材、资源消耗、底层读取、外部上传、第二次截图和自动重试。执行模型记录：`gpt-5.6-terra + high`。
+- 真实校准已执行但 fail-closed：唯一 `emulator-5554 device` 通过；唯一 PNG `1280x720`、`921775` 字节、SHA-256 `36503de6d8d3cb4e97d998d8488497d14b9ce8ad73f6f4e0d9e15f4035b9df94`，未落盘、未上传、未重试。
+- 内存区域边界校验通过，但套装模板没有唯一候选；OCR 主要返回“持有点数”“选择套装”，`85` 置信度 `0.797087`，目标字段和强化证据均未形成。解析拒绝：`low_confidence:level`、`missing:enhance`、`unrecognized:gear_score`、`unrecognized:main_and_substats`、`unrecognized:rank_slot`、`unrecognized:set`。
+- 本轮结果固定为 `mode=visual_only`、`verification=unverified`、`click_performed=false`；没有 ADB 输入、导航、点击、强化、选材、资源消耗、底层读取或上传。
+- 当前状态：`real_adb_target_local_calibration_completed_fail_closed_page_mismatch_20260727`。下一步需用户确认 MuMu 已位于目标装备右侧详细信息页，并另建任务说明、重新取得单次只读授权；在此前不得进入点击接线。
