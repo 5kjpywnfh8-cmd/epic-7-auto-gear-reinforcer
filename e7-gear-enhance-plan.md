@@ -2787,5 +2787,11 @@ GUI 验收关注点：
 - 候选区域在 `1280x720` 为详情 `(768,58)-(1242,619)`、套装 `(768,547)-(1242,619)`，并覆盖 `1920x1080` 归一化回归；竖屏/明显非 16:9 fail-closed。坐标仅由用户布局截图推导，不能表述为真实 ADB 匹配完成。
 - 新增 fake/公开 PNG 原始帧内存裁剪和锚点越界测试。验证：`test_ocr_paddle.py 10/10`、`test_visual_adb_recognition.py 7/7`、全部视觉测试 `52/52`、全部 OCR 测试 `25/25`、语法检查和 `git diff --check` 均通过。
 - 未执行真实 ADB、PaddleOCR、点击或游戏操作。当前状态更新为 `offline_right_detail_crop_candidate_verified_pending_real_raw_frame_calibration_20260726`；下一步需一次新的只读 ADB 原始 PNG 内存审查授权，完成真实区域校准后才可继续。
+
+#### 真实 ADB 原始帧确认右侧详情区域，套装/强化仍 fail-closed（2026-07-26）
+- 用户授权一次新的只读 ADB 原始帧审查；唯一设备 `emulator-5554 device`，单次 PNG `1280x720`、`859020` 字节、哈希 `33af39341a808005be8742c0384a52e9b291b4680fef0c189148bc21ec8e6591`，内存校验通过且未落盘。
+- 新右侧详情候选区成功读取英雄武器、85、攻击力 `100`、暴击率 `5%`、攻击力 `8%`、效果抗性 `8%`、分数 `28`，证明原先左侧裁剪错位是主要根因；结果仍标记 `mode=visual_only`、`verification=unverified`。
+- 严格门槛下仍拒绝：`命中套装(0/2)` 最高置信度 `0.971498`，缺少 `+0`/`exp0/...` 强化证据，原因 `low_confidence:set`、`missing:enhance`。未降低 `0.98`，未推断字段，未执行任何输入或强化。
+- 当前状态更新为 `real_raw_frame_right_detail_confirmed_set_enhance_fail_closed_20260726`。下一步需另建/更新任务说明，针对套装局部裁剪和强化锚点做离线修正，再取得新的单次只读 ADB 复验授权。
 @@
 #### 纯视觉真实ADB模型就绪局部OCR只读复验完成（2026-07-26）
