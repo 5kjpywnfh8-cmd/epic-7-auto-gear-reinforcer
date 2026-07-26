@@ -2618,6 +2618,21 @@ GUI 验收关注点：
 - 主 agent 复核验证：视觉适配、运行时、点击器和采样定向测试 `27/27` 通过；Python 语法检查通过；本轮目标文件 `git diff --check` 通过。
 - 仅使用 offline fake 后端，未连接 MuMu/ADB，未采集真实截图，未运行 OCR，未执行真实窗口输入、游戏点击、强化、选材或资源消耗。
 - 未完成项为真实平台后端实例化、真实截图/OCR、只读页面识别和人工监督单节点验证；这些仍需独立任务和明确运行授权。当前状态：`implementation_verified_offline_pending_real_runtime_authorization`。
+
+#### 纯视觉只读截图与局部识别接入任务建立（2026-07-26）
+
+- 用户已批准下一步纯视觉只读接入；已建立独立任务说明：[纯视觉只读截图与局部识别接入任务说明.md](纯视觉只读截图与局部识别接入任务说明.md)。
+- 本轮范围为可配置、惰性的 Windows 只读截图后端和局部区域识别 seam，复用现有 `PlatformWindowBackend`、`ocr_regions`、`ocr_normalize` 与 `ocr_paddle` 只读接口；不启动或控制游戏，不点击、不强化、不选材、不消耗资源，不读取或上传底层数据。
+- 现有 OCR `0.98` 门槛、新鲜快照契约、正式策略、DP、评分、资源模型、GUI、Holdout 和自动化规则保持不变。
+- 执行模型记录为 `gpt-5.6-terra + high`。当前状态：`implementation_authorized_pending_terra_high`。
+
+#### 纯视觉只读截图与局部识别离线接线完成（2026-07-26）
+
+- 已完成 [纯视觉只读截图与局部识别接入任务说明.md](纯视觉只读截图与局部识别接入任务说明.md) 授权范围内的离线接线：新增 `src/e7_enhance/visual_platform.py`，提供惰性只读 Windows 驱动协议、PNG/窗口失败闸门、局部区域提取、模板识别和 OCR 证据绑定。
+- 证据继续复用现有 `ocr_regions`、`ocr_paddle` 和 `MIN_FIELD_CONFIDENCE=0.98`；目标指纹现在包含套装、部位、品质、强化等级、等级、主属性和副属性，避免仅凭页面锚点误配目标。
+- 主 agent 串行复核验证：视觉适配、运行时、点击器、采样和平台接线定向测试 `32/32` 通过；Python 语法检查和目标文件 `git diff --check` 通过。
+- 仅使用 fake/offline 输入，未连接 MuMu/ADB，未采集真实截图，未运行真实 OCR，未执行任何窗口输入、游戏点击、强化、选材或资源消耗。
+- 具体 Windows 截图驱动实例化、真实只读截图/OCR、页面识别和人工监督单节点验证仍未完成，不能写成真实运行结论。当前状态：`implementation_verified_offline_pending_real_windows_driver`。
 #### 会话子 agent 自动派发策略说明（2026-07-26，已被后文覆盖）
 - 本节“新会话中默认不自动启动子 agent”及“派发需要当前轮明确授权”的结论已被用户于同日的后续澄清覆盖，仅作历史对照。
 
