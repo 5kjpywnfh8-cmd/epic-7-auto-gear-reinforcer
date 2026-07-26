@@ -2765,5 +2765,11 @@ GUI 验收关注点：
 - 自动发现唯一 `emulator-5554 device`；PNG 视口 `1280x720`、`858918` 字节，帧哈希 `5df31a9f02817c90c7e7e636489c338415411c5f65650906fc2c8e29e5b1fef2`，局部裁剪原始 `370x430`、送 OCR `740x860`，均未落盘。该哈希与上一轮混合背包画面完全相同，存在旧帧/页面未更新风险。
 - OCR 返回 `20` 行，仅识别到 `85`（`0.999722`）；缺失套装、部位、强化、主/副属性和分数，原因：`missing:enhance`、`unrecognized:gear_score`、`unrecognized:main_and_substats`、`unrecognized:rank_slot`、`unrecognized:set`。目标指纹比对为 `false`，结果保持 `mode=visual_only`、`verification=unverified`。
 - 当前状态：`target_detail_single_frame_failed_stale_or_wrong_page_fail_closed_20260726`。下一次读取前必须在目标详情页实际刷新后另行更新任务说明并取得新的单次只读授权；受控点击、强化和资源操作仍未授权。
+
+#### 纯视觉目标装备详情页新授权单帧复验仍为旧帧（2026-07-26）
+- 用户确认已刷新到目标装备详情页并再次授权一次只读 ADB 单帧复验；任务说明已补充本次执行记录，结果继续标记 `mode=visual_only`、`verification=unverified`。
+- 自动发现唯一 `emulator-5554 device`；只执行一次 `exec-out screencap -p`，内存 PNG 校验通过，视口 `1280x720`、`858918` 字节，帧哈希 `5df31a9f02817c90c7e7e636489c338415411c5f65650906fc2c8e29e5b1fef2`。
+- 哈希与上一轮旧帧完全相同，按旧帧/页面未更新 fail-closed；本次未调用 OCR，未落盘、未上传、未输入、未导航、未强化、未选材、未消耗资源。此前 `20` 行 OCR 仅属于上一轮记录，不归入本次复验。
+- 当前状态更新为 `target_detail_single_frame_recheck_failed_same_stale_frame_20260726`。在 ADB 返回不同哈希的新鲜详情页帧并完成新的授权前，不进入稳定帧、点击执行器或自动强化。
 @@
 #### 纯视觉真实ADB模型就绪局部OCR只读复验完成（2026-07-26）
