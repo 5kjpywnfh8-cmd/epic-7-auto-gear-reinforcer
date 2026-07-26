@@ -60,12 +60,18 @@
 - Python 语法检查与 `git diff --check` 通过；实际模型记录为 `gpt-5.6-terra + high`。
 - 全量 `python -m unittest discover -s tests`：534 项，504 通过、7 失败、23 错误；失败集中于工作区缺失的私人归档/历史 holdout 文件和既有研究矩阵/策略清单状态，未读取、恢复或修改这些文件，不归因于本任务 ADB 改动。
 
+## 真实只读预检结果
+
+- 按任务说明使用官方 MuMu `C:\Program Files\Netease\MuMu Player 12\shell\adb.exe` 自动发现：设备列表仅有 `emulator-5554`，状态为 `device`，无其他状态设备。
+- 只执行一次 `exec-out screencap -p`；PNG 在内存中完成结构、CRC、像素流和非黑屏校验，结果为视口 `1280x720`、`879645` 字节，帧哈希 `45b852ca53abc3776c54f55a18a11c6da2bb2b981001aa1a604531b0ad43aa97`。
+- 预检未写入截图文件，未运行 OCR、页面导航、ADB 输入、点击、强化、选材、资源消耗、底层读取或外部上传。预检使用固定时钟注入仅用于确定性元数据校验，未将其写成游戏服务器时间。
+
 ## 未完成项与风险
 
-- 尚未执行真实 `adb.exe devices -l` 或 `exec-out screencap -p`；尚未验证当前 MuMu 的真实 PNG 编码、视口和黑屏阈值。
+- 尚未执行真实局部模板/PaddleOCR；当前仅验证真实 PNG 帧源，尚未证明页面锚点、字段识别或装备目标匹配。
 - 尚未接入真实局部模板/PaddleOCR，也未执行任何点击、页面导航、强化、选材或资源操作。
 - 真实预检必须只在内存中读取并校验一帧，不落盘私人截图、不上传数据；任一设备、PNG、视口、黑屏、旧帧、区域或证据条件失败即停止且不重试。
 
 ## 当前状态
 
-`offline_adb_frame_source_verified_pending_real_readonly_preflight`
+`real_readonly_adb_preflight_passed_pending_post_preflight_commit`
