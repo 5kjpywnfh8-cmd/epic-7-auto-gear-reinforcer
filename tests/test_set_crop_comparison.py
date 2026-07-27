@@ -50,8 +50,21 @@ class SetCropComparisonTest(unittest.TestCase):
         bounds = {row["name"]: row["pixel_bounds"] for row in result["candidates"]}
         self.assertEqual(bounds["set_icon_wide_red"], {"left": 870, "top": 536, "right": 930, "bottom": 600})
         self.assertEqual(bounds["set_icon_tight_red"], {"left": 875, "top": 540, "right": 925, "bottom": 596})
+        self.assertEqual(bounds["set_icon_inner_red"], {"left": 880, "top": 545, "right": 920, "bottom": 591})
         self.assertEqual(bounds["set_text_wide_red"], {"left": 916, "top": 540, "right": 1120, "bottom": 600})
         self.assertEqual(bounds["set_text_compact_red"], {"left": 916, "top": 544, "right": 1034, "bottom": 592})
+
+    def test_inner_icon_crop_is_an_explicit_rgba_nearest_neighbor_candidate(self):
+        candidate = next(item for item in set_crop_candidates() if item["name"] == "set_icon_inner_red")
+
+        self.assertEqual(candidate["kind"], "icon")
+        self.assertEqual(candidate["preprocess"], "rgba_nearest_neighbor")
+        self.assertEqual(candidate["bounds"], {
+            "left": 0.6875,
+            "top": 0.7569444444,
+            "right": 0.71875,
+            "bottom": 0.8208333333,
+        })
 
     def test_out_of_bounds_candidate_rejects_before_extracting_any_crop(self):
         candidates = set_crop_candidates()
@@ -69,7 +82,7 @@ class SetCropComparisonTest(unittest.TestCase):
         self.assertFalse(result["accepted"])
         self.assertIn("invalid_candidate:set_icon_wide_red", result["rejection_reasons"])
         self.assertEqual(calls, [])
-        self.assertEqual(len(result["candidates"]), 4)
+        self.assertEqual(len(result["candidates"]), 5)
         self.assertEqual(result["candidates"][0]["pixel_bounds"]["left"], -13)
         self.assertEqual(result["candidates"][0]["rejection_reasons"], ["invalid_candidate_bounds"])
 

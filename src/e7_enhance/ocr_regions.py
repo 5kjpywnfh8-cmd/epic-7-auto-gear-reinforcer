@@ -47,6 +47,12 @@ SET_CROP_CANDIDATES = (
         "preprocess": "rgba_nearest_neighbor",
     },
     {
+        "name": "set_icon_inner_red",
+        "kind": "icon",
+        "bounds": {"left": 0.6875, "top": 0.7569444444, "right": 0.71875, "bottom": 0.8208333333},
+        "preprocess": "rgba_nearest_neighbor",
+    },
+    {
         "name": "set_text_wide_red",
         "kind": "text",
         "bounds": {"left": 0.715625, "top": 0.75, "right": 0.875, "bottom": 0.8333333333},

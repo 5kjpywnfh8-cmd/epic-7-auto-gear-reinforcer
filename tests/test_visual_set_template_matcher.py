@@ -251,6 +251,20 @@ class LocalSetIconTemplateRecognizerTest(unittest.TestCase):
         self.assertEqual(anchors[0]["candidate_id"], "speed")
         self.assertGreaterEqual(anchors[0]["score"], 0.98)
 
+    def test_explicit_inner_red_crop_name_is_accepted_by_the_local_matcher(self):
+        with tempfile.TemporaryDirectory(prefix="e7-set-matcher-") as directory:
+            payload = patterned_png()
+            template = self._template(Path(directory), "speed", payload)
+            recognizer = LocalSetIconTemplateRecognizer(template_loader=lambda: {"speed": template})
+
+            anchors = recognizer.recognize(frame(), {
+                "set_icon_inner_red": sample(payload, name="set_icon_inner_red"),
+            })
+
+        self.assertEqual(len(anchors), 1)
+        self.assertEqual(anchors[0]["candidate_id"], "speed")
+        self.assertGreaterEqual(anchors[0]["score"], 0.98)
+
     def test_invalid_template_png_and_unlisted_candidate_name_fail_closed(self):
         with tempfile.TemporaryDirectory(prefix="e7-set-matcher-") as directory:
             payload = patterned_png()

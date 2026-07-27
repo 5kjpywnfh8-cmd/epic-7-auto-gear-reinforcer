@@ -2993,3 +2993,18 @@ GUI 验收关注点：
 - 速度套文字局部 `(916,544)-(1034,592)` 仅 `0.935075`、`0.940840`，低于 `0.98`；套装图标局部无唯一候选，速度套完整契约仍未通过。完整链仍有 `missing:enhance`，新标注图还出现广域 OCR 被标注文字干扰的 `unrecognized:level/set`。
 - 发现模板匹配实现缺口：26 个真实模板中 17 个在 `IEND` 后有上游附加字节、8 个使用当前严格解码器不支持的 PNG 格式，只有 `weakening` 可解码；`LocalSetIconTemplateRecognizer` 因此在真实 `speed` 模板比较前就返回空候选。该结论是实现诊断，不是套装置信度通过。
 - 当前状态：`offline_visual_level_pass_set_text_low_template_decoder_gap_fail_closed_20260727`。保持 `0.98`、`mode=visual_only`、`verification=unverified`、fail-closed；下一步须另建离线模板解码/套装文字区域修复任务，完成公开回归后再申请真实只读校准。
+
+#### 纯视觉套装图标多方案预处理校准任务建立（2026-07-27，已被后文覆盖，仅历史对照）
+- 用户批准继续进行图标裁切匹配并尝试多种固定方案，随后明确以较早的 `C:\Users\orangine\Downloads\before_page.png` 为主输入；`before_page(1).png` 仅作坐标历史对照。已创建并更新唯一权威任务说明：[纯视觉套装图标多方案预处理校准任务说明](纯视觉套装图标多方案预处理校准任务说明.md)。
+- 本轮仅允许离线内存读取用户 PNG，比较紧裁切、含边框宽裁切、主体内缩裁切和固定最近邻尺度；不得动态搜索、降低 `0.98`、使用绿色人工标注或套装文字反向补齐图标。
+- 禁止 ADB、真实截图、OCR 推理、页面导航、ADB 输入、点击、强化、选材、资源消耗、底层读取、上传和模型下载；结果继续标记 `mode=visual_only`、`verification=unverified`、fail-closed。
+- 当前状态：`offline_visual_set_icon_multi_crop_all_below_threshold_fail_closed_20260727`；执行模型为 `gpt-5.6-terra + high`。主输入 `before_page.png` 仅在内存读取，PNG/视口完整性校验为 `1280x720`；`before_page(1).png` 仅作坐标历史对照，未参与本轮置信度结论。
+- 已新增固定主体内缩候选 `set_icon_inner_red`，与既有含边框宽裁切、紧裁切一起在同一输入帧比较本地 Fribbels 模板；全部候选唯一但最高为 `0.792352 < 0.98`，因此未返回图标锚点或正式套装字段，继续保持 `mode=visual_only`、`verification=unverified`、`click_performed=false` 与 fail-closed。未执行 OCR、未读取文字、绿色人工标注或剪贴板，未执行 ADB、点击、强化、联网或上传。
+- 公开验证：多裁切 `5/5`、套装模板 matcher `14/14`、相邻内存 PNG 裁切 `8/8`、相邻模板资产 `5/5` 均通过；Python 3.9 AST 语法检查（4 文件）和 `git diff --check` 均退出 `0`（后者仅提示既有 CRLF 转换）。报告：[reports/visual_set_icon_multi_crop_preprocess_20260727.md](reports/visual_set_icon_multi_crop_preprocess_20260727.md)。风险与下一步：本地模板分数不足，任何真实只读校准、模板资产变更或点击接线必须另建任务说明并获得明确授权。
+
+#### 用户指定未标注原图重新进行套装图标多裁切匹配（2026-07-27，已完成）
+- 用户指出前一轮使用的是带标注下载图，并明确指定 `manual_acceptance/single_item_confirmation/operation_013_plus3_20260724_112042/before_page.png` 作为原始详情图；该输入替换前一轮主输入，任务说明已先行更新。
+- 本轮仅允许对该单一 PNG 执行现有宽、紧、主体内缩三种固定图标裁切和本地模板匹配；不读取其它归档，不执行 OCR、ADB、点击、强化、选材、资源消耗或上传。
+- 当前状态：`authorized_visual_set_icon_multi_crop_raw_input_pending_20260727`；执行模型仍为 `gpt-5.6-terra + high`，阈值、唯一性、`mode=visual_only`、`verification=unverified` 和 fail-closed 不变。该 pending 状态已被本节后续结果覆盖。
+- 未标注原图已完成只读内存比较：正式尺度下三种裁切最高仅 `0.805320`，且最佳模板并非正确的 `speed`。有限固定尺度对照中 `0.75` 在宽、紧、内缩三种裁切上均唯一、正确选出 `speed @ 0.862984`，但仍低于 `0.98`；该尺度未写入生产常量。
+- 当前状态更新为 `offline_visual_set_icon_raw_multi_crop_speed_identified_below_threshold_fail_closed_20260727`。没有图标锚点或正式套装字段，继续 `mode=visual_only`、`verification=unverified`、`click_performed=false` 与 fail-closed。结论：裁切/尺度可以修正候选身份，但现有 Fribbels 与游戏内渲染差异仍阻止 `0.98`；后续需独立评估游戏内模板或前景/边缘特征，未经新任务说明和授权不得进入真实 ADB 或点击。

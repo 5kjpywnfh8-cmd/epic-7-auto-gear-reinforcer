@@ -26,6 +26,7 @@ SET_ICON_CANDIDATE_REGION_NAMES = (
     "set_icon_3",
     "set_icon_wide_red",
     "set_icon_tight_red",
+    "set_icon_inner_red",
 )
 # The nearest-neighbor scale set is intentionally small and fixed.  It permits
 # only deterministic icon-size drift; interpolation, rotation, and crop
