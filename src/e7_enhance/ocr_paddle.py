@@ -26,10 +26,10 @@ BACKPACK_DETAIL_SET_NAME = {
     "bottom": 0.86,
 }
 BACKPACK_DETAIL_SET_TEXT = {
-    "left": 0.703125,
-    "top": 0.7638888889,
+    "left": 0.715625,
+    "top": 0.75,
     "right": 0.875,
-    "bottom": 0.8555555556,
+    "bottom": 0.8333333333,
 }
 BACKPACK_DETAIL_ENHANCE_EVIDENCE = {
     "left": 0.63984375,

@@ -39,22 +39,26 @@ class OcrPaddleTest(unittest.TestCase):
     def test_right_detail_crop_and_anchor_regions_are_stable_and_inside_image(self):
         self.assertEqual(_crop_bounds(1280, 720), (768, 58, 1242, 619))
         self.assertEqual(_set_bounds(1280, 720), (819, 547, 1216, 619))
-        self.assertEqual(_set_text_bounds(1280, 720), (900, 550, 1120, 616))
+        self.assertEqual(_set_text_bounds(1280, 720), (916, 540, 1120, 600))
         self.assertEqual(_enhance_bounds(1280, 720), (819, 115, 1216, 180))
         self.assertEqual(BACKPACK_DETAIL_PANEL["left"], 0.60)
         self.assertEqual(BACKPACK_DETAIL_SET_NAME["bottom"], 0.86)
-        self.assertEqual(BACKPACK_DETAIL_SET_TEXT["left"], 0.703125)
+        self.assertEqual(BACKPACK_DETAIL_SET_TEXT["left"], 0.715625)
         self.assertEqual(BACKPACK_DETAIL_ENHANCE_EVIDENCE["top"], 0.16)
         self.assertIs(BACKPACK_ENHANCE_PANEL, BACKPACK_DETAIL_PANEL)
         self.assertIs(BACKPACK_SET_NAME, BACKPACK_DETAIL_SET_NAME)
         self.assertEqual(_crop_bounds(1920, 1080), (1152, 87, 1863, 929))
         self.assertEqual(_set_bounds(1920, 1080), (1228, 821, 1824, 929))
-        self.assertEqual(_set_text_bounds(1920, 1080), (1350, 825, 1680, 924))
+        self.assertEqual(_set_text_bounds(1920, 1080), (1374, 810, 1680, 900))
         self.assertEqual(_enhance_bounds(1920, 1080), (1228, 173, 1824, 270))
         with self.assertRaises(PaddleOcrError):
             _crop_bounds(720, 1280)
         names = {region["name"] for region in equipment_regions()["regions"]}
         self.assertTrue({"detail_header_anchor", "set_anchor", "set_icon", "set_text", "enhance_anchor", "detail_score_anchor"}.issubset(names))
+        self.assertEqual(
+            next(region for region in equipment_regions()["regions"] if region["name"] == "set_text")["bounds"],
+            {"left": 0.715625, "top": 0.75, "right": 0.875, "bottom": 0.8333333333},
+        )
 
     def test_set_text_local_crop_is_auditable_and_rejects_unapproved_regions(self):
         lines = self._base_lines()

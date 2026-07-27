@@ -21,7 +21,7 @@ DEFAULT_EQUIPMENT_REGIONS = (
     # These are independent candidate crops.  The icon is template evidence;
     # the text crop is the only local PaddleOCR entry for the set field.
     _region("set_icon", 0.63984375, 0.7638888889, 0.703125, 0.8555555556),
-    _region("set_text", 0.703125, 0.7638888889, 0.875, 0.8555555556),
+    _region("set_text", 0.715625, 0.75, 0.875, 0.8333333333),
     _region("enhance", 0.63984375, 0.16, 0.95, 0.25),
     _region("enhance_anchor", 0.63984375, 0.16, 0.95, 0.25),
     _region("level", 0.60, 0.16, 0.97, 0.25),

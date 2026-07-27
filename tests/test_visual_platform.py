@@ -279,5 +279,69 @@ class LocalRecognitionEvidenceParserTest(unittest.TestCase):
         self.assertEqual(evidence.stability["sample_count"], 3)
 
 
+class SetEvidenceChannelTest(unittest.TestCase):
+    def _parser(self, *, text=None, icon=None, text_confidence=0.999, text_error=None):
+        def scalar(value, confidence=0.999):
+            return {"normalized": value, "confidence": confidence, "accepted": confidence >= 0.98}
+
+        fields = {
+            "rank": scalar("Epic"),
+            "slot": scalar("Weapon"),
+            "level": scalar(85),
+            "enhance": scalar(0),
+            "mainStat": {"type": scalar("Attack"), "value": scalar(100.0)},
+            "substats": [{"type": scalar("Speed"), "value": scalar(2.0)}],
+        }
+        if text is not None:
+            fields["set"] = scalar(text, text_confidence)
+        anchors = [
+            {"name": "back_arrow", "score": 0.99, "threshold": 0.98, "bright_ratio": 0.2},
+            {"name": "help_icon", "score": 0.99, "threshold": 0.98, "bright_ratio": 0.2},
+        ]
+        if icon is not None:
+            anchors.append({
+                "name": f"set_icon:{icon}", "candidate_id": icon,
+                "score": 0.999, "threshold": 0.98, "bright_ratio": 0.2,
+            })
+
+        class TemplateRecognizer:
+            def recognize(self, frame_value, regions):
+                return anchors
+
+        class OcrRecognizer:
+            def recognize(self, frame_value, regions):
+                reasons = [text_error] if text_error else []
+                return {"fields": fields, "accepted": not reasons, "rejection_reasons": reasons}
+
+        return LocalRecognitionEvidenceParser(
+            CallbackRegionExtractor(lambda frame_value, region: b"crop:" + region.name.encode("ascii")),
+            TemplateRecognizer(),
+            OcrRecognizer(),
+        )
+
+    def _parse(self, **kwargs):
+        return self._parser(**kwargs).parse(
+            SamplingRequest("operation-001", "pre_action", 0),
+            StableFrames((frame(), frame(), frame())),
+        )
+
+    def test_set_text_or_icon_can_independently_supply_the_set_field(self):
+        text_only = self._parse(text="SpeedSet")
+        icon_only = self._parse(icon="speed", text_error="low_confidence:set")
+        both = self._parse(text="SpeedSet", icon="speed")
+
+        for evidence in (text_only, icon_only, both):
+            self.assertEqual(evidence.target["visible_fields"]["set"], "SpeedSet")
+            self.assertGreaterEqual(evidence.target["field_confidence"]["set"], 0.98)
+
+    def test_set_channel_conflicts_and_below_threshold_evidence_fail_closed(self):
+        with self.assertRaisesRegex(LocalRecognitionError, "conflicting:set"):
+            self._parse(text="InjurySet", icon="speed")
+        with self.assertRaisesRegex(LocalRecognitionError, "unrecognized:set"):
+            self._parse(text="SpeedSet", text_confidence=0.979, text_error="low_confidence:set")
+        with self.assertRaisesRegex(LocalRecognitionError, "unrecognized:set"):
+            self._parse(icon="unknown", text_error="low_confidence:set")
+
+
 if __name__ == "__main__":
     unittest.main()

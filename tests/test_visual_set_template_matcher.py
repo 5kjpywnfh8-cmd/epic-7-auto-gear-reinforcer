@@ -340,7 +340,7 @@ class LocalSetIconTemplateMatcherPipelineTest(unittest.TestCase):
     def test_full_offline_pipeline_preserves_visual_only_unverified_contract(self):
         with tempfile.TemporaryDirectory(prefix="e7-set-matcher-") as directory:
             template_payload = patterned_png()
-            template = LocalSetIconTemplateRecognizerTest()._template(Path(directory), "hit", template_payload)
+            template = LocalSetIconTemplateRecognizerTest()._template(Path(directory), "speed", template_payload)
             pixels = bytearray(bytes((1, 1, 1)) * 16 * 12)
             icon = patterned_pixels(8, 8)
             for row in range(8):
@@ -351,7 +351,7 @@ class LocalSetIconTemplateMatcherPipelineTest(unittest.TestCase):
                 viewport=(16, 12),
                 captured_at="2026-07-26T10:00:00+08:00",
             )
-            matcher = LocalSetIconTemplateRecognizer(template_loader=lambda: {"hit": template})
+            matcher = LocalSetIconTemplateRecognizer(template_loader=lambda: {"speed": template})
             manifest = {
                 "schema_version": 1,
                 "template": "offline_fixture",

@@ -15,12 +15,16 @@ from typing import Any, Callable, Mapping, Protocol, Sequence
 from .ocr_normalize import MIN_FIELD_CONFIDENCE
 from .ocr_paddle import parse_backpack_enhance_lines
 from .ocr_regions import equipment_regions, validate_regions
+from .rules import SET_DISPLAY_NAMES
 from .visual_adapter import PlatformWindow, StableFrames, VisualFrame
 from .visual_runtime import SamplingRequest, VisualEvidence
 
 
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 REQUIRED_VISIBLE_FIELDS = ("set", "slot", "rank", "enhance", "level", "mainStat", "substats")
+# These identifiers are the audited local Fribbels icon asset IDs, not OCR
+# aliases.  Adding one requires an explicit review of the asset semantics.
+SET_ICON_ASSET_SET_CODES = {"speed": "set_speed"}
 
 
 class VisualPlatformError(RuntimeError):
@@ -355,7 +359,7 @@ class LocalRecognitionEvidenceParser:
         regions = _resolve_regions(frame.viewport, manifest)
         samples = self._extract_regions(frame, regions)
         anchors = self._recognize_templates(frame, samples)
-        visible_fields, confidence = self._recognize_fields(frame, samples)
+        visible_fields, confidence = self._recognize_fields(frame, samples, anchors)
         fingerprint = _fingerprint(samples, visible_fields)
         sample_id = sha256(
             f"{request.operation_id}|{request.phase}|{request.expected_node}|{frame.frame_hash}".encode("utf-8")
@@ -458,13 +462,24 @@ class LocalRecognitionEvidenceParser:
         return accepted
 
     def _recognize_fields(
-        self, frame: VisualFrame, regions: Mapping[str, RegionSample]
+        self,
+        frame: VisualFrame,
+        regions: Mapping[str, RegionSample],
+        anchors: Sequence[Mapping[str, Any]],
     ) -> tuple[dict[str, Any], dict[str, float]]:
         try:
             parsed = self._ocr_recognizer.recognize(frame, regions)
         except Exception as exc:
             raise LocalRecognitionError("local OCR recognition failed") from exc
-        if not isinstance(parsed, Mapping) or parsed.get("accepted") is not True:
+        if not isinstance(parsed, Mapping):
+            raise LocalRecognitionError("local OCR result is rejected")
+        rejection_reasons = parsed.get("rejection_reasons")
+        if not isinstance(rejection_reasons, list) or any(not isinstance(reason, str) for reason in rejection_reasons):
+            raise LocalRecognitionError("local OCR result is rejected")
+        if "conflicting:set" in rejection_reasons:
+            raise LocalRecognitionError("conflicting:set")
+        non_set_rejections = [reason for reason in rejection_reasons if not _set_rejection(reason)]
+        if non_set_rejections or (parsed.get("accepted") is not True and not rejection_reasons):
             raise LocalRecognitionError("local OCR result is rejected")
         fields = parsed.get("fields")
         if not isinstance(fields, Mapping):
@@ -472,12 +487,19 @@ class LocalRecognitionEvidenceParser:
         visible: dict[str, Any] = {}
         confidence: dict[str, float] = {}
         for name in REQUIRED_VISIBLE_FIELDS:
+            if name == "set":
+                continue
             value = fields.get(name)
             normalized, score = _normalized_field(value, name)
             if normalized is None or not _number(score) or score < MIN_FIELD_CONFIDENCE:
                 raise LocalRecognitionError(f"local OCR confidence is below threshold:{name}")
             visible[name] = normalized
             confidence[name] = float(score)
+        set_value, set_confidence, set_error = _set_field(fields.get("set"), anchors)
+        if set_error is not None:
+            raise LocalRecognitionError(set_error)
+        visible["set"] = set_value
+        confidence["set"] = set_confidence
         return visible, confidence
 
 
@@ -554,6 +576,42 @@ def _accepted_stat_part(value: object) -> bool:
         and _number(value.get("confidence"))
         and float(value["confidence"]) >= MIN_FIELD_CONFIDENCE
     )
+
+
+def _set_rejection(reason: str) -> bool:
+    return reason in {"conflicting:set", "unrecognized:set", "low_confidence:set"}
+
+
+def _set_field(
+    text_field: object, anchors: Sequence[Mapping[str, Any]]
+) -> tuple[str | None, float | None, str | None]:
+    text_value, text_confidence = _normalized_field(text_field, "set")
+    text = (str(text_value), float(text_confidence)) if isinstance(text_value, str) and _number(text_confidence) and text_confidence >= MIN_FIELD_CONFIDENCE else None
+
+    icon_candidates = []
+    for anchor in anchors:
+        if not isinstance(anchor, Mapping) or not str(anchor.get("name") or "").startswith("set_icon:"):
+            continue
+        candidate_id = anchor.get("candidate_id")
+        score = anchor.get("score")
+        set_code = SET_ICON_ASSET_SET_CODES.get(candidate_id) if isinstance(candidate_id, str) else None
+        normalized = SET_DISPLAY_NAMES.get(set_code) if set_code else None
+        if normalized is None or not _number(score) or float(score) < MIN_FIELD_CONFIDENCE:
+            return None, None, "unrecognized:set"
+        icon_candidates.append((normalized, float(score)))
+
+    if len(icon_candidates) > 1:
+        return None, None, "conflicting:set"
+    icon = icon_candidates[0] if icon_candidates else None
+    if text is not None and icon is not None and text[0] != icon[0]:
+        return None, None, "conflicting:set"
+    if text is not None and icon is not None:
+        return text[0], max(text[1], icon[1]), None
+    if text is not None:
+        return text[0], text[1], None
+    if icon is not None:
+        return icon[0], icon[1], None
+    return None, None, "unrecognized:set"
 
 
 def _utc_timestamp() -> str:

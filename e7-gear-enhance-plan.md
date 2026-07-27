@@ -3008,3 +3008,12 @@ GUI 验收关注点：
 - 当前状态：`authorized_visual_set_icon_multi_crop_raw_input_pending_20260727`；执行模型仍为 `gpt-5.6-terra + high`，阈值、唯一性、`mode=visual_only`、`verification=unverified` 和 fail-closed 不变。该 pending 状态已被本节后续结果覆盖。
 - 未标注原图已完成只读内存比较：正式尺度下三种裁切最高仅 `0.805320`，且最佳模板并非正确的 `speed`。有限固定尺度对照中 `0.75` 在宽、紧、内缩三种裁切上均唯一、正确选出 `speed @ 0.862984`，但仍低于 `0.98`；该尺度未写入生产常量。
 - 当前状态更新为 `offline_visual_set_icon_raw_multi_crop_speed_identified_below_threshold_fail_closed_20260727`。没有图标锚点或正式套装字段，继续 `mode=visual_only`、`verification=unverified`、`click_performed=false` 与 fail-closed。结论：裁切/尺度可以修正候选身份，但现有 Fribbels 与游戏内渲染差异仍阻止 `0.98`；后续需独立评估游戏内模板或前景/边缘特征，未经新任务说明和授权不得进入真实 ADB 或点击。
+
+#### 纯视觉套装单通道宽文字证据接线任务建立（2026-07-27）
+
+- 用户明确更新套装证据契约：套装图标模板或局部文字 OCR 任一通道在当前稳定帧内唯一达到 `0.98` 即可形成套装视觉字段；此前要求图标与文字双通道同时通过的口径已被本记录覆盖。两个通道都通过但标准化值不一致时仍必须 `conflicting:set` 并 fail-closed。
+- 当前唯一权威任务说明为[纯视觉套装单通道宽文字证据接线任务说明](纯视觉套装单通道宽文字证据接线任务说明.md)。本轮只允许最小离线实现和公开/合成测试，不执行 ADB、真实截图、真实 OCR 推理、页面导航、输入、点击、强化、选材、资源消耗、底层读取、联网、上传或模型下载。
+- 用户选择已在未标注原图上实测通过的宽文字裁切 `(916,540)-(1120,600)`，其 `速度套装(0/4) @ 0.981642`；紧裁切 `0.961027` 和现有 Fribbels 图标匹配均不通过，不能作为放宽门槛的理由。
+- 当前状态：`task_completed_visual_set_single_channel_wide_text_asset_id_mapping_20260727`。用户偏好 `gpt-5.6-luna + max`，但当前协作接口无 Luna，按项目回退规则实际执行使用 `gpt-5.6-terra + high`。默认 `set_text` 与 PaddleOCR 局部裁切已固定为 `(916,540)-(1120,600)`；文字或图标任一唯一、可标准化且 `>=0.98` 的通道可提供套装字段，双通道不一致、图标多候选或无法标准化继续以 `conflicting:set` / `unrecognized:set` fail-closed，`mode=visual_only` 与 `verification=unverified` 不变。真实 Fribbels 资产 ID 已按显式受控映射 `speed -> set_speed -> SpeedSet` 接线；未知或未审定的资产 ID 不推断、继续拒绝。
+- 验证已完成：公开/合成 `test_ocr_paddle.py`（15）、`test_visual_platform.py`（9）、`test_visual_set_template_matcher.py`（14）和 `test_set_crop_comparison.py`（5）均通过，覆盖 `speed` 图标单通道、双通道一致/冲突、低于 `0.98` 及未知资产 ID 拒绝；Python 3.9 `py_compile` 与 `git diff --check` 退出 `0`。本轮未执行 ADB、真实截图或 OCR、页面交互、资源消耗、底层读取、联网或上传。
+- 剩余风险与下一步：尚未授权真实帧校准或真实 OCR 复验，离线结果不构成自动化强化授权；除 `speed` 外的 Fribbels 资产 ID 尚未在本任务完成语义审定，继续 fail-closed。需要真实环境验证或扩展资产映射时，先建立独立任务说明并取得明确授权。
