@@ -1,0 +1,18 @@
+{
+  "step": "5-6",
+  "device": "emulator-5554",
+  "button": "enhance_button",
+  "target_pixels": [
+    1153,
+    676
+  ],
+  "click_sent": true,
+  "last_click": {
+    "x": 1152,
+    "y": 675,
+    "viewport": [
+      1280,
+      720
+    ]
+  }
+}

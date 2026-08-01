@@ -86,3 +86,52 @@
 ## 当前状态
 
 `offline_list_assets_wired_fail_closed_waiting_reliable_semantics_and_full_card_templates_20260801`
+
+## 合并收口后新会话交接记录（2026-08-01）
+
+- 会话 `019fa96f-...` 的视觉列表页产物已并入当前工作区并提交（commit `265785b`，79 个文件：7 源码、8 测试、31 资产、10 报告、22 任务说明、`CLAUDE.md`）。详见[合并收口任务说明](纯视觉列表页会话产物合并收口任务说明.md)。
+- 项目根已建立 `CLAUDE.md`（AGENTS.md 全文镜像），新 CC 会话启动即自动加载完整项目规则；AGENTS.md 为权威源，改动必须同步两处。
+- 本轮由新 Claude Code 会话继续执行本文档：在既有离线基础上推进，目标是补齐并审定攻击%、暴击率%、效果抗性的可靠字段语义映射，以及完整的整卡视觉指纹模板，并将生产 OCR/模板 reader 工厂接线至 `build_production_list_page_pipeline`。
+- 未完成任务不改变：真实三帧只读校准、点击装备进入强化界面均未授权、未执行，须另建任务说明并重新取得一次性只读授权。
+- 交接指令由用户手动复制到新会话；本文档为唯一权威来源，聊天内容不能替代或扩大范围。
+
+## 离线证据复核与生产装配接线回归（2026-08-01）
+
+- 本轮对既有离线参考资产做了证据复核，结论仍为证据不足，`field_mapping_manifest.json` 与 `card_fingerprint_manifest.json` 保持 `incomplete`/`missing`，生产入口维持 fail-closed：
+  - 本地 PaddleOCR 引擎（`D:\VScode\cultivation\e7_ocr_cache`，PP-OCRv4）离线 OCR 目标卡片 crop 只读到数值 token（`85`/`160`/`13%`/`3%`/`2`/`8%`/`37`），属性类型靠图标视觉识别，目标卡片上攻击%、暴击率%、效果抗性% 三个图标的可靠语义参考仍缺失；详情面板 OCR 文字证据（攻击力 `13%`、暴击率 `3%`、效果抗性 `8%`）只确认详情页版式字段语义，不能替代列表卡片图标语义。
+  - 整卡指纹模板只能来自历史 `reference_only` crop，任务明确禁止把历史截图或参考 crop 当作生产模板；故 `card_fingerprint_manifest.json` 继续 `missing`。
+- 补齐 `build_production_list_page_pipeline_from_assets` 的回归测试（此前零覆盖）：完整 fixture 双 manifest 正常装配并 parse、仓库 manifest 在 frame capture 前 fail-closed、缺必需字段 fail-closed、低置信度 OCR fail-closed、字段冲突 fail-closed、模板哈希不匹配 fail-closed、视口漂移 fail-closed。
+- 改进 `visual_list_production.py`：在 `build_production_list_page_pipeline_from_assets` 中对整卡模板 bundle 做**急切校验**（`load_card_fingerprint_templates`），使哈希/视口/阈值缺陷以原始审计细节透传，而不是被通用 `reader construction failed` 掩盖。
+- 验证：`test_visual*.py` `126/126`（原 117 + 新增 9）、Python 3.9 `py_compile` 退出码 `0`、`git diff --check` 退出码 `0`（仅既有 LF/CRLF 警告）。
+- 本轮未连接 ADB、未读取真实帧、未运行实时 OCR、未输入、未点击、未导航、未强化、未选材、未确认、未消耗资源、未联网、未上传或下载模型。实际执行模型为 `gpt-5.6-terra + high`（用户偏好 `gpt-5.6-luna + max` 当前接口不可用）。
+- 停止条件不变：缺字段语义、模板来源或校验值时保持 fail-closed。当前状态：`offline_evidence_reviewed_production_assembly_wired_fail_closed_waiting_reliable_semantics_and_full_card_templates_20260801`。下一步只能先取得可靠字段语义与整卡模板，再另建任务说明并重新取得一次性只读授权。
+
+## 主 agent 审阅通过（2026-08-01）
+
+- 主 agent 已只读审阅本轮代码改动、9 个资产装配回归和[离线证据复核与装配接线回归报告](reports/visual_list_assets_evidence_and_assembly_regression_20260801.md)，确认：
+  - 两个 manifest 继续 `incomplete`/`missing`，生产入口 frame capture 前 fail-closed，`0.98` 门槛未降低，无默认模板或人工通过结果。
+  - 生产装配接线契约正确：OCR reader 工厂由调用方显式注入、字段映射作审计 gate、模板 reader 由 asset bundle 构造、缺陷原始细节透传。
+  - 五类回归（正常/低置信度/字段冲突/模板缺失/视口漂移）覆盖并通过；未发现以历史截图、参考 crop 或测试 fixture 冒充生产证据。
+- 上条 `offline_evidence_reviewed_production_assembly_wired_fail_closed_waiting_reliable_semantics_and_full_card_templates_20260801` 已被本记录覆盖为 `offline_evidence_reviewed_and_assembly_wired_main_reviewed_20260801`。
+- 真实列表页仍不可用；下一步必须取得可靠攻击%、暴击率%、效果抗性图标语义与完整整卡指纹模板，再另建任务说明并重新取得一次性只读授权（仍不包含点击或导航）。
+
+## 真实整卡采集与图标语义复核（2026-08-01）
+
+- 用户授权真实三帧只读采集后执行：官方 MuMu ADB 发现唯一 `emulator-5554`，三次 `exec-out screencap -p` 均为 `1280x720`；目标卡片区域与右侧详情面板区域三帧像素完全一致，页面稳定。
+- 详情面板 OCR 高置信确认目标装备真值（`传说武器`/`攻击力 160`/`攻击力 13%`/`暴击率 3%`/`速度 2`/`效果抗性 8%`/`装备分数 37`/`生命值套装`/`85`/`+3`）；列表卡片副属性数值顺序（13%/3%/2/8%）与详情面板文字标签完全对齐，确认为同一件选中装备。
+- 提取三帧一致的整卡 crop（170x117）保存为 `assets/visual/list_reference/capture_20260801/target_card_full_20260801.png`（`reference_only`）。
+- 复核结论：字段语义与整卡指纹两项阻断仍成立，两个 manifest 继续 `incomplete`/`missing`：
+  - 列表卡片图标（约 9-16px）与详情面板图标模板匹配分数低于 `0.98`（NCC/IoU 约 0.05-0.62），不是同一套可匹配渲染；攻击%/暴击率%/效果抗性% 图标语义仍无可靠证据。
+  - 注册区域 `candidate_card:1`（512x160）与真实列表卡片（170x117）不匹配，整卡指纹无法在当前注册区域下命中。
+- 本轮真实采集未输入、未点击、未导航、未强化、未消耗资源、未联网；结果继续 `mode=visual_only`、`verification=unverified`、fail-closed。
+
+## 真实三帧区域校准与整卡指纹登记（2026-08-01）
+
+- 用户批准一次性三帧只读采集后执行：官方 MuMu ADB 唯一 emulator-5554，三次 exec-out screencap -p 均 1280x720；目标卡片区域与详情面板区域三帧逐像素一致（mean_diff=0.00），页面稳定。
+- 依据分数锚点（OCR 置信 >=0.99）离线确定列表网格：5 行（行顶 y=65/193/322/451/580，行高 117）x 4 列（列左 x=143/313/483/653，列宽 170）；目标卡片位于行 4 列 1（x143-313, y451-568）。
+- equipment_list_region_registry() 从假设 2x3 网格（6 卡）校准为真实 4x5 网格（20 卡），candidate_card:13 精确对位目标卡片；list_header_region 与 candidate_list_region 同步更新。
+- 哈希口径修复：已存整卡 crop 为 PIL 编码（sha256 cf1d02e...），与运行时 InMemoryPngRegionExtractor 的 filter-0 zlib 编码不一致；按运行时编码重建 	arget_card_full_20260801_runtime.png（sha256 99efe5c2...），card_fingerprint_manifest.json 升级 udited_complete 并登记模板。
+- 命中验证：三帧在 candidate_card:13 区域 crop SHA-256 均为 99efe5c2...，ManifestCardFingerprintReader.match_template 返回 score 1.0 / threshold 0.98。
+- 验证：	est_visual_list*.py 46/46、	est_visual*.py 126/126、py_compile 0、git diff --check 0。
+- 详细结果见[区域校准与指纹登记报告](reports/visual_list_region_calibration_and_fingerprint_20260801.md) 与[区域校准任务说明](纯视觉真实列表页区域注册校准任务说明.md)。
+- 未改变结论：ield_mapping_manifest.json 仍 incomplete（攻击%/暴击率%/效果抗性% 图标语义无可靠证据），生产入口继续 fail-closed；真实三帧只读校准仍待另建任务与重新授权。

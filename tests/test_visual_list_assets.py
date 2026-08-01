@@ -20,10 +20,10 @@ class VisualListAssetsTest(unittest.TestCase):
     def test_repository_manifests_fail_closed_until_missing_assets_are_audited(self):
         with self.assertRaises(ListPageAssetError):
             load_list_field_mapping()
-        with self.assertRaises(ListPageAssetError):
-            load_card_fingerprint_templates()
-        with self.assertRaises(ListPageAssetError):
-            build_audited_card_template_reader()
+        templates = load_card_fingerprint_templates()
+        self.assertEqual(tuple(templates), ("weapon_target_card_20260801",))
+        reader = build_audited_card_template_reader()
+        self.assertEqual(reader.match_template("candidate_card:13", templates["weapon_target_card_20260801"].path.read_bytes())["score"]["score"], 1.0)
 
     def test_complete_fixture_manifest_verifies_hash_and_exact_match(self):
         with tempfile.TemporaryDirectory() as directory:

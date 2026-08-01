@@ -32,6 +32,7 @@ from .visual_list_assets import (
     FIELD_MAPPING_MANIFEST,
     ListPageAssetError,
     build_audited_card_template_reader,
+    load_card_fingerprint_templates,
     load_list_field_mapping,
 )
 
@@ -128,6 +129,10 @@ def build_production_list_page_pipeline_from_assets(
     try:
         load_list_field_mapping(field_mapping_manifest or FIELD_MAPPING_MANIFEST)
         template_manifest = card_template_manifest or CARD_TEMPLATE_MANIFEST
+        # Validate the complete template bundle (hash, viewport, threshold)
+        # eagerly so an asset defect surfaces with its audit detail instead of
+        # being masked by a generic reader-construction failure.
+        load_card_fingerprint_templates(template_manifest)
         template_factory = lambda: build_audited_card_template_reader(template_manifest)
     except ListPageAssetError as exc:
         raise ProductionListPageReaderUnavailable(str(exc)) from exc

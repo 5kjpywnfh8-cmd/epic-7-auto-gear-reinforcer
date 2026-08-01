@@ -1,5 +1,11 @@
 # 第七史诗装备强化判断工具计划
 
+### opencode 规则文件适配（2026-08-01，完成）
+
+- 项目新增根目录 `opencode.json`（`$schema` 指向 opencode 官方 schema），通过 `instructions: ["AGENTS.md", "CLAUDE.md"]` 显式加载两份规则文件，保证 opencode 会话同时获得 AGENTS.md（权威源）与 CLAUDE.md（镜像）内容；AGENTS.md 本就被 opencode 原生自动加载，本次适配使 CLAUDE.md 亦生效。
+- `CLAUDE.md` 头部说明已更新为“供 Claude Code 与 opencode 会话自动加载”，镜像正文未改动，AGENTS.md 权威源不变。
+- 验证：`opencode.json` 经 `ConvertFrom-Json` 解析通过，instructions 字段生效。改动不涉及任何任务说明或代码；`.agents/`、`.codex/` 为空目录，未处理。
+
 ### Heroic 中后期 22速差异分层与指标修正（2026-07-13，进行中）
 
 - 研究器升级为独立 v3 schema/resume；旧 v1/v2 smoke 不读入正式统计。
@@ -3028,3 +3034,428 @@ GUI 验收关注点：
 - 当前状态：`task_completed_visual_set_single_channel_wide_text_asset_id_mapping_20260727`。用户偏好 `gpt-5.6-luna + max`，但当前协作接口无 Luna，按项目回退规则实际执行使用 `gpt-5.6-terra + high`。默认 `set_text` 与 PaddleOCR 局部裁切已固定为 `(916,540)-(1120,600)`；文字或图标任一唯一、可标准化且 `>=0.98` 的通道可提供套装字段，双通道不一致、图标多候选或无法标准化继续以 `conflicting:set` / `unrecognized:set` fail-closed，`mode=visual_only` 与 `verification=unverified` 不变。真实 Fribbels 资产 ID 已按显式受控映射 `speed -> set_speed -> SpeedSet` 接线；未知或未审定的资产 ID 不推断、继续拒绝。
 - 验证已完成：公开/合成 `test_ocr_paddle.py`（15）、`test_visual_platform.py`（9）、`test_visual_set_template_matcher.py`（14）和 `test_set_crop_comparison.py`（5）均通过，覆盖 `speed` 图标单通道、双通道一致/冲突、低于 `0.98` 及未知资产 ID 拒绝；Python 3.9 `py_compile` 与 `git diff --check` 退出 `0`。本轮未执行 ADB、真实截图或 OCR、页面交互、资源消耗、底层读取、联网或上传。
 - 剩余风险与下一步：尚未授权真实帧校准或真实 OCR 复验，离线结果不构成自动化强化授权；除 `speed` 外的 Fribbels 资产 ID 尚未在本任务完成语义审定，继续 fail-closed。需要真实环境验证或扩展资产映射时，先建立独立任务说明并取得明确授权。
+## 流程反馈与报告粒度（2026-07-30）
+
+- 当前裁定：现有流程的留痕要求应保留，但不应把每次讨论都扩展为独立任务或完整报告；此前若有更宽泛的“每次都输出任务/报告”理解，均以本节为准。
+- 已获用户批准并建立任务说明：[流程反馈与报告粒度规则同步任务说明.md](流程反馈与报告粒度规则同步任务说明.md)。本轮将以精简、可执行的条款同步至 `AGENTS.md`，使后续会话和子 agent 都受同一约束。
+- 仅讨论、确认、维持现状或无后续执行时：在本计划追加一条简短的日期、结论、原因和下一步（若有）即可；不创建 `*任务说明.md`，不创建 `reports/` 文件。
+- 只有实际启动可执行工作时，才创建或更新对应的 `*任务说明.md`；同一连续任务在范围、权威口径和停止条件不变时复用原任务说明，不按每轮反馈拆分。
+- 仅当产出需要独立复现、包含测试/实验原始结果、形成正式发布结论，或任务说明明确要求时，才创建独立报告；其余完成信息写回任务说明和本计划的简要状态即可。
+- 当前状态：`completed`。已将规则写入 `AGENTS.md` 的“文档同步”段：讨论只保留简短计划记录；可执行任务才创建或更新任务说明，同一连续任务复用说明；仅在可复现证据、原始测试/实验结果、正式发布结论或任务说明要求时建立独立报告。任务说明：[流程反馈与报告粒度规则同步任务说明.md](流程反馈与报告粒度规则同步任务说明.md)。不新增独立报告；`git diff --check` 退出码为 `0`（仅有既有 LF/CRLF 提示）。
+
+#### 纯视觉真实受控装备选择与强化界面导航离线前置核对建立（2026-07-28）
+
+- 本轮权威任务说明为[纯视觉真实受控装备选择与强化界面导航任务说明](纯视觉真实受控装备选择与强化界面导航任务说明.md)。原委托指定的同名文件开始时未在根目录落盘，已先补建该文件以满足项目文档门槛；其范围严格限定为离线前置核对，聊天内容不替代后续真实操作授权。
+- 当前仅审阅现有列表定位、唯一目标证据、坐标解析和两次单次点击后的新鲜后验契约；不修改实现、不运行测试、不连接 ADB、截图、OCR、输入、导航、强化、选材、确认或资源操作。
+- 当前状态：`offline_prerequisite_audit_in_progress_20260728`。用户偏好 `gpt-5.6-luna + max`，当前协作接口未提供 Luna，本轮实际执行模型为 `gpt-5.6-terra + high`。
+
+#### 纯视觉真实受控装备选择与强化界面导航离线前置核对完成（2026-07-28）
+
+- 权威任务说明：[纯视觉真实受控装备选择与强化界面导航任务说明](纯视觉真实受控装备选择与强化界面导航任务说明.md)。上条 `in_progress` 状态已被本记录覆盖；本轮只读审阅已完成，未修改代码或运行测试。
+- 已确认现有能力仅覆盖已在 `enhance_equipment` 页时的单节点受控点击：唯一目标、字段 `>=0.98`、两锚点、资源预览与三帧稳定证据为前置；点击后必须有时间递增、样本/帧哈希新鲜、目标/节点/资源一致的后验，否则结果未知且节点不可重试。归一化点击器还会在后端调用前锁定一次尝试。
+- 真实导航尚缺：列表页页面/锚点/OCR/唯一定位器、列表到详情再到强化页的状态机和每跳后验、从已验证按钮锚点推导的坐标、真实输入后端接线，以及用户对当前列表页和唯一目标视觉字段的确认。`ocr_regions.py` 只定义详情页区域且 `click_coordinates=None`，`airtest_adapter.py` 仍禁用，故没有可用于真实导航的坐标或后端。
+- 两次单次点击可在同一执行器中顺序运行，第一节点后验帧会阻止重用；但第二节点的资源前值/计划成本目前由调用方重新传入，未自动绑定到第一节点 `expected_after`。真实两节点流程还缺跨节点账本连续性、每节点单独授权和强制通过 `VisualAdapterSampler` 三帧稳定采集的接线。
+- 当前状态：`offline_prerequisite_audit_completed_waiting_current_list_visual_fields_20260728`。在用户提供或确认当前列表页与唯一目标视觉字段、并另建/验证受控导航任务说明和取得真实操作授权之前，不得连接 ADB、截图、输入、导航、点击、强化、选材、确认或消耗资源。实际执行模型：`gpt-5.6-terra + high`（Luna 不可用的项目规定回退）。
+
+#### 纯视觉真实受控装备选择与强化界面导航待确认项（2026-07-29）
+
+- 用户只需确认当前 MuMu 是否在装备列表页、目标在当前列表可见的唯一视觉字段、是否存在相似项，以及目标行是否已经可点击或仍需筛选/滚动/导航；这些信息不构成任何真实设备操作授权。
+- 对应任务说明已补充待确认字段。当前状态与禁止项不变：`offline_prerequisite_audit_completed_waiting_current_list_visual_fields_20260728`；收到信息后仍须先另建并离线验证受控导航任务，再单独取得真实操作授权。
+
+#### 纯视觉真实受控装备选择与强化界面导航用户状态确认（2026-07-29）
+
+- 用户确认当前为装备列表页、目标无相似项、不需筛选/滚动/切换界面；随后澄清目标装备存在可进入的详情页，但当前未进入。此前“目标装备已经打开”的歧义已被本记录覆盖。
+- “目标行”仅指列表中的单个装备条目/卡片，不表示已经定位或授权点击。当前状态更新为 `offline_prerequisite_audit_completed_current_list_confirmed_waiting_target_visual_fields_20260729`；全部禁止项不变，仍须取得目标的可见视觉字段后才可建立后续任务。
+
+#### 纯视觉真实受控装备选择与强化界面导航目标指纹已提供（2026-07-29）
+
+- 用户提供后续唯一目标的期望视觉指纹：武器、红装/传说、85级、`+3`、生命值套装、主属性攻击力、副属性攻击力 `13%`/暴击率 `3%`/速度 `2`/效果抗性 `8%`、装备分数 `37`。当前页面仍为装备列表，目标详情页可进入但当前未打开。
+- 该数据是列表定位与后续详情/强化页连续性校验的期望值，不是当前稳定视觉帧或目标选中证明；不得据此跳过页面、唯一性、锚点、坐标、授权或点击后验闸门。
+- 当前状态：`offline_prerequisite_audit_completed_target_fingerprint_received_waiting_controlled_navigation_task_20260729`。下一阶段需先新建并离线验证受控导航任务说明，覆盖列表定位、页面跃迁、按钮锚点和两节点后验连续性；取得其中的明确真实操作授权前，继续禁止 ADB、截图、输入、导航、点击、强化、选材、确认和资源消耗。
+
+#### 纯视觉装备列表唯一目标定位与受控导航离线接线任务建立（2026-07-29）
+
+- 用户已批准进入下一步；本轮唯一权威任务说明为[纯视觉装备列表唯一目标定位与受控导航离线接线任务说明](纯视觉装备列表唯一目标定位与受控导航离线接线任务说明.md)。此前“等待受控导航任务”的状态已被本记录覆盖。
+- 本轮仅实现和验证离线契约：列表页唯一目标、页面跃迁、由已验证锚点派生的归一化点击点，以及两次单节点操作的后验/账本连续性。目标期望指纹为武器、红装/传说、85级、`+3`、生命值套装、攻击主属性、攻击力 `13%`/暴击率 `3%`/速度 `2`/效果抗性 `8%`、分数 `37`。
+- 禁止真实 ADB、截图、OCR 推理、窗口输入、页面导航、点击、强化、选材、确认和资源消耗；保持 `0.98`、`mode=visual_only`、`verification=unverified` 和 fail-closed。执行模型：`gpt-5.6-terra + high`（Luna 不可用的项目规定回退）。当前状态：`offline_controlled_navigation_wiring_in_progress_20260729`。
+
+#### 纯视觉装备列表唯一目标定位与受控导航离线接线完成（2026-07-29）
+
+- 权威任务说明：[纯视觉装备列表唯一目标定位与受控导航离线接线任务说明](纯视觉装备列表唯一目标定位与受控导航离线接线任务说明.md)。上条 `in_progress` 状态已被本记录覆盖。
+- 新增 `visual_navigation.py` 与 `test_visual_navigation.py`：列表页定位只放行唯一、所有期望字段 `>=0.98` 的目标；归一化点击点只从当前已验证按钮锚点中心派生；列表到详情/强化的后验要求同操作、时间递增、页面签名变化、稳定帧哈希不重叠、目标可见且指纹连续。
+- 新增 `VisualNodeChain`，将第一节点通过后验的 `expected_after` 账本锁定为第二节点唯一允许的 `resource_before`；操作 ID、节点或账本不连续时，在调用节点执行器前 fail-closed。没有加入真实坐标、窗口后端、ADB 或输入调用。
+- 验证：首次 `tests.test_*` 模块路径因 `tests` 非 Python 包而未加载，已改用 discovery；新导航 `6/6`、运行时 `7/7`、点击器 `4/4` 均通过，退出码 `0`；`test_visual_*.py` 全量 `75/75` 通过，退出码 `0`；Python 3.9 `py_compile` 和 `git diff --check` 退出码均为 `0`（后者仅有既有 LF/CRLF 警告）。
+- 当前状态：`offline_controlled_navigation_wiring_completed_20260729`。本轮未连接 ADB、截图、OCR 推理、窗口输入、页面导航、点击、强化、选材、确认或资源消耗。下一步若进入真实校准，需另建只读任务说明并获得明确授权；真实导航或点击仍须后续独立授权。
+
+#### 纯视觉真实装备列表唯一目标只读校准任务建立（2026-07-29）
+
+- 用户已批准进入下一步；本轮唯一权威任务说明为[纯视觉真实装备列表唯一目标只读校准任务说明](纯视觉真实装备列表唯一目标只读校准任务说明.md)。当前仅授权一次官方 MuMu `adb.exe devices -l` 自动发现，及由唯一设备派生的固定三次内存 `exec-out screencap -p`。
+- 目标期望指纹为武器、红装/传说、85级、`+3`、生命值套装、攻击主属性、攻击力 `13%`/暴击率 `3%`/速度 `2`/效果抗性 `8%`、分数 `37`。仅复用已有受控局部识别；没有列表识别器或任一页面/字段/唯一性条件不通过即 fail-closed。
+- 严禁 ADB/窗口输入、页面导航、点击、强化、选材、确认、资源消耗、Fribbels/PCAP/底层读取、外部上传、模型下载、全屏盲 OCR、落盘、第二次采样批次和自动重试。当前状态：`authorized_real_list_readonly_calibration_pending_interface_review_20260729`；执行模型：`gpt-5.6-terra + high`（Luna 不可用的项目规定回退）。
+
+#### 纯视觉真实装备列表唯一目标只读校准接口审阅 fail-closed（2026-07-29）
+
+- 权威任务说明：[纯视觉真实装备列表唯一目标只读校准任务说明](纯视觉真实装备列表唯一目标只读校准任务说明.md)。上条 `pending_interface_review` 状态已被本记录覆盖。
+- 只读审阅确认现有 OCR/视觉链仅识别已选中装备的右侧详情面板；`ocr_backpack_pair.py` 依赖底层同批装备数据，不能替代纯视觉列表定位。当前不存在列表页页面/锚点、局部 OCR 区域、候选卡片边界、去重或目标解析器，无法产出可验证的 `NavigationPageEvidence`。
+- 按“局部识别器缺失立即停止”条件，真实校准未开始：未运行 ADB 设备发现、未截图、未 OCR 推理、未输入、导航、点击、强化、选材、确认、资源消耗、底层读取或上传。禁止以全屏 OCR 或坐标猜测绕过该缺口。
+- 当前状态：`real_list_readonly_calibration_not_started_fail_closed_missing_list_recognizer_20260729`。下一步必须另建纯离线“装备列表页区域与唯一目标视觉解析器”任务，以合成/公开 fixture 建立证据链并通过回归后，才可重新申请真实列表页只读校准。执行模型：`gpt-5.6-terra + high`。
+
+#### 纯视觉装备列表页区域与唯一目标视觉解析器离线开发（2026-07-29）
+
+- 权威任务说明：[纯视觉装备列表页区域与唯一目标视觉解析器离线开发任务说明](纯视觉装备列表页区域与唯一目标视觉解析器离线开发任务说明.md)。上一项真实只读校准的 `real_list_readonly_calibration_not_started_fail_closed_missing_list_recognizer_20260729` 仅作历史对照，已被本离线开发前置覆盖。
+- 目标是在合成/公开 fixture 上建立列表页锚点、局部区域、候选卡片、字段置信度、去重、可见边界和唯一目标解析器，并受控构造既有 `NavigationPageEvidence`；目标期望指纹为武器、红装/传说、85级、`+3`、生命值套装、攻击主属性、攻击力 `13%`/暴击率 `3%`/速度 `2`/效果抗性 `8%`、分数 `37`。
+- 严禁 ADB、截图、真实 OCR 推理、窗口输入、导航、点击、强化、选材、确认、资源消耗、底层读取、上传、模型下载、全屏盲 OCR 和真实坐标猜测；保持字段/锚点 `>=0.98`、`mode=visual_only`、`verification=unverified` 和 fail-closed。当前状态：`offline_list_parser_development_in_progress_20260729`；执行模型：`gpt-5.6-terra + high`（Luna 不可用的项目规定回退）。
+
+#### 纯视觉装备列表页区域与唯一目标视觉解析器离线开发完成（2026-07-29）
+
+- 权威任务说明：[纯视觉装备列表页区域与唯一目标视觉解析器离线开发任务说明](纯视觉装备列表页区域与唯一目标视觉解析器离线开发任务说明.md)。上一项 `offline_list_parser_development_in_progress_20260729` 已被本记录覆盖；实际执行模型为 `gpt-5.6-terra + high`（Luna 不可用的项目规定回退）。
+- 新增 `visual_list_parser.py` 和 `test_visual_list_parser.py`：离线解析器受控处理列表锚点、局部区域、三帧稳定元数据、可见/页面边界、候选卡片与字段观测；仅在目标唯一、期望字段逐项相等且 `>=0.98` 时构造既有 `NavigationPageEvidence`，不产生点击点或调用真实接口。
+- 候选卡片现在必须同时位于已验证的候选列表局部区域和可见边界内；重复 ID/指纹、字段冲突或缺失、低置信度、越界、滚动或边界未知、相似项不唯一及无效区域边界均 fail-closed。额外可见字段不会改变期望字段匹配，语义与既有 `NavigationEvidenceGate` 一致。
+- 验证：列表解析器 `8/8` 通过，`test_visual*.py` `88/88` 通过，Python 3.9 `py_compile` 和 `git diff --check` 退出码均为 `0`（后者仅有既有计划文件 LF/CRLF 警告）。本轮未运行 ADB、截图、真实 OCR、窗口输入、导航、点击、强化、选材、确认、资源消耗、底层读取、上传或模型下载。
+- 当前状态：`offline_list_parser_development_completed_20260729`。先前真实只读校准授权已经在缺少解析器时 fail-closed 结束，不能复用；若继续，下一步须新建任务说明并由用户重新明确授权一次真实列表页只读校准，仍不含输入、导航、点击或资源操作。
+
+#### 纯视觉真实装备列表页三帧只读校准任务建立（2026-07-29）
+
+- 用户已重新明确授权进入下一步；本轮唯一权威任务说明为[纯视觉真实装备列表页三帧只读校准任务说明](纯视觉真实装备列表页三帧只读校准任务说明.md)。先前的真实只读校准任务仅作历史对照，其旧授权不得复用。
+- 本次授权仅覆盖：在确认完整的列表页内存 PNG 局部识别接线后，一次官方 MuMu ADB 设备发现和由唯一 `device` 派生的固定三帧内存 `exec-out screencap -p`，再以 `>=0.98` 的局部视觉证据校验列表页与目标。任何输入、导航、点击、强化、选材、确认和资源操作仍严格禁止。
+- 缺少已注册的内存 PNG 到列表页局部观测接线时，必须在 ADB 前 fail-closed；禁止全屏 OCR、坐标猜测、截图落盘、第二批采样、自动重试、底层读取、上传或模型下载。当前状态：`authorized_real_list_readonly_calibration_pending_interface_review_20260729`；执行模型：`gpt-5.6-terra + high`（Luna 不可用的项目规定回退）。
+
+#### 纯视觉真实装备列表页三帧只读校准接口审阅 fail-closed（2026-07-29）
+
+- 权威任务说明：[纯视觉真实装备列表页三帧只读校准任务说明](纯视觉真实装备列表页三帧只读校准任务说明.md)。上条 `authorized_real_list_readonly_calibration_pending_interface_review_20260729` 已被本记录覆盖；执行模型为 `gpt-5.6-terra + high`（Luna 不可用的项目规定回退）。
+- `EquipmentListVisualParser` 只验证调用方已经产生的列表页局部观测，未实现内存 PNG/稳定帧到锚点、局部区域、可见边界、候选卡片和字段观测的生成路径；代码引用仅存在于该解析器与合成测试。现有 `AdbLocalRecognitionEvidenceParser` 仍只调用详情页 `equipment_regions()` 和 `parse_backpack_enhance_lines()`，不能替代列表页观测器。
+- 因此按任务的 ADB 前置审阅条件 fail-closed：本次用户授权未用于任何真实设备操作，未运行 `adb.exe devices -l`、未截图、未 OCR、未输入、未导航、未点击、未强化、未选材、未确认、未消耗资源、未底层读取、未上传或下载。禁止以全屏 OCR 或坐标猜测绕过缺口。
+- 当前状态：`real_list_readonly_calibration_not_started_fail_closed_missing_memory_png_list_observer_20260729`。下一步必须另建纯离线“列表页内存 PNG 局部观测器”开发任务，使用合成/公开 fixture 形成并回归验证稳定帧到列表页局部观测的接线；通过后才可重新申请新的真实只读校准授权。
+
+#### 纯视觉装备列表页内存 PNG 局部观测器离线开发任务建立（2026-07-30）
+
+- 用户确认总体目标为自动选中唯一目标装备并受控进入强化界面，且批准执行当前下一步；该表述不扩展为真实点击或导航授权。本轮唯一权威任务说明为[纯视觉装备列表页内存 PNG 局部观测器离线开发任务说明](纯视觉装备列表页内存PNG局部观测器离线开发任务说明.md)。
+- 上条 `real_list_readonly_calibration_not_started_fail_closed_missing_memory_png_list_observer_20260729` 中的“下一步”已由本离线开发任务承接，旧只读校准授权仍不可复用。当前只允许合成/公开 fixture 上的内存 PNG、稳定帧与局部观测接线，不执行 ADB、真实截图、OCR 推理、输入、导航、点击、强化、选材、确认、资源操作、底层读取、上传或下载。
+- 当前状态：`offline_memory_png_list_observer_development_in_progress_20260730`。完成并通过回归后，必须重新建立并获得一次真实列表页三帧只读校准授权；校准通过也不授权真实点击。执行模型：`gpt-5.6-terra + high`（Luna 不可用的项目规定回退）。
+
+#### 纯视觉装备列表页内存 PNG 局部观测器离线开发完成（2026-07-30）
+
+- 权威任务说明：[纯视觉装备列表页内存 PNG 局部观测器离线开发任务说明](纯视觉装备列表页内存PNG局部观测器离线开发任务说明.md)。上条 `offline_memory_png_list_observer_development_in_progress_20260730` 已被本完成记录覆盖；实际执行模型为 `gpt-5.6-terra + high`，原因是当前协作接口未提供用户偏好的 `gpt-5.6-luna + max`。
+- 新增 `visual_list_observer.py` 与 `test_visual_list_observer.py`：只接受 `StableFrames`、固定注册的归一化列表局部区域和注入式局部识别结果。页面签名、视口、时间、稳定元数据、候选列表与可见边界不由识别器自由提供；候选卡片必须引用注册区域，局部范围不可动态扩展。结果仅受控交给 `EquipmentListVisualParser`，不产生真实坐标或点击点。
+- 合成 PNG 回归覆盖唯一目标、低置信度、缺失注册区域分数、未知滚动、重复候选、字段缺失、未注册候选区域、空/黑帧、无效 PNG 与稳定帧哈希不一致，均在 `NavigationPageEvidence` 前 fail-closed。列表观测器 `5/5`、列表解析器 `8/8`、相关 `test_visual*.py` `93/93` 均通过，退出码 `0`；Python 3.9 `py_compile` 与 `git diff --check` 退出码 `0`，后者仅报告既有计划文件 LF/CRLF 警告。
+- 本轮未执行 ADB、真实截图、真实 OCR、输入、导航、点击、强化、选材、确认、资源操作、底层读取、上传或下载。此前真实三帧只读校准的缺失观测器状态已被本离线完成记录覆盖，但旧授权已经终止且不得复用；下一步须另建并重新取得一次真实只读校准授权，仍不含真实点击。
+
+#### 纯视觉装备列表页内存 PNG 局部观测器主审通过（2026-07-30）
+
+- 主 agent 已按项目交接规则只读审阅[纯视觉装备列表页内存 PNG 局部观测器离线开发任务说明](纯视觉装备列表页内存PNG局部观测器离线开发任务说明.md)、`visual_list_observer.py` 及其测试。实现只从注册局部区域、稳定内存帧与注入式识别结果构造列表解析器输入，不能产生真实坐标、输入或扩大识别范围；该结论不构成真实页面证据。
+- 主 agent 复跑 `test_visual*.py`，`93/93` 通过，退出码 `0`；Python 3.9 `py_compile` 和 `git diff --check` 退出码均为 `0`，后者仅有既有 `e7-gear-enhance-plan.md` LF/CRLF 警告。审阅期间未执行 ADB、截图、OCR、输入、导航、点击、强化、选材、确认或资源操作。
+- 当前状态：`offline_memory_png_list_observer_development_completed_main_reviewed_20260730`。真实导航目标仍为自动选中唯一装备后受控进入强化界面，但下一前置只能是新建并重新授权的真实列表页三帧只读校准；该校准不含任何点击授权。
+
+#### 真实只读校准操作边界澄清（2026-07-30）
+
+- 用户询问下一步是否操控模拟器。结论：新的真实列表页三帧只读校准会在明确授权后通过 ADB 自动发现唯一设备并读取三帧内存 PNG，因而会读取模拟器画面；它不包含也不得发送 `input`、`tap`、`swipe`、`keyevent`、窗口输入、导航、点击、强化、选材、确认或资源操作。
+- 真正改变模拟器界面的动作仅发生在只读校准通过后的独立受控导航任务中，且列表选中和进入强化页的每次单击都须另建任务、重新明确授权并逐次通过新鲜后验验证。当前状态不变：`offline_memory_png_list_observer_development_completed_main_reviewed_20260730`。
+
+#### 纯视觉真实装备列表页三帧只读校准第二次任务建立（2026-07-30）
+
+- 用户明确回复“批准，下一步”。本轮唯一权威任务说明为[纯视觉真实装备列表页三帧只读校准第二次任务说明](纯视觉真实装备列表页三帧只读校准第二次任务说明.md)；此前所有一次性只读授权仅作历史对照，不得复用。
+- 授权仅覆盖 ADB 前置接口审阅，并且只有已落盘真实列表页局部识别器和已注册区域配置完整时，才允许一次官方设备发现和固定三帧内存 PNG 读取。禁止 ADB 输入、点击、滑动、按键、窗口输入、导航、强化、选材、确认、资源操作、落盘、上传、全屏 OCR、自动重试和第二批采样。
+- 当前状态：`authorized_second_real_list_readonly_calibration_pending_interface_review_20260730`。实际执行模型按项目规定记录为 `gpt-5.6-terra + high`（用户偏好的 Luna 不可用）。
+
+#### 纯视觉真实装备列表页三帧只读校准第二次接口审阅 fail-closed（2026-07-30）
+
+- 权威任务说明：[纯视觉真实装备列表页三帧只读校准第二次任务说明](纯视觉真实装备列表页三帧只读校准第二次任务说明.md)。上条 `authorized_second_real_list_readonly_calibration_pending_interface_review_20260730` 已被本记录覆盖。
+- 只读检索显示 `visual_list_observer.py` 只有 `ListPageLocalRecognizer` 的协议定义和注册区域类型；没有生产识别器实现、已审定列表页区域配置或观测器生产调用者。唯一实例化区域/观测器的代码在 `test_visual_list_observer.py`，且使用 `FakeRecognizer`，不能用于真实校准。
+- 因而按步骤 1 在设备接触前 fail-closed：未运行 `C:\Program Files\Netease\MuMu Player 12\shell\adb.exe devices -l`，未读取内存 PNG，未执行 OCR、输入、导航、点击、强化、选材、确认、资源操作、底层读取、上传或下载。用户的本次只读授权未用于任何设备操作，现已终止且不得复用。
+- 当前状态：`second_real_list_readonly_calibration_not_started_fail_closed_missing_real_list_recognizer_20260730`。下一步必须另建纯离线任务，实现并用合成/公开 fixture 验证真实列表页局部识别器和审定区域注册；完成后才可重新申请一次新的真实三帧只读校准。执行模型：`gpt-5.6-terra + high`（Luna 不可用的项目规定回退）。
+
+#### 纯视觉装备列表页真实局部识别器与区域注册离线开发任务建立（2026-07-30）
+
+- 用户再次明确“批准，下一步”。本轮唯一权威任务说明为[纯视觉装备列表页真实局部识别器与区域注册离线开发任务说明](纯视觉装备列表页真实局部识别器与区域注册离线开发任务说明.md)。该批准只覆盖离线实现与公开/合成 fixture 验证，不构成 ADB、截图、真实 OCR、输入、导航、点击、强化、选材、确认或资源操作授权。
+- 上条 `second_real_list_readonly_calibration_not_started_fail_closed_missing_real_list_recognizer_20260730` 的缺口由本任务承接；此前第二次真实只读校准授权已终止，不能复用。本轮必须新增可实例化的生产级列表页局部识别器、固定区域注册和视口闸门，并维持 `>=0.98`、`mode=visual_only`、`verification=unverified` 及 fail-closed。
+- 当前状态：`offline_real_list_local_recognizer_and_region_registry_development_in_progress_20260730`。完成后必须经过主 agent 审阅和回归，才能重新创建并向用户申请一次新的真实三帧只读校准；该校准不包含任何点击授权。实际执行模型：`gpt-5.6-terra + high`（用户偏好的 `gpt-5.6-luna + max` 当前不可用）。
+
+#### 纯视觉装备列表页真实局部识别器与区域注册离线开发完成（2026-07-30）
+
+- 权威任务说明：[纯视觉装备列表页真实局部识别器与区域注册离线开发任务说明](纯视觉装备列表页真实局部识别器与区域注册离线开发任务说明.md)。上条 `offline_real_list_local_recognizer_and_region_registry_development_in_progress_20260730` 已被本记录覆盖；实际执行模型为 `gpt-5.6-terra + high`，原因是当前协作接口未提供用户偏好的 `gpt-5.6-luna + max`。
+- 新增 `visual_list_recognizer.py`：生产源码内可实例化的 `RegisteredListPageLocalRecognizer` 只接受版本化 `1280x720` 固定局部区域和精确匹配的局部观察源，严格解析锚点、区域得分、滚动边界、候选卡与字段白名单。未知视口/区域/令牌、低置信度、边界不明、候选字段冲突或观察源异常均在构造 `NavigationPageEvidence` 前 fail-closed。`equipment_list_region_registry()` 固定注册标题、列表和六个候选卡的归一化读取范围，不含点击点或输入能力。
+- `visual_list_observer.py` 现对注册表视口执行闸门，并透传已知局部识别拒绝原因；新增合成端到端 `test_visual_list_recognizer.py` 覆盖唯一目标、未知视口/区域、低置信度、未知边界、冲突/未知字段和源异常。定向列表测试 `18/18`、`test_visual*.py` `98/98`、Python 3.9 `py_compile` 均通过，退出码 `0`；`git diff --check` 退出码 `0`，仅提示既有计划文件 LF/CRLF 转换警告。
+- 本轮没有执行 ADB、真实截图、真实 OCR、输入、导航、点击、强化、选材、确认、资源操作、底层读取、上传或下载。固定注册表和合成观察源仅证明离线接口，不构成当前 MuMu 页面的锚点、候选、字段或唯一性视觉证据。
+- 当前状态：`offline_real_list_local_recognizer_and_region_registry_development_completed_main_reviewed_20260730`。第二次真实只读校准的一次性授权已终止且不得复用；若继续，必须先新建并取得一次新的真实三帧只读校准授权。该校准只允许内存读取和局部识别，不含任何输入或点击；列表选中及进入强化界面仍需后续独立任务和逐次授权。
+
+#### 纯视觉列表页真实校准前置缺口复核（2026-07-30）
+
+- 上条“完成后可直接新建真实三帧只读校准”的表述已被本记录覆盖：`RegisteredListPageLocalRecognizer` 和区域注册已完成，但它严格消费 `ListPageLocalObservationSource` 协议；当前没有从内存 PNG 已注册局部直接运行本地 OCR/模板读取、并产生该协议观察值的生产适配器。合成测试的观察源不能替代真实页面证据。
+- 因此新的真实三帧只读校准现在仍会在 ADB 前 fail-closed，不能消耗用户新的只读授权。下一最小前置是另建纯离线“列表页内存局部 OCR 观察源”开发任务，固定局部范围、保留 `>=0.98` 与 fail-closed，并仅以公开/合成 fixture 验证；完成后才可申请真实三帧只读校准。当前状态：`offline_real_list_recognizer_completed_waiting_memory_local_observation_source_task_20260730`。实际执行模型记录仍为 `gpt-5.6-terra + high`。
+
+#### 纯视觉装备列表页内存局部 OCR 观察源离线开发任务建立（2026-07-31）
+- 用户明确批准开发“内存局部 OCR 观察源”。本轮唯一权威任务说明为[纯视觉装备列表页内存局部 OCR 观察源离线开发任务说明](纯视觉装备列表页内存局部OCR观察源离线开发任务说明.md)，范围仅覆盖内存 PNG 固定区域裁切、显式注入的局部 OCR/模板读取器适配和公开/合成 fixture 回归。
+- 目标是补齐从 `VisualFrame` PNG 到 `RegisteredListPageLocalRecognizer` 所需 `local_regions` 观察值的生产适配器；必须保持固定 `1280x720`、`>=0.98`、唯一性、`mode=visual_only`、`verification=unverified` 与 fail-closed，不产生点击点、输入、导航或资源操作。
+- 本轮禁止 ADB、真实截图、真实 OCR 推理、模型下载、窗口输入、页面导航、点击、强化、选材、确认、资源消耗、底层读取、联网和上传。真实三帧只读校准授权不可复用。
+- 当前状态：`offline_memory_png_local_ocr_observation_source_development_in_progress_20260731`；用户偏好 `gpt-5.6-luna + max`，当前协作接口不可用 Luna，实际执行模型记录为 `gpt-5.6-terra + high`。
+
+#### 纯视觉装备列表页内存局部 OCR 观察源离线开发完成（2026-07-31）
+- 权威任务说明：[纯视觉装备列表页内存局部 OCR 观察源离线开发任务说明](纯视觉装备列表页内存局部OCR观察源离线开发任务说明.md)。上条 `offline_memory_png_local_ocr_observation_source_development_in_progress_20260731` 已被本记录覆盖。
+- `visual_list_observer.py` 新增通用固定区域 PNG 裁切/读取适配器，`visual_list_png_source.py` 新增显式 OCR/模板读取器组合适配器；两层都只消费 `VisualFrame` 内存 PNG 和版本化注册区域，不产生点击点、屏幕坐标或输入动作。
+- OCR/模板结果在进入 `RegisteredListPageLocalRecognizer` 前保持字段白名单、锚点/边界完整、模板指纹和所有置信度 `>=0.98`；无效 PNG、未知视口/区域、读取异常、字段缺失/冲突、滚动未知和低分均 fail-closed。
+- 验证：新增源测试 `4/4`，通用区域源测试 `3/3`，列表相关视觉测试 `25/25`，全部 `test_visual*.py` `105/105`；Python 3.9 `py_compile` 退出码 `0`；`git diff --check` 退出码 `0`（仅既有 LF/CRLF 警告）。详细结果见[离线验证报告](reports/visual_list_png_source_offline_20260731.md)。
+- 本轮未执行 ADB、真实截图、真实 OCR 推理、输入、导航、点击、强化、选材、确认、资源操作、联网、上传或模型下载。真实三帧只读校准授权不可复用；下一步必须新建任务并重新取得明确只读授权，真实点击仍需后续独立任务和逐次后验。
+- 当前状态：`offline_memory_png_local_ocr_observation_source_development_completed_main_reviewed_20260731`；实际执行模型：`gpt-5.6-terra + high`（用户偏好 Luna 当前不可用）。
+
+#### 纯视觉真实装备列表页三帧只读校准第三次任务待授权建立（2026-07-31）
+
+- 权威任务说明：[纯视觉真实装备列表页三帧只读校准第三次任务说明](纯视觉真实装备列表页三帧只读校准第三次任务说明.md)。用户本轮仅询问下一步是否操纵模拟器；结论维持只读边界：未来在用户另行明确授权后，会通过官方 MuMu `adb.exe` 做只读设备发现和固定三帧内存 `screencap`，并进行固定局部 OCR/模板识别，因此会读取模拟器画面。
+- 本轮问答不构成新的真实只读授权。此前所有一次性只读授权均已终止、仅作历史对照且不得复用；当前不得连接 ADB、发现设备、截图、执行 OCR 或进行任何设备接触。
+- 禁止发送 `input`、`tap`、`swipe`、`keyevent`、窗口输入、点击、导航、强化、选材、确认或资源操作；也禁止截图落盘、上传、第二批采样和自动重试。用户确认目标期望指纹为武器、红装/传说、85 级、`+3`、生命值套装、主属性攻击力、副属性攻击力 `13%`、暴击率 `3%`、速度 `2`、效果抗性 `8%`、装备分数 `37`；当前在装备列表页，目标详情页存在但未打开，无相似装备且无需筛选、滚动或切页。
+- 当前状态：`pending_explicit_readonly_authorization_20260731`。实际执行模型记录为 `gpt-5.6-terra + high`，因为用户偏好的 `gpt-5.6-luna + max` 当前不可用；等待用户另行明确授予本任务一次性只读权限。
+
+#### 纯视觉真实装备列表页三帧只读校准第三次设备发现 fail-closed（2026-08-01）
+
+- 权威任务说明：[纯视觉真实装备列表页三帧只读校准第三次任务说明](纯视觉真实装备列表页三帧只读校准第三次任务说明.md)。用户已明确授权并使用本次一次性真实只读校准授权。
+- 已执行官方 MuMu `adb.exe devices -l`，退出码 `0`；原始输出仅含 `* daemon not running; starting now at tcp:5037` 和 `* daemon started successfully`，无任何 `device` 条目。
+- 按契约在设备发现阶段 fail-closed，未执行 `screencap`、三帧读取、OCR/模板识别、截图落盘、重试、输入、点击、导航、强化、选材、确认或资源操作。
+- 当前状态：`real_list_readonly_calibration_not_started_fail_closed_no_unique_device_20260801`。实际执行模型为 `gpt-5.6-terra + high`（Luna 当前不可用）。
+
+#### 纯视觉真实装备列表页三帧只读校准第四次任务建立（2026-08-01）
+
+- 用户询问只读校准契约并明确批准再次尝试。本轮唯一权威任务说明为[纯视觉真实装备列表页三帧只读校准第四次任务说明](纯视觉真实装备列表页三帧只读校准第四次任务说明.md)；第三次任务因无 `device` 条目 fail-closed，其授权不可复用。
+- 本次仅允许一次官方 MuMu `adb.exe devices -l` 自动发现唯一 `device`，设备唯一后读取固定三帧内存 `exec-out screencap -p`，再执行固定 `1280x720` 局部 OCR/模板识别。禁止截图落盘、重试、第二批采样、输入、点击、导航、强化、选材、确认、资源操作、联网、上传和模型下载。
+- 契约保持三帧稳定、页面与视口匹配、目标唯一、字段完整、所有置信度 `>=0.98`、`mode=visual_only`、`verification=unverified` 与 fail-closed；校准通过不授权后续真实点击。
+- 当前状态：`authorized_fourth_real_list_readonly_calibration_pending_execution_20260801`。实际执行模型记录为 `gpt-5.6-terra + high`（用户偏好的 Luna 当前不可用）。
+
+#### 纯视觉真实装备列表页三帧只读校准第四次稳定帧 fail-closed（2026-08-01）
+
+- 权威任务说明：[纯视觉真实装备列表页三帧只读校准第四次任务说明](纯视觉真实装备列表页三帧只读校准第四次任务说明.md)。已执行官方 MuMu `adb.exe devices -l`，退出码 `0`，自动发现唯一 `emulator-5554`，状态为 `device`。
+- 已读取固定三帧内存 `exec-out screencap -p`；三帧逐帧通过 PNG、非黑帧和 `1280x720` 视口校验，但 `StableFrames` 检测到帧哈希不一致并以 `UnstableFrameError: frame hashes changed during collection` 退出。
+- 按契约在稳定帧阶段 fail-closed，未执行局部 OCR/模板识别、截图落盘、重试、第二批采样、输入、点击、导航、强化、选材、确认、资源操作、联网或上传。本次一次性授权已使用，不得复用。
+- 当前状态：`real_list_readonly_calibration_fail_closed_unstable_frames_20260801`。实际执行模型为 `gpt-5.6-terra + high`（Luna 当前不可用）；任何下一次真实只读校准必须另建任务说明并重新授权。
+
+#### 三帧哈希契约澄清（2026-08-01）
+
+- 用户询问三帧哈希比较是否属于既定契约。澄清：比较仅发生在同一批三帧之间，用于证明三帧是同一稳定画面；不与历史截图、目标装备、数据库或跨运行哈希比较，也不用于识别装备字段。
+- `StableFrames` 的既有实现要求三帧字节哈希完全一致；任一帧不同即稳定性 fail-closed。本次第四次校准的规则、阈值和停止结论不变。
+#### 纯视觉真实装备列表页视觉字段稳定性契约变更（2026-08-01）
+
+- 用户指出真实 MuMu 三帧 PNG 的字节哈希每次变化，要求改为比较视觉字段。该范围变更已建立独立任务说明：[纯视觉真实装备列表页视觉字段稳定性契约变更任务说明](纯视觉真实装备列表页视觉字段稳定性契约变更任务说明.md)；本文档为本轮总计划同步记录。
+- 旧结论 `real_list_readonly_calibration_fail_closed_unstable_frames_20260801` 仅作为历史对照：三帧哈希不同本身不再直接判定列表页不稳定；未执行的 OCR、目标唯一性和后验仍不能被推定为通过。
+- 新契约仅适用于装备列表页：固定三帧分别经同一注册局部 OCR/模板链路解析，比较页面锚点、滚动/边界、候选身份/视觉指纹和字段值的规范化视觉签名；来源、视口、时间单调、字段完整、唯一目标和 `>=0.98` 置信度继续 fail-closed。详情页和强化节点保留原有稳定帧/新鲜后验契约。
+- 子 agent 已以 `gpt-5.6-terra + high` 完成初版列表页三帧批次、逐帧局部识别和字段签名比较；其定向离线验证为列表相关 `28/28`、导航 `6/6` 通过，未连接 ADB、未截图、未输入。主 agent 审阅发现导航层还需显式验证上游字段比较已通过，不能仅依据 `equipment_list` 页面类型接受不同哈希。
+- 主 agent 已补充 `visual_fields_stable=true` 证据标记和候选槽位签名：列表页导航只有在上游三帧字段比较通过并带标记时才接受不同 PNG 哈希；详情页/强化节点仍保留整帧哈希稳定契约。无标记列表证据、字段/候选/槽位/锚点漂移均 fail-closed。
+- 最终状态：`implementation_complete_offline_verified`。`test_visual*.py` `108/108`、Python 3.9 `py_compile`、`git diff --check` 均通过；报告见[装备列表页视觉字段稳定性离线验证报告](reports/visual_list_visual_stability_offline_20260801.md)。本轮未连接 ADB、未截图、未输入、未导航、未强化、未选材、未确认、未消耗资源。真实校准必须新建任务说明并重新取得一次性只读授权。实际模型记录为 `gpt-5.6-terra + high`（用户偏好 `gpt-5.6-luna + max`，当前接口不可用 Luna）。
+#### 纯视觉真实装备列表页视觉字段三帧只读校准第五次（2026-08-01）
+
+- 用户已明确批准一次新的真实列表页只读校准；旧第四次授权和结论不可复用。权威任务说明：[纯视觉真实装备列表页视觉字段三帧只读校准第五次任务说明](纯视觉真实装备列表页视觉字段三帧只读校准第五次任务说明.md)。
+- 本次使用新契约：固定三帧局部识别后的视觉字段签名一致才算稳定；PNG 哈希只作审计。仍保留唯一 `device`、`1280x720`、来源/视口/时间、字段完整、唯一目标和 `>=0.98` 门槛；禁止输入、落盘、重试和后续操作。
+- 当前状态：`authorized_once_pending_execution`；实际模型 `gpt-5.6-terra + high`（用户偏好 `gpt-5.6-luna + max`，当前接口不可用 Luna）。若生产 OCR/模板读取器缺失或任一门槛失败，必须 fail-closed。
+
+#### 纯视觉真实装备列表页视觉字段三帧只读校准第五次前置失败（2026-08-01）
+
+- 权威任务说明：[纯视觉真实装备列表页视觉字段三帧只读校准第五次任务说明](纯视觉真实装备列表页视觉字段三帧只读校准第五次任务说明.md)。上条 `authorized_once_pending_execution` 已被本记录覆盖。
+- 只读接口审阅确认：`equipment_list_region_registry()`、`RegisteredListPageLocalRecognizer` 和 `InMemoryPngListPageObservationSource` 已存在，但生产运行时没有 `ListPagePngOcrReader`/`ListPagePngTemplateReader` 实例或真实 PNG 到列表观察源的调用者；现有实例仅为测试假实现。
+- 按任务“读取器缺失立即 fail-closed”条件，本次用户一次性授权在 ADB 前置闸门结束：未运行官方 `adb devices -l`，未截图、未执行真实 OCR/模板识别、未落盘、未重试、未输入、未导航、未点击、未强化、未选材、未确认、未消耗资源、未联网或上传。详细结果见[第五次真实列表页视觉字段只读校准前置失败报告](reports/visual_list_visual_fields_calibration_fifth_20260801.md)。
+- 当前状态：`real_list_readonly_calibration_fail_closed_missing_production_list_reader_20260801`；实际模型 `gpt-5.6-terra + high`（Luna 当前不可用）。本次授权不可复用。
+- 下一步仅记录为：建立独立离线生产列表 OCR/模板读取器接线与回归任务；完成并经主 agent 审阅后，重新建任务说明并取得新的真实三帧只读授权。校准通过仍不授权点击或导航。
+#### 纯视觉装备列表页生产 OCR/模板读取器接线离线开发（2026-08-01）
+
+- 用户批准进入下一步；本轮唯一权威任务说明为[纯视觉装备列表页生产OCR模板读取器接线离线开发任务说明](纯视觉装备列表页生产OCR模板读取器接线离线开发任务说明.md)。此前 `real_list_readonly_calibration_fail_closed_missing_production_list_reader_20260801` 已被本项承接，旧真实只读授权不可复用。
+- 本轮仅补齐显式生产 OCR/模板读取器装配入口与离线回归；固定 `1280x720`、注册区域、`>=0.98`、唯一目标和 fail-closed 契约不变。禁止 ADB、真实截图、真实 OCR 推理、输入、点击、导航、强化、选材、确认和资源操作。
+- 实际执行模型为 `gpt-5.6-terra + high`（用户偏好 `gpt-5.6-luna + max` 当前接口不可用）；完成后必须由主 agent 审阅并重新建立任务说明，才能重新申请一次真实三帧只读授权。
+- 当前状态：`offline_production_list_reader_wiring_in_progress_20260801`。
+
+#### 纯视觉装备列表页生产 OCR/模板读取器接线离线开发完成（2026-08-01）
+
+- 权威任务说明：[纯视觉装备列表页生产OCR模板读取器接线离线开发任务说明](纯视觉装备列表页生产OCR模板读取器接线离线开发任务说明.md)。上条 `offline_production_list_reader_wiring_in_progress_20260801` 已被本完成记录覆盖；实际执行模型为 `gpt-5.6-terra + high`（用户偏好的 `gpt-5.6-luna + max` 当前协作接口不可用）。
+- 新增 `src/e7_enhance/visual_list_production.py`：显式装配固定区域、内存 PNG 观察源、`RegisteredListPageLocalRecognizer` 和固定三帧收集器；缺少/异常/非法读取器在证据生成前 fail-closed，不产生坐标或输入。
+- 新增并补充生产接线回归：三帧 PNG 哈希不同但视觉字段一致时通过；缺失/异常工厂、非法读取器、低置信度和读取异常均 fail-closed。报告：[reports/visual_list_production_reader_wiring_offline_20260801.md](reports/visual_list_production_reader_wiring_offline_20260801.md)。
+- 验证：全部 `test_visual*.py` `114/114`，Python 3.9 `py_compile` 退出码 `0`，`git diff --check` 退出码 `0`。本轮未连接 ADB、未截图、未执行真实 OCR、输入、导航、点击、强化、选材、确认或资源操作。
+- 当前状态：`offline_production_list_reader_wiring_completed_main_reviewed_20260801`。下一步必须新建任务说明并重新取得一次真实列表页三帧只读授权；该授权仍不包含点击或导航。
+
+#### 纯视觉真实装备列表页视觉字段三帧只读校准第六次任务建立（2026-08-01）
+
+- 用户批准进入下一步；本轮唯一权威任务说明为[纯视觉真实装备列表页视觉字段三帧只读校准第六次任务说明](纯视觉真实装备列表页视觉字段三帧只读校准第六次任务说明.md)。该批准仅完成任务文档建立和计划同步，未授权本轮立即连接设备。
+- 第六次校准仅允许在用户另行明确一次性授权后执行：官方 MuMu `adb.exe devices -l`、唯一 `device`、固定三帧内存 `exec-out screencap -p`、固定 `1280x720` 局部 OCR/模板识别和视觉字段签名比较。PNG 哈希只作审计，不作为稳定性判定。
+- 禁止截图落盘、重试、追加采样、输入、点击、导航、强化、选材、确认、资源操作、联网、上传和模型下载；校准通过也不授权进入详情页或强化界面。
+- 当前状态：`real_list_readonly_calibration_task_created_waiting_explicit_one_time_authorization_20260801`。实际模型记录为 `gpt-5.6-terra + high`（用户偏好的 `gpt-5.6-luna + max` 当前接口不可用）。
+
+#### 纯视觉真实装备列表页视觉字段三帧只读校准第六次 fail-closed（2026-08-01）
+
+- 权威任务说明：[纯视觉真实装备列表页视觉字段三帧只读校准第六次任务说明](纯视觉真实装备列表页视觉字段三帧只读校准第六次任务说明.md)；详细报告见[第六次真实列表页视觉字段三帧只读校准报告](reports/visual_list_visual_fields_calibration_sixth_20260801.md)。上条 `real_list_readonly_calibration_task_created_waiting_explicit_one_time_authorization_20260801` 已被本记录覆盖。
+- 用户已确认一次性只读校准。官方 MuMu `adb.exe devices -l` 退出码 `0`，发现唯一 `emulator-5554`，状态为 `device`；随后恰好读取三帧内存 PNG，均通过 PNG、非黑帧和 `1280x720` 视口校验，时间戳单调，未落盘。三帧哈希相同仅作审计。
+- 生产 OCR/模板读取器工厂缺失，`build_production_list_page_pipeline` 在识别前返回 `ProductionListPageReaderUnavailable`，因此未产生视觉字段签名、目标唯一性或字段通过结论，按契约 fail-closed。
+- 本次未执行局部 OCR/模板推理、重试、追加采样、输入、点击、导航、强化、选材、确认、资源操作、联网、上传或模型下载。实际模型为 `gpt-5.6-terra + high`（Luna 当前不可用）。
+- 当前状态：`real_list_readonly_calibration_fail_closed_missing_production_reader_20260801`。下一步必须另建真实生产 OCR/模板引擎实例接线任务并重新取得一次性只读授权；本次授权不可复用，校准通过仍不授权点击或导航。
+
+#### 纯视觉装备列表页真实生产 OCR/模板引擎实例接线离线开发（2026-08-01）
+
+- 用户已批准并授权进入离线开发；本轮唯一权威任务说明为[纯视觉装备列表页真实生产OCR模板引擎实例接线离线开发任务说明](纯视觉装备列表页真实生产OCR模板引擎实例接线离线开发任务说明.md)。范围仅覆盖本地 OCR/模板读取器实例、生产装配和 fixture 回归，不包含真实设备操作。
+- 第六次真实三帧校准的 fail-closed 缺口为生产 OCR/模板工厂缺失；本任务补齐前不得重新申请真实三帧校准。固定区域、`>=0.98`、字段稳定、唯一目标和 fail-closed 契约不变。
+- 禁止 ADB、真实截图、真实 OCR 推理、联网、模型下载、输入、点击、导航、强化、选材、确认和资源操作。实际模型为 `gpt-5.6-terra + high`（Luna 当前不可用）。
+- 当前状态：`offline_production_ocr_template_engine_wiring_authorized_in_progress_20260801`。
+
+#### 纯视觉装备列表页真实生产 OCR/模板引擎实例接线阻断（2026-08-01）
+
+- 权威任务说明：[纯视觉装备列表页真实生产OCR模板引擎实例接线离线开发任务说明](纯视觉装备列表页真实生产OCR模板引擎实例接线离线开发任务说明.md)；详细审阅见[生产 OCR/模板引擎实例接线阻断报告](reports/visual_list_production_engine_instance_wiring_blocked_20260801.md)。上条 `offline_production_ocr_template_engine_wiring_authorized_in_progress_20260801` 已被本记录覆盖。
+- 离线审阅确认：生产装配入口已要求显式 OCR/模板工厂并在缺失时 fail-closed；现有 PaddleOCR 适配器仅覆盖详情页强化文本，仓库缺少列表卡片字段映射、视觉指纹模板和生产模型配置。
+- 结论澄清：本地 PaddleOCR 包和模型缓存已存在，可复用通用引擎核心；真正缺口是列表卡片版式字段映射、候选卡片视觉指纹模板和审定的列表配置，不得把详情页解析器直接套用。
+- 本轮未新增伪造读取器，未运行真实 OCR、ADB、截图、联网、模型下载、输入、点击、导航或资源操作；未运行测试。实际模型为 `gpt-5.6-terra + high`（Luna 当前不可用）。
+- 当前状态：`offline_production_ocr_template_engine_wiring_blocked_missing_assets_20260801`。下一步为[纯视觉装备列表页OCR字段映射与卡片模板资产准备任务说明](纯视觉装备列表页OCR字段映射与卡片模板资产准备任务说明.md)，先提供并审定列表卡片字段映射、版式参考和卡片视觉指纹模板资产；资产完整前不得重新申请真实三帧校准。
+
+#### 纯视觉装备列表页 OCR 字段映射与卡片模板资产准备（2026-08-01）
+
+- 用户要求继续并由主 agent 代为准备资产；本轮唯一权威任务说明为[纯视觉装备列表页OCR字段映射与卡片模板资产准备任务说明](纯视觉装备列表页OCR字段映射与卡片模板资产准备任务说明.md)。
+- 已发现本地 PaddleOCR 包/模型缓存可复用通用引擎核心，并从历史列表页 `before_page.png` 提取列表网格、代表性卡片、第二行卡片和详情面板参考 crop；资产 manifest 为 `assets/visual/list_reference/manifest.json`，全部标记 `reference_only`，不构成当前页面证据。
+- 已额外提取主属性/副属性/套装图标候选 crop；除生命值主属性参考标签外，其余属性语义仍待审定，不能直接作为生产字段映射。
+- 现有套装图标 manifest 仍不能替代整卡模板；生命值主属性以及防御%、速度、效果抗性%、效果命中%的四个副属性图标已与同一历史详情面板交叉核对，攻击力与暴击率图标、字段映射和卡片视觉指纹模板仍未审定。未连接 ADB、未实时 OCR、未输入、未点击或导航。
+- 当前状态：`reference_layout_extracted_waiting_attack_crit_mapping_and_card_templates_20260801`。下一步只在离线范围审定攻击/暴击图标和整卡模板；完成后必须另建任务并重新取得真实三帧只读授权。
+
+#### 纯视觉真实武器列表页参考资产三帧只读采集任务建立（2026-08-01）
+
+- 用户已说明进入武器列表并允许采集；本轮唯一权威任务说明为[纯视觉真实武器列表页参考资产三帧只读采集任务说明](纯视觉真实武器列表页参考资产三帧只读采集任务说明.md)。
+- 本次仅允许一次官方 MuMu `adb devices -l`、唯一 `device`、固定三帧内存 PNG 和固定裁切 `reference_only` 资产；不保存全屏截图，不执行实时 OCR、目标识别、点击、导航或资源操作。
+- 实际模型记录为 `gpt-5.6-terra + high`（Luna 当前不可用）；当前状态：`authorized_pending_readonly_weapon_reference_capture_20260801`。
+
+#### 纯视觉真实武器列表页参考资产三帧只读采集完成（2026-08-01）
+
+- 权威任务说明：[纯视觉真实武器列表页参考资产三帧只读采集任务说明](纯视觉真实武器列表页参考资产三帧只读采集任务说明.md)；manifest 为 `assets/visual/list_reference/weapon_capture_manifest_20260801.json`。上条 `authorized_pending_readonly_weapon_reference_capture_20260801` 已被本记录覆盖。
+- 用户已进入武器列表并授权一次性只读采集。官方 ADB 发现唯一 `emulator-5554`；恰好读取三帧内存 PNG，均通过 PNG/非黑帧/`1280x720`/时间单调校验，未保存全屏截图，仅保存四个固定 `reference_only` crop。
+- 右侧详情参考确认武器主属性攻击力、生命值、速度、暴击伤害和分数 `18` 的版式；这只是历史/参考资产，不构成当前目标字段证据。
+- 武器卡片已额外提取攻击主属性、生命值、速度和暴击伤害图标，并在武器采集 manifest 中记录来源与 SHA-256；攻击%、暴击率%、效果抗性图标和整卡指纹模板仍未完成。
+- 未执行 OCR、输入、点击、导航、强化、选材、确认、资源操作、联网或上传。实际模型为 `gpt-5.6-terra + high`（Luna 当前不可用）。
+- 当前状态：`reference_crops_captured_manifest_reviewed_waiting_offline_asset_build_20260801`。下一步继续离线补齐攻击%、暴击率%、效果抗性图标和整卡视觉指纹模板；完成后另建真实三帧视觉字段校准任务并重新授权。
+
+#### 纯视觉真实装备列表页视觉字段三帧只读校准第七次任务建立（2026-08-01）
+
+- 用户表示模拟器页面已调整并批准重新进行。本轮唯一权威任务说明为[纯视觉真实装备列表页视觉字段三帧只读校准第七次任务说明](纯视觉真实装备列表页视觉字段三帧只读校准第七次任务说明.md)；授权仅覆盖一次只读校准，不包含点击或导航。
+- 第六次校准因生产 OCR/模板读取器工厂缺失 fail-closed，旧授权和旧结论不可复用。第七次先执行本地生产读取器闸门检查；读取器、攻击/暴击/效果抗性字段映射或整卡指纹模板缺失时，按契约在 ADB 前停止。
+- 若闸门通过，才允许唯一 `device`、固定三帧内存 PNG、固定 `1280x720` 注册区域和视觉字段签名比较；PNG 哈希只作审计。禁止截图落盘、重试、追加采样、输入、点击、导航、强化、选材、确认、资源操作、联网、上传和模型下载。
+- 实际执行模型记录为 `gpt-5.6-terra + high`（用户偏好的 `gpt-5.6-luna + max` 当前协作接口不可用）。当前状态：`real_list_readonly_calibration_seventh_task_created_authorized_pending_preflight_20260801`。
+
+#### 纯视觉真实装备列表页视觉字段三帧只读校准第七次前置失败（2026-08-01）
+
+- 权威任务说明：[纯视觉真实装备列表页视觉字段三帧只读校准第七次任务说明](纯视觉真实装备列表页视觉字段三帧只读校准第七次任务说明.md)；详细结果见[第七次校准报告](reports/visual_list_visual_fields_calibration_seventh_20260801.md)。上条 `real_list_readonly_calibration_seventh_task_created_authorized_pending_preflight_20260801` 已被本记录覆盖。
+- 生产装配闸门检查返回 `ProductionListPageReaderUnavailable: production list OCR and template factories are required`；列表页生产 OCR/模板实例仍未配置。按契约在 ADB 前 fail-closed，未运行 `adb devices -l`、未读取三帧、未执行 OCR/模板推理。
+- 本次未截图落盘、未重试、未追加采样、未输入、未点击、未导航、未强化、未选材、未确认、未消耗资源、未联网、未上传或下载模型；本次授权不可复用。
+- 剩余缺口仍为攻击%、暴击率%、效果抗性字段映射、整卡视觉指纹模板及显式生产 reader 工厂。下一步只能先完成离线资产和接线回归，再新建真实三帧校准任务。
+- 实际执行模型为 `gpt-5.6-terra + high`（Luna 当前不可用）；当前状态：`real_list_readonly_calibration_fail_closed_missing_production_reader_seventh_20260801`。
+
+#### 纯视觉装备列表页 OCR 字段映射与卡片模板资产准备继续执行（2026-08-01）
+
+- 用户要求继续处理第七次校准的生产 reader 阻断。本轮唯一权威任务说明仍为[纯视觉装备列表页OCR字段映射与卡片模板资产准备任务说明](纯视觉装备列表页OCR字段映射与卡片模板资产准备任务说明.md)，范围限于离线字段映射、模板 manifest/指纹读取器和生产接线回归。
+- 不连接 ADB、不读取真实截图、不运行实时 OCR、不发送输入、不点击、不导航、不强化、不选材、不确认、不消耗资源、不联网、不上传、不下载模型；缺少可靠攻击%、暴击率%、效果抗性语义或整卡模板时继续 fail-closed。
+- 实际执行模型记录为 `gpt-5.6-terra + high`（用户偏好的 `gpt-5.6-luna + max` 当前不可用）；当前状态：`offline_list_field_mapping_and_card_template_build_in_progress_20260801`。
+
+#### 纯视觉装备列表页 OCR 字段映射与卡片模板资产离线接线完成（2026-08-01）
+
+- 本轮新增 `src/e7_enhance/visual_list_assets.py`、字段映射与整卡指纹 manifest，以及 `build_production_list_page_pipeline_from_assets`；生产入口在 frame capture 前严格验证两类资产，缺失或非完整审定状态即 `ProductionListPageReaderUnavailable`。
+- 当前字段 manifest 明确攻击%、暴击率%、效果抗性仍缺可靠列表语义证据；整卡 manifest 明确缺失，历史 crop 和套装图标不替代整卡模板。状态由 `offline_list_field_mapping_and_card_template_build_in_progress_20260801` 覆盖为 `offline_list_assets_wired_fail_closed_waiting_reliable_semantics_and_full_card_templates_20260801`。
+- 离线报告：[visual_list_assets_offline_build_20260801.md](reports/visual_list_assets_offline_build_20260801.md)。资产回归 4/4，完整列表视觉 discover `117/117`，Python 3.9 编译和 `git diff --check` 通过；全程未连接 ADB、未读取真实帧、未运行实时 OCR、未输入、未点击或导航。
+- 实际执行模型为 `gpt-5.6-terra + high`（Luna 当前不可用）。下一步必须取得可靠语义映射和完整整卡模板，另建任务说明并重新授权真实三帧只读校准；当前不得进入真实设备操作。
+
+#### 纯视觉列表页资产 manifest 完整字段覆盖校验补强（2026-08-01）
+
+- 主 agent 审阅发现 manifest 仅检查条目格式不足以保证 `audited_complete` 的完整性；已在 `visual_list_assets.py` 强制覆盖列表解析器八个必需字段，并拒绝未知字段。
+- 新增缺字段回归；列表模块测试 `39/39`、Python 3.9 编译退出码 `0`、`git diff --check` 退出码 `0`（仅既有换行警告）。此前完整视觉 discover `117/117` 通过仍有效。
+- 该补强不改变真实设备边界；字段语义和整卡模板仍未审定，当前继续 `fail-closed`，不得重新连接 ADB 或申请真实三帧校准。
+
+#### 纯视觉真实列表页目标卡片整卡模板只读采集任务建立（2026-08-01）
+
+- 用户询问如何制作整卡指纹模板并确认需要真实当前卡片视觉参考。本轮建立[纯视觉真实列表页目标卡片整卡模板只读采集任务说明](纯视觉真实列表页目标卡片整卡模板只读采集任务说明.md)，仅允许固定三帧内存读取和目标卡片裁切，不包含点击或导航。
+- 执行前仍需用户明确一次性只读授权；当前不连接 ADB、不截图、不读取设备。目标字段仍为武器、红装/传说、85、`+3`、生命值套装、攻击主属性、攻击 `13%`、暴击 `3%`、速度 `2`、抗性 `8%`、分数 `37`。
+- 实际执行模型记录为 `gpt-5.6-terra + high`（Luna 当前不可用）；当前状态：`target_card_template_capture_task_created_waiting_explicit_one_time_readonly_authorization_20260801`。
+
+#### 纯视觉真实列表页目标卡片整卡模板只读采集前置失败（2026-08-01）
+
+- 权威任务说明：[纯视觉真实列表页目标卡片整卡模板只读采集任务说明](纯视觉真实列表页目标卡片整卡模板只读采集任务说明.md)；详细结果见[模板采集报告](reports/visual_list_target_card_template_capture_20260801.md)。上条 `target_card_template_capture_task_created_waiting_explicit_one_time_readonly_authorization_20260801` 已被本记录覆盖。
+- 用户已批准一次性只读采集，但字段 manifest 仍为 `incomplete`、整卡模板 manifest 仍为 `missing`，无法满足 `>=0.98` 目标字段和整卡指纹登记门槛；按契约在 ADB 前 fail-closed。
+- 本次未运行 ADB、未读取三帧、未截图、未 OCR、未裁切模板、未输入、未点击、未滚动、未导航、未强化、未选材、未确认、未消耗资源、未重试、未联网或上传；本次授权不可复用。
+- 实际执行模型为 `gpt-5.6-terra + high`（Luna 当前不可用）；当前状态：`target_card_template_capture_fail_closed_missing_production_reader_and_template_20260801`。下一步需先取得并审定真实字段语义和整卡模板，再新建任务重新授权。
+
+#### 纯视觉真实列表页原始截图只读采集与离线裁切规划任务建立（2026-08-01）
+
+- 用户明确改变范围：先采集一张当前武器列表页原始 PNG，再基于真实图离线分析裁切和规划。本轮建立[纯视觉真实列表页原始截图只读采集与离线裁切规划任务说明](纯视觉真实列表页原始截图只读采集与离线裁切规划任务说明.md)；该任务允许保存一张 `reference_only` 原始图，但不产生目标验证、生产模板或点击授权。
+- 仅允许官方 MuMu ADB 设备发现和一次 `exec-out screencap -p`；禁止输入、点击、滚动、导航、OCR/模板通过结论、重试、联网、上传和资源操作。
+- 实际执行模型为 `gpt-5.6-terra + high`（Luna 当前不可用）；当前状态：`authorized_pending_single_raw_reference_capture_20260801`。
+
+#### 纯视觉真实列表页原始截图采集与离线裁切规划完成（2026-08-01）
+
+- 权威任务说明：[纯视觉真实列表页原始截图只读采集与离线裁切规划任务说明](纯视觉真实列表页原始截图只读采集与离线裁切规划任务说明.md)；原始图、manifest 和分析见[裁切规划报告](reports/visual_list_raw_capture_crop_plan_20260801.md)。
+- 官方 MuMu ADB 发现唯一 `emulator-5554`，仅采集一次 `1280x720` 原始 PNG；已生成目标卡片、邻近上下文、列表网格和右侧详情四个 `reference_only` crop。未执行输入、点击、滚动、导航、强化、选材、确认或资源操作。
+- 当前原始图明确显示目标卡片和右侧字段版式，但不升级为生产 OCR/整卡模板证据；下一步仍需离线审定固定区域和生产 reader，真实导航/点击另建任务并重新授权。
+- 实际执行模型为 `gpt-5.6-terra + high`（Luna 当前不可用）；当前状态：`raw_reference_captured_offline_crop_planning_completed_20260801`。
+
+#### 纯视觉列表页会话产物合并收口（2026-08-01）
+
+- 用户要求先整理再决定推进；整理完成后批准「先合并收口」。本轮把 Codex 会话 `019fa96f-...`（worktree `e67b`）的视觉列表页产物并入当前工作区，避免未提交产物滞留 worktree 的丢失风险。
+- 并入内容：`src/e7_enhance/visual_list_*.py` 与 `visual_navigation.py` 共 7 个源码、`tests/test_visual_list_*` 与 `test_visual_navigation.py` 共 8 个测试、`assets/visual/list_reference/` 31 个资产、10 份 visual_list 报告、21 个 e67b 独有的视觉列表页任务说明。
+- 未覆盖任何共享文件：`AGENTS.md`、`README.md`、`e7-gear-enhance-plan.md` 及 5 个共享任务说明均保留当前工作区较新版本（含「子 agent 自动执行恢复」与「流程反馈与报告粒度」规则）。
+- 计划文档按「HEAD 前缀 + 流程反馈段 + 视觉列表段」拼接合并，HEAD 前缀完整性已验证；`git diff --check` 通过。
+- 当前仍处于 fail-closed 阻断：字段映射 manifest `incomplete`（缺 攻击%/暴击率%/效果抗性）、整卡指纹 manifest `missing`、生产 OCR/模板 reader 工厂 `not_configured`。真实三帧校准与点击/导航开发均未授权、未执行。
+- 合并收口任务说明：[纯视觉列表页会话产物合并收口任务说明.md](纯视觉列表页会话产物合并收口任务说明.md)。当前状态：`merged_visual_list_session_output_into_current_worktree_20260801`。
+
+#### 新会话交接初始化（2026-08-01）
+
+- 用户要求开新 Claude Code 会话窗口继续视觉列表页开发；本轮完成合并收口与交接初始化。
+- 已提交 commit `265785b`（79 文件）：7 源码、8 测试、31 资产、10 报告、22 任务说明、`CLAUDE.md`；项目级 `CLAUDE.md` 为 AGENTS.md 全文镜像，CC 新会话自动加载。
+- 新会话唯一权威任务说明：[纯视觉装备列表页OCR字段映射与卡片模板资产准备任务说明.md](纯视觉装备列表页OCR字段映射与卡片模板资产准备任务说明.md)，在既有离线基础上继续：补齐并审定攻击%、暴击率%、效果抗性字段语义映射与整卡视觉指纹模板，接线生产 OCR/模板 reader 工厂。
+- 阻断不变：字段映射 `incomplete`、整卡指纹 `missing`、生产 reader `not_configured`；真实三帧只读校准与点击/导航均未授权，须另建任务说明重新授权。
+- 当前状态：`handoff_initialized_new_cc_session_will_continue_offline_list_assets_20260801`。
+
+#### 纯视觉装备列表页离线证据复核与生产装配接线回归（2026-08-01）
+
+- 权威任务说明：[纯视觉装备列表页OCR字段映射与卡片模板资产准备任务说明.md](纯视觉装备列表页OCR字段映射与卡片模板资产准备任务说明.md)。上条 `handoff_initialized_new_cc_session_will_continue_offline_list_assets_20260801` 已被本记录覆盖；实际执行模型为 `gpt-5.6-terra + high`（用户偏好的 `gpt-5.6-luna + max` 当前接口不可用）。
+- 离线证据复核：本地 PaddleOCR（PP-OCRv4，缓存 `D:\VScode\cultivation\e7_ocr_cache`）对目标卡片 crop 只读到数值 token（`85`/`160`/`13%`/`3%`/`2`/`8%`/`37`）；属性类型靠图标，目标卡片攻击%、暴击率%、效果抗性% 图标无可靠语义参考。详情面板 OCR 文字（攻击力 `13%`、暴击率 `3%`、效果抗性 `8%`）仅确认详情版式字段语义，不能替代列表卡片图标证据。整卡指纹模板只可能来自 `reference_only` 历史 crop，任务禁止当生产模板。
+- 结论：`field_mapping_manifest.json` 保持 `incomplete`、`card_fingerprint_manifest.json` 保持 `missing`，生产入口继续 fail-closed，未伪造任何通过结果。
+- 接线回归：补齐 `build_production_list_page_pipeline_from_assets` 测试（此前零覆盖），覆盖完整 fixture 正常装配并 parse、仓库 manifest 帧捕获前 fail-closed、缺必需字段、低置信度 OCR、字段冲突、模板哈希不匹配、视口漂移；并改进 `visual_list_production.py` 对整卡模板 bundle 做急切校验，让哈希/视口/阈值缺陷以原始审计细节透传。
+- 验证：`test_visual*.py` `126/126`（原 117 + 新增 9）、Python 3.9 `py_compile` 退出码 `0`、`git diff --check` 退出码 `0`（仅既有 LF/CRLF 警告）。详见[离线证据复核与装配接线回归报告](reports/visual_list_assets_evidence_and_assembly_regression_20260801.md)。
+- 本轮未连接 ADB、未读取真实帧、未运行实时 OCR、未输入、未点击、未导航、未强化、未选材、未确认、未消耗资源、未联网、未上传或下载模型。
+- 当前状态：`offline_evidence_reviewed_production_assembly_wired_fail_closed_waiting_reliable_semantics_and_full_card_templates_20260801`。下一步只能先取得可靠字段语义与整卡模板，再另建任务说明并重新取得一次真实三帧只读授权；该校准不包含点击或导航。
+
+#### 纯视觉装备列表页离线产物主 agent 审阅通过（2026-08-01）
+
+- 权威任务说明：[纯视觉装备列表页OCR字段映射与卡片模板资产准备任务说明.md](纯视觉装备列表页OCR字段映射与卡片模板资产准备任务说明.md)；详细审阅见[离线证据复核与装配接线回归报告](reports/visual_list_assets_evidence_and_assembly_regression_20260801.md)。上条 `offline_evidence_reviewed_production_assembly_wired_fail_closed_waiting_reliable_semantics_and_full_card_templates_20260801` 已被本记录覆盖。
+- 主 agent 只读审阅确认：字段映射 `incomplete`、整卡指纹 `missing`、生产入口 frame capture 前 fail-closed，`0.98` 门槛未降低，无默认模板或人工通过结果；生产装配接线契约正确（OCR reader 工厂显式注入、字段映射作审计 gate、模板 reader 由 asset bundle 构造、缺陷原始细节透传）；五类回归（正常/低置信度/字段冲突/模板缺失/视口漂移）覆盖并通过。
+- 验证复核：`test_visual*.py` `126/126`、Python 3.9 `py_compile` 退出码 `0`、`git diff --check` 退出码 `0`（仅既有 LF/CRLF 警告）；未连接 ADB、未读取真实帧、未运行实时 OCR、未输入、未点击或导航。实际执行模型为 `gpt-5.6-terra + high`（Luna 当前不可用）。
+- 当前状态：`offline_evidence_reviewed_and_assembly_wired_main_reviewed_20260801`。真实列表页仍不可用；下一步必须取得可靠攻击%、暴击率%、效果抗性图标语义与完整整卡指纹模板，再另建任务说明并重新取得一次真实三帧只读授权（仍不包含点击或导航）。
+
+#### 真实目标卡片三帧只读采集与图标语义复核（2026-08-01）
+
+- 用户授权真实三帧只读采集（仍不包含点击或导航）。官方 MuMu ADB 发现唯一 `emulator-5554`，三次 `exec-out screencap -p` 均为 `1280x720`（SHA-256：`157ee69d…`/`dae6199c…`/`5f1b25ff…`）。
+- 三帧稳定性成立：目标卡片区域（x143-313, y451-568）与右侧详情面板区域（x820-1280, y300-480）像素完全一致（mean_diff=0.00）；仅列表头部有极小差异（0.03，顶栏数字）。
+- 右侧详情面板 OCR 高置信确认目标装备真值：`传说武器`、`暗黑钢铁剑`、`攻击力 160`、`攻击力 13%`、`暴击率 3%`、`速度 2`、`效果抗性 8%`、`装备分数 37`、`生命值套装（0/2）`、`85`、`+3`；列表卡片副属性数值（13%/3%/2/8%）与详情面板副属性文字标签顺序完全一致，确认为同一帧内同一件选中装备。
+- 提取三帧字节一致的整卡 crop（170x117，sha256 `13531f05…`），保存为 `assets/visual/list_reference/capture_20260801/target_card_full_20260801.png`（`reference_only`）。
+- 复核结论：字段语义与整卡指纹两项阻断仍成立，两个 manifest 继续 `incomplete`/`missing`、生产入口继续 fail-closed：
+  - 列表卡片图标仅约 9-16px，且与详情面板图标模板匹配分数低（NCC/IoU 约 0.05-0.62，均低于 `0.98`），不是同一套可匹配渲染；攻击%/暴击率%/效果抗性% 图标语义仍无可靠证据。
+  - 注册区域 `candidate_card:1`（512x160，x102-614 y158-317）与当前真实列表卡片（170x117，x143-313 y451-568）不匹配；整卡指纹无法在当前注册区域下产生可命中 crop，需先校准列表区域注册。
+- 本轮真实采集未输入、未点击、未滚动、未导航、未强化、未选材、未确认、未消耗资源、未落盘全屏截图、未重试、未联网、未上传或下载模型。实际执行模型为 `gpt-5.6-terra + high`（Luna 当前不可用）。
+- 当前状态：`real_three_frame_capture_succeeded_card_reference_obtained_blocked_on_icon_semantics_and_region_calibration_20260801`。下一步仍是先取得可靠图标语义并校准列表区域注册，再另建任务说明重新授权；本次授权已使用且不可复用。
+#### 真实列表页区域注册校准任务说明建立（2026-08-01）
+
+- 用户批准继续下一步，起草并建立 [纯视觉真实列表页区域注册校准任务说明.md](纯视觉真实列表页区域注册校准任务说明.md)。
+- 背景：上轮真实三帧采集确认目标卡片实际为 170x117（x143-313, y451-568），与注册的 candidate_card:1（512x160）不匹配，整卡指纹 SHA-256 运行时无法命中。
+- 目标：校准 equipment_list_region_registry() 区域至真实布局，验证已存整卡 crop 的 SHA-256 命中后，将 card_fingerprint_manifest.json 升级为 `audited_complete`。
+- 范围：一次三帧只读采集 + 离线布局分析 + registry 校准 + 受影响测试同步；`field_mapping_manifest.json`（图标语义）不在本任务，保持 `incomplete`。
+- 授权：需用户明确批准一次性三帧只读采集（不含点击/导航）后方可执行。
+- 当前状态：`region_calibration_task_drafted_awaiting_authorization_20260801`。
+
+#### 真实列表页区域注册校准与整卡指纹登记完成（2026-08-01）
+
+- 权威任务说明：[纯视觉真实列表页区域注册校准任务说明.md](纯视觉真实列表页区域注册校准任务说明.md)；详细结果见[区域校准与指纹登记报告](reports/visual_list_region_calibration_and_fingerprint_20260801.md)。
+- 用户批准一次性三帧只读采集（不含点击/导航）。官方 MuMu ADB 唯一 `emulator-5554`，三帧 `1280x720`（SHA-256 `bf0e6890…`/`ba0166c4…`/`51c6b5ff…`），目标卡片与详情面板区域逐帧一致（mean_diff=0.00）。
+- 依据分数锚点确定真实网格：5 行（行顶 y=65/193/322/451/580）x 4 列（列左 x=143/313/483/653）；`equipment_list_region_registry()` 从 2x3（6 卡）校准为 4x5（20 卡），`candidate_card:13` = 目标卡片（x143-313, y451-568）。
+- 哈希口径修复：已存整卡 crop 为 PIL 编码（`acf1d02e…`），与运行时 filter-0 zlib 编码不一致；按运行时编码重建模板资产（sha256 `99efe5c2…`），`card_fingerprint_manifest.json` 从 `missing` 升级 `audited_complete` 并登记模板。
+- 命中验证：三帧在 `candidate_card:13` 区域 crop SHA-256 均为 `99efe5c2…`，`ManifestCardFingerprintReader` score 1.0 / threshold 0.98。
+- 验证：`test_visual_list*.py` 46/46、`test_visual*.py` 126/126、`py_compile` 0、`git diff --check` 0。
+- 未改变：`field_mapping_manifest.json` 仍 `incomplete`（三字段图标语义无证据），生产入口继续 fail-closed；真实三帧只读校准仍待另建任务与重新授权。
+- 当前状态：`region_calibrated_card_fingerprint_audited_field_mapping_still_incomplete_production_fail_closed_20260801`。
+
+#### opencode 图片识别转发插件（vision-relay）落地完成：2026-08-01
+
+- 需求：DeepSeek V4 Flash（纯文本）无法看图，用户确认采用方案 A（MCP/自定义工具转发），任务说明见《opencode图片识别转发插件任务说明.md》。
+- 探查结论：用户仅有 opencode-go provider（auth.json 单条目）；网关为 OpenAI 兼容地址 https://opencode.ai/zen/go/v1；网关对 urllib 默认 UA 返回 Cloudflare 403，需浏览器 UA。
+- 网关冒烟测试（Python 直连验证）：deepseek-v4-flash 200；视觉模型 kimi-k3 / mimo-v2.5 / qwen3.7-plus 均 200 且真实识别第七史诗装备截图成功（88/13%/9%/5/8%/8%/40 与计划记录吻合）；gpt-5.6-luna 裸 API 一律 400/403（需要 opencode 客户端私有参数，无法直连，已放弃）；grok-4.5 上游暂时失败。kimi-k3 为思考模型，max_tokens 需 8000 以上否则 reasoning 占满输出为空。
+- 产物：全局插件 C:\Users\orangine\.config\opencode\plugins\vision-relay.ts，自定义工具 analyze_image（参数 image_path 必填 / question 可选 / model 可选，默认 kimi-k3，备选 qwen3.7-plus / mimo-v2.5）；key 从 auth.json opencode-go 条目或 OPENCODE_API_KEY 读取；图片上限 8MB；错误信息可读。
+- 验证：tsc --noEmit 通过（exit 0）；node 直调 analyzeImage 核心函数真实识别成功（kimi-k3 与 qwen3.7-plus 均返回正确属性数值）。
+- 未验证项：插件加载需重启 opencode 后生效，会话内无法自验，待用户重启后用 analyze_image 工具确认。
+- 下一步：用户重启 opencode，在任意会话让模型调用 analyze_image 即可获得看图能力。
+
+#### 真实列表页自动选择装备进入强化界面执行任务建立：2026-08-01
+
+- 用户明确授权：自动选择列表页目标生命套武器并导航进入强化界面，允许通过 adb 获取验证（授权不含强化执行、选材、确认或资源消耗，最多两次点击）。
+- 建立 [纯视觉真实列表页自动选择装备进入强化界面执行任务说明.md](纯视觉真实列表页自动选择装备进入强化界面执行任务说明.md)：目标、授权范围、禁止修改项、执行步骤（列表三帧验证→点击目标卡片→详情页验证→定位强化按钮→点击→强化界面验证）、产物、停止条件齐全。
+- `adb devices -l` 唯一 `emulator-5554 device`（MuMu 12 自动发现），未使用任何 192.168.x.x 地址。
+- 当前状态：`nav_to_enhance_authorized_execution_pending_20260801`。下一步：按任务说明步骤 2-8 执行真实导航；用户偏好模型 gpt-5.6-luna 不可用，实际执行模型为 deepseek-v4-flash（opencode）。

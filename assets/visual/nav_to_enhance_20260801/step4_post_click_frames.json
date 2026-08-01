@@ -1,0 +1,48 @@
+{
+  "step": 4,
+  "wait_seconds": 2,
+  "frames": [
+    {
+      "index": 1,
+      "hash": "e2122a1efd6a95e4b80a3ad95c1f30f60481eae0e9e629a19ad647c687d33c3a",
+      "viewport": [
+        1280,
+        720
+      ],
+      "captured_at": "2026-08-01T14:19:44.605881+00:00",
+      "bytes": 845205,
+      "card13_crop_sha256": "99efe5c27e3b4af207f0e5f037de901f8da1ccfd706160540330b31e5fc8d72e"
+    },
+    {
+      "index": 2,
+      "hash": "defda9508a533c4c9d42fec6bd2ab1258438a4e4b8064e5eb4d43e49c9213f37",
+      "viewport": [
+        1280,
+        720
+      ],
+      "captured_at": "2026-08-01T14:19:47.003783+00:00",
+      "bytes": 845947,
+      "card13_crop_sha256": "99efe5c27e3b4af207f0e5f037de901f8da1ccfd706160540330b31e5fc8d72e"
+    },
+    {
+      "index": 3,
+      "hash": "07204ef6fd4c81d7111c479d6eb8e5b2aa1f53a1d26e6339457df782fd27421d",
+      "viewport": [
+        1280,
+        720
+      ],
+      "captured_at": "2026-08-01T14:19:49.393109+00:00",
+      "bytes": 845399,
+      "card13_crop_sha256": "99efe5c27e3b4af207f0e5f037de901f8da1ccfd706160540330b31e5fc8d72e"
+    }
+  ],
+  "card13_crop_hashes": [
+    "99efe5c27e3b4af207f0e5f037de901f8da1ccfd706160540330b31e5fc8d72e",
+    "99efe5c27e3b4af207f0e5f037de901f8da1ccfd706160540330b31e5fc8d72e",
+    "99efe5c27e3b4af207f0e5f037de901f8da1ccfd706160540330b31e5fc8d72e"
+  ],
+  "page_changed": true,
+  "device": "emulator-5554",
+  "card13_still_matches": true,
+  "frames_stable": false
+}

@@ -80,7 +80,7 @@ def local_values():
             "page_boundary": {"top_visible": True, "bottom_visible": False},
         },
     }
-    values.update({f"candidate_card:{index}": {"candidate": candidate() if index == 1 else None} for index in range(1, 7)})
+    values.update({f"candidate_card:{index}": {"candidate": candidate() if index == 1 else None} for index in range(1, 21)})
     return values
 
 
@@ -115,7 +115,7 @@ class PngListPageLocalObservationSourceTest(unittest.TestCase):
         self.assertTrue(result.passed)
         self.assertEqual(result.candidate_id, "synthetic-candidate-001")
         self.assertEqual(len(self.readers["list_header_region"].crops), 1)
-        self.assertEqual(self.readers["list_header_region"].crops[0].pixel_bounds, (64, 29, 1216, 130))
+        self.assertEqual(self.readers["list_header_region"].crops[0].pixel_bounds, (64, 14, 1216, 65))
         self.assertEqual(self.readers["list_header_region"].crops[0].payload[:8], b"\x89PNG\r\n\x1a\n")
 
     def test_reader_failure_and_unknown_viewport_stop_before_evidence(self):

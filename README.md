@@ -4,7 +4,7 @@
 
 ## 协作与文档
 
-项目级 agent 规则见 [AGENTS.md](AGENTS.md)。每次讨论形成结论或下一步时，必须同步更新 [e7-gear-enhance-plan.md](e7-gear-enhance-plan.md)；每个可执行任务必须先建立独立的 `*任务说明.md`，聊天指令不能替代本地文档。当前临时禁用自动发布子 agent 续作指令；只有用户明确索要时，才按固定标题“给子 agent 的续作指令：”和紧随其后的 `text` 代码块格式提供。
+项目级 agent 规则见 [AGENTS.md](AGENTS.md)。每次讨论形成结论或下一步时，必须同步更新 [e7-gear-enhance-plan.md](e7-gear-enhance-plan.md)；每个可执行任务必须先建立独立的 `*任务说明.md`，聊天指令不能替代本地文档。简单实现、测试、研究器改动和文档同步默认由内部子 agent 自动执行；当前仅禁用在回复中自动发布面向人类的子 agent 续作指令。只有用户明确索要时，才按固定标题“给子 agent 的续作指令：”和紧随其后的 `text` 代码块格式提供。
 
 ## 参考来源
 

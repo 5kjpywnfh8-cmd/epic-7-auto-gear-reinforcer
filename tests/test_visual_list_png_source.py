@@ -84,7 +84,7 @@ def _ocr_records():
     }
     records.update({
         f"candidate_card:{index}": {"candidate": None}
-        for index in range(2, 7)
+        for index in range(2, 21)
     })
     records["candidate_card:1"] = {
         "candidate_id": "synthetic-candidate-001",

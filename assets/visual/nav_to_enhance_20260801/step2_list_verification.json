@@ -1,0 +1,55 @@
+{
+  "step": 2,
+  "device": "emulator-5554",
+  "frames": [
+    {
+      "index": 1,
+      "hash": "ebca72381e5b44021fbcb3907b3bb2c176a79d03752cc2af9f73e4fbdc878e02",
+      "viewport": [
+        1280,
+        720
+      ],
+      "captured_at": "2026-08-01T14:18:14.038557+00:00",
+      "bytes": 845245
+    },
+    {
+      "index": 2,
+      "hash": "003e0b936f19a2319551fd8a2d147f891cfb0849010082643928bae3a8bfdad3",
+      "viewport": [
+        1280,
+        720
+      ],
+      "captured_at": "2026-08-01T14:18:15.392264+00:00",
+      "bytes": 846863
+    },
+    {
+      "index": 3,
+      "hash": "f084f3cf85ad8e0db59d6db09fabfeea0566757a908512e4989962f7d2f2e779",
+      "viewport": [
+        1280,
+        720
+      ],
+      "captured_at": "2026-08-01T14:18:16.754652+00:00",
+      "bytes": 845304
+    }
+  ],
+  "fingerprint_hits": [
+    {
+      "frame": 1,
+      "sha256": "99efe5c27e3b4af207f0e5f037de901f8da1ccfd706160540330b31e5fc8d72e",
+      "hit": true
+    },
+    {
+      "frame": 2,
+      "sha256": "99efe5c27e3b4af207f0e5f037de901f8da1ccfd706160540330b31e5fc8d72e",
+      "hit": true
+    },
+    {
+      "frame": 3,
+      "sha256": "99efe5c27e3b4af207f0e5f037de901f8da1ccfd706160540330b31e5fc8d72e",
+      "hit": true
+    }
+  ],
+  "passed": false,
+  "stable": false
+}

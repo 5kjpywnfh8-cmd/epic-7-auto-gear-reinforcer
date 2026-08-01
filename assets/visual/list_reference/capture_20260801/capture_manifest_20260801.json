@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "asset_kind": "equipment_list_three_frame_card_capture",
+  "status": "reference_only",
+  "not_production_evidence": true,
+  "authorization_scope": "one_three_frame_readonly_capture_no_click_or_navigation",
+  "model": "gpt-5.6-terra + high",
+  "device": {"serial": "emulator-5554", "state": "device", "discovery": "official_mumu_adb_devices_long"},
+  "frames": [
+    {"index": 1, "viewport": [1280, 720], "bytes": 845381, "sha256": "157ee69d773dd355f7d3aad6ed65dadc1a1b3560b9b02e60e3ac8f0c4f7c7ae7"},
+    {"index": 2, "viewport": [1280, 720], "bytes": 845111, "sha256": "dae6199c5636f7ba0302ca297c5b1f4007e5939c75708ebba7f39e40e8f0d267"},
+    {"index": 3, "viewport": [1280, 720], "bytes": 845726, "sha256": "5f1b25ffbfec0501d73f756147bd3c22d89e42db21701b43aa43e39aa2b601b1"}
+  ],
+  "stability": {
+    "target_card_region": {"bounds_px": [143, 451, 313, 568], "viewport": [170, 117], "inter_frame_mean_diff": 0.0, "raw_pixel_sha256": "13531f05a1cb40c86af1a643ae4378918748eb772c54bbe58eb6b08a66e51fa7"},
+    "details_panel_region": {"bounds_px": [820, 300, 1280, 480], "inter_frame_mean_diff": 0.0},
+    "list_header_region": {"inter_frame_mean_diff": 0.03}
+  },
+  "card_asset": {
+    "file": "target_card_full_20260801.png",
+    "viewport": [170, 117],
+    "source_bounds_px": [143, 451, 313, 568],
+    "png_sha256": "acf1d02e6b7a7f67306abfb7d7214a34d4e5ead2a9445b6181408aa51e121675",
+    "raw_pixel_sha256": "13531f05a1cb40c86af1a643ae4378918748eb772c54bbe58eb6b08a66e51fa7",
+    "status": "reference_only"
+  },
+  "observed_reference_fields": {
+    "page": "equipment_list",
+    "slot": "Weapon",
+    "rank": "Epic",
+    "level": 85,
+    "enhance": 3,
+    "set": "HealthSet",
+    "main": {"type": "Attack", "value": 160},
+    "substats": [["AttackPercent", 13], ["CriticalHitChancePercent", 3], ["Speed", 2], ["EffectResistancePercent", 8]],
+    "gear_score": 37,
+    "confidence_status": "details_panel_ocr_high_confidence_cross_validated_same_frame_same_equipment"
+  },
+  "remaining_blockers": [
+    "AttackPercent_icon_semantics_unreliable_list_card_icon_9_16px_no_matching_details_icon_template",
+    "CriticalHitChancePercent_icon_semantics_unreliable_list_card_icon_no_matching_details_icon_template",
+    "EffectResistancePercent_icon_semantics_unreliable_list_card_icon_no_matching_details_icon_template",
+    "registered_candidate_card_region_512x160_mismatches_actual_card_170x117"
+  ],
+  "notes": [
+    "Three in-memory frames were captured from the live emulator; target-card and details-panel regions are pixel-identical across all three frames.",
+    "The details panel provides high-confidence OCR truth (attack 13%, crit chance 3%, speed 2, effect resistance 8%, gear score 37) for the same selected equipment as the list card.",
+    "The saved card crop is reference_only and is not a registered production full-card fingerprint template.",
+    "List-card substat icons are too small and do not template-match the details-panel icons above 0.98, so the three missing field semantics remain unaudited.",
+    "The registered candidate_card region does not match the current real list layout, so full-card fingerprint SHA-256 matching cannot hit at runtime until region calibration."
+  ]
+}

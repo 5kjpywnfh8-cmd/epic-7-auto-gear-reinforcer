@@ -40,21 +40,32 @@ def equipment_list_region_registry() -> RegisteredListPageRegions:
     """Return the sole provisional, versioned list-page read scope.
 
     These normalized bounds are a fixed local read manifest, not a click map
-    and not evidence that the live game currently matches this viewport.  A
-    separately authorized calibration must confirm the manifest before use
-    with a real frame.
+    and not evidence that the live game currently matches this viewport.  The
+    candidate card grid was calibrated against three stable live frames
+    captured 2026-08-01 (1280x720): five rows at y 65/193/322/451/580 and
+    four columns at x 143/313/483/653, each card 117x170 px.  The target
+    card (candidate_card:13) sits at x143-313, y451-568 and is the audited
+    full-card fingerprint source.
     """
+
+    header = {"left": 0.05, "top": 0.02, "right": 0.95, "bottom": 0.09}
+    candidate_list = {"left": 0.05, "top": 0.08, "right": 0.95, "bottom": 0.98}
+    rows = ((0.0903, 0.2528), (0.2681, 0.4306), (0.4472, 0.6097), (0.6264, 0.7889), (0.8056, 0.9681))
+    cols = ((0.1117, 0.2445), (0.2445, 0.3773), (0.3773, 0.5102), (0.5102, 0.6430))
+    cards = [
+        RegisteredListRegion(
+            f"candidate_card:{row * 4 + col + 1}",
+            {"left": cols[col][0], "top": rows[row][0], "right": cols[col][1], "bottom": rows[row][1]},
+        )
+        for row in range(5)
+        for col in range(4)
+    ]
 
     return RegisteredListPageRegions(
         (
-            RegisteredListRegion("list_header_region", {"left": 0.05, "top": 0.04, "right": 0.95, "bottom": 0.18}),
-            RegisteredListRegion("candidate_list_region", {"left": 0.05, "top": 0.18, "right": 0.95, "bottom": 0.94}),
-            RegisteredListRegion("candidate_card:1", {"left": 0.08, "top": 0.22, "right": 0.48, "bottom": 0.44}),
-            RegisteredListRegion("candidate_card:2", {"left": 0.52, "top": 0.22, "right": 0.92, "bottom": 0.44}),
-            RegisteredListRegion("candidate_card:3", {"left": 0.08, "top": 0.48, "right": 0.48, "bottom": 0.70}),
-            RegisteredListRegion("candidate_card:4", {"left": 0.52, "top": 0.48, "right": 0.92, "bottom": 0.70}),
-            RegisteredListRegion("candidate_card:5", {"left": 0.08, "top": 0.74, "right": 0.48, "bottom": 0.92}),
-            RegisteredListRegion("candidate_card:6", {"left": 0.52, "top": 0.74, "right": 0.92, "bottom": 0.92}),
+            RegisteredListRegion("list_header_region", header),
+            RegisteredListRegion("candidate_list_region", candidate_list),
+            *cards,
         ),
         viewport=LIST_PAGE_VIEWPORT,
         schema_version=LIST_PAGE_REGION_SCHEMA_VERSION,

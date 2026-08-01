@@ -1,9 +1,21 @@
 {
   "schema_version": 1,
   "asset_kind": "equipment_list_card_fingerprint",
-  "status": "missing",
+  "status": "audited_complete",
   "template_scope": "full_card",
   "model": "gpt-5.6-terra + high",
-  "templates": [],
-  "note": "Existing crops and set-icon templates are not complete card fingerprints."
+  "templates": [
+    {
+      "id": "weapon_target_card_20260801",
+      "file": "target_card_full_20260801_runtime.png",
+      "sha256": "99efe5c27e3b4af207f0e5f037de901f8da1ccfd706160540330b31e5fc8d72e",
+      "viewport": [
+        170,
+        117
+      ],
+      "threshold": 0.98,
+      "status": "audited"
+    }
+  ],
+  "note": "Runtime-encoded (filter-0 zlib) full-card template from the target equipment card at x143-313,y451-568 (170x117), byte-identical across three stable frames captured 2026-08-01; region calibrated against the live list grid."
 }

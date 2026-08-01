@@ -1,0 +1,22 @@
+{
+  "step": 3,
+  "device": "emulator-5554",
+  "target_normalized": [
+    0.178125,
+    0.7069444444444445
+  ],
+  "target_pixels": [
+    228,
+    509
+  ],
+  "attempted_before": false,
+  "click_sent": true,
+  "last_click": {
+    "x": 228,
+    "y": 508,
+    "viewport": [
+      1280,
+      720
+    ]
+  }
+}

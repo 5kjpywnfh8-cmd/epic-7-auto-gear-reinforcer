@@ -1,6 +1,6 @@
 # 项目说明（Claude Code 入口）
 
-本文件是根目录 [AGENTS.md](AGENTS.md) 的完整镜像，供 Claude Code 会话启动时自动加载。**AGENTS.md 为权威源，任何改动必须同步更新两处。**
+本文件是根目录 [AGENTS.md](AGENTS.md) 的完整镜像，供 Claude Code 与 opencode 会话启动时自动加载（opencode 通过项目根目录 `opencode.json` 的 `instructions` 字段显式引用本文件）。**AGENTS.md 为权威源，任何改动必须同步更新两处。**
 
 ---
 
