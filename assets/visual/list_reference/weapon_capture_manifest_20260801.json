@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "asset_kind": "equipment_weapon_list_reference",
+  "status": "reference_only",
+  "not_current_target_evidence": true,
+  "authorization_scope": "one_readonly_three_frame_capture",
+  "device": {"serial": "emulator-5554", "state": "device", "discovery": "official_mumu_adb_devices_long"},
+  "frames": [
+    {"index": 1, "viewport": [1280, 720], "bytes": 830076, "sha256": "249be07d2bfd73486799d236986d247889c3f66f1de8cfc89a4d86f8000be4e8"},
+    {"index": 2, "viewport": [1280, 720], "bytes": 830076, "sha256": "249be07d2bfd73486799d236986d247889c3f66f1de8cfc89a4d86f8000be4e8"},
+    {"index": 3, "viewport": [1280, 720], "bytes": 830076, "sha256": "249be07d2bfd73486799d236986d247889c3f66f1de8cfc89a4d86f8000be4e8", "captured_at": "2026-07-31T19:20:22.097843+00:00"}
+  ],
+  "crops": [
+    {"name": "weapon_list_grid", "file": "weapon_list_grid_reference_20260801.png", "source_bounds_px": [120, 80, 840, 720], "viewport": [720, 640], "sha256": "b5e083980067c405830637d3fe59353734f53e9e8cf01116321f6a2dba166e48"},
+    {"name": "weapon_candidate_card", "file": "weapon_candidate_card_reference_20260801.png", "source_bounds_px": [135, 140, 305, 260], "viewport": [170, 120], "sha256": "24ba5468eddd43dca4d03b2867c1613757010412d507cc064f855ea8388a0315"},
+    {"name": "weapon_candidate_card_row2", "file": "weapon_candidate_card_row2_reference_20260801.png", "source_bounds_px": [135, 270, 840, 400], "viewport": [705, 130], "sha256": "fc428be47b710b9456f7921edb35cbca2748141877d55a267f73f7bcdc2e640b"},
+    {"name": "weapon_details_panel", "file": "weapon_details_panel_reference_20260801.png", "source_bounds_px": [845, 80, 1275, 720], "viewport": [430, 640], "sha256": "66267907c20207b7d7dcef84c1673b79d55aafaf2dcb32bb0f3afda62d35bf1b"}
+  ],
+  "cross_validated_fields": ["slot=Weapon", "mainStat=Attack", "substat=Health", "substat=Speed", "substat=CriticalHitDamagePercent", "gear_score=18"],
+  "icon_candidates": [
+    {"file": "icon_attack_main_weapon_reference_20260801.png", "semantic": "Attack", "semantic_status": "cross_validated_against_details_panel_reference", "sha256": "00B811D888C0B29FD7351D80E71B59A63BCD0850BC2ED49CA50746A5A232D54B"},
+    {"file": "icon_health_substat_weapon_reference_20260801.png", "semantic": "Health", "semantic_status": "cross_validated_against_details_panel_reference", "sha256": "4AA76011EB01D68AA63B936799ED01062F5D1F67DFFC26EDDEF3D394E120F336"},
+    {"file": "icon_speed_substat_weapon_reference_20260801.png", "semantic": "Speed", "semantic_status": "cross_validated_against_details_panel_reference", "sha256": "CA6B0D35B03511C0F8984E1A89F511761DB42CFD49ED48AC63DFB77674A7772B"},
+    {"file": "icon_critdamage_substat_weapon_reference_20260801.png", "semantic": "CriticalHitDamagePercent", "semantic_status": "cross_validated_against_details_panel_reference", "sha256": "A7E6CC57298B7A60C9642783B292D75CB3A672545B9580015501A633B817CBF3"},
+    {"file": "icon_set_weapon_reference_20260801.png", "semantic": null, "semantic_status": "use_audited_set_icon_manifest", "sha256": "C324408DF9DA3CC15F719B7B9B2DC43E4151B18EB5D3F97B6A2327008F4BB5EB"}
+  ],
+  "remaining_target_assets": ["AttackPercent_icon", "CriticalHitChancePercent_icon", "EffectResistancePercent_icon", "full_card_fingerprint_template"],
+  "notes": [
+    "Only fixed crops were saved; no full-screen screenshot was saved.",
+    "The frame and crops are historical/reference assets and do not prove the currently requested red +3 HealthSet weapon.",
+    "No OCR, click, navigation, enhancement, material selection, confirmation, or resource operation was executed."
+  ],
+  "model": "gpt-5.6-terra + high"
+}

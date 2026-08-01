@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "asset_kind": "equipment_list_card_fingerprint",
+  "status": "missing",
+  "template_scope": "full_card",
+  "model": "gpt-5.6-terra + high",
+  "templates": [],
+  "note": "Existing crops and set-icon templates are not complete card fingerprints."
+}

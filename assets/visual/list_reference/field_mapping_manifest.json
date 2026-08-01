@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "asset_kind": "equipment_list_field_mapping",
+  "status": "incomplete",
+  "model": "gpt-5.6-terra + high",
+  "mappings": [],
+  "missing_audited_fields": [
+    "AttackPercent",
+    "CriticalHitChancePercent",
+    "EffectResistancePercent"
+  ],
+  "note": "Reference crops do not establish reliable list-card semantics; production must fail closed."
+}

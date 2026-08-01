@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "asset_kind": "equipment_weapon_list_raw_reference",
+  "status": "reference_only",
+  "not_production_evidence": true,
+  "authorization_scope": "single_raw_readonly_capture_and_offline_crop_planning",
+  "model": "gpt-5.6-terra + high",
+  "source": {
+    "device": "emulator-5554",
+    "discovery": "official_mumu_adb_devices_long",
+    "viewport": [1280, 720],
+    "file": "weapon_list_raw_20260801.png",
+    "sha256": "a16464c412c9d3775fbcdada7942df3a10f6c998c9fe19037822a7d3de65f8f8",
+    "bytes": 858404,
+    "captured_at": "2026-08-01T04:25:39+08:00"
+  },
+  "crops": [
+    {
+      "name": "weapon_target_card",
+      "file": "crops/weapon_target_card_raw_20260801.png",
+      "source_bounds_px": [487, 310, 658, 436],
+      "normalized_bounds": {"left": 0.380469, "top": 0.430556, "right": 0.514063, "bottom": 0.605556},
+      "viewport": [171, 126],
+      "sha256": "037d22c4d6e82980f23466f89cad6ee3f364cfa43b3d7beb5b0d83be2f5c8d83",
+      "status": "reference_only"
+    },
+    {
+      "name": "weapon_target_context",
+      "file": "crops/weapon_target_context_raw_20260801.png",
+      "source_bounds_px": [442, 278, 868, 480],
+      "normalized_bounds": {"left": 0.345313, "top": 0.386111, "right": 0.678125, "bottom": 0.666667},
+      "viewport": [426, 202],
+      "sha256": "07a940c81abb7a61c4741084097f7eec483aa9d1d4d10e5a956469a1dc92c84c",
+      "status": "reference_only"
+    },
+    {
+      "name": "weapon_list_grid",
+      "file": "crops/weapon_list_grid_raw_20260801.png",
+      "source_bounds_px": [110, 66, 840, 720],
+      "normalized_bounds": {"left": 0.085938, "top": 0.091667, "right": 0.65625, "bottom": 1.0},
+      "viewport": [730, 654],
+      "sha256": "fa1f096d5155d3bce28b59239b97508bc29b0f2777013cfc04c54af9f01d0408",
+      "status": "reference_only"
+    },
+    {
+      "name": "weapon_target_details",
+      "file": "crops/weapon_target_details_raw_20260801.png",
+      "source_bounds_px": [850, 130, 1248, 555],
+      "normalized_bounds": {"left": 0.664063, "top": 0.180556, "right": 0.975, "bottom": 0.770833},
+      "viewport": [398, 425],
+      "sha256": "bd556273a3e3a4fa779bd7b154dd23052134e7c53774790701f9cc834b8a5e7f",
+      "status": "reference_only"
+    }
+  ],
+  "observed_reference_fields": {
+    "page": "equipment_list",
+    "target_card_visible": true,
+    "target_card_selected_in_frame": true,
+    "slot": "Weapon",
+    "rank": "Epic",
+    "level": 85,
+    "enhance": 3,
+    "set": "HealthSet",
+    "main": {"type": "Attack", "value": 160},
+    "substats": [["AttackPercent", 13], ["CriticalHitChancePercent", 3], ["Speed", 2], ["EffectResistancePercent", 8]],
+    "gear_score": 37,
+    "confidence_status": "visual_reference_only_not_calibrated"
+  },
+  "notes": [
+    "The raw PNG was captured once from the live emulator and is retained for offline analysis only.",
+    "Crops are planning/reference assets; they are not a production full-card fingerprint template.",
+    "No OCR confidence, candidate uniqueness contract, click coordinate, navigation authorization, or resource operation was produced."
+  ]
+}

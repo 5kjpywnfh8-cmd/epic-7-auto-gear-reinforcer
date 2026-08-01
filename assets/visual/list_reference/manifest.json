@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "asset_kind": "equipment_list_reference",
+  "status": "reference_only",
+  "not_current_page_evidence": true,
+  "source": {
+    "path": "manual_acceptance/single_item_confirmation/operation_013_plus3_20260724_112042/before_page.png",
+    "viewport": [1280, 720],
+    "sha256": "99CF7852D24298102BA9B43583C60A7FBC683104D535CEBFD499EAA91052A12A",
+    "captured_at": "2026-07-24",
+    "note": "历史列表页参考，只用于版式和裁剪资产，不证明当前 MuMu 页面或目标装备。"
+  },
+  "crops": [
+    {"name": "list_grid", "file": "list_grid_reference.png", "source_bounds_px": [120, 80, 840, 720], "viewport": [720, 640], "sha256": "6284159F6707DB0D114CD953A25C562163F3C95D99CB38B67216B46C50C17A7E"},
+    {"name": "candidate_card", "file": "candidate_card_reference.png", "source_bounds_px": [135, 140, 305, 260], "viewport": [170, 120], "sha256": "B40898B4EFB4B5BF5D42C0CE04C08E60EE4E2A53CF4E209EDB261FBCE4DB079A"},
+    {"name": "candidate_card_selected", "file": "candidate_card_selected_reference.png", "source_bounds_px": [665, 140, 840, 265], "viewport": [175, 125], "sha256": "F3A748000D9F7D7C4A7810207AB76F70A5455178272DFEB1B1A579602C65C92E"},
+    {"name": "candidate_card_row2", "file": "candidate_card_row2_reference.png", "source_bounds_px": [135, 270, 840, 400], "viewport": [705, 130], "sha256": "8109A7FEA5D3A60436B3069618B88E658847C9D9AFD1531895D8AF35E35707DC"},
+    {"name": "details_panel", "file": "details_panel_reference.png", "source_bounds_px": [845, 80, 1275, 720], "viewport": [430, 640], "sha256": "E0C440192F11CFC856D9421C90A307D9C75D582F025E42AA7405BC4AECAA36B2"}
+  ],
+  "field_layout": {
+    "status": "reference_unverified",
+    "candidate_card_bounds_px": [135, 140, 305, 260],
+    "regions": {
+      "level": [4, 2, 38, 27],
+      "main_stat_value": [96, 2, 170, 28],
+      "substat_rows": [[96, 27, 170, 50], [96, 48, 170, 72], [96, 70, 170, 94], [96, 90, 170, 118]],
+      "gear_score": [28, 92, 76, 120],
+      "set_icon": [66, 72, 108, 114]
+    },
+    "semantic_icon_mapping": "pending_manual_audit"
+  },
+  "template_assets": {
+    "set_icons": {"manifest": "assets/visual/set_icons/fribbels/manifest.json", "status": "audited_set_icons_only", "not_a_full_card_template": true},
+    "card_fingerprint_templates": {"status": "missing", "required_before_production": true}
+  },
+  "icon_candidates": [
+    {"file": "icon_main_health_candidate.png", "role": "main_stat_icon", "semantic": "HealthPercent", "semantic_status": "reference_only", "sha256": "4E1AE44B6F33B0509D3169A3178BEA406F6A810E5FFC9947D242E68CA7E3ED68"},
+    {"file": "icon_substat_1_candidate.png", "role": "substat_icon", "semantic": "DefensePercent", "semantic_status": "cross_validated_against_details_panel_reference", "sha256": "D733C23600FCD178CB2AE435CB797046D5587BF4BFEFE7736AF1DCA27D950C74"},
+    {"file": "icon_substat_2_candidate.png", "role": "substat_icon", "semantic": "Speed", "semantic_status": "cross_validated_against_details_panel_reference", "sha256": "0CA11601481CB3ABBCC436AAAE5F615B5A143241B33048DD8DEF7B3783F46593"},
+    {"file": "icon_substat_3_candidate.png", "role": "substat_icon", "semantic": "EffectResistancePercent", "semantic_status": "cross_validated_against_details_panel_reference", "sha256": "2D9809A13FF38FCE961F559D23C067F8DBDC21D99C2878F30705B1E4547E06FC"},
+    {"file": "icon_substat_4_candidate.png", "role": "substat_icon", "semantic": "EffectivenessPercent", "semantic_status": "cross_validated_against_details_panel_reference", "sha256": "A55C2C965C74DCE17D53CC0D0C103C613CF8F80A6E9C0571BBAAC18F77AEA46F"},
+    {"file": "icon_set_candidate.png", "role": "set_icon", "semantic": null, "semantic_status": "use_audited_set_icon_manifest", "sha256": "2DAB04E7991395FA47251820ABB7454D4D30E44F4C0F784EF9C447CAFC3836BF"}
+  ]
+}
