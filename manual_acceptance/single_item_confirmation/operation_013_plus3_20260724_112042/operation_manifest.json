@@ -1,0 +1,105 @@
+{
+  "schema_version": "single_item_confirmation.operation/1.0",
+  "status": "completed_target_013_plus3_stopped",
+  "target": {
+    "batch": "013",
+    "pairer_instanceId": "4182712419",
+    "level": 85,
+    "slot": "Necklace",
+    "set": "SpeedSet",
+    "rank": "Epic",
+    "enhance_before": 0,
+    "review_checkpoint": 3
+  },
+  "authorization": {
+    "operation_authorized": true,
+    "allowed_material_sources": [
+      "equipment_enhancement_powder",
+      "lesser_equipment_charm",
+      "greater_equipment_charm"
+    ],
+    "resource_limits": {
+      "equipment_enhancement_powder": 2,
+      "lesser_equipment_charm": 1,
+      "greater_equipment_charm": 0,
+      "gold": 17600
+    }
+  },
+  "pre_operation_gate": {
+    "unique_device_count": 1,
+    "other_device_status_count": 0,
+    "device_address_persisted": false,
+    "computer_use_capture_status": "failed_known_interface_error_0x80004002",
+    "fallback": "adb_exec_out_screencap_without_serial_binary_stream",
+    "page_type": "enhance_equipment",
+    "target_equipment_visible": true,
+    "candidate_count": 1,
+    "minimum_ocr_confidence": 0.990471,
+    "advice_hash_matched": true,
+    "shadow_advice": {
+      "decision": "continue",
+      "next_check_at": 3,
+      "target": "speed_potential"
+    },
+    "trusted_snapshot_hash_gate_passed": true
+  },
+  "trusted_reference": {
+    "snapshot_id": "20260722_132045",
+    "player_data_sha256": "3d74e2d69147d5a1053f0ebccc217ed2c64842fa2ce91cce6413e5fea364185b",
+    "reader_result_sha256": "3831f40814c015166794bf44fbd55d153668532d549e612aff431c24e42f900b",
+    "pairing_output": "../preflight_20260723_102914/pair_batch_013.json"
+  },
+  "before": {
+    "screenshot": "before_authorized.png",
+    "sha256": "8f50f1608579c9b094e41211f5145460c459c04bf5be2f0c9c48cf5e925b1e57",
+    "png_signature_ok": true,
+    "selected_materials": {
+      "equipment_enhancement_powder": 2,
+      "lesser_equipment_charm": 1,
+      "greater_equipment_charm": 0,
+      "gold": 17600
+    },
+    "enhance_button_ready": true
+  },
+  "actions": [
+    {
+      "sequence": 1,
+      "method": "adb_shell_input_tap_fallback_after_computer_use_capture_failure",
+      "coordinate_from_current_observation": [755, 663],
+      "click_count": 1,
+      "target": "enhance_button",
+      "result": "accepted"
+    }
+  ],
+  "after": {
+    "screenshot": "after.png",
+    "sha256": "37ea95c5f5e7e1abee68499dde2d3322e33f283b3011221e123255c89d71c376",
+    "png_signature_ok": true,
+    "enhance": 3,
+    "main": { "type": "HealthPercent", "value": 19 },
+    "substats": [
+      { "type": "DefensePercent", "value": 8 },
+      { "type": "Speed", "value": 7 },
+      { "type": "EffectResistancePercent", "value": 6 },
+      { "type": "EffectivenessPercent", "value": 6 }
+    ],
+    "gear_score": 41,
+    "material_selection_delta": {
+      "equipment_enhancement_powder": 2,
+      "lesser_equipment_charm": 1,
+      "greater_equipment_charm": 0,
+      "gold": 0
+    },
+    "gold": {
+      "before": 346670175,
+      "after": 346652575,
+      "consumed": 17600
+    },
+    "pending_material_delta_after_operation": {
+      "equipment_enhancement_powder": 0,
+      "lesser_equipment_charm": 0,
+      "greater_equipment_charm": 0
+    }
+  },
+  "stop_reason": "review_checkpoint_plus3_reached; no further operation sent"
+}
